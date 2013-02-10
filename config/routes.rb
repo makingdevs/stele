@@ -1,4 +1,6 @@
 Stele::Application.routes.draw do
+  resources :perfils, :path => "/perfiles"
+
   resources :usuarios
 
 
