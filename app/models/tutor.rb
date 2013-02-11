@@ -4,4 +4,5 @@ class Tutor < ActiveRecord::Base
   belongs_to :datoPersonal
   belongs_to :usuario
 
+  has_and_belongs_to_many :dependientes
 end
