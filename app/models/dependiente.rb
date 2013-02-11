@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: dependientes
+#
+#  id               :integer          not null, primary key
+#  dato_personal_id :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class Dependiente < ActiveRecord::Base
   attr_accessible :dato_personal_id
 
