@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rfc: MyString
+  dato_personal_id: 1
+  usuario_id: 1
+
+two:
+  rfc: MyString
+  dato_personal_id: 1
+  usuario_id: 1
