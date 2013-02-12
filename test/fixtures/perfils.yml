@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  apellidoPaterno: MyString
+  apellidoMaterno: MyString
+  curp: MyString
+  fechaDeNacimiento: 2013-02-11
+  genero: MyString
+
+two:
+  nombre: MyString
+  apellidoPaterno: MyString
+  apellidoMaterno: MyString
+  curp: MyString
+  fechaDeNacimiento: 2013-02-11
+  genero: MyString
