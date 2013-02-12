@@ -11,54 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211034336) do
-
-  create_table "dato_personals", :force => true do |t|
-    t.string   "nombre"
-    t.string   "apellidoPaterno"
-    t.string   "apellidoMaterno"
-    t.date     "fechaDeNacimiento"
-    t.string   "curp"
-    t.string   "genero"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-  end
-
-  create_table "dependientes", :force => true do |t|
-    t.integer  "dato_personal_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  create_table "dependientes_tutors", :id => false, :force => true do |t|
-    t.integer "dependiente_id"
-    t.integer "tutor_id"
-  end
-
-  create_table "perfils", :force => true do |t|
-    t.string   "perfil"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "perfils_usuarios", :id => false, :force => true do |t|
-    t.integer "usuario_id"
-    t.integer "perfil_id"
-  end
-
-  create_table "tutors", :force => true do |t|
-    t.string   "rfc"
-    t.integer  "dato_personal_id"
-    t.integer  "usuario_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  create_table "usuarios", :force => true do |t|
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 0) do
 
 end
