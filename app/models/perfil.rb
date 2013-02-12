@@ -1,5 +1,3 @@
 class Perfil < ActiveRecord::Base
-  attr_accessible :apellidoMaterno, :apellidoPaterno, :nombre, :usuario_id
-
-  belongs_to :usuario
+  attr_accessible :apellidoMaterno, :apellidoPaterno, :curp, :fechaDeNacimiento, :genero, :nombre
 end

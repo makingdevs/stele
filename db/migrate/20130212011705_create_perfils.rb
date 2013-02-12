@@ -4,7 +4,9 @@ class CreatePerfils < ActiveRecord::Migration
       t.string :nombre
       t.string :apellidoPaterno
       t.string :apellidoMaterno
-      t.integer :usuario_id
+      t.string :curp
+      t.date :fechaDeNacimiento
+      t.string :genero
 
       t.timestamps
     end

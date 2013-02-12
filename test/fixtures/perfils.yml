@@ -4,10 +4,14 @@ one:
   nombre: MyString
   apellidoPaterno: MyString
   apellidoMaterno: MyString
-  usuario_id: 1
+  curp: MyString
+  fechaDeNacimiento: 2013-02-11
+  genero: MyString
 
 two:
   nombre: MyString
   apellidoPaterno: MyString
   apellidoMaterno: MyString
-  usuario_id: 1
+  curp: MyString
+  fechaDeNacimiento: 2013-02-11
+  genero: MyString
