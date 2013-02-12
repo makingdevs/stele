@@ -11,6 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130212014750) do
+
+  create_table "autoridads", :force => true do |t|
+    t.string   "autoridad"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "autoridads_usuarios", :id => false, :force => true do |t|
+    t.integer "autoridad_id"
+    t.integer "usuario_id"
+  end
+
+  create_table "dependientes", :force => true do |t|
+    t.integer  "perfil_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "dependientes_usuarios", :id => false, :force => true do |t|
+    t.integer "dependiente_id"
+    t.integer "usuario_id"
+  end
+
+  create_table "perfils", :force => true do |t|
+    t.string   "nombre"
+    t.string   "apellidoPaterno"
+    t.string   "apellidoMaterno"
+    t.string   "curp"
+    t.date     "fechaDeNacimiento"
+    t.string   "genero"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "usuarios", :force => true do |t|
+    t.string   "email"
+    t.string   "password"
+    t.integer  "perfil_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
