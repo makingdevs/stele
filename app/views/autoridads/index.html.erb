@@ -1,0 +1,23 @@
+<h1>Listing autoridads</h1>
+
+<table>
+  <tr>
+    <th>Autoridad</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @autoridads.each do |autoridad| %>
+  <tr>
+    <td><%= autoridad.autoridad %></td>
+    <td><%= link_to 'Show', autoridad %></td>
+    <td><%= link_to 'Edit', edit_autoridad_path(autoridad) %></td>
+    <td><%= link_to 'Destroy', autoridad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Autoridad', new_autoridad_path %>
