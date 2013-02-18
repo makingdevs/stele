@@ -1,6 +1,9 @@
 Stele::Application.routes.draw do
-  resources :perfils, :path => "/perfiles"
-  resources :usuarios
+
+  resources :usuarios do
+    resources :perfils
+  end
+
   resources :dependientes
   resources :autoridads, :path => "/autoridades"
 
