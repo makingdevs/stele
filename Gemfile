@@ -10,6 +10,7 @@ group :development do
   gem 'annotate', '2.5.0'
 end
 
+gem 'formtastic', '~>1.2.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
