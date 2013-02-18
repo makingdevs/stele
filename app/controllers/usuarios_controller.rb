@@ -32,6 +32,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(params[:usuario])
+    @usuario.save
     respond_with @usuario
   end
 
