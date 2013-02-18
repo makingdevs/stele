@@ -5,7 +5,7 @@ class PerfilsController < ApplicationController
   def new
     @perfil = Perfil.new
     @perfil.usuario = usuario
-    respond_with [usuario, @perfil]
+    respond_with @perfil
   end
 
   def create
@@ -15,6 +15,9 @@ class PerfilsController < ApplicationController
     respond_with [usuario, @perfil] do |format|
       format.html {
         if new_was_successful
+          actualizarPerfilDeUsuario = usuario
+          actualizarPerfilDeUsuario.perfil = @perfil
+          actualizarPerfilDeUsuario.save
           redirect_to(usuario_path(usuario), :notice => "El perfil ha sido creado")
         else
           render 'new'
