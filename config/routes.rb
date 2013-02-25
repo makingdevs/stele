@@ -1,11 +1,13 @@
 Stele::Application.routes.draw do
 
   resources :usuarios do
-    resources :perfils, :path => 'perfiles'
+    resources :dependientes, :name_prefix => "usuario_"
+    resources :perfils, :name_prefix => "usuario_", :path => 'perfiles'
   end
 
-  resources :dependientes
-  resources :autoridads, :path => "/autoridades"
+  resources :dependientes do
+    resources :perfils, :name_prefix => "dependiente_"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
