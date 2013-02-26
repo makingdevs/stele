@@ -1,0 +1,13 @@
+<h1> Lista de dependientes para el usuario 
+  <%= @usuario.perfil.nombre %>
+  <%= @usuario.perfil.apellidoPaterno %>
+  <%= @usuario.perfil.apellidoMaterno %>
+</h1>
+
+<ul>
+  <% @usuario.dependientes.each do |dependiente| %>
+    <%= dependiente.perfil.nombre %>
+    <%= dependiente.perfil.apellidoPaterno %>
+    <%= dependiente.perfil.apellidoMaterno %>
+  <% end %>
+</ul>

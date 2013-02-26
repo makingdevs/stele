@@ -15,9 +15,9 @@ class PerfilsController < ApplicationController
     respond_with [usuario, @perfil] do |format|
       format.html {
         if new_was_successful
-          actualizarPerfilDeUsuario = usuario
-          actualizarPerfilDeUsuario.perfil = @perfil
-          actualizarPerfilDeUsuario.save
+          usuarioActualizar = usuario
+          usuarioActualizar.perfil = @perfil
+          usuarioActualizar.save
           redirect_to(usuario_path(usuario), :notice => "El perfil ha sido creado")
         else
           render 'new'
