@@ -6,6 +6,8 @@
 
 <ul>
   <% @usuario.dependientes.each do |dependiente| %>
-    <li> <%= dependiente %>  </li>
+    <%= dependiente.perfil.nombre %>
+    <%= dependiente.perfil.apellidoPaterno %>
+    <%= dependiente.perfil.apellidoMaterno %>
   <% end %>
 </ul>
