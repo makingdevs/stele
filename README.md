@@ -1,4 +1,0 @@
-stele
-=====
-
-Manage payments easily
