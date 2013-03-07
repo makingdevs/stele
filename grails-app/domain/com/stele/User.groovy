@@ -8,10 +8,11 @@ class User {
   Date dateCreated
   Date lastUpdated
 
-  static belongsTo = [profile : Profile]
+  Profile profile
 
   static constraints = {
     email email: true, blank: false
     password password: true, blank: false, minSize: 6
+    profile nullable: true
   }
 }
