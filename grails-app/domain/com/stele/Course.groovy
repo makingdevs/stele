@@ -11,7 +11,7 @@ class Course {
   static belongsTo = Dependent
   static hasMany = [dependents : Dependent]
 
-  static constraints {
+  static constraints = {
     group size: 1..10
     year: 1..2
   }
