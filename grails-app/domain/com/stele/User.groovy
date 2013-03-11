@@ -10,6 +10,8 @@ class User {
 
   Profile profile
 
+  static hasMany = [dependents : Dependent]
+
   static constraints = {
     email email: true, blank: false
     password password: true, blank: false, minSize: 6

@@ -4,7 +4,8 @@ class Dependent {
 
   Profile profile
 
-  static hasMany = [courses : Course]
+  static belongsTo = User
+  static hasMany = [courses : Course, users : User]
   
   Date dateCreated
   Date lastUpdated
