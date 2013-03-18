@@ -8,16 +8,16 @@
     <div class="masthead">
       <ul class="nav nav-pills pull-right">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Acerca</a></li>
+        <li><a href="#">Contacto</a></li>
       </ul>
-      <h3 class="muted">Project name</h3>
+      <h3 class="muted">Stele</h3>
     </div>
 
     <hr>
 
     <div class="jumbotron">
-      <h1>Super awesome marketing speak!</h1>
+      <h1>Controla la operación de tu institución escolar<h1>
       <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
       <a class="btn btn-large btn-success" href="#">Sign up today</a>
     </div>
