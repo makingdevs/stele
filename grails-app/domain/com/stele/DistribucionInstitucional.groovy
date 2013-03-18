@@ -1,6 +1,6 @@
 package com.stele
 
-class DistrubucionInstitucional {
+class DistribucionInstitucional {
 
   NivelDeEstudio nivelDeEstudio
   Integer grado
