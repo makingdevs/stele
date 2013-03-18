@@ -2,6 +2,8 @@ package com.stele
 
 class Dependiente {
 
-    static constraints = {
-    }
+  static hasOne = [perfil: Perfil]
+  
+  static constraints = {
+  }
 }
