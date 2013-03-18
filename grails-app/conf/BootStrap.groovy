@@ -3,6 +3,8 @@ import net.bull.javamelody.JdbcWrapper
 
 class BootStrap {
 
+  def dataSource
+
   def init = { servletContext ->
     wrapperMelodyDataSource()
   }
