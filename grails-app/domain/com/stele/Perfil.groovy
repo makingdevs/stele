@@ -2,6 +2,13 @@ package com.stele
 
 class Perfil {
 
-    static constraints = {
-    }
+  String nombre
+  String apellidoPaterno
+  String apellindoMaterno
+  Date fechaDeNacimiento
+
+  static hasMany = [direccion: Direccion, telefonos: Telefono]
+
+  static constraints = {
+  }
 }
