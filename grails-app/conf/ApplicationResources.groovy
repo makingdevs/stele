@@ -2,7 +2,7 @@ modules = {
   application {
     resource url:'js/application.js'
   }
-  main {
+  appMain {
     resource url:'css/index.css'
   }
 }
