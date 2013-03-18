@@ -2,6 +2,9 @@ package com.stele
 
 class HistorialAcademico {
 
-    static constraints = {
-    }
+  DistribucionInstitucional distribucionInstitucional
+  static belongsTo = [dependiente : Dependiente]
+
+  static constraints = {
+  }
 }
