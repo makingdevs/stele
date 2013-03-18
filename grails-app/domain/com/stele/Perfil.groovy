@@ -6,7 +6,7 @@ class Perfil {
   String apellidoPaterno
   String apellindoMaterno
   Date fechaDeNacimiento
-  Sexo sexo
+  Sexo sexo = Sexo.QUIMERA
 
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 

@@ -3,7 +3,7 @@ package com.stele
 class Telefono {
 
   String numeroTelefonico
-  TipoDeTelefono tipoDeTelefono
+  TipoDeTelefono tipoDeTelefono = TipoDeTelefono.CELULAR
   String extension
 
   Date dateCreated

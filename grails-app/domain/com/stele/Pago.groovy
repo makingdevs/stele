@@ -5,8 +5,8 @@ class Pago {
   String conceptoDePago
   Date fechaDePago
   BigDecimal cantidadDePago
-  TipoDePago tipoDePago
-  EstatusDePago estatusDePago
+  TipoDePago tipoDePago = TipoDePago.TRANSFERENCIA_BANCARIA
+  EstatusDePago estatusDePago = EstatusDePago.PROCESO
   String transactionId = UUID.randomUUID().toString().replaceAll('-', '').substring(0,20)
 
   HistorialAcademico historialAcademico

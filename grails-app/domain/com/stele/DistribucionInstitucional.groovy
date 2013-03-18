@@ -2,10 +2,10 @@ package com.stele
 
 class DistribucionInstitucional {
 
-  NivelDeEstudio nivelDeEstudio
+  NivelDeEstudio nivelDeEstudio = NivelDeEstudio.PRIMARIA
   Integer grado
   String grupo
-  Turno turno
+  Turno turno = Turno.MATUTINO
 
   Date dateCreated
   Date lastUpdated
