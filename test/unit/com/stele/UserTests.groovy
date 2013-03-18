@@ -1,17 +1,16 @@
 package com.stele
 
-
-
 import grails.test.mixin.*
 import org.junit.*
 
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
 @TestFor(User)
-class UserTests {
+class UserTests extends groovy.util.GroovyTestCase {
 
-    void testSomething() {
-       fail "Implement me"
-    }
+  void testConstraints() {
+    def userConstraints = new User()
+
+    assert !userConstraints.validate()
+    assert userConstraints.errors.allErrors*.code == ["nullable"] * 2
+  }
+
 }
