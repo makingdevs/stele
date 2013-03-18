@@ -1,7 +1,9 @@
 package com.stele
 
 enum Sexo {
-  MASCULINO("Masculino"), FEMENINO("Femenino"), QUIMERA("Quimera")
+  MASCULINO("Masculino"),
+  FEMENINO("Femenino"),
+  QUIMERA("Quimera")
 
   final String value
   Sexo(String value){ this.value = value }
