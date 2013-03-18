@@ -9,6 +9,10 @@ class Direccion {
   String numeroExterior
   String estado
   String ciudad
+
+  Date dateCreated
+  Date lastUpdated
+
   static constraints = {
     calle size:1..100,blank:false
     delegacionMunicipio size:1..100,blank:false

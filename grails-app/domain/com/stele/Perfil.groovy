@@ -10,6 +10,9 @@ class Perfil {
 
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
+  Date dateCreated
+  Date lastUpdated
+
   static constraints = {
     nombre size:1..50,blank:false
     apellidoPaterno size:1..50,blank:false

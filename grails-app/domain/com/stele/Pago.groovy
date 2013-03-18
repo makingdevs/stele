@@ -11,6 +11,9 @@ class Pago {
 
   HistorialAcademico historialAcademico
 
+  Date dateCreated
+  Date lastUpdated
+
   static constraints = {
     conceptoDePago size:1..100,blank:false
     cantidadDePago min:1,blank:false
