@@ -1,5 +1,5 @@
 package com.stele
 
-enum Grado {
+enum EstatusDePago {
   
 }
