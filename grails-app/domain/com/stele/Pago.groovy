@@ -16,7 +16,7 @@ class Pago {
 
   static constraints = {
     conceptoDePago size:1..100,blank:false
-    cantidadDePago min:1,blank:false
+    cantidadDePago min:new BigDecimal(1)
     transactionId size:20..20
   }
 }
