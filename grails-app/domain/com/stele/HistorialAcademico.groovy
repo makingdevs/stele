@@ -1,6 +1,6 @@
 package com.stele
 
-class Payment {
+class HistorialAcademico {
 
     static constraints = {
     }
