@@ -8,6 +8,7 @@ class Perfil {
   Date fechaDeNacimiento
   Sexo sexo = Sexo.QUIMERA
 
+  static hasOne = [dependiente : Dependiente]
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
   Date dateCreated
