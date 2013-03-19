@@ -2,7 +2,7 @@ package com.stele
 
 class Dependiente {
 
-  static hasOne = [perfil: Perfil]
+  Perfil perfil
   static hasMany = [historialAcademico : HistorialAcademico, pagos : Pago]
 
   Date dateCreated

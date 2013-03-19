@@ -6,8 +6,9 @@ class Perfil {
   String apellidoPaterno
   String apellindoMaterno
   Date fechaDeNacimiento
-  Sexo sexo
+  Sexo sexo = Sexo.QUIMERA
 
+  static belongsTo = [dependiente : Dependiente]
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
   Date dateCreated
