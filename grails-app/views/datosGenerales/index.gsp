@@ -1,6 +1,6 @@
 <html>
 <head>
-  <meta name="layout" content="twitterBootstrapMain"/>
+  <meta name="layout" content="twitterBootstrap"/>
   <title>Datos Generales</title>
 </head>
 <body>
@@ -14,13 +14,19 @@
     <div class="control-group">
       <label class="control-label" for="inputEmail">Contraseña actual</label>
       <div class="controls">
-        <g:textField name="myField" value="${myValue}" />
+        <g:textField name="contraseniaActual" value="${contraseniaActual}" />
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="inputPassword">Password</label>
+      <label class="control-label" for="inputPassword">Nueva contraseña</label>
       <div class="controls">
-        <input type="password" id="inputPassword" placeholder="Password">
+        <g:textField name="nuevaContrasenia" value="${nuevaContrasenia}" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputPassword">Confirma contraseña</label>
+      <div class="controls">
+        <g:textField name="confirmaContrasenia" value="${confirmaContrasenia}" />
       </div>
     </div>
     <div class="control-group">
