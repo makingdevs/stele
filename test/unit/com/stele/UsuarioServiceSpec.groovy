@@ -11,7 +11,20 @@ class UsuarioServiceSpec {
 
     def "Obtener un usuario apartir de un command leeido desde un excel"(){
       given:
-        def filaExcelCommand = new FilaExcelCommand() 
+        def filaExcelCommand = new FilaExcelCommand(
+          cicloEscolar: "2021089",
+          tutorNombre: "Rodrigo",
+          tutorApellidoPaterno: "Martínez",
+          tutorApellidoMaterno: "García",
+          correoElectronico: "rockdrigo.mtz@gmail.com",
+          telefono: "1234567",
+          matricula: "765434567",
+          dependienteApellidoPaterno: "Juan",
+          dependienteApellidoMaterno: "Perez",
+          dependienteNombre: "Perez",
+          nivel: "Primaria",
+          grado: "1",
+          grupo: "A") 
       when:
         def usuario = Service.obtenerUsuarioDesdeCommand(filaExcelCommand)
       then:
