@@ -5,7 +5,9 @@ import jxl.*
 class ExcelService {
 
   def leerArchivoDesdeLaRuta(String ruta) {
-    Workbook workbook = Workbook.getWorkbook(new File(ruta));
+    WorkbookSettings ws = new WorkbookSettings();
+    ws.setEncoding("Cp1252");
+    Workbook workbook = Workbook.getWorkbook(new File(ruta),ws);
     Sheet sheet = workbook.getSheet(0)
 
     def contenidoDeFilas = []
