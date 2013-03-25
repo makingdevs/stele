@@ -17,19 +17,22 @@ class DistribucionInstitucionalServiceSpec extends Specification{
         def distribucionInstitucional = service.obtenerDistribucionInstitucionalDesdeCommand(filaExcelCommand)
       then:
         assert distribucionInstitucional.grado == gradoEsperado
-        assert distribucionInstitucional.grupo == grupoEsperado      
+        assert distribucionInstitucional.grupo == grupoEsperado 
+        assert distribucionInstitucional.nivelDeEstudio.value == nivelDeEstudioEsperado     
       where:
         datosBasicos << [
-          [grado:"2",grupo:"C"],
-          [grado:"3",grupo:"a"]
+          [grado:"2",grupo:"C",nivel:"Primaria"],
+          [grado:"3",grupo:"a",nivel:"Secunadaria"]
         ]
         gradoEsperado << [
           "2",
-          "3"
+          "3",
+          "Secunadaria"
         ]
         grupoEsperado << [
           "C",
-          "a"
+          "a",
+          "Secunadaria"
         ]
     }
 }
