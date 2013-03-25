@@ -16,8 +16,8 @@ class ExcelServiceIntegrationSpec extends IntegrationSpec {
       assert filasDeArchivo[0] == resultado[0]
 
     where :
-      ruta                       || filasDeArchivo
-      "/home/sohjiro/layout.xls" || [["Ciclo escolar","Nombre","Apellido paterno","Apellido materno","Correo electrónico","Telefono","Matrícula","Apellido paterno","Apellido materno","Nombre(s)","Nivel","Grado","Grupo","Turno"]]
+      ruta                                    || filasDeArchivo
+      "test/integration/com/stele/layout.xls" || [["Ciclo escolar","Nombre","Apellido paterno","Apellido materno","Correo electrónico","Telefono","Matrícula","Apellido paterno","Apellido materno","Nombre(s)","Nivel","Grado","Grupo","Turno"]]
   }
 
 
