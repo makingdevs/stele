@@ -46,8 +46,6 @@ class UsuarioServiceSpec  extends Specification{
           "rockdrigo.mtz@gmail.com",
           "j.perez@gmail.com"
         ]
-
-
     }
 
 }
