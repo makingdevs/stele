@@ -5,9 +5,10 @@ import static org.junit.Assert.*
 import grails.test.mixin.*
 import grails.test.mixin.support.*
 import org.junit.*
+import spock.lang.Specification
 
 @TestFor(UsuarioService)
-class UsuarioServiceSpec {
+class UsuarioServiceSpec  extends Specification{
 
     def "Obtener un usuario apartir de un command leeido desde un excel"(){
       given:
@@ -26,7 +27,7 @@ class UsuarioServiceSpec {
           grado: "1",
           grupo: "A") 
       when:
-        def usuario = Service.obtenerUsuarioDesdeCommand(filaExcelCommand)
+        def usuario = service.obtenerUsuarioDesdeCommand(filaExcelCommand)
       then:
         assert usuario.username == "rockdrigo.mtz@gmail.com"
         assert usuario.password.size() > 0
