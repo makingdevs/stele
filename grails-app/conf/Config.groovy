@@ -1,3 +1,6 @@
+import grails.util.Environment
+
+grails.config.locations = ["classpath:${appName}-${Environment.current}-config.groovy"]
 
 grails.project.groupId = appName 
 grails.mime.file.extensions = true 
