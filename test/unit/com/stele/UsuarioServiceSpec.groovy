@@ -35,7 +35,7 @@ class UsuarioServiceSpec  extends Specification{
         assert !usuario.accountExpired
         assert !usuario.accountLocked
         assert !usuario.passwordExpired
-        assert usuario.perfil.nombre == "Rodirgo"
+        assert usuario.perfil.nombre == "Rodrigo"
         assert usuario.perfil.apellidoPaterno == "Martínez"
         assert usuario.perfil.apellidoMaterno == "García"
 
