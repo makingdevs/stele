@@ -33,6 +33,7 @@ grails.project.dependency.resolution = {
     dependencies {
         runtime 'mysql:mysql-connector-java:5.1.20'
         compile 'net.bull.javamelody:javamelody-core:1.13.0'
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
     plugins {
@@ -43,6 +44,10 @@ grails.project.dependency.resolution = {
         compile ":spring-security-core:1.2.7.3"
         compile ":grails-melody:1.13"
         compile ":mail:1.0.1"
+        test(":spock:0.7") {
+          exclude "spock-grails-support"
+        }
+
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
