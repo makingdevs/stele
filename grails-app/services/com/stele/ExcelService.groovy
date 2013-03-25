@@ -11,7 +11,7 @@ class ExcelService {
     def contenidoDeFilas = []
 
     (1..sheet.getRows() - 1).each { fila ->
-      contenidoDeFilas << sheet.getRow( 1 )*.getContents()
+      contenidoDeFilas << sheet.getRow( fila )*.getContents()
     }
 
     contenidoDeFilas
