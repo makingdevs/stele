@@ -1,6 +1,12 @@
 import grails.util.Environment
 import org.apache.log4j.DailyRollingFileAppender
 
+def configLocations = []
+configLocations << "file:${appName}-${Environment.current}-config.groovy"
+grails.config.locations = configLocations
+
+log.debug configLocations
+
 grails.project.groupId = appName 
 grails.mime.file.extensions = true 
 grails.mime.use.accept.header = false
