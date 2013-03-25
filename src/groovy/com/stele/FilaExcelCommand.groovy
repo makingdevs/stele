@@ -6,7 +6,7 @@ class FilaExcelCommand {
   String tutorNombre
   String tutorApellidoPaterno
   String tutorApellidoMaterno
-  String CorreoElectronico
+  String correoElectronico
   String telefono
 
   String matricula
