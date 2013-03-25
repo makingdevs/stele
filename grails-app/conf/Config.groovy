@@ -1,10 +1,6 @@
 import grails.util.Environment
 import org.apache.log4j.DailyRollingFileAppender
 
-locations = ["classpath:${appName}-${Environment.current}-config.groovy"]
-log.debug locations
-grails.config.locations = locations
-
 grails.project.groupId = appName 
 grails.mime.file.extensions = true 
 grails.mime.use.accept.header = false
@@ -94,8 +90,6 @@ log4j = {
       'org.codehaus.groovy.grails.commons', // core / classloading
       'org.codehaus.groovy.grails.plugins', // plugins
       'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
-      'com.gargoylesoftware',
-      'org.compass',
       'org.springframework',
       'org.hibernate',
       'net.sf.ehcache.hibernate',
@@ -103,7 +97,6 @@ log4j = {
       'org.codehaus',
       'org.grails.plugin.resource',
       'grails.plugin.cache',
-      "grails.plugin.searchable",
       'grails.app.resourceMappers',
       'grails.plugins.twitterbootstrap',
       'grails.app.taglib',
@@ -113,10 +106,11 @@ log4j = {
       'liquibase',
       'grails.plugin.databasemigration',
       'CacheHeadersGrailsPlugin',
-      'com.stele.jdbc',
       'org.quartz',
       'org.jets3t',
-      'httpclient'
+      'httpclient',
+      'grails.app.jobs.org.grails',
+      'QuartzGrailsPlugin'
 
   warn 'grails.plugin.jms',
       'net.bull.javamelody',
