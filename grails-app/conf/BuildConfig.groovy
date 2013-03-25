@@ -33,6 +33,7 @@ grails.project.dependency.resolution = {
     dependencies {
         runtime 'mysql:mysql-connector-java:5.1.20'
         compile 'net.bull.javamelody:javamelody-core:1.13.0'
+        compile 'net.sourceforge.jexcelapi:jxl:2.6.12'
         test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
