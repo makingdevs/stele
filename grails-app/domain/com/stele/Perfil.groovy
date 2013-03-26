@@ -19,6 +19,6 @@ class Perfil {
   static constraints = {
     nombre size:1..50,blank:false
     apellidoPaterno size:1..50,blank:false
-    apellindoMaterno size:1..50,blank:true,nullable:true
+    apellidoMaterno size:1..50,blank:true,nullable:true
   }
 }
