@@ -3,7 +3,7 @@ package com.stele
 enum NivelDeEstudio {
   PREESCOLAR("Preescolar"),
   PRIMARIA("Primaria"),
-  SECUNADARIA("Secunadaria"),
+  SECUNDARIA("Secundaria"),
   BACHILLERATO("Bachillerato"),
   EDUCACION_SUPERIOR("Educación_Superior")
 
