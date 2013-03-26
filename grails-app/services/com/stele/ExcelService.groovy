@@ -4,10 +4,10 @@ import jxl.*
 
 class ExcelService {
 
-  def leerArchivoDesdeLaRuta(String ruta) {
+  def procesarFilas(FileInputStream archivoDeExcel) {
     WorkbookSettings ws = new WorkbookSettings();
     ws.setEncoding("Cp1252");
-    Workbook workbook = Workbook.getWorkbook(new File(ruta),ws);
+    Workbook workbook = Workbook.getWorkbook(archivoDeExcel, ws);
     Sheet sheet = workbook.getSheet(0)
 
     def contenidoDeFilas = []

@@ -2,15 +2,16 @@ package com.stele
 
 class InicioController {
 
+  def excelService
+
   def index() {
     [:]
   }
 
   def preview(){
-    def file = params.datosEscolares
-    log.debug file.properties
-    log.debug file.dump()
-    log.debug params
+    FileInputStream excelParaProcesar = params.datosEscolares.inputStream
+    def filas = excelService.procesarFilas(excelParaProcesar)
+    log.debug filas
   }
 
   def upload(){
