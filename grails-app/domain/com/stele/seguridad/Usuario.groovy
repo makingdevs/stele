@@ -1,5 +1,7 @@
 package com.stele.seguridad
 
+import com.stele.Perfil
+
 class Usuario {
 
 	transient springSecurityService
@@ -10,6 +12,7 @@ class Usuario {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+	Perfil perfil
 
 	static constraints = {
 		username blank: false, unique: true

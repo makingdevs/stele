@@ -1,14 +1,16 @@
 package com.stele
 
+import com.stele.seguridad.Usuario
+
 class Perfil {
 
   String nombre
   String apellidoPaterno
-  String apellindoMaterno
+  String apellidoMaterno
   Date fechaDeNacimiento
   Sexo sexo = Sexo.QUIMERA
 
-  static belongsTo = [dependiente : Dependiente]
+  static belongsTo = [dependiente : Dependiente, usuario : Usuario]
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
   Date dateCreated
