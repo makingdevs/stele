@@ -7,6 +7,13 @@ class InicioController {
   }
 
   def preview(){
-    render "hola mundo"
+    def file = params.datosEscolares
+    log.debug file.properties
+    log.debug file.dump()
+    log.debug params
+  }
+
+  def upload(){
+    log.debug params
   }
 }
