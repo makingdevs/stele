@@ -6,5 +6,6 @@
   </head>
   <body>
     <h1>Selecciona tu institución</h1>
+    <g:select name="institucionId" from="${com.stele.Institucion.list()}" value="${id}" noSelection="['':'-Selecciona-']"/>
   </body>
 </html>
