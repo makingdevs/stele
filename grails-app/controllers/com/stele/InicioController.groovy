@@ -5,4 +5,8 @@ class InicioController {
   def index() {
     [:]
   }
+
+  def preview(){
+    render "hola mundo"
+  }
 }

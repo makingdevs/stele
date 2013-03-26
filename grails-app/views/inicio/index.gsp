@@ -15,11 +15,14 @@
     <h3>2. Descarga el archivo de datos:</h3>
 
     <h3>3. Sube nuevamente el archivo:</h3>
-    <g:uploadForm action="upload">
+    <g:uploadForm controller="inicio"> 
       <input type="file" name="datosEscolares" />
       <br/><br/>
-      <g:submitToRemote update="previsualizar" name="porevisualizar" value="Preview" class="btn btn-large btn-primary" />
+      <g:submitToRemote update="previsualizar" url="[action:'preview']" value="Preview" class="btn btn-large btn-primary" />
       <input type="submit" class="btn btn-large btn-success" value="Subir mis datos" />
     </g:uploadForm> 
+
+    <div id="previsualizar"></div>
+
   </body>
 </html>
