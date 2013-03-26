@@ -17,4 +17,5 @@ class FilaExcelCommand {
   String nivel
   String grado
   String grupo
+  String turno
 } 

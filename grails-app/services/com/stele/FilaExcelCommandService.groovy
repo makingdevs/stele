@@ -26,7 +26,8 @@ class FilaExcelCommandService {
       dependienteNombre : filaDeExcel[9]?.trim(),
       nivel : filaDeExcel[10]?.trim(),
       grado : filaDeExcel[11]?.trim(),
-      grupo : filaDeExcel[12]?.trim())
+      grupo : filaDeExcel[12]?.trim(),
+      turno : filaDeExcel[13]?.trim())
   }
 
 }
