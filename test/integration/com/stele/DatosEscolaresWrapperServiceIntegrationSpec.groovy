@@ -8,7 +8,8 @@ class DatosEscolaresWrapperServiceIntegrationSpec extends IntegrationSpec {
 
   def "De acuerdo a una ruta de archivo debe regresar una lista de filas"() {
     when : "Ejecutamos el método de conversión"
-      List<FilaExcelCommand> resultados = datosEscolaresWrapperService.convertirACommandsArchivo('test/integration/com/stele/layout.xls')
+      FileInputStream archivoDeExcel = new FileInputStream(new File('test/integration/com/stele/layout.xls'))
+      List<FilaExcelCommand> resultados = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(archivoDeExcel)
 
     then : "Obtenemos : "
       assert resultados.size() == commandsEsperados.size()
