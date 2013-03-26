@@ -8,7 +8,8 @@ class ExcelServiceIntegrationSpec extends IntegrationSpec {
 
   def "De acuerdo a una ruta de archivo debe regresar una lista de filas"() {
     when : "Invocamos al método de lectura"
-      def resultado = excelService.leerArchivoDesdeLaRuta("test/integration/com/stele/layout.xls")
+      FileInputStream archivoDeExcel = new FileInputStream(new File('test/integration/com/stele/layout.xls'))
+      def resultado = excelService.procesarFilas(archivoDeExcel)
 
     then : "Obtenemos los siguientes resultados : "
       println resultado.size()
