@@ -1,18 +1,14 @@
-// locations to search for config files that get merged into the main config;
-// config files can be ConfigSlurper scripts, Java properties files, or classes
-// in the classpath in ConfigSlurper format
+import grails.util.Environment
+import org.apache.log4j.DailyRollingFileAppender
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+def configLocations = []
+configLocations << "file:${appName}-${Environment.current}-config.groovy"
+grails.config.locations = configLocations
 
-// if (System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
+log.debug configLocations
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
-grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
+grails.project.groupId = appName 
+grails.mime.file.extensions = true 
 grails.mime.use.accept.header = false
 grails.mime.types = [
     all:           '*/*',
@@ -59,35 +55,86 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+def logDirectory = "target/"
 environments {
     development {
         grails.logging.jul.usebridge = true
     }
     production {
         grails.logging.jul.usebridge = false
+        target = "logs/"
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
 
 // log4j configuration
 log4j = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+  appenders {
+    console name: 'stdout', layout: pattern(conversionPattern: '%d{ISO8601}\t%p\t%c:%L\t%m%n'), threshold: org.apache.log4j.Level.ERROR
+    appender new DailyRollingFileAppender(name: 'file', file: logDirectory + 'stele.log',
+        datePattern: '\'_\'yyyy-MM-dd', layout: pattern(conversionPattern: '%d{ISO8601}\t%p\t%c:%L\t%m%n'))
+  }
+
+  root {
+    debug 'stdout', 'file'
+    additivity = true
+  }
+
+  debug 'grails.app.controllers.com.stele',
+      'grails.app.taglib.com.stele',
+      'grails.app.services.com.stele',
+      'grails.app.domain.com.stele',
+      'grails.app.jobs.com.stele'
+      'grails.app.conf'
+
+  error 'org.codehaus.groovy.grails.web.servlet',  //  controllers
+      'org.codehaus.groovy.grails.web.pages', //  GSP
+      'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+      'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+      'org.codehaus.groovy.grails.web.mapping', // URL mapping
+      'org.codehaus.groovy.grails.commons', // core / classloading
+      'org.codehaus.groovy.grails.plugins', // plugins
+      'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+      'org.springframework',
+      'org.hibernate',
+      'net.sf.ehcache.hibernate',
+      'org.apache',
+      'org.codehaus',
+      'org.grails.plugin.resource',
+      'grails.plugin.cache',
+      'grails.app.resourceMappers',
+      'grails.plugins.twitterbootstrap',
+      'grails.app.taglib',
+      'grails.plugin.webxml',
+      'grails.util',
+      'grails.spring',
+      'liquibase',
+      'grails.plugin.databasemigration',
+      'CacheHeadersGrailsPlugin',
+      'org.quartz',
+      'org.jets3t',
+      'httpclient',
+      'grails.app.jobs.org.grails',
+      'QuartzGrailsPlugin'
+
+  warn 'grails.plugin.jms',
+      'net.bull.javamelody',
+      'net.sf.ehcache'
+
+  environments {
+    production {
+      // Override previous setting
+      error "grails",
+          "org",
+          "net",
+          "com",
+          "groovyx",
+          "net.bull.javamelody",
+          "httpclient",
+          "liquibase"
+    }
+  }
 }
 
 // Added by the Spring Security Core plugin:

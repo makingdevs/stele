@@ -2,3 +2,5 @@
 /tmp
 *.swp
 target/
+s3-plugin-temp/
+stele-*-config.groovy

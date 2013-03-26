@@ -48,7 +48,8 @@ grails.project.dependency.resolution = {
         test(":spock:0.7") {
           exclude "spock-grails-support"
         }
-
+        compile ":amazon-s3:0.8.2"
+        compile ":quartz:1.0-RC6"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
