@@ -18,21 +18,59 @@ class DistribucionInstitucionalServiceSpec extends Specification{
       then:
         assert distribucionInstitucional.grado == gradoEsperado
         assert distribucionInstitucional.grupo == grupoEsperado 
-        assert distribucionInstitucional.nivelDeEstudio.value == nivelDeEstudioEsperado     
+        assert distribucionInstitucional.nivelDeEstudio == nivelDeEstudioEsperado     
       where:
         datosBasicos << [
           [grado:"2",grupo:"C",nivel:"Primaria"],
-          [grado:"3",grupo:"a",nivel:"Secunadaria"]
+          [grado:"2",grupo:"C",nivel:"PRI"],
+          [grado:"2",grupo:"C",nivel:"PRIMARIA"],
+          [grado:"2",grupo:"C",nivel:"BASICA"],
+          [grado:"2",grupo:"C",nivel:"ELEMENTAL"],
+          [grado:"2",grupo:"C",nivel:"PrImArIa"],
+          [grado:"2",grupo:"C",nivel:"PrI."],
+          [grado:"3",grupo:"a",nivel:"Secundaria"],
+          [grado:"3",grupo:"a",nivel:"Secu"],
+          [grado:"3",grupo:"a",nivel:"SECUNDARIA"],
+          [grado:"3",grupo:"a",nivel:"Sec."]
         ]
         gradoEsperado << [
           "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
           "3",
-          "Secunadaria"
+          "3",
+          "3",
+          "3"
         ]
         grupoEsperado << [
           "C",
+          "C",
+          "C",
+          "C",
+          "C",
+          "C",
+          "C",
           "a",
-          "Secunadaria"
+          "a",
+          "a",
+          "a"
+        ]
+        nivelEsperado  << [
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.SECUNDARIA,
+          NivelDeEstudio.SECUNDARIA,
+          NivelDeEstudio.SECUNDARIA,
+          NivelDeEstudio.SECUNDARIA
         ]
     }
 }
