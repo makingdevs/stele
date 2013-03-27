@@ -12,6 +12,7 @@ class InicioController {
     FileInputStream excelParaProcesar = params.datosEscolares.inputStream
     def filas = excelService.procesarFilas(excelParaProcesar)
     log.debug filas
+    [:]
   }
 
   def upload(){
