@@ -4,6 +4,7 @@ import grails.test.mixin.*
 import org.junit.*
 
 import spock.lang.Specification
+import com.stele.seguridad.Usuario
 
 @TestFor(DatosEscolaresDomainWrapperService)
 class DatosEscolaresDomainWrapperServiceSpec extends Specification {
@@ -11,6 +12,18 @@ class DatosEscolaresDomainWrapperServiceSpec extends Specification {
   def "Convierte una lista de commands a una lista de mapas de objetos dominio"() {
     setup : "Inicializamos los commands"
       def commandList = obtenerCommands()
+      def usuarioServiceMock = mockFor(UsuarioService)
+      usuarioServiceMock.demand.obtenerUsuarioDesdeCommand(0..3) { new Usuario() }
+      service.usuarioService = usuarioServiceMock.createMock()
+      def dependienteServiceMock = mockFor(DependienteService)
+      dependienteServiceMock.demand.obtenerDependienteDesdeCommand(0..3) { new Dependiente() }
+      service.dependienteService = dependienteServiceMock.createMock()
+      def cicloEscolarServiceMock = mockFor(CicloEscolarService)
+      cicloEscolarServiceMock.demand.obtenerCicloEscolarDesdeCommand(0..3) { new CicloEscolar() }
+      service.cicloEscolarService = cicloEscolarServiceMock.createMock()
+      def distribucionInstitucionalMock = mockFor(DistribucionInstitucionalService)
+      distribucionInstitucionalMock.demand.obtenerDistribucionInstitucionalDesdeCommand(0..3) { new DistribucionInstitucional() }
+      service.distribucionInstitucionalService = distribucionInstitucionalMock.createMock()
 
     when : "Llamamos al método para convertir los commands a mapas"
       def resultado = service.obtenerListaDeMapasDesdeListaDeCommands(commandList)
@@ -24,8 +37,7 @@ class DatosEscolaresDomainWrapperServiceSpec extends Specification {
   }
 
   private def obtenerCommands() {
-    [ new FilaExcelCommand(
-      cicloEscolar:"",
+    [ new FilaExcelCommand(cicloEscolar:"",
       tutorNombre:"",
       tutorApellidoPaterno:"",
       tutorApellidoMaterno:"",
@@ -39,7 +51,7 @@ class DatosEscolaresDomainWrapperServiceSpec extends Specification {
       grado:"",
       grupo:"",
       turno:""),
-      new FilaExcelCommand(cicloEscolar:""
+      new FilaExcelCommand(cicloEscolar:"",
       tutorNombre:"",
       tutorApellidoPaterno:"",
       tutorApellidoMaterno:"",
@@ -53,7 +65,7 @@ class DatosEscolaresDomainWrapperServiceSpec extends Specification {
       grado:"",
       grupo:"",
       turno:""),
-      new FilaExcelCommand(cicloEscolar:""
+      new FilaExcelCommand(cicloEscolar:"",
       tutorNombre:"",
       tutorApellidoPaterno:"",
       tutorApellidoMaterno:"",
