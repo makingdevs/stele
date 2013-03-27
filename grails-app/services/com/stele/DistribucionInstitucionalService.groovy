@@ -21,14 +21,12 @@ class DistribucionInstitucionalService {
 
     if( ((nivelToUpper =~ preescolar).find()) )
       return NivelDeEstudio.PREESCOLAR
-    else if( ((nivelToUpper =~ primaria).find()) )
-      return NivelDeEstudio.PRIMARIA
     else if( ((nivelToUpper =~ secundaria).find()) )
       return NivelDeEstudio.SECUNDARIA
     else if( ((nivelToUpper =~ bachillerato).find()) )
-      return NivelDeEstudio.bachillerato
+      return NivelDeEstudio.BACHILLERATO
     else if( ((nivelToUpper =~ educacionSuperior).find()) )
-      return NivelDeEstudio.educacionSuperior
+      return NivelDeEstudio.EDUCACION_SUPERIOR
     else
       return NivelDeEstudio.PRIMARIA
   }
@@ -40,9 +38,7 @@ class DistribucionInstitucionalService {
     def tarde = /\bT\w*/
     def nocturno = /\b${Turno.NOCTURNO.toString()toUpperCase()substring(0,1)}\w*/
 
-    if( ((turnoToUpper =~ matutino).find()) )
-      return Turno.MATUTINO
-    else if( ((turnoToUpper =~ vespertino).find()) ||  ((turnoToUpper =~ tarde).find()) )
+    if( ((turnoToUpper =~ vespertino).find()) ||  ((turnoToUpper =~ tarde).find()) )
       return Turno.VESPERTINO
     else if( ((turnoToUpper =~ nocturno).find()) )
       return Turno.NOCTURNO
