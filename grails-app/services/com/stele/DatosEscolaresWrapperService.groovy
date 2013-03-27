@@ -7,7 +7,6 @@ class DatosEscolaresWrapperService {
 
   def obtenerFilasExcelCommandsDesdeArchivo(FileInputStream archivoDeExcel) {
     def filas = excelService.procesarFilas(archivoDeExcel)
-    
     filaExcelCommandService.convertirListaACommands(filas)
   }
 }

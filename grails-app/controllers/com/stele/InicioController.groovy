@@ -2,7 +2,9 @@ package com.stele
 
 class InicioController {
 
-  def excelService
+  def datosEscolaresWrapperService
+  def datosEscolaresDomainWrapperService
+  def estructuraInstitucionalService
 
   def index() {
     [:]
@@ -10,9 +12,10 @@ class InicioController {
 
   def preview(){
     FileInputStream excelParaProcesar = params.datosEscolares.inputStream
-    def filas = excelService.procesarFilas(excelParaProcesar)
-    log.debug filas
-    [:]
+    def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(excelParaProcesar)
+    def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
+    def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
+    [estructuraInstitucional:estructuraInstitucional,listaDeMapaDeDominios:listaDeMapaDeDominios]
   }
 
   def upload(){
