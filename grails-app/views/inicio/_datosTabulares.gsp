@@ -14,8 +14,8 @@
     <g:each in="${listaDeMapaDeDominios}" var="d" status="i">
     <tr>
       <td>${i+1}</td>
-      <td>${d.usuario.nombre} ${d.usuario.apellidoPaterno} ${d.usuario.apellidoMaterno}</td>
-      <td>${d.dependiente.nombre} ${d.dependiente.apellidoPaterno} ${d.dependiente.apellidoMaterno}</td>
+      <td>${d.usuario.perfil.nombre} ${d.usuario.perfil.apellidoPaterno} ${d.usuario.perfil.apellidoMaterno}</td>
+      <td>${d.dependiente.perfil.nombre} ${d.dependiente.perfil.apellidoPaterno} ${d.dependiente.perfil.apellidoMaterno}</td>
       <td></td>
       <td></td>
       <td></td>
