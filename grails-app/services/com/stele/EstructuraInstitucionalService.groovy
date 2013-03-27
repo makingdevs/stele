@@ -7,11 +7,14 @@ class EstructuraInstitucionalService {
     
     listaMapaDominios.each { filaDominio ->
 
-      log.debug estructuraOrganizacional.find {
-        it.find { k, v ->
-          k != null
-        } 
-      }
+    def encontrado = estructuraOrganizacional*.find { k, v ->
+      k == filaDominio.cicloEscolar.clave
+    }
+
+    log.debug encontrado.class
+    encontrado.each {
+      log.debug it
+    }
 
       def mapa = [
                    "${filaDominio.cicloEscolar.clave}" : [ 
