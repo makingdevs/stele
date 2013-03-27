@@ -21,7 +21,13 @@ class EstructuraInstitucionalServiceSpec extends Specification  {
           [ usuario : new Usuario(), 
             dependiente : new Dependiente(),
             distribucionInstitucional : new DistribucionInstitucional(nivelDeEstudio : NivelDeEstudio.PRIMARIA, grado:1, grupo:"A", turno:Turno.MATUTINO),
-            cicloEscolar : new CicloEscolar(clave:"2011-12") ]
+            cicloEscolar : new CicloEscolar(clave:"2011-12")
+          ],
+          [ usuario : new Usuario(), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(nivelDeEstudio : NivelDeEstudio.PRIMARIA, grado:1, grupo:"B", turno:Turno.MATUTINO),
+            cicloEscolar : new CicloEscolar(clave:"2011-12")
+          ]
         ]
       ]
 

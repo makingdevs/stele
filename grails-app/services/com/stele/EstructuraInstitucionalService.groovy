@@ -6,6 +6,13 @@ class EstructuraInstitucionalService {
     def estructuraOrganizacional = []
     
     listaMapaDominios.each { filaDominio ->
+
+      log.debug estructuraOrganizacional.find {
+        it.find { k, v ->
+          k != null
+        } 
+      }
+
       def mapa = [
                    "${filaDominio.cicloEscolar.clave}" : [ 
                      "${filaDominio.distribucionInstitucional.nivelDeEstudio.key}" : [
