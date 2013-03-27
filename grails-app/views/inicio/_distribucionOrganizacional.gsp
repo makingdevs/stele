@@ -1,35 +1,41 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>2012-2013</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="3">Primaria</td>
-      <td colspan="3">Secundaria</td>
-    </tr>
-    <tr>
-      <td colspan="2">1ª</td>
-      <td colspan="2">2ª</td>
-      <td colspan="2">3ª</td>
-      <td colspan="2">1ª</td>
-      <td colspan="2">2ª</td>
-      <td colspan="2">3ª</td>
-    </tr>
-    <tr>
-      <td>M</td>
-      <td>V</td>
-      <td>M</td>
-      <td>V</td>
-      <td>M</td>
-      <td>V</td>
-      <td>M</td>
-      <td>V</td>
-      <td>M</td>
-      <td>V</td>
-      <td>M</td>
-      <td>V</td>
-    </tr>
-  </tbody>
-</table>
+<h3>Ciclo escolar: 2012/2013</h3>
+<div class="row-fluid ">
+  <div class="span4 well">
+    <h3>Niveles</h3>
+    <ul>
+      <li>Primaria <span class="badge badge-info">300</span></li>
+      <li>Secundaria <span class="badge badge-info">300</span></li>
+    </ul>
+  </div>
+  <div class="span4 well">
+    <h3>Grados por nivel</h3>
+    <ul>
+      <li>Primaria</li>
+      <ul>
+        <li>1ª <span class="badge badge-info">300</span></li>
+        <li>2ª <span class="badge badge-info">300</span></li>
+        <li>3ª <span class="badge badge-info">300</span></li>
+      </ul>
+      <li>Secundaria</li>
+      <ul>
+        <li>1ª <span class="badge badge-info">300</span></li>
+        <li>2ª <span class="badge badge-info">300</span></li>
+      </ul>
+    </ul>
+  </div>
+  <div class="span4 well">
+    <h3>Grado y turno</h3>
+    <ul>
+      <li>Primaria</li>
+      <ul>
+        <li>Matutino <span class="badge badge-info">300</span></li>
+        <li>Vespertino <span class="badge badge-info">300</span></li>
+      </ul>
+      <li>Secundaria</li>
+      <ul>
+        <li>Matutino <span class="badge badge-info">300</span></li>
+        <li>Vespertino <span class="badge badge-info">300</span></li>
+      </ul>
+    </ul>
+  </div>
+</div>
