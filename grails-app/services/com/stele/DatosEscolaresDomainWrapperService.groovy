@@ -11,18 +11,17 @@ class DatosEscolaresDomainWrapperService {
   def distribucionInstitucionalService
 
   def obtenerListaDeMapasDesdeListaDeCommands(List filaExcelCommand){ 
-    def lista = []
+    def listaDeMapasDomain = []
 
     filaExcelCommand.each{
-      def mapa = [usuario:usuarioService.obtenerUsuarioDesdeCommand(it),
-                  dependiente:dependienteService.obtenerDependienteDesdeCommand(it),
-                  cicloEscolar:cicloEscolarService.obtenerCicloEscolarDesdeCommand(it),
-                  distribucionInstitucional:distribucionInstitucionalService.obtenerDistribucionInstitucionalDesdeCommand(it)
-                 ]
-      lista.add(mapa)
+      def mapaDomains = [usuario:usuarioService.obtenerUsuarioDesdeCommand(it),
+                         dependiente:dependienteService.obtenerDependienteDesdeCommand(it),
+                         cicloEscolar:cicloEscolarService.obtenerCicloEscolarDesdeCommand(it),
+                         distribucionInstitucional:distribucionInstitucionalService.obtenerDistribucionInstitucionalDesdeCommand(it)
+                        ]
+      listaDeMapasDomain.add(mapaDomains)
     }
-
-    lista
+    listaDeMapasDomain
   }
 
 
