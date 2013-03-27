@@ -10,46 +10,64 @@ class DatosEscolaresDomainWrapperServiceSpec extends Specification {
 
   def "Convierte una lista de commands a una lista de mapas de objetos dominio"() {
     setup : "Inicializamos los commands"
-      def commands = obtenerCommands(params)
+      def commandList = obtenerCommands()
 
     when : "Llamamos al método para convertir los commands a mapas"
-      def resultado = service.obtenerListaDeMapasDesdeListaDeCommands(commands)
+      def resultado = service.obtenerListaDeMapasDesdeListaDeCommands(commandList)
     then : "Los resultados son"
-      assert resultado.size() == commands.size()
-
-    where :
-      params << [
-        [cicloEscolar:"2012/2013",
-         tutorNombre:"Felipe",
-         tutorApellidoPaterno:"Juárez",
-         tutorApellidoMaterno:"Murillo",
-         correoElectronico:"fjuarez@gmail.com",
-         telefono:"1234567890",
-         matricula:"M123456",
-         dependienteApellidoPaterno:"Juárez",
-         dependienteApellidoMaterno:"Murrieta",
-         dependienteNombre:"Felipe Jr.",
-         nivel:"Primaria", grado:"4", grupo:"A",
-         turno:"Matutino"
-        ]
-      ]
+      assert resultado.size() == 3 
+      assert resultado.collect{ r -> r.find {k,v -> v.class == Usuario} }.size() == 3 
+      assert resultado.collect{ r -> r.find {k,v -> v.class == Dependiente} }.size() == 3
+      assert resultado.collect{ r -> r.find {k,v -> v.class == CicloEscolar} }.size() == 3
+      assert resultado.collect{ r -> r.find {k,v -> v.class == DistribucionInstitucional} }.size() == 3
+    
   }
 
-  private def obtenerCommands(params) {
-    new FilaExcelCommand(cicloEscolar:params.cicloEscolar,
-                         tutorNombre:parans.tutorNombre,
-                         tutorApellidoPaterno:params.tutorApellidoPaterno,
-                         tutorApellidoMaterno:params.tutorApellidoMaterno,
-                         correoElectronico:params.correoElectronico,
-                         telefono:params.telefono,
-                         matricula:params.matricula,
-                         dependienteApellidoPaterno:params.dependienteApellidoPaterno,
-                         dependienteApellidoMaterno:params.dependienteApellidoMaterno,
-                         dependienteNombre:params.dependienteNombre,
-                         nivel:params.nivel, 
-                         grado:params.grado, 
-                         grupo:params.grupo,
-                         turno:params.turno)
+  private def obtenerCommands() {
+    [ new FilaExcelCommand(
+      cicloEscolar:"",
+      tutorNombre:"",
+      tutorApellidoPaterno:"",
+      tutorApellidoMaterno:"",
+      correoElectronico:"",
+      telefono:"",
+      matricula:"",
+      dependienteApellidoPaterno:"", 
+      dependienteApellidoMaterno:"", 
+      dependienteNombre:"",
+      nivel:"",
+      grado:"",
+      grupo:"",
+      turno:""),
+      new FilaExcelCommand(cicloEscolar:""
+      tutorNombre:"",
+      tutorApellidoPaterno:"",
+      tutorApellidoMaterno:"",
+      correoElectronico:"",
+      telefono:"",
+      matricula:"",
+      dependienteApellidoPaterno:"", 
+      dependienteApellidoMaterno:"", 
+      dependienteNombre:"",
+      nivel:"",
+      grado:"",
+      grupo:"",
+      turno:""),
+      new FilaExcelCommand(cicloEscolar:""
+      tutorNombre:"",
+      tutorApellidoPaterno:"",
+      tutorApellidoMaterno:"",
+      correoElectronico:"",
+      telefono:"",
+      matricula:"",
+      dependienteApellidoPaterno:"", 
+      dependienteApellidoMaterno:"", 
+      dependienteNombre:"",
+      nivel:"",
+      grado:"",
+      grupo:"",
+      turno:"")
+     ]
   }
 
 
