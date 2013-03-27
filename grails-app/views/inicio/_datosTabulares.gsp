@@ -3,6 +3,7 @@
     <tr>
       <th>#</th>
       <th>Nombre del padre/tutor</th>
+      <th>Matrícula</th>
       <th>Nombre del estudiante</th>
       <th>Nivel</th>
       <th>Grado</th>
@@ -15,6 +16,7 @@
     <tr>
       <td>${i+1}</td>
       <td>${d.usuario.perfil.nombre} ${d.usuario.perfil.apellidoPaterno} ${d.usuario.perfil.apellidoMaterno}</td>
+      <td>Matricula</td>
       <td>${d.dependiente.perfil.nombre} ${d.dependiente.perfil.apellidoPaterno} ${d.dependiente.perfil.apellidoMaterno}</td>
       <td>${d.distribucionInstitucional.nivelDeEstudio}</td>
       <td>${d.distribucionInstitucional.grado}</td>
