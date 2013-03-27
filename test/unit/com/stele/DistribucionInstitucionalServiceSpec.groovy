@@ -20,20 +20,21 @@ class DistribucionInstitucionalServiceSpec extends Specification{
       then:
         assert distribucionInstitucional.grado == gradoEsperado
         assert distribucionInstitucional.grupo == grupoEsperado 
-        assert distribucionInstitucional.nivelDeEstudio == nivelDeEstudioEsperado     
+        assert distribucionInstitucional.nivelDeEstudio == nivelDeEstudioEsperado
+        assert distribucionInstitucional.turno == turnoEsperado     
       where:
         datosBasicos << [
-          [grado:"2",grupo:"C",nivel:"Primaria"],
-          [grado:"2",grupo:"C",nivel:"PRI"],
-          [grado:"2",grupo:"C",nivel:"PRIMARIA"],
-          [grado:"2",grupo:"C",nivel:"priMaria"],
-          [grado:"2",grupo:"C",nivel:"PRImaria"],
-          [grado:"2",grupo:"C",nivel:"PrImArIa"],
-          [grado:"2",grupo:"C",nivel:"PrI."],
-          [grado:"3",grupo:"a",nivel:"Secundaria"],
-          [grado:"3",grupo:"a",nivel:"Secu"],
-          [grado:"3",grupo:"a",nivel:"SECUNDARIA"],
-          [grado:"3",grupo:"a",nivel:"seCU"]
+          [grado:"2",grupo:"C",nivel:"Primaria",turno:"Matutino"],
+          [grado:"2",grupo:"C",nivel:"PRI",turno:"Noche"],
+          [grado:"2",grupo:"C",nivel:"PRIMARIA",turno:"Mat"],
+          [grado:"2",grupo:"C",nivel:"priMaria",turno:"Mañ."],
+          [grado:"2",grupo:"C",nivel:"PRImaria",turno:"Vesp"],
+          [grado:"2",grupo:"C",nivel:"PrImArIa",turno:"vespertino"],
+          [grado:"2",grupo:"C",nivel:"PrI.",turno:"tarde"],
+          [grado:"3",grupo:"a",nivel:"Secundaria",turno:"Tard."],
+          [grado:"3",grupo:"a",nivel:"Secu",turno:"noc."],
+          [grado:"3",grupo:"a",nivel:"SECUNDARIA",turno:"nocturno"],
+          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"]
         ]
         gradoEsperado << [
           "2",
@@ -73,6 +74,19 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA
+        ]
+        turnoEsperado << [
+          Turno.MATUTINO,
+          Turno.NOCTURNO,
+          Turno.MATUTINO,
+          Turno.MATUTINO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
+          Turno.NOCTURNO,
+          Turno.NOCTURNO,
+          Turno.VESPERTINO
         ]
     }
 }
