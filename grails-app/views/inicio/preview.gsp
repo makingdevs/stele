@@ -11,6 +11,6 @@
     <h2>Distribución organizacional</h2>
     <g:render template="distribucionOrganizacional" model="" />
     <h2>Muestra de datos a registrar</h2>
-    
+    <g:render template="datosTabulares" model="[listaDeMapaDeDominios:listaDeMapaDeDominios]" />
   </body>
 </html>
