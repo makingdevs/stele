@@ -1,4 +1,4 @@
-<table>
+<table width="100%" class="table table-condensed table-hover table-striped">
   <thead>
     <tr>
       <th>#</th>
@@ -16,10 +16,10 @@
       <td>${i+1}</td>
       <td>${d.usuario.perfil.nombre} ${d.usuario.perfil.apellidoPaterno} ${d.usuario.perfil.apellidoMaterno}</td>
       <td>${d.dependiente.perfil.nombre} ${d.dependiente.perfil.apellidoPaterno} ${d.dependiente.perfil.apellidoMaterno}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>${d.distribucionInstitucional.nivelDeEstudio}</td>
+      <td>${d.distribucionInstitucional.grado}</td>
+      <td>${d.distribucionInstitucional.grupo}</td>
+      <td>${d.distribucionInstitucional.turno}</td>
     </tr>
     </g:each>
   </tbody>
