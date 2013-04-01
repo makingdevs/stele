@@ -7,42 +7,48 @@ class EstructuraInstitucionalService {
     
     listaMapaDominios.each { filaDominio ->
 
-      if( mapa."$filaDominio.cicloEscolar.clave" ) {
-        if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key" ) {
-          if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado" ) {
-            if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" ) {
-              if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key"."$filaDominio.distribucionInstitucional.grupo" ) {
-                mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key"."$filaDominio.distribucionInstitucional.grupo" << filaDominio.dependiente
+      String clave = filaDominio.cicloEscolar.clave
+      String nivelDeEstudio = filaDominio.distribucionInstitucional.nivelDeEstudio.toString().toUpperCase()
+      String grado = filaDominio.distribucionInstitucional.grado.toString()
+      String turno = filaDominio.distribucionInstitucional.turno.toString().toUpperCase()
+      String grupo = filaDominio.distribucionInstitucional.grupo
+
+      if( mapa."$clave" ) {
+        if( mapa."$clave"."$nivelDeEstudio" ) {
+          if( mapa."$clave"."$nivelDeEstudio"."$grado" ) {
+            if( mapa."$clave"."$nivelDeEstudio"."$grado"."$turno" ) {
+              if( mapa."$clave"."$nivelDeEstudio"."$grado"."$turno"."$grupo" ) {
+                mapa."$clave"."$nivelDeEstudio"."$grado"."$turno"."$grupo" << filaDominio.dependiente
                 return mapa
               } else {
-                mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" << [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]
+                mapa."$clave"."$nivelDeEstudio"."$grado"."$turno" << ["$grupo" : [filaDominio.dependiente]]
                 return mapa
               }
             } else {
-              mapa.(filaDominio.cicloEscolar.clave).(filaDominio.distribucionInstitucional.nivelDeEstudio.key).(filaDominio.distribucionInstitucional.grado) << [(filaDominio.distribucionInstitucional.turno.key) : [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]]
+              mapa."$clave"."$nivelDeEstudio"."$grado" << ["$turno" : ["$grupo" : [filaDominio.dependiente]]]
               return mapa
             }
           } else {
-            mapa.(filaDominio.cicloEscolar.clave).(filaDominio.distribucionInstitucional.nivelDeEstudio.key) << [(filaDominio.distribucionInstitucional.grado.toString()) : [(filaDominio.distribucionInstitucional.turno.key) : [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]]]
+            mapa."$clave"."$nivelDeEstudio" << ["$grado" : ["$turno" : ["$grupo" : [filaDominio.dependiente]]]]
             return mapa
           }
         } else {
-          mapa.(filaDominio.cicloEscolar.clave) << [(filaDominio.distribucionInstitucional.nivelDeEstudio.key) : [(filaDominio.distribucionInstitucional.grado.toString()) : [(filaDominio.distribucionInstitucional.turno.key) : [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]]]]
+          mapa."$clave" << ["$nivelDeEstudio" : ["$grado" : ["$turno" : ["$grupo" : [filaDominio.dependiente]]]]]
           return mapa
         }
       }
 
-      mapa.(filaDominio.cicloEscolar.clave) = [ 
-                    (filaDominio.distribucionInstitucional.nivelDeEstudio.key) : [
-                      (filaDominio.distribucionInstitucional.grado.toString()) : [
-                        (filaDominio.distribucionInstitucional.turno.key) : [
-                          (filaDominio.distribucionInstitucional.grupo) : [
-                            "${filaDominio.dependiente}"
-                          ]
-                        ]
-                      ]
-                    ]
-                  ] 
+      mapa."$clave" = [
+        (nivelDeEstudio) : [
+          (grado) : [
+            (turno) : [
+              (grupo) : [
+                "${filaDominio.dependiente}"
+              ]
+            ]
+          ]
+        ]
+      ]
     }
 
     mapa
