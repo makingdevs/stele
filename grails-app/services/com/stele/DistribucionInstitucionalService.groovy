@@ -4,7 +4,7 @@ class DistribucionInstitucionalService {
 
   def obtenerDistribucionInstitucionalDesdeCommand(FilaExcelCommand filaExcelCommand) { 
     def distribucionInstitucional = new DistribucionInstitucional()
-    distribucionInstitucional.grado = filaExcelCommand.grado
+    distribucionInstitucional.grado = filaExcelCommand.grado.isNumber() ? filaExcelCommand.grado.toInteger() : 0
     distribucionInstitucional.grupo = filaExcelCommand.grupo
     distribucionInstitucional.nivelDeEstudio = validaNivelDeEstudio(filaExcelCommand.nivel)
     distribucionInstitucional.turno = validaTurno(filaExcelCommand.turno)

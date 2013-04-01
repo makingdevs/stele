@@ -34,20 +34,22 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           [grado:"3",grupo:"a",nivel:"Secundaria",turno:"Tard."],
           [grado:"3",grupo:"a",nivel:"Secu",turno:"noc."],
           [grado:"3",grupo:"a",nivel:"SECUNDARIA",turno:"nocturno"],
-          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"]
+          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"],
+          [grado:"",grupo:"",nivel:"",turno:""]
         ]
         gradoEsperado << [
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "3",
-          "3",
-          "3",
-          "3"
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          0
         ]
         grupoEsperado << [
           "C",
@@ -60,7 +62,8 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           "a",
           "a",
           "a",
-          "a"
+          "a",
+          ""
         ]
         nivelDeEstudioEsperado  << [
           NivelDeEstudio.PRIMARIA,
@@ -73,7 +76,9 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
-          NivelDeEstudio.SECUNDARIA
+          NivelDeEstudio.SECUNDARIA,
+          NivelDeEstudio.PRIMARIA
+
         ]
         turnoEsperado << [
           Turno.MATUTINO,
@@ -86,7 +91,8 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           Turno.VESPERTINO,
           Turno.NOCTURNO,
           Turno.NOCTURNO,
-          Turno.VESPERTINO
+          Turno.VESPERTINO,
+          Turno.MATUTINO
         ]
     }
 }
