@@ -17,13 +17,18 @@ class DependienteServiceSpec extends Specification{
       when:
         def dependiente = service.obtenerDependienteDesdeCommand(filaExcelCommand)
       then:
+        assert dependiente.matricula == matriculaEsperada
         assert dependiente.perfil.nombre == nombreEsperado
         assert dependiente.perfil.apellidoPaterno == apellidoPaternoEsperado
         assert dependiente.perfil.apellidoMaterno == apellidoMaternoEsperado
       where:
         datosBasicos << [
-          [dependienteNombre:"Pedrito",dependienteApellidoPaterno:"López",dependienteApellidoMaterno:"Arellano"],
-          [dependienteNombre:"Memito",dependienteApellidoPaterno:"López",dependienteApellidoMaterno:"Arellano"]
+          [matricula:"1234567",dependienteNombre:"Pedrito",dependienteApellidoPaterno:"López",dependienteApellidoMaterno:"Arellano"],
+          [matricula:"LKJHGFDT",dependienteNombre:"Memito",dependienteApellidoPaterno:"López",dependienteApellidoMaterno:"Arellano"]
+        ]
+        matriculaEsperada << [
+          "1234567",
+          "LKJHGFDT"
         ]
         nombreEsperado << [
           "Pedrito",
