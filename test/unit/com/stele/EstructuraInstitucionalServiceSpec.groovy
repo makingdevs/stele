@@ -40,14 +40,12 @@ class EstructuraInstitucionalServiceSpec extends Specification  {
 
       estructuraOrganizacionalEsperada << [
         [
-          [
-            "2011-12" : [
-              PRIMARIA : [
-                "1" : [
-                  MATUTINO : [
-                    "A" : [
-                      new Dependiente()
-                    ]
+          "2011-12" : [
+            PRIMARIA : [
+              "1" : [
+                MATUTINO : [
+                  "A" : [
+                    new Dependiente()
                   ]
                 ]
               ]
@@ -55,17 +53,15 @@ class EstructuraInstitucionalServiceSpec extends Specification  {
           ]
         ],
         [
-          [
-            "2011-12" : [
-              PRIMARIA : [
-                "1" : [
-                  MATUTINO : [
-                    "A" : [
-                      new Dependiente()
-                    ],
-                    "B" : [
-                      new Dependiente()
-                    ]
+          "2011-12" : [
+            PRIMARIA : [
+              "1" : [
+                MATUTINO : [
+                  "A" : [
+                    new Dependiente()
+                  ],
+                  "B" : [
+                    new Dependiente()
                   ]
                 ]
               ]
