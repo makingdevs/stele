@@ -32,8 +32,6 @@ class EstructuraInstitucionalService {
         }
       }
 
-      log.debug "No existe clave"
-
       mapa.(filaDominio.cicloEscolar.clave) = [ 
                     (filaDominio.distribucionInstitucional.nivelDeEstudio.key) : [
                       (filaDominio.distribucionInstitucional.grado.toString()) : [
