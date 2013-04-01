@@ -10,7 +10,6 @@ class EstructuraInstitucionalService {
       if( mapa."$filaDominio.cicloEscolar.clave" ) {
         log.debug "existe clave"
         if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key" ) {
-          log.debug "existe nivelDeEstudio"
           if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado" ) {
             if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" ) {
               if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key"."$filaDominio.distribucionInstitucional.grupo" ) {
@@ -28,6 +27,9 @@ class EstructuraInstitucionalService {
             mapa.(filaDominio.cicloEscolar.clave).(filaDominio.distribucionInstitucional.nivelDeEstudio.key) << [(filaDominio.distribucionInstitucional.grado.toString()) : [(filaDominio.distribucionInstitucional.turno.key) : [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]]]
             return mapa
           }
+        } else {
+          mapa.(filaDominio.cicloEscolar.clave) << [(filaDominio.distribucionInstitucional.nivelDeEstudio.key) : [(filaDominio.distribucionInstitucional.grado.toString()) : [(filaDominio.distribucionInstitucional.turno.key) : [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]]]]
+          return mapa
         }
       }
 
