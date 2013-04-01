@@ -16,13 +16,11 @@ class EstructuraInstitucionalService {
             if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" ) {
               log.debug "existe turno"
               if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key"."$filaDominio.distribucionInstitucional.grupo" ) {
-                log.debug "existe grupo : $filaDominio.distribucionInstitucional.grupo"
+                mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key"."$filaDominio.distribucionInstitucional.grupo" << filaDominio.dependiente
+                return mapa
               }
               else {
-                log.debug "no existe grupo"
                 mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" << [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]
-
-                log.debug mapa
                 return mapa
               }
             }
