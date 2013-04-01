@@ -8,7 +8,6 @@ class EstructuraInstitucionalService {
     listaMapaDominios.each { filaDominio ->
 
       if( mapa."$filaDominio.cicloEscolar.clave" ) {
-        log.debug "existe clave"
         if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key" ) {
           if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado" ) {
             if( mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" ) {
@@ -32,6 +31,8 @@ class EstructuraInstitucionalService {
           return mapa
         }
       }
+
+      log.debug "No existe clave"
 
       mapa.(filaDominio.cicloEscolar.clave) = [ 
                     (filaDominio.distribucionInstitucional.nivelDeEstudio.key) : [
