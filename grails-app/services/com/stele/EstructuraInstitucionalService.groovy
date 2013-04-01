@@ -20,7 +20,7 @@ class EstructuraInstitucionalService {
               }
               else {
                 log.debug "no existe grupo"
-                log.debug mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key"
+                mapa."$filaDominio.cicloEscolar.clave"."$filaDominio.distribucionInstitucional.nivelDeEstudio.key"."$filaDominio.distribucionInstitucional.grado"."$filaDominio.distribucionInstitucional.turno.key" << [(filaDominio.distribucionInstitucional.grupo) : [filaDominio.dependiente]]
 
                 log.debug mapa
                 return mapa
