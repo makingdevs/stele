@@ -6,24 +6,22 @@ class EstructuraInstitucionalService {
     def estructuraOrganizacional = []
     
     listaMapaDominios.each { filaDominio ->
-      def cicloEscolarEncontrado = estructuraOrganizacional.find {
-        it.find { k, v -> k == filaDominio.cicloEscolar.clave }
-      }
 
-      if(cicloEscolarEncontrado) {
-        log.debug cicloEscolarEncontrado."2011-12"
-        def nivelEstudioEncontrado = cicloEscolarEncontrado."${filaDominio.cicloEscolar.clave}".find { k, v ->
-          k == filaDominio.distribucionInstitucional.nivelDeEstudio.key
-        }
-        log.debug nivelEstudioEncontrado
-      }
+      log.debug " existe clave ? " + estructuraOrganizacional."$filaDominio.cicloEscolar.clave"
 
-      String clave = filaDominio.cicloEscolar.clave
-      String nivelDeEstudio = filaDominio.distribucionInstitucional.nivelDeEstudio.key
-
-      def mapa =[:]
-      mapa."$clave" = []
-      mapa."$clave" = [ "$nivelDeEstudio" : []]
+      def mapa = [
+                  (filaDominio.cicloEscolar.clave) : [ 
+                    (filaDominio.distribucionInstitucional.nivelDeEstudio.key) : [
+                      (filaDominio.distribucionInstitucional.grado) : [
+                        (filaDominio.distribucionInstitucional.turno.key) : [
+                          (filaDominio.distribucionInstitucional.grupo) : [
+                            "${filaDominio.dependiente}"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ] 
+                ]
 
       estructuraOrganizacional << mapa
     }
