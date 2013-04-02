@@ -21,19 +21,19 @@ class EstructuraInstitucionalService {
                 mapa."$clave"."$nivelDeEstudio"."$grado"."$turno"."$grupo" << filaDominio.dependiente
                 return mapa
               } else {
-                mapa."$clave"."$nivelDeEstudio"."$grado"."$turno" << ["$grupo" : [filaDominio.dependiente]]
+                mapa."$clave"."$nivelDeEstudio"."$grado"."$turno" << [(grupo) : [filaDominio.dependiente]]
                 return mapa
               }
             } else {
-              mapa."$clave"."$nivelDeEstudio"."$grado" << ["$turno" : ["$grupo" : [filaDominio.dependiente]]]
+              mapa."$clave"."$nivelDeEstudio"."$grado" << [(turno) : [(grupo) : [filaDominio.dependiente]]]
               return mapa
             }
           } else {
-            mapa."$clave"."$nivelDeEstudio" << ["$grado" : ["$turno" : ["$grupo" : [filaDominio.dependiente]]]]
+            mapa."$clave"."$nivelDeEstudio" << [(grado) : [(turno) : [(grupo) : [filaDominio.dependiente]]]]
             return mapa
           }
         } else {
-          mapa."$clave" << ["$nivelDeEstudio" : ["$grado" : ["$turno" : ["$grupo" : [filaDominio.dependiente]]]]]
+          mapa."$clave" << [(nivelDeEstudio) : [(grado) : [(turno) : [(grupo) : [filaDominio.dependiente]]]]]
           return mapa
         }
       }
