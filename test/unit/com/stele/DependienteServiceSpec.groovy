@@ -5,11 +5,13 @@ import static org.junit.Assert.*
 import grails.test.mixin.*
 import org.junit.*
 import spock.lang.Specification
+import spock.lang.Unroll
 
 
 @TestFor(DependienteService)
 class DependienteServiceSpec extends Specification{
 
+    @Unroll("#datosBasicos")
     def "Obtener un dependiente apartir de un command leeido desde un excel"(){
 
       given:
