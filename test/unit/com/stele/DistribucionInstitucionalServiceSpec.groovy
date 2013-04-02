@@ -34,20 +34,26 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           [grado:"3",grupo:"a",nivel:"Secundaria",turno:"Tard."],
           [grado:"3",grupo:"a",nivel:"Secu",turno:"noc."],
           [grado:"3",grupo:"a",nivel:"SECUNDARIA",turno:"nocturno"],
-          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"]
+          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"],
+          [grado:"",grupo:"",nivel:"",turno:""],
+          [grado:"1",grupo:"f",nivel:"bacho",turno:"t"],
+          [grado:"4",grupo:"g+",nivel:"edu sup",turno:"T"]
         ]
         gradoEsperado << [
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "3",
-          "3",
-          "3",
-          "3"
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          0,
+          1,
+          4
         ]
         grupoEsperado << [
           "C",
@@ -57,10 +63,13 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           "C",
           "C",
           "C",
-          "a",
-          "a",
-          "a",
-          "a"
+          "A",
+          "A",
+          "A",
+          "A",
+          "",
+          "F",
+          "G+"
         ]
         nivelDeEstudioEsperado  << [
           NivelDeEstudio.PRIMARIA,
@@ -73,7 +82,11 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
-          NivelDeEstudio.SECUNDARIA
+          NivelDeEstudio.SECUNDARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.BACHILLERATO,
+          NivelDeEstudio.EDUCACION_SUPERIOR
+
         ]
         turnoEsperado << [
           Turno.MATUTINO,
@@ -86,6 +99,9 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           Turno.VESPERTINO,
           Turno.NOCTURNO,
           Turno.NOCTURNO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
           Turno.VESPERTINO
         ]
     }
