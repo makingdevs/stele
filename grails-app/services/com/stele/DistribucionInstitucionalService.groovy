@@ -18,26 +18,24 @@ class DistribucionInstitucionalService {
     def secundaria = NivelDeEstudio.SECUNDARIA.toString()toUpperCase()substring(0,3)
     def bachillerato = NivelDeEstudio.BACHILLERATO.toString()toUpperCase()substring(0,3)
     def educacionSuperior = NivelDeEstudio.EDUCACION_SUPERIOR.toString()toUpperCase()substring(0,3)
-    def resultado
 
     switch (nivelToUpper) {
       case {it.startsWith(preescolar) }:
-        resultado = NivelDeEstudio.PREESCOLAR
+        return NivelDeEstudio.PREESCOLAR
         break
       case {it.startsWith(secundaria) }:
-        resultado = NivelDeEstudio.SECUNDARIA
+        return NivelDeEstudio.SECUNDARIA
         break
       case {it.startsWith(bachillerato) }:
-        resultado = NivelDeEstudio.BACHILLERATO
+        return NivelDeEstudio.BACHILLERATO
         break
       case {it.startsWith(educacionSuperior) }:
-        resultado = NivelDeEstudio.EDUCACION_SUPERIOR
+        return NivelDeEstudio.EDUCACION_SUPERIOR
         break
       default:
-        resultado = NivelDeEstudio.PRIMARIA
+        return NivelDeEstudio.PRIMARIA
         break
     }
-    resultado
   }
 
   private Turno validaTurno(String turno){
