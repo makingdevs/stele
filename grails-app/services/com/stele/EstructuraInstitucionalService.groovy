@@ -5,7 +5,7 @@ class EstructuraInstitucionalService {
   def obtenerEstructuraDesdeListaDeMapaDeDominios(listaMapaDominios) {
     def mapa = [:]
     
-    listaMapaDominios.each { filaDominio ->
+    listaMapaDominios.eachWithIndex { filaDominio, index ->
       String clave = filaDominio.cicloEscolar.clave
       String nivelDeEstudio = filaDominio.distribucionInstitucional.nivelDeEstudio.toString().toUpperCase()
       String grado = filaDominio.distribucionInstitucional.grado.toString()
@@ -14,7 +14,7 @@ class EstructuraInstitucionalService {
 
       def llaves = [clave, nivelDeEstudio, grado, turno, grupo, filaDominio.dependiente]
 
-      return iterarEstructuraInstitucional(mapa, llaves)
+      iterarEstructuraInstitucional(mapa, llaves)
     }
 
     mapa
@@ -35,10 +35,11 @@ class EstructuraInstitucionalService {
     return mapa
   }
 
-  def crearEstructuraFaltanteDeLaInstitucion(estructura, indice = 0, mapa = [:]) {
+  def crearEstructuraFaltanteDeLaInstitucion(estructura, indice = 0) {
     if( indice == estructura.size() - 1 )
       return [estructura[indice]]
 
+    def mapa = [:]
     mapa."${estructura[indice]}" = crearEstructuraFaltanteDeLaInstitucion(estructura, indice + 1)
     mapa
   }
