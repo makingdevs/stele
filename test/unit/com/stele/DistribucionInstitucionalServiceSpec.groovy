@@ -105,4 +105,16 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           Turno.VESPERTINO
         ]
     }
+
+    def "Crear una distribucion institucional en una institucion"(){
+      given: "Una institucion y una distribucion institucional"
+      when: "Intento guardar la distribucion institucional"
+      then: "El id de distribucion intitucional es > 0 y el tamaño de distribuciones institucionales debe ser mayor en 1"
+    }
+
+    def "Crear una distribucion institucional en una institucion"(){
+      given: "Una institucion y una distribucion institucional"
+      when: "Intento guardar la distribucion institucional ya existente"
+      then: "El id de distribucion intitucional es 1 y el tamaño de distribuciones institucionales debe ser igual al tamaño inicial"
+    }
 }

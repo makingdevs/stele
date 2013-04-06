@@ -10,6 +10,9 @@ class DistribucionInstitucional {
   Date dateCreated
   Date lastUpdated
 
+  //TODO
+  //belongsto(institucion)
+
   static constraints = {
     grado range:1..15
     grupo size:1..10
