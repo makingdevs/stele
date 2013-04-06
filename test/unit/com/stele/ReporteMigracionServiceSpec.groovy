@@ -16,8 +16,9 @@ class ReporteMigracionServiceSpec extends Specification {
       assert totalDependientes == totalDependientesEsperados
 
     where :
-      estructuraInstitucional                                   || totalDependientesEsperados
-      ['20':['NIVEL':['1':['TURNO':['A' : [1,2,3,4,5,6,10]]]]]] || 7
+      estructuraInstitucional                                      || totalDependientesEsperados
+      ['20':['NIVEL':['1':['TURNO':['A' : [1,2,3,4,5,6,10]]]]]]    || 7
+      ['20':['NIVEL':['1':['TURNO':['A' : [1,2,3,4,5,6,10,11]]]]]] || 8
       
 
   }
