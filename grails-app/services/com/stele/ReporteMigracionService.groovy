@@ -8,7 +8,14 @@ class ReporteMigracionService {
     }
 
     def llave = estructuraInstitucional.collect { k, v -> k }
-    conteoDeDatosPorDependientes( estructuraInstitucional.(llave[0]) )
+    def sumatoria = 0
+    llave.each {
+      def resultado = conteoDeDatosPorDependientes( estructuraInstitucional."$it" )
+      if(resultado instanceof Integer)
+        sumatoria += resultado
+    }
+
+    sumatoria
   }
 
 }
