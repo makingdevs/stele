@@ -48,4 +48,10 @@ class UsuarioServiceSpec  extends Specification{
         ]
     }
 
+    def "Registrar un usuario"(){
+      given: "Un usuario con datos"
+      when: "Guardamos el usuario con el servicio"
+      then: "El id debe ser mayor que 0"
+    }
+
 }
