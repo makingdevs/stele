@@ -14,6 +14,7 @@ class InicioController {
     FileInputStream excelParaProcesar = params.datosEscolares.inputStream
     def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(excelParaProcesar)
     def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
+    flash.listaDeMapaDeDominios = listaDeMapaDeDominios
     //def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
     //[estructuraInstitucional:estructuraInstitucional,listaDeMapaDeDominios:listaDeMapaDeDominios]
     [listaDeMapaDeDominios:listaDeMapaDeDominios]
