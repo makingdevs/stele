@@ -1,7 +1,9 @@
 package com.stele.seguridad
 
 import com.stele.Perfil
+import groovy.transform.ToString
 
+@ToString
 class Usuario {
 
 	transient springSecurityService
