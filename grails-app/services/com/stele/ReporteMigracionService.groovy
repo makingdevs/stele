@@ -18,4 +18,8 @@ class ReporteMigracionService {
     sumatoria
   }
 
+  def conteoDeDependientesPorNivel(estructuraInstitucional) {
+    ['NIVEL' : 3, 'NIVAL' : 5] 
+  }
+
 }

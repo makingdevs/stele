@@ -8,7 +8,6 @@ import spock.lang.Specification
 class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes" () {
-
     when : "Llamamos al contador de datos"
       def totalDependientes = service.conteoDeDatosPorDependientes(estructuraInstitucional)
 
@@ -22,8 +21,22 @@ class ReporteMigracionServiceSpec extends Specification {
       ['22':['NIVEL':['1':['TURNO':['A' : [1,2,3], 'B' :[1,2]]]]]]  || 5
       ['22':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' :[1,2]],
                            'TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || 10
-      
+      ['22':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]],
+             'NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || 8
+  }
 
+  def "Obtener conteo de dependientes por nivel" () {
+    when : "Llamamos al contador de datos"
+      def totalDependientes = service.conteoDeDependientesPorNivel(estructuraInstitucional)
+
+    then : "Los resultados son"
+      assert totalDependientes == totalDependientesEsperados
+
+    where :
+      estructuraInstitucional                                       || totalDependientesEsperados
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['NIVEL': 3]
+      ['22':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]],
+             'NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || ['NIVEL' : 3, 'NIVAL' : 5] 
   }
 
 }
