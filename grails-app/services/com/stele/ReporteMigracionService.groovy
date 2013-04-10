@@ -30,13 +30,14 @@ class ReporteMigracionService {
   }
   
   def conteoDeDependientesPorNivel(estructuraInstitucional) {
-    def mapa = estructuraInstitucional.collect { k, v -> v }
-
-    def mapa2 = mapa*.collect { k, v -> k }.flatten()
+    def llaves = estructuraInstitucional.collect { k, v -> k }
 
     def conteoPorNivel = [:]
-    mapa.eachWithIndex { it, index ->
-      conteoPorNivel."${mapa2[index]}" = conteoDeDatosPorDependientes( it )
+    llaves.each {
+      def llavesNivelDos = estructuraInstitucional."$it".collect { k, v -> k }
+      llavesNivelDos.each { it2 ->
+        conteoPorNivel."$it2" = conteoDeDatosPorDependientes( estructuraInstitucional."$it"."$it2" )
+      }
     }
 
     conteoPorNivel
