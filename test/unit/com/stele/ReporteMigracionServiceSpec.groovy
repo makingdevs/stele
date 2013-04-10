@@ -25,21 +25,7 @@ class ReporteMigracionServiceSpec extends Specification {
              'NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || 8
   }
 
-  def "Obtener conteo de dependientes por nivel" () {
-    when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesPorCicloEscolar(estructuraInstitucional)
-
-    then : "Los resultados son"
-      assert totalDependientes == totalDependientesEsperados
-
-    where :
-      estructuraInstitucional                                       || totalDependientesEsperados
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['NIVEL': 3]
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
-       '22':['NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || ['NIVEL' : 3, 'NIVAL' : 5] 
-  }
-
-  def "Obtener conteo de dependientes por nivel" () {
+  def "Obtener conteo de dependientes por ciclo escolar" () {
     when : "Llamamos al contador de datos"
       def totalDependientes = service.conteoDeDependientesPorCicloEscolar(estructuraInstitucional)
 
@@ -50,7 +36,20 @@ class ReporteMigracionServiceSpec extends Specification {
       estructuraInstitucional                                       || totalDependientesEsperados
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21': 3]
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
-       '22':['NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || ['21' : 3, '22' : 5] 
+       '22':['NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2],
+                                     'C' : [4,5,6]]]]]]             || ['21' : 3, '22' : 8] 
+  }
+
+  def "Obtener conteo de dependientes por nivel" () {
+    when : "Llamamos al contador de datos"
+      def totalDependientes = service.conteoDeDependientesPorNivel(estructuraInstitucional)
+
+    then : "Los resultados son"
+      assert totalDependientes == totalDependientesEsperados
+
+    where :
+      estructuraInstitucional                                       || totalDependientesEsperados
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['NIVEL': 3]
   }
 
 }

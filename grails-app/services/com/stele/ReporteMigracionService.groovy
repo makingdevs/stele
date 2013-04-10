@@ -21,9 +21,22 @@ class ReporteMigracionService {
   def conteoDeDependientesPorCicloEscolar(estructuraInstitucional) {
     def llaves = estructuraInstitucional.collect { k, v -> k }
 
-    def conteoPorNivel = [:]
+    def conteoPorCicloEscolar = [:]
     llaves.each {
-      conteoPorNivel."$it" = conteoDeDatosPorDependientes( estructuraInstitucional."$it" )
+      conteoPorCicloEscolar."$it" = conteoDeDatosPorDependientes( estructuraInstitucional."$it" )
+    }
+
+    conteoPorCicloEscolar
+  }
+  
+  def conteoDeDependientesPorNivel(estructuraInstitucional) {
+    def mapa = estructuraInstitucional.collect { k, v -> v }
+
+    def mapa2 = mapa*.collect { k, v -> k }.flatten()
+
+    def conteoPorNivel = [:]
+    mapa.eachWithIndex { it, index ->
+      conteoPorNivel."${mapa2[index]}" = conteoDeDatosPorDependientes( it )
     }
 
     conteoPorNivel
