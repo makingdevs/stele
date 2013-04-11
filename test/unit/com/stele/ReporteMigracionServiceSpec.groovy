@@ -71,7 +71,7 @@ class ReporteMigracionServiceSpec extends Specification {
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
        '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1': 3, '22.NIVEL.1':2]
 
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]],
                       '2':['TURNO1':['A' : [1,2,3,5]]]]],
        '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1': 5, '21.NIVEL.2':4, '22.NIVEL.1':2]
   }

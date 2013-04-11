@@ -43,4 +43,20 @@ class ReporteMigracionService {
     conteoPorNivel
   }
 
+  def conteoDeDependientesPorNivelYGrado(estructuraInstitucional) {
+    def llaves = estructuraInstitucional.collect { k, v -> k }
+
+    def conteoPorNivelYGrado = [:]
+    llaves.each {
+      def llavesNivelDos = estructuraInstitucional."$it".collect { k, v -> k }
+      llavesNivelDos.each { it2 ->
+        def llavesNivelTres = estructuraInstitucional."$it"."$it2".collect { k, v -> k }
+        llavesNivelTres.each { it3 ->
+          conteoPorNivelYGrado."$it.$it2.$it3" = conteoDeDatosPorDependientes( estructuraInstitucional."$it"."$it2"."$it3" )
+        }
+      }
+    }
+
+    conteoPorNivelYGrado
+  }
 }
