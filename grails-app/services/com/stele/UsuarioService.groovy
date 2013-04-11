@@ -16,4 +16,11 @@ class UsuarioService {
       usuario.perfil.apellidoMaterno = filaExcelCommand.tutorApellidoMaterno
       usuario
     }
+
+    def registrar(Usuario usuario){
+      def usuarioExistente = Usuario.findByUsername(usuario.username)
+      usuarioExistente ?: usuario.save()
+    }
+
 }
+
