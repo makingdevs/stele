@@ -18,8 +18,8 @@ class UsuarioService {
     }
 
     def registrar(Usuario usuario){
-      def usuarioExistente = Usuario.findByUsername(usuario.username)
-      usuarioExistente ?: usuario.save()
+      def existeUsuario = Usuario.findByUsername(usuario.username)
+      existeUsuario ?: usuario.save()
     }
 
 }
