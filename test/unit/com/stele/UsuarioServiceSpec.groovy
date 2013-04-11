@@ -61,7 +61,6 @@ class UsuarioServiceSpec  extends Specification{
         usuario.perfil.nombre = "Pepito"
         usuario.perfil.apellidoPaterno = "Juarez"
         usuario.perfil.apellidoMaterno = "Juarez"
-        usuario
       when: "Guardamos el usuario con el servicio"
         usuario = service.registrar(usuario)
       then: "El id debe ser mayor que 0"
@@ -83,9 +82,8 @@ class UsuarioServiceSpec  extends Specification{
         usuarioExistente.perfil.nombre = "Pepito"
         usuarioExistente.perfil.apellidoPaterno = "Juarez"
         usuarioExistente.perfil.apellidoMaterno = "Juarez"
-        usuarioExistente.save()
+        service.registrar(usuarioExistente)
         def contador = Usuario.count()
-        //mockDomain(Usuario,[usuarioExistente])
       and: "Un usuario con datos"
         def usuario = new Usuario()
         def perfil = new Perfil()
@@ -96,10 +94,9 @@ class UsuarioServiceSpec  extends Specification{
         usuario.perfil.nombre = "Pepito"
         usuario.perfil.apellidoPaterno = "Juarez"
         usuario.perfil.apellidoMaterno = "Juarez"
-        usuario
       when: "Se intenta guardar el usuario"
         usuario = service.registrar(usuario)
-      then: "El id debe ser igual a 1"
+      then: "El id debe ser igual a 1001"
         assert usuario.id == 1001
         assert contador == Usuario.count()
     }
