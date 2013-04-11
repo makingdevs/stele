@@ -36,7 +36,7 @@ class ReporteMigracionService {
     llaves.each {
       def llavesNivelDos = estructuraInstitucional."$it".collect { k, v -> k }
       llavesNivelDos.each { it2 ->
-        conteoPorNivel."$it2" = conteoDeDatosPorDependientes( estructuraInstitucional."$it"."$it2" )
+        conteoPorNivel."$it.$it2" = conteoDeDatosPorDependientes( estructuraInstitucional."$it"."$it2" )
       }
     }
 

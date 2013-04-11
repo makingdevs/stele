@@ -49,7 +49,12 @@ class ReporteMigracionServiceSpec extends Specification {
 
     where :
       estructuraInstitucional                                       || totalDependientesEsperados
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['NIVEL': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21.NIVEL': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL': 3, '22.NIVEL':2]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]]],
+             'NIVEA':['1':['TURNO1':['A' : [1,2,3,4]]]]],
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL': 5, '21.NIVEA':4, '22.NIVEL':2]
   }
 
 }
