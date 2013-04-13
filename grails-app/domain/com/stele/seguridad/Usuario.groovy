@@ -2,6 +2,7 @@ package com.stele.seguridad
 
 import com.stele.Perfil
 import groovy.transform.ToString
+import com.stele.Dependiente
 
 @ToString
 class Usuario {
@@ -15,6 +16,8 @@ class Usuario {
 	boolean accountLocked
 	boolean passwordExpired
 	Perfil perfil
+
+	static hasMany = [dependientes : Dependiente]
 
 	static constraints = {
 		username blank: false, unique: true

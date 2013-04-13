@@ -69,7 +69,6 @@ class UsuarioServiceSpec  extends Specification{
 
     def "No registrar un usuario ya existente"(){
       given:
-        
         Usuario.metaClass.isDirty = { true } 
         Usuario.metaClass.encodePassword = { "password" } 
         def usuarioExistente = new Usuario()
