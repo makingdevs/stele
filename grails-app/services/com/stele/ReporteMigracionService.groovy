@@ -66,13 +66,10 @@ class ReporteMigracionService {
     def conteoPorNivelGradoYTurno = [:]
     llaves.each {
       def llavesNivelDos = estructuraInstitucional."$it".collect { k, v -> k }
-      log.debug "llavesNivelDos : ${llavesNivelDos}"
       llavesNivelDos.each { it2 ->
         def llavesNivelTres = estructuraInstitucional."$it"."$it2".collect { k, v -> k }
-        log.debug "llavesNivelTres : ${llavesNivelTres}"
         llavesNivelTres.each { it3 ->
           def llavesNivelCuatro = estructuraInstitucional."$it"."$it2"."$it3".collect { k, v -> k }
-          log.debug "llavesNivelCuatro : ${llavesNivelCuatro}"
           llavesNivelCuatro.each { it4 ->
             conteoPorNivelGradoYTurno."$it.$it2.$it3.$it4" = conteoDeDatosPorDependientes( estructuraInstitucional."$it"."$it2"."$it3"."$it4" )
           }
@@ -81,5 +78,28 @@ class ReporteMigracionService {
     }
 
     conteoPorNivelGradoYTurno
+  }
+
+  def conteoDeDependientesPorNivelGradoTurnoYGrupo(estructuraInstitucional) {
+    def llaves = estructuraInstitucional.collect { k, v -> k }
+
+    def conteoPorNivelGradoTurnoYGrupo = [:]
+    llaves.each {
+      def llavesNivelDos = estructuraInstitucional."$it".collect { k, v -> k }
+      llavesNivelDos.each { it2 ->
+        def llavesNivelTres = estructuraInstitucional."$it"."$it2".collect { k, v -> k }
+        llavesNivelTres.each { it3 ->
+          def llavesNivelCuatro = estructuraInstitucional."$it"."$it2"."$it3".collect { k, v -> k }
+          llavesNivelCuatro.each { it4 ->
+            def llavesNivelCinco = estructuraInstitucional."$it"."$it2"."$it3"."$it4".collect { k, v -> k }
+            llavesNivelCinco.each { it5 ->
+              conteoPorNivelGradoTurnoYGrupo."$it.$it2.$it3.$it4.$it5" = conteoDeDatosPorDependientes( estructuraInstitucional."$it"."$it2"."$it3"."$it4"."$it5" )
+            }
+          }
+        }
+      }
+    }
+
+    conteoPorNivelGradoTurnoYGrupo
   }
 }
