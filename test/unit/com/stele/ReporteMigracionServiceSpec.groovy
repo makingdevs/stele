@@ -95,4 +95,23 @@ class ReporteMigracionServiceSpec extends Specification {
                            'TURNO2':['A' : [1,2,3,5]]]]],
        '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1': 5,'21.NIVEL.2.TURNO1':4, '21.NIVEL.2.TURNO2':4, '22.NIVEL.1.TURNO1':2]
   }
+
+  def "Obtener conteo de dependientes por nivel, grado, turno y grupo" () {
+    when : "Llamamos al contador de datos"
+      def totalDependientes = service.conteoDeDependientesPorNivelGradoTurnoYGrado(estructuraInstitucional)
+
+    then : "Los resultados son"
+      assert totalDependientes == totalDependientesEsperados
+
+    where :
+      estructuraInstitucional                                       || totalDependientesEsperados
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21.NIVEL.1.TURNO1.A': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1.A': 3, '22.NIVEL.1.TURNO1.A':2]
+
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]],
+                      '2':['TURNO1':['A' : [1,2,3,5]],
+                           'TURNO2':['A' : [1,2,3,5], 'B' : [1]]]]],
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1.A': 3, '21.NIVEL.1.TURNO1.B' : 2, '21.NIVEL.2.TURNO1.A':4, '21.NIVEL.2.TURNO2.A':4, '21.NIVEL.2.TURNO2.B':1, '22.NIVEL.1.TURNO1.A':2]
+  }
 }
