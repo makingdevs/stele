@@ -99,7 +99,9 @@
           <div class="span6">
 
             <table class="table table-bordered">
-              <caption style="text-align:left; color:blue;"> <strong> Correo electrónico </strong> </caption>
+              <caption style="text-align:left; color:blue;"> 
+                <strong> Correo electrónico </strong> 
+              </caption>
               <thead style="background-color:whiteSmoke">
                 <tr>
                   <th>Principal</th>
@@ -121,6 +123,34 @@
               </tbody>
             <table>
 
+            <table class="table table-bordered">
+              <caption style="text-align:left; color:blue;"> 
+                <strong> Teléfono </strong> 
+              </caption>
+              <thead style="background-color:whiteSmoke">
+                <tr>
+                  <th>Principal</th>
+                  <th>Tipo</th>
+                  <th>Lada</th>
+                  <th>Numero</th>
+                  <th>Ext</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>Casa</td>
+                  <td>55</td>
+                  <td>1234567890</td>
+                  <td></td>
+                  <td>
+                    <button class="btn btn-info"> <i class="icon-edit icon-white"></i> </button>
+                    <button class="btn btn-danger"> <i class="icon-trash icon-white"></i> </button>
+                  </td>
+                </tr>
+              </tbody>
+            <table>
         </div>
       </div>
 
