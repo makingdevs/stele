@@ -87,6 +87,43 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="span12 label label-info">
+          <h5>Información del Contacto</h5>
+        </div>
+      </div>
+      <br />
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span6">
+
+            <table class="table table-bordered">
+              <caption style="text-align:left; color:blue;"> <strong> Correo electrónico </strong> </caption>
+              <thead style="background-color:whiteSmoke">
+                <tr>
+                  <th>Principal</th>
+                  <th>Tipo</th>
+                  <th>Dirección</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>Personal</td>
+                  <td>alberto@gmail.com</td>
+                  <td>
+                    <button class="btn btn-info"> <i class="icon-edit icon-white"></i> </button>
+                    <button class="btn btn-danger"> <i class="icon-trash icon-white"></i> </button>
+                  </td>
+                </tr>
+              </tbody>
+            <table>
+
+        </div>
+      </div>
+
     </form>
   </body>
 </html>
