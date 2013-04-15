@@ -4,7 +4,7 @@
 		<meta name="layout" content="twitterBootstrapMain"/>
 		<title>Principal</title>
 
-    <r:require module="handlebars" />
+    <r:require modules="handlebars, backbone" />
 
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="entry">
@@ -18,18 +18,35 @@
 
     <r:script>
       $(function() {
-        var source   = $("#entry-template").html();
-        var template = Handlebars.compile(source);
 
-        var context = {
-          title: "My first post!",
-          author: {
-            firstName: "Charles",
-            lastName: "Jolley"
+        var IndexView = new Backbone.View.extend( {
+          el:$('content-template'),
+
+          initialize : function() {
+            this.render();
+          },
+
+          render : function() {
+            var source   = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var context = {
+              title: "My first post!",
+              author: {
+                firstName: "Charles",
+                lastName: "Jolley"
+              }
+            }
+            var html = template(context);
+            this.el.html( template );
           }
-        }
-        var html = template(context);
-        $("#content-template").html(html)
+        });
+
+        var Rutas = new Backbone.Routes.extend({
+
+          
+
+        })
+
       })
     </r:script>
 	</head>
