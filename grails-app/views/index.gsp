@@ -3,7 +3,37 @@
 	<head>
 		<meta name="layout" content="twitterBootstrapMain"/>
 		<title>Principal</title>
+
+    <r:require module="handlebars" />
+
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class="entry">
+        <h1>{{title}}</h1>
+
+        {{#with author}}
+          <h2>By {{firstName}} {{lastName}}</h2>
+        {{/with}}
+      </div>
+    </script>
+
+    <r:script>
+      $(function() {
+        var source   = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+
+        var context = {
+          title: "My first post!",
+          author: {
+            firstName: "Charles",
+            lastName: "Jolley"
+          }
+        }
+        var html = template(context);
+        $("#content-template").html(html)
+      })
+    </r:script>
 	</head>
+
 	<body>
     <div class="masthead">
       <ul class="nav nav-pills pull-right">
@@ -13,6 +43,8 @@
       </ul>
       <h3 class="muted">Stele</h3>
     </div>
+
+    <div id="content-template"></div>
 
     <hr>
 
