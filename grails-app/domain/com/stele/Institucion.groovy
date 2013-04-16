@@ -7,8 +7,7 @@ class Institucion {
   Date dateCreated
   Date lastUpdated
 
-  //TODO distribucion institucional
-  static hasMany = [direccion: Direccion, telefonos: Telefono]
+  static hasMany = [direcciones: Direccion, telefonos: Telefono, distribucionesInstitucionales : DistribucionInstitucional]
 
   static constraints = {
     nombre size:1..100,blank:false

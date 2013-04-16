@@ -8,6 +8,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @TestFor(DistribucionInstitucionalService)
+@Mock([Institucion,DistribucionInstitucional])
 class DistribucionInstitucionalServiceSpec extends Specification{
 
     @Unroll("#datosBasicos")
@@ -74,6 +75,7 @@ class DistribucionInstitucionalServiceSpec extends Specification{
         nivelDeEstudioEsperado  << [
           NivelDeEstudio.PRIMARIA,
           NivelDeEstudio.PRIMARIA,
+        
           NivelDeEstudio.PRIMARIA,
           NivelDeEstudio.PRIMARIA,
           NivelDeEstudio.PRIMARIA,
@@ -108,8 +110,21 @@ class DistribucionInstitucionalServiceSpec extends Specification{
 
     def "Crear una distribucion institucional en una institucion"(){
       given: "Una institucion y una distribucion institucional"
+        def institucion = new Institucion()
+        institucion.nombre = "Kinder Peques"
+        institucion = institucion.save()
+
+        def distribucionInstitucional = new DistribucionInstitucional()
+        distribucionInstitucional.grado = 2
+        distribucionInstitucional.grupo = "B+"
+        distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucional.turno = Turno.VESPERTINO
       when: "Intento guardar la distribucion institucional"
-      then: "El id de distribucion intitucional es > 0 y el tamaño de distribuciones institucionales debe ser mayor en 1"
+        distribucionInstitucional = service.registrar(distribucionInstitucional,institucion.id)
+        institucion = Institucion.get(institucion.id)
+      then: "El id de distribucion intitucional es > 0 y el tamaño de distribuciones institucionales debe ser mayor en 1" 
+        assert distribucionInstitucional.id > 0
+        assert institucion.distribucionesInstitucionales.size() == 1
     }
 
     def "Crear una distribucion institucional en una institucion"(){

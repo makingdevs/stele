@@ -21,20 +21,20 @@ class DistribucionInstitucionalService {
 
     switch (nivelToUpper) {
       case {it.startsWith(preescolar) }:
-        return NivelDeEstudio.PREESCOLAR
-        break
+      return NivelDeEstudio.PREESCOLAR
+      break
       case {it.startsWith(secundaria) }:
-        return NivelDeEstudio.SECUNDARIA
-        break
+      return NivelDeEstudio.SECUNDARIA
+      break
       case {it.startsWith(bachillerato) }:
-        return NivelDeEstudio.BACHILLERATO
-        break
+      return NivelDeEstudio.BACHILLERATO
+      break
       case {it.startsWith(educacionSuperior) }:
-        return NivelDeEstudio.EDUCACION_SUPERIOR
-        break
+      return NivelDeEstudio.EDUCACION_SUPERIOR
+      break
       default:
-        return NivelDeEstudio.PRIMARIA
-        break
+      return NivelDeEstudio.PRIMARIA
+      break
     }
   }
 
@@ -45,16 +45,25 @@ class DistribucionInstitucionalService {
 
     switch(turnoToUpper) {
       case {it.startsWith(matutino)}:
-        return Turno.MATUTINO
-        break
+      return Turno.MATUTINO
+      break
       case {it.startsWith(nocturno)}:
-        return Turno.NOCTURNO
-        break
+      return Turno.NOCTURNO
+      break
       default:
-        return Turno.VESPERTINO
-        break
+      return Turno.VESPERTINO
+      break
     }
+  }
 
+  def registrar(DistribucionInstitucional distribucionInstitucional, Long institucionId){
+    Institucion institucion = Institucion.get(institucionId)
+    if(institucion){
+        distribucionInstitucional.institucion = institucion
+        distribucionInstitucional.save()
+      }else{
+        distribucionInstitucional
+      }
   }
 
 }

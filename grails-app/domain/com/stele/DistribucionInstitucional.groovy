@@ -1,6 +1,6 @@
 package com.stele
 
-class DistribucionInstitucional {
+class DistribucionInstitucional implements Comparable<DistribucionInstitucional>{
 
   NivelDeEstudio nivelDeEstudio = NivelDeEstudio.PRIMARIA
   Integer grado
@@ -10,11 +10,15 @@ class DistribucionInstitucional {
   Date dateCreated
   Date lastUpdated
 
-  //TODO
-  //belongsto(institucion)
+  static belongsTo = [institucion : Institucion]
 
   static constraints = {
     grado range:1..15
     grupo size:1..10
   }
+
+  public int compareTo(DistribucionInstitucional other){
+     grado <=> other.grado ?: grupo <=> other.grupo ?: turno <=> other.turno
+  }
+
 }
