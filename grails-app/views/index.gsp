@@ -6,49 +6,59 @@
 
     <r:require modules="handlebars, backbone" />
 
-    <script id="entry-template" type="text/x-handlebars-template">
+    <script id="index_template" type="text/x-handlebars-template">
       <div class="entry">
         <h1>{{title}}</h1>
-
         {{#with author}}
-          <h2>By {{firstName}} {{lastName}}</h2>
+        <h2>By {{firstName}} {{lastName}}</h2>
         {{/with}}
       </div>
     </script>
 
     <r:script>
-      $(function() {
-
-        var IndexView = new Backbone.View.extend( {
-          el:$('content-template'),
-
-          initialize : function() {
+      window.IndexView = Backbone.View.extend({
+        initialize: function(){
             this.render();
-          },
-
-          render : function() {
-            var source   = $("#entry-template").html();
-            var template = Handlebars.compile(source);
-            var context = {
-              title: "My first post!",
-              author: {
-                firstName: "Charles",
-                lastName: "Jolley"
-              }
+        },
+        render: function(){
+          var context = {
+            title: "My first post!",
+            author: {
+              firstName: "Charles",
+              lastName: "Jolley"
             }
-            var html = template(context);
-            this.el.html( template );
           }
-        });
 
-        var Rutas = new Backbone.Routes.extend({
+          var template = Handlebars.compile($("#index_template").html());
+          var html     = template(context);
 
-          
+          this.$el.html( html );
+        }
+      });
 
-        })
+      var AppRouter = Backbone.Router.extend({
 
-      })
+        routes : {
+          '':'home',
+          'mostrarTemplate':'template'
+        },
+
+        home: function() {
+          var $container = $("#index_container");
+          $container.empty();
+        },
+
+        template : function() {
+          new IndexView({ el: $("#index_container") });
+        }
+
+      });
+
+      Backbone.history.start();
+      var app_router = new AppRouter;
+
     </r:script>
+
 	</head>
 
 	<body>
@@ -61,7 +71,9 @@
       <h3 class="muted">Stele</h3>
     </div>
 
-    <div id="content-template"></div>
+    <div id="index_container"></div>
+    <a href="#" class="btn btn-warning"> home </a>
+    <a href="#mostrarTemplate" class="btn btn-warning"> spoiler </a>
 
     <hr>
 
