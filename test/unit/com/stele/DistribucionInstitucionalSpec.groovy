@@ -7,21 +7,25 @@ import org.junit.*
 import spock.lang.Specification
 import spock.lang.Unroll
 
-/**
- * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
- */
-@TestMixin(GrailsUnitTestMixin)
 class DistribucionInstitucionalSpec extends Specification{
 
      def "Validando la implementacion de compareTo en distribucion institucional"(){
       given: "Una distribucion institucional"
         DistribucionInstitucional distribucionInstitucional = new DistribucionInstitucional() 
-        NivelDeEstudio nivelDeEstudio = NivelDeEstudio.PRIMARIA
-        Integer grado
-        String grupo
-        Turno turno = Turno.MATUTINO
+        distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.PRIMARIA
+        distribucionInstitucional.grado = 1
+        distribucionInstitucional.grupo = "B"
+        distribucionInstitucional.turno = Turno.MATUTINO
       and:"Otra distribucion institucional diferente"
+        DistribucionInstitucional distribucionInstitucionalII = new DistribucionInstitucional() 
+        distribucionInstitucionalII.nivelDeEstudio = NivelDeEstudio.PRIMARIA
+        distribucionInstitucionalII.grado = 1
+        distribucionInstitucionalII.grupo = "B"
+        distribucionInstitucionalII.turno = Turno.MATUTINO
       when: "Se hace la comparacion"
-      then: "Se valida el resultado"
+        def valorComparacion = distribucionInstitucional <=> distribucionInstitucionalII
+      then:"Se valida el resultado"
+        assert true 
+        println valorComparacion
     }
 }
