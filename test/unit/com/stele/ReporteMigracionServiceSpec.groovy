@@ -42,7 +42,7 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por nivel" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesPorNivel(estructuraInstitucional)
+      def totalDependientes = service.conteoDeDependientes(estructuraInstitucional, 2)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados

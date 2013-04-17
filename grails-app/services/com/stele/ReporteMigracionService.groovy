@@ -18,6 +18,20 @@ class ReporteMigracionService {
     sumatoria
   }
 
+  def conteoDeDependientes(estructuraInstitucional, profundidadAIr, nivelActual = 0) {
+    def llaves = estructuraInstitucional.collect { k, v -> k }
+
+    def conteo = [:]
+    llaves.each {
+      if(profundidadAIr == nivelActual) {
+        conteo."$it" = conteoDeDatosPorDependientes( estructuraInstitucional."$it" )
+      } else {
+        conteo."$it" = conteoDeDependientes(estructuraInstitucional."$it", profundidadAIr, nivelActual + 1)
+      }
+    }
+    conteo
+  }
+
   def conteoDeDependientesPorCicloEscolar(estructuraInstitucional) {
     def llaves = estructuraInstitucional.collect { k, v -> k }
 
