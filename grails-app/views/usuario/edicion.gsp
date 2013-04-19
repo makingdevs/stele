@@ -98,11 +98,12 @@
         <div class="row-fluid">
           <div class="span6">
 
-            <table class="table table-bordered">
-              <caption style="text-align:left; color:blue;"> 
-                <strong> Correo electrónico </strong> 
-              </caption>
+            <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
+                <tr>
+                  <th colspan="3" style="text-align:left; color:blue;"> Correo Electrónico </th>
+                  <th style="border-left-style: none; text-align:right;"><i class="icon-plus-sign"></i></th>
+                </tr>
                 <tr>
                   <th>Principal</th>
                   <th>Tipo</th>
@@ -115,19 +116,20 @@
                   <td></td>
                   <td>Personal</td>
                   <td>alberto@gmail.com</td>
-                  <td>
-                    <button class="btn btn-info"> <i class="icon-edit icon-white"></i> </button>
-                    <button class="btn btn-danger"> <i class="icon-trash icon-white"></i> </button>
+                  <td style="text-align:center;">
+                    <button class="btn btn-info"><i class="icon-edit icon-white"></i></button>
+                    <button class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
                   </td>
                 </tr>
               </tbody>
             <table>
 
             <table class="table table-bordered">
-              <caption style="text-align:left; color:blue;"> 
-                <strong> Teléfono </strong> 
-              </caption>
               <thead style="background-color:whiteSmoke">
+                <tr>
+                  <th colspan="5" style="text-align:left; color:blue;"> Teléfono </th>
+                  <th style="border-left-style: none; text-align:right;"><i class="icon-plus-sign"></i></th>
+                </tr>
                 <tr>
                   <th>Principal</th>
                   <th>Tipo</th>
@@ -144,9 +146,9 @@
                   <td>55</td>
                   <td>1234567890</td>
                   <td></td>
-                  <td>
-                    <button class="btn btn-info"> <i class="icon-edit icon-white"></i> </button>
-                    <button class="btn btn-danger"> <i class="icon-trash icon-white"></i> </button>
+                  <td style="text-align:center;">
+                    <button class="btn btn-info"><i class="icon-edit icon-white"></i></button>
+                    <button class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
                   </td>
                 </tr>
               </tbody>
