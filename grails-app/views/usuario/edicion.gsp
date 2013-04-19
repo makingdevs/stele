@@ -124,7 +124,7 @@
               </tbody>
             <table>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
                 <tr>
                   <th colspan="5" style="text-align:left; color:blue;"> Teléfono </th>
@@ -152,8 +152,49 @@
                   </td>
                 </tr>
               </tbody>
-            <table>
+            </table>
+          </div>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="span12 label label-info">
+          <h5>Información</h5>
+        </div>
+      </div>
+      <br />
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span6">
+            <table class="table table-bordered table-condensed">
+              <thead style="background-color:whiteSmoke">
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Matrícula</th>
+                  <th>Nombre</th>
+                  <th>Nivel</th>
+                  <th>Grado</th>
+                  <th>Grupo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>A201300018</td>
+                  <td>Anali Avila Moreno</td>
+                  <td>Kinder</td>
+                  <td>1ro.</td>
+                  <td>"A"</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions" style="text-align:right;">
+        <button type="submit" class="btn btn-primary btn-large">Guardar cambios</button>
+        <a href="" class="btn btn-large">Cancelar</button>
       </div>
 
     </form>
