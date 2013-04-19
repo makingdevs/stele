@@ -3,9 +3,17 @@
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
+
+    <r:require modules="handlebars, backbone" />
+
   </head>
 
   <body>
+    <div class="page-header">
+      <h1>Alverto </h1>
+      <h3>Avila Navarrete</h3>
+    </div>
+
     <form action="edicion" class="form-horizontal">
       <div class="row">
         <div class="span12 label label-info">
