@@ -31,4 +31,10 @@ class ReporteMigracionService {
     }
     conteo
   }
+
+  def conteoDeUsuariosUnicosDeLaListaDeMapas(listaDeMapas) {
+    def listaDeUsuarios = listaDeMapas*.usuario.flatten()
+    def listaDeUsernamePorUsuario = listaDeUsuarios*.username.flatten()
+    listaDeUsernamePorUsuario.unique().size()
+  }
 }

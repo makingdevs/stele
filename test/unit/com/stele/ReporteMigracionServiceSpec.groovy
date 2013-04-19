@@ -3,6 +3,7 @@ package com.stele
 import grails.test.mixin.*
 import org.junit.*
 import spock.lang.Specification
+import com.stele.seguridad.Usuario
 
 @TestFor(ReporteMigracionService)
 class ReporteMigracionServiceSpec extends Specification {
@@ -116,5 +117,59 @@ class ReporteMigracionServiceSpec extends Specification {
                                                                                        '2':['TURNO1':['A':4],
                                                                                             'TURNO2':['A':4,'B':1]]]],
                                                                         '22':['NIVEL':['1':['TURNO1':['A':2]]]]]
+  }
+
+  def "Obtener conteo de usuarios" () {
+    when : "Llamamos al contador de datos"
+      def totalUsuarios = service.conteoDeUsuariosUnicosDeLaListaDeMapas(listaDeMapas)
+
+    then : "Los resultados son"
+      assert totalUsuarios == totalUsuariosEsperados
+
+    where :
+      totalUsuariosEsperados << [
+        3, 1
+      ]
+      listaDeMapas << [
+        [
+          [ usuario : new Usuario(username:'a@b.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ],
+          [ usuario : new Usuario(username:'a@b.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ],
+          [ usuario : new Usuario(username:'b@q.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ],
+          [ usuario : new Usuario(username:'l@l.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ]
+        ],
+        [
+          [ usuario : new Usuario(username:'a@b.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ],
+          [ usuario : new Usuario(username:'a@b.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ],
+          [ usuario : new Usuario(username:'a@b.com'), 
+            dependiente : new Dependiente(),
+            distribucionInstitucional : new DistribucionInstitucional(),
+            cicloEscolar : new CicloEscolar()
+          ]
+        ]
+      ]
   }
 }
