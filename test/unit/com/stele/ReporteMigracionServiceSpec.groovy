@@ -27,7 +27,7 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por ciclo escolar" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesPorCicloEscolar(estructuraInstitucional)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 0)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
@@ -42,76 +42,79 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por nivel" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientes(estructuraInstitucional, 2)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 1)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
 
     where :
       estructuraInstitucional                                       || totalDependientesEsperados
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21.NIVEL': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21' : ['NIVEL': 3]]
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL': 3, '22.NIVEL':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21' : ['NIVEL': 3], '22':['NIVEL':2]]
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]]],
              'NIVEA':['1':['TURNO1':['A' : [1,2,3,4]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL': 5, '21.NIVEA':4, '22.NIVEL':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21' : ['NIVEL': 5, 'NIVEA':4], '22' : ['NIVEL':2]]
   }
 
   def "Obtener conteo de dependientes por nivel y grado" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesPorNivelYGrado(estructuraInstitucional)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 2)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
 
     where :
       estructuraInstitucional                                       || totalDependientesEsperados
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21.NIVEL.1': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21':['NIVEL':['1': 3]]]
 
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1': 3, '22.NIVEL.1':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21':['NIVEL':['1': 3]], '22':['NIVEL':['1':2]]]
 
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]],
                       '2':['TURNO1':['A' : [1,2,3,5]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1': 5, '21.NIVEL.2':4, '22.NIVEL.1':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21':['NIVEL':['1': 5, '2':4]], '22':['NIVEL':['1':2]]]
   }
 
   def "Obtener conteo de dependientes por nivel, grado y turno" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesPorNivelGradoYTurno(estructuraInstitucional)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 3)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
 
     where :
       estructuraInstitucional                                       || totalDependientesEsperados
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21.NIVEL.1.TURNO1': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21':['NIVEL':['1':['TURNO1': 3]]]]
 
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1': 3, '22.NIVEL.1.TURNO1':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21':['NIVEL':['1':['TURNO1': 3]]], '22':['NIVEL':['1':['TURNO1':2]]]]
 
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]],
                       '2':['TURNO1':['A' : [1,2,3,5]],
                            'TURNO2':['A' : [1,2,3,5]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1': 5,'21.NIVEL.2.TURNO1':4, '21.NIVEL.2.TURNO2':4, '22.NIVEL.1.TURNO1':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21':['NIVEL':['1':['TURNO1': 5], '2':['TURNO1':4, 'TURNO2':4]]], '22':['NIVEL':['1':['TURNO1':2]]]]
   }
 
   def "Obtener conteo de dependientes por nivel, grado, turno y grupo" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesPorNivelGradoTurnoYGrupo(estructuraInstitucional)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 4)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
 
     where :
       estructuraInstitucional                                       || totalDependientesEsperados
-      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21.NIVEL.1.TURNO1.A': 3]
+      ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]]]             || ['21':['NIVEL':['1':['TURNO1':['A': 3]]]]]
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1.A': 3, '22.NIVEL.1.TURNO1.A':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21':['NIVEL':['1':['TURNO1':['A': 3]]]], '22':['NIVEL':['1':['TURNO1':['A':2]]]]]
 
       ['21':['NIVEL':['1':['TURNO1':['A' : [1,2,3], 'B' : [1,2]]],
                       '2':['TURNO1':['A' : [1,2,3,5]],
                            'TURNO2':['A' : [1,2,3,5], 'B' : [1]]]]],
-       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21.NIVEL.1.TURNO1.A': 3, '21.NIVEL.1.TURNO1.B' : 2, '21.NIVEL.2.TURNO1.A':4, '21.NIVEL.2.TURNO2.A':4, '21.NIVEL.2.TURNO2.B':1, '22.NIVEL.1.TURNO1.A':2]
+       '22':['NIVEL':['1':['TURNO1':['A' : [  6,7]]]]]]             || ['21':['NIVEL':['1':['TURNO1':['A': 3,'B':2]], 
+                                                                                       '2':['TURNO1':['A':4],
+                                                                                            'TURNO2':['A':4,'B':1]]]],
+                                                                        '22':['NIVEL':['1':['TURNO1':['A':2]]]]]
   }
 }
