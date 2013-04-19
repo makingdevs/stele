@@ -194,7 +194,7 @@
 
       <div class="form-actions" style="text-align:right;">
         <button type="submit" class="btn btn-primary btn-large">Guardar cambios</button>
-        <a href="" class="btn btn-large">Cancelar</button>
+        <a href="" class="btn btn-large">Cancelar</a>
       </div>
 
     </form>
