@@ -10,7 +10,7 @@
 
   <body>
     <div class="page-header">
-      <h1>Alverto </h1>
+      <h1>Alberto </h1>
       <h3>Avila Navarrete</h3>
     </div>
 
