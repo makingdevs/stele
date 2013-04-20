@@ -127,9 +127,27 @@ class DistribucionInstitucionalServiceSpec extends Specification{
         assert institucion.distribucionesInstitucionales.size() == 1
     }
 
-    def "Crear una distribucion institucional en una institucion"(){
+    def "Crear una distribucion institucional en una institucion validando duplicados"(){
       given: "Una institucion y una distribucion institucional"
+       def institucion = new Institucion()
+        institucion.nombre = "Kinder Peques"
+        institucion = institucion.save()
+
+        def distribucionInstitucional = new DistribucionInstitucional()
+        distribucionInstitucional.grado = 2
+        distribucionInstitucional.grupo = "B+"
+        distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucional.turno = Turno.VESPERTINO
+        distribucionInstitucional = service.registrar(distribucionInstitucional,institucion.id)
       when: "Intento guardar la distribucion institucional ya existente"
-      then: "El id de distribucion intitucional es 1 y el tamaño de distribuciones institucionales debe ser igual al tamaño inicial"
+        def distribucionInstitucionalII = new DistribucionInstitucional()
+        distribucionInstitucionalII.grado = 2
+        distribucionInstitucionalII.grupo = "B+"
+        distribucionInstitucionalII.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucionalII.turno = Turno.VESPERTINO
+        distribucionInstitucionalII = service.registrar(distribucionInstitucionalII,institucion.id)
+        def institucionGuardada = Institucion.get(institucion.id)
+      then: "El tamaño de distribuciones institucionales debe ser igual al tamaño inicial"
+        assert institucionGuardada.distribucionesInstitucionales.size() == 1
     }
 }
