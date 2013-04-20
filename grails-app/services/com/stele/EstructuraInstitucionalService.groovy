@@ -20,7 +20,7 @@ class EstructuraInstitucionalService {
     mapa
   }
   
-  def iterarEstructuraInstitucional(mapa, llaves, indice = 0){
+  private def iterarEstructuraInstitucional(mapa, llaves, indice = 0){
     if( indice == llaves.size() - 1 ) {
       mapa << llaves[indice]
       return mapa
@@ -35,7 +35,7 @@ class EstructuraInstitucionalService {
     return mapa
   }
 
-  def crearEstructuraFaltanteDeLaInstitucion(estructura, indice = 0) {
+  private def crearEstructuraFaltanteDeLaInstitucion(estructura, indice = 0) {
     if( indice == estructura.size() - 1 )
       return [estructura[indice]]
 
