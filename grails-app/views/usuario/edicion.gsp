@@ -6,19 +6,51 @@
 
     <r:require modules="handlebars, backbone" />
 
+
+    <r:script>
+      window.EdicionView = Backbone.View.extend({
+        initialize: function(){
+            this.render();
+        },
+        render: function(){
+          var context = {
+            nombreTutor: "Alberto",
+            apellidosTutor: "Avila Navarrete",
+            urlImagenTutor: "${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}"
+          }
+
+          var template = Handlebars.compile($("#encabezadoUsuario").html());
+          var html     = template(context);
+
+          this.$el.html( html );
+        }
+      });
+
+      var EdicionRouter = Backbone.Router.extend({
+
+        routes : {
+          'current':'edicion'
+        },
+
+        edicion: function() {
+          var $container = $("#encabezadoContainer");
+          $container.empty();
+          new EdicionView({ el: $("#encabezadoContainer") });
+        }
+
+      });
+
+      Backbone.history.start();
+      var edicion_router = new EdicionRouter;
+      edicion_router.navigate("current",true);
+    </r:script>
+
   </head>
 
   <body>
-    <div class="page-header">
-      <div class="media">
-        <span class="pull-left">
-          <img class="media-object" src="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}" style="width: 114px; height: 114px;">
-        </span>
-        <div class="media-body">
-          <h1>Alberto </h1>
-          <h3>Avila Navarrete</h3>
-        </div>
-      </div>
+
+    <g:render template="header" />
+    <div id="encabezadoContainer" >
     </div>
 
     <form action="edicion" class="form-horizontal">
