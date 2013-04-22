@@ -10,8 +10,15 @@
 
   <body>
     <div class="page-header">
-      <h1>Alberto </h1>
-      <h3>Avila Navarrete</h3>
+      <div class="media">
+        <span class="pull-left">
+          <img class="media-object" src="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}" style="width: 114px; height: 114px;">
+        </span>
+        <div class="media-body">
+          <h1>Alberto </h1>
+          <h3>Avila Navarrete</h3>
+        </div>
+      </div>
     </div>
 
     <form action="edicion" class="form-horizontal">
