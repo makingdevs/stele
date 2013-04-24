@@ -9,4 +9,10 @@ class UsuarioController {
   def edicion() {
   }
 
+  def obtenerPerfilUsuario() {
+    render(contentType:"text/json") {
+      [nombreTutor : "ROFLMAO", apellidosTutor : "La Bamba", urlImagenTutor : ""]
+    }
+  }
+
 }
