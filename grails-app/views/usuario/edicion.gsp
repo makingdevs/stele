@@ -6,43 +6,31 @@
 
     <r:require modules="handlebars, backbone" />
 
-
     <r:script>
-      window.EdicionView = Backbone.View.extend({
-        initialize: function(){
-            this.render();
-        },
-        render: function(){
-          var context = {
-            nombreTutor: "Alberto",
-            apellidosTutor: "Avila Navarrete",
-            urlImagenTutor: "${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}"
-          }
+      var PerfilModel = Backbone.Model.extend({
+        url : function() {
+          return "http://localhost:8080/stele/usuario/obtenerPerfilUsuario/";
+        }
+      });
 
+      var PerfilView = Backbone.View.extend({
+        render: function() {
           var template = Handlebars.compile($("#encabezadoUsuario").html());
-          var html     = template(context);
-
+          var html     = template(this.model);
           this.$el.html( html );
+          return this;
         }
       });
 
-      var EdicionRouter = Backbone.Router.extend({
-
-        routes : {
-          'current':'edicion'
-        },
-
-        edicion: function() {
-          var $container = $("#encabezadoContainer");
-          $container.empty();
-          new EdicionView({ el: $("#encabezadoContainer") });
+      var modelo = new PerfilModel;
+      modelo.fetch({ 
+        success : function(model, response, options) { 
+          console.log(response.nombreTutor);
+          var perfilView = new PerfilView({model : response});
+          $('#encabezadoContainer').html(perfilView.render().el);
         }
+      }) 
 
-      });
-
-      Backbone.history.start();
-      var edicion_router = new EdicionRouter;
-      edicion_router.navigate("current",true);
     </r:script>
 
   </head>
