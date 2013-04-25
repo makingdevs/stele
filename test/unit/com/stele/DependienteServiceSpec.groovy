@@ -68,6 +68,7 @@ class DependienteServiceSpec extends Specification{
     def perfil = new Perfil()
     dependiente.perfil = perfil
     dependiente.matricula = "M1234576"
+    dependiente.camada= "1234567898"
     dependiente.perfil.nombre = "Juanito"
     dependiente.perfil.apellidoPaterno = "Perez"
     dependiente.perfil.apellidoMaterno = "Perez"
@@ -98,6 +99,7 @@ class DependienteServiceSpec extends Specification{
     def perfil = new Perfil()
     dependienteAsociado.perfil = perfil
     dependienteAsociado.matricula = "M1234576"
+    dependienteAsociado.camada = "1234567898"
     dependienteAsociado.perfil.nombre = "Juanito"
     dependienteAsociado.perfil.apellidoPaterno = "Perez"
     dependienteAsociado.perfil.apellidoMaterno = "Perez"
@@ -108,6 +110,7 @@ class DependienteServiceSpec extends Specification{
     perfil = new Perfil()
     dependiente.perfil = perfil
     dependiente.matricula = "M0987654"
+    dependiente.camada = "1234567898"
     dependiente.perfil.nombre = "Manolito"
     dependiente.perfil.apellidoPaterno = "Perez"
     dependiente.perfil.apellidoMaterno = "Perez"
@@ -139,6 +142,7 @@ class DependienteServiceSpec extends Specification{
     def perfil = new Perfil()
     dependiente.perfil = perfil
     dependiente.matricula = "M0987654"
+    dependiente.camada = "1234567898"
     dependiente.perfil.nombre = "Manolito"
     dependiente.perfil.apellidoPaterno = "Perez"
     dependiente.perfil.apellidoMaterno = "Perez"
