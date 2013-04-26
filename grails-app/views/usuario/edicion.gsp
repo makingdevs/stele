@@ -4,34 +4,7 @@
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
 
-    <r:require modules="handlebars, backbone" />
-
-    <r:script>
-      var PerfilModel = Backbone.Model.extend({
-        url : function() {
-          return "http://localhost:8080/stele/usuario/obtenerPerfilUsuario/";
-        }
-      });
-
-      var PerfilView = Backbone.View.extend({
-        render: function() {
-          var template = Handlebars.compile($("#encabezadoUsuario").html());
-          var html     = template(this.model);
-          this.$el.html( html );
-          return this;
-        }
-      });
-
-      var modelo = new PerfilModel;
-      modelo.fetch({ 
-        success : function(model, response, options) { 
-          console.log(response.nombreTutor);
-          var perfilView = new PerfilView({model : response});
-          $('#encabezadoContainer').html(perfilView.render().el);
-        }
-      }) 
-
-    </r:script>
+    <r:require modules="handlebars, backbone, usuario" />
 
   </head>
 
