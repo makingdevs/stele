@@ -4,14 +4,14 @@
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
 
-    <r:require modules="handlebars, backbone" />
+    <r:require modules="handlebars, backbone, usuario" />
 
   </head>
 
   <body>
-    <div class="page-header">
-      <h1>Alberto </h1>
-      <h3>Avila Navarrete</h3>
+
+    <g:render template="header" />
+    <div id="encabezadoContainer" >
     </div>
 
     <form action="edicion" class="form-horizontal">
@@ -23,30 +23,29 @@
       <br />
       <div class="container-fluid">
         <div class="row-fluid">
-          <div class="span5">
-
+          <div class="span6">
             <div class="control-group">
               <label for="contraseniaActual" class="control-label">Contraseña actual: </label>
               <div class="controls">
-                <input type="text" id="contraseniaActual" placeholder="Contraseña actual">
+                <input type="text" class="input-xlarge" id="contraseniaActual" placeholder="Contraseña actual">
               </div>
             </div>
             <div class="control-group">
               <label for="" class="control-label">Nueva contraseña: </label>
               <div class="controls">
-                <input type="text" id="nuevaContrasenia" placeholder="Nueva contraseña">
+                <input type="text" class="input-xlarge" id="nuevaContrasenia" placeholder="Nueva contraseña">
               </div>
             </div>
             <div class="control-group">
               <label for="" class="control-label">Confirma contraseña: </label>
               <div class="controls">
-                <input type="text" id="confirmaContrasenia" placeholder="Confirma contraseña">
+                <input type="text" class="input-xlarge" id="confirmaContrasenia" placeholder="Confirma contraseña">
               </div>
             </div>
           </div>
 
-          <div class="span4">
-            <div class="alert alert-block alert-info" style="margin-top:15%">
+          <div class="span4 offset2">
+            <div class="alert alert-block alert-info">
               <p class="text-center">
                 <strong> En caso de que olvide su contraseña se enviará mail a su correo principal </strong>
                </p>
@@ -63,7 +62,7 @@
       <br />
       <div class="container-fluid">
         <div class="row-fluid">
-          <div class="span5">
+          <div class="span6">
 
             <div class="control-group">
               <label for="nombre" class="control-label">Nombre: </label>
@@ -105,7 +104,6 @@
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span6">
-
             <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
                 <tr>
@@ -130,8 +128,10 @@
                   </td>
                 </tr>
               </tbody>
-            <table>
+            </table>
+          </div>
 
+          <div class="span6">
             <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
                 <tr>
@@ -174,28 +174,19 @@
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span6">
-            <table class="table table-bordered table-condensed">
-              <thead style="background-color:whiteSmoke">
-                <tr>
-                  <th>&nbsp;</th>
-                  <th>Matrícula</th>
-                  <th>Nombre</th>
-                  <th>Nivel</th>
-                  <th>Grado</th>
-                  <th>Grupo</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>A201300018</td>
-                  <td>Anali Avila Moreno</td>
-                  <td>Kinder</td>
-                  <td>1ro.</td>
-                  <td>"A"</td>
-                </tr>
-              </tbody>
-            </table>
+
+            <div class="media">
+              <span class="pull-left">
+                <img class="media-object" src="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}" style="width: 114px; height: 114px;">
+              </span>
+              <div class="media-body">
+                <p><strong>Matricula :</strong> <small> A201300018 </small></p>
+                <p><strong>Nombre :</strong> <small> Anali Avila Moreno </small></p>
+                <p><strong>Nivel :</strong> <small> Kinder </small></p>
+                <p><strong>Grado :</strong> <small> 1ro. </small></p>
+                <p><strong>Grupo :</strong> <small> "A" </small></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
