@@ -138,8 +138,8 @@ log4j = {
 }
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.stele.Usuario'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.stele.UsuarioRol'
-grails.plugins.springsecurity.authority.className = 'com.stele.Rol'
-grails.plugins.springsecurity.requestMap.className = 'com.stele.Requestmap'
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.stele.seguridad.Usuario'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.stele.seguridad.UsuarioRol'
+grails.plugins.springsecurity.authority.className = 'com.stele.seguridad.Rol'
+grails.plugins.springsecurity.requestMap.className = 'com.stele.seguridad.Requestmap'
 grails.plugins.springsecurity.securityConfigType = 'Requestmap'
