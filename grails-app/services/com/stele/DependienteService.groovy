@@ -9,7 +9,6 @@ class DependienteService {
     perfil.nombre = filaExcelCommand.dependienteNombre
     perfil.apellidoPaterno = filaExcelCommand.dependienteApellidoPaterno
     perfil.apellidoMaterno = filaExcelCommand.dependienteApellidoMaterno
-
     def dependiente = new Dependiente()
     dependiente.matricula = filaExcelCommand.matricula
     dependiente.perfil = perfil

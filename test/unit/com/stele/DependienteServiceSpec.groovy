@@ -58,20 +58,20 @@ class DependienteServiceSpec extends Specification{
     usuarioExistente.username = "pepito@gmail.com"
     usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
     usuarioExistente.enabled = true
+    perfilExistente.nombre = "Pepito"
+    perfilExistente.apellidoPaterno = "Juarez"
+    perfilExistente.apellidoMaterno = "Juarez"
     usuarioExistente.perfil = perfilExistente
-    usuarioExistente.perfil.nombre = "Pepito"
-    usuarioExistente.perfil.apellidoPaterno = "Juarez"
-    usuarioExistente.perfil.apellidoMaterno = "Juarez"
     usuarioExistente.save()
     and:"y un dependiente listo para registrar"
     def dependiente = new Dependiente()
     def perfil = new Perfil()
-    dependiente.perfil = perfil
     dependiente.matricula = "M1234576"
     dependiente.camada= "1234567898"
-    dependiente.perfil.nombre = "Juanito"
-    dependiente.perfil.apellidoPaterno = "Perez"
-    dependiente.perfil.apellidoMaterno = "Perez"
+    perfil.nombre = "Juanito"
+    perfil.apellidoPaterno = "Perez"
+    perfil.apellidoMaterno = "Perez"
+    dependiente.perfil = perfil
     when:"Guardo el dependiente en la relacion con el usuario 'service.metodo(dependiente,usuarioId)'"
     def usuarioGuardado = Usuario.findByUsername(usuarioExistente.username)
     dependiente = service.registrar(dependiente,usuarioGuardado.id)
@@ -89,31 +89,31 @@ class DependienteServiceSpec extends Specification{
     usuarioExistente.username = "pepito@gmail.com"
     usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
     usuarioExistente.enabled = true
+    perfilExistente.nombre = "Pepito"
+    perfilExistente.apellidoPaterno = "Juarez"
+    perfilExistente.apellidoMaterno = "Juarez"
     usuarioExistente.perfil = perfilExistente
-    usuarioExistente.perfil.nombre = "Pepito"
-    usuarioExistente.perfil.apellidoPaterno = "Juarez"
-    usuarioExistente.perfil.apellidoMaterno = "Juarez"
     usuarioExistente.save()
 
     def dependienteAsociado = new Dependiente()
     def perfil = new Perfil()
-    dependienteAsociado.perfil = perfil
     dependienteAsociado.matricula = "M1234576"
     dependienteAsociado.camada = "1234567898"
-    dependienteAsociado.perfil.nombre = "Juanito"
-    dependienteAsociado.perfil.apellidoPaterno = "Perez"
-    dependienteAsociado.perfil.apellidoMaterno = "Perez"
+    perfil.nombre = "Juanito"
+    perfil.apellidoPaterno = "Perez"
+    perfil.apellidoMaterno = "Perez"
+    dependienteAsociado.perfil = perfil
 
     service.registrar(dependienteAsociado,usuarioExistente.id)
     and:"y un dependiente listo para registrar"
     def dependiente = new Dependiente()
     perfil = new Perfil()
-    dependiente.perfil = perfil
     dependiente.matricula = "M0987654"
     dependiente.camada = "1234567898"
-    dependiente.perfil.nombre = "Manolito"
-    dependiente.perfil.apellidoPaterno = "Perez"
-    dependiente.perfil.apellidoMaterno = "Perez"
+    perfil.nombre = "Manolito"
+    perfil.apellidoPaterno = "Perez"
+    perfil.apellidoMaterno = "Perez"
+    dependiente.perfil = perfil
 
     when:"Guardo el dependiente en la relación con el usuario"
     dependiente = service.registrar(dependiente,usuarioExistente.id)
@@ -133,19 +133,19 @@ class DependienteServiceSpec extends Specification{
     usuarioExistente.username = "pepito@gmail.com"
     usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
     usuarioExistente.enabled = true
+    perfilExistente.nombre = "Pepito"
+    perfilExistente.apellidoPaterno = "Juarez"
+    perfilExistente.apellidoMaterno = "Juarez"
     usuarioExistente.perfil = perfilExistente
-    usuarioExistente.perfil.nombre = "Pepito"
-    usuarioExistente.perfil.apellidoPaterno = "Juarez"
-    usuarioExistente.perfil.apellidoMaterno = "Juarez"
 
     def dependiente = new Dependiente()
     def perfil = new Perfil()
-    dependiente.perfil = perfil
     dependiente.matricula = "M0987654"
     dependiente.camada = "1234567898"
-    dependiente.perfil.nombre = "Manolito"
-    dependiente.perfil.apellidoPaterno = "Perez"
-    dependiente.perfil.apellidoMaterno = "Perez"
+    perfil.nombre = "Manolito"
+    perfil.apellidoPaterno = "Perez"
+    perfil.apellidoMaterno = "Perez"
+    dependiente.perfil = perfil
     when:"Se intenta guardar el dependiente"
     dependiente = service.registrar(dependiente,usuarioExistente.id)
     then:"El id del dependiente tiene que ser 0"
