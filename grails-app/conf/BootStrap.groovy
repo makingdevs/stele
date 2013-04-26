@@ -2,6 +2,8 @@ import com.stele.Institucion
 import grails.util.Environment
 import net.bull.javamelody.JdbcWrapper
 
+import com.stele.seguridad.*
+
 class BootStrap {
 
   def dataSource
@@ -9,6 +11,7 @@ class BootStrap {
   def init = { servletContext ->
     wrapperMelodyDataSource()
     creaInstituciones()
+    creaUsuario()
   }
   def destroy = {
   }
@@ -24,6 +27,25 @@ class BootStrap {
     new Institucion(nombre:"Instituto Andersen").save(flush:true)
     new Institucion(nombre:"Colegio Americano").save(flush:true)
     new Institucion(nombre:"Colegio Alemán").save(flush:true)
+  }
+
+  private void creaUsuario() {
+    def usuario = Usuario.findByUsername("nelson@muntz.com")
+    if(!usuario) {
+      usuario = new Usuario( username:"nelson@muntz.com",
+                   password:"haha",
+                   enabled:true,
+                   accountExpired:false,
+                   accountLocked:false,
+                   passwordExpired:false).save(flush:true)
+    }
+    def rol = Rol.findByAuthority("ROLE_USER")
+    if(!rol)
+      rol = new Rol(authority:"ROLE_USER").save(flush:true)
+    def usuarioRol = UsuarioRol.findByUsuarioAndRol(usuario,rol)
+    def user = Usuario.read(usuario.id)
+    if(!usuarioRol)
+      usuarioRol = UsuarioRol.create(user, rol, true)
   }
 
 }
