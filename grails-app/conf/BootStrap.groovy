@@ -46,9 +46,9 @@ class BootStrap {
 
       usuario.save(flush:true)
     }
-    def rol = Rol.findByAuthority("ROLE_USER")
+    def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
     if(!rol)
-      rol = new Rol(authority:"ROLE_USER").save(flush:true)
+      rol = new Rol(authority:"ROLE_PADRE_TUTOR").save(flush:true)
     def usuarioRol = UsuarioRol.findByUsuarioAndRol(usuario,rol)
     def user = Usuario.read(usuario.id)
     if(!usuarioRol)
