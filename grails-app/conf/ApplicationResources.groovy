@@ -15,4 +15,8 @@ modules = {
   underscore {
     resource url:'js/underscore/underscore.js'
   }
+
+  usuario {
+    resource url:'js/usuario/edicion.js'
+  }
 }
