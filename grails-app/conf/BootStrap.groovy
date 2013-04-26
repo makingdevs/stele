@@ -3,6 +3,7 @@ import grails.util.Environment
 import net.bull.javamelody.JdbcWrapper
 
 import com.stele.seguridad.*
+import com.stele.*
 
 class BootStrap {
 
@@ -32,12 +33,18 @@ class BootStrap {
   private void creaUsuario() {
     def usuario = Usuario.findByUsername("nelson@muntz.com")
     if(!usuario) {
+      Perfil perfil = new Perfil( nombre: "Nelson",
+                                  apellidoPaterno: "Muntz")
+      perfil.save(flush:true)
       usuario = new Usuario( username:"nelson@muntz.com",
                    password:"haha",
                    enabled:true,
                    accountExpired:false,
                    accountLocked:false,
-                   passwordExpired:false).save(flush:true)
+                   passwordExpired:false,
+                   perfil: perfil)
+
+      usuario.save(flush:true)
     }
     def rol = Rol.findByAuthority("ROLE_USER")
     if(!rol)
