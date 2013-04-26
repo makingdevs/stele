@@ -57,10 +57,10 @@ class UsuarioServiceSpec  extends Specification{
         usuario.username = "pepito@gmail.com"
         usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
         usuario.enabled = true
+        perfil.nombre = "Pepito"
+        perfil.apellidoPaterno = "Juarez"
+        perfil.apellidoMaterno = "Juarez"
         usuario.perfil = perfil
-        usuario.perfil.nombre = "Pepito"
-        usuario.perfil.apellidoPaterno = "Juarez"
-        usuario.perfil.apellidoMaterno = "Juarez"
       when: "Guardamos el usuario con el servicio"
         usuario = service.registrar(usuario)
       then: "El id debe ser mayor que 0"
@@ -77,10 +77,10 @@ class UsuarioServiceSpec  extends Specification{
         usuarioExistente.username = "pepito@gmail.com"
         usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
         usuarioExistente.enabled = true
+        perfilExistente.nombre = "Pepito"
+        perfilExistente.apellidoPaterno = "Juarez"
+        perfilExistente.apellidoMaterno = "Juarez"
         usuarioExistente.perfil = perfilExistente
-        usuarioExistente.perfil.nombre = "Pepito"
-        usuarioExistente.perfil.apellidoPaterno = "Juarez"
-        usuarioExistente.perfil.apellidoMaterno = "Juarez"
         service.registrar(usuarioExistente)
         def contador = Usuario.count()
       and: "Un usuario con datos"
@@ -89,10 +89,10 @@ class UsuarioServiceSpec  extends Specification{
         usuario.username = "pepito@gmail.com"
         usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
         usuario.enabled = true
+        perfil.nombre = "Pepito"
+        perfil.apellidoPaterno = "Juarez"
+        perfil.apellidoMaterno = "Juarez"
         usuario.perfil = perfil
-        usuario.perfil.nombre = "Pepito"
-        usuario.perfil.apellidoPaterno = "Juarez"
-        usuario.perfil.apellidoMaterno = "Juarez"
       when: "Se intenta guardar el usuario"
         usuario = service.registrar(usuario)
       then: "El id debe ser igual a 1001"

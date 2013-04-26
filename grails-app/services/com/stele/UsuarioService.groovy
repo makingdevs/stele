@@ -7,13 +7,13 @@ class UsuarioService {
   def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def usuario = new Usuario()
     def perfil = new Perfil()
+    perfil.nombre = filaExcelCommand.tutorNombre
+    perfil.apellidoPaterno = filaExcelCommand.tutorApellidoPaterno
+    perfil.apellidoMaterno = filaExcelCommand.tutorApellidoMaterno
+    usuario.perfil = perfil
     usuario.username = filaExcelCommand.correoElectronico
     usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
     usuario.enabled = true
-    usuario.perfil = perfil
-    usuario.perfil.nombre = filaExcelCommand.tutorNombre
-    usuario.perfil.apellidoPaterno = filaExcelCommand.tutorApellidoPaterno
-    usuario.perfil.apellidoMaterno = filaExcelCommand.tutorApellidoMaterno
     usuario
   }
 
