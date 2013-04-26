@@ -3,62 +3,6 @@
 	<head>
 		<meta name="layout" content="twitterBootstrapMain"/>
 		<title>Principal</title>
-
-    <r:require modules="handlebars, backbone" />
-
-    <script id="index_template" type="text/x-handlebars-template">
-      <div class="entry">
-        <h1>{{title}}</h1>
-        {{#with author}}
-        <h2>By {{firstName}} {{lastName}}</h2>
-        {{/with}}
-      </div>
-    </script>
-
-    <r:script>
-      window.IndexView = Backbone.View.extend({
-        initialize: function(){
-            this.render();
-        },
-        render: function(){
-          var context = {
-            title: "My first post!",
-            author: {
-              firstName: "Charles",
-              lastName: "Jolley"
-            }
-          }
-
-          var template = Handlebars.compile($("#index_template").html());
-          var html     = template(context);
-
-          this.$el.html( html );
-        }
-      });
-
-      var AppRouter = Backbone.Router.extend({
-
-        routes : {
-          '':'home',
-          'mostrarTemplate':'template'
-        },
-
-        home: function() {
-          var $container = $("#index_container");
-          $container.empty();
-        },
-
-        template : function() {
-          new IndexView({ el: $("#index_container") });
-        }
-
-      });
-
-      Backbone.history.start();
-      var app_router = new AppRouter;
-
-    </r:script>
-
 	</head>
 
 	<body>
@@ -70,10 +14,6 @@
       </ul>
       <h3 class="muted">Stele</h3>
     </div>
-
-    <div id="index_container"></div>
-    <a href="#" class="btn btn-warning"> home </a>
-    <a href="#mostrarTemplate" class="btn btn-warning"> spoiler </a>
 
     <hr>
 
