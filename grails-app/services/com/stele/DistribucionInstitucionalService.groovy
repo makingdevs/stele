@@ -20,16 +20,16 @@ class DistribucionInstitucionalService {
     def resultado
 
     switch (nivelToUpper) {
-      case {it.startsWith(preescolar) }:
+      case {it?.startsWith(preescolar) }:
       return NivelDeEstudio.PREESCOLAR
       break
-      case {it.startsWith(secundaria) }:
+      case {it?.startsWith(secundaria) }:
       return NivelDeEstudio.SECUNDARIA
       break
-      case {it.startsWith(bachillerato) }:
+      case {it?.startsWith(bachillerato) }:
       return NivelDeEstudio.BACHILLERATO
       break
-      case {it.startsWith(educacionSuperior) }:
+      case {it?.startsWith(educacionSuperior) }:
       return NivelDeEstudio.EDUCACION_SUPERIOR
       break
       default:
@@ -44,10 +44,10 @@ class DistribucionInstitucionalService {
     def nocturno = Turno.NOCTURNO.toString()toUpperCase()getAt(0)
 
     switch(turnoToUpper) {
-      case {it.startsWith(matutino)}:
+      case {it?.startsWith(matutino)}:
       return Turno.MATUTINO
       break
-      case {it.startsWith(nocturno)}:
+      case {it?.startsWith(nocturno)}:
       return Turno.NOCTURNO
       break
       default:
