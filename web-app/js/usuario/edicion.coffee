@@ -14,6 +14,13 @@ $ ->
       @
 
   DependienteModel = Backbone.Model.extend
+    imagen : null,
+    matricula : null,
+    nombreCompleto : null,
+    nivel : null,
+    grado : null,
+    grupo : null
+
   
   DependienteView = Backbone.View.extend
     tagName : "li",
@@ -24,34 +31,35 @@ $ ->
       @
 
   Dependientes = Backbone.Collection.extend
-    model : DependienteModel
+    model : DependienteModel,
+    initialize : (models) ->
 
   DependientesView = Backbone.View.extend
     tagName : "ul"
     render : ->
-
-      console.log @
-      console.log @.collection
-
       @.collection.each (dependienteModelo) ->
-        console.log dependienteView
+        console.log dependienteModelo.get("matricula")
         @
-
-      $.each @.collection, (index, value)->
-        dependienteView = new DependienteView( model : value )
-        @.$el.prepend( dependienteView.render().el )
       @
 
   modelo = new PerfilModel
   modelo.fetch
     success : (model, response, options) ->
       perfilView = new PerfilView( model : response )
-      ($ '#encabezadoContainer').html(perfilView.render().el)
+      ($ '#encabezadocontainer').html(perfilView.render().el)
 
-      
-      dependientes = new Dependientes( { models : response.dependientes },  )
-      dependientesView = new DependientesView( collection : dependientes )
-      ($ '#dependienteContainer').html( dependientesView.render().el )
+      dependientes = new Dependientes( response.dependientes )
+      dependientesViews = new DependientesView( {collection : dependientes} )
+      ($ '#dependienteContainer').html( dependientesViews.render().el )
+
+
+
+
+
+
+
+
+
 
 
 
