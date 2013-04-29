@@ -21,7 +21,7 @@ class UsuarioController {
         nombreTutor : usuarioActual.perfil.nombre,
         apellidosTutor : "${usuarioActual.perfil.apellidoPaterno} ${usuarioActual.perfil.apellidoMaterno ?: ''}",
         urlImagenTutor : "http://www.blogdelossimpson.com.ar/wp-content/uploads/2008/08/nelson1.gif",
-        dependientes : [usuarioActual.dependientes]
+        dependientes : usuarioActual.dependientes
       ]
     }
   }
