@@ -1,7 +1,7 @@
 <script id="dependienteCard" type="text/x-handlebars-template">
   <div class="media">
     <span class="pull-left">
-      <img class="media-object" src="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}" style="width: 114px; height: 114px;">
+      <img class="media-object" src="{{imagen}}" style="width: 114px; height: 114px;">
     </span>
     <div class="media-body">
       <p><strong>Matricula :</strong> <small> {{matricula}} </small></p>
