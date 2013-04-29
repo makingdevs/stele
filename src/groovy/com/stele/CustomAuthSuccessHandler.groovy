@@ -11,13 +11,13 @@ public class CustomAuthSuccessHandler extends SavedRequestAwareAuthenticationSuc
 
   String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
     if( SpringSecurityUtils.getPrincipalAuthorities().find{ it == "ROLE_DIRECTOR" } ) {
-      return "/"
+      return new ApplicationTagLib().createLink([controller: 'resumen'])
     }
     else if( SpringSecurityUtils.getPrincipalAuthorities().find{ it == "ROLE_CONTROL_ESCOLAR" } ) {
-      return "/"
+      return new ApplicationTagLib().createLink([controller: 'inicio'])
     }
     else if( SpringSecurityUtils.getPrincipalAuthorities().find{ it == "ROLE_PADRE_TUTOR" } ) {
-      return "/usuario/edicion"
+      return new ApplicationTagLib().createLink([controller: 'usuario', action:'edicion'])
     }
 
     "/"
