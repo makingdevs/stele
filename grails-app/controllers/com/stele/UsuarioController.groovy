@@ -23,4 +23,26 @@ class UsuarioController {
     }
   }
 
+  def dependientes() {
+    def usuarioActual = springSecurityService.currentUser
+
+    def dependientes = []
+
+    usuarioActual?.dependientes?.each {
+      def mapa = [:]
+      mapa.imagen = ""
+      mapa.matricula = it.matricula
+      mapa.nombreCompleto = "${it.perfil?.nombre} ${it.perfil?.apellidoPaterno} ${it.perfil?.apellidoMaterno ?: ''} "
+      mapa.nivel = "lol"
+      mapa.grado = "lol"
+      mapa.grupo = "lol"
+      dependientes << mapa
+    }
+
+
+    render(contentType:"text/json") {
+      dependientes
+    }
+  }
+
 }
