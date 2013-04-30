@@ -6,7 +6,7 @@
     <div class="media-body">
       <p><strong>Matricula :</strong> <small> {{matricula}} </small></p>
       <p><strong>Nombre :</strong> <small> {{nombreCompleto}} </small></p>
-      <p><strong>Nivel :</strong> <small> {nivel}} </small></p>
+      <p><strong>Nivel :</strong> <small> {{nivel}} </small></p>
       <p><strong>Grado :</strong> <small> {{grado}} </small></p>
       <p><strong>Grupo :</strong> <small> {{grupo}} </small></p>
     </div>
