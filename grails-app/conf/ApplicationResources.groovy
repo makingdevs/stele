@@ -19,4 +19,8 @@ modules = {
   usuario {
     resource url:'js/usuario/edicion.js'
   }
+
+  dependiente {
+    resource url:'js/dependientes/edicion.js'
+  }
 }
