@@ -13,11 +13,8 @@ $ ->
   
   Dependientes = Backbone.Collection.extend
     model: DependienteModel,
-    initialize : (models, options) ->
-      this.id = options.id
-
     url: ->
-      "http://localhost:8080/stele/usuario/#{this.id}/dependientes"
+      "http://localhost:8080/stele/usuario/dependientes"
   
   DependientesView = Backbone.View.extend
     tagName : 'ul',

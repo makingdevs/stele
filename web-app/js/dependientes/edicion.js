@@ -15,11 +15,8 @@ $(function() {
   });
   Dependientes = Backbone.Collection.extend({
     model: DependienteModel,
-    initialize: function(models, options) {
-      return this.id = options.id;
-    },
     url: function() {
-      return "http://localhost:8080/stele/usuario/" + this.id + "/dependientes";
+      return "http://localhost:8080/stele/usuario/dependientes";
     }
   });
   return DependientesView = Backbone.View.extend({
