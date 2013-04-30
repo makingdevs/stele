@@ -1,6 +1,6 @@
 $ ->
 
-  DependienteModel = Backbone.Model.extend
+  DependienteModel = Backbone.Model.extend({})
 
   DependienteView = Backbone.View.extend
     tagName: 'li',
@@ -26,3 +26,10 @@ $ ->
       , @
 
       @
+  
+  usuarioDependientes = new Dependientes
+  usuarioDependientesView = new DependientesView( collection : usuarioDependientes )
+
+  usuarioDependientes.fetch
+    sucess : (collection) ->
+      console.log "collection : #{collection}"

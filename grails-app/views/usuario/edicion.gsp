@@ -4,7 +4,7 @@
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
 
-    <r:require modules="underscore, handlebars, backbone, usuario" />
+    <r:require modules="underscore, handlebars, backbone, usuario, dependiente" />
 
   </head>
 
