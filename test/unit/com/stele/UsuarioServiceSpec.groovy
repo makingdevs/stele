@@ -64,6 +64,8 @@ class UsuarioServiceSpec  extends Specification{
         def usuario = new Usuario()
         def perfil = new Perfil()
         def telefono = new Telefono()
+        Usuario.metaClass.isDirty = { true } 
+        Usuario.metaClass.encodePassword = { "password" } 
         usuario.username = "pepito@gmail.com"
         usuario.password = "pepe6789"
         usuario.enabled = true
@@ -116,6 +118,34 @@ class UsuarioServiceSpec  extends Specification{
       then: "El id debe ser igual a 1001"
         assert usuario.id == 1001
         assert contador == Usuario.count()
+    }
+
+    def "Registrar un usuario verificando que no exista y agregando una institucion"(){
+      given: "Un usuario con datos y agregnado la institucion"
+        def usuario = new Usuario()
+        def perfil = new Perfil()
+        def telefono = new Telefono()
+        def institucion = new Institucion()
+        Usuario.metaClass.isDirty = { true } 
+        Usuario.metaClass.encodePassword = { "password" }
+        usuario.username = "pepito@gmail.com"
+        usuario.password = "pepe6789"
+        usuario.enabled = true
+        perfil.nombre = "Pepito"
+        perfil.apellidoPaterno = "Juarez"
+        perfil.apellidoMaterno = "Juarez"
+        telefono.numeroTelefonico = "123456789"
+        perfil.addToTelefonos(telefono)
+        institucion.nombre = "Escuela patito"
+        usuario.addToInstituciones(institucion)
+        usuario.perfil = perfil
+      when: "Guardamos el usuario y la institucion con el servicio"
+        usuario = service.registrar(usuario)
+      then: "El id debe ser mayor que 0"
+        assert usuario.id > 0
+        usuario.instituciones.each{
+          assert it.id > 0
+        }
     }
     
 }
