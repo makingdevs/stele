@@ -8,7 +8,7 @@ class UsuarioController {
 
   def springSecurityService
 
-  def edicion() {
+  def perfil() {
   }
 
   def obtenerPerfilUsuario() {
