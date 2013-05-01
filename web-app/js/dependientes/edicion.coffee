@@ -7,7 +7,17 @@ $ ->
 
     render : ->
       template = Handlebars.compile( ($ "#dependienteCard").html() )
-      html     = template(@.model)
+
+      context = {
+        imagen : @.model.get('imagen')
+        matricula : @.model.get('matricula')
+        nombreCompleto : @.model.get('nombreCompleto')
+        nivel : @.model.get('nivel')
+        grado : @.model.get('grado')
+        grupo : @.model.get('grupo')
+      }
+
+      html     = template(context)
       @.$el.html( html )
       @
   
@@ -31,5 +41,5 @@ $ ->
   usuarioDependientesView = new DependientesView( collection : usuarioDependientes )
 
   usuarioDependientes.fetch
-    sucess : (collection) ->
-      console.log "collection : #{collection}"
+    success : (collection) ->
+      ($ '#dependienteContainer').html( usuarioDependientesView.render().el )

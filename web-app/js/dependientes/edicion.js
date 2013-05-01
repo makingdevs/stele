@@ -6,9 +6,17 @@ $(function() {
   DependienteView = Backbone.View.extend({
     tagName: 'li',
     render: function() {
-      var html, template;
+      var context, html, template;
       template = Handlebars.compile(($("#dependienteCard")).html());
-      html = template(this.model);
+      context = {
+        imagen: this.model.get('imagen'),
+        matricula: this.model.get('matricula'),
+        nombreCompleto: this.model.get('nombreCompleto'),
+        nivel: this.model.get('nivel'),
+        grado: this.model.get('grado'),
+        grupo: this.model.get('grupo')
+      };
+      html = template(context);
       this.$el.html(html);
       return this;
     }
@@ -37,8 +45,8 @@ $(function() {
     collection: usuarioDependientes
   });
   return usuarioDependientes.fetch({
-    sucess: function(collection) {
-      return console.log("collection : " + collection);
+    success: function(collection) {
+      return ($('#dependienteContainer')).html(usuarioDependientesView.render().el);
     }
   });
 });
