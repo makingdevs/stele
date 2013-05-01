@@ -53,6 +53,15 @@ class BootStrap {
     def user = Usuario.read(usuario.id)
     if(!usuarioRol)
       usuarioRol = UsuarioRol.create(user, rol, true)
+
+    Perfil perfilDependiente = new Perfil( nombre: "Nelson Jr.",
+                                           apellidoPaterno: "Muntz")
+    perfilDependiente.save(flush:true)
+    Dependiente dependiente = new Dependiente(matricula : "2013A9023",
+                                              perfil : perfilDependiente,
+                                              camada : "0000000001")
+    usuario.addToDependientes( dependiente )
+    usuario.save(flush:true)
   }
 
 }

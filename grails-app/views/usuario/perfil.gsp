@@ -4,13 +4,14 @@
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
 
-    <r:require modules="handlebars, backbone, usuario" />
+    <r:require modules="underscore, handlebars, backbone, usuario, dependiente" />
 
   </head>
 
   <body>
 
     <g:render template="header" />
+    <g:render template="dependienteCard" />
     <div id="encabezadoContainer" >
     </div>
 
@@ -175,18 +176,9 @@
         <div class="row-fluid">
           <div class="span6">
 
-            <div class="media">
-              <span class="pull-left">
-                <img class="media-object" src="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}" style="width: 114px; height: 114px;">
-              </span>
-              <div class="media-body">
-                <p><strong>Matricula :</strong> <small> A201300018 </small></p>
-                <p><strong>Nombre :</strong> <small> Anali Avila Moreno </small></p>
-                <p><strong>Nivel :</strong> <small> Kinder </small></p>
-                <p><strong>Grado :</strong> <small> 1ro. </small></p>
-                <p><strong>Grupo :</strong> <small> "A" </small></p>
-              </div>
+            <div id="dependienteContainer" >
             </div>
+
           </div>
         </div>
       </div>

@@ -7,11 +7,11 @@ $ ->
     render: ->
       template = Handlebars.compile( ($ "#encabezadoUsuario").html())
       html     = template(@.model)
-      this.$el.html( html )
-      return @
+      @.$el.html( html )
+      @
 
   modelo = new PerfilModel
   modelo.fetch
     success : (model, response, options) ->
       perfilView = new PerfilView( model : response )
-      $('#encabezadoContainer').html(perfilView.render().el)
+      ($ '#encabezadoContainer').html(perfilView.render().el)

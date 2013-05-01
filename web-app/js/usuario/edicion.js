@@ -23,7 +23,7 @@ $(function() {
       perfilView = new PerfilView({
         model: response
       });
-      return $('#encabezadoContainer').html(perfilView.render().el);
+      return ($('#encabezadoContainer')).html(perfilView.render().el);
     }
   });
 });
