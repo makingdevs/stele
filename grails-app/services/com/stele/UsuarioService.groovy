@@ -7,12 +7,15 @@ class UsuarioService {
   def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def usuario = new Usuario()
     def perfil = new Perfil()
+    def telefono = new Telefono()
     perfil.nombre = filaExcelCommand.tutorNombre
     perfil.apellidoPaterno = filaExcelCommand.tutorApellidoPaterno
     perfil.apellidoMaterno = filaExcelCommand.tutorApellidoMaterno
+    telefono.numeroTelefonico = filaExcelCommand.telefono
+    perfil.addToTelefonos(telefono)
     usuario.perfil = perfil
     usuario.username = filaExcelCommand.correoElectronico
-    usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
+    usuario.password = armaPasswordTemporal(filaExcelCommand.tutorNombre,filaExcelCommand.correoElectronico,filaExcelCommand.telefono)
     usuario.enabled = true
     usuario
   }
@@ -20,6 +23,13 @@ class UsuarioService {
   def registrar(Usuario usuario){
     def existeUsuario = Usuario.findByUsername(usuario.username)
     existeUsuario ?: usuario.save()
+  }
+
+  private String armaPasswordTemporal(String nombre, String correo, String telefono){
+    String passworGenerado = nombre?.substring(0,2) + 
+                              correo?.substring(0,2) + 
+                              telefono?.substring((telefono.length()-4)) 
+    passworGenerado.toLowerCase()
   }
 
 }
