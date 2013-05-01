@@ -10,7 +10,6 @@ class Perfil {
   Date fechaDeNacimiento
   Sexo sexo = Sexo.QUIMERA
 
-  static belongsTo = [dependiente : Dependiente, usuario : Usuario]
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
   Date dateCreated
@@ -20,5 +19,6 @@ class Perfil {
     nombre size:1..50,blank:false
     apellidoPaterno size:1..50,blank:false
     apellidoMaterno size:1..50,blank:true,nullable:true
+    fechaDeNacimiento nullable:true
   }
 }
