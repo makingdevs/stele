@@ -3,6 +3,7 @@ package com.stele.seguridad
 import com.stele.Perfil
 import groovy.transform.ToString
 import com.stele.Dependiente
+import com.stele.Institucion
 
 @ToString
 class Usuario {
@@ -17,7 +18,7 @@ class Usuario {
 	boolean passwordExpired
 	Perfil perfil
 
-	static hasMany = [dependientes : Dependiente]
+	static hasMany = [dependientes : Dependiente, instituciones : Institucion]
 
 	static constraints = {
 		username blank: false, unique: true
