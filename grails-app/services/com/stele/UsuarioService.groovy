@@ -22,7 +22,7 @@ class UsuarioService {
 
   def registrar(Usuario usuario){
     def existeUsuario = Usuario.findByUsername(usuario.username)
-    existeUsuario ?: usuario.save()
+    existeUsuario ?: usuario.save(flush:true)
   }
 
   private String armaPasswordTemporal(String nombre, String correo, String telefono){
