@@ -17,7 +17,7 @@ public class CustomAuthSuccessHandler extends SavedRequestAwareAuthenticationSuc
       return new ApplicationTagLib().createLink([controller: 'inicio'])
     }
     else if( SpringSecurityUtils.getPrincipalAuthorities().find{ it == "ROLE_PADRE_TUTOR" } ) {
-      String url = new ApplicationTagLib().createLink([controller: 'usuario', action:'edicion', base:'/'])
+      String url = new ApplicationTagLib().createLink([controller: 'usuario', action:'perfil', base:'/'])
       return url.substring(1)
     }
 
