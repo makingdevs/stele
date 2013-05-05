@@ -1,12 +1,12 @@
 <div class="page-header">
   <div class="media">
     <span class="pull-left">
-      <img class="media-object" src="{{urlImagenTutor}}" style="width: 114px; height: 114px;">
+      <img class="media-object" src="${usuarioActual.perfil.avatar}" style="width: 114px; height: 114px;">
     </span>
     <div class="media-body">
-      <h1>{{nombreTutor}}</h1>
-      <h3>{{apellidosTutor}}</h3>
-      <h4>{{email}}</h4>
+      <h1>${usuarioActual.perfil.nombre}</h1>
+      <h3>${usuarioActual.perfil.apellidoPaterno} ${usuarioActual.perfil.apellidoMaterno}</h3>
+      <h4>${usuarioActual.username}</h4>
     </div>
   </div>
 </div>
