@@ -4,8 +4,6 @@
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
 
-    <r:require modules="underscore, handlebars, backbone, usuario, dependiente" />
-
   </head>
 
   <body>
@@ -15,7 +13,6 @@
     <div id="encabezadoContainer" >
     </div>
 
-    <form action="edicion" class="form-horizontal">
       <div class="row">
         <div class="span12 label label-info">
           <h5>Cambio de contraseña</h5>
@@ -48,7 +45,7 @@
           <div class="span4 offset2">
             <div class="alert alert-block alert-info">
               <p class="text-center">
-                <strong> En caso de que olvide su contraseña se enviará mail a su correo principal </strong>
+                <strong> En caso de que olvide su contraseña se enviará un mail a su correo principal </strong>
                </p>
             </div>
           </div>
@@ -57,81 +54,12 @@
 
       <div class="row">
         <div class="span12 label label-info">
-          <h5>Información personal</h5>
+          <h5>Información personal </h5>
         </div>
       </div>
       <br />
       <div class="container-fluid">
         <div class="row-fluid">
-          <div class="span6">
-
-            <div class="control-group">
-              <label for="nombre" class="control-label">Nombre: </label>
-              <div class="controls">
-                <input type="text" id="nombre" placeholder="Nombre">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="apellidoPaterno" class="control-label">Apellido Paterno: </label>
-              <div class="controls">
-                <input type="text" id="apellidoPaterno" placeholder="Apellido Paterno">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="apellidoMaterno" class="control-label">Apellido Materno: </label>
-              <div class="controls">
-                <input type="text" id="apellidoMaterno" placeholder="Apellido Materno">
-              </div>
-            </div>
-          </div>
-
-          <div class="span4">
-            <div class="control-group">
-              <label for="foto" class="control-label">Sube tu foto: </label>
-              <div class="controls">
-                <input type="file" id="foto">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span12 label label-info">
-          <h5>Información del Contacto</h5>
-        </div>
-      </div>
-      <br />
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span6">
-            <table class="table table-bordered table-condensed">
-              <thead style="background-color:whiteSmoke">
-                <tr>
-                  <th colspan="3" style="text-align:left; color:blue;"> Correo Electrónico </th>
-                  <th style="border-left-style: none; text-align:right;"><i class="icon-plus-sign"></i></th>
-                </tr>
-                <tr>
-                  <th>Principal</th>
-                  <th>Tipo</th>
-                  <th>Dirección</th>
-                  <th>&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td>Personal</td>
-                  <td>alberto@gmail.com</td>
-                  <td style="text-align:center;">
-                    <button class="btn btn-info"><i class="icon-edit icon-white"></i></button>
-                    <button class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
           <div class="span6">
             <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
@@ -188,6 +116,5 @@
         <a href="" class="btn btn-large">Cancelar</a>
       </div>
 
-    </form>
   </body>
 </html>

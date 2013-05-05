@@ -18,7 +18,8 @@ class UsuarioController {
       [
         nombreTutor : usuarioActual.perfil.nombre,
         apellidosTutor : "${usuarioActual.perfil.apellidoPaterno} ${usuarioActual.perfil.apellidoMaterno ?: ''}",
-        urlImagenTutor : "http://www.blogdelossimpson.com.ar/wp-content/uploads/2008/08/nelson1.gif"
+        urlImagenTutor : "http://www.blogdelossimpson.com.ar/wp-content/uploads/2008/08/nelson1.gif",
+        email : usuarioActual.username
       ]
     }
   }
@@ -38,7 +39,6 @@ class UsuarioController {
       mapa.grupo = "lol"
       dependientes << mapa
     }
-
 
     render(contentType:"text/json") {
       dependientes
