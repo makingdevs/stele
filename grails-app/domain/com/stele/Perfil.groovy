@@ -24,6 +24,6 @@ class Perfil {
   }
 
   String nombreCompleto() {
-    "$nombre $apellidoPaterno $apellidoMaterno"
+    "$nombre $apellidoPaterno ${apellidoMaterno ?: ''}"
   }
 }

@@ -5,8 +5,8 @@
   <div class="media-body">
     <p><strong>Matricula :</strong> <small> ${dependiente.matricula} </small></p>
     <p><strong>Nombre :</strong> <small> ${dependiente.perfil.nombreCompleto()} </small></p>
-    <p><strong>Nivel :</strong> <small> {{nivel}} </small></p>
-    <p><strong>Grado :</strong> <small> {{grado}} </small></p>
-    <p><strong>Grupo :</strong> <small> {{grupo}} </small></p>
+    <p><strong>Nivel :</strong> <small> Nivel </small></p>
+    <p><strong>Grado :</strong> <small> Grado  </small></p>
+    <p><strong>Grupo :</strong> <small> Grupo  </small></p>
   </div>
 </div>
