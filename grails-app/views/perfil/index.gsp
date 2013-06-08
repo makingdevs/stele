@@ -23,13 +23,13 @@
             <div class="control-group">
               <label for="" class="control-label">Nueva contraseña: </label>
               <div class="controls">
-                <input type="password" class="input-xlarge" name="nuevaContrasenia" placeholder="Nueva contraseña">
+                <input type="password" class="input-xlarge" id="nuevaContrasenia" name="nuevaContrasenia" placeholder="Nueva contraseña">
               </div>
             </div>
             <div class="control-group">
               <label for="" class="control-label">Confirma contraseña: </label>
               <div class="controls">
-                <input type="password" class="input-xlarge" name="confirmaContrasenia" placeholder="Confirma contraseña">
+                <input type="password" class="input-xlarge" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
               </div>
             </div>
 
