@@ -9,7 +9,7 @@ class Perfil {
   String apellidoMaterno
   Date fechaDeNacimiento
   Sexo sexo = Sexo.QUIMERA
-  String avatar
+  String avatar = "http://images3.wikia.nocookie.net/__cb20121205194059/simpsons/images/e/e9/Nelson_Ha-Ha.jpg"
 
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
@@ -21,6 +21,7 @@ class Perfil {
     apellidoPaterno size:1..50,blank:false
     apellidoMaterno size:1..50,blank:true,nullable:true
     fechaDeNacimiento nullable:true
+    avatar url:true
   }
 
   String nombreCompleto() {
