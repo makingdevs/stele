@@ -21,12 +21,6 @@
         <div class="span6">
           <g:form name="password" controller="perfil" action="actualizarPassword">
             <div class="control-group">
-              <label for="contraseniaActual" class="control-label">Contraseña actual: </label>
-              <div class="controls">
-                <input type="password" class="input-xlarge" name="contraseniaActual" placeholder="Contraseña actual">
-              </div>
-            </div>
-            <div class="control-group">
               <label for="" class="control-label">Nueva contraseña: </label>
               <div class="controls">
                 <input type="password" class="input-xlarge" name="nuevaContrasenia" placeholder="Nueva contraseña">
