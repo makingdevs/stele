@@ -9,7 +9,9 @@
       <h1>Confirma esta información.</h1>
     </div>
     <h2>Distribución organizacional</h2>
-    <g:render template="distribucionOrganizacional" model="" />
+    <g:each in="${estructuraInstitucional}" var="distribucionDeCicloEscolar">
+      <g:render template="distribucionOrganizacional" model="[distribucionDeCicloEscolar:distribucionDeCicloEscolar]" />
+    </g:each>
     <div class="row-fluid">
       <g:link class="btn btn-large btn-primary" controller="procesamientoMasivo">
         Procesar y confirmar información
