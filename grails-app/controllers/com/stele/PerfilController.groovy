@@ -11,17 +11,13 @@ class PerfilController {
   }
 
   def actualizarPassword(UpdatePasswordCommand upc) {
-    log.debug "actualizando passwords"
-
     if(upc.hasErrors()) {
       render upc.errors
       return 
     }
-
     perfilService.actualizarPasswordForUser(upc.nuevaContrasenia, springSecurityService.currentUser)
     redirect controller:'perfil'
   }
-
 }
 
 class UpdatePasswordCommand {
