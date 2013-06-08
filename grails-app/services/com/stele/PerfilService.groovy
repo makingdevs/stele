@@ -1,9 +1,14 @@
 package com.stele
 
+import com.stele.seguridad.Usuario
+
 class PerfilService {
 
-  def actualizarPassword(UpdatePasswordCommand updatePasswordCommand, def usuarioActual) {
-    log.debug "updating passwords $params"
+  def actualizarPasswordForUser(String nuevaContrasenia, def usuario) {
+    log.debug "updating password"
+    usuario.password = nuevaContrasenia
+    usuario.save(flush:true)
+    usuario
   }
 
 }
