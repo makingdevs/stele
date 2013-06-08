@@ -17,10 +17,11 @@ class InicioController {
     def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
     flash.listaDeMapaDeDominios = listaDeMapaDeDominios
     def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
-    def conteosDeEstructuraInstitucional = reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO)
     
     [
-      conteosDeEstructuraInstitucional:conteosDeEstructuraInstitucional,
+      alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),
+      alumnosPorGrado:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.GRADO),
+      alumnosPorTurno:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO),
       estructuraInstitucional:estructuraInstitucional,
       listaDeMapaDeDominios:listaDeMapaDeDominios
     ]
