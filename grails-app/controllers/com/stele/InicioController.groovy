@@ -4,7 +4,8 @@ class InicioController {
 
   def datosEscolaresWrapperService
   def datosEscolaresDomainWrapperService
-  //def estructuraInstitucionalService
+  def estructuraInstitucionalService
+  def reporteMigracionService
 
   def index() {
     [:]
@@ -15,9 +16,15 @@ class InicioController {
     def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(excelParaProcesar)
     def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
     flash.listaDeMapaDeDominios = listaDeMapaDeDominios
-    //def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
-    //[estructuraInstitucional:estructuraInstitucional,listaDeMapaDeDominios:listaDeMapaDeDominios]
-    [listaDeMapaDeDominios:listaDeMapaDeDominios]
+    def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
+    
+    [
+      alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),
+      alumnosPorGrado:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.GRADO),
+      alumnosPorTurno:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO),
+      estructuraInstitucional:estructuraInstitucional,
+      listaDeMapaDeDominios:listaDeMapaDeDominios
+    ]
   }
 
   def upload(){

@@ -24,11 +24,15 @@ class ReporteMigracionServiceSpec extends Specification {
                            'TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || 10
       ['22':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]],
              'NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || 8
+      ['22':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]],
+             'NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]],
+       '23':['NIVEL':['1':['TURNO1':['A' : [1,2,3]]]],
+             'NIVAL':['2':['TURNO2':['A' : [1,2,3], 'B' :[1,2]]]]]] || 16
   }
 
   def "Obtener conteo de dependientes por ciclo escolar" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 0)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, NivelInstitucional.CICLO_ESCOLAR)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
@@ -43,7 +47,7 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por nivel" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 1)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, NivelInstitucional.NIVEL)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
@@ -60,7 +64,7 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por nivel y grado" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 2)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, NivelInstitucional.GRADO)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
@@ -79,7 +83,7 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por nivel, grado y turno" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 3)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, NivelInstitucional.TURNO)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
@@ -99,7 +103,7 @@ class ReporteMigracionServiceSpec extends Specification {
 
   def "Obtener conteo de dependientes por nivel, grado, turno y grupo" () {
     when : "Llamamos al contador de datos"
-      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, 4)
+      def totalDependientes = service.conteoDeDependientesParaElNivel(estructuraInstitucional, NivelInstitucional.GRUPO)
 
     then : "Los resultados son"
       assert totalDependientes == totalDependientesEsperados
