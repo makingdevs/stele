@@ -22,7 +22,21 @@ class UsuarioService {
 
   def registrar(Usuario usuario){
     def existeUsuario = Usuario.findByUsername(usuario.username)
-    existeUsuario ?: usuario.save(flush:true)
+
+    if(!existeUsuario) {
+      Perfil perfil = usuario.perfil
+      log.debug "perfil telefonos : ${perfil.telefonos.size()}"
+      log.debug "perfil telefonos : ${perfil.telefonos.first().validate()}"
+      log.debug "perfil telefonos : ${perfil.telefonos.first().errors}"
+      log.debug "perfil : ${perfil.validate()}"
+      log.debug "perfil : ${perfil.errors}"
+      perfil.save(flush:true)
+      usuario.perfil = perfil
+      usuario.save(flush:true)
+      return  usuario
+    }
+
+    existeUsuario
   }
 
   private String armaPasswordTemporal(String nombre, String correo, String telefono){
