@@ -9,6 +9,7 @@ class Perfil {
   String apellidoMaterno
   Date fechaDeNacimiento
   Sexo sexo = Sexo.QUIMERA
+  String avatar
 
   static hasMany = [direccion: Direccion, telefonos: Telefono]
 
@@ -20,5 +21,9 @@ class Perfil {
     apellidoPaterno size:1..50,blank:false
     apellidoMaterno size:1..50,blank:true,nullable:true
     fechaDeNacimiento nullable:true
+  }
+
+  String nombreCompleto() {
+    "$nombre $apellidoPaterno ${apellidoMaterno ?: ''}"
   }
 }
