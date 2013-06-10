@@ -11,11 +11,11 @@ class UsuarioService {
     perfil.nombre = filaExcelCommand.tutorNombre
     perfil.apellidoPaterno = filaExcelCommand.tutorApellidoPaterno
     perfil.apellidoMaterno = filaExcelCommand.tutorApellidoMaterno
-    telefono.numeroTelefonico = filaExcelCommand.telefono
+    telefono.numeroTelefonico = filaExcelCommand.telefono.replaceAll( "[^\\d.]", "" )
     perfil.addToTelefonos(telefono)
     usuario.perfil = perfil
     usuario.username = filaExcelCommand.correoElectronico
-    usuario.password = armaPasswordTemporal(filaExcelCommand.tutorNombre,filaExcelCommand.correoElectronico,filaExcelCommand.telefono)
+    usuario.password = armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico)
     usuario.enabled = true
     usuario
   }
@@ -25,11 +25,6 @@ class UsuarioService {
 
     if(!existeUsuario) {
       Perfil perfil = usuario.perfil
-      log.debug "perfil telefonos : ${perfil.telefonos.size()}"
-      log.debug "perfil telefonos : ${perfil.telefonos.first().validate()}"
-      log.debug "perfil telefonos : ${perfil.telefonos.first().errors}"
-      log.debug "perfil : ${perfil.validate()}"
-      log.debug "perfil : ${perfil.errors}"
       perfil.save(flush:true)
       usuario.perfil = perfil
       usuario.save(flush:true)

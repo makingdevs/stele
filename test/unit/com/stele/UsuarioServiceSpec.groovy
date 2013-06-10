@@ -12,7 +12,7 @@ import com.stele.seguridad.Usuario
 @Mock([Usuario, Perfil])
 class UsuarioServiceSpec  extends Specification{
 
-    def "Obtener un usuario apartir de un command leeido desde un excel"(){
+    def "Obtener un usuario apartir de un command leeido desde un excel y verificando validaciones en telefono"(){
       given:
         def filaExcelCommand = new FilaExcelCommand(datosBasicos) 
       when:
@@ -30,7 +30,7 @@ class UsuarioServiceSpec  extends Specification{
         assert usuario.perfil.telefonos*.numeroTelefonico.flatten() == [numeroTelefonicoEsperado]
       where:
         datosBasicos << [
-          [tutorNombre:"Rodrigo",tutorApellidoPaterno:"Martínez",tutorApellidoMaterno:"García",correoElectronico:"rockdrigo.mtz@gmail.com",telefono:"123456789"],
+          [tutorNombre:"Rodrigo",tutorApellidoPaterno:"Martínez",tutorApellidoMaterno:"García",correoElectronico:"rockdrigo.mtz@gmail.com",telefono:"(172) 790-9153"],
           [tutorNombre:"Juan",tutorApellidoPaterno:"Perez",tutorApellidoMaterno:"Perez",correoElectronico:"j.perez@gmail.com",telefono:"987654321"]
         ]
         nombreEsperado << [
@@ -50,11 +50,11 @@ class UsuarioServiceSpec  extends Specification{
           "j.perez@gmail.com"
         ]
         numeroTelefonicoEsperado << [
-          "123456789",
+          "1727909153",
           "987654321"
         ]
         passwordEsperado << [
-          "roro6789",
+          "roro9153",
           "juj.4321"
         ]
     }
