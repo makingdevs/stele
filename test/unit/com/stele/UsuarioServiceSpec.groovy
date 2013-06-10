@@ -61,6 +61,9 @@ class UsuarioServiceSpec  extends Specification{
 
     def "Registrar un usuario verificando que no exista"(){
       given: "Un usuario con datos"
+        def perfilServiceMock = mockFor(PerfilService)
+        perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
+        service.perfilService = perfilServiceMock.createMock()
         def usuario = new Usuario()
         def perfil = new Perfil()
         def telefono = new Telefono()
@@ -83,6 +86,9 @@ class UsuarioServiceSpec  extends Specification{
 
     def "No registrar un usuario ya existente"(){
       given: "Un usuario ya existente y "
+        def perfilServiceMock = mockFor(PerfilService)
+        perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
+        service.perfilService = perfilServiceMock.createMock()
         Usuario.metaClass.isDirty = { true } 
         Usuario.metaClass.encodePassword = { "password" } 
         def usuarioExistente = new Usuario()
@@ -122,6 +128,9 @@ class UsuarioServiceSpec  extends Specification{
 
     def "Registrar un usuario verificando que no exista y agregando una institucion"(){
       given: "Un usuario con datos y agregnado la institucion"
+        def perfilServiceMock = mockFor(PerfilService)
+        perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
+        service.perfilService = perfilServiceMock.createMock()
         def usuario = new Usuario()
         def perfil = new Perfil()
         def telefono = new Telefono()

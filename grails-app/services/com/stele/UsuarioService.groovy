@@ -4,6 +4,8 @@ import com.stele.seguridad.Usuario
 
 class UsuarioService {
 
+  def perfilService
+
   def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def usuario = new Usuario()
     def perfil = new Perfil()
@@ -22,15 +24,11 @@ class UsuarioService {
 
   def registrar(Usuario usuario){
     def existeUsuario = Usuario.findByUsername(usuario.username)
-
     if(!existeUsuario) {
-      Perfil perfil = usuario.perfil
-      perfil.save(flush:true)
-      usuario.perfil = perfil
+      usuario.perfil = perfilService.registrar(usuario.perfil)
       usuario.save(flush:true)
       return  usuario
     }
-
     existeUsuario
   }
 
