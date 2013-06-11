@@ -15,13 +15,13 @@ class ProcesamientoMasivoServiceSpec extends Specification {
         usuarioServiceMock.demand.registrar(1..1) { Usuario usuario -> new Usuario().save(validate:false) }
         service.usuarioService = usuarioServiceMock.createMock()
         def dependienteServiceMock = mockFor(DependienteService)
-        dependienteServiceMock.demand.registrar(1..1) { Dependiente dependiente -> new Dependiente().save(validate:false) }
+        dependienteServiceMock.demand.registrar(1..1) { Dependiente dependiente, Long id -> new Dependiente().save(validate:false) }
         service.dependienteService = dependienteServiceMock.createMock()
         def cicloEscolarServiceMock = mockFor(CicloEscolarService)
         cicloEscolarServiceMock.demand.registrar(1..1) { CicloEscolar cicloEscolar -> new CicloEscolar().save(validate:false) }
         service.cicloEscolarService = cicloEscolarServiceMock.createMock()
         def distribucionInstitucionalServiceMock = mockFor(DistribucionInstitucionalService)
-        distribucionInstitucionalServiceMock.demand.registrar(1..1) { DistribucionInstitucional distribucionInstitucional -> new DistribucionInstitucional().save(validate:false) }
+        distribucionInstitucionalServiceMock.demand.registrar(1..1) { DistribucionInstitucional distribucionInstitucional, Long id -> new DistribucionInstitucional().save(validate:false) }
         service.distribucionInstitucionalService = distribucionInstitucionalServiceMock.createMock()
       when:
         def filaDeExcelParaPersistir = [usuario: new Usuario(),

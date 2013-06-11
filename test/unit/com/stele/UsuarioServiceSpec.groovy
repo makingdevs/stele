@@ -9,10 +9,10 @@ import spock.lang.Specification
 import com.stele.seguridad.Usuario
 
 @TestFor(UsuarioService)
-@Mock([Usuario, Perfil])
+@Mock([Usuario, Perfil, Telefono, Institucion])
 class UsuarioServiceSpec  extends Specification{
 
-    def "Obtener un usuario apartir de un command leeido desde un excel y verificando validaciones en telefono"(){
+    def "Obtener un usuario apartir de un command leído desde un excel y verificando validaciones en telefono"(){
       given:
         def filaExcelCommand = new FilaExcelCommand(datosBasicos) 
       when:
@@ -127,7 +127,7 @@ class UsuarioServiceSpec  extends Specification{
     }
 
     def "Registrar un usuario verificando que no exista y agregando una institucion"(){
-      given: "Un usuario con datos y agregnado la institucion"
+      given: "Un usuario con datos y agregando la institucion"
         def perfilServiceMock = mockFor(PerfilService)
         perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
         service.perfilService = perfilServiceMock.createMock()
