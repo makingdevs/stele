@@ -4,6 +4,8 @@ import com.stele.seguridad.Usuario
 
 class UsuarioService {
 
+  def perfilService
+
   def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def usuario = new Usuario()
     def perfil = new Perfil()
@@ -11,18 +13,23 @@ class UsuarioService {
     perfil.nombre = filaExcelCommand.tutorNombre
     perfil.apellidoPaterno = filaExcelCommand.tutorApellidoPaterno
     perfil.apellidoMaterno = filaExcelCommand.tutorApellidoMaterno
-    telefono.numeroTelefonico = filaExcelCommand.telefono
+    telefono.numeroTelefonico = filaExcelCommand.telefono.replaceAll( "[^\\d.]", "" )
     perfil.addToTelefonos(telefono)
     usuario.perfil = perfil
     usuario.username = filaExcelCommand.correoElectronico
-    usuario.password = armaPasswordTemporal(filaExcelCommand.tutorNombre,filaExcelCommand.correoElectronico,filaExcelCommand.telefono)
+    usuario.password = armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico)
     usuario.enabled = true
     usuario
   }
 
   def registrar(Usuario usuario){
     def existeUsuario = Usuario.findByUsername(usuario.username)
-    existeUsuario ?: usuario.save(flush:true)
+    if(!existeUsuario) {
+      usuario.perfil = perfilService.registrar(usuario.perfil)
+      usuario.save(flush:true)
+      return  usuario
+    }
+    existeUsuario
   }
 
   private String armaPasswordTemporal(String nombre, String correo, String telefono){
