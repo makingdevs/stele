@@ -18,7 +18,7 @@
       ]" />
     </g:each>
     <div class="row-fluid">
-      <g:link class="btn btn-large btn-primary" controller="procesamientoMasivo">
+      <g:link class="btn btn-large btn-primary" controller="procesamientoMasivo" params="[institucionId:institucionId]">
         Procesar y confirmar información
       </g:link>
     </div>
