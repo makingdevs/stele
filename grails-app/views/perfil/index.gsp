@@ -1,8 +1,12 @@
 <!DOCTYPE html>
+<%@ page import="com.stele.TipoDeTelefono" %>
+
 <html>
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Edición de datos</title>
+
+    <r:require modules="telefono"/>
 
   </head>
 
@@ -41,35 +45,51 @@
         </div>
 
         <div class="span6">
-          <table class="table table-bordered table-condensed">
-            <thead style="background-color:whiteSmoke">
-              <tr>
-                <th colspan="5" style="text-align:left; color:blue;"> Teléfono </th>
-                <th style="border-left-style: none; text-align:right;"><i class="icon-plus-sign"></i></th>
-              </tr>
-              <tr>
-                <th>Principal</th>
-                <th>Tipo</th>
-                <th>Lada</th>
-                <th>Numero</th>
-                <th>Ext</th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td>Casa</td>
-                <td>55</td>
-                <td>1234567890</td>
-                <td></td>
-                <td style="text-align:center;">
-                  <button class="btn btn-info"><i class="icon-edit icon-white"></i></button>
-                  <button class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <g:formRemote name="telefonoAsync" url="[controller:'telefono', action:'agregarAsync']">
+            <table class="table table-bordered table-condensed">
+              <thead style="background-color:whiteSmoke">
+                <tr>
+                  <th colspan="6" style="text-align:left; vertical-align:middle; color:blue;"> 
+                    Teléfono 
+                  </th>
+                </tr>
+                <tr>
+                  <th>Principal</th>
+                  <th>Tipo</th>
+                  <th>Lada</th>
+                  <th>Numero</th>
+                  <th>Ext</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="agregar">
+                  <td>
+                    <label class="checkbox">
+                      <g:checkBox name="principal" />
+                    </label>
+                  </td>
+                  <td>
+                    <g:select class="input-small" name="tipoDeTelefono" from="${TipoDeTelefono.values()}" optionKey="key"/>
+                  </td>
+                  <td>
+                    <input type="text" class="input-mini" maxlength="3" name="lada"></input>
+                  </td>
+                  <td>
+                    <input type="text" class="input-small" maxlength="10" name="numeroTelefonico"></input>
+                  </td>
+                  <td>
+                    <input type="text" class="input-mini" maxlength="6" name="extension"></input>
+                  </td>
+                  <td style="text-align:center;">
+                    <button class="btn btn-primary">
+                      <i class="icon-plus-sign icon-white"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </g:formRemote>
         </div>
       </div>
     </div>
