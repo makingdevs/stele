@@ -143,3 +143,5 @@ grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.stele.seg
 grails.plugins.springsecurity.authority.className = 'com.stele.seguridad.Rol'
 grails.plugins.springsecurity.requestMap.className = 'com.stele.seguridad.Requestmap'
 grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+
+// agregar defaultTarget url mapeado a un controller
