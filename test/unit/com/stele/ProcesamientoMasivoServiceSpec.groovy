@@ -28,7 +28,7 @@ class ProcesamientoMasivoServiceSpec extends Specification {
                                         dependiente: new Dependiente(),
                                         cicloEscolar: new CicloEscolar(),
                                         distribucionInstitucional: new DistribucionInstitucional()]
-        def mapaDeObjetosPersistidos = service.procesaMapaConDatosDeFilaDeExcelParaPersistir(filaDeExcelParaPersistir)
+        def mapaDeObjetosPersistidos = service.procesaMapaConDatosDeFilaDeExcelParaPersistir(filaDeExcelParaPersistir, new Long(1))
       then:
         assert mapaDeObjetosPersistidos.usuario.id > 0
         assert mapaDeObjetosPersistidos.dependiente.id > 0
@@ -37,3 +37,4 @@ class ProcesamientoMasivoServiceSpec extends Specification {
     }
 
 }
+
