@@ -150,4 +150,8 @@ class DistribucionInstitucionalServiceSpec extends Specification{
       then: "El tamaño de distribuciones institucionales debe ser igual al tamaño inicial"
         assert institucionGuardada.distribucionesInstitucionales.size() == 1
     }
+
+    def "Crear distribucion institucional cuando no existe institucion"(){
+      //shouldFail
+    }
 }
