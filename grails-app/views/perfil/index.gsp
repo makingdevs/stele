@@ -45,7 +45,7 @@
         </div>
 
         <div class="span6">
-          <g:formRemote name="telefonoAsync" url="[controller:'telefono', action:'agregarAsync']">
+          <g:formRemote name="telefonoAsync" url="[controller:'telefono', action:'agregarTelefonoAsync']">
             <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
                 <tr>
