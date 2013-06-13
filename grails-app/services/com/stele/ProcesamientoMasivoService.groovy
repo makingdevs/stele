@@ -7,7 +7,7 @@ class ProcesamientoMasivoService {
   def cicloEscolarService
   def distribucionInstitucionalService
 
-  def procesaMapaConDatosDeFilaDeExcelParaPersistir(def filaDeExcelParaPersistir) {
+  def procesaMapaConDatosDeFilaDeExcelParaPersistir(def filaDeExcelParaPersistir,Long institucionId) {
     def usuario = usuarioService.registrar(filaDeExcelParaPersistir.usuario)
     def dependiente = dependienteService.registrar(filaDeExcelParaPersistir.dependiente, usuario.id)
     def cicloEscolar = cicloEscolarService.registrar(filaDeExcelParaPersistir.cicloEscolar)

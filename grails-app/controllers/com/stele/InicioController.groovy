@@ -23,7 +23,8 @@ class InicioController {
       alumnosPorGrado:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.GRADO),
       alumnosPorTurno:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO),
       estructuraInstitucional:estructuraInstitucional,
-      listaDeMapaDeDominios:listaDeMapaDeDominios
+      listaDeMapaDeDominios:listaDeMapaDeDominios,
+      institucionId: params.long("institucionId")
     ]
   }
 

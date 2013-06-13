@@ -59,10 +59,10 @@ class DistribucionInstitucionalService {
   def registrar(DistribucionInstitucional distribucionInstitucional, Long institucionId){
     Institucion institucion = Institucion.get(institucionId)
     if(institucion){
-        distribucionInstitucional.institucion = institucion
-        distribucionInstitucional.save()
+        institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
+        institucion.save()
       }else{
-        distribucionInstitucional
+        throw RuntimeException("No existe la institución...")
       }
   }
 
