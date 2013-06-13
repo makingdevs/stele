@@ -2,13 +2,20 @@ package com.stele
 
 class InicioController {
 
+  def springSecurityService
   def datosEscolaresWrapperService
   def datosEscolaresDomainWrapperService
   def estructuraInstitucionalService
   def reporteMigracionService
 
   def index() {
-    [:]
+    if (!springSecurityService.isLoggedIn()) {
+      redirect controller:'login'
+      return
+    }
+    def user = springSecurityService.currentUser
+    def principal = springSecurityService.principal
+    [instituciones:user.instituciones]
   }
 
   def preview(){

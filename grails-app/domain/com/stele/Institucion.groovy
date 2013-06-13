@@ -1,7 +1,9 @@
 package com.stele
 
 import com.stele.seguridad.Usuario
+import groovy.transform.ToString
 
+@ToString
 class Institucion {
 
   String nombre

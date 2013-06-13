@@ -20,7 +20,8 @@
     <div class="jumbotron">
       <h1>Controla la operación de tu institución escolar<h1>
       <p class="lead">Conoce los flujos de efectivos actuales y esperados de todos los pagos generados por eventos, actividades y/o servicios ofrecidos en tu institución.</p>
-      <g:link controller="inicio" class="btn btn-large btn-success">Entra ya!</g:link>
+      <g:link controller="registro" class="btn btn-large btn-success">Registrate!</g:link>
+      <g:link controller="inicio" class="btn btn-large btn-primary">Entra ya!</g:link>
     </div>
 
     <hr>
