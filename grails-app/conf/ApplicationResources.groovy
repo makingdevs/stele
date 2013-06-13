@@ -16,4 +16,8 @@ modules = {
     resource url:'js/underscore/underscore.js'
   }
 
+  telefono {
+    resource url:'js/telefono/index.js'
+  }
+
 }
