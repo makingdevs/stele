@@ -8,11 +8,15 @@ class RegistroController {
 
   def crear(){    
     Institucion institucion = new Institucion(params.institucion)
-    Usuario usuario = new Usuario(params.usuario)
+    Usuario usuario = new Usuario(params.usuario + [enabled:true])
     Perfil perfil = new Perfil(params.perfil)
-    usuario.perfil = perfil.save()
-    usuario.addToInstituciones(institucion)
-    usuario.save()
-    render view:'index'
+    if(!Usuario.findByUsername(usuario.username)){
+      def rol = Rol.findByAuthority("ROLE_DIRECTOR")
+      usuario.perfil = perfil.save()
+      usuario.addToInstituciones(institucion)
+      usuario.save()
+      UsuarioRol.create(usuario, rol, true)
+    }
+    redirect controller:'login'
   }
 }
