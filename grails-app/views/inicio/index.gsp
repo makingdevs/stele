@@ -5,11 +5,12 @@
     <title>Inicio</title>
   </head>
   <body>
+  ${instituciones}
     <g:uploadForm controller="inicio" action="preview"> 
       <h1>Comienza aquí!</h1>
       <h2>Tres sencillos pasos</h2>
       <h3>1. Selecciona la institución:</h3>
-      <g:select name="institucionId" from="${com.stele.Institucion.list()}" optionKey="id" optionValue="nombre" value="${institucionId}" noSelection="['':'-Selecciona-']" class="input-xxlarge"/>
+      <g:select name="institucionId" from="${instituciones}" optionKey="id" optionValue="nombre" value="${institucionId}" class="input-xxlarge"/>
       <h3>2. Descarga el archivo de datos:</h3>
       <h3>3. Sube nuevamente el archivo:</h3>
       <input type="file" name="datosEscolares" />
