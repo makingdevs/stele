@@ -23,19 +23,37 @@
             <div class="control-group">
               <label class="control-label" for="inputInstitucion">Institución : </label>
               <div class="controls">
-                <input id="inputInstitucion" placeholder="Nombre de la escuela" type="text" class="input-xxlarge">
+                <input id="institucion.nombre" name="institucion.nombre" placeholder="Nombre de la escuela" type="text" class="input-xxlarge">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputInstitucion">Nombre : </label>
+              <div class="controls">
+                <input id="perfil.nombre" name="perfil.nombre" placeholder="Tu nombre" type="text">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputInstitucion">Apellido paterno : </label>
+              <div class="controls">
+                <input id="perfil.apellidoPaterno" name="perfil.apellidoPaterno" placeholder="Tu primer apellido" type="text">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputInstitucion">Apellido materno : </label>
+              <div class="controls">
+                <input id="perfil.apellidoMaterno" name="perfil.apellidoMaterno" placeholder="( No obligatorio )" type="text">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputEmail">Correo electrónico : </label>
               <div class="controls">
-                <input id="inputEmail" placeholder="your@mail.com" type="text">
+                <input id="usuario.username" name="usuario.username" placeholder="your@mail.com" type="text">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputPassword">Contraseña : </label>
               <div class="controls">
-                <input id="inputPassword" placeholder="Password" type="password">
+                <input id="usuario.password" name="usuario.password" placeholder="Password" type="password">
               </div>
             </div>
             <div class="control-group">
