@@ -1,8 +1,8 @@
 <html>
 <head>
-	<meta name='layout' content='main'/>
-	<title><g:message code="springSecurity.login.title"/></title>
-	<style type='text/css' media='screen'>
+  <meta name="layout" content="twitterBootstrap"/>
+  <title><g:message code="springSecurity.login.title"/></title>
+  <style type='text/css' media='screen'>
 	#login {
 		margin: 15px 0px;
 		padding: 0px;

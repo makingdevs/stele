@@ -2,6 +2,9 @@ import com.stele.Institucion
 import grails.util.Environment
 import net.bull.javamelody.JdbcWrapper
 
+import com.stele.seguridad.*
+import com.stele.*
+
 class BootStrap {
 
   def dataSource
@@ -9,6 +12,7 @@ class BootStrap {
   def init = { servletContext ->
     wrapperMelodyDataSource()
     creaInstituciones()
+    creaUsuario()
   }
   def destroy = {
   }
@@ -24,6 +28,45 @@ class BootStrap {
     new Institucion(nombre:"Instituto Andersen").save(flush:true)
     new Institucion(nombre:"Colegio Americano").save(flush:true)
     new Institucion(nombre:"Colegio Alemán").save(flush:true)
+  }
+
+  private void creaUsuario() {
+    def usuario = Usuario.findByUsername("nelson@muntz.com")
+    if(!usuario) {
+      Perfil perfil = new Perfil( nombre: "Nelson",
+                                  apellidoPaterno: "Muntz",
+                                  avatar : "http://www.blogdelossimpson.com.ar/wp-content/uploads/2008/08/nelson1.gif")
+      perfil.save(flush:true)
+      usuario = new Usuario( username:"nelson@muntz.com",
+                   password:"haha",
+                   enabled:true,
+                   accountExpired:false,
+                   accountLocked:false,
+                   passwordExpired:false,
+                   perfil: perfil)
+
+      usuario.save(flush:true)
+    }
+    def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
+    if(!rol)
+      rol = new Rol(authority:"ROLE_PADRE_TUTOR").save(flush:true)
+    def rolDirector = Rol.findByAuthority("ROLE_DIRECTOR")
+    if(!rolDirector)
+      rolDirector = new Rol(authority:"ROLE_DIRECTOR").save(flush:true)
+    def usuarioRol = UsuarioRol.findByUsuarioAndRol(usuario,rol)
+    def user = Usuario.read(usuario.id)
+    if(!usuarioRol)
+      usuarioRol = UsuarioRol.create(user, rol, true)
+
+    Perfil perfilDependiente = new Perfil( nombre: "Nelson Jr.",
+                                           apellidoPaterno: "Muntz",
+                                           avatar : "http://images1.wikia.nocookie.net/__cb20100606175810/simpsons/images/6/64/Nelson_jr.jpg")
+    perfilDependiente.save(flush:true)
+    Dependiente dependiente = new Dependiente(matricula : "2013A9023",
+                                              perfil : perfilDependiente,
+                                              camada : "0000000001")
+    usuario.addToDependientes( dependiente )
+    usuario.save(flush:true)
   }
 
 }

@@ -1,6 +1,10 @@
 package com.stele
+import groovy.transform.ToString
+import groovy.transform.EqualsAndHashCode
 
-class DistribucionInstitucional {
+@ToString
+@EqualsAndHashCode
+class DistribucionInstitucional implements Comparable<DistribucionInstitucional>{
 
   NivelDeEstudio nivelDeEstudio = NivelDeEstudio.PRIMARIA
   Integer grado
@@ -10,8 +14,15 @@ class DistribucionInstitucional {
   Date dateCreated
   Date lastUpdated
 
+  static belongsTo = [institucion : Institucion]
+
   static constraints = {
     grado range:1..15
     grupo size:1..10
   }
+
+  public int compareTo(DistribucionInstitucional other){
+   nivelDeEstudio <=> other.nivelDeEstudio ?: grado <=> other.grado ?: grupo <=> other.grupo ?: turno <=> other.turno
+ }
+
 }

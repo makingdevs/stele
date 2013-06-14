@@ -8,6 +8,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @TestFor(DistribucionInstitucionalService)
+@Mock([Institucion,DistribucionInstitucional])
 class DistribucionInstitucionalServiceSpec extends Specification{
 
     @Unroll("#datosBasicos")
@@ -34,20 +35,26 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           [grado:"3",grupo:"a",nivel:"Secundaria",turno:"Tard."],
           [grado:"3",grupo:"a",nivel:"Secu",turno:"noc."],
           [grado:"3",grupo:"a",nivel:"SECUNDARIA",turno:"nocturno"],
-          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"]
+          [grado:"3",grupo:"a",nivel:"seCU",turno:"v"],
+          [grado:"",grupo:"",nivel:"",turno:""],
+          [grado:"1",grupo:"f",nivel:"bacho",turno:"t"],
+          [grado:"4",grupo:"g+",nivel:"edu sup",turno:"T"]
         ]
         gradoEsperado << [
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "2",
-          "3",
-          "3",
-          "3",
-          "3"
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          0,
+          1,
+          4
         ]
         grupoEsperado << [
           "C",
@@ -57,14 +64,18 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           "C",
           "C",
           "C",
-          "a",
-          "a",
-          "a",
-          "a"
+          "A",
+          "A",
+          "A",
+          "A",
+          "",
+          "F",
+          "G+"
         ]
         nivelDeEstudioEsperado  << [
           NivelDeEstudio.PRIMARIA,
           NivelDeEstudio.PRIMARIA,
+        
           NivelDeEstudio.PRIMARIA,
           NivelDeEstudio.PRIMARIA,
           NivelDeEstudio.PRIMARIA,
@@ -73,7 +84,11 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
           NivelDeEstudio.SECUNDARIA,
-          NivelDeEstudio.SECUNDARIA
+          NivelDeEstudio.SECUNDARIA,
+          NivelDeEstudio.PRIMARIA,
+          NivelDeEstudio.BACHILLERATO,
+          NivelDeEstudio.EDUCACION_SUPERIOR
+
         ]
         turnoEsperado << [
           Turno.MATUTINO,
@@ -86,7 +101,57 @@ class DistribucionInstitucionalServiceSpec extends Specification{
           Turno.VESPERTINO,
           Turno.NOCTURNO,
           Turno.NOCTURNO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
+          Turno.VESPERTINO,
           Turno.VESPERTINO
         ]
+    }
+
+    def "Crear una distribucion institucional en una institucion"(){
+      given: "Una institucion y una distribucion institucional"
+        def institucion = new Institucion()
+        institucion.nombre = "Kinder Peques"
+        institucion = institucion.save()
+
+        def distribucionInstitucional = new DistribucionInstitucional()
+        distribucionInstitucional.grado = 2
+        distribucionInstitucional.grupo = "B+"
+        distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucional.turno = Turno.VESPERTINO
+      when: "Intento guardar la distribucion institucional"
+        distribucionInstitucional = service.registrar(distribucionInstitucional,institucion.id)
+        institucion = Institucion.get(institucion.id)
+      then: "El id de distribucion intitucional es > 0 y el tamaño de distribuciones institucionales debe ser mayor en 1" 
+        assert distribucionInstitucional.id > 0
+        assert institucion.distribucionesInstitucionales.size() == 1
+    }
+
+    def "Crear una distribucion institucional en una institucion validando duplicados"(){
+      given: "Una institucion y una distribucion institucional"
+       def institucion = new Institucion()
+        institucion.nombre = "Kinder Peques"
+        institucion = institucion.save()
+
+        def distribucionInstitucional = new DistribucionInstitucional()
+        distribucionInstitucional.grado = 2
+        distribucionInstitucional.grupo = "B+"
+        distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucional.turno = Turno.VESPERTINO
+        distribucionInstitucional = service.registrar(distribucionInstitucional,institucion.id)
+      when: "Intento guardar la distribucion institucional ya existente"
+        def distribucionInstitucionalII = new DistribucionInstitucional()
+        distribucionInstitucionalII.grado = 2
+        distribucionInstitucionalII.grupo = "B+"
+        distribucionInstitucionalII.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucionalII.turno = Turno.VESPERTINO
+        distribucionInstitucionalII = service.registrar(distribucionInstitucionalII,institucion.id)
+        def institucionGuardada = Institucion.get(institucion.id)
+      then: "El tamaño de distribuciones institucionales debe ser igual al tamaño inicial"
+        assert institucionGuardada.distribucionesInstitucionales.size() == 1
+    }
+
+    def "Crear distribucion institucional cuando no existe institucion"(){
+      //shouldFail
     }
 }

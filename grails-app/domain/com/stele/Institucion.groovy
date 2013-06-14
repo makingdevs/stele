@@ -1,5 +1,9 @@
 package com.stele
 
+import com.stele.seguridad.Usuario
+import groovy.transform.ToString
+
+@ToString
 class Institucion {
 
   String nombre
@@ -7,7 +11,8 @@ class Institucion {
   Date dateCreated
   Date lastUpdated
 
-  static hasMany = [direccion: Direccion, telefonos: Telefono]
+  static belongsTo = Usuario
+  static hasMany = [direcciones: Direccion, telefonos: Telefono, distribucionesInstitucionales : DistribucionInstitucional, usuarios : Usuario]
 
   static constraints = {
     nombre size:1..100,blank:false
