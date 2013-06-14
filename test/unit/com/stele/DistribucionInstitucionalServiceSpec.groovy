@@ -151,7 +151,19 @@ class DistribucionInstitucionalServiceSpec extends Specification{
         assert institucionGuardada.distribucionesInstitucionales.size() == 1
     }
 
-    def "Crear distribucion institucional cuando no existe institucion"(){
-      //shouldFail
+    def "Crear distribucion institucional cuando no existe institucion y la prueba debe fallar"(){
+      given: " Dada una institucion sin persistir"
+        def institucion = new Institucion()
+        institucion.nombre = "Kinder Peques"
+      when: "Y una distribución institucional a persistir"
+        def distribucionInstitucional = new DistribucionInstitucional()
+        distribucionInstitucional.grado = 2
+        distribucionInstitucional.grupo = "B+"
+        distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+        distribucionInstitucional.turno = Turno.VESPERTINO
+      then: "Se intenta persistir la distribucion institucional a la institucion sin persistir y la prueba debe fallar"
+        shouldFail(RuntimeException) {
+          distribucionInstitucional = service.registrar(distribucionInstitucional,institucion.id)
+        }
     }
 }
