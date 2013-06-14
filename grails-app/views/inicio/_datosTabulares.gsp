@@ -3,7 +3,7 @@
     <tr>
       <th>#</th>
       <th>Nombre del padre/tutor</th>
-      <th>Matricula</th>
+      <th>Matrícula</th>
       <th>Nombre del estudiante</th>
       <th>Nivel</th>
       <th>Grado</th>
