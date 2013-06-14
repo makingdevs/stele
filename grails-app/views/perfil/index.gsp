@@ -45,11 +45,11 @@
         </div>
 
         <div class="span6">
-          <g:formRemote name="telefonoAsync" url="[controller:'telefono', action:'agregarTelefonoAsync']">
+          <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
             <table class="table table-bordered table-condensed">
               <thead style="background-color:whiteSmoke">
                 <tr>
-                  <th colspan="6" style="text-align:left; vertical-align:middle; color:blue;"> 
+                <th colspan="6" style="text-align:left; vertical-align:middle; color:blue;"> 
                     Teléfono 
                   </th>
                 </tr>
@@ -63,6 +63,21 @@
                 </tr>
               </thead>
               <tbody>
+                <g:each in="${usuarioActual.perfil?.telefonos?.sort({ it.id })}" var="t">
+                  <tr>
+                    <td> ${t.principal} </td>
+                    <td> ${t.tipoDeTelefono} </td>
+                    <td> ${t.lada} </td>
+                    <td> ${t.numeroTelefonico} </td>
+                    <td> ${t.extension} </td>
+                    <td style="text-align:center;">
+                      <div class="btn-group">
+                        <g:remoteLink id="${t.id}" class="btn btn-warning"><i class="icon-edit icon-white"></i></g:remoteLink>
+                        <g:remoteLink id="${t.id}" class="btn btn-danger"><i class="icon-trash icon-white"></i></g:remoteLink>
+                      </div>
+                    </td>
+                  </tr>
+                </g:each>
                 <tr id="agregar">
                   <td>
                     <label class="checkbox">
