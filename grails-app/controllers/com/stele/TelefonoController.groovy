@@ -1,6 +1,11 @@
 package com.stele
 
+import com.stele.seguridad.Usuario
+import grails.converters.JSON
+
 class TelefonoController {
+
+  def springSecurityService
 
   def agregarTelefonoAsync(TelefonoCommand cmd) {
     if(cmd.hasErrors()) {
@@ -8,8 +13,13 @@ class TelefonoController {
       return 
     }
 
-    Telefono tel = new Telefono(cmd.properties)
-    tel.save(flush:true)
+    def usuario = springSecurityService.currentUser
+    Perfil perfil = usuario.perfil
+
+    Telefono telefono = new Telefono(cmd.properties)
+    perfil.addToTelefonos(telefono)
+    perfil.save(flush:true)
+    render model:[telefonos:perfil.telefonos]
   }
 
 }
