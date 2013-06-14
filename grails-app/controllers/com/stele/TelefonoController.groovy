@@ -19,7 +19,7 @@ class TelefonoController {
     Telefono telefono = new Telefono(cmd.properties)
     perfil.addToTelefonos(telefono)
     perfil.save(flush:true)
-    render model:[telefonos:perfil.telefonos]
+    render template:"/telefono/list", model:[telefonos:perfil.telefonos]
   }
 
 }
