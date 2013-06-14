@@ -21,18 +21,18 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span6">
+        <div class="span4">
           <g:form name="password" controller="perfil" action="actualizarPassword">
             <div class="control-group">
               <label for="" class="control-label">Nueva contraseña: </label>
               <div class="controls">
-                <input type="password" class="input-xlarge" id="nuevaContrasenia" name="nuevaContrasenia" placeholder="Nueva contraseña">
+                <input type="password" id="nuevaContrasenia" name="nuevaContrasenia" placeholder="Nueva contraseña">
               </div>
             </div>
             <div class="control-group">
               <label for="" class="control-label">Confirma contraseña: </label>
               <div class="controls">
-                <input type="password" class="input-xlarge" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
+                <input type="password" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
               </div>
             </div>
 
@@ -43,7 +43,7 @@
           </g:form>
         </div>
 
-        <div class="span6">
+        <div class="span7 offset1">
           <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
             <div id="listaTelefono">
               <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
