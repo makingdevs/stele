@@ -8,15 +8,15 @@ class RouterController {
     if(springSecurityService.isLoggedIn()){
       def user = springSecurityService.currentUser
       def authorities = user.authorities
-      switch(authorities[0]){
+      switch(authorities.first().authority){
         case "ROLE_PADRE_TUTOR":
-        redirect controller:"home"
+        redirect uri:"/"
         break
         case "ROLE_DIRECTOR":
-        redirect controller:"inicio"
+        redirect controller:"inicio", action:"index"
         break
         default:
-        redirect controller:"home"
+        redirect uri:"/"
         break
       }
       return
