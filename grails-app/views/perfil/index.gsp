@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@ page import="com.stele.TipoDeTelefono" %>
 
 <html>
   <head>
@@ -45,50 +44,10 @@
         </div>
 
         <div class="span6">
-          <g:formRemote name="telefonoAsync" url="[controller:'telefono', action:'agregarTelefonoAsync']">
-            <table class="table table-bordered table-condensed">
-              <thead style="background-color:whiteSmoke">
-                <tr>
-                  <th colspan="6" style="text-align:left; vertical-align:middle; color:blue;"> 
-                    Teléfono 
-                  </th>
-                </tr>
-                <tr>
-                  <th>Principal</th>
-                  <th>Tipo</th>
-                  <th>Lada</th>
-                  <th>Numero</th>
-                  <th>Ext</th>
-                  <th>&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="agregar">
-                  <td>
-                    <label class="checkbox">
-                      <g:checkBox name="principal" />
-                    </label>
-                  </td>
-                  <td>
-                    <g:select class="input-small" name="tipoDeTelefono" from="${TipoDeTelefono.values()}" optionKey="key"/>
-                  </td>
-                  <td>
-                    <input type="text" class="input-mini" maxlength="3" name="lada"></input>
-                  </td>
-                  <td>
-                    <input type="text" class="input-small" maxlength="10" name="numeroTelefonico"></input>
-                  </td>
-                  <td>
-                    <input type="text" class="input-mini" maxlength="6" name="extension"></input>
-                  </td>
-                  <td style="text-align:center;">
-                    <button class="btn btn-primary">
-                      <i class="icon-plus-sign icon-white"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
+            <div id="listaTelefono">
+              <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
+            </div>
           </g:formRemote>
         </div>
       </div>
