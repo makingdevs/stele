@@ -11,7 +11,7 @@ class CicloEscolar {
   Date lastUpdated
 
   static constraints = {
-    clave size:1..50,blank:false
+    clave size:1..80,blank:false
     descripcion blank:true 
   }
 
