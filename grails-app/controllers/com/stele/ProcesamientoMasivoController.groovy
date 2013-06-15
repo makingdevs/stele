@@ -13,7 +13,7 @@ class ProcesamientoMasivoController {
     def ciclosEscolaresPersistidos = [] as Set
     log.debug "Nombre institucion: " + nombreDeInstitucion
 
-    listaDeMapaDeDominios*.dependiente*.camada = nombreDeInstitucion.replaceAll(" ","_") + new Date().format("dd_MM_yy_HH_mm")
+    listaDeMapaDeDominios*.dependiente*.camada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
     listaDeMapaDeDominios.each { l ->
       def mapaDeDominiosPersistidos = procesamientoMasivoService.procesaMapaConDatosDeFilaDeExcelParaPersistir(l,params.long("institucionId") )
       usuariosPersistidos.add(mapaDeDominiosPersistidos.usuario)
