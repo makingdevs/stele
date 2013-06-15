@@ -19,5 +19,7 @@ modules = {
   telefono {
     resource url:'js/telefono/index.js'
   }
-
+  auth {
+    resource url:'css/login/auth.css'
+  }
 }
