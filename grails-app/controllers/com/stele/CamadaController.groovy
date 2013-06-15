@@ -9,7 +9,7 @@ class CamadaController {
       redirect uri:"/"
       return
     }
-    def dependientes = Dependiente.findByCamada(camada)
+    def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager']])
     [dependientes:dependientes]
   }
 }
