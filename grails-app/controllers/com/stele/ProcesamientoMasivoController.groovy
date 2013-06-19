@@ -11,7 +11,6 @@ class ProcesamientoMasivoController {
     def usuariosPersistidos = [] as Set
     def dependientesPersistidos = [] as Set
     def ciclosEscolaresPersistidos = [] as Set
-    log.debug "Nombre institucion: " + nombreDeInstitucion
 
     listaDeMapaDeDominios*.dependiente*.camada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
     listaDeMapaDeDominios.each { l ->
