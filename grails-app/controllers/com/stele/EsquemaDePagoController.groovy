@@ -3,7 +3,7 @@ package com.stele
 class EsquemaDePagoController {
 
   def paraCamada() {
-    [camada:params.camada]
+    [camada:params?.camada]
   }
 
   def generarPagoParaLaCamada(EsquemaDePagoCommand edpc) {
