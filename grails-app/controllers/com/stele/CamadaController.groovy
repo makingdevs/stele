@@ -14,6 +14,6 @@ class CamadaController {
     sessionFactory.settings.sqlStatementLogger.logToStdout = true
     def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager',usuario:'eager']])
     sessionFactory.settings.sqlStatementLogger.logToStdout = false
-    [dependientes:dependientes]
+    [dependientes:dependientes,camada:params.camada]
   }
 }
