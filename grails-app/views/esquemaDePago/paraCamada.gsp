@@ -14,7 +14,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
 
-        <g:form name="pagoGeneracion" controller="esquemaDePago" action="paraCamada">
+        <g:form name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada">
           <input type="hidden" id="camada" name="camada" value="${camada}">
 
           <div class="control-group">
@@ -27,7 +27,10 @@
           <div class="control-group">
             <label for="" class="control-label">Monto: </label>
             <div class="controls">
-              <input type="text" id="monto" name="monto" placeholder="Monto">
+              <div class="input-prepend input-append">
+                <span class="add-on">$</span>
+                <input type="text" id="monto" name="monto" placeholder="0.0">
+              </div>
             </div>
           </div>
 
