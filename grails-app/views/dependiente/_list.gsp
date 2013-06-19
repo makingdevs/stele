@@ -1,4 +1,4 @@
-<tablei class="table table-condensed table-striped">
+<table class="table table-condensed table-striped">
   <thead>
     <tr>
       <th>#</th>

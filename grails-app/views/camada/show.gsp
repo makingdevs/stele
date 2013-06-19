@@ -7,7 +7,7 @@
   <body>
     <div class="page-header">
       <h1>Listado de alumnos</h1>
-      <g:render template="dependiente/list" model="[dependientes:dependientes]" />
+      <g:render template="/dependiente/list" model="[dependientes:dependientes]" />
     </div>
   </body>
 </html>
