@@ -31,6 +31,8 @@
             </div>
           </div>
 
+          <g:link controller="camada" action="show" params="[camada:camada]">Ver lista de alumnos</g:link>
+
           <div class="form-actions" style="text-align:right;">
             <button type="submit" class="btn btn-primary btn-large" >Generar esquema</button>
           </div>
