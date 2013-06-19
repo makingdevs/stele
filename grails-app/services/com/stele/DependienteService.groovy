@@ -4,6 +4,8 @@ import com.stele.seguridad.Usuario
 
 class DependienteService {
 
+  def perfilService
+
   def obtenerDependienteDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def perfil = new Perfil()
     perfil.nombre = filaExcelCommand.dependienteNombre
@@ -19,6 +21,7 @@ class DependienteService {
     Usuario usuario = Usuario.get(usuarioId)
     if(usuario){
       dependiente.usuario = usuario
+      dependiente.perfil = perfilService.registrar(dependiente.perfil)
       dependiente.save()
       }else{
         dependiente
