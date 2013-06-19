@@ -59,8 +59,20 @@ class DistribucionInstitucionalService {
   def registrar(DistribucionInstitucional distribucionInstitucional, Long institucionId){
     Institucion institucion = Institucion.get(institucionId)
     if(institucion){
-        institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
-        institucion.save()
+        def criteriaDistribucionInstitucional = DistribucionInstitucional.createCriteria()
+        def distribucionInstitucionalExistente = criteriaDistribucionInstitucional.get {
+          eq("institucion",distribucionInstitucional.institucion)
+          eq("nivelDeEstudio",distribucionInstitucional.nivelDeEstudio)
+          eq("grado",distribucionInstitucional.grado)
+          eq("grupo",distribucionInstitucional.grupo)
+          eq("turno",distribucionInstitucional.turno)
+        }
+        if(distribucionInstitucionalExistente){ 
+          institucion
+        }else{
+          institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
+          institucion.save(flush:true)
+        }
       }else{
         throw RuntimeException("No existe la institución...")
       }
