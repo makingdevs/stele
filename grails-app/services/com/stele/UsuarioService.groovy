@@ -1,6 +1,8 @@
 package com.stele
 
 import com.stele.seguridad.Usuario
+import com.stele.seguridad.Rol
+import com.stele.seguridad.UsuarioRol
 
 class UsuarioService {
 
@@ -27,6 +29,8 @@ class UsuarioService {
     if(!existeUsuario) {
       usuario.perfil = perfilService.registrar(usuario.perfil)
       usuario.save(flush:true)
+      def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
+      UsuarioRol.create(usuario, rol, true)
       return  usuario
     }
     existeUsuario
