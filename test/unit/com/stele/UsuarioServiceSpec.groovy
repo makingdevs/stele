@@ -7,9 +7,11 @@ import grails.test.mixin.support.*
 import org.junit.*
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
+import com.stele.seguridad.Rol
+import com.stele.seguridad.UsuarioRol
 
 @TestFor(UsuarioService)
-@Mock([Usuario, Perfil, Telefono, Institucion])
+@Mock([Usuario, Rol, UsuarioRol, Perfil, Telefono, Institucion])
 class UsuarioServiceSpec  extends Specification{
 
     def "Obtener un usuario apartir de un command leído desde un excel y verificando validaciones en telefono"(){
@@ -61,6 +63,7 @@ class UsuarioServiceSpec  extends Specification{
 
     def "Registrar un usuario verificando que no exista"(){
       given: "Un usuario con datos"
+        new Rol(authority:"ROLE_PADRE_TUTOR").save()
         def perfilServiceMock = mockFor(PerfilService)
         perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
         service.perfilService = perfilServiceMock.createMock()
@@ -128,6 +131,7 @@ class UsuarioServiceSpec  extends Specification{
 
     def "Registrar un usuario verificando que no exista y agregando una institucion"(){
       given: "Un usuario con datos y agregando la institucion"
+        new Rol(authority:"ROLE_PADRE_TUTOR").save()
         def perfilServiceMock = mockFor(PerfilService)
         perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
         service.perfilService = perfilServiceMock.createMock()

@@ -20,7 +20,7 @@ class DistribucionInstitucionalService {
     def resultado
 
     switch (nivelToUpper) {
-      case {it?.startsWith(preescolar) }:
+      case {it?.startsWith(preescolar) || it?.startsWith("kin")}:
       return NivelDeEstudio.PREESCOLAR
       break
       case {it?.startsWith(secundaria) }:
