@@ -11,14 +11,15 @@ class ProcesamientoMasivoController {
     def usuariosPersistidos = [] as Set
     def dependientesPersistidos = [] as Set
     def ciclosEscolaresPersistidos = [] as Set
+    def camadaGenerada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
 
-    listaDeMapaDeDominios*.dependiente*.camada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
+    listaDeMapaDeDominios*.dependiente*.camada = camadaGenerada
     listaDeMapaDeDominios.each { l ->
       def mapaDeDominiosPersistidos = procesamientoMasivoService.procesaMapaConDatosDeFilaDeExcelParaPersistir(l,params.long("institucionId") )
       usuariosPersistidos.add(mapaDeDominiosPersistidos.usuario)
       dependientesPersistidos.add(mapaDeDominiosPersistidos.dependiente)
       ciclosEscolaresPersistidos.add(mapaDeDominiosPersistidos.cicloEscolar)
     }
-    [usariosProcesados: usuariosPersistidos.size(), dependientesProcesados: dependientesPersistidos.size(), ciclosEcolaresProcesados: ciclosEscolaresPersistidos.size()]
+    [camadaGenerada: camadaGenerada,usariosProcesados: usuariosPersistidos.size(), dependientesProcesados: dependientesPersistidos.size(), ciclosEcolaresProcesados: ciclosEscolaresPersistidos.size()]
   }
 }
