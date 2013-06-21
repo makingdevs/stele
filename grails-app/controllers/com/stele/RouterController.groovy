@@ -16,7 +16,7 @@ class RouterController {
         redirect controller:"inicio", action:"index"
         break
         default:
-        redirect uri:"/perfil" 
+        redirect uri:"/perfil"
         break
       }
       return

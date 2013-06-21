@@ -48,7 +48,7 @@ class DependienteServiceSpec extends Specification{
       ]
   }
 
-  def "Registro de un dependiente con un usuario prviamente registrado que no tiene dependientes aun"(){
+  def "Registro de un dependiente con un usuario previamente registrado que no tiene dependientes aun"(){
     given:"Tengo un usuario registrado"
       Usuario.metaClass.isDirty = { true } 
       Usuario.metaClass.encodePassword = { "password" } 
@@ -63,6 +63,10 @@ class DependienteServiceSpec extends Specification{
       perfilExistente.apellidoMaterno = "Juarez"
       usuarioExistente.perfil = perfilExistente
       usuarioExistente.save()
+    and: "Puedo guardar el perfil"
+      def perfilServiceMock = mockFor(PerfilService)
+      perfilServiceMock.demand.registrar { p -> perfilExistente }
+      service.perfilService = perfilServiceMock.createMock()
     and:"y un dependiente listo para registrar"
       def dependiente = new Dependiente()
       def perfil = new Perfil()
@@ -102,6 +106,11 @@ class DependienteServiceSpec extends Specification{
       perfil.apellidoPaterno = "Perez"
       perfil.apellidoMaterno = "Perez"
       dependienteAsociado.perfil = perfil
+    and: "Puedo guardar el perfil"
+      def perfilServiceMock = mockFor(PerfilService)
+      perfilServiceMock.demand.registrar(1..2) { p -> perfilExistente }
+      service.perfilService = perfilServiceMock.createMock()
+    and: "registro un dependiente"
       service.registrar(dependienteAsociado,usuarioExistente.id)
     and:"y un dependiente listo para registrar"
       def dependiente = new Dependiente()
