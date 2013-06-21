@@ -18,7 +18,8 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
-          <g:form name="resumen" controller="procesamientoMasivo" action="index">
+          <g:form name="resumenProcesamiento" controller="camada" action="show">
+            <g:hiddenField name="camada" value="${camadaGenerada}" />
             <div class="control-group">
               <label for="" class="control-label">Usuarios procesados: </label>
               <div class="controls">
@@ -34,7 +35,7 @@
             <div class="control-group">
               <label for="" class="control-label">Ciclos escolares procesados: </label>
               <div class="controls">
-                ${ciclosEcolaresProcesados} ${camadaGenerada}
+                ${ciclosEcolaresProcesados}
               </div>
             </div>
             <div class="form-actions">
