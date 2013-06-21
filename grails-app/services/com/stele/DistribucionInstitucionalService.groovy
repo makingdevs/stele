@@ -61,7 +61,7 @@ class DistribucionInstitucionalService {
     if(institucion){
         def criteriaDistribucionInstitucional = DistribucionInstitucional.createCriteria()
         def distribucionInstitucionalExistente = criteriaDistribucionInstitucional.get {
-          eq("institucion",distribucionInstitucional.institucion)
+          eq("institucion",institucion)
           eq("nivelDeEstudio",distribucionInstitucional.nivelDeEstudio)
           eq("grado",distribucionInstitucional.grado)
           eq("grupo",distribucionInstitucional.grupo)
