@@ -18,19 +18,26 @@
           <input type="hidden" id="camada" name="camada" value="${camada}">
 
           <div class="control-group">
-            <label for="" class="control-label">Concepto: </label>
+            <label for="conceptoDePago" class="control-label">Concepto: </label>
             <div class="controls">
-              <input type="text" id="concepto" name="concepto" placeholder="Concepto">
+              <input type="text" id="conceptoDePago" name="conceptoDePago" placeholder="Concepto">
             </div>
           </div>
 
           <div class="control-group">
-            <label for="" class="control-label">Monto: </label>
+            <label for="cantidadDePago" class="control-label">Monto: </label>
             <div class="controls">
               <div class="input-prepend input-append">
                 <span class="add-on">$</span>
-                <input type="text" id="monto" name="monto" placeholder="0.0">
+                <input type="text" id="cantidadDePago" name="cantidadDePago" placeholder="0.0">
               </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="fechaDeVencimiento" class="control-label">Fecha de vencimiento: </label>
+            <div class="controls">
+              <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
             </div>
           </div>
 
