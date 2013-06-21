@@ -2,6 +2,8 @@ package com.stele
 
 class EsquemaDePagoController {
 
+  def generacionDePagoService
+
   def paraCamada() {
     [camada:params?.camada]
   }
@@ -11,6 +13,9 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     }
+
+    def pagos = generacionDePagoService.paraCamadaPagoCommand(cpc)
+    [pagos:pagos]
   }
 
 }
