@@ -14,8 +14,8 @@ class EsquemaDePagoController {
       return
     }
 
-    def pagos = generacionDePagoService.paraCamadaPagoCommand(cpc)
-    [pagos:pagos]
+    def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
+    render template:"listaDePagosGenerados", model:[pagosGenerados : pagosGenerados]
   }
 
 }
