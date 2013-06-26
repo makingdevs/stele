@@ -4,6 +4,7 @@ class Pago {
 
   String conceptoDePago
   Date fechaDePago
+  Date fechaDeVencimiento
   BigDecimal cantidadDePago
   TipoDePago tipoDePago = TipoDePago.TRANSFERENCIA_BANCARIA
   EstatusDePago estatusDePago = EstatusDePago.PROCESO
@@ -16,7 +17,8 @@ class Pago {
 
   static constraints = {
     conceptoDePago size:1..100,blank:false
-    cantidadDePago min:new BigDecimal(1)
+    cantidadDePago min:1.0
+    fechaDePago nullable: true
     transactionId size:20..20
   }
 }
