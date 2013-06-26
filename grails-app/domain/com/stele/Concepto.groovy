@@ -4,6 +4,8 @@ class Concepto {
 
   String concepto
 
+  Institucion institucion
+
   Date dateCreated
   Date lastUpdated
 
