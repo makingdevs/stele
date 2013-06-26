@@ -13,6 +13,9 @@ class CicloEscolar {
   static constraints = {
     clave size:1..80,blank:false
     descripcion blank:true 
+    fechaInicio nullable:true
+    fechaFin nullable:true
+    descripcion nullable:true
   }
 
 }

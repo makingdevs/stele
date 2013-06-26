@@ -18,7 +18,8 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
-          <g:form name="resumen" controller="procesamientoMasivo" action="index">
+          <g:form name="resumenProcesamiento" controller="camada" action="show">
+            <g:hiddenField name="camada" value="${camadaGenerada}" />
             <div class="control-group">
               <label for="" class="control-label">Usuarios procesados: </label>
               <div class="controls">
@@ -37,11 +38,12 @@
                 ${ciclosEcolaresProcesados}
               </div>
             </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-large btn-block btn-primary">Generar un pago</button>
+            <div class="row">
+              <button type="submit" class="btn btn-large btn-primary">Generar pago para este procesamiento</button>
+              <button type="submit" class="btn btn-large btn-primary">Ver dependientes de este procesamiento</button>
             </div>
-          </g:form>
         </div>
+          </g:form>
       </div>
     </div>
 

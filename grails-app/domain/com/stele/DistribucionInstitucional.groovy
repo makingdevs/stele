@@ -22,7 +22,7 @@ class DistribucionInstitucional implements Comparable<DistribucionInstitucional>
   }
 
   public int compareTo(DistribucionInstitucional other){
-   nivelDeEstudio <=> other.nivelDeEstudio ?: grado <=> other.grado ?: grupo <=> other.grupo ?: turno <=> other.turno
- }
+    institucion <=> other.institucion ?: nivelDeEstudio <=> other.nivelDeEstudio ?: grado <=> other.grado ?: grupo <=> other.grupo ?: turno <=> other.turno
+  }
 
 }
