@@ -9,7 +9,7 @@ import com.stele.seguridad.Usuario
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(HistorialAcademicoService)
-@Mock([Dependiente,DistribucionInstitucional,Institucion,Usuario,Perfil])
+@Mock([HistorialAcademico,Dependiente,DistribucionInstitucional,Institucion,Usuario,Perfil])
 class HistorialAcademicoServiceSpec extends Specification {
 
   def "Registro de un historial academico con un dependiente y una distribucion institucional previamente registrados"(){
