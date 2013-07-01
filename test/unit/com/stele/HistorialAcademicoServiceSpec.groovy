@@ -52,4 +52,128 @@ class HistorialAcademicoServiceSpec extends Specification {
       assert historialAcademico.id > 0
   }
 
+  def "Registro de un historial academico con un dependiente no registrado y una distribucion institucional previamente registrada"(){
+    given:"Dado un dependiente y una distribucion institucional ya existentes"
+      def institucion = new Institucion()
+      institucion.nombre = "Kinder Peques"
+      def distribucionInstitucional = new DistribucionInstitucional()
+      distribucionInstitucional.grado = 2
+      distribucionInstitucional.grupo = "B+"
+      distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+      distribucionInstitucional.turno = Turno.VESPERTINO
+      institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
+      institucion.save(flush:true)
+      Usuario.metaClass.isDirty = { true } 
+      Usuario.metaClass.encodePassword = { "password" } 
+      def usuarioExistente = new Usuario()
+      def perfilExistente = new Perfil()
+      usuarioExistente.id = 1001
+      usuarioExistente.username = "pepito@gmail.com"
+      usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
+      usuarioExistente.enabled = true
+      perfilExistente.nombre = "Pepito"
+      perfilExistente.apellidoPaterno = "Juarez"
+      perfilExistente.apellidoMaterno = "Juarez"
+      perfilExistente.save()
+      usuarioExistente.perfil = perfilExistente
+      usuarioExistente.save()
+      def dependiente = new Dependiente()
+      dependiente.matricula = "M0987654"
+      dependiente.camada = "1234567898"
+      dependiente.perfil = perfilExistente
+      dependiente.usuario = usuarioExistente
+    when:"Preparo el historial academico para registrarlo sin un dependinete válido"
+      HistorialAcademico historialAcademico = new HistorialAcademico()
+      historialAcademico.distribucionInstitucional = distribucionInstitucional
+      historialAcademico.dependiente = dependiente
+    then: "Se intenta persistir el historial academico y la prueba debe fallar"
+        shouldFail(RuntimeException) {
+          historialAcademico = service.registrar(historialAcademico)
+        }
+  }
+
+  def "Registro de un historial academico con un dependiente registrado y una distribucion institucional sin registrar"(){
+    given:"Dado un dependiente y una distribucion institucional ya existentes"
+      def institucion = new Institucion()
+      institucion.nombre = "Kinder Peques"
+      def distribucionInstitucional = new DistribucionInstitucional()
+      distribucionInstitucional.grado = 2
+      distribucionInstitucional.grupo = "B+"
+      distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+      distribucionInstitucional.turno = Turno.VESPERTINO
+      institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
+      Usuario.metaClass.isDirty = { true } 
+      Usuario.metaClass.encodePassword = { "password" } 
+      def usuarioExistente = new Usuario()
+      def perfilExistente = new Perfil()
+      usuarioExistente.id = 1001
+      usuarioExistente.username = "pepito@gmail.com"
+      usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
+      usuarioExistente.enabled = true
+      perfilExistente.nombre = "Pepito"
+      perfilExistente.apellidoPaterno = "Juarez"
+      perfilExistente.apellidoMaterno = "Juarez"
+      perfilExistente.save()
+      usuarioExistente.perfil = perfilExistente
+      usuarioExistente.save()
+      def dependiente = new Dependiente()
+      dependiente.matricula = "M0987654"
+      dependiente.camada = "1234567898"
+      dependiente.perfil = perfilExistente
+      dependiente.usuario = usuarioExistente
+      dependiente.save()
+    when:"Preparo el historial academico para registrarlo sin una distribución institucional válida"
+      HistorialAcademico historialAcademico = new HistorialAcademico()
+      historialAcademico.distribucionInstitucional = distribucionInstitucional
+      historialAcademico.dependiente = dependiente
+    then: "Se intenta persistir el historial academico y la prueba debe fallar"
+        shouldFail(RuntimeException) {
+          historialAcademico = service.registrar(historialAcademico)
+        }
+  }
+
+  def "Validar historial academico duplicados, mismo dependiente y distribución institucional"(){
+    setup:"Se hace el registro de un hostorial academico a un dependiente especifico con una distribución institucional especifica"
+      def institucion = new Institucion()
+      institucion.nombre = "Kinder Peques"
+      def distribucionInstitucional = new DistribucionInstitucional()
+      distribucionInstitucional.grado = 2
+      distribucionInstitucional.grupo = "B+"
+      distribucionInstitucional.nivelDeEstudio = NivelDeEstudio.SECUNDARIA
+      distribucionInstitucional.turno = Turno.VESPERTINO
+      institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
+      institucion.save(flush:true)
+      Usuario.metaClass.isDirty = { true } 
+      Usuario.metaClass.encodePassword = { "password" } 
+      def usuarioExistente = new Usuario()
+      def perfilExistente = new Perfil()
+      usuarioExistente.id = 1001
+      usuarioExistente.username = "pepito@gmail.com"
+      usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
+      usuarioExistente.enabled = true
+      perfilExistente.nombre = "Pepito"
+      perfilExistente.apellidoPaterno = "Juarez"
+      perfilExistente.apellidoMaterno = "Juarez"
+      perfilExistente.save()
+      usuarioExistente.perfil = perfilExistente
+      usuarioExistente.save()
+      def dependiente = new Dependiente()
+      dependiente.matricula = "M0987654"
+      dependiente.camada = "1234567898"
+      dependiente.perfil = perfilExistente
+      dependiente.usuario = usuarioExistente
+      dependiente.save()
+      HistorialAcademico historialAcademico = new HistorialAcademico()
+      HistorialAcademico historialAcademicoDuplicado = new HistorialAcademico()
+      historialAcademico.distribucionInstitucional = distribucionInstitucional
+      historialAcademico.dependiente = dependiente
+      historialAcademico = service.registrar(historialAcademico)
+    when:"Se intenta registrar otro historial academico con el mismo dependiente y la misma distribución institucional"
+      historialAcademicoDuplicado.distribucionInstitucional = distribucionInstitucional
+      historialAcademicoDuplicado.dependiente = dependiente
+      historialAcademicoDuplicado = service.registrar(historialAcademico)
+    then:"Se debe obtener el historial academico registrado previamente"      
+      assert historialAcademico.equals(historialAcademicoDuplicado)
+  }
+
 }
