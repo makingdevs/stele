@@ -15,4 +15,12 @@ class HistorialAcademicoService {
         throw RuntimeException("Se intentó persistir un historila academico con dependiente o distribucionInstitucional inválida...")
       }
   }
+
+  HistorialAcademico preparaHistoricoAcademicoARegistrar(Dependiente dependiente, DistribucionInstitucional distribucionInstitucional){
+    HistorialAcademico historialAcademico = new HistorialAcademico()
+    historialAcademico.distribucionInstitucional = distribucionInstitucional
+    historialAcademico.dependiente = dependiente
+    historialAcademico
+  }
+
 }

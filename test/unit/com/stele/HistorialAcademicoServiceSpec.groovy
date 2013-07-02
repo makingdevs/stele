@@ -43,10 +43,8 @@ class HistorialAcademicoServiceSpec extends Specification {
       dependiente.perfil = perfilExistente
       dependiente.usuario = usuarioExistente
       dependiente.save()
-      HistorialAcademico historialAcademico = new HistorialAcademico()
-      historialAcademico.distribucionInstitucional = distribucionInstitucional
-      historialAcademico.dependiente = dependiente
     when:"Guardo el historial academico"
+      HistorialAcademico historialAcademico = service.preparaHistoricoAcademicoARegistrar(dependiente, distribucionInstitucional)
       historialAcademico = service.registrar(historialAcademico)
     then:"el id del dependiente debe ser mayor que 0"      
       assert historialAcademico.id > 0
@@ -83,13 +81,11 @@ class HistorialAcademicoServiceSpec extends Specification {
       dependiente.perfil = perfilExistente
       dependiente.usuario = usuarioExistente
     when:"Preparo el historial academico para registrarlo sin un dependinete válido"
-      HistorialAcademico historialAcademico = new HistorialAcademico()
-      historialAcademico.distribucionInstitucional = distribucionInstitucional
-      historialAcademico.dependiente = dependiente
+      HistorialAcademico historialAcademico = service.preparaHistoricoAcademicoARegistrar(dependiente, distribucionInstitucional)
     then: "Se intenta persistir el historial academico y la prueba debe fallar"
-        shouldFail(RuntimeException) {
-          historialAcademico = service.registrar(historialAcademico)
-        }
+      shouldFail(RuntimeException) {
+        historialAcademico = service.registrar(historialAcademico)
+      }
   }
 
   def "Registro de un historial academico con un dependiente registrado y una distribucion institucional sin registrar"(){
@@ -123,13 +119,11 @@ class HistorialAcademicoServiceSpec extends Specification {
       dependiente.usuario = usuarioExistente
       dependiente.save()
     when:"Preparo el historial academico para registrarlo sin una distribución institucional válida"
-      HistorialAcademico historialAcademico = new HistorialAcademico()
-      historialAcademico.distribucionInstitucional = distribucionInstitucional
-      historialAcademico.dependiente = dependiente
+      HistorialAcademico historialAcademico = service.preparaHistoricoAcademicoARegistrar(dependiente, distribucionInstitucional)
     then: "Se intenta persistir el historial academico y la prueba debe fallar"
-        shouldFail(RuntimeException) {
-          historialAcademico = service.registrar(historialAcademico)
-        }
+      shouldFail(RuntimeException) {
+        historialAcademico = service.registrar(historialAcademico)
+      }
   }
 
   def "Validar historial academico duplicados, mismo dependiente y distribución institucional"(){
@@ -163,15 +157,11 @@ class HistorialAcademicoServiceSpec extends Specification {
       dependiente.perfil = perfilExistente
       dependiente.usuario = usuarioExistente
       dependiente.save()
-      HistorialAcademico historialAcademico = new HistorialAcademico()
-      HistorialAcademico historialAcademicoDuplicado = new HistorialAcademico()
-      historialAcademico.distribucionInstitucional = distribucionInstitucional
-      historialAcademico.dependiente = dependiente
+      HistorialAcademico historialAcademico = service.preparaHistoricoAcademicoARegistrar(dependiente, distribucionInstitucional)
+      HistorialAcademico historialAcademicoDuplicado = service.preparaHistoricoAcademicoARegistrar(dependiente, distribucionInstitucional)
       historialAcademico = service.registrar(historialAcademico)
     when:"Se intenta registrar otro historial academico con el mismo dependiente y la misma distribución institucional"
-      historialAcademicoDuplicado.distribucionInstitucional = distribucionInstitucional
-      historialAcademicoDuplicado.dependiente = dependiente
-      historialAcademicoDuplicado = service.registrar(historialAcademico)
+      historialAcademicoDuplicado = service.registrar(historialAcademicoDuplicado)
     then:"Se debe obtener el historial academico registrado previamente"      
       assert historialAcademico.equals(historialAcademicoDuplicado)
   }
