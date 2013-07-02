@@ -23,9 +23,9 @@ class DependienteService {
       dependiente.usuario = usuario
       dependiente.perfil = perfilService.registrar(dependiente.perfil)
       dependiente.save()
-      }else{
-        dependiente
-      }
+    }else{
+      dependiente
     }
-
   }
+
+}
