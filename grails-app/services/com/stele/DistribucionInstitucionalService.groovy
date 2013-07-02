@@ -68,10 +68,11 @@ class DistribucionInstitucionalService {
           eq("turno",distribucionInstitucional.turno)
         }
         if(distribucionInstitucionalExistente){ 
-          institucion
+          distribucionInstitucionalExistente
         }else{
           institucion.addToDistribucionesInstitucionales(distribucionInstitucional)
           institucion.save(flush:true)
+          distribucionInstitucional
         }
       }else{
         throw RuntimeException("No existe la institución...")
