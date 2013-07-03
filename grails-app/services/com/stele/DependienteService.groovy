@@ -20,11 +20,19 @@ class DependienteService {
   def registrar(Dependiente dependiente, Long usuarioId){
     Usuario usuario = Usuario.get(usuarioId)
     if(usuario){
-      dependiente.usuario = usuario
-      dependiente.perfil = perfilService.registrar(dependiente.perfil)
-      dependiente.save()
+      def criteriaDependiente = Dependiente.createCriteria()
+      def dependienteExistente = criteriaDependiente.get {
+          eq("matricula",dependiente.matricula)
+      }
+      if(dependienteExistente){
+        dependienteExistente
+      }else{
+        dependiente.usuario = usuario
+        dependiente.perfil = perfilService.registrar(dependiente.perfil)
+        dependiente.save()
+      }
     }else{
-      dependiente
+      throw RuntimeException("Se intentó persistir un dependiente con un usuario inválido...")
     }
   }
 
