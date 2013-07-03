@@ -2,6 +2,9 @@
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Concepto de pago</title>
+
+    <r:require modules="upload"/>
+
   </head>
 
   <body>
