@@ -7,14 +7,22 @@
 
     <r:script>
       $(function() {
-
         var urlValue = $("input#url").val() 
-        Dropzone.options.myAwesomeDropzone = false;
 
-        $("#dropzone").dropzone({
+        Dropzone.options.dropzone = {
           url : urlValue,
-          maxFilesize : .5
-        });
+          maxFilesize : .5,
+          addRemoveLinks : true,
+
+          complete : function(file) {
+            $("span.dz-message").hide("slow");
+          },
+
+          error : function(file, errorMessage, xhr) {
+            $("span.dz-message").show("slow");
+          }
+
+        };
 
       });
     </r:script>
@@ -31,14 +39,17 @@
     </div>
     <br />
 
-    <div class="container">
-
-      <div id="dropzone" style="width: 360px; height: 270px;" class="text-center">
-        <span class="dz-message" >
-          Arrastra aquí para subir <br /> (o da click)
-        </span>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span4">
+          <div id="dropzone" class="dropzone text-center" style="min-height: 350px; background: rgba(0, 0, 0, 0.03); padding: 23px; cursor: pointer;">
+            <span class="dz-message" >
+              <br /> <br /> <br /> <br /> <br />
+              <h1> <b>Arrastra aquí para subir</b> <br /> <small>(o da click)</small> </h1>
+            </span>
+          </div>
+        </div>
       </div>
-
     <div>
 
   </body>
