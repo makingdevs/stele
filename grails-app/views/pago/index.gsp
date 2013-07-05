@@ -7,11 +7,20 @@
   </head>
 
   <body>
+   <g:render template="../perfil/header" model="[usuarioActual : usuario]" />
 
-    <div class="row">
+   <div class="row">
       <div class="span12 label label-info">
-        <h5>Pagos registrados por usuario</h5>
-        <h5>${usuario.username}</h5>
+        <h5>Mis pagos</h5>
+      </div>
+    </div>
+    <br />
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span4">
+          <g:render template="list" model="[usuarioActual : usuario]" />
+        </div>
       </div>
     </div>
 
