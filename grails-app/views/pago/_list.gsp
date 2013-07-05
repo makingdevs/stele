@@ -7,10 +7,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> Pago 1 </td>
-      <td> 12345678 </td>
-      <td> 12/12/2013 </td>
-    </tr>
+    <g:each in="${pagos}" var="p">
+      <tr>
+        <td> ${p.conceptoDePago} </td>
+        <td> ${p.cantidadDePago} </td>
+        <td> ${p.fechaDePago} </td>
+      </tr>
+    </g:each>
   </tbody>
 </table>

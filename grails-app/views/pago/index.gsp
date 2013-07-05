@@ -19,7 +19,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span4">
-          <g:render template="list" model="[usuarioActual : usuario]" />
+          <g:render template="list" model="[pagos : pagosDeUsuario]" />
         </div>
       </div>
     </div>
