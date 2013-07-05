@@ -7,6 +7,6 @@ class PagoController {
 
   def index() { 
     def pagosDeUsuario = pagoService.obtenerPagosDeUsuario(springSecurityService.currentUser)
-    [pagosDeUsuario: pagosDeUsuario]
+    [pagosDeUsuario: pagosDeUsuario, usuario: springSecurityService.currentUser]
   }
 }
