@@ -20,5 +20,6 @@ class Pago {
     cantidadDePago min:1.0
     fechaDePago nullable: true
     transactionId size:20..20
+    historialAcademico nullable: true
   }
 }
