@@ -36,7 +36,7 @@
                 <li><a href="#">Pagos generados</a></li>
               </sec:ifAllGranted>
               <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
-                <li><a href="#">Mis pagos</a></li>
+                <li><a controller="pago">Mis pagos</a></li>
               </sec:ifAllGranted>
               <sec:ifLoggedIn>
                 <li><g:link controller="perfil">Mi perfil</g:link></li>
