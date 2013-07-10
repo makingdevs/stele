@@ -6,7 +6,7 @@ import spock.lang.Specification
 import com.stele.seguridad.Usuario
 
 @TestFor(ProcesamientoMasivoService)
-@Mock([Usuario,Dependiente,CicloEscolar,DistribucionInstitucional])
+@Mock([Usuario,Dependiente,CicloEscolar,DistribucionInstitucional,HistorialAcademico])
 class ProcesamientoMasivoServiceSpec extends Specification {
 
     def "Procesa una fila de datos unica"(){
@@ -23,6 +23,11 @@ class ProcesamientoMasivoServiceSpec extends Specification {
         def distribucionInstitucionalServiceMock = mockFor(DistribucionInstitucionalService)
         distribucionInstitucionalServiceMock.demand.registrar(1..1) { DistribucionInstitucional distribucionInstitucional, Long id -> new DistribucionInstitucional().save(validate:false) }
         service.distribucionInstitucionalService = distribucionInstitucionalServiceMock.createMock()
+        def historialAcademicoServiceMock = mockFor(HistorialAcademicoService)
+        def historialAcademicoMock = new HistorialAcademico()
+        historialAcademicoServiceMock.demand.preparaHistoricoAcademicoARegistrar(1..1) { Dependiente dependiente, DistribucionInstitucional distribucionInstitucional -> historialAcademicoMock }
+        historialAcademicoServiceMock.demand.registrar(1..1) { HistorialAcademico historialAcademico -> historialAcademicoMock.save(validate:false) }
+        service.historialAcademicoService = historialAcademicoServiceMock.createMock()
       when:
         def filaDeExcelParaPersistir = [usuario: new Usuario(),
                                         dependiente: new Dependiente(),
