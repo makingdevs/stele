@@ -7,6 +7,7 @@
       <th>Fecha de vencimeinto</th>
       <th>Tipo de pago</th>
       <th>Estatus</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,7 @@
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDeVencimiento}"/> </td>
         <td> ${p.tipoDePago} </td>
         <td> ${p.estatusDePago} </td>
+        <td> <g:link controller="reciboPago" id="${p.id}"> subir pago </g:link> </td>
       </tr>
     </g:each>
   </tbody>
