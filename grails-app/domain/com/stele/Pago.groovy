@@ -12,6 +12,8 @@ class Pago {
 
   HistorialAcademico historialAcademico
 
+  static hasMany = [descuentos : Descuento]
+
   Date dateCreated
   Date lastUpdated
 
