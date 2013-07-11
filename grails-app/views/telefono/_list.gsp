@@ -1,5 +1,5 @@
 <%@ page import="com.stele.TipoDeTelefono" %>
-<h3>Mis teléfonos de contacto</h3>
+<h4>Mis teléfonos de contacto</h4>
 <table class="table">
   <thead>
     <tr>

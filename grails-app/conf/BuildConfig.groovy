@@ -42,6 +42,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
         runtime ':twitter-bootstrap:2.3.0'
+        compile ":font-awesome-resources:3.2.1"
         compile ":spring-security-core:1.2.7.3"
         compile ":grails-melody:1.13"
         compile ":mail:1.0.1"
