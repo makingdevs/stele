@@ -1,12 +1,7 @@
 <%@ page import="com.stele.TipoDeTelefono" %>
-
-<table class="table table-bordered table-condensed">
-  <thead style="background-color:whiteSmoke">
-    <tr>
-    <th colspan="6" style="text-align:left; vertical-align:middle; color:blue;"> 
-        Teléfono 
-      </th>
-    </tr>
+<h3>Mis teléfonos de contacto</h3>
+<table class="table">
+  <thead>
     <tr>
       <th>Principal</th>
       <th>Tipo</th>
@@ -19,7 +14,11 @@
   <tbody>
     <g:each in="${telefonos?.sort({ it.id })}" var="t">
       <tr>
-        <td> ${t.principal} </td>
+        <td>
+          <g:if test="${t.principal}">
+            <i class="icon-ok"></i>
+          </g:if>
+        </td>
         <td> ${t.tipoDeTelefono} </td>
         <td> ${t.lada} </td>
         <td> ${t.numeroTelefonico} </td>
