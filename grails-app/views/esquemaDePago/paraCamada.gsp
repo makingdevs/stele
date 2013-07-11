@@ -7,7 +7,7 @@
   <body>
 
     <div class="page-header">
-      <h1>Esquema de pago</h1>
+      <h1><i class="icon-dollar"></i> · Crear un pago <small>con un esquema</small></h1>
     </div>
     <br />
 
