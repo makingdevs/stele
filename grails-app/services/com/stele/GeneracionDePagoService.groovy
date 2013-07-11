@@ -8,7 +8,10 @@ class GeneracionDePagoService {
 
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      pagos << generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand)
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand)
+      dependiente.addToPagos(pago)
+      dependiente.save(flush:true)
+      pagos << pago
     }
     pagos
   }
@@ -17,10 +20,8 @@ class GeneracionDePagoService {
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
-
     Pago pago = new Pago(camadaPagoCommand.properties)
     pago.historialAcademico = historialAcademico
-    pago.save(flush:true)
     pago
   }
 
