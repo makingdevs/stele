@@ -1,10 +1,10 @@
-<table class="table table-bordered table-condensed">
+<table class="table">
   <thead style="background-color:whiteSmoke">
     <tr>
       <th>Concepto de pago</th>
       <th>Cantidad</th>
+      <th>Vencimiento</th>
       <th>Fecha de pago</th>
-      <th>Fecha de vencimeinto</th>
       <th>Tipo de pago</th>
       <th>Estatus</th>
     </tr>
@@ -13,7 +13,7 @@
     <g:each in="${pagos}" var="p">
       <tr>
         <td> ${p.conceptoDePago} </td>
-        <td> ${p.cantidadDePago} </td>
+        <td> $ ${p.cantidadDePago} </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDePago}"/> </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDeVencimiento}"/> </td>
         <td> ${p.tipoDePago} </td>

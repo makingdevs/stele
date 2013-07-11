@@ -10,11 +10,11 @@
   <body>
 
   <div class="page-header">
-    <h1>Información general <small>Datos personales</small></h1>
+    <h1><i class="icon-info"></i> · Información general <small>Datos personales</small></h1>
   </div>
 
   <div class="row">
-    <div class="span4">
+    <div class="span5">
       <g:render template="header" model="[usuarioActual : usuarioActual]" />
       <hr/>
       <g:form name="password" controller="perfil" action="actualizarPassword">
@@ -38,7 +38,7 @@
       </g:form>
     </div>
 
-    <div class="span7 ">
+    <div class="span6 ">
       <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
         <div id="listaTelefono">
           <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
@@ -46,6 +46,8 @@
       </g:formRemote>
     </div>
   </div>
+
+  <sec:ifAnyGranted roles="ROLE_PADRE_TUTOR">
 
   <div class="page-header">
     <h2>Mis dependientes</h2>
@@ -57,6 +59,8 @@
       <g:render template="dependienteCard" collection="${usuarioActual.dependientes}" var="dependiente" />
     </div>
   </div>
+
+  </sec:ifAnyGranted>
 
   </body>
 </html>
