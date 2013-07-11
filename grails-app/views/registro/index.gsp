@@ -64,7 +64,7 @@
             </div>
             <div class="control-group">
               <div class="controls">
-                <button type="submit" class="btn">Registrar mis datos</button>
+                <button type="submit" class="btn btn-primary"><i class="icon-thumbs-up"></i> Registrar mis datos</button>
               </div>
             </div>
           </g:form>
