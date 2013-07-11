@@ -1,12 +1,9 @@
-<div class="page-header">
-  <div class="media">
-    <span class="pull-left">
-      <img class="media-object" src="${usuarioActual.perfil.avatar}" style="width: 114px; height: 114px;">
-    </span>
-    <div class="media-body">
-      <h1>${usuarioActual.perfil.nombre}</h1>
-      <h3>${usuarioActual.perfil.apellidoPaterno} ${usuarioActual.perfil.apellidoMaterno}</h3>
-      <h4>${usuarioActual.username}</h4>
-    </div>
+<div class="media">
+  <a class="pull-left" href="#">
+    <img src="${usuarioActual.perfil.avatar}" style="width: 64px; height: 64px;" alt="64x64" class="media-object img-polaroid" data-src="holder.js/64x64">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">${usuarioActual.perfil.nombre} ${usuarioActual.perfil.apellidoPaterno} ${usuarioActual.perfil.apellidoMaterno}</h4>
+    <i class="icon-user"></i> ${usuarioActual.username}
   </div>
 </div>

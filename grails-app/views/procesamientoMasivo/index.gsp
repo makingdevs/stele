@@ -8,44 +8,41 @@
 
   <body>
 
-    <div class="row">
-      <div class="span12 label label-info">
-        <h5>Resúmen de información procesada</h5>
-      </div>
+    <div class="page-header">
+      <h1><i class="icon-tasks"></i> · Resumen <small>Información procesada</small></h1>
     </div>
-    <br />
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <g:form name="resumenProcesamiento" controller="camada" action="show">
-            <g:hiddenField name="camada" value="${camadaGenerada}" />
-            <div class="control-group">
-              <label for="" class="control-label">Usuarios procesados: </label>
-              <div class="controls">
-                ${usariosProcesados}
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="" class="control-label">Dependientes procesados: </label>
-              <div class="controls">
-                ${dependientesProcesados}
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="" class="control-label">Ciclos escolares procesados: </label>
-              <div class="controls">
-                ${ciclosEcolaresProcesados}
-              </div>
-            </div>
-            <div class="row">
-              <button type="submit" class="btn btn-large btn-primary">Generar pago para este procesamiento</button>
-              <button type="submit" class="btn btn-large btn-primary">Ver dependientes de este procesamiento</button>
-            </div>
-        </div>
-          </g:form>
+    
+    <div class="row">
+      <div class="span4 text-success">
+        <h1>${usariosProcesados}</h1>
+        <h4><i class="icon-user"></i> Usuarios procesados</h4>
+      </div>
+      <div class="span4 text-success">
+        <h1>${dependientesProcesados}</h1>
+        <h4><i class="icon-group"></i> Dependientes procesados</h4>
+      </div>
+      <div class="span4 text-success">
+        <h1>${ciclosEcolaresProcesados}</h1>
+        <h4><i class="icon-calendar"></i> Ciclos escolares</h4>
       </div>
     </div>
+    <hr/>
+    <div class="row">
+      <g:form name="resumenProcesamiento" controller="camada" action="show">
+        <g:hiddenField name="camada" value="${camadaGenerada}" />
+        <div class="form-actions">
+          <g:link controller="esquemaDePago" action="paraCamada" class="btn btn-large btn-success" params="[camada:camadaGenerada]">
+            <i class="icon-dollar"></i> Crear un pago para estos alumnos
+          </g:link>
+          <g:link controller="camada" action="show" class="btn btn-large btn-primary" params="[camada:camadaGenerada]">
+            <i class="icon-eye-open"></i> Ver los alumnos
+          </g:link>
+        </div>
+      </g:form>
+    </div>
+        
+
 
   </body>
 </html>

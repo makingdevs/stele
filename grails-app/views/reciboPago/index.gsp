@@ -13,6 +13,7 @@
           url : urlValue,
           maxFilesize : .5,
           addRemoveLinks : true,
+          uploadMultiple : false,
 
           complete : function(file) {
             $("span.dz-message").hide("slow");
@@ -20,7 +21,11 @@
 
           error : function(file, errorMessage, xhr) {
             $("span.dz-message").show("slow");
-          }
+          },
+
+          success : function(file, data){
+            console.log(data);
+          } 
 
         };
 
@@ -31,7 +36,7 @@
 
   <body>
 
-    <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo')}" id="url" />
+    <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
 
     <div class="page-header">
       <h1>Pago por concepto de : ${pago?.conceptoDePago}</h1>
