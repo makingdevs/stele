@@ -19,7 +19,21 @@
             <i class="icon-ok"></i>
           </g:if>
         </td>
-        <td> ${t.tipoDeTelefono} </td>
+        <td> 
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.CASA}">
+            <i class="icon-phone-sign"></i> 
+          </g:if>
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.CELULAR}">
+            <i class="icon-mobile-phone"></i> 
+          </g:if>
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.TRABAJO}">
+            <i class="icon-briefcase"></i> 
+          </g:if>
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.RECADOS}">
+            <i class="icon-phone"></i> 
+          </g:if>
+          ${t.tipoDeTelefono}
+        </td>
         <td> ${t.lada} </td>
         <td> ${t.numeroTelefonico} </td>
         <td> ${t.extension} </td>
