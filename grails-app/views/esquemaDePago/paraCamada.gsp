@@ -48,7 +48,7 @@
 
           <div class="control-group">
             <div class="controls">
-              <a href="#myModal" role="button" class="btn btn-info" data-toggle="modal">Agregar descuento</a>
+              <a href="#descuento" role="button" class="btn btn-info" data-toggle="modal">Agregar descuento</a>
             </div>
           </div>
 
@@ -64,18 +64,22 @@
       </div>
     </div>
 
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="descuento" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="descuentoLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Datos del descuento</h3>
+        <h3 id="descuentoLabel">Datos del descuento</h3>
       </div>
-      <div class="modal-body">
-        <g:render template="/descuento/nuevoDescuento" />
-      </div>
-      <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-primary">Aplicar descuento</button>
-      </div>
+
+      <g:form controller="descuento" action="nuevo" class="form-horizontal">
+        <div class="modal-body">
+          <g:render template="/descuento/nuevoDescuento" />
+        </div>
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+          <button class="btn btn-primary">Aplicar descuento</button>
+        </div>
+      </g:form>
+
     </div>
 
   </body>
