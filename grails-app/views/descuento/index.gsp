@@ -11,7 +11,18 @@
     </div>
     <br />
 
-    <g:render template="nuevoDescuento" />
+    <g:form controller="descuento" action="nuevo" class="form-horizontal">
+
+      <g:render template="/descuento/nuevoDescuento" />
+
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-large btn-primary">Guardar cambios</button>
+        </div>
+      </div>
+    </g:form>
+
+</div>
 
   </body>
 </head>
