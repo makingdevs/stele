@@ -2,7 +2,7 @@
   <div class="control-group">
     <label for="nombreDeDescuento" class="control-label">Nombre de descuento  : </label>
     <div class="controls">
-      <input type="text" id="nombreDeDescuento" name="nombreDeDescuento" class="input-xxlarge" placeholder="Nombre de descuento">
+      <input type="text" id="nombreDeDescuento" name="nombreDeDescuento" class="input-xlarge" placeholder="Nombre de descuento">
     </div>
   </div>
 
@@ -29,7 +29,7 @@
   <div class="control-group">
     <label for="fechaDeVencimiento" class="control-label">Fecha de vencimiento: </label>
     <div class="controls">
-      <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
+      <g:datePicker name="vencimiento" value="${new Date()}" precision="day" />
     </div>
   </div>
 
