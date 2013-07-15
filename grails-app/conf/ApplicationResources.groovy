@@ -14,5 +14,13 @@ modules = {
   upload {
     resource url:'js/upload/dropzone.js'
   }
+  
+  validation {
+    resource url:'js/common/jquery.validate.min.js'
+  }
 
+  registrar {
+    dependsOn 'validation'
+    resource url:'js/registro/index.js'
+  }
 }

@@ -3,9 +3,8 @@
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Registro de escuela</title>
-
+    <r:require module="registrar"/>
   </head>
-
   <body>
   <header class="jumbotron subhead" id="overview">
     <div class="container">
@@ -19,7 +18,7 @@
       <div class="span12">
         <section id="basic-info">
           <h2 id="headings">Datos básicos</h2>
-          <g:form controller="registro" action="crear" class="form-horizontal">
+          <g:form id="registroBasico" name="registroBasico" controller="registro" action="crear" class="form-horizontal">
             <div class="control-group">
               <label class="control-label" for="inputInstitucion">Institución : </label>
               <div class="controls">
@@ -72,6 +71,5 @@
       </div>
     </div>
   </div>
-
   </body>
 </html>
