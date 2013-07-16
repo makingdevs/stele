@@ -49,7 +49,7 @@ $(document).ready(function(){
      'inputConfirmPassword': {
         required: true,
         minlength: 8,
-        equalTo: "usuario.password"
+        equalTo: "input.passwordOrigin"
      }
     },
     messages: {

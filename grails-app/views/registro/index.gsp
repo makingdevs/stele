@@ -52,7 +52,7 @@
             <div class="control-group">
               <label class="control-label" for="inputPassword">Contraseña : </label>
               <div class="controls">
-                <input id="usuario.password" name="usuario.password" placeholder="Password" type="password">
+                <input id="usuario.password" class="passwordOrigin" name="usuario.password" placeholder="Password" type="password">
               </div>
             </div>
             <div class="control-group">
