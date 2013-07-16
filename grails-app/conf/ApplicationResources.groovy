@@ -23,4 +23,7 @@ modules = {
     dependsOn 'validation'
     resource url:'js/registro/index.js'
   }
+  pagosParaCamada {
+    resource url:'js/esquemaDePago/paraCamada.js'
+  }
 }

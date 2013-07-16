@@ -2,15 +2,7 @@
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Esquema de pago</title>
-
-    <r:script>
-      $(function() {
-
-        $("select").css({'width':'100px'});
-
-      });
-    </r:script>
-
+    <r:require module="pagosParaCamada" />
   </head>
 
   <body>
@@ -22,7 +14,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <g:formRemote name="pagoGeneracion" url="[controller: 'esquemaDePago', action: 'generarPagoParaLaCamada']" update="totals">
+        <g:formRemote name="pagoGeneracion" url="[controller: 'esquemaDePago', action: 'generarPagoParaLaCamada']" onSuccess="muestraMensajeDePagosGenerados(data);">
           <input type="hidden" id="camada" name="camada" value="${camada}">
           <div class="control-group">
             <label for="conceptoDePago" class="control-label">Concepto: </label>
