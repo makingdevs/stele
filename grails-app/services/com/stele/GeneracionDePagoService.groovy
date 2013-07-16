@@ -8,9 +8,9 @@ class GeneracionDePagoService {
 
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand)
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand).save()
       dependiente.addToPagos(pago)
-      dependiente.save(flush:true)
+      dependiente.save()
       pagos << pago
     }
     pagos
