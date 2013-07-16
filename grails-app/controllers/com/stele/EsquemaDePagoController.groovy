@@ -1,5 +1,7 @@
 package com.stele
 
+import grails.converters.JSON
+
 class EsquemaDePagoController {
 
   def generacionDePagoService
@@ -12,11 +14,9 @@ class EsquemaDePagoController {
     if(cpc.hasErrors()) {
       render cpc.errors
       return
-    }
-
-   // def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
-    //render template:"listaDePagosGenerados", model:[pagosGenerados : pagosGenerados]
-    render "Hola Mundo"
+    }    
+    def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
+    render pagosGenerados as JSON
   }
 
 }
