@@ -14,7 +14,8 @@ class EsquemaDePagoController {
     if(cpc.hasErrors()) {
       render cpc.errors
       return
-    }    
+    } 
+    
     def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
     render pagosGenerados as JSON
   }

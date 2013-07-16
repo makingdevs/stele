@@ -26,4 +26,9 @@ modules = {
   pagosParaCamada {
     resource url:'js/esquemaDePago/paraCamada.js'
   }
+  
+  generarPagos {
+    dependsOn 'validation'
+    resource url: 'js/esquemaDePago/generar.js'
+  }
 }

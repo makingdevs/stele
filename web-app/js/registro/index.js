@@ -5,6 +5,7 @@ jQuery.validator.addMethod("alphabetical", (function(value, element){
 
 $(document).ready(function(){
   $("#registroBasico").validate({
+    // TODO: Refactor de funciones comunes en la validación
     errorPlacement: function(error, element) {
       $(element).parent().parent().addClass("error");
       error.addClass("help-inline").appendTo(element.parent());
