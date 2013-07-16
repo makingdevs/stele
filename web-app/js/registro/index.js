@@ -54,27 +54,27 @@ $(document).ready(function(){
     },
     messages: {
       'perfil.nombre': {
-        required: "El Nombre es Requerido",
+        required: "El nombre es requerido",
         minlength: "No es válido"
       },
       'institucion.nombre':{
-        required: "La Institucion es Requerida",
+        required: "La institucion es requerida",
         minlength: "No es válido"
       },
       'perfil.apellidoPaterno': {
-       required: "El Apellido Paterno es requerido",
+       required: "El apellido paterno es requerido",
        minlength: "No es válido"
      },
      'usuario.username': {
         required: "Es requerido un email válido",
-        email: "Introduzca una direccion de email válido"
+        email: "Introduzca una direccion de email válida"
      },
      'perfil.apellidoMaterno': {
         minlength: "No es válido"
      },
      'usuario.password': {
         required: "Es requerida una contraseña",
-        minlength: "La contraseña debe de tener 8 digitos como minimo"
+        minlength: "La contraseña debe de tener 8 caracteres como minimo"
      },
      'inputConfirmPassword': {
         equalTo: "La contraseña no coincide, favor de verificarla"
