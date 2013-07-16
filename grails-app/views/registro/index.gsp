@@ -58,7 +58,7 @@
             <div class="control-group">
               <label class="control-label" for="inputConfirmPassword">Confirmar contraseña : </label>
               <div class="controls">
-                <input id="inputConfirmPassword" placeholder="Confirm Password" type="password">
+                <input id="inputConfirmPassword" name="inputConfirmPassword" placeholder="Confirm Password" type="password">
               </div>
             </div>
             <div class="control-group">

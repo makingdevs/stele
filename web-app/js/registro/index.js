@@ -1,6 +1,6 @@
 jQuery.validator.addMethod("alphabetical", (function(value, element){
    return /^[\D]+$/.test(value);
-}), "Entrada no valida");
+}), "No se permiten caracteres especiales y/o numericos");
 
 
 $(document).ready(function(){
@@ -36,7 +36,20 @@ $(document).ready(function(){
      },
      'usuario.username': {
         required: true,
+        email: true  
+     },
+     'perfil.apellidoMaterno': {
+        required: false,
         minlength: 2
+     },
+     'usuario.password': {
+        required: true,
+        minlength: 8
+     },
+     'inputConfirmPassword': {
+        required: true,
+        minlength: 8,
+        equalTo: "usuario.password"
      }
     },
     messages: {
@@ -47,7 +60,25 @@ $(document).ready(function(){
       'institucion.nombre':{
         required: "La Institucion es Requerida",
         minlength: "No es válido"
-      }
+      },
+      'perfil.apellidoPaterno': {
+       required: "El Apellido Paterno es requerido",
+       minlength: "No es válido"
+     },
+     'usuario.username': {
+        required: "Es requerido un email válido",
+        email: "Introduzca una direccion de email válido"
+     },
+     'perfil.apellidoMaterno': {
+        minlength: "No es válido"
+     },
+     'usuario.password': {
+        required: "Es requerida una contraseña",
+        minlength: "La contraseña debe de tener 8 digitos como minimo"
+     },
+     'inputConfirmPassword': {
+        equalTo: "La contraseña no coincide, favor de verificarla"
+     }
     },
       validClass: "success",
       errorClass: "error",
