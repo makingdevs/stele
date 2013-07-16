@@ -58,9 +58,6 @@
           </div>
         </g:formRemote>
 
-        <div id="totals">
-          <g:render template="listaDePagosGenerados" model="['pagosGenerados' : pagosGenerados]" />
-        </div>
       </div>
     </div>
 

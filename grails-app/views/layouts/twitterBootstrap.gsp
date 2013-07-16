@@ -17,7 +17,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -64,7 +63,7 @@
     </div>
 
     <div class="container">
-
+      <g:render template="/common/messages" />
       <g:layoutBody/>
 
       <hr>
