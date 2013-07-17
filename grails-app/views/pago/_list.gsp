@@ -15,8 +15,8 @@
       <tr>
         <td> ${p.conceptoDePago} </td>
         <td> $ ${p.cantidadDePago} </td>
-        <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDePago}"/> </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDeVencimiento}"/> </td>
+        <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDePago}"/> </td>
         <td> ${p.tipoDePago} </td>
         <td> ${p.estatusDePago} </td>
         <td> <g:link controller="reciboPago" id="${p.id}"> subir pago </g:link> </td>
