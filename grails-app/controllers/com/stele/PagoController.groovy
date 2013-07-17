@@ -11,7 +11,9 @@ class PagoController {
   }
 
   def pagosXInstitucion() {
-   render (view: "pagosInstitucion")
+    def pagosDeInstitucion = pagoService.obtenerPagosXInstitucion(springSecurityService.currentUser)
+  
+   render pagosDeInstitucion //(view: "pagosInstitucion")
   }
 
 }

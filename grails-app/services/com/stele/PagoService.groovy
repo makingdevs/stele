@@ -1,6 +1,7 @@
 package com.stele
 
 import com.stele.seguridad.Usuario
+import com.stele.DistribucionInstitucional
 
 class PagoService {
 
@@ -16,4 +17,14 @@ class PagoService {
       }
       pagosDeUsuario
     }
+
+    def obtenerPagosXInstitucion(Usuario usuario) {
+      def institucionUsuario = usuario.instituciones
+      def distribucionInstitucional = DistribucionInstitucional.withCriteria {
+        'in'('institucion', institucionUsuario)
+      }
+      distribucionInstitucional
+    }
+
+
 }
