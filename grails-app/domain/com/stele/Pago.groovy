@@ -1,14 +1,16 @@
 package com.stele
 
-class Pago {
+import org.grails.s3.S3Asset
 
+class Pago {
   String conceptoDePago
   Date fechaDePago
   Date fechaDeVencimiento
   BigDecimal cantidadDePago
   TipoDePago tipoDePago = TipoDePago.TRANSFERENCIA_BANCARIA
-  EstatusDePago estatusDePago = EstatusDePago.PROCESO
+  EstatusDePago estatusDePago = EstatusDePago.CREADO
   String transactionId = UUID.randomUUID().toString().replaceAll('-', '').substring(0,20)
+  S3Asset comprobanteDePago
 
   HistorialAcademico historialAcademico
 
@@ -22,6 +24,7 @@ class Pago {
     cantidadDePago min:1.0
     fechaDePago nullable: true
     transactionId size:20..20
-    historialAcademico nullable: true
+    historialAcademico nullable:true
+    comprobanteDePago nullable:true
   }
 }
