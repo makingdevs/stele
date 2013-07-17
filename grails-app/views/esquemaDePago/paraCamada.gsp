@@ -15,7 +15,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <g:formRemote id="pagoGeneracion" name="pagoGeneracion" url="[controller: 'esquemaDePago', action: 'generarPagoParaLaCamada']"  >
+        <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePagoService" action="generarPagoParaLaCamada" >
           <input type="hidden" id="camada" name="camada" value="${camada}">
           <div class="control-group">
             <label for="conceptoDePago" class="control-label">Concepto: </label>
@@ -49,7 +49,7 @@
           <div class="form-actions" style="text-align:right;">
             <button type="submit" class="btn btn-primary btn-large" >Generar pagos</button>
           </div>
-        </g:formRemote>
+        </g:form>
 
       </div>
     </div>
