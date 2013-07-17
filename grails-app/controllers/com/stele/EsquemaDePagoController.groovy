@@ -17,7 +17,7 @@ class EsquemaDePagoController {
     } 
     
     def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
-    render pagosGenerados as JSON
+    render(view: "generarPagosParaLaCamada", model: [pagos: pagosGenerados])
   }
 
 }

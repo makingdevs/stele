@@ -15,7 +15,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePagoService" action="generarPagoParaLaCamada" >
+        <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
           <input type="hidden" id="camada" name="camada" value="${camada}">
           <div class="control-group">
             <label for="conceptoDePago" class="control-label">Concepto: </label>
