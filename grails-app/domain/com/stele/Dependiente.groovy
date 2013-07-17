@@ -1,7 +1,9 @@
 package com.stele
 
+import groovy.transform.ToString
 import com.stele.seguridad.Usuario
 
+@ToString
 class Dependiente {
 
   String matricula

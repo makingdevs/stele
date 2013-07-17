@@ -163,42 +163,36 @@ class DependienteServiceSpec extends Specification{
       Usuario.metaClass.isDirty = { true } 
       Usuario.metaClass.encodePassword = { "password" } 
       def usuarioExistente = new Usuario()
-      def perfilExistente = new Perfil()
-      usuarioExistente.id = 1001
-      usuarioExistente.username = "pepito@gmail.com"
-      usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
-      usuarioExistente.enabled = true
-      perfilExistente.nombre = "Pepito"
-      perfilExistente.apellidoPaterno = "Juarez"
-      perfilExistente.apellidoMaterno = "Juarez"
-      usuarioExistente.perfil = perfilExistente
-      usuarioExistente.save()
-    and: "Puedo guardar el perfil"
-      def perfilServiceMock = mockFor(PerfilService)
-      perfilServiceMock.demand.registrar { p -> perfilExistente }
-      service.perfilService = perfilServiceMock.createMock()
-    and:"y un dependiente registrado previamente"
       def dependiente = new Dependiente()
       def perfil = new Perfil()
+      dependiente.id = 1002
       dependiente.matricula = "M1234576"
       dependiente.camada= "1234567898"
       perfil.nombre = "Juanito"
       perfil.apellidoPaterno = "Perez"
       perfil.apellidoMaterno = "Perez"
       dependiente.perfil = perfil
-      def usuarioGuardado = Usuario.findByUsername(usuarioExistente.username)
-      dependiente = service.registrar(dependiente,usuarioGuardado.id)
+      usuarioExistente.id = 1001
+      usuarioExistente.username = "pepito@gmail.com"
+      usuarioExistente.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
+      usuarioExistente.enabled = true
+      usuarioExistente.addToDependientes(dependiente)
+      usuarioExistente.save(validate:false)
+    and: "Anticipo que no se llame la llamada a registrar"
+      def perfilServiceMock = mockFor(PerfilService)
+      perfilServiceMock.demand.registrar(0..0) { p -> null }
+      service.perfilService = perfilServiceMock.createMock()
     when:"Se intenta registrar un dependiente con la misma matricula del dependiente ya existente"
-      def dependienteDuplicdo = new Dependiente()
-      dependienteDuplicdo.matricula = "M1234576"
-      dependienteDuplicdo.camada= "987654321"
-      perfil.nombre = "Pepito"
-      perfil.apellidoPaterno = "Garcia"
-      perfil.apellidoMaterno = "Garcia"
-      dependienteDuplicdo.perfil = perfil
-      dependienteDuplicdo = service.registrar(dependienteDuplicdo,usuarioGuardado.id)
+      def dependienteDuplicado = new Dependiente()
+      dependienteDuplicado.matricula = "M1234576"
+      dependienteDuplicado.camada= "987654321"
+      def dependienteResultado = service.registrar(dependienteDuplicado,1001)
     then:"Los dependientes deben ser iguales, es decir, no se persistio el dependiente con la matricula ya existente"
-      assert dependiente.equals(dependienteDuplicdo)
+      assert dependiente.matricula == dependienteResultado.matricula
+      assert dependienteResultado.id == 1002
+      assert dependienteResultado.matricula == "M1234576"
+      assert dependienteResultado.camada == "1234567898"
+      assert dependienteResultado.usuario.id == 1001
   }
 
 }
