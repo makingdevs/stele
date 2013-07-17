@@ -7,7 +7,5 @@ function muestraMensajeDePagosGenerados(data){
   var mensajeSuccess = $("div.alert-success");
   mensajeSuccess.find('span.message').text("Se han generado " + data.length + " pagos!").delay(3000).fadeOut();
   mensajeSuccess.fadeIn();
-  $("form#pagoGeneracion").each(function(){
-    this.reset();
-  });
+ 
 };

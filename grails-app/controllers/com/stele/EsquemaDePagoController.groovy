@@ -14,9 +14,11 @@ class EsquemaDePagoController {
     if(cpc.hasErrors()) {
       render cpc.errors
       return
-    }    
+    } 
+    
     def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
-    render pagosGenerados as JSON
+    flash.success = "Bien Hecho"
+    render(view: "generarPagosParaLaCamada", model: [pagosCamada: pagosGenerados])
   }
 
 }
