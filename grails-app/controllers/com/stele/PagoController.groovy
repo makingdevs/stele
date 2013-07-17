@@ -11,7 +11,7 @@ class PagoController {
   }
 
   def pagosXInstitucion() {
-    render "pagos por institucion"
+   render (view: "pagosInstitucion")
   }
 
 }
