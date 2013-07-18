@@ -50,7 +50,7 @@
           <div id="dropzone" class="dropzone text-center" style="min-height: 350px; background: rgba(0, 0, 0, 0.03); padding: 23px; cursor: pointer;">
             <span class="dz-message" >
               <br /> <br /> <br /> <br /> <br />
-              <h1> <b>Arrastra aquí para subir</b> <br /> <small>(o da click)</small> </h1>
+              <h1> <b>Arrastra aquí</b> <br /> <small>(o da click)</small> </h1>
             </span>
           </div>
         </div>
