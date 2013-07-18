@@ -1,7 +1,7 @@
 package com.stele
 
 enum EstatusDePago {
-  CREADO("Creado")
+  CREADO("Creado"),
   PROCESO("Validando"),
   PAGADO("Pagado"),
   RECHAZADO("Rechazado"),
