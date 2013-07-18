@@ -32,7 +32,7 @@
               <sec:ifAllGranted roles="ROLE_DIRECTOR">
                 <li><g:link controller="inicio">Cargar layout</g:link></li>
                 <li><a href="#">Generar pagos</a></li>
-                <li><a href="#">Pagos generados</a></li>
+                <li><g:link controller="pago" action="pagosXInstitucion" >Pagos generados</g:link></li>
               </sec:ifAllGranted>
               <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
                 <li><g:link controller="pago">Mis pagos</g:link></li>
