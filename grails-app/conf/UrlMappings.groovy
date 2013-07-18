@@ -7,6 +7,10 @@ class UrlMappings {
 			}
 		}
 
+    "/listaConcepto"(controller: "Concepto") {
+      action = [GET: "obtenerListaConceptos"]
+    }
+
 		"/"(view:"/index")
 		"500"(view:'/error')
 	}
