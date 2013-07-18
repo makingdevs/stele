@@ -1,7 +1,9 @@
 package com.stele
 
-import com.stele.seguridad.Usuario
-import com.stele.DistribucionInstitucional
+import com.stele.seguridad.Usuario;
+import com.stele.DistribucionInstitucional;
+import com.stele.HistorialAcademico;
+import com.stele.Pago;
 
 class PagoService {
 
@@ -23,7 +25,13 @@ class PagoService {
       def distribucionInstitucional = DistribucionInstitucional.withCriteria {
         'in'('institucion', institucionUsuario)
       }
-      distribucionInstitucional
+      def historialAcademico = HistorialAcademico.withCriteria {
+        'in'('distribucionInstitucional', distribucionInstitucional)
+      }
+      def pagos = Pago.withCriteria {
+        'in'('historialAcademico', historialAcademico)
+      }
+      pagos
     }
 
 
