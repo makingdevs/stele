@@ -12,21 +12,8 @@
         Dropzone.options.dropzone = {
           url : urlValue,
           maxFilesize : .5,
-          addRemoveLinks : true,
           uploadMultiple : false,
-
-          complete : function(file) {
-            $("span.dz-message").hide("slow");
-          },
-
-          error : function(file, errorMessage, xhr) {
-            $("span.dz-message").show("slow");
-          },
-
-          success : function(file, data){
-            console.log(data);
-          } 
-
+          addRemoveLinks : false
         };
 
       });
@@ -39,23 +26,19 @@
     <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
 
     <div class="page-header">
-      <h1>Pago por concepto de : ${pago?.conceptoDePago}</h1>
-      <h1>Por la cantidad : ${pago?.cantidadDePago}</h1>
+      <h1><class="icon-info"></i> · Subir Pago</h1>
     </div>
-    <br />
-
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span4">
-          <div id="dropzone" class="dropzone text-center" style="min-height: 350px; background: rgba(0, 0, 0, 0.03); padding: 23px; cursor: pointer;">
-            <span class="dz-message" >
-              <br /> <br /> <br /> <br /> <br />
-              <h1> <b>Arrastra aquí</b> <br /> <small>(o da click)</small> </h1>
-            </span>
-          </div>
+    <div class="row">
+      <div class="span4">
+        <small>Pago por concepto de : <h4>${pago?.conceptoDePago} </h4></small>
+        <small>Por la cantidad :  <h4> <i class="icon-dollar"></i> ${pago?.cantidadDePago}</h4></small>
+      </div>
+      <div class="span6">
+        <div id="dropzone" class="dropzone">
+          
         </div>
       </div>
-    <div>
+    </div>
 
   </body>
 
