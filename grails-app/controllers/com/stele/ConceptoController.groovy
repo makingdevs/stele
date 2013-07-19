@@ -26,7 +26,9 @@ class ConceptoController {
 
   def obtenerListaConceptos() {
     def contactList = conceptoService.buscarConceptosDeUnaInstitucion(springSecurityService.currentUser)
-    render contactList as JSON
+    JSON.use('stele') {
+      render contactList as JSON
+    }
   }
 
 }

@@ -1,9 +1,11 @@
 import com.stele.Institucion
 import grails.util.Environment
 import net.bull.javamelody.JdbcWrapper
+import grails.converters.JSON
 
 import com.stele.seguridad.*
 import com.stele.*
+import com.stele.marshallers.ConceptoMarshaller
 
 class BootStrap {
 
@@ -13,6 +15,10 @@ class BootStrap {
     wrapperMelodyDataSource()
     creaInstituciones()
     creaUsuario()
+    JSON.createNamedConfig('stele') {
+      it.registerObjectMarshaller(new ConceptoMarshaller())
+    }
+
   }
   def destroy = {
   }
