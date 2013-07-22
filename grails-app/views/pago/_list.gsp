@@ -1,3 +1,4 @@
+<%@ page import="com.stele.EstatusDePago" %>
 <table class="table">
   <thead style="background-color:whiteSmoke">
     <tr>
@@ -19,7 +20,23 @@
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDePago}"/> </td>
         <td> ${p.tipoDePago} </td>
         <td> ${p.estatusDePago} </td>
-        <td> <g:link controller="reciboPago" id="${p.id}"> subir pago </g:link> </td>
+          <g:if test="${p.estatusDePago == EstatusDePago.CREADO }">
+            <td> <g:link controller="reciboPago" id="${p.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
+          </g:if>
+          <g:elseif test="${p.estatusDePago == EstatusDePago.PROCESO }">
+            <td><g:link class="btn"><i class="icon-search"></i></g:link>
+            <g:link class="btn"><i class="icon-ok"></i></g:link>
+            <g:link class="btn"><i class="icon-remove"></i></g:link></td>
+          </g:elseif>
+          <g:elseif test="${p.estatusDePago == EstatusDePago.PAGADO }">
+            <td><g:link class="btn"><i class="icon-search"></i></g:link></td>
+          </g:elseif>
+          <g:elseif test="${p.estatusDePago == EstatusDePago.RECHAZADO }">
+            <td><g:link class="btn"><i class="icon-upload-alt"></i></g:link></td>
+          </g:elseif>
+          <g:elseif test="${p.estatusDePago == EstatusDePago.CANCELADO }">
+          </g:elseif>
+
       </tr>
     </g:each>
   </tbody>
