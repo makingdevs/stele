@@ -7,7 +7,7 @@
   <body>
 
   <div class="page-header">
-    <h1><i class="icon-dollar"></i> · Pagos de la Instituci&oacute   <small>    ${usuario.instituciones.nombre}</small></h1>
+    <h1><i class="icon-dollar"></i> · Pagos de la Instituci&oacuten   <small>    ${usuario.instituciones.nombre}</small></h1>
   </div>
   <div class="row-fluid">
     <div class="span12">

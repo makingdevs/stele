@@ -12,10 +12,8 @@
         Dropzone.options.dropzone = {
           url : urlValue,
           maxFilesize : .5,
-          uploadMultiple : false,
           addRemoveLinks : false
         };
-
       });
     </r:script>
 
@@ -35,7 +33,6 @@
       </div>
       <div class="span6">
         <div id="dropzone" class="dropzone">
-          
         </div>
       </div>
     </div>
