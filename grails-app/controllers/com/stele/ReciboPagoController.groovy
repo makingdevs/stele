@@ -13,7 +13,8 @@ class ReciboPagoController {
 
   def subirArchivo() {
     log.debug "params : $params"
-    Pago pago = comprobanteService.agregarComprobanteAPago(params.long('id'), params.file) 
+    //Pago pago = comprobanteService.agregarComprobanteAPago(params.long('id'), params.file) 
+    Pago pago = new Pago()
     render pago as JSON
   }
 

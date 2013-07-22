@@ -12,7 +12,10 @@ modules = {
   }
 
   upload {
-    resource url:'js/upload/dropzone.js'
+    resource url:'css/upload/upload.css'
+    resource url:'js/upload/css/basic.css'
+    resource url:'js/upload/css/dropzone.css'
+    resource url:'js/upload/dropzone.min.js'
   }
   
   validation {
