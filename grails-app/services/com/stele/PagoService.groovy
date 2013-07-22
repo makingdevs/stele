@@ -34,5 +34,8 @@ class PagoService {
       pagos
     }
 
+    Pago obtenerInformacionDelComprobante(Long pagoId) {
+      Pago pago = Pago.findById(pagoId)
+  }
 
 }

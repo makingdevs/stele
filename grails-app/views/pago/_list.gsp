@@ -24,7 +24,7 @@
             <td> <g:link controller="reciboPago" id="${p.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
           </g:if>
           <g:elseif test="${p.estatusDePago == EstatusDePago.PROCESO }">
-            <td><g:link class="btn"><i class="icon-search"></i></g:link>
+            <td><g:link class="btn" controller="comprobante" action="show" id="${p.id}"><i class="icon-search"></i></g:link>
             <g:link class="btn"><i class="icon-ok"></i></g:link>
             <g:link class="btn"><i class="icon-remove"></i></g:link></td>
           </g:elseif>

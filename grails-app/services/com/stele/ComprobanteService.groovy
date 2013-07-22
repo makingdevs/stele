@@ -1,6 +1,7 @@
 package com.stele
 
 import org.grails.s3.S3Asset
+import com.stele.Pago
 
 class ComprobanteService {
 
@@ -18,4 +19,7 @@ class ComprobanteService {
     pago.estatusDePago = EstatusDePago.PROCESO
     pago.save()
   }
+
+
+
 }
