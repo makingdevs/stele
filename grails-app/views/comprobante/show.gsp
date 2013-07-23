@@ -21,6 +21,16 @@
       <dt>Fecha Vencimiento :</dt><dd> ${pago.fechaDeVencimiento.format('yyyy-MMM-dd')}</dd>
       <dt>Total :</dt><dd> <i class="icon-dollar"></i>${pago.cantidadDePago}</dd>
       <dt>Estatus del comprobante :</dt><dd> ${pago.estatusDePago}</dd>
+      <dt>Fecha de Pago: </dt><dd>
+          <g:datePicker class="container-fluid" name="fechaDeVencimiento" value="${new Date()}" precision="day" width="90px"/></dd>
+      <dt>Tipo de Pago: </dt>
+        <dd>
+          <select class="selectpicker">
+            <option>Efectivo</option>
+            <option>Transferencia Bancaria</option>
+            <option>Tarjeta de credito</option>
+          </select>
+        </dd>
       </dl>
       <g:if test="${pago.estatusDePago} == 'Validando'">
         <div class="btn-group">
