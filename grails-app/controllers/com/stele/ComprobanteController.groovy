@@ -7,7 +7,7 @@ class ComprobanteController {
   def show() {
     log.debug "params : $params"
     def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
-    [info: pago]
+    [pago: pago]
   }
 
   def validarComprobante() {
