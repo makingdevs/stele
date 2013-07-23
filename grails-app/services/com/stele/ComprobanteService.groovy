@@ -20,6 +20,4 @@ class ComprobanteService {
     pago.save()
   }
 
-
-
 }
