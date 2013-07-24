@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page import="com.stele.EstatusDePago" %>
 <html>
   <head>
     <meta name="layout" content="twitterBootstrap"/>
@@ -16,7 +17,10 @@
       <iframe src="${pago.comprobanteDePago.url()}"  width="100%" height="450px" ></iframe>  
     </div>
     <div class="span4 well">
-      <g:render template="conciliacion" model="[pago : pago]" /> 
+      <g:if test="${pago.estatusDePago == EstatusDePago.PROCESO }">
+        <g:render template="conciliacion" model="[pago : pago, perfil : perfil]" />
+      </g:if>
+
     </div>
   </div>
   </body>

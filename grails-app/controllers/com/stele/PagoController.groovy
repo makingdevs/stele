@@ -11,7 +11,7 @@ class PagoController {
   }
 
   def pagosDeUnaInstitucion() {
-    def pagosDeInstitucion = pagoService.obtenerPagosXInstitucion(springSecurityService.currentUser)
+    def pagosDeInstitucion = pagoService.obtenerPagosDeUnaInstitucion(springSecurityService.currentUser)
 
    [pagosInstitucion: pagosDeInstitucion, usuario: springSecurityService.currentUser]
   }
