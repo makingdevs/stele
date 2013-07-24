@@ -13,11 +13,12 @@ class ComprobanteController {
   def validarComprobante() {
     def datosForm = params
     pagoService.validarComprobanteDePago(datosForm)
-    render ("/pago/pagosDeUnaInstitucion") 
+    flash.success = "El comprobante fue aprobado"
+    redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
   }
 
   def rechazarComprobante() {
-
+    render("holw")
   }
 
 }

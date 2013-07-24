@@ -31,7 +31,7 @@
       <input type="hidden" name="pago" value="${pago.id}">
         <div class="btn-group">
           <button type="submit" class="btn btn-success"><i class="icon-thumbs-up-alt"></i> Aprobar</button>
-          <button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button>
+          <g:link controller="comprobante" action="rechazarComprobante" ><button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button></g:link>
         </div>
     </g:form>
   </div>
