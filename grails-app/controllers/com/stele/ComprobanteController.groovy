@@ -11,7 +11,9 @@ class ComprobanteController {
   }
 
   def validarComprobante() {
-
+    log.info "params : $params.tipoPago.value"
+    
+    render pagoService.class 
   }
 
   def rechazarComprobante() {

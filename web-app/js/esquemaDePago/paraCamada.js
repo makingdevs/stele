@@ -1,5 +1,6 @@
 $(function(){
   $("select").css({'width':'100px'});
+  $("p select").css({'width':'220px'});
 });
 
 function muestraMensajeDePagosGenerados(data){

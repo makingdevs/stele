@@ -3,6 +3,7 @@
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Informacion del pago</title>
+    <r:require module="pagosParaCamada" />
   </head>
 
   <body>
@@ -15,31 +16,8 @@
       <iframe src="${pago.comprobanteDePago.url()}"  width="100%" height="450px" ></iframe>  
     </div>
     <div class="span4 well">
-      <dl>
-      <dt>Concepto :</dt><dd> ${pago.conceptoDePago}</dd>
-      <dt>Fecha que adjunto el comprobante :</dt><dd>${pago.lastUpdated.format('yyyy-MMM-dd')}</dd>
-      <dt>Fecha Vencimiento :</dt><dd> ${pago.fechaDeVencimiento.format('yyyy-MMM-dd')}</dd>
-      <dt>Total :</dt><dd> <i class="icon-dollar"></i>${pago.cantidadDePago}</dd>
-      <dt>Estatus del comprobante :</dt><dd> ${pago.estatusDePago}</dd>
-      <dt>Fecha de Pago: </dt><dd>
-          <g:datePicker class="container-fluid" name="fechaDeVencimiento" value="${new Date()}" precision="day" width="90px"/></dd>
-      <dt>Tipo de Pago: </dt>
-        <dd>
-          <select class="selectpicker">
-            <option>Efectivo</option>
-            <option>Transferencia Bancaria</option>
-            <option>Tarjeta de credito</option>
-          </select>
-        </dd>
-      </dl>
-      <g:if test="${pago.estatusDePago} == 'Validando'">
-        <div class="btn-group">
-          <button type="button" class="btn btn-success"><i class="icon-thumbs-up-alt"></i> Aprobar</button>
-          <button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button>
-        </div>
-      </g:if>
+      <g:render template="conciliacion" model="[pago : pago]" /> 
     </div>
   </div>
-    
   </body>
 </html>
