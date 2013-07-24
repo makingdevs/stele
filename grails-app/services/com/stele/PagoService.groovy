@@ -4,6 +4,8 @@ import com.stele.seguridad.Usuario;
 import com.stele.DistribucionInstitucional;
 import com.stele.HistorialAcademico;
 import com.stele.Pago;
+import com.stele.TipoDePago
+import com.stele.EstatusDePago
 
 class PagoService {
 
@@ -41,5 +43,14 @@ class PagoService {
     def perfil = Perfil.findById(dependiente.perfilId)
     [pago:pago, perfil:perfil]
   }
+
+  def validarComprobanteDePago(def datos) {
+    def pago = Pago.findById(datos.pago.toLong())
+    pago.fechaDePago = datos.fechaPago
+    pago.tipoDePago = TipoDePago.find {it.key == datos.tipoPago}
+    pago.estatusDePago = EstatusDePago.PAGADO
+    pago.save(flush:true)
+  }
+
 
 }

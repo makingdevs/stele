@@ -11,14 +11,14 @@
         <dt>Fecha de Pago: </dt>
           <dd>
             <div class"controls">
-              <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
+              <g:datePicker name="fechaPago" value="${new Date()}" precision="day" />
             </div>
           </dd>
         <dt>Tipo de Pago: </dt>
           <dd>
             <p>
             <select class="selectpicker" name="tipoPago">
-              <option values="TRANSFERENCIA_BANCARIA">Transferencia Bancaria</option>
+              <option value="TRANSFERENCIA_BANCARIA">Transferencia Bancaria</option>
               <option value="FICHA_REFERENCIADA">Ficha Referenciada</option>
               <option value="CHEQUE_FICHA">Cheque Ficha</option> 
               <option value="EFECTIVO">Efectivo</option>    
@@ -28,6 +28,7 @@
           </dd>
         <dt>Folio Banco</dt><dd><input type="text" id="folioBanco" name="folioBanco"></dd> 
       </dl>
+      <input type="hidden" name="pago" value="${pago.id}">
         <div class="btn-group">
           <button type="submit" class="btn btn-success"><i class="icon-thumbs-up-alt"></i> Aprobar</button>
           <button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button>
