@@ -18,7 +18,10 @@ class ComprobanteController {
   }
 
   def rechazarComprobante() {
-    render("holw")
+    def datosForms = params
+    println datosForms
+    pagoService.rechazarComprobanteDePago(datosForms)
+    redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
   }
 
 }

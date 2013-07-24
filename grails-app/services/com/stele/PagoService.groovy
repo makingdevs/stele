@@ -9,6 +9,8 @@ import com.stele.EstatusDePago
 
 class PagoService {
 
+  def s3AssetService
+
   def obtenerPagosDeUsuario(Usuario usuario) {
     def criteriaDependiente = Dependiente.createCriteria()
     def pagosDeUsuario = [] as Set 
@@ -50,6 +52,15 @@ class PagoService {
     pago.tipoDePago = TipoDePago.find {it.key == datos.tipoPago}
     pago.estatusDePago = EstatusDePago.PAGADO
     pago.save(flush:true)
+  }
+
+  def rechazarComprobanteDePago(def params) {
+    def pago = Pago.findById(params.pago.toLong())
+    s3AssetService.delete(pago.comprobanteDePago)
+    pago.comprobanteDePago = null
+    pago.estatusDePago = EstatusDePago.RECHAZADO
+    pago.save(flush:true)
+
   }
 
 
