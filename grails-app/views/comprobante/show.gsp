@@ -20,7 +20,9 @@
       <g:if test="${pago.estatusDePago == EstatusDePago.PROCESO }">
         <g:render template="conciliacion" model="[pago : pago, perfil : perfil]" />
       </g:if>
-
+      <g:if test="${pago.estatusDePago == EstatusDePago.PAGADO }">
+        <g:render template="detalle" model="[pago : pago, perfil : perfil]" />
+      </g:if>
     </div>
   </div>
   </body>

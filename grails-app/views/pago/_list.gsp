@@ -29,10 +29,10 @@
             <g:link class="btn"><i class="icon-remove"></i></g:link></td>
           </g:elseif>
           <g:elseif test="${p.estatusDePago == EstatusDePago.PAGADO }">
-            <td><g:link class="btn"><i class="icon-search"></i></g:link></td>
+            <td><g:link controller="comprobante" action="show" id="${p.id}" class="btn"><i class="icon-search"></i></g:link></td>
           </g:elseif>
           <g:elseif test="${p.estatusDePago == EstatusDePago.RECHAZADO }">
-            <td><g:link class="btn"><i class="icon-upload-alt"></i></g:link></td>
+            <td><g:link controller="reciboPago" id="${p.id}" class="btn"> <i class="icon-upload-alt"></i></g:link></td>
           </g:elseif>
           <g:elseif test="${p.estatusDePago == EstatusDePago.CANCELADO }">
           </g:elseif>
