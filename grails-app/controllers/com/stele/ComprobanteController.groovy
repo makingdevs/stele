@@ -3,6 +3,7 @@ package com.stele
 class ComprobanteController {
 
   def pagoService
+  def comprobanteService
 
   def show() {
     log.debug "params : $params"
@@ -11,16 +12,13 @@ class ComprobanteController {
   }
 
   def validarComprobante() {
-    def datosForm = params
-    pagoService.validarComprobanteDePago(datosForm)
+    comprobanteService.aprobarPago(params.transactionId, params.fechaPago, params.tipoPago as TipoDePago)
     flash.success = "El comprobante fue aprobado"
     redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
   }
 
-  def rechazarComprobante() {
-    def datosForms = params
-    println datosForms
-    pagoService.rechazarComprobanteDePago(datosForms)
+  def rachazarPago() {
+    pagoService.rechazarComprobanteDePago(params.transactionId)
     redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
   }
 

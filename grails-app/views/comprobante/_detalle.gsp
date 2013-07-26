@@ -10,6 +10,5 @@
         <dt>Fecha de Pago: </dt><dd> ${pago.fechaDePago.format('yyyy-MMM-dd')}</dd>
         <dt>Tipo de Pago: </dt><dd>${pago.tipoDePago}</dd>
       </dl>
-    </div>
   </div>
 </div>
