@@ -17,8 +17,8 @@ class ComprobanteController {
     redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
   }
 
-  def rachazarPago() {
-    pagoService.rechazarComprobanteDePago(params.transactionId)
+  def rechazarPago() {
+    comprobanteService.rechazarPago(params.transactionId)
     redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
   }
 

@@ -31,7 +31,7 @@
       <input type="hidden" name="transactionId" value="${pago.transactionId}">
         <div class="btn-group">
           <button type="submit" class="btn btn-success"><i class="icon-thumbs-up-alt"></i> Aprobar</button>
-          <g:link controller="comprobante" action="rechazarComprobante" params="[pago: "${pago.id}"]" ><button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button></g:link>
+          <g:link controller="comprobante" action="rechazarPago" params="[transactionId: "${pago.transactionId}"]" ><button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button></g:link>
         </div>
     </g:form>
   </div>
