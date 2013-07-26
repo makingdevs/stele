@@ -7,6 +7,7 @@
       <th>Vencimiento</th>
       <th>Fecha de pago</th>
       <th>Tipo de pago</th>
+      <th>Días sin conciliar</th>
       <th>Estatus</th>
       <th>&nbsp;</th>
     </tr>
@@ -19,6 +20,7 @@
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDeVencimiento}"/> </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDePago}"/> </td>
         <td> ${p.tipoDePago} </td>
+        <td>${(p.lastUpdated - new Date())}</td>
         <td> ${p.estatusDePago} </td>
           <g:if test="${p.estatusDePago == EstatusDePago.CREADO }">
             <td> <g:link controller="reciboPago" id="${p.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
@@ -36,7 +38,6 @@
           </g:elseif>
           <g:elseif test="${p.estatusDePago == EstatusDePago.CANCELADO }">
           </g:elseif>
-
       </tr>
     </g:each>
   </tbody>
