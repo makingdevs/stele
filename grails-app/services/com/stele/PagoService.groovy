@@ -27,13 +27,10 @@ class PagoService {
     def distribucionInstitucional = DistribucionInstitucional.withCriteria {
       'in'('institucion', institucionUsuario)
     }
-    def historialAcademico = HistorialAcademico.withCriteria {
+    def historial = HistorialAcademico.withCriteria {
       'in'('distribucionInstitucional', distribucionInstitucional)
     }
-    def pagos = Pago.withCriteria {
-      'in'('historialAcademico', historialAcademico)
-    }
-    pagos
+    historial
   }
 
   def obtenerPagoParaValidarComprobante(Long pagoId) {

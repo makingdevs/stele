@@ -13,7 +13,7 @@
   </header>
   <div class="row-fluid">
     <div class="span12">
-      <g:render template='/pago/list' model="[pagos : pagosCamada]" />
+      <g:render template='/pago/list' model="[pagos : pagosCamada, count: pagosCount]" />
     </div>
   </div>
  

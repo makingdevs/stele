@@ -18,7 +18,7 @@ class EsquemaDePagoController {
     
     def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
     flash.success = "Bien Hecho"
-    render(view: "generarPagosParaLaCamada", model: [pagosCamada: pagosGenerados])
+    render(view: "generarPagosParaLaCamada", model: [pagosCamada: pagosGenerados, pagosCount: pagosGenerados.size()])
   }
 
 }

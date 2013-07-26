@@ -1,5 +1,7 @@
 package com.stele
 
+import com.stele.Pago
+
 class PagoController {
 
   def springSecurityService
@@ -11,9 +13,14 @@ class PagoController {
   }
 
   def pagosDeUnaInstitucion() {
-    def pagosDeInstitucion = pagoService.obtenerPagosDeUnaInstitucion(springSecurityService.currentUser)
-
-   [pagosInstitucion: pagosDeInstitucion, usuario: springSecurityService.currentUser]
+    def historial = pagoService.obtenerPagosDeUnaInstitucion(springSecurityService.currentUser)
+    params.max
+    params.fetch = [historialAcademico:"${historial}"]
+    params.offset
+    params.fetchSize
+    params.order = "asc"
+    println params
+   [pagosInstitucion: Pago.list(params), usuario: springSecurityService.currentUser, pagosCount: historial.size()]
   }
 
 }

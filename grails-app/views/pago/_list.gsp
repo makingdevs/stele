@@ -42,3 +42,6 @@
     </g:each>
   </tbody>
 </table>
+<div class="pagination" >
+  <g:paginate max="1" total="${count}"/>
+</div>
