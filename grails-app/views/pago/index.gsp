@@ -17,7 +17,7 @@
 
   <div class="row-fluid">
     <div class="span12">
-      <g:render template="list" model="[pagos : pagosDeUsuario]" />
+      <g:render template="list" model="[pagos : pagosDeUsuario, count: pagosCount]" />
     </div>
   </div>
 
