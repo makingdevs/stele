@@ -20,7 +20,7 @@
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDeVencimiento}"/> </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${p.fechaDePago}"/> </td>
         <td> ${p.tipoDePago} </td>
-        <td>${(p.lastUpdated - new Date())}</td>
+        <td>${(new Date() - p.lastUpdated)}</td>
         <td> ${p.estatusDePago} </td>
           <g:if test="${p.estatusDePago == EstatusDePago.CREADO }">
             <td> <g:link controller="reciboPago" id="${p.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
@@ -42,6 +42,6 @@
     </g:each>
   </tbody>
 </table>
-<div class="pagination" >
-  <g:paginate max="1" total="${count}"/>
+<div class="pagination pagination-large" align="center">
+  <g:paginate total="${pagosCount}"/>
 </div>
