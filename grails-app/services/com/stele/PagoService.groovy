@@ -3,9 +3,10 @@ package com.stele
 import com.stele.seguridad.Usuario;
 import com.stele.DistribucionInstitucional;
 import com.stele.HistorialAcademico;
-import com.stele.Pago;
+import com.stele.Pago
 import com.stele.TipoDePago
 import com.stele.EstatusDePago
+import com.stele.Dependiente
 
 class PagoService {
 
@@ -27,10 +28,11 @@ class PagoService {
     def distribucionInstitucional = DistribucionInstitucional.withCriteria {
       'in'('institucion', institucionUsuario)
     }
-    def historial = HistorialAcademico.withCriteria {
+    def historialAcademico = HistorialAcademico.withCriteria {
       'in'('distribucionInstitucional', distribucionInstitucional)
     }
-    historial
+
+    [dependiente: historialAcademico.dependiente, historial:historialAcademico]
   }
 
   def obtenerPagoParaValidarComprobante(Long pagoId) {
