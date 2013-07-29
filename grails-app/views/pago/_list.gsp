@@ -43,5 +43,5 @@
   </tbody>
 </table>
 <div class="pagination pagination-large" align="center">
-  <g:paginate total="${pagosCount}"/>
+  <g:paginate total="${pagosCount.size()}" params="[fechaDeVencimiento:"${pagos.fechaDeVencimiento.last()}", camada:"${pagosCount.first().camada}"]" />
 </div>
