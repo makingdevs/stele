@@ -13,11 +13,11 @@ class PagoController {
   }
 
   def pagosDeUnaInstitucion() {
-    def historial = pagoService.obtenerPagosDeUnaInstitucion(springSecurityService.currentUser)
+    def pago = pagoService.obtenerPagosDeUnaInstitucion(springSecurityService.currentUser)
    [
-   pagosInstitucion: Pago.findAllByHistorialAcademicoInList(historial,[max : params.max?:10,offset : params.offset?:0 ]), 
+   pagosInstitucion: Pago.findAllByHistorialAcademicoInList(pago.historial,[max : params.max?:10,offset : params.offset?:0 ]), 
    usuario: springSecurityService.currentUser, 
-   pagosCount: historial.size()]
+   pagosCount: pago.dependiente]
   }
 
 }
