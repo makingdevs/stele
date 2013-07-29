@@ -16,9 +16,23 @@ class EsquemaDePagoController {
       return
     } 
     
-    def pagosGenerados = generacionDePagoService.paraCamadaPagoCommand(cpc)
+    generacionDePagoService.paraCamadaPagoCommand(cpc)
     flash.success = "Bien Hecho"
-    render(view: "generarPagosParaLaCamada", model: [pagosCamada: pagosGenerados, pagosCount: pagosGenerados.size()])
+    redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,fechaDeVencimiento:cpc.fechaDeVencimiento.format('yyyy-MM-dd')]
+  }
+
+  def muestraPagosDeCamada(){
+    def dependientes = Dependiente.findAllByCamada(params.camada)
+    def criteria = Pago.createCriteria()
+    def pagos = criteria.list(max:params.max?:10, offset: params.offset?:0) {
+      eq("fechaDeVencimiento", new Date().parse('yyyy-MM-dd', params.fechaDeVencimiento))
+      historialAcademico {
+        dependiente {
+          'in'('id',dependientes*.id)
+        }
+      }
+    }
+    render(view: "generarPagosParaLaCamada", model: [pagos: pagos, pagosCount: dependientes])
   }
 
 }
