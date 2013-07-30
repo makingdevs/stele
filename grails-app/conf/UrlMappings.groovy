@@ -7,7 +7,7 @@ class UrlMappings {
 			}
 		}
 
-    "/listaConcepto"(controller: "Concepto") {
+    "/listaConcepto/$query?"(controller: "Concepto") {
       action = [GET: "obtenerListaConceptos"]
     }
 
