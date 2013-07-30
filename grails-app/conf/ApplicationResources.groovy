@@ -26,6 +26,7 @@ modules = {
     dependsOn 'validation'
     resource url:'js/registro/index.js'
   }
+
   pagosParaCamada {
     resource url:'js/esquemaDePago/paraCamada.js'
   }
@@ -33,5 +34,9 @@ modules = {
   generarPagos {
     dependsOn 'validation'
     resource url: 'js/esquemaDePago/generar.js'
+  }
+
+  autocomplete {
+    resource url: 'js/esquemaDePago/autocomplete.js'
   }
 }
