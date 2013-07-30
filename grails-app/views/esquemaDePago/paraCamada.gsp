@@ -4,6 +4,7 @@
     <title>Esquema de pago</title>
     <r:require module="pagosParaCamada"/>
     <r:require module="generarPagos" />
+    <r:require module="autocomplete" />
   </head>
 
   <body>
@@ -20,7 +21,7 @@
           <div class="control-group">
             <label for="conceptoDePago" class="control-label">Concepto: </label>
             <div class="controls">
-              <input type="text" id="conceptoDePago" name="conceptoDePago" placeholder="Concepto">
+              <input type="text" id="conceptoDePago" class="typeahead" data-provide="typeahead" name="conceptoDePago" placeholder="Concepto" autocomplete="off" >
             </div>
           </div>
           <div class="control-group">
