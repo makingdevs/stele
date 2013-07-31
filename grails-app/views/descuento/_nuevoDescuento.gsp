@@ -1,7 +1,7 @@
 <div class="control-group">
   <label for="nombreDeDescuento" class="control-label">Nombre de descuento  : </label>
   <div class="controls">
-    <input type="text" id="nombreDeDescuento" name="nombreDeDescuento" class="input-xlarge" placeholder="Nombre del descuento">
+    <input type="text" id="nombreDeDescuento" name="nombreDeDescuento" class="typeahead2" data-provide="typeahead" placeholder="Nombre del descuento" autocomplete="off">
   </div>
 </div>
 
