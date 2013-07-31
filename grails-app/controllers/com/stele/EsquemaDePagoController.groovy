@@ -4,6 +4,7 @@ import grails.converters.JSON
 
 class EsquemaDePagoController {
 
+  def springSecurityService
   def generacionDePagoService
 
   def paraCamada() {
@@ -16,7 +17,7 @@ class EsquemaDePagoController {
       return
     } 
     
-    generacionDePagoService.paraCamadaPagoCommand(cpc)
+    generacionDePagoService.paraCamadaPagoCommand(cpc, springSecurityService.currentUser)
     flash.success = "Bien Hecho"
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,fechaDeVencimiento:cpc.fechaDeVencimiento.format('yyyy-MM-dd')]
   }
