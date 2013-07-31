@@ -12,7 +12,8 @@ public class DescuentoMarshaller implements ObjectMarshaller<JSON> {
 
   public void marshalObject(Object object, JSON converter) {
     def descuento = object as Descuento
-    def decuentoValues = [descuento.id, descuento.nombreDeDescuento]
+    def decuentoValues = [key:descuento.id,value:descuento.nombreDeDescuento]
+    converter.convertAnother(decuentoValues)
   }
 
 }
