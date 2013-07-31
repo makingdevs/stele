@@ -14,4 +14,15 @@ class ConceptoService {
       }
   }
 
+  def guardarConceptoDePagoGenerado(Usuario usuario, String conc) {
+  	def conceptoExistente = Concepto.findByConcepto(conc)
+  	if (!conceptoExistente){
+	  	Concepto concepto = new Concepto()
+	  	concepto.concepto = conc
+	    concepto.institucion = usuario.instituciones?.first()
+	    concepto.save(flush:true)
+	    concepto
+	}
+  }
+
 }
