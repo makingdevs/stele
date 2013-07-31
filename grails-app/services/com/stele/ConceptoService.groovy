@@ -6,9 +6,10 @@ import com.stele.Institucion
 
 class ConceptoService {
 
-  def buscarConceptosDeUnaInstitucion(Usuario usuario) {
+  def buscarConceptosDeUnaInstitucion(Usuario usuario, def query) {
       def institucion = usuario.instituciones
       Concepto.withCriteria {
+        like('concepto', "%${query}%" )
         'in'('institucion', institucion)
       }
   }
