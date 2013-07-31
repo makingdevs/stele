@@ -13,7 +13,7 @@ class DescuentoController {
   def index() { }
 
   def obtenerDescuentosInstitucion() {
-    def descuentosList = descuentoService.buscarDescuentosDeUnaInstitucion(springSecurityService.currentUser)
+    def descuentosList = descuentoService.buscarDescuentosDeUnaInstitucion(springSecurityService.currentUser,params.query)
     JSON.use('stele') {
       render descuentosList as JSON
     }
