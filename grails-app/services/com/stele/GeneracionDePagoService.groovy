@@ -1,11 +1,16 @@
 package com.stele
 
+import com.stele.seguridad.Usuario
+
 class GeneracionDePagoService {
 
-  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand) {
+  def conceptoService
+
+  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand, Usuario usuario) {
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
-
+    println camadaPagoCommand.properties.conceptoDePago
+    conceptoService.guardarConceptoDePagoGenerado(usuario, camadaPagoCommand.properties.conceptoDePago)
     List<Pago> pagos = []
     dependientes.each { dependiente ->
       def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand).save()
