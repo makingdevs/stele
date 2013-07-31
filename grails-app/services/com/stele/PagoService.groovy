@@ -20,7 +20,7 @@ class PagoService {
       Dependiente dependienteExistente = dependiente.get(dependiente.id)
       pagosDeUsuario.addAll(dependienteExistente.pagos)
     }
-    pagosDeUsuario
+    [dependiente: dependientesDeUsuario, pagos: pagosDeUsuario]
   }
 
   def obtenerPagosDeUnaInstitucion(Usuario usuario) {
@@ -31,7 +31,6 @@ class PagoService {
     def historialAcademico = HistorialAcademico.withCriteria {
       'in'('distribucionInstitucional', distribucionInstitucional)
     }
-
     [dependiente: historialAcademico.dependiente, historial:historialAcademico]
   }
 
