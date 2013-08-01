@@ -14,8 +14,8 @@ class Descuento {
 
   static constraints = {
     nombreDeDescuento blank:false, size:1..150
-    porcentaje min:0.0
-    cantidad min:0.0
+    porcentaje nullable: true, min:0.0
+    cantidad nullable: true, min:0.0
   }
 
 }
