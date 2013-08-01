@@ -28,6 +28,6 @@
 <div class="control-group">
   <label for="fechaDeVencimiento" class="control-label">Fecha de vencimiento: </label>
   <div class="controls">
-    <g:datePicker name="vencimiento" value="${new Date()}" precision="day" />
+    <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
   </div>
 </div>
