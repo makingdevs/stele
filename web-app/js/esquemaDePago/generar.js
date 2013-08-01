@@ -42,4 +42,35 @@ $(document).ready(function(){
     errorClass: "error",
     errorElement: "span"
   });
+
+  $("#descuentosForm").submit(function(event){
+    event.stopPropagation();
+    var url = $(this).attr('action');
+    var data = $(this).serialize()
+    var descuentosIds = $("input#descuentosIds").val();
+
+    $.ajax({
+      type: "POST",
+      url: url + "?descuentosIds=" + descuentosIds,
+      data: data,
+      success: function(data) {
+        $("#descuentoCreado").html(data)
+        $('#descuentoModal').modal('hide');
+      }
+    });
+    
+    return false;
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
