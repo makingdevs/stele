@@ -6,23 +6,25 @@ import com.stele.Institucion
 
 class ConceptoService {
 
+  static transactional = true
+
   def buscarConceptosDeUnaInstitucion(Usuario usuario, def query) {
-      def institucion = usuario.instituciones
-      Concepto.withCriteria {
-        like('concepto', "%${query}%" )
-        'in'('institucion', institucion)
-      }
+    def institucion = usuario.instituciones
+    Concepto.withCriteria {
+      like('concepto', "%${query}%" )
+      'in'('institucion', institucion)
+    }
   }
 
-  def guardarConceptoDePagoGenerado(Usuario usuario, String conc) {
-  	def conceptoExistente = Concepto.findByConcepto(conc)
+  def guardarConceptoDePagoGenerado(Usuario usuario, String descripcionDeConcepto) {
+  	def conceptoExistente = Concepto.findByConcepto(descripcionDeConcepto)
   	if (!conceptoExistente){
-	  	Concepto concepto = new Concepto()
-	  	concepto.concepto = conc
-	    concepto.institucion = usuario.instituciones?.first()
-	    concepto.save(flush:true)
-	    concepto
-	}
+      Concepto concepto = new Concepto()
+      concepto.concepto = descripcionDeConcepto
+      concepto.institucion = usuario.instituciones?.first()
+      concepto.save()
+      concepto
+    }
   }
 
 }
