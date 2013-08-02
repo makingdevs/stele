@@ -1,19 +1,19 @@
 package com.stele
 
-import com.stele.seguridad.Usuario
-import com.stele.Descuento
-
 class GeneracionDePagoService {
 
   def conceptoService
+  def springSecurityService
 
-  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand, Usuario usuario, def descuentos) {
+  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand) {
+
+    conceptoService.guardarConceptoDePagoGenerado(springSecurityService.currentUser,camadaPagoCommand.conceptoDePago)
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
-    conceptoService.guardarConceptoDePagoGenerado(usuario, camadaPagoCommand.properties.conceptoDePago)
+
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand, descuentos).save()
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand).save()
       dependiente.addToPagos(pago)
       dependiente.save()
       pagos << pago
@@ -21,26 +21,12 @@ class GeneracionDePagoService {
     pagos
   }
 
-  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand, def descuentos) {
-    def list = []
-    println descuentos 
-    descuentos.each { id ->
-      if ( !id.isEmpty() ) {
-        list.add(id.toLong())
-      }
-    }
-    def descuentoList = Descuento.withCriteria {
-      'in'('id', list)
-    }
+  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
     Pago pago = new Pago(camadaPagoCommand.properties)
     pago.historialAcademico = historialAcademico
-
-      descuentoList.each { descuento ->
-        pago.addToDescuentos(descuento)
-      }
     pago
   }
 
