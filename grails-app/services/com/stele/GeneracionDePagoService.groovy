@@ -9,7 +9,6 @@ class GeneracionDePagoService {
   def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand, Usuario usuario) {
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
-    println camadaPagoCommand.properties.conceptoDePago
     conceptoService.guardarConceptoDePagoGenerado(usuario, camadaPagoCommand.properties.conceptoDePago)
     List<Pago> pagos = []
     dependientes.each { dependiente ->
