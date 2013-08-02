@@ -53,10 +53,13 @@ class GeneracionDePagoServiceSpec extends Specification {
       assert pagos.size() == 1
       assert pagos.first().id > 0
       assert pagos.first().conceptoDePago == concepto
+      assert pagos.first().cantidadDePago ==  monto
       
     where :
       camada | concepto   | monto | fechaDeVencimiento
       "123"  | "concepto" | 1.00  | new Date() + 7
   }
+
+
 
 }
