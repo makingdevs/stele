@@ -29,11 +29,36 @@
           <a class="brand" href="#">Stele</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <!-- BEGIN: Menu de opciones -->
+              <sec:ifAllGranted roles="ROLE_DIRECTOR">
+                <li><g:link controller="inicio">Cargar layout</g:link></li>
+                <li><a href="#">Generar pagos</a></li>
+                <li><a href="#">Pagos generados</a></li>
+              </sec:ifAllGranted>
+              <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
+                <li><g:link controller="pago">Mis pagos</g:link></li>
+              </sec:ifAllGranted>
+              <sec:ifLoggedIn>
+                <li><g:link controller="perfil">Mi perfil</g:link></li>
+              </sec:ifLoggedIn>
+              <!-- END: Menu de opciones -->
             </ul>
           </div><!--/.nav-collapse -->
+          <sec:ifLoggedIn>
+          <ul class="nav pull-right">
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <sec:loggedInUserInfo field="username"/> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <g:link controller="logout">Salir / Logout</g:link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          </sec:ifLoggedIn>
         </div>
       </div>
     </div>

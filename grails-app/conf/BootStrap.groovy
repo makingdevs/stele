@@ -58,13 +58,23 @@ class BootStrap {
     if(!usuarioRol)
       usuarioRol = UsuarioRol.create(user, rol, true)
 
-    Perfil perfilDependiente = new Perfil( nombre: "Nelson Jr.",
-                                           apellidoPaterno: "Muntz",
-                                           avatar : "http://images1.wikia.nocookie.net/__cb20100606175810/simpsons/images/6/64/Nelson_jr.jpg")
+    Perfil perfilDependiente = new Perfil(nombre: "Nelson Jr.",
+                                          apellidoPaterno: "Muntz",
+                                          avatar : "http://images1.wikia.nocookie.net/__cb20100606175810/simpsons/images/6/64/Nelson_jr.jpg")
     perfilDependiente.save(flush:true)
     Dependiente dependiente = new Dependiente(matricula : "2013A9023",
                                               perfil : perfilDependiente,
                                               camada : "0000000001")
+    Pago pago = new Pago(conceptoDePago : "Pago test 1",
+                         cantidadDePago : 123456789,
+                         fechaDePago : new Date(),
+                         fechaDeVencimiento : new Date(),
+                         tipoDePago : TipoDePago.TRANSFERENCIA_BANCARIA,
+                         estaDePago : EstatusDePago.PROCESO,
+                         transactionId : UUID.randomUUID().toString().replaceAll('-', '').substring(0,20)
+                         )
+    pago.save(flush:true)
+    dependiente.addToPagos( pago )
     usuario.addToDependientes( dependiente )
     usuario.save(flush:true)
   }
