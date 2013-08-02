@@ -1,19 +1,19 @@
 package com.stele
 
 import com.stele.seguridad.Usuario
+import com.stele.Descuento
 
 class GeneracionDePagoService {
 
   def conceptoService
 
-  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand, Usuario usuario) {
+  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand, Usuario usuario, def descuentos) {
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
-    println camadaPagoCommand.properties.conceptoDePago
     conceptoService.guardarConceptoDePagoGenerado(usuario, camadaPagoCommand.properties.conceptoDePago)
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand).save()
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand, descuentos).save()
       dependiente.addToPagos(pago)
       dependiente.save()
       pagos << pago
@@ -21,7 +21,11 @@ class GeneracionDePagoService {
     pagos
   }
 
-  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
+  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand, def descuentos) {
+    def descuentoList = Descuento.withCriteria {
+      'in'('id', descuentos)
+    }
+    println descuentoList
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
