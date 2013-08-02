@@ -52,4 +52,12 @@ class ConceptoServiceSpec extends Specification {
 
     }
 
+    def "Al guardar un concepto de pago generado que no existe se debe de crear"(){
+
+    }
+
+    def "Al guardar un concepto de pago generado que ya existe no se debe de crear"(){
+        
+    }
+
 }
