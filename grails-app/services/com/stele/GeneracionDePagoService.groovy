@@ -23,8 +23,11 @@ class GeneracionDePagoService {
 
   private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand, def descuentos) {
     def list = []
+    println descuentos 
     descuentos.each { id ->
-      list.add(id.toLong())
+      if ( !id.isEmpty() ) {
+        list.add(id.toLong())
+      }
     }
     def descuentoList = Descuento.withCriteria {
       'in'('id', list)
@@ -34,9 +37,10 @@ class GeneracionDePagoService {
     }
     Pago pago = new Pago(camadaPagoCommand.properties)
     pago.historialAcademico = historialAcademico
-    descuentoList.each { descuento ->
-      pago.addToDescuentos(descuento)
-    }
+
+      descuentoList.each { descuento ->
+        pago.addToDescuentos(descuento)
+      }
     pago
   }
 
