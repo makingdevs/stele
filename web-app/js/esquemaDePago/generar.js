@@ -47,7 +47,7 @@ $(document).ready(function(){
     event.stopPropagation();
     var url = $(this).attr('action');
     var data = $(this).serialize()
-    var descuentosIds = $("input#descuentosIds").val();
+    var descuentosIds = $("input#descuentos").val();
 
     $.ajax({
       type: "POST",
