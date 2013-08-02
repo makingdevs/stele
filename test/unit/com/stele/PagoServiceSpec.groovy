@@ -114,7 +114,7 @@ class PagoServiceSpec extends Specification {
       dependiente.addToPagos(pagoDos)
       dependiente.save(flush:true)
     when: "Se realiza la llamada al metodo obtenerPagosXInstitucion"
-      def pagoInstitucion = service.obtenerPagosXInstitucion(usuarioExistente)
+      def pagoInstitucion = service.obtenerPagosDeUnaInstitucion(usuarioExistente)
     then: "la cantidad de pagos debe de ser 2"
       assert pagoInstitucion.size() == 2
   }
