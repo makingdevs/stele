@@ -38,12 +38,12 @@ class DescuentoServiceSpec extends Specification {
     descuento.id = 1
     descuento.nombreDeDescuento = "Pago anticipado"
     descuento.porcentaje = 10
-    descuento.cantidad = 100
     descuento.fechaDeVencimiento = new java.util.Date(2013, 9, 15, 8, 15, 23);
     descuento.institucion = institucion
     descuento.save(flush:true)
   when: "Se realiza la llamada al metodo buscarDescuentosDeUnaInstitucion"
-    def descuentoInstitucion = service.buscarDescuentosDeUnaInstitucion(usuario)
+    def query = "ant"
+    def descuentoInstitucion = service.buscarDescuentosDeUnaInstitucion(usuario, query)
   then: "La cantidad de descuentos debe ser igual a 1"
     assert descuentoInstitucion.size() == 1
 
