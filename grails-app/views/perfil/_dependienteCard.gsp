@@ -1,12 +1,20 @@
-<div class="media">
-  <span class="pull-left">
-    <img class="media-object" src="${dependiente.perfil.avatar}" style="width: 114px; height: 114px;">
-  </span>
-  <div class="media-body">
-    <p><strong>Matricula :</strong> <small> ${dependiente.matricula} </small></p>
-    <p><strong>Nombre :</strong> <small> ${dependiente.perfil.nombreCompleto()} </small></p>
-    <p><strong>Nivel :</strong> <small> Nivel </small></p>
-    <p><strong>Grado :</strong> <small> Grado  </small></p>
-    <p><strong>Grupo :</strong> <small> Grupo  </small></p>
+<div class="well">
+  <div class="media">
+    <a class="pull-left" href="#">
+      <img src="${dependiente.perfil.avatar}" style="width: 114px; height: 114px;" alt="114x114" class="media-object img-polaroid" data-src="holder.js/114x114" />
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">${dependiente.perfil.nombreCompleto()}</h4>
+      <dl class="dl-horizontal">
+        <dt>Matrícula:</dt>
+        <dd>${dependiente.matricula}</dd>
+        <dt>Nivel:</dt>
+        <dd>...</dd>
+        <dt>Grado:</dt>
+        <dd>...</dd>
+        <dt>Grupo:</dt>
+        <dd>...</dd>
+      </dl>
+    </div>
   </div>
 </div>

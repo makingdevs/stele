@@ -1,8 +1,14 @@
 package com.stele
 
+import com.stele.Concepto
+import grails.converters.JSON
+
 class ConceptoController {
 
   def springSecurityService
+  def conceptoService
+
+  static allowedMethods = [obtenerListaconceptos : 'GET']
 
   def index() { }
 
@@ -18,7 +24,15 @@ class ConceptoController {
     concepto
   }
 
+  def obtenerListaConceptos() {
+    def contactList = conceptoService.buscarConceptosDeUnaInstitucion(springSecurityService.currentUser,params.query )
+    JSON.use('stele') {
+      render contactList as JSON
+    }
+  }
+
 }
+
 
 class ConceptoCommand {
 

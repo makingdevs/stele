@@ -1,12 +1,7 @@
 <%@ page import="com.stele.TipoDeTelefono" %>
-
-<table class="table table-bordered table-condensed">
-  <thead style="background-color:whiteSmoke">
-    <tr>
-    <th colspan="6" style="text-align:left; vertical-align:middle; color:blue;"> 
-        Teléfono 
-      </th>
-    </tr>
+<h4>Mis teléfonos de contacto</h4>
+<table class="table">
+  <thead>
     <tr>
       <th>Principal</th>
       <th>Tipo</th>
@@ -19,8 +14,26 @@
   <tbody>
     <g:each in="${telefonos?.sort({ it.id })}" var="t">
       <tr>
-        <td> ${t.principal} </td>
-        <td> ${t.tipoDeTelefono} </td>
+        <td>
+          <g:if test="${t.principal}">
+            <i class="icon-ok"></i>
+          </g:if>
+        </td>
+        <td> 
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.CASA}">
+            <i class="icon-phone-sign"></i> 
+          </g:if>
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.CELULAR}">
+            <i class="icon-mobile-phone"></i> 
+          </g:if>
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.TRABAJO}">
+            <i class="icon-briefcase"></i> 
+          </g:if>
+          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.RECADOS}">
+            <i class="icon-phone"></i> 
+          </g:if>
+          ${t.tipoDeTelefono}
+        </td>
         <td> ${t.lada} </td>
         <td> ${t.numeroTelefonico} </td>
         <td> ${t.extension} </td>

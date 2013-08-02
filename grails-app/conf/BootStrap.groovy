@@ -1,9 +1,12 @@
 import com.stele.Institucion
 import grails.util.Environment
 import net.bull.javamelody.JdbcWrapper
+import grails.converters.JSON
 
 import com.stele.seguridad.*
 import com.stele.*
+import com.stele.marshallers.*
+
 
 class BootStrap {
 
@@ -13,6 +16,11 @@ class BootStrap {
     wrapperMelodyDataSource()
     creaInstituciones()
     creaUsuario()
+    JSON.createNamedConfig('stele') {
+      it.registerObjectMarshaller(new ConceptoMarshaller())
+      it.registerObjectMarshaller(new DescuentoMarshaller())
+    }
+
   }
   def destroy = {
   }
@@ -70,7 +78,7 @@ class BootStrap {
                          fechaDePago : new Date(),
                          fechaDeVencimiento : new Date(),
                          tipoDePago : TipoDePago.TRANSFERENCIA_BANCARIA,
-                         estaDePago : EstatusDePago.PROCESO,
+                         estaDePago : EstatusDePago.CREADO,
                          transactionId : UUID.randomUUID().toString().replaceAll('-', '').substring(0,20)
                          )
     pago.save(flush:true)

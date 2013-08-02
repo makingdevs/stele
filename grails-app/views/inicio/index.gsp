@@ -3,10 +3,21 @@
   <head>
     <meta name="layout" content="twitterBootstrap"/>
     <title>Inicio</title>
+    <script language="javascript">
+      function check() {
+        if (document.layout.datosEscolares.value == '') {
+          alert('No existe un archivo pra procesar !!');
+          return false;
+        } 
+      }
+    </script>
   </head>
   <body>
-    <g:uploadForm controller="inicio" action="preview"> 
-      <h1>Comienza aquí!</h1>
+    <div class="page-header">
+      <h1><i class="icon-road"></i> · Comienza aquí !</h1>
+    </div>
+    <g:uploadForm name="layout" controller="inicio" action="preview" onsubmit="return check()"> 
+      
       <h2>Tres sencillos pasos</h2>
       <h3>1. Selecciona la institución:</h3>
       <g:select name="institucionId" from="${instituciones}" optionKey="id" optionValue="nombre" value="${institucionId}" class="input-xxlarge"/>
@@ -16,8 +27,10 @@
       </a>
       <h3>3. Sube nuevamente el archivo:</h3>
       <input type="file" name="datosEscolares" />
-      <br/><br/>
-      <input type="submit" class="btn btn-large btn-success" value="Subir mis datos" />
+      <hr/>
+      <button type="submit" class="btn btn-large btn-success" >
+        <i class="icon-upload"></i> Subir mis datos
+      </button>
     </g:uploadForm> 
   </body>
 </html>

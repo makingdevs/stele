@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css" />
+    <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css,font-awesome" />
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -17,7 +17,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -33,7 +32,7 @@
               <sec:ifAllGranted roles="ROLE_DIRECTOR">
                 <li><g:link controller="inicio">Cargar layout</g:link></li>
                 <li><a href="#">Generar pagos</a></li>
-                <li><a href="#">Pagos generados</a></li>
+                <li><g:link controller="pago" action="pagosDeUnaInstitucion" >Pagos generados</g:link></li>
               </sec:ifAllGranted>
               <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
                 <li><g:link controller="pago">Mis pagos</g:link></li>
@@ -64,7 +63,7 @@
     </div>
 
     <div class="container">
-
+      <g:render template="/common/messages" />
       <g:layoutBody/>
 
       <hr>
