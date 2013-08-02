@@ -25,27 +25,27 @@ class ConceptoServiceSpec extends Specification {
     def perfilUsuario = new Perfil()
     def concepto1 = new Concepto()
     def concepto2 = new Concepto()
-    usuario.id = 103123
+    usuario.id = 1033
     usuario.username = "sergio@makingdevs.com"
     usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
     usuario.enabled = true
     perfilUsuario.nombre = "Jose"
     perfilUsuario.apellidoPaterno = "Hernandez"
     perfilUsuario.apellidoMaterno = "Solis"
-    perfilUsuario.save()
+    perfilUsuario.save(flush:true)
     usuario.perfil = perfilUsuario
     usuario.addToInstituciones(institucion)
-    usuario.save()
+    usuario.save(flush:true)
     concepto1.id = 1
     concepto1.concepto = "Colegiatura"
     concepto1.institucion = institucion
-    concepto1.save()
+    concepto1.save(flush:true)
     concepto2.id = 2
     concepto2.concepto = "Primera colegiatura"
     concepto2.institucion = institucion
-    concepto2.save()
+    concepto2.save(flush:true)
   when: "Se realiza la llamada al metodo buscarConceptosDeUnaInstitucion"
-    def query = "gia"
+    def query = "giat"
     def conceptoInstitucion = service.buscarConceptosDeUnaInstitucion(usuario, query)
   then: "la cantidad de conceptos debe de ser igual a 2"
     assert conceptoInstitucion.size() == 2
