@@ -7,13 +7,12 @@ class GeneracionDePagoService {
 
   def conceptoService
 
-  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand, Usuario usuario, def descuentos) {
+  def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand) {
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
-    conceptoService.guardarConceptoDePagoGenerado(usuario, camadaPagoCommand.properties.conceptoDePago)
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand, descuentos).save()
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand).save()
       dependiente.addToPagos(pago)
       dependiente.save()
       pagos << pago
@@ -21,11 +20,7 @@ class GeneracionDePagoService {
     pagos
   }
 
-  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand, def descuentos) {
-    def descuentoList = Descuento.withCriteria {
-      'in'('id', descuentos)
-    }
-    println descuentoList
+  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
