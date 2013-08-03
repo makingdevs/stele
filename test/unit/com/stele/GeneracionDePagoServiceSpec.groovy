@@ -4,10 +4,12 @@ import grails.test.mixin.TestFor
 import grails.test.mixin.Mock
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
+import com.stele.Descuento
+import com.stele.Concepto
 import grails.plugins.springsecurity.SpringSecurityService
 
 @TestFor(GeneracionDePagoService)
-@Mock([Pago, Dependiente, HistorialAcademico])
+@Mock([Pago, Dependiente, HistorialAcademico, Descuento])
 class GeneracionDePagoServiceSpec extends Specification {
 
   def "Generacion de pago para una camada"() {
@@ -63,12 +65,31 @@ class GeneracionDePagoServiceSpec extends Specification {
   }
 
   def "No guardar un concepto existente al generar un pago de una camada"(){
+     setup:
+      Dependiente dependiente = new Dependiente(camada:camada)
+      dependiente.addToHistorialAcademico(new HistorialAcademico())
+      dependiente.save(validate:false)
+
+    and :
+      CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
+        conceptoDePago:concepto,
+        cantidadDePago:monto,
+        fechaDeVencimiento:fechaDeVencimiento)
+    and :
+        def mocks =creoColaboradores()   
     when:
-      def s = 1
       // Tocar conceptoService.guardarConceptoDePagoGenerado
       // El metodo debe regresar null
+      def pagos = service.paraCamadaPagoCommand(cmd)
+      mocks*.verify()
     then:
-      2 == s+1
+      assert pagos.size() == 1
+      assert pagos.first().id > 0
+      assert pagos.first().conceptoDePago == concepto
+      assert pagos.first().cantidadDePago == monto 
+    where :
+      camada | concepto   | monto | fechaDeVencimiento
+      "123"  | "concepto" | 1.00  | new Date() + 7
   }
 
   def "Generar un pago con un descuento para una camada"(){
@@ -88,7 +109,7 @@ class GeneracionDePagoServiceSpec extends Specification {
     springSecurityServiceMock.demand.getCurrentUser(1..1){-> usuario }
     service.springSecurityService = springSecurityServiceMock.createMock()    
     def conceptoServiceMock = mockFor(ConceptoService)
-    conceptoServiceMock.demand.guardarConceptoDePagoGenerado(1..1){Usuario u, String conc -> new Concepto()}
+    conceptoServiceMock.demand.verificarConceptoPagoExistente(1..1){Usuario u, String conc -> new Concepto()}
     service.conceptoService = conceptoServiceMock.createMock()
     
     [conceptoServiceMock,springSecurityServiceMock]

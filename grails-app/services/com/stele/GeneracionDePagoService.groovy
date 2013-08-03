@@ -8,7 +8,7 @@ class GeneracionDePagoService {
   def springSecurityService
 
   def paraCamadaPagoCommand(CamadaPagoCommand camadaPagoCommand) {
-    conceptoService.guardarConceptoDePagoGenerado(springSecurityService.currentUser,camadaPagoCommand.conceptoDePago)
+    conceptoService.verificarConceptoPagoExistente(springSecurityService.currentUser,camadaPagoCommand.conceptoDePago)
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
 
