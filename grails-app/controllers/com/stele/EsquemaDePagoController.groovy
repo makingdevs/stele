@@ -16,8 +16,8 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
-    def descuentos = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
-    generacionDePagoService.paraCamadaPagoCommand(cpc, springSecurityService.currentUser, descuentos)
+    cpc.descuentos = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
+    generacionDePagoService.paraCamadaPagoCommand(cpc)
     flash.success = "Bien Hecho"
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,fechaDeVencimiento:cpc.fechaDeVencimiento.format('yyyy-MM-dd')]
   }
