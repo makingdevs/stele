@@ -76,7 +76,7 @@ class GeneracionDePagoServiceSpec extends Specification {
         cantidadDePago:monto,
         fechaDeVencimiento:fechaDeVencimiento)
     and :
-        def mocks =creoColaboradores()   
+        def mocks =creoColaboradoresEstatusDos()   
     when:
       // Tocar conceptoService.guardarConceptoDePagoGenerado
       // El metodo debe regresar null
@@ -105,11 +105,27 @@ class GeneracionDePagoServiceSpec extends Specification {
 
   private def creoColaboradores(){
     Usuario usuario = new Usuario()
+    Concepto con = new Concepto()
+    def conceptoServiceMock = mockFor(ConceptoService)
+    conceptoServiceMock.demand.verificarConceptoPagoExistente(1..1){String conc -> "hemilio"}
+    conceptoServiceMock.demand.guardarConceptoDePagoGenerado(1..1){Usuario u, String conc -> "hermosillo"}
+    service.conceptoService = conceptoServiceMock.createMock()
     def springSecurityServiceMock = mockFor(SpringSecurityService)
     springSecurityServiceMock.demand.getCurrentUser(1..1){-> usuario }
     service.springSecurityService = springSecurityServiceMock.createMock()    
+
+    
+    [conceptoServiceMock,springSecurityServiceMock]
+  }
+
+  private def creoColaboradoresEstatusDos(){
+    Usuario usuario = new Usuario()
+    def springSecurityServiceMock = mockFor(SpringSecurityService)
+    springSecurityServiceMock.demand.getCurrentUser(0..0){-> usuario }
+    service.springSecurityService = springSecurityServiceMock.createMock()    
     def conceptoServiceMock = mockFor(ConceptoService)
-    conceptoServiceMock.demand.verificarConceptoPagoExistente(1..1){Usuario u, String conc -> new Concepto()}
+    conceptoServiceMock.demand.verificarConceptoPagoExistente(1..1){String conc -> new Concepto()}
+    conceptoServiceMock.demand.guardarConceptoDePagoGenerado(0..0){Usuario u, String conc -> new Concepto()}
     service.conceptoService = conceptoServiceMock.createMock()
     
     [conceptoServiceMock,springSecurityServiceMock]
