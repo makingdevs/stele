@@ -102,14 +102,15 @@ class GeneracionDePagoServiceSpec extends Specification {
       CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
         conceptoDePago:concepto,
         cantidadDePago:monto,
-        fechaDeVencimiento:fechaDeVencimiento,
-        descuentos:descuentos)
+        descuento:descuentos,
+        fechaDeVencimiento:fechaDeVencimiento)
     and :
       Descuento descuento = new Descuento()
       descuento.nombreDeDescuento = "descuento 1"
       descuento.cantidad = 100
       descuento.fechaDeVencimiento = new Date() + 3
-      descuento.save(validate:false)
+      descuento.id = 1
+      descuento.save(flush:true)
     and :
       def mocks = creoColaboradores()
     when:
@@ -120,7 +121,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       assert pagos.first().id > 0
       assert pagos.first().conceptoDePago == concepto
       assert pagos.first().cantidadDePago == monto 
-      println pagos.first().descuentos  
+
     where :
       camada | concepto   | monto | fechaDeVencimiento | descuentos
       "123"  | "concepto" | 1.00  | new Date() + 7     | [1]
@@ -128,9 +129,10 @@ class GeneracionDePagoServiceSpec extends Specification {
 
   private def creoColaboradores(){
     Usuario usuario = new Usuario()
+
     def conceptoServiceMock = mockFor(ConceptoService)
-    conceptoServiceMock.demand.verificarConceptoPagoExistente(1..1){String conc -> return false}
-    conceptoServiceMock.demand.guardarConceptoDePagoGenerado(1..1){Usuario u, String conc -> return true}
+    conceptoServiceMock.demand.verificarConceptoPagoExistente(1..1){String conc = "concepto" -> return false}
+    conceptoServiceMock.demand.guardarConceptoDePagoGenerado(1..1){Usuario u, String conc = "concepto" -> return true}
     service.conceptoService = conceptoServiceMock.createMock()
     def springSecurityServiceMock = mockFor(SpringSecurityService)
     springSecurityServiceMock.demand.getCurrentUser(1..1){-> usuario }
