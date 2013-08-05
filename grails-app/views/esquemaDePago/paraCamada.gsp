@@ -8,6 +8,11 @@
   </head>
 
   <body>
+    <script type="text/javascript">
+    function modelHide(){
+      $('#recargoModal').modal('hide');
+    }
+    </script>
 
     <div class="page-header">
       <h1><i class="icon-dollar"></i> · Crear un pago <small>con un esquema</small></h1>
@@ -18,6 +23,7 @@
       <div class="row-fluid">
           <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
             <input type="hidden" id="camada" name="camada" value="${camada}">
+            <input type="hidden" id="idRecargo" name="idRecargo" value="${recargo}">
             <div class="row-fluid">
               <div class="span6">
                 <div class="control-group">
@@ -86,15 +92,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="recargoLabel">Datos del recargo</h3>
       </div>
-      <g:form class="form-horizontal" name="recargoForm" url="[]" id="recargoForm" >
+
+      <g:formRemote name="recargoForm", update="idRecargo" url="[controller:'recargo', action: 'nuevo']" onComplete="modelHide();">
         <div class="modal-body">
           <g:render template="/recargo/nuevoRecargo" />
         </div>
         <div class="modal-footer">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-          <button class="btn btn-primary" id="aplicarDescuentoBtn">Aplicar Recargo</button>
+           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+          <button type="submit" class="btn btn-primary" >Generar Recargo</button>
         </div>
-      </g:form>
+      </g:formRemote>
     </div>
 
 
