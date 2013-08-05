@@ -52,7 +52,7 @@
 
             <div class="control-group">
                 <a href="#descuentoModal" role="button" class="btn btn-info" data-toggle="modal">Agregar descuento</a>
-                <a href="" role="button" class="btn btn-info" data-toggle="modal" align="right">Agregar Recargo</a>
+                <a href="#recargoModal" role="button" class="btn btn-info" data-toggle="modal" align="right">Agregar Recargo</a>
             </div>
 
             <g:link controller="camada" action="show" params="[camada:camada]">Ver lista de alumnos</g:link>
@@ -80,6 +80,23 @@
       </g:form>
 
     </div>
+
+    <div id="recargoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="recargoLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="recargoLabel">Datos del recargo</h3>
+      </div>
+      <g:form class="form-horizontal" name="recargoForm" url="[]" id="recargoForm" >
+        <div class="modal-body">
+          <g:render template="/recargo/nuevoRecargo" />
+        </div>
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+          <button class="btn btn-primary" id="aplicarDescuentoBtn">Aplicar Recargo</button>
+        </div>
+      </g:form>
+    </div>
+
 
   </body>
 </head>
