@@ -9,14 +9,14 @@ class CamadaPagoCommand {
   String conceptoDePago
   BigDecimal cantidadDePago
   Date fechaDeVencimiento
-  Object descuentos
+  Object descuento
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
     conceptoDePago size:1..150, blank:false, nullable:false
     cantidadDePago min:1.0, nullable:false
     fechaDeVencimiento nullable: false
-    descuentos nullable:true
+    descuento nullable:true
   }
 
 }
