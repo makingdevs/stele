@@ -16,7 +16,7 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
-    cpc.descuentos = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
+    cpc.descuento = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
     generacionDePagoService.paraCamadaPagoCommand(cpc)
     flash.success = "Bien Hecho"
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,fechaDeVencimiento:cpc.fechaDeVencimiento.format('yyyy-MM-dd')]
