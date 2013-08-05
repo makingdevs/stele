@@ -5,7 +5,7 @@
       Nombre Descuento : 
     </dt>
     <dd>
-      ${descuento?.nombreDeDescuento}  <button><i class="icon-remove-sign icon-large"></i></button>
+      ${descuento?.nombreDeDescuento} 
     </dd>
     <dt>
       Fecha Vencimiento : 

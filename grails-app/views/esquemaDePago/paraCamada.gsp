@@ -51,9 +51,8 @@
             </div>
 
             <div class="control-group">
-              <div class="controls">
                 <a href="#descuentoModal" role="button" class="btn btn-info" data-toggle="modal">Agregar descuento</a>
-              </div>
+                <a href="" role="button" class="btn btn-info" data-toggle="modal" align="right">Agregar Recargo</a>
             </div>
 
             <g:link controller="camada" action="show" params="[camada:camada]">Ver lista de alumnos</g:link>
