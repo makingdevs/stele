@@ -22,8 +22,6 @@ class ConceptoService {
       true
     else
       false
-    
-
   }
 
   def guardarConceptoDePagoGenerado(Usuario usuario, String descripcionDeConcepto) {
