@@ -16,12 +16,14 @@ class ConceptoService {
     }
   }
 
-  def verificarConceptoPagoExistente(Usuario usuario, String descripcionDeConcepto) {
+  def verificarConceptoPagoExistente(String descripcionDeConcepto) {
     def conceptoExistente = Concepto.findByConcepto(descripcionDeConcepto)
-    if (!conceptoExistente){
-      guardarConceptoDePagoGenerado(usuario,descripcionDeConcepto)
-    }
-    conceptoExistente
+    if (conceptoExistente)
+      true
+    else
+      false
+    
+
   }
 
   def guardarConceptoDePagoGenerado(Usuario usuario, String descripcionDeConcepto) {
