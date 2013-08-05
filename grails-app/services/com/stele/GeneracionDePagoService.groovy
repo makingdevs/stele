@@ -16,7 +16,7 @@ class GeneracionDePagoService {
 
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand).save()
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand)
       dependiente.addToPagos(pago)
       dependiente.save()
       pagos << pago
@@ -25,14 +25,8 @@ class GeneracionDePagoService {
   }
 
   private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
-    def listaIdDescuentos = []
-    camadaPagoCommand.descuentos.each { descuetoId ->
-      if (descuetoId)
-        listaIdDescuentos.add(descuetoId.toLong())
-    }
-    def listaDeDescuentosParaAplicar = Descuento.withCriteria {
-      'in'('id', listaIdDescuentos)
-    }
+    def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadoasAPagos(camadaPagoCommand)
+
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
@@ -41,7 +35,20 @@ class GeneracionDePagoService {
     listaDeDescuentosParaAplicar.each { descuento ->
       pago.addToDescuentos(descuento)
     }
-    pago
+    pago.save(flush:true)
+  }
+
+  def obtenerDescuentosAsociadoasAPagos(CamadaPagoCommand camadaPagoCommand) {
+    def listaIdDescuentos = []
+
+    camadaPagoCommand.descuento.each { descuetoId ->
+      if (descuetoId)
+        listaIdDescuentos.add(descuetoId.toLong())
+    }
+
+    Descuento.withCriteria {
+      'in'('id', listaIdDescuentos)
+    }
   }
 
 }
