@@ -4,10 +4,12 @@ class PerfilController {
 
   def springSecurityService
   def perfilService
+  def pagoService
 
   def index() {
     def usuarioActual = springSecurityService.currentUser
-    [usuarioActual : usuarioActual]
+    def pagosVencidos = pagoService.obtenerPagosVencidosUsuario(springSecurityService.currentUser)
+    [usuarioActual : usuarioActual, pagosVencidos:pagosVencidos]
   }
 
   def actualizarPassword(UpdatePasswordCommand upc) {
