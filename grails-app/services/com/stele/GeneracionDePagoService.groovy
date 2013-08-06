@@ -1,6 +1,7 @@
 package com.stele
 
 import com.stele.Descuento
+import com.stele.Recargo
 
 class GeneracionDePagoService {
 
@@ -25,8 +26,8 @@ class GeneracionDePagoService {
   }
 
   private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
-    def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadoasAPagos(camadaPagoCommand)
-
+    def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
+    def recargo = obtenerRecargosAsociadosAPAgos(camadaPagoCommand)
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
@@ -35,10 +36,14 @@ class GeneracionDePagoService {
     listaDeDescuentosParaAplicar.each { descuento ->
       pago.addToDescuentos(descuento)
     }
+    println recargo
+    if (recargo)
+      pago.addToRecargos(recargo)
+
     pago.save(flush:true)
   }
 
-  def obtenerDescuentosAsociadoasAPagos(CamadaPagoCommand camadaPagoCommand) {
+  def obtenerDescuentosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
     def listaIdDescuentos = []
 
     camadaPagoCommand.descuento.each { descuetoId ->
@@ -49,6 +54,10 @@ class GeneracionDePagoService {
     Descuento.withCriteria {
       'in'('id', listaIdDescuentos)
     }
+  }
+
+  def obtenerRecargosAsociadosAPAgos(CamadaPagoCommand camadaPagoCommand) {
+    Recargo.findById(camadaPagoCommand?.recargo)
   }
 
 }
