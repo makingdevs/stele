@@ -10,6 +10,7 @@ class CamadaPagoCommand {
   BigDecimal cantidadDePago
   Date fechaDeVencimiento
   Object descuento
+  Object recargo
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
@@ -17,6 +18,7 @@ class CamadaPagoCommand {
     cantidadDePago min:1.0, nullable:false
     fechaDeVencimiento nullable: false
     descuento nullable:true
+    recargo nullable:true
   }
 
 }
