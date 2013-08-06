@@ -42,4 +42,20 @@ class PagoService {
     [pago:pago, perfil:perfil]
   }
 
+  def obtenerPagosVencidosUsuario(Usuario usuario) {
+    def dependientesUsuario = Dependiente.withCriteria {
+      'in'('usuario', usuario)
+    }
+
+    def historialAcademico = HistorialAcademico.withCriteria {
+      'in'('dependiente', dependientesUsuario)
+    }
+
+    def pagos = Pago.withCriteria {
+      ge('fechaDeVencimiento', new Date())
+      'in'('historialAcademico', historialAcademico)
+
+    }
+  }
+
 }
