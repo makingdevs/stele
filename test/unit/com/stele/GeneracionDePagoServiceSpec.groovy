@@ -4,12 +4,10 @@ import grails.test.mixin.TestFor
 import grails.test.mixin.Mock
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
-import com.stele.Descuento
-import com.stele.Concepto
 import grails.plugins.springsecurity.SpringSecurityService
 
 @TestFor(GeneracionDePagoService)
-@Mock([Pago, Dependiente, HistorialAcademico, Descuento])
+@Mock([Pago, Dependiente, HistorialAcademico, Descuento, Concepto, Recargo])
 class GeneracionDePagoServiceSpec extends Specification {
 
   def "Generacion de pago para una camada"() {
@@ -125,6 +123,36 @@ class GeneracionDePagoServiceSpec extends Specification {
     where :
       camada | concepto   | monto | fechaDeVencimiento | descuentos
       "123"  | "concepto" | 1.00  | new Date() + 7     | [1]
+  }
+
+  def "Generar un pago con un recargo para una camada"() {
+      setup:
+        Dependiente dependiente = new Dependiente(camada:camada)
+        dependiente.addToHistorialAcademico(new HistorialAcademico())
+        dependiente.save(validate:false)
+      and :
+        CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
+          conceptoDePago:concepto,
+          cantidadDePago:monto,
+          fechaDeVencimiento:fechaDeVencimiento,
+          recargo:recargoId)
+      and :
+        Recargo recargos = new Recargo()
+        recargos.save() 
+      and :
+        def mocks = creoColaboradores()
+      when : 
+        def pagos = service.paraCamadaPagoCommand(cmd)
+        mocks*.verify()
+      then :
+        assert pagos.size() == 1
+        assert pagos.first().id > 0
+        assert pagos.first().conceptoDePago == concepto
+        assert pagos.first().cantidadDePago == monto 
+      where : 
+        camada | concepto   | monto | fechaDeVencimiento | recargoId
+        "123"  | "concepto" | 1.00  | new Date() + 7     | 1
+
   }
 
   private def creoColaboradores(){
