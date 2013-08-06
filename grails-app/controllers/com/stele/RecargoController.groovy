@@ -12,8 +12,8 @@ class RecargoController {
     Recargo recargo = new Recargo(params)
     recargo.institucion = springSecurityService.currentUser.instituciones?.first()  
     recargo.save(flush:true)
-    log.debug "recargo : $recargo"
-    recargo
+    log.debug "recargos : $recargo.id"
+    render template:"/recargo/list", model:[recargos:recargo, recargoId:recargo.id]
   }
   
 }
