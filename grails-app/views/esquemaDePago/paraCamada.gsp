@@ -23,7 +23,6 @@
       <div class="row-fluid">
           <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
             <input type="hidden" id="camada" name="camada" value="${camada}">
-            <input type="hidden" id="idRecargo" name="idRecargo" value="${recargo}">
             <div class="row-fluid">
               <div class="span6">
                 <div class="control-group">
@@ -46,6 +45,9 @@
               <div class="span6">
                 <div id="descuentoCreado">
                   <g:render template="/descuento/list", model="[:]" />
+                </div>
+                <div id="recargoCreado" name="recargoCreado">
+                  <g:render template="/recargo/list" />
                 </div>
               </div>
             </div>
@@ -93,7 +95,7 @@
         <h3 id="recargoLabel">Datos del recargo</h3>
       </div>
 
-      <g:formRemote name="recargoForm", update="idRecargo" url="[controller:'recargo', action: 'nuevo']" onComplete="modelHide();">
+      <g:formRemote name="recargoForm" update="recargoCreado" url="[controller:'recargo', action: 'nuevo']" onComplete="modelHide();">
         <div class="modal-body">
           <g:render template="/recargo/nuevoRecargo" />
         </div>
