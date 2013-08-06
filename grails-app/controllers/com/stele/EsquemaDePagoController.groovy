@@ -16,6 +16,7 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
+    cpc.recargo = params?.recargoid 
     cpc.descuento = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
     generacionDePagoService.paraCamadaPagoCommand(cpc)
     flash.success = "Bien Hecho"
