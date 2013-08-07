@@ -36,7 +36,6 @@ class GeneracionDePagoService {
     listaDeDescuentosParaAplicar.each { descuento ->
       pago.addToDescuentos(descuento)
     }
-    println recargo
     if (recargo)
       pago.addToRecargos(recargo)
 
