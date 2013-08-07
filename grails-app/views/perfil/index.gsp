@@ -61,6 +61,11 @@
     <div>
       <g:render template="/pago/pagosVencidos" model="[pagos: pagosVencidos]"/>
     </div>
+    <p>     
+    </p>
+    <div>
+      <g:render template="/pago/pagosEnTiempo" model="[pagosTiempo: pagosEnTiempo]"/>
+    </div>
   </div>
 
   </sec:ifAnyGranted>
