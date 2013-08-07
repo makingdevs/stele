@@ -9,9 +9,9 @@ class PerfilController {
   def index() {
     def usuarioActual = springSecurityService.currentUser
     def pagosVencidos = pagoService.obtenerPagosVencidosUsuario(springSecurityService.currentUser)
-    def pagosEnTiempo = pagoService.obtenerPagosEnTimpo(springSecurityService.currentUser)
-    println pagosEnTiempo.descuentos
-    [usuarioActual : usuarioActual, pagosVencidos:pagosVencidos, pagosEnTiempo:pagosEnTiempo]
+    def pagosEnTiempo = pagoService.obtenerPagosEnTiempoDescuento(springSecurityService.currentUser)
+    def pagosARealizar = pagoService.obtenerPagosPorRealizar(springSecurityService.currentUser)
+    [usuarioActual : usuarioActual, pagosVencidos:pagosVencidos, pagosEnTiempo:pagosEnTiempo, pagosPorRealizar:pagosARealizar]
   }
 
   def actualizarPassword(UpdatePasswordCommand upc) {
