@@ -66,6 +66,9 @@
     <div>
       <g:render template="/pago/pagosEnTiempo" model="[pagosTiempo: pagosEnTiempo]"/>
     </div>
+     <div>
+      <g:render template="/pago/pagosPorRealizar" model="[pagosRealizar: pagosPorRealizar]"/>
+    </div>
   </div>
 
   </sec:ifAnyGranted>
