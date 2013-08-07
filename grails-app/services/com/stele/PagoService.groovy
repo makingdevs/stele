@@ -52,10 +52,28 @@ class PagoService {
     }
 
     def pagos = Pago.withCriteria {
-      ge('fechaDeVencimiento', new Date())
+      le('fechaDeVencimiento', new Date())
       'in'('historialAcademico', historialAcademico)
+       eq('estatusDePago', EstatusDePago.CREADO)
 
     }
+  }
+
+  def obtenerPagosEnTimpo(Usuario usuario) {
+    def dependientesUsuario = Dependiente.withCriteria {
+      'in'('usuario', usuario)
+    }
+
+    def historialAcademico = HistorialAcademico.withCriteria {
+      'in'('dependiente', dependientesUsuario)
+    } 
+
+    def pagos = Pago.withCriteria {
+      ge('fechaDeVencimiento', new Date())
+      'in'('historialAcademico', historialAcademico)
+      eq('estatusDePago', EstatusDePago.CREADO)
+      isNotEmpty("descuentos")
+    } 
   }
 
 }
