@@ -1,7 +1,7 @@
 <%@ page import="com.stele.EstatusDePago" %>
   <table class="table">
-   <caption style="background-color:#FF6633">Pagos Pendientes hasta <font style="text-transform: capitalize;">${ new Date().format('MMMM')} </font> </caption>
-   <thead style="background-color:#FF6633">
+   <caption>Pagos Pendientes hasta <font style="text-transform: capitalize;">${ new Date().format('MMMM')} </font> </caption>
+   <thead style="background-color:whiteSmoke">
      <tr>
       <th>Concepto</th>
       <th>Fecha Limite</th>
