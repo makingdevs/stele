@@ -1,6 +1,6 @@
 <table class="table">
-   <caption style="background-color:#339900">Pagos con Beneficio </caption>
-   <thead style="background-color:#339900">
+   <caption>Pagos con Beneficio </caption>
+   <thead style="background-color:whiteSmoke">
      <tr>
       <th>Concepto</th>
       <th>Pagar antes de</th>
