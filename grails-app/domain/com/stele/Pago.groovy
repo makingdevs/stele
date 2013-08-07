@@ -27,4 +27,22 @@ class Pago {
     historialAcademico nullable:true
     comprobanteDePago nullable:true
   }
+
+  BigDecimal getSumaDescuentosPorcentaje() {
+    descuentos?.porcentaje?.sum()  
+  }
+
+  BigDecimal getSumaDescuentosCantidad() {
+    descuentos?.cantidad?.sum()  
+  }
+
+
+  BigDecimal getDescuentoRealPorcentaje() {
+    ( sumaDescuentosPorcentaje / 100 ) * cantidadDePago 
+  }
+
+  BigDecimal getPorcentajeEnBaseACantidad() {
+    ( sumaDescuentosCantidad * 100 ) / cantidadDePago
+  }
+
 }
