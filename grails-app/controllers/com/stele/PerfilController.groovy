@@ -11,7 +11,8 @@ class PerfilController {
     def pagosVencidos = pagoService.obtenerPagosVencidosUsuario(springSecurityService.currentUser)
     def pagosEnTiempo = pagoService.obtenerPagosEnTiempoDescuento(springSecurityService.currentUser)
     def pagosARealizar = pagoService.obtenerPagosPorRealizar(springSecurityService.currentUser)
-    [usuarioActual : usuarioActual, pagosVencidos:pagosVencidos, pagosEnTiempo:pagosEnTiempo, pagosPorRealizar:pagosARealizar]
+    def pagosMensuales = pagoService.obtenerPagosConciliadosFavorablemente(springSecurityService.currentUsers)
+    [usuarioActual : usuarioActual, pagosVencidos:pagosVencidos, pagosEnTiempo:pagosEnTiempo, pagosPorRealizar:pagosARealizar, pagosMensuales:pagosMensuales]
   }
 
   def actualizarPassword(UpdatePasswordCommand upc) {

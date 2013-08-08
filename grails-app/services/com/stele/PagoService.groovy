@@ -85,8 +85,6 @@ class PagoService {
       eq('estatusDePago', EstatusDePago.PAGADO)
 
     }
-
-    println pagos
     pagos
   }
 
