@@ -43,40 +43,43 @@ class PagoService {
   }
 
   def obtenerPagosVencidosUsuario(Usuario usuario) {
-    def dependientesUsuario = Dependiente.withCriteria {
-      'in'('usuario', usuario)
-    }
-
-    def historialAcademico = HistorialAcademico.withCriteria {
-      'in'('dependiente', dependientesUsuario)
-    }
+    def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
     def pagos = Pago.withCriteria {
       le('fechaDeVencimiento', new Date())
-      'in'('historialAcademico', historialAcademico)
+      'in'('historialAcademico', dependienteHistorial.historiales)
        eq('estatusDePago', EstatusDePago.CREADO)
 
     }
   }
 
   def obtenerPagosEnTiempoDescuento(Usuario usuario) {
-    def dependientesUsuario = Dependiente.withCriteria {
-      'in'('usuario', usuario)
-    }
-
-    def historialAcademico = HistorialAcademico.withCriteria {
-      'in'('dependiente', dependientesUsuario)
-    } 
+    def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
     def pagos = Pago.withCriteria {
       ge('fechaDeVencimiento', new Date())
-      'in'('historialAcademico', historialAcademico)
+      'in'('historialAcademico', dependienteHistorial.historiales)
       eq('estatusDePago', EstatusDePago.CREADO)
       isNotEmpty("descuentos")
     } 
   }
 
   def obtenerPagosPorRealizar(Usuario usuario) {
+    def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
+
+    def pagos = Pago.withCriteria {
+      ge('fechaDeVencimiento', new Date())
+      'in'('historialAcademico', dependienteHistorial.historiales)
+      eq('estatusDePago', EstatusDePago.CREADO)
+      isEmpty("descuentos")
+    }   
+  }
+
+  def obtenerPagosConciliadosFavorablemente(Usuario usuario) {
+
+  }
+
+  def obtenerDependientesEHistorialAcademicoPorTutor(Usuario usuario) {
     def dependientesUsuario = Dependiente.withCriteria {
       'in'('usuario', usuario)
     }
@@ -85,12 +88,7 @@ class PagoService {
       'in'('dependiente', dependientesUsuario)
     } 
 
-    def pagos = Pago.withCriteria {
-      ge('fechaDeVencimiento', new Date())
-      'in'('historialAcademico', historialAcademico)
-      eq('estatusDePago', EstatusDePago.CREADO)
-      isEmpty("descuentos")
-    }   
+    [dependientes:dependientesUsuario, historiales: historialAcademico]
   }
 
 }
