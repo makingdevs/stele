@@ -43,6 +43,16 @@ class PagoService {
     [pago:pago, perfil:perfil]
   }
 
+
+  def estadoDeCuentaUsuario(Usuario usuario) {
+    def pagosVencidos = obtenerPagosVencidosUsuario(usuario)
+    def pagosEnTiempo = obtenerPagosEnTiempoDescuento(usuario)
+    def pagosPorRealizar = obtenerPagosPorRealizar(usuario)
+    def pagoMensual = obtenerPagosConciliadosFavorablemente(usuario)
+    [pagosVencidos: pagosVencidos, pagosEnTiempo: pagosEnTiempo, pagosPorRealizar: pagosPorRealizar, pagoMensual:pagoMensual]
+
+  }
+
   def obtenerPagosVencidosUsuario(Usuario usuario) {
     def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
