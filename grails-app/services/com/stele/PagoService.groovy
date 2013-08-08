@@ -45,15 +45,18 @@ class PagoService {
 
 
   def estadoDeCuentaUsuario(Usuario usuario) {
-    def pagosVencidos = obtenerPagosVencidosUsuario(usuario)
-    def pagosEnTiempo = obtenerPagosEnTiempoDescuento(usuario)
+    def pagosVencidos = obtenerPagosVencidosDeUsuario(usuario)
+    def pagosEnTiempo = obtenerPagosEnTiempoConDescuento(usuario)
     def pagosPorRealizar = obtenerPagosPorRealizar(usuario)
     def pagoMensual = obtenerPagosConciliadosFavorablemente(usuario)
-    [pagosVencidos: pagosVencidos, pagosEnTiempo: pagosEnTiempo, pagosPorRealizar: pagosPorRealizar, pagoMensual:pagoMensual]
+    [pagosVencidos: pagosVencidos,
+     pagosEnTiempo: pagosEnTiempo,
+     pagosPorRealizar: pagosPorRealizar,
+     pagoMensual:pagoMensual]
 
   }
 
-  def obtenerPagosVencidosUsuario(Usuario usuario) {
+  private def obtenerPagosVencidosDeUsuario(Usuario usuario) {
     def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
     def pagos = Pago.withCriteria {
@@ -64,7 +67,7 @@ class PagoService {
     }
   }
 
-  def obtenerPagosEnTiempoDescuento(Usuario usuario) {
+  private def obtenerPagosEnTiempoConDescuento(Usuario usuario) {
     def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
     def pagos = Pago.withCriteria {
@@ -75,7 +78,7 @@ class PagoService {
     } 
   }
 
-  def obtenerPagosPorRealizar(Usuario usuario) {
+  private def obtenerPagosPorRealizar(Usuario usuario) {
     def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
     def pagos = Pago.withCriteria {
@@ -86,7 +89,7 @@ class PagoService {
     }   
   }
 
-  def obtenerPagosConciliadosFavorablemente(Usuario usuario) {
+  private def obtenerPagosConciliadosFavorablemente(Usuario usuario) {
     def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
     def pagos = Pago.withCriteria {
@@ -98,7 +101,7 @@ class PagoService {
     pagos
   }
 
-  def obtenerDependientesEHistorialAcademicoPorTutor(Usuario usuario) {
+  private def obtenerDependientesEHistorialAcademicoPorTutor(Usuario usuario) {
     def dependientesUsuario = Dependiente.withCriteria {
       'in'('usuario', usuario)
     }
@@ -110,7 +113,7 @@ class PagoService {
     [dependientes:dependientesUsuario, historiales: historialAcademico]
   }
 
-  def getFirstAndLastDayOfMonth(String indicador) {
+  private def getFirstAndLastDayOfMonth(String indicador) {
     Calendar calendar = Calendar.getInstance()
     calendar.setTime(new Date())
     if (indicador.equals('first')) {
