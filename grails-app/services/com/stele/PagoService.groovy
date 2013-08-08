@@ -10,6 +10,7 @@ import com.stele.Dependiente
 
 class PagoService {
 
+
   def obtenerPagosDeUsuario(Usuario usuario) {
     def criteriaDependiente = Dependiente.createCriteria()
     def pagosDeUsuario = [] as Set 
@@ -76,7 +77,17 @@ class PagoService {
   }
 
   def obtenerPagosConciliadosFavorablemente(Usuario usuario) {
+    def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
 
+    def pagos = Pago.withCriteria {
+      between("lastUpdated",getFirstAndLastDayOfMonth('first'), getFirstAndLastDayOfMonth('last'))
+      'in'('historialAcademico', dependienteHistorial.historiales)
+      eq('estatusDePago', EstatusDePago.PAGADO)
+
+    }
+
+    println pagos
+    pagos
   }
 
   def obtenerDependientesEHistorialAcademicoPorTutor(Usuario usuario) {
@@ -89,6 +100,16 @@ class PagoService {
     } 
 
     [dependientes:dependientesUsuario, historiales: historialAcademico]
+  }
+
+  def getFirstAndLastDayOfMonth(String indicador) {
+    Calendar calendar = Calendar.getInstance()
+    calendar.setTime(new Date())
+    if (indicador.equals('first')) {
+      new Date("${calendar.get(Calendar.YEAR)}/${calendar.get(Calendar.MONTH)+1}/01")
+    } else {
+      new Date("${calendar.get(Calendar.YEAR)}/${calendar.get(Calendar.MONTH)+1}/31")
+    }
   }
 
 }
