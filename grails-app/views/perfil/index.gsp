@@ -58,20 +58,6 @@
     <div class="span6">
       <g:render template="dependienteCard" collection="${usuarioActual.dependientes}" var="dependiente" />
     </div>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagosVencidos" model="[pagos: pagosVencidos]"/>
-    </div>
-    <p>     
-    </p>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagosEnTiempo" model="[pagosTiempo: pagosEnTiempo]"/>
-    </div>
-     <div>
-      <g:render template="/pago/estadoDeCuenta/pagosPorRealizar" model="[pagosRealizar: pagosPorRealizar]"/>
-    </div>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagoMensual" model="[pagosMensuales: pagosMensuales]"/>
-    </div>
   </div>
 
   </sec:ifAnyGranted>
