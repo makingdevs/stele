@@ -8,29 +8,31 @@
 
   <body>
 
-  <div class="page-header">
-    <h1><i class="icon-info"></i> · Estado de Cuenta</h1>
-  </div>
+    <div class="page-header">
+      <h1><i class="icon-info"></i> · Estado de Cuenta</h1>
+    </div>
 
-  <div class="row-fluid">
-    <div class="span6">
-      <g:render template="dependienteCard" collection="${usuarioActual.dependientes}" var="dependiente" />
+    <div class="row">
+      <div class="span5">
+        <g:render template="/perfil/header" model="[usuarioActual : usuarioActual]" />
+      </div>
     </div>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagosVencidos" model="[pagos: pagosVencidos]"/>
+    <div class="row-fluid">
+      <div>
+        <g:render template="/estadoDeCuenta/pagosVencidos" model="[pagos: pagosVencidos]"/>
+      </div>
+      <p>     
+      </p>
+      <div>
+        <g:render template="/estadoDeCuenta/pagosEnTiempo" model="[pagosTiempo: pagosEnTiempo]"/>
+      </div>
+      <div>
+        <g:render template="/estadoDeCuenta/pagosPorRealizar" model="[pagosRealizar: pagosPorRealizar]"/>
+      </div>
+      <div class="span6">
+        <g:render template="/estadoDeCuenta/pagoMensual" model="[pagosMensuales: pagosMensuales]"/>
+      </div>
     </div>
-    <p>     
-    </p>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagosEnTiempo" model="[pagosTiempo: pagosEnTiempo]"/>
-    </div>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagosPorRealizar" model="[pagosRealizar: pagosPorRealizar]"/>
-    </div>
-    <div>
-      <g:render template="/pago/estadoDeCuenta/pagoMensual" model="[pagosMensuales: pagosMensuales]"/>
-    </div>
-  </div>
 
 
   </body>
