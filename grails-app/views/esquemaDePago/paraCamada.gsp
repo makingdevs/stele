@@ -56,7 +56,7 @@
           <div class="span4">
             <dl>
               <dt>
-                <g:checkBox name="checkBox" value="1" checked="${false}" /> Enero
+                <g:checkBox name="checkBox" value="1" checked="${false}"  /> Enero
               </dt>
               <dt>
                 <g:checkBox name="checkBox" value="2" checked="${false}" /> Febrero
