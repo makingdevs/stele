@@ -1,7 +1,7 @@
 package com.stele
 
 
-class EstadoDeCuenta {
+class EstadoDeCuentaController {
 
   def springSecurityService
   def pagoService
