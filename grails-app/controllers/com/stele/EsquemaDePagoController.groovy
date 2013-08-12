@@ -17,10 +17,6 @@ class EsquemaDePagoController {
       return
     } 
 
-    log.debug "checkbox : $params.checkBox"
-
-    cpc.recargo = params?.recargoid 
-    cpc.descuento = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
     generacionDePagoService.paraCamadaPagoCommand(cpc)
     flash.success = "Bien Hecho"
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,fechaDeVencimiento:cpc.fechaDeVencimiento.format('yyyy-MM-dd')]
