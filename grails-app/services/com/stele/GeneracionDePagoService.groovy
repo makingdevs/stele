@@ -48,7 +48,7 @@ class GeneracionDePagoService {
   def obtenerDescuentosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
     def listaIdDescuentos = []
 
-    def lista = camadaPagoCommand?.descuentos.first().replace('[','')?.replace(']','')?.split(',')
+    def lista = camadaPagoCommand?.descuentos?.first()?.replace('[','')?.replace(']','')?.split(',')
     lista.each { descuetoId ->
       if (descuetoId)
         listaIdDescuentos.add(descuetoId.toLong())
