@@ -100,7 +100,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
         conceptoDePago:concepto,
         cantidadDePago:monto,
-        descuento:descuentos,
+        descuentos:descuentos,
         fechaDeVencimiento:fechaDeVencimiento)
     and :
       Descuento descuento = new Descuento()
@@ -135,7 +135,9 @@ class GeneracionDePagoServiceSpec extends Specification {
           conceptoDePago:concepto,
           cantidadDePago:monto,
           fechaDeVencimiento:fechaDeVencimiento,
-          recargo:recargoId)
+          recargoid:recargoId)
+
+        println cmd.recargoid
       and :
         Recargo recargos = new Recargo()
         recargos.save() 
@@ -151,7 +153,7 @@ class GeneracionDePagoServiceSpec extends Specification {
         assert pagos.first().cantidadDePago == monto 
       where : 
         camada | concepto   | monto | fechaDeVencimiento | recargoId
-        "123"  | "concepto" | 1.00  | new Date() + 7     | 1
+        "123"  | "concepto" | 1.00  | new Date() + 7     |  1
 
   }
 
