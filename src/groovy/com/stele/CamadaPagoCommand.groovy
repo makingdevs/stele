@@ -9,16 +9,18 @@ class CamadaPagoCommand {
   String conceptoDePago
   BigDecimal cantidadDePago
   Date fechaDeVencimiento
-  Object descuento
-  Object recargo
+  String[] descuentos
+  String[] recargoid
+  String[] meses
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
     conceptoDePago size:1..150, blank:false, nullable:false
     cantidadDePago min:1.0, nullable:false
     fechaDeVencimiento nullable: false
-    descuento nullable:true
-    recargo nullable:true
+    descuentos nullable:true
+    recargoid nullable:true
+    meses nullable:true
   }
 
 }
