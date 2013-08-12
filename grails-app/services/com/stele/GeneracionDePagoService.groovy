@@ -60,7 +60,7 @@ class GeneracionDePagoService {
   }
 
   def obtenerRecargosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
-    Recargo.findById(camadaPagoCommand?.recargoid)
+    Recargo.findById(camadaPagoCommand?.recargoid?.first())
   }
 
 }
