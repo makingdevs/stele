@@ -56,40 +56,40 @@
           <div class="span4">
             <dl>
               <dt>
-                <g:checkBox name="checkBox" value="1" checked="${false}"  /> Enero
+                <g:checkBox name="meses" value="1" checked="${false}"  /> Enero
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="2" checked="${false}" /> Febrero
+                <g:checkBox name="meses" value="2" checked="${false}" /> Febrero
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="3" checked="${false}" /> Marzo
+                <g:checkBox name="meses" value="3" checked="${false}" /> Marzo
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="4" checked="${false}" /> Abril
+                <g:checkBox name="meses" value="4" checked="${false}" /> Abril
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="5" checked="${false}" /> Mayo
+                <g:checkBox name="meses" value="5" checked="${false}" /> Mayo
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="6" checked="${false}" /> Junio
+                <g:checkBox name="meses" value="6" checked="${false}" /> Junio
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="7" checked="${false}" /> Julio
+                <g:checkBox name="meses" value="7" checked="${false}" /> Julio
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="8" checked="${false}" /> Agosto
+                <g:checkBox name="meses" value="8" checked="${false}" /> Agosto
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="9" checked="${false}" /> Septiembre
+                <g:checkBox name="meses" value="9" checked="${false}" /> Septiembre
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="10" checked="${false}" /> Octubre
+                <g:checkBox name="meses" value="10" checked="${false}" /> Octubre
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="11" checked="${false}" /> Noviembre
+                <g:checkBox name="meses" value="11" checked="${false}" /> Noviembre
               </dt>
               <dt>
-                <g:checkBox name="checkBox" value="12" checked="${false}" /> Diciembre
+                <g:checkBox name="meses" value="12" checked="${false}" /> Diciembre
               </dt>
             </dl>
           </div>
