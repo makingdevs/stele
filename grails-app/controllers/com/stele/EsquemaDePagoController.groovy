@@ -16,6 +16,9 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
+
+    log.debug "checkbox : $params.checkBox"
+
     cpc.recargo = params?.recargoid 
     cpc.descuento = params?.descuentos?.replace('[','')?.replace(']','')?.split(',') ?: []
     generacionDePagoService.paraCamadaPagoCommand(cpc)
