@@ -27,11 +27,14 @@ class GeneracionDePagoService {
 
   private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
     def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
-    def recargo = obtenerRecargosAsociadosAPAgos(camadaPagoCommand)
+    def recargo = obtenerRecargosAsociadosAPagos(camadaPagoCommand)
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
-    Pago pago = new Pago(camadaPagoCommand.properties)
+    Pago pago = new Pago()
+    pago.conceptoDePago = camadaPagoCommand.conceptoDePago
+    pago.cantidadDePago = camadaPagoCommand.cantidadDePago
+    pago.fechaDeVencimiento = camadaPagoCommand.fechaDeVencimiento
     pago.historialAcademico = historialAcademico
     listaDeDescuentosParaAplicar.each { descuento ->
       pago.addToDescuentos(descuento)
@@ -45,7 +48,8 @@ class GeneracionDePagoService {
   def obtenerDescuentosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
     def listaIdDescuentos = []
 
-    camadaPagoCommand.descuento.each { descuetoId ->
+    def lista = camadaPagoCommand?.descuentos.first().replace('[','')?.replace(']','')?.split(',')
+    lista.each { descuetoId ->
       if (descuetoId)
         listaIdDescuentos.add(descuetoId.toLong())
     }
@@ -55,8 +59,8 @@ class GeneracionDePagoService {
     }
   }
 
-  def obtenerRecargosAsociadosAPAgos(CamadaPagoCommand camadaPagoCommand) {
-    Recargo.findById(camadaPagoCommand?.recargo)
+  def obtenerRecargosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
+    Recargo.findById(camadaPagoCommand?.recargoid)
   }
 
 }
