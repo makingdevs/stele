@@ -26,23 +26,17 @@ class GeneracionDePagoService {
   }
 
   private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
+
     def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
+
     def recargo = obtenerRecargosAsociadosAPagos(camadaPagoCommand)
+
     HistorialAcademico historialAcademico = dependiente.historialAcademico.max {
       it.dateCreated
     }
-    Pago pago = new Pago()
-    pago.conceptoDePago = camadaPagoCommand.conceptoDePago
-    pago.cantidadDePago = camadaPagoCommand.cantidadDePago
-    pago.fechaDeVencimiento = camadaPagoCommand.fechaDeVencimiento
-    pago.historialAcademico = historialAcademico
-    listaDeDescuentosParaAplicar.each { descuento ->
-      pago.addToDescuentos(descuento)
-    }
-    if (recargo)
-      pago.addToRecargos(recargo)
 
-    pago.save(flush:true)
+    def pagos = generarTalonarioDePagos(historialAcademico, camadaPagoCommand, recargo, listaDeDescuentosParaAplicar)
+
   }
 
   def obtenerDescuentosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
@@ -61,6 +55,23 @@ class GeneracionDePagoService {
 
   def obtenerRecargosAsociadosAPagos(CamadaPagoCommand camadaPagoCommand) {
     Recargo.findById(camadaPagoCommand?.recargoid?.first())
+  }
+
+  def generarTalonarioDePagos(HistorialAcademico historialAcademico, CamadaPagoCommand camadaPagoCommand, def recargo, def listaDeDescuentosParaAplicar) {
+    Pago pago = new Pago()
+    pago.conceptoDePago = camadaPagoCommand.conceptoDePago
+    pago.cantidadDePago = camadaPagoCommand.cantidadDePago
+    pago.fechaDeVencimiento = camadaPagoCommand.fechaDeVencimiento
+    pago.historialAcademico = historialAcademico
+    
+    listaDeDescuentosParaAplicar.each { descuento ->
+      pago.addToDescuentos(descuento)
+    }
+
+    if (recargo)
+      pago.addToRecargos(recargo)
+
+    pago.save(flush:true)
   }
 
 }
