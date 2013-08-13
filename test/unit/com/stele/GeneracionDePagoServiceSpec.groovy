@@ -137,7 +137,6 @@ class GeneracionDePagoServiceSpec extends Specification {
           fechaDeVencimiento:fechaDeVencimiento,
           recargoid:recargoId)
 
-        println cmd.recargoid
       and :
         Recargo recargos = new Recargo()
         recargos.save() 
@@ -155,6 +154,35 @@ class GeneracionDePagoServiceSpec extends Specification {
         camada | concepto   | monto | fechaDeVencimiento | recargoId
         "123"  | "concepto" | 1.00  | new Date() + 7     |  1
 
+  }
+
+
+  def "Generar un talonario de pagos para una camada"() {
+      setup:
+        Dependiente dependiente = new Dependiente(camada:camada)
+        dependiente.addToHistorialAcademico(new HistorialAcademico())
+        dependiente.save(validate:false)
+      and :
+        CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
+          conceptoDePago:concepto,
+          cantidadDePago:monto,
+          fechaDeVencimiento:fechaDeVencimiento,
+          meses: meses
+          )
+      and :
+        def mocks = creoColaboradores()
+      when : 
+        def pagos = service.paraCamadaPagoCommand(cmd)
+        mocks*.verify()
+      then :
+        assert pagos.size() == 5
+        assert pagos.first().id > 0
+        assert pagos.first().conceptoDePago == concepto
+        assert pagos.first().cantidadDePago == monto 
+
+      where : 
+        camada | concepto   | monto | fechaDeVencimiento | meses
+        "123"  | "concepto" | 1.00  | new Date() + 7     | [1,3,5,10]
   }
 
   private def creoColaboradores(){
