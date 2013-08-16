@@ -6,6 +6,7 @@ import grails.converters.JSON
 import com.stele.seguridad.*
 import com.stele.*
 import com.stele.marshallers.*
+import com.makingdevs.*
 
 
 class BootStrap {

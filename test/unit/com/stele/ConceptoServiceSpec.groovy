@@ -3,6 +3,7 @@ package com.stele
 import grails.test.mixin.*
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
+import com.makingdevs.*
 
 @TestFor(ConceptoService)
 @Mock([Institucion,Usuario,DistribucionInstitucional,Concepto,Perfil])

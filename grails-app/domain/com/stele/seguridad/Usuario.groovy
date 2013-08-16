@@ -1,9 +1,9 @@
 package com.stele.seguridad
 
-import com.stele.Perfil
 import groovy.transform.ToString
 import com.stele.Dependiente
 import com.stele.Institucion
+import com.makingdevs.*
 
 @ToString
 class Usuario {

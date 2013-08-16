@@ -3,7 +3,7 @@ package com.stele
 import grails.test.mixin.*
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
-
+import com.makingdevs.*
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions

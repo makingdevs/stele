@@ -8,7 +8,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 import com.stele.Dependiente
 import com.stele.seguridad.Usuario
-
+import com.makingdevs.*
 
 @TestFor(DependienteService)
 @Mock([Usuario,Dependiente])

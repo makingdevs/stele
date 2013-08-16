@@ -1,4 +1,4 @@
-<%@ page import="com.stele.TipoDeTelefono" %>
+<%@ page import="com.makingdevs.TipoDeTelefono" %>
 <h4>Mis teléfonos de contacto</h4>
 <table class="table">
   <thead>
