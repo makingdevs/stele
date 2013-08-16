@@ -41,7 +41,7 @@
     <div class="span6 ">
       <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
         <div id="listaTelefono">
-          <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
+          <g:render plugin="profile" template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
         </div>
       </g:formRemote>
     </div>
