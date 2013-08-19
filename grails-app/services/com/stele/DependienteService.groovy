@@ -1,6 +1,7 @@
 package com.stele
 
 import com.stele.seguridad.Usuario
+import com.makingdevs.*
 
 class DependienteService {
 

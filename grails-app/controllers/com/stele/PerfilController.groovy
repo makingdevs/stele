@@ -1,5 +1,7 @@
 package com.stele
 
+import com.makingdevs.*
+
 class PerfilController {
 
   def springSecurityService
@@ -8,12 +10,7 @@ class PerfilController {
 
   def index() {
     def usuarioActual = springSecurityService.currentUser
-    def estadoDeCuentaUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
-    [usuarioActual : usuarioActual, 
-     pagosVencidos:estadoDeCuentaUsuario.pagosVencidos,
-     pagosEnTiempo:estadoDeCuentaUsuario.pagosEnTiempo,
-     pagosPorRealizar:estadoDeCuentaUsuario.pagosARealizar,
-     pagosMensuales:estadoDeCuentaUsuario.pagoMensual]
+    [usuarioActual : usuarioActual]
   }
 
   def actualizarPassword(UpdatePasswordCommand upc) {

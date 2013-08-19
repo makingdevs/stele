@@ -9,6 +9,7 @@ import spock.lang.Specification
 import com.stele.seguridad.Usuario
 import com.stele.seguridad.Rol
 import com.stele.seguridad.UsuarioRol
+import com.makingdevs.*
 
 @TestFor(UsuarioService)
 @Mock([Usuario, Rol, UsuarioRol, Perfil, Telefono, Institucion])

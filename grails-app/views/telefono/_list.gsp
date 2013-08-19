@@ -1,4 +1,6 @@
-<%@ page import="com.stele.TipoDeTelefono" %>
+<%@ page import="com.makingdevs.TipoDeTelefono" %>
+<g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
+<div id="listaTelefono">
 <h4>Mis teléfonos de contacto</h4>
 <table class="table">
   <thead>
@@ -71,3 +73,5 @@
     </tr>
   </tbody>
 </table>
+</div>
+</g:formRemote>

@@ -2,6 +2,7 @@ package com.stele
 
 import groovy.transform.ToString
 import com.stele.seguridad.Usuario
+import com.makingdevs.*
 
 @ToString
 class Dependiente {
