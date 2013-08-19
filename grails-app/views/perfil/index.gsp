@@ -15,7 +15,7 @@
 
   <div class="row">
     <div class="span5">
-      <g:render template="header" model="[usuarioActual : usuarioActual]" />
+      
       <hr/>
       <g:form name="password" controller="perfil" action="actualizarPassword">
 
@@ -39,11 +39,7 @@
     </div>
 
     <div class="span6 ">
-      <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
-        <div id="listaTelefono">
-          <g:render plugin="profile" template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
-        </div>
-      </g:formRemote>
+      <g:render template="/telefono/list" />
     </div>
   </div>
 
