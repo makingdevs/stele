@@ -5,7 +5,7 @@ grails.project.test.reports.dir = "target/test-reports"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 // Module plugins
-grails.plugin.location.profile='../profile'
+//grails.plugin.location.profile='../profile'
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 // uncomment (and adjust settings) to fork the JVM to isolate classpaths
@@ -30,6 +30,7 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenLocal()
         mavenCentral()
+        mavenRepo name: "MakingDevs", root: "http://makingdevs.com:8081/nexus/content/repositories/thirdparty"
     }
 
     dependencies {
@@ -64,5 +65,6 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 
         compile ':cache:1.0.1'
+        compile ':profile:latest.integration'
     }
 }
