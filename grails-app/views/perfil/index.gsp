@@ -15,48 +15,15 @@
 
   <div class="row">
     <div class="span5">
-      
+      <g:render template="header" model="[usuarioActual:usuarioActual]"/>
       <hr/>
-      <g:form name="password" controller="perfil" action="actualizarPassword">
-
-        <div class="control-group">
-          <label for="" class="">Nueva contraseña: </label>
-          <div class="controls">
-            <input type="password" id="nuevaContrasenia" name="nuevaContrasenia" placeholder="Nueva contraseña">
-          </div>
-        </div>
-        <div class="control-group">
-          <label for="" class="">Confirma contraseña: </label>
-          <div class="controls">
-            <input type="password" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
-          </div>
-        </div>
-        <div class="form-actions" style="text-align:right;">
-          <button type="submit" class="btn btn-primary">Actualizar contraseña</button>
-        </div>
-        
-      </g:form>
+      <g:render template="passwordUpdate" model="[usuarioActual:usuarioActual]"/>
     </div>
 
     <div class="span6 ">
-      <g:render template="/telefono/list" />
+      <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
     </div>
   </div>
-
-  <sec:ifAnyGranted roles="ROLE_PADRE_TUTOR">
-
-  <div class="page-header">
-    <h2>Mis dependientes</h2>
-  </h5>
-  <hr />
-  
-  <div class="row-fluid">
-    <div class="span6">
-      <g:render template="dependienteCard" collection="${usuarioActual.dependientes}" var="dependiente" />
-    </div>
-  </div>
-
-  </sec:ifAnyGranted>
 
   </body>
 </html>

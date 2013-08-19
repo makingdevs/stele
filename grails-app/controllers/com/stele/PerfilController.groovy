@@ -10,7 +10,6 @@ class PerfilController {
 
   def index() {
     def usuarioActual = springSecurityService.currentUser
-    log.debug usuarioActual.perfil
     [usuarioActual : usuarioActual]
   }
 
