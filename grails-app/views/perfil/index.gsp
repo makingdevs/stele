@@ -22,7 +22,6 @@
 
     <div class="span6 ">
       <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
-      <g:render plugin="profile" template="/sample/hello" />
     </div>
   </div>
 
