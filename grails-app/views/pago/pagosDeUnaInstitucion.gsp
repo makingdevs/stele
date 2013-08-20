@@ -17,7 +17,7 @@
           <li><a href="#creado" data-toggle="tab">Creados</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="procesado"><g:render template="estadoDePagos/pagosProcesados" /></div>
+          <div class="tab-pane active" id="procesado"><g:render template="estadoDePagos/pagosProcesados" model="[pagos:pagosInstitucion]"/></div>
           <div class="tab-pane" id="rechazado">...2</div>
           <div class="tab-pane" id="creado">...3</div>
         </div>
