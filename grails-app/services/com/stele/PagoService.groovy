@@ -27,6 +27,7 @@ class PagoService {
 
   def obtenerPagosDeUnaInstitucion(Usuario usuario) {
     def institucionUsuario = usuario.instituciones
+
     def distribucionInstitucional = DistribucionInstitucional.withCriteria {
       'in'('institucion', institucionUsuario)
     }
@@ -37,11 +38,8 @@ class PagoService {
   }
 
   def obtenerPagoParaValidarComprobante(Long pagoId) {
-    def pago = Pago.findById(pagoId,[fetch:['comprobanteDePago':'join']])
-    def historialAcademico = HistorialAcademico.findById(pago.historialAcademicoId)
-    def dependiente = Dependiente.findById(historialAcademico.dependienteId)
-    def perfil = Perfil.findById(dependiente.perfilId)
-    [pago:pago, perfil:perfil]
+    Pago.findById(pagoId,[fetch:['comprobanteDePago':'join']])
+
   }
 
 
