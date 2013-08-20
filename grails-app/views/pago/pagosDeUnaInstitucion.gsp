@@ -16,13 +16,14 @@
           <li><a href="#rechazado" data-toggle="tab">Rechazados</a></li>
           <li><a href="#vencido" data-toggle="tab">Vencidos</a></li>
           <li><a href="#creado" data-toggle="tab">Creados</a></li>
+          <li><a href="#pagado" data-toggle="tab">Pagados</a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="procesado"><g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/></div>
           <div class="tab-pane" id="rechazado"><g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/></div>
           <div class="tab-pane" id="vencido"><g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/></div>
-          <div class="tab-pane" id="vencido">...3</div>
-        </div>
+          <div class="tab-pane" id="creado"><g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion]"/></div>
+          <div class="tab-pane" id="pagado"><g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/></div>
       </div>
     </div>
 
