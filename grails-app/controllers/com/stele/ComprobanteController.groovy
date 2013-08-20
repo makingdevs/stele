@@ -1,14 +1,21 @@
 package com.stele
 
+import com.stele.HistorialAcademico
+import com.stele.Dependiente
+import com.makingdevs.*
+
 class ComprobanteController {
 
   def pagoService
   def comprobanteService
+  def perfilService
 
   def show() {
-    log.debug "params : $params"
     def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
-    [pago: pago.pago, perfil:pago.perfil]
+    def historialAcademico = HistorialAcademico.findById(pago.historialAcademicoId)
+    def dependiente = Dependiente.findById(historialAcademico.dependienteId)
+    def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.perfilId)
+    [pago: pago, perfil:perfil]
   }
 
   def validarComprobante() {
