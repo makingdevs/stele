@@ -4,10 +4,10 @@ import com.stele.Pago
 
 class EstatusPagoService {
 
-  def obtenerPagosVencidos(){
-    def listaDePagosVencidos = Pago.withCriteria {
-      ge('fechaDeVencimiento', new Date())
+  def buscarLdosPagosConFechaDeVencimientoActiva(){
+    def listaDePagosConFechaVencida = Pago.withCriteria {
       eq('estatusDePago', EstatusDePago.CREADO)
+      ge('fechaDeVencimiento', new Date())
     }
     cambioEstatusVencidoDeUnPago(listaDePagosVencidos)
   }
