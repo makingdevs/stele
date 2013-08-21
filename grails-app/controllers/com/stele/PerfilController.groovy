@@ -6,7 +6,6 @@ class PerfilController {
 
   def springSecurityService
   def perfilService
-  def pagoService
 
   def index() {
     def usuarioActual = springSecurityService.currentUser
