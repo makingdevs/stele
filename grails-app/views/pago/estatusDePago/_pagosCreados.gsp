@@ -42,6 +42,4 @@
       </g:findAll>
     </tbody>
   </table>
-  <div class="pagination pagination-large" align="center">
-    <g:paginate total="${pagosCount.size()}" params="[ camada:"${pagosCount.first().camada}"]" />
-  </div>
+  
