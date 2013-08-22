@@ -51,21 +51,45 @@ class PagoService {
 
   }
 
+  def buscarPagosConFechasDeVencimientoCumplida() {
+    List listaDePagosConFechaVencida = Pago.withCriteria{
+      eq('estatusDePago', EstatusDePago.CREADO)
+      ge('fechaDeVencimiento', new Date())
+    }
+
+
+  }
+
+  private def cambiarEstatusDeUnPagoAVencido(List listaDePagosConFechaVencida) {
+    List listaDePagosConNuevoEstatusVencido = []
+
+    listaDePagosConFechaVencida.each { pago ->
+      if (pago.estatusDePago == EstatusDePago.CREADO) {
+        pago.estatusDePago = EstatusDePago.VENCIDO
+        listaDePagosConNuevoEstatusVencido.add(pago.save())
+      }
+    }
+    listaDePagosConNuevoEstatusVencido
+  }
+
+
   private def obtenerPagosDeUsuarioQueSon(Usuario usuario, String tipoDePago){
     def dependienteHistorial = obtenerDependientesEHistorialAcademicoPorTutor(usuario)
     Pago.withCriteria {
       'in'('historialAcademico', dependienteHistorial.historiales)
-       eq('estatusDePago', EstatusDePago.CREADO)
        switch(tipoDePago){
           case "Vencidos":
-            le('fechaDeVencimiento', new Date())    
+            le('fechaDeVencimiento', new Date()) 
+            eq('estatusDePago', EstatusDePago.VENCIDO)
           break
           case "EnTiempoConDescuento":
             ge('fechaDeVencimiento', new Date())
+            eq('estatusDePago', EstatusDePago.CREADO)
             isNotEmpty("descuentos")
           break
           case "EnTiempoSinDescuento":
             ge('fechaDeVencimiento', new Date())
+            eq('estatusDePago', EstatusDePago.CREADO)
             isEmpty("descuentos")
           break
        }
