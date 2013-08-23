@@ -14,10 +14,28 @@ class GeneracionDePagoService {
         conceptoService.guardarConceptoDePagoGenerado(springSecurityService.currentUser,camadaPagoCommand.conceptoDePago)
 
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
+    def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
+    List descuentos = []
+    List fechasDescuentos = []
+
+    def meses = camadaPagoCommand.meses
+     listaDeDescuentosParaAplicar.each { descuento ->
+        fechasDescuentos = obtenerFechaAplicacion(meses, descuento)
+        fechasDescuentos.each { fecha ->
+          Descuento desc = new Descuento()
+          desc.nombreDeDescuento = descuento.nombreDeDescuento
+          desc.porcentaje = descuento?.porcentaje 
+          desc.cantidad = descuento?.cantidad
+          desc.fechaDeVencimiento = fecha
+          desc.institucion = descuento.institucion
+          desc.save()
+          descuentos.add(desc)
+        }
+      }
 
     List<Pago> pagos = []
     dependientes.each { dependiente ->
-      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand)
+      def pago = generarPagoParaDependienteConCommand(dependiente, camadaPagoCommand, descuentos)
       pago.each { p ->
         dependiente.addToPagos(p)
         pagos << p
@@ -27,9 +45,7 @@ class GeneracionDePagoService {
     pagos
   }
 
-  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand) {
-
-    def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
+  private def generarPagoParaDependienteConCommand(Dependiente dependiente, CamadaPagoCommand camadaPagoCommand, List descuentos) {
 
     def recargo = obtenerRecargosAsociadosAPagos(camadaPagoCommand)
 
@@ -37,14 +53,13 @@ class GeneracionDePagoService {
       it.dateCreated
     }
 
-    generarTalonarioDePagos(historialAcademico, camadaPagoCommand, recargo, listaDeDescuentosParaAplicar)
+    generarTalonarioDePagos(historialAcademico, camadaPagoCommand, recargo, descuentos)
 
   }
 
-   def generarTalonarioDePagos(HistorialAcademico historialAcademico, CamadaPagoCommand camadaPagoCommand, def recargo, def listaDeDescuentosParaAplicar) {
+   def generarTalonarioDePagos(HistorialAcademico historialAcademico, CamadaPagoCommand camadaPagoCommand, def recargo, List descuentos) {
     def meses = camadaPagoCommand.meses
     List pagos = []
-
     List fechasDeVencimiento = obtenerFechasDeVencimientoDePago(meses, camadaPagoCommand)
 
     fechasDeVencimiento.each { fechaDeVencimiento ->
@@ -53,15 +68,14 @@ class GeneracionDePagoService {
       pago.cantidadDePago = camadaPagoCommand.cantidadDePago
       pago.fechaDeVencimiento = fechaDeVencimiento
       pago.historialAcademico = historialAcademico
-      
-      listaDeDescuentosParaAplicar.each { descuento ->
+      descuentos.each { descuento ->
         pago.addToDescuentos(descuento)
       }
   
       if (recargo)
         pago.addToRecargos(recargo)
   
-      pagos.add(pago.save(flush:true))
+      pagos.add(pago.save())
 
     }
     pagos
@@ -110,4 +124,26 @@ class GeneracionDePagoService {
     fechas
   }
 
+  def obtenerFechaAplicacion(String[] meses, Descuento descuento) {
+    List fechasAplicacion = []
+
+    Calendar cal = Calendar.getInstance()
+    cal.setTime(descuento.fechaDeVencimiento)
+
+    def year = cal.get(Calendar.YEAR)
+    def month = cal.get(Calendar.MONTH)
+    def day = cal.get(Calendar.DAY_OF_MONTH)
+
+    meses.each { mes ->
+      if (mes.toInteger() < month) {
+        cal.set(year+1, mes.toInteger(), day)
+        fechasAplicacion.add(cal.getTime())
+      } else if (mes.toInteger() > month) {
+        cal.set(year, mes.toInteger(), day)
+        fechasAplicacion.add(cal.getTime())
+      } 
+    }
+
+    fechasAplicacion
+  }
 }
