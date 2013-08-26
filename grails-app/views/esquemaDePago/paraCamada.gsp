@@ -54,44 +54,7 @@
             <g:link controller="camada" action="show" params="[camada:camada]">Ver lista de alumnos</g:link>
           </div>
           <div class="span4">
-            <dl>
-              <dt>
-                <g:checkBox name="meses" value="0" checked="${false}"  /> Enero
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="1" checked="${false}" /> Febrero
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="2" checked="${false}" /> Marzo
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="3" checked="${false}" /> Abril
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="4" checked="${false}" /> Mayo
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="5" checked="${false}" /> Junio
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="6" checked="${false}" /> Julio
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="7" checked="${false}" /> Agosto
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="8" checked="${false}" /> Septiembre
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="9" checked="${false}" /> Octubre
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="10" checked="${false}" /> Noviembre
-              </dt>
-              <dt>
-                <g:checkBox name="meses" value="11" checked="${false}" /> Diciembre
-              </dt>
-            </dl>
+            <g:render template="meses" />
           </div>
           <div class="span4">
             <div id="descuentoCreado">
