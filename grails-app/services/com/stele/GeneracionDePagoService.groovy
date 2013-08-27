@@ -66,9 +66,9 @@ class GeneracionDePagoService {
       Pago pago = new Pago()
       pago.conceptoDePago = camadaPagoCommand.conceptoDePago
         
-      if (esPagoDobleEsteMes(camadaPagoCommand, fechaDeVencimiento))
+      if (esPagoDobleEsteMes(camadaPagoCommand, fechaDeVencimiento)) 
         pago.cantidadDePago = camadaPagoCommand.cantidadDePago * 2
-      else
+      else 
         pago.cantidadDePago = camadaPagoCommand.cantidadDePago
       pago.fechaDeVencimiento = fechaDeVencimiento
       pago.historialAcademico = historialAcademico
@@ -156,7 +156,7 @@ class GeneracionDePagoService {
     cal.setTime(fechaDeVencimiento)
     def month = cal.get(Calendar.MONTH)
 
-    camadaPagoCommand.meses?.contains(month)
+    camadaPagoCommand.pagoDoble?.contains(month.toString())
 
   }
 }
