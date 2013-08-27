@@ -65,7 +65,11 @@ class GeneracionDePagoService {
     fechasDeVencimiento.each { fechaDeVencimiento ->
       Pago pago = new Pago()
       pago.conceptoDePago = camadaPagoCommand.conceptoDePago
-      pago.cantidadDePago = camadaPagoCommand.cantidadDePago
+        
+      if (esPagoDobleEsteMes(camadaPagoCommand, fechaDeVencimiento))
+        pago.cantidadDePago = camadaPagoCommand.cantidadDePago * 2
+      else
+        pago.cantidadDePago = camadaPagoCommand.cantidadDePago
       pago.fechaDeVencimiento = fechaDeVencimiento
       pago.historialAcademico = historialAcademico
       descuentos.each { descuento ->
@@ -145,5 +149,14 @@ class GeneracionDePagoService {
     }
 
     fechasAplicacion
+  }
+
+  private Boolean esPagoDobleEsteMes(CamadaPagoCommand camadaPagoCommand, def fechaDeVencimiento){
+    Calendar cal = Calendar.getInstance()
+    cal.setTime(fechaDeVencimiento)
+    def month = cal.get(Calendar.MONTH)
+
+    camadaPagoCommand.meses?.contains(month)
+
   }
 }
