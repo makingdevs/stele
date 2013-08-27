@@ -1,5 +1,6 @@
 import grails.util.Environment
 import org.apache.log4j.DailyRollingFileAppender
+import grails.util.Environment
 
 def configLocations = []
 configLocations << "file:${userHome}/.grails/${appName}-${Environment.current}-config.groovy"
