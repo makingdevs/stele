@@ -12,8 +12,8 @@ class CamadaController {
     def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager',usuario:'eager']])
     def dependientesCreateCriteria = Dependiente.createCriteria().list() {
       'in'('camada', camada)
-      fetchMode('perfil', FM.EAGER)
-      fetchMode('usuario', FM.EAGER)
+      fetchMode('perfil', FetchMode.EAGER)
+      fetchMode('usuario', FetchMode.EAGER)
     }
     def dependientesWithCriteria = Dependiente.withCriteria {
       'in'(camada, camada)
