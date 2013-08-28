@@ -10,6 +10,8 @@ class CamadaController {
       return
     }
     def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager',usuario:'eager']])
+    log.debug "dependientes : $dependientes"
+    log.debug "camada : $params.camada  "
     [dependientes:dependientes,camada:params.camada]
   }
 }
