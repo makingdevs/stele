@@ -16,8 +16,9 @@ class CamadaController {
     }
 
     sessionFactory.settings.sqlStatementLogger.logToStdout = true
-    def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'join',usuario:'join']])
+    def dependientes = Dependiente.findAllByCamada(camada)
     sessionFactory.settings.sqlStatementLogger.logToStdout = false
+    println dependientes
 
 
     [dependientes:dependientes,camada:params.camada]
