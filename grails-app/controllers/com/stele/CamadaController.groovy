@@ -14,13 +14,11 @@ class CamadaController {
       redirect uri:"/"
       return
     }
-<<<<<<< HEAD
-    def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager',usuario:'eager']])
-=======
+
     sessionFactory.settings.sqlStatementLogger.logToStdout = true
     def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'join',usuario:'join']])
     sessionFactory.settings.sqlStatementLogger.logToStdout = false
->>>>>>> feature/139
+
 
     [dependientes:dependientes,camada:params.camada]
   }
