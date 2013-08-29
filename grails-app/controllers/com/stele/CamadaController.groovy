@@ -1,6 +1,8 @@
 package com.stele
 import com.makingdevs.*
 
+import org.hibernate.FetchMode
+
 class CamadaController {
 
   def sessionFactory
@@ -15,6 +17,7 @@ class CamadaController {
     sessionFactory.settings.sqlStatementLogger.logToStdout = true
     def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'join',usuario:'join']])
     sessionFactory.settings.sqlStatementLogger.logToStdout = false
+
     [dependientes:dependientes,camada:params.camada]
   }
 }
