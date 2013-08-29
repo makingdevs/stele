@@ -3,6 +3,8 @@ import com.makingdevs.*
 
 class CamadaController {
 
+  def sessionFactory
+
   def show(){
     String camada = params.camada
     if(!camada || camada == 'NaC'){
@@ -10,7 +12,9 @@ class CamadaController {
       redirect uri:"/"
       return
     }
-    def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager',usuario:'eager']])
+    sessionFactory.settings.sqlStatementLogger.logToStdout = true
+    def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'join',usuario:'join']])
+    sessionFactory.settings.sqlStatementLogger.logToStdout = false
     [dependientes:dependientes,camada:params.camada]
   }
 }
