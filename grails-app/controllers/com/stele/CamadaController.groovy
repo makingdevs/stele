@@ -1,4 +1,5 @@
 package com.stele
+import com.makingdevs.*
 
 import org.hibernate.FetchMode
 
@@ -12,13 +13,7 @@ class CamadaController {
       return
     }
     def dependientes = Dependiente.findAllByCamada(camada,[fetch:[perfil:'eager',usuario:'eager']])
-    def dependientesWithCriteria = Dependiente.withCriteria {
-      'in'('camada', camada)
-      fetchMode 'perfil', FetchMode.EAGER
-      fetchMode 'usuario', FetchMode.EAGER
-    }
-    println "dependientes : $dependientes"
-    println "dependientesWithCriteria : $dependientesWithCriteria"
+
     [dependientes:dependientes,camada:params.camada]
   }
 }
