@@ -13,4 +13,8 @@ class Concepto {
     descripcion blank:false, size:1..150
   }
 
+  String toString(){
+    descripcion    
+  }
+
 }
