@@ -2,8 +2,9 @@ package com.stele
 
 class EsquemaDePago {
 
-  
+  Concepto concepto
+  Recargo recargo
 
-  static constraints = {
-  }
+  static hasMany = [descuentos:Descuento]
+
 }
