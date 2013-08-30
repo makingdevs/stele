@@ -15,4 +15,8 @@ class Recargo {
     cantidad nullable: true, min:0.0
   }
 
+  String toString(){
+    "${porcentaje} % - \$ ${cantidad}"
+  }
+
 }

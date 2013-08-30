@@ -6,6 +6,8 @@ class EsquemaDePagoController {
 
   def springSecurityService
   def generacionDePagoService
+
+  def scaffold = EsquemaDePago
  
   def paraCamada() {
     [camada:params?.camada]

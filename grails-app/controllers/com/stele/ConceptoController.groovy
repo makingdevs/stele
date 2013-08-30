@@ -36,10 +36,10 @@ class ConceptoController {
 
 class ConceptoCommand {
 
-  String concepto
+  String descripcion
 
   static constraints = {
-    concepto nullable:false
+    descripcion nullable:false
   }
 
 }

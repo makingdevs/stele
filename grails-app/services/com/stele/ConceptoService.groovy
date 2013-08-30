@@ -11,13 +11,13 @@ class ConceptoService {
   def buscarConceptosDeUnaInstitucion(Usuario usuario, def query) {
     def institucion = usuario.instituciones
     Concepto.withCriteria {
-      like('concepto', "%${query}%" )
+      like('descripcion', "%${query}%" )
       'in'('institucion', institucion)
     }
   }
 
   def verificarConceptoPagoExistente(String descripcionDeConcepto) {
-    def conceptoExistente = Concepto.findByConcepto(descripcionDeConcepto)
+    def conceptoExistente = Concepto.findByDescripcion(descripcionDeConcepto)
     if (conceptoExistente)
       true
     else
@@ -26,7 +26,7 @@ class ConceptoService {
 
   def guardarConceptoDePagoGenerado(Usuario usuario, String descripcionDeConcepto) {
       Concepto concepto = new Concepto()
-      concepto.concepto = descripcionDeConcepto
+      concepto.descripcion = descripcionDeConcepto
       concepto.institucion = usuario.instituciones?.first()
       concepto.save()
       concepto
