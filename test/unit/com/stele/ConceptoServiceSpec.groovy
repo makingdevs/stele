@@ -38,11 +38,11 @@ class ConceptoServiceSpec extends Specification {
     usuario.addToInstituciones(institucion)
     usuario.save(flush:true)
     concepto1.id = 1
-    concepto1.concepto = "Colegiatura"
+    concepto1descripcion = "Colegiatura"
     concepto1.institucion = institucion
     concepto1.save(flush:true)
     concepto2.id = 2
-    concepto2.concepto = "Primera colegiatura"
+    concepto2descripcion = "Primera colegiatura"
     concepto2.institucion = institucion
     concepto2.save(flush:true)
     def query = "giat"
@@ -88,7 +88,7 @@ class ConceptoServiceSpec extends Specification {
   then:
     assert resultadoBusquedaConcepto == false
     assert conceptoGuardado.id == 1
-    assert conceptoGuardado.concepto =="concepto no existente"
+    assert conceptoGuardadodescripcion =="concepto no existente"
     }
 
     def "Al guardar un concepto de pago generado que ya existe no se debe de crear"(){
@@ -120,7 +120,7 @@ class ConceptoServiceSpec extends Specification {
     usuario.addToInstituciones(institucion)
     usuario.save(flush:true)
     concepto1.id = 1
-    concepto1.concepto = "Colegiatura"
+    concepto1descripcion = "Colegiatura"
     concepto1.institucion = institucion
     concepto1.save(flush:true)    
     String descripcionConcepto = "Colegiatura"    

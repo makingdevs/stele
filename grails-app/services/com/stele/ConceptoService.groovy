@@ -11,7 +11,7 @@ class ConceptoService {
   def buscarConceptosDeUnaInstitucion(Usuario usuario, def query) {
     def institucion = usuario.instituciones
     Concepto.withCriteria {
-      like('concepto', "%${query}%" )
+      like('descripcion', "%${query}%" )
       'in'('institucion', institucion)
     }
   }
@@ -26,7 +26,7 @@ class ConceptoService {
 
   def guardarConceptoDePagoGenerado(Usuario usuario, String descripcionDeConcepto) {
       Concepto concepto = new Concepto()
-      concepto.concepto = descripcionDeConcepto
+      concepto.descripcion = descripcionDeConcepto
       concepto.institucion = usuario.instituciones?.first()
       concepto.save()
       concepto

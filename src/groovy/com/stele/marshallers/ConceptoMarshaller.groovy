@@ -12,7 +12,7 @@ public class ConceptoMarshaller implements ObjectMarshaller<JSON> {
 
   public void marshalObject(Object object, JSON converter) {
     def concepto = object as Concepto
-    def conceptoValues = [key:concepto.id,value: concepto.concepto]
+    def conceptoValues = [key:concepto.id,value: concepto.descripcion]
     converter.convertAnother(conceptoValues)
   }
 
