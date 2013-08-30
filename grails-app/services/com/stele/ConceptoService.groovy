@@ -17,7 +17,7 @@ class ConceptoService {
   }
 
   def verificarConceptoPagoExistente(String descripcionDeConcepto) {
-    def conceptoExistente = Concepto.findByConcepto(descripcionDeConcepto)
+    def conceptoExistente = Concepto.findByDescripcion(descripcionDeConcepto)
     if (conceptoExistente)
       true
     else
