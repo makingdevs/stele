@@ -9,6 +9,7 @@ class CamadaPagoCommand {
   String conceptoDePago
   BigDecimal cantidadDePago
   Date fechaDeVencimiento
+  Integer diasPreviosParaCancelarDescuento
   String[] descuentos
   String[] recargoid
   String[] meses
@@ -19,6 +20,7 @@ class CamadaPagoCommand {
     conceptoDePago size:1..150, blank:false, nullable:false
     cantidadDePago min:1.0, nullable:false
     fechaDeVencimiento nullable: false
+    diasPreviosParaCancelarDescuento nullable: false
     descuentos nullable:true
     recargoid nullable:true
     meses nullable:true
