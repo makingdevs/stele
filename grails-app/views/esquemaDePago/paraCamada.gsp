@@ -78,7 +78,7 @@
       <h3 id="descuentoLabel">Datos del descuento</h3>
     </div>
 
-    <g:form class="form-horizontal" name="descuentosForm" url="[controller:'descuento', action:'nuevo']" id="descuentosForm" >
+  <g:form class="form-horizontal" name="descuentosForm" url="[controller:'descuento', action:'nuevo']" id="descuentosForm" >
     <div class="modal-body">
       <g:render template="/descuento/nuevoDescuento" />
     </div>

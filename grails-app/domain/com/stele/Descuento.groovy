@@ -6,6 +6,7 @@ class Descuento {
   BigDecimal porcentaje
   BigDecimal cantidad
   Date fechaDeVencimiento
+  Integer diasPreviosParaCancelarDescuento = 0
 
   Date dateCreated
   Date lastUpdated
