@@ -25,9 +25,27 @@
   </div>
 </div>
 
-<div class="control-group">
-  <label for="fechaDeVencimiento" class="control-label">Fecha de vencimiento: </label>
-  <div class="controls">
-    <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
+<div class="well">
+
+  <div class="control-group">
+    <label for="fechaDeVencimiento" class="control-label">Vigencia hasta: </label>
+    <div class="controls">
+      <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
+    </div>
   </div>
+
+  <div class="control-group center">
+    <div class="controls">
+      - ó - 
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label for="diasPreviosParaCancelarDescuento" class="control-label">Anular descuento a los : </label>
+    <div class="controls">
+      <g:select class="span1" name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- 0 -']"/>
+      día(s) antes de la fecha de vencimiento.
+    </div>
+  </div>
+
 </div>
