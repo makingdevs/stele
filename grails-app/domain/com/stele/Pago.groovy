@@ -13,10 +13,11 @@ class Pago {
   EstatusDePago estatusDePago = EstatusDePago.CREADO
   String transactionId = UUID.randomUUID().toString().replaceAll('-', '').substring(0,20)
   S3Asset comprobanteDePago
+  Recargo recargo
 
   HistorialAcademico historialAcademico
 
-  static hasMany = [descuentos : Descuento, recargos: Recargo]
+  static hasMany = [descuentos : Descuento]
 
   Date dateCreated
   Date lastUpdated
