@@ -4,6 +4,8 @@ import com.stele.Recargo
 
 class RecargoController {
 
+  def scaffold = Recargo
+
   def springSecurityService
 
   def nuevo(){

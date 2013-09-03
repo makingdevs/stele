@@ -5,12 +5,12 @@ import grails.converters.JSON
 
 class DescuentoController {
 
+  def scaffold = Descuento
+
   def descuentoService
   def springSecurityService
 
   static allowedMethods = [obtenerDescuentosInstitucion : 'GET']
-
-  def index() { }
 
   def nuevo() {
     log.debug "descuentos : $params"
