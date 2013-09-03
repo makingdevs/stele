@@ -14,30 +14,46 @@ class PagoServiceSpec extends Specification {
   def "Crear un pago con el concepto: '#conceptoDePago', vencimiento: '#fechaDeVencimiento' y la cantidad: '#cantidadDePago'"(){
     given:
       def esquemaDePagoServiceMock = mockFor(EsquemaDePagoService)
-      esquemaDePagoServiceMock.demand.obtenerEsquemaDePago(1..3) { Long esquemaDePagoId -> new EsquemaDePago() }
+      esquemaDePagoServiceMock.demand.obtenerEsquemaDePago(1..3) { Long esquemaDePagoId -> 
+        new EsquemaDePago(
+          cantidadDePago:cantidadDePago,
+          concepto:new Concepto(descripcion:conceptoDePago),
+          descuentos:generadorDeDescuentos(descuentos)
+        )
+      }
+      esquemaDePagoServiceMock.demand.obtenerCantidadDeDescuentoAplicable(1..3) { EsquemaDePago esquemadepago -> cantidadDescuentoAplicable }
       service.esquemaDePagoService = esquemaDePagoServiceMock.createMock()
+
     when:
       def pago = service.crearPago(fechaDeVencimiento, esquemaDePagoId)
       esquemaDePagoServiceMock.verify()
     then:
       pago.id > 0
       pago.transactionId
+      pago.cantidadDePago == cantidadDePago
       pago.conceptoDePago == conceptoDePago
       pago.fechaDeVencimiento.date  == fechaDeVencimiento.date
       pago.fechaDeVencimiento.month  == fechaDeVencimiento.month
       pago.fechaDeVencimiento.year  == fechaDeVencimiento.year
-      pago.cantidadDePago == cantidadDePago
       pago.tipoDePago == TipoDePago.TRANSFERENCIA_BANCARIA
       pago.estatusDePago == EstatusDePago.CREADO
       pago.recargosAcumulados == recargosAcumulados
       pago.descuentoAplicable == descuentoAplicable
-      pago.descuentos.size() == descuentos
+      pago.descuentos.size() == noDescuentos
       pago.recargos.size() == recargos
     where:
-      fechaDeVencimiento | esquemaDePagoId || conceptoDePago | cantidadDePago | recargosAcumulados  | descuentoAplicable  | descuentos  | recargos
-      new Date() + 30    | 1               || "Inscripción"  | 1234.45        | 0                   | 0                   | 0           | 0
-      new Date() + 40    | 2               || "Colegiatura"  | 1345.98        | 0                   | 0                   | 0           | 0
-      new Date() + 30    | 3               || "Inscripción"  | 1500.00        | 0                   | 300                 | 1           | 0
+      fechaDeVencimiento | esquemaDePagoId | cantidadDePago | conceptoDePago | cantidadDescuentoAplicable | descuentos|| recargosAcumulados  | descuentoAplicable  | noDescuentos  | recargos
+      new Date() + 30    | 1               | 1234.45        | "Inscripción"  | 0                          | 0         || 0                   | 0                   | 0             | 0
+      new Date() + 40    | 2               | 1345.98        | "Colegiatura"  | 0                          | 0         || 0                   | 0                   | 0             | 0
+      new Date() + 30    | 3               | 1500.00        | "Inscripción"  | 300                        | 1         || 0                   | 300                 | 1             | 0
+      new Date() + 30    | 4               | 1750.50        | "Excursión"    | 600                        | 2         || 0                   | 600                 | 2             | 0
+      new Date() + 90    | 5               | 9999.99        | "Televisión"   | 1300                       | 3         || 0                   | 1300                | 3             | 0
+  }
+
+  def generadorDeDescuentos = { cantidad ->
+    def descuentos = []
+    cantidad.times { descuentos << new Descuento() }
+    descuentos
   }
 
   def "Obtener todos los pagos ligados a un usuario existente"() {

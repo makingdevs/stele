@@ -13,9 +13,15 @@ class PagoService {
 
   def esquemaDePagoService
 
-  def crearPago(String concepto, Date fechaDeVencimiento, BigDecimal cantidad){
-    def p = new Pago(conceptoDePago:concepto,fechaDeVencimiento:fechaDeVencimiento,cantidadDePago:cantidad)
-    p.descuentos = []
+  def crearPago(Date fechaDeVencimiento, Long esquemaDePagoId){
+    def esquemaDePago = esquemaDePagoService.obtenerEsquemaDePago(esquemaDePagoId)
+    def descuentoAplicable = esquemaDePagoService.obtenerCantidadDeDescuentoAplicable(esquemaDePago)
+    def p = new Pago(
+      fechaDeVencimiento:fechaDeVencimiento,
+      cantidadDePago:esquemaDePago.cantidadDePago,
+      conceptoDePago:esquemaDePago.concepto.descripcion,
+      descuentoAplicable:descuentoAplicable)
+    p.descuentos = esquemaDePago.descuentos
     p.recargos = []
     p.save()
     p
