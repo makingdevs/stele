@@ -11,6 +11,10 @@ import com.makingdevs.*
 
 class PagoService {
 
+  def crearPagoSimple(String concepto, Date fechaDeVencimiento, BigDecimal cantidad){
+    def p = new Pago(conceptoDePago:concepto,fechaDeVencimiento:fechaDeVencimiento,cantidadDePago:cantidad)
+    p
+  }
 
   def obtenerPagosDeUsuario(Usuario usuario) {
     def criteriaDependiente = Dependiente.createCriteria()

@@ -5,13 +5,24 @@ import spock.lang.Specification
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
 @TestFor(PagoService)
 @Mock([HistorialAcademico,Dependiente,DistribucionInstitucional,Institucion,Usuario,Perfil,Pago])
 class PagoServiceSpec extends Specification {
-	def "Obtener todos los pagos ligados a un usuario existente"() {
+
+  def "Crear un pago con un concepto, una fecha de vencimiento y una cantidad"(){
+    when:
+      def pago = service.crearPagoSimple("Concepto",new Date() + 10, 1234.45)
+    then:
+      pago.id > 0
+      pago.transactionId
+      pago.conceptoDePago == "Concepto"
+      pago.fechaDeVencimiento.date  == (new Date() + 10).date
+      pago.fechaDeVencimiento.month  == (new Date() + 10).month
+      pago.fechaDeVencimiento.year  == (new Date() + 10).year
+      pago.cantidadDePago == 1234.45
+  }
+
+  def "Obtener todos los pagos ligados a un usuario existente"() {
     given: "Se crean dos pagos asociados a un determinado usuario con un dependiente asosiado"
       def institucion = new Institucion()
       institucion.nombre = "Kinder Peques"
@@ -63,9 +74,9 @@ class PagoServiceSpec extends Specification {
       def pagosDeUusario = service.obtenerPagosDeUsuario(usuarioExistente)
     then: "La cantidad de pagos debe ser igual a 2"
       assert pagosDeUusario.size() > 0
-	}
+  }
 
-      def "Obtener todos los pagos ligados a la institucion del usuario"() {
+  def "Obtener todos los pagos ligados a la institucion del usuario"() {
     given: "Se crean dos pagos asociados a un determinado usuario con un dependiente asosiado"
       def institucion = new Institucion()
       institucion.nombre = "Kinder Peques"
@@ -120,8 +131,8 @@ class PagoServiceSpec extends Specification {
       assert pagoInstitucion.size() == 2
   }
 
-      def "Obtener los pagos vencidos en estatus CREADO"() {
-  given: "Se crearan 2 pagos en con una fecha vencimiento menor a la fecha actual"
+  def "Obtener los pagos vencidos en estatus CREADO"() {
+    given: "Se crearan 2 pagos en con una fecha vencimiento menor a la fecha actual"
       def institucion = new Institucion()
       institucion.nombre = "Kinder Peques"
       def distribucionInstitucional = new DistribucionInstitucional()
@@ -176,7 +187,7 @@ class PagoServiceSpec extends Specification {
     then: "Se verifica que los pagos esten en estatus vencido"
       assert pagosVencidos.size() == 2
       assert pagosVencidos.first().estatusDePago == EstatusDePago.VENCIDO
-    }
+  }
 
 
 }
