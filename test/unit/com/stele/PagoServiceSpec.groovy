@@ -21,7 +21,7 @@ class PagoServiceSpec extends Specification {
           descuentos:generadorDeDescuentos(descuentos)
         )
       }
-      esquemaDePagoServiceMock.demand.obtenerCantidadDeDescuentoAplicable(1..3) { EsquemaDePago esquemadepago -> cantidadDescuentoAplicable }
+      esquemaDePagoServiceMock.demand.obtenerCantidadDeDescuentoAplicable(1..3) { EsquemaDePago esquemadepago -> descuentoAplicable }
       service.esquemaDePagoService = esquemaDePagoServiceMock.createMock()
 
     when:
@@ -39,15 +39,15 @@ class PagoServiceSpec extends Specification {
       pago.estatusDePago == EstatusDePago.CREADO
       pago.recargosAcumulados == recargosAcumulados
       pago.descuentoAplicable == descuentoAplicable
-      pago.descuentos.size() == noDescuentos
+      pago.descuentos.size() == descuentos
       pago.recargos.size() == recargos
     where:
-      fechaDeVencimiento | esquemaDePagoId | cantidadDePago | conceptoDePago | cantidadDescuentoAplicable | descuentos|| recargosAcumulados  | descuentoAplicable  | noDescuentos  | recargos
-      new Date() + 30    | 1               | 1234.45        | "Inscripción"  | 0                          | 0         || 0                   | 0                   | 0             | 0
-      new Date() + 40    | 2               | 1345.98        | "Colegiatura"  | 0                          | 0         || 0                   | 0                   | 0             | 0
-      new Date() + 30    | 3               | 1500.00        | "Inscripción"  | 300                        | 1         || 0                   | 300                 | 1             | 0
-      new Date() + 30    | 4               | 1750.50        | "Excursión"    | 600                        | 2         || 0                   | 600                 | 2             | 0
-      new Date() + 90    | 5               | 9999.99        | "Televisión"   | 1300                       | 3         || 0                   | 1300                | 3             | 0
+      fechaDeVencimiento | esquemaDePagoId || cantidadDePago | conceptoDePago | descuentoAplicable | descuentos | recargosAcumulados  | recargos
+      new Date() + 30    | 1               || 1234.45        | "Inscripción"  | 0                  | 0          | 0                   | 0
+      new Date() + 40    | 2               || 1345.98        | "Colegiatura"  | 0                  | 0          | 0                   | 0
+      new Date() + 30    | 3               || 1500.00        | "Inscripción"  | 300                | 1          | 0                   | 0
+      new Date() + 30    | 4               || 1750.50        | "Excursión"    | 600                | 2          | 0                   | 0
+      new Date() + 90    | 5               || 9999.99        | "Televisión"   | 1300               | 3          | 0                   | 0
   }
 
   def generadorDeDescuentos = { cantidad ->
