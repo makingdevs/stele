@@ -5,12 +5,12 @@ import grails.converters.JSON
 
 class ConceptoController {
 
+  def scaffold = Concepto
+
   def springSecurityService
   def conceptoService
 
   static allowedMethods = [obtenerListaconceptos : 'GET']
-
-  def index() { }
 
   def nuevo(ConceptoCommand cmd) {
     if(cmd.hasErrors()) {
