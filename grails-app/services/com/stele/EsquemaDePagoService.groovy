@@ -2,7 +2,11 @@ package com.stele
 
 class EsquemaDePagoService {
 
-    def serviceMethod() {
+  def obtenerEsquemaDePago(Long esquemaDePagoServiceId) {
 
-    }
+  }
+
+  def obtenerCantidadDeDescuentoAplicable(EsquemaDePago esquemaDePago) {
+
+  }
 }
