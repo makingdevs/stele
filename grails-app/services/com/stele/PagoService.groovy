@@ -22,7 +22,7 @@ class PagoService {
       conceptoDePago:esquemaDePago.concepto.descripcion,
       descuentoAplicable:descuentoAplicable)
     p.descuentos = esquemaDePago.descuentos
-    p.recargos = []
+    
     p.save()
     p
   }

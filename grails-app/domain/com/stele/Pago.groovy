@@ -31,6 +31,7 @@ class Pago {
     transactionId size:20..20
     historialAcademico nullable:true
     comprobanteDePago nullable:true
+    recargo nullable:true
   }
 
   BigDecimal getSumaDescuentosPorcentaje() {

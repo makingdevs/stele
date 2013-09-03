@@ -37,17 +37,18 @@ class PagoServiceSpec extends Specification {
       pago.fechaDeVencimiento.year  == fechaDeVencimiento.year
       pago.tipoDePago == TipoDePago.TRANSFERENCIA_BANCARIA
       pago.estatusDePago == EstatusDePago.CREADO
-      pago.recargosAcumulados == recargosAcumulados
+      pago.recargosAcumulados == 0
       pago.descuentoAplicable == descuentoAplicable
       pago.descuentos.size() == descuentos
-      pago.recargos.size() == recargos
+      pago?.recargo?.cantidad ?: 0 == recargos
     where:
-      fechaDeVencimiento | esquemaDePagoId || cantidadDePago | conceptoDePago | descuentoAplicable | descuentos | recargosAcumulados  | recargos
-      new Date() + 30    | 1               || 1234.45        | "Inscripción"  | 0                  | 0          | 0                   | 0
-      new Date() + 40    | 2               || 1345.98        | "Colegiatura"  | 0                  | 0          | 0                   | 0
-      new Date() + 30    | 3               || 1500.00        | "Inscripción"  | 300                | 1          | 0                   | 0
-      new Date() + 30    | 4               || 1750.50        | "Excursión"    | 600                | 2          | 0                   | 0
-      new Date() + 90    | 5               || 9999.99        | "Televisión"   | 1300               | 3          | 0                   | 0
+      fechaDeVencimiento | esquemaDePagoId || cantidadDePago | conceptoDePago | descuentoAplicable | descuentos | recargos
+      new Date() + 30    | 1               || 1234.45        | "Inscripción"  | 0                  | 0          | 0
+      new Date() + 40    | 2               || 1345.98        | "Colegiatura"  | 0                  | 0          | 0
+      new Date() + 30    | 3               || 1500.00        | "Inscripción"  | 300                | 1          | 0
+      new Date() + 30    | 4               || 1750.50        | "Excursión"    | 600                | 2          | 0
+      new Date() + 90    | 5               || 9999.99        | "Televisión"   | 1300               | 3          | 0
+      new Date() + 30    | 6               || 1234.45        | "Inscripción"  | 0                  | 0          | 100
   }
 
   def generadorDeDescuentos = { cantidad ->
