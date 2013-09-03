@@ -2,6 +2,7 @@ package com.stele
 
 import grails.test.mixin.*
 import spock.lang.Specification
+import spock.lang.Unroll
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
 
@@ -9,17 +10,28 @@ import com.makingdevs.*
 @Mock([HistorialAcademico,Dependiente,DistribucionInstitucional,Institucion,Usuario,Perfil,Pago])
 class PagoServiceSpec extends Specification {
 
-  def "Crear un pago con un concepto, una fecha de vencimiento y una cantidad"(){
+  @Unroll("Crear un pago con el concepto: '#conceptoDePago', vencimiento: '#fechaDeVencimiento' y la cantidad: '\$ #cantidadDePago'")
+  def "Crear un pago con el concepto: '#conceptoDePago', vencimiento: '#fechaDeVencimiento' y la cantidad: '#cantidadDePago'"(){
     when:
-      def pago = service.crearPagoSimple("Concepto",new Date() + 10, 1234.45)
+      def pago = service.crearPago(conceptoDePago,fechaDeVencimiento, cantidadDePago)
     then:
       pago.id > 0
       pago.transactionId
-      pago.conceptoDePago == "Concepto"
-      pago.fechaDeVencimiento.date  == (new Date() + 10).date
-      pago.fechaDeVencimiento.month  == (new Date() + 10).month
-      pago.fechaDeVencimiento.year  == (new Date() + 10).year
-      pago.cantidadDePago == 1234.45
+      pago.conceptoDePago == conceptoDePago
+      pago.fechaDeVencimiento.date  == fechaDeVencimiento.date
+      pago.fechaDeVencimiento.month  == fechaDeVencimiento.month
+      pago.fechaDeVencimiento.year  == fechaDeVencimiento.year
+      pago.cantidadDePago == cantidadDePago
+      pago.tipoDePago == TipoDePago.TRANSFERENCIA_BANCARIA
+      pago.estatusDePago == EstatusDePago.CREADO
+      pago.recargosAcumulados == recargosAcumulados
+      pago.descuentoAplicable == descuentoAplicable
+      pago.descuentos.size() == descuentos
+      pago.recargos.size() == recargos
+    where:
+      conceptoDePago  | fechaDeVencimiento  | cantidadDePago ||  recargosAcumulados  | descuentoAplicable  | descuentos  | recargos
+      "Inscripción"   | new Date() + 30     | 1234.45        || 0                    | 0                   | 0           | 0
+      "Colegiatura"   | new Date() + 40     | 1345.98        || 0                    | 0                   | 0           | 0
   }
 
   def "Obtener todos los pagos ligados a un usuario existente"() {

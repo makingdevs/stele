@@ -11,8 +11,11 @@ import com.makingdevs.*
 
 class PagoService {
 
-  def crearPagoSimple(String concepto, Date fechaDeVencimiento, BigDecimal cantidad){
+  def crearPago(String concepto, Date fechaDeVencimiento, BigDecimal cantidad){
     def p = new Pago(conceptoDePago:concepto,fechaDeVencimiento:fechaDeVencimiento,cantidadDePago:cantidad)
+    p.descuentos = []
+    p.recargos = []
+    p.save()
     p
   }
 
