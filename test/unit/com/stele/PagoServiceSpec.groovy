@@ -12,8 +12,13 @@ class PagoServiceSpec extends Specification {
 
   @Unroll("Crear un pago con el concepto: '#conceptoDePago', vencimiento: '#fechaDeVencimiento' y la cantidad: '\$ #cantidadDePago'")
   def "Crear un pago con el concepto: '#conceptoDePago', vencimiento: '#fechaDeVencimiento' y la cantidad: '#cantidadDePago'"(){
+    given:
+      def esquemaDePagoServiceMock = mockFor(EsquemaDePagoService)
+      esquemaDePagoServiceMock.demand.obtenerEsquemaDePago(1..3) { Long esquemaDePagoId -> new EsquemaDePago() }
+      service.esquemaDePagoService = esquemaDePagoServiceMock.createMock()
     when:
-      def pago = service.crearPago(conceptoDePago,fechaDeVencimiento, cantidadDePago)
+      def pago = service.crearPago(fechaDeVencimiento, esquemaDePagoId)
+      esquemaDePagoServiceMock.verify()
     then:
       pago.id > 0
       pago.transactionId
@@ -29,9 +34,10 @@ class PagoServiceSpec extends Specification {
       pago.descuentos.size() == descuentos
       pago.recargos.size() == recargos
     where:
-      conceptoDePago  | fechaDeVencimiento  | cantidadDePago ||  recargosAcumulados  | descuentoAplicable  | descuentos  | recargos
-      "Inscripción"   | new Date() + 30     | 1234.45        || 0                    | 0                   | 0           | 0
-      "Colegiatura"   | new Date() + 40     | 1345.98        || 0                    | 0                   | 0           | 0
+      fechaDeVencimiento | esquemaDePagoId || conceptoDePago | cantidadDePago | recargosAcumulados  | descuentoAplicable  | descuentos  | recargos
+      new Date() + 30    | 1               || "Inscripción"  | 1234.45        | 0                   | 0                   | 0           | 0
+      new Date() + 40    | 2               || "Colegiatura"  | 1345.98        | 0                   | 0                   | 0           | 0
+      new Date() + 30    | 3               || "Inscripción"  | 1500.00        | 0                   | 300                 | 1           | 0
   }
 
   def "Obtener todos los pagos ligados a un usuario existente"() {
