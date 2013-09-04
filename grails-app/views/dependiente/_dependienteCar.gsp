@@ -1,5 +1,4 @@
 <%@ page import="com.stele.Turno" %>
-<g:findAll in="${dependiente}" expr="it.distribucionInstitucional?.turno == Turno.MATUTINO">
   <div class="span3">
     <div class="thumbnail">
       <div class="caption">
@@ -7,24 +6,23 @@
           <table class="table table-condensed">
             <tr>
               <td>Turno: </td>
-              <td>${it.distribucionInstitucional.turno}</td>
+              <td>${dependiente?.distribucionInstitucional?.turno?.unique()}</td>
             </tr>
             <tr>
-              <td>Nivel: </td><td>${it.distribucionInstitucional.nivelDeEstudio}</td>
+              <td>Nivel: </td><td>${dependiente?.distribucionInstitucional?.nivelDeEstudio?.unique()}</td>
             </tr>
             <tr>
-              <td>Grado: </td><td>${it.distribucionInstitucional.grado}</td>
+              <td>Grado: </td><td>${dependiente?.distribucionInstitucional?.grado?.unique()}</td>
             </tr>
             <tr>
-              <td>Grupo: </td><td>${it.distribucionInstitucional.grupo}</td>
+              <td>Grupo: </td><td>${dependiente?.distribucionInstitucional?.grupo?.unique()}</td>
             </tr>
             <tr>
               <td>Dependientes: </td>
-              <td>${it.size()}</td>
+              <td>${dependiente?.size()}</td>
             </tr>
           </table>
-          <p><a href="#" class="btn btn-primary"><i class="icon-search icon-white"></i></a> </p>
+          <p><g:link controller="dependiente" action="descripcionDependientes" params="[dependiente:"${dependiente?.id}"]" ><button type="button" class="btn btn-primary"><i class="icon-search icon-white"></i></button></g:link> </p>
       </div>
     </div>
   </div>
-</g:findAll>
