@@ -43,6 +43,24 @@ class DependienteController {
       [turnos:turnos,turno:null]
     }
 
+    def descripcionDependientes() {
+      def listaHistorialesId = []
+      def lista = params.dependiente
+      lista.each { it ->
+        if (it.equals("[") || it.equals("]") || it.equals(",") || it.equals(" ")){
+        }
+        else{
+          listaHistorialesId.add(it.toLong())
+        }
+      }
+      def historialAcademico = HistorialAcademico.withCriteria {
+        'in'('id',listaHistorialesId )
+        dependiente{
+          join('perfil')
+        }
+      }
+      render (view:"dependientesDetalleList", model:[dependiente:historialAcademico])
+    }
     def ajaxTurnoANivel() {
       def turno = Turno.find{it.value == params.turno}
       def niveles = DistribucionInstitucional.withCriteria {
