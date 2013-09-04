@@ -10,8 +10,8 @@ import spock.lang.Unroll
 @Mock([Descuento,EsquemaDePago])
 class EsquemaDePagoServiceSpec extends Specification {
 
-  @Unroll("Dados los descuentos #descuentos la cantidad aplicable de descuento es #descuentoCalculado")
-	def "Dado un esquema de pago calcular la cantidad de descuento aplicable"() {
+  @Unroll("Dados las cantidades de descuento: #descuentos la cantidad aplicable de descuento es #descuentoCalculado")
+	def "Dado un esquema de pago con descuentos en cantidades calcular la cantidad aplicable"() {
     given:
       crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos)
     when:
@@ -23,18 +23,40 @@ class EsquemaDePagoServiceSpec extends Specification {
       cantidadDePago | descuentos    || descuentoCalculado | cantidadAPagar
       1000           | [200]         || 200                | 800
       1000           | [200,300]     || 500                | 500
-      8000           | [200,100,300] || 600                | 7500
+      8000           | [200,100,300] || 600                | 7400
 	}
 
-  private def crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos){
+  @Unroll("Dados los porcentajes de descuento: #descuentos la cantidad aplicable de descuento es #descuentoCalculado")
+  def "Dado un esquema de pago con descuentos en porcentajes calcular la cantidad aplicable"() {
+    given:
+      crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos, true)
+    when:
+      def cantidadDeDescuentoAplicable = service.obtenerCantidadDeDescuentoAplicable(1L)
+    then:
+      cantidadDeDescuentoAplicable == descuentoCalculado
+      cantidadDePago - descuentoCalculado == cantidadAPagar
+    where:
+      cantidadDePago | descuentos    || descuentoCalculado | cantidadAPagar
+      1000           | [10]          || 100                | 900
+      1000           | [10,15]       || 250                | 750
+      8000           | [10,5,10]     || 2000               | 6000
+  }
+
+  private def crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos, calcularConPorcentajes=false){
     EsquemaDePago esquemaDePago = new EsquemaDePago(cantidadDePago:cantidadDePago)
     descuentos.eachWithIndex { d, i ->
       Descuento descuento = new Descuento(
         nombreDeDescuento:"Descuento $i",
-        porcentaje:0,
-        cantidad:d,
         fechaDeVencimiento:new Date(),
         diasPreviosParaCancelarDescuento:0).save(validate:false)
+      if(calcularConPorcentajes){
+        descuento.porcentaje=d
+        descuento.cantidad=0
+      }else{
+        descuento.porcentaje=0
+        descuento.cantidad=d 
+      }
+      
       esquemaDePago.addToDescuentos(descuento)
     }
     esquemaDePago.save(validate:false)

@@ -7,9 +7,12 @@ class EsquemaDePagoService {
   }
 
   def obtenerCantidadDeDescuentoAplicable(Long esquemaDePagoServiceId) {
-    log.debug "Obteniendo descuentos"
-    EsquemaDePago.get(esquemaDePagoServiceId).descuentos.collect { d ->
-      d.cantidad
+    def esquemaDePago = EsquemaDePago.get(esquemaDePagoServiceId)
+    esquemaDePago.descuentos.collect { d ->
+      if(d.cantidad)
+        d.cantidad
+      else
+        esquemaDePago.cantidadDePago * d.porcentaje/100
     }.sum()
   }
 }
