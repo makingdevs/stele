@@ -10,36 +10,36 @@ import spock.lang.Unroll
 @Mock([Descuento,EsquemaDePago])
 class EsquemaDePagoServiceSpec extends Specification {
 
-  @Unroll("Dados las cantidades de descuento: #descuentos la cantidad aplicable de descuento es #descuentoCalculado")
+  @Unroll("Dados las cantidades de descuento: #descuentosEnCantidad la cantidad aplicable de descuento es #descuentoCalculado para una cantidad de #cantidadDePago")
 	def "Dado un esquema de pago con descuentos en cantidades calcular la cantidad aplicable"() {
     given:
-      crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos)
+      crearEsquemaDePagoConDescuentos(cantidadDePago, descuentosEnCantidad)
     when:
       def cantidadDeDescuentoAplicable = service.obtenerCantidadDeDescuentoAplicable(1L)
     then:
       cantidadDeDescuentoAplicable == descuentoCalculado
       cantidadDePago - descuentoCalculado == cantidadAPagar
     where:
-      cantidadDePago | descuentos    || descuentoCalculado | cantidadAPagar
-      1000           | [200]         || 200                | 800
-      1000           | [200,300]     || 500                | 500
-      8000           | [200,100,300] || 600                | 7400
+      cantidadDePago | descuentosEnCantidad || descuentoCalculado | cantidadAPagar
+      1000           | [200]                || 200                | 800
+      1000           | [200,300]            || 500                | 500
+      8000           | [200,100,300]        || 600                | 7400
 	}
 
-  @Unroll("Dados los porcentajes de descuento: #descuentos la cantidad aplicable de descuento es #descuentoCalculado")
+  @Unroll("Dados los porcentajes de descuento: #descuentosEnPorcentajes la cantidad aplicable de descuento es #descuentoCalculado para una cantidad de #cantidadDePago")
   def "Dado un esquema de pago con descuentos en porcentajes calcular la cantidad aplicable"() {
     given:
-      crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos, true)
+      crearEsquemaDePagoConDescuentos(cantidadDePago, descuentosEnPorcentajes, true)
     when:
       def cantidadDeDescuentoAplicable = service.obtenerCantidadDeDescuentoAplicable(1L)
     then:
       cantidadDeDescuentoAplicable == descuentoCalculado
       cantidadDePago - descuentoCalculado == cantidadAPagar
     where:
-      cantidadDePago | descuentos    || descuentoCalculado | cantidadAPagar
-      1000           | [10]          || 100                | 900
-      1000           | [10,15]       || 250                | 750
-      8000           | [10,5,10]     || 2000               | 6000
+      cantidadDePago | descuentosEnPorcentajes || descuentoCalculado | cantidadAPagar
+      1000           | [10]                    || 100                | 900
+      1000           | [10,15]                 || 250                | 750
+      8000           | [10,5,10]               || 2000               | 6000
   }
 
   private def crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos, calcularConPorcentajes=false){
