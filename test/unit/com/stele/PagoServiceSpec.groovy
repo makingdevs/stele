@@ -18,7 +18,8 @@ class PagoServiceSpec extends Specification {
         new EsquemaDePago(
           cantidadDePago:cantidadDePago,
           concepto:new Concepto(descripcion:conceptoDePago),
-          descuentos:generadorDeDescuentos(descuentos)
+          descuentos:generadorDeDescuentos(descuentos),
+          recargo:new Recargo(cantidad:recargoAplicable)
         )
       }
       esquemaDePagoServiceMock.demand.obtenerCantidadDeDescuentoAplicable(1..3) { EsquemaDePago esquemadepago -> descuentoAplicable }
@@ -40,14 +41,15 @@ class PagoServiceSpec extends Specification {
       pago.recargosAcumulados == 0
       pago.descuentoAplicable == descuentoAplicable
       pago.descuentos.size() == descuentos
+      pago?.recargo?.cantidad ?: 0 == recargoAplicable
     where:
-      fechaDeVencimiento | esquemaDePagoId || cantidadDePago | conceptoDePago | descuentoAplicable | descuentos
-      new Date() + 30    | 1               || 1234.45        | "Inscripción"  | 0                  | 0         
-      new Date() + 40    | 2               || 1345.98        | "Colegiatura"  | 0                  | 0         
-      new Date() + 30    | 3               || 1500.00        | "Inscripción"  | 300                | 1         
-      new Date() + 30    | 4               || 1750.50        | "Excursión"    | 600                | 2         
-      new Date() + 90    | 5               || 9999.99        | "Televisión"   | 1300               | 3         
-      new Date() + 30    | 6               || 1234.45        | "Inscripción"  | 0                  | 0         
+      fechaDeVencimiento | esquemaDePagoId || cantidadDePago | conceptoDePago | descuentoAplicable | descuentos | recargoAplicable
+      new Date() + 30    | 1               || 1234.45        | "Inscripción"  | 0                  | 0          | 0
+      new Date() + 40    | 2               || 1345.98        | "Colegiatura"  | 0                  | 0          | 0
+      new Date() + 30    | 3               || 1500.00        | "Inscripción"  | 300                | 1          | 0
+      new Date() + 30    | 4               || 1750.50        | "Excursión"    | 600                | 2          | 0
+      new Date() + 90    | 5               || 9999.99        | "Televisión"   | 1300               | 3          | 0
+      new Date() + 30    | 6               || 1234.45        | "Inscripción"  | 0                  | 0          | 100
   }
 
   def generadorDeDescuentos = { cantidad ->

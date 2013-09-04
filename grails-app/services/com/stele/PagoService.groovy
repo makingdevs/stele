@@ -20,7 +20,8 @@ class PagoService {
       fechaDeVencimiento:fechaDeVencimiento,
       cantidadDePago:esquemaDePago.cantidadDePago,
       conceptoDePago:esquemaDePago.concepto.descripcion,
-      descuentoAplicable:descuentoAplicable)
+      descuentoAplicable:descuentoAplicable,
+      recargo:esquemaDePago.recargo)
     p.descuentos = esquemaDePago.descuentos
     
     p.save()
