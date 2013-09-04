@@ -22,7 +22,7 @@ class PagoServiceSpec extends Specification {
           recargo:new Recargo(cantidad:recargoAplicable)
         )
       }
-      esquemaDePagoServiceMock.demand.obtenerCantidadDeDescuentoAplicable(1..3) { EsquemaDePago esquemadepago -> descuentoAplicable }
+      esquemaDePagoServiceMock.demand.obtenerCantidadDeDescuentoAplicable(1..3) { Long esquemaDePagoId -> descuentoAplicable }
       service.esquemaDePagoService = esquemaDePagoServiceMock.createMock()
 
     when:

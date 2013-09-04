@@ -15,7 +15,7 @@ class PagoService {
 
   def crearPago(Date fechaDeVencimiento, Long esquemaDePagoId){
     def esquemaDePago = esquemaDePagoService.obtenerEsquemaDePago(esquemaDePagoId)
-    def descuentoAplicable = esquemaDePagoService.obtenerCantidadDeDescuentoAplicable(esquemaDePago)
+    def descuentoAplicable = esquemaDePagoService.obtenerCantidadDeDescuentoAplicable(esquemaDePagoId)
     def p = new Pago(
       fechaDeVencimiento:fechaDeVencimiento,
       cantidadDePago:esquemaDePago.cantidadDePago,

@@ -3,18 +3,16 @@ package com.stele
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
 @TestFor(EsquemaDePagoService)
 class EsquemaDePagoServiceSpec extends Specification {
 
-	def setup() {
-	}
-
-	def cleanup() {
-	}
-
-	void "test something"() {
+	def "Dado un esquema de pago calcular la cantidad de descuento aplicable"() {
+    when:
+      def cantidadDeDescuentoAplicable = service.obtenerCantidadDeDescuentoAplicable(esquemaDePagoId)
+    then:
+      cantidadDeDescuentoAplicable == descuentoAplicableCalculado
+    where:
+      esquemaDePagoId || descuentoAplicableCalculado
+      1L              || 300
 	}
 }
