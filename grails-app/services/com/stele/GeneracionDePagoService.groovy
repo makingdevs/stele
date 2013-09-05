@@ -12,8 +12,24 @@ class GeneracionDePagoService {
     def existeConcepto = conceptoService.verificarConceptoPagoExistente(camadaPagoCommand.conceptoDePago)
     if (!existeConcepto)
         conceptoService.guardarConceptoDePagoGenerado(springSecurityService.currentUser,camadaPagoCommand.conceptoDePago)
-
+    List listaDependientesExistentes = []
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
+
+    camadaPagoCommand?.listaDependientes?.first().each { it ->
+      if (it.equals("[") || it.equals("]") || it.equals(",") || it.equals(" ")){
+        }
+      else{
+          listaDependientesExistentes.add(it.toLong())
+      }
+    }
+
+    if (dependientes) {
+      if (!listaDependientesExistentes?.containsAll(dependientes*.id))
+          listaDependientesExistentes?.removeAll(dependientes*.id)
+    }      
+    if (listaDependientesExistentes){
+      dependientes+= Dependiente.findAllByIdInList(listaDependientesExistentes)
+    }
     def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
     List descuentos = []
     List fechasDescuentos = []
