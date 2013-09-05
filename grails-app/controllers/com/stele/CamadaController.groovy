@@ -16,6 +16,7 @@ class CamadaController {
     def dependientesExistentes = Dependiente.findAllByIdInList(listaUsuario*.toLong())
     dependientesExistentes.removeAll(dependientes)
     dependientes+= dependientesExistentes
+    flash.dependientes = dependientes*.id
     [dependientes:dependientes,camada:params.camada]
   }
 }
