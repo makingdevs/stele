@@ -2,6 +2,7 @@ package com.stele
 
 import grails.converters.JSON
 
+
 class EsquemaDePagoController {
 
   def springSecurityService
@@ -17,23 +18,15 @@ class EsquemaDePagoController {
       return
     } 
 
-    generacionDePagoService.paraCamadaPagoCommand(cpc)
+    def pagos = generacionDePagoService.paraCamadaPagoCommand(cpc)
+    flash.pago = pagos
     flash.success = "Bien Hecho"
-    redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,fechaDeVencimiento:cpc.fechaDeVencimiento.format('yyyy-MM-dd')]
+    redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada]
   }
 
   def muestraPagosDeCamada(){
-    def dependientes = Dependiente.findAllByCamada(params.camada)
-    def criteria = Pago.createCriteria()
-    def pagos = criteria.list(max:params.max?:10, offset: params.offset?:0) {
-      eq("fechaDeVencimiento", new Date().parse('yyyy-MM-dd', params.fechaDeVencimiento))
-      historialAcademico {
-        dependiente {
-          'in'('id',dependientes*.id)
-        }
-      }
-    }
-    render(view: "generarPagosParaLaCamada", model: [pagos: pagos, pagosCount: dependientes])
+    def listaPagos = Pago.findAllByIdInList(flash.pago*.id)
+    render(view: "generarPagosParaLaCamada", model: [pagos: listaPagos])
   }
 
 }
