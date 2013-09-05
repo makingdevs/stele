@@ -13,6 +13,7 @@ class CamadaPagoCommand {
   String[] recargoid
   String[] meses
   String[] pagoDoble
+  List listaDependientes
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
@@ -22,6 +23,7 @@ class CamadaPagoCommand {
     descuentos nullable:true
     recargoid nullable:true
     meses nullable:true
+    listaDependientes nullable:true
   }
 
 }
