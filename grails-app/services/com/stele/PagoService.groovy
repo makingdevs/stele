@@ -11,6 +11,22 @@ import com.makingdevs.*
 
 class PagoService {
 
+  def esquemaDePagoService
+
+  def crearPago(Date fechaDeVencimiento, Long esquemaDePagoId){
+    def esquemaDePago = esquemaDePagoService.obtenerEsquemaDePago(esquemaDePagoId)
+    def descuentoAplicable = esquemaDePagoService.obtenerCantidadDeDescuentoAplicable(esquemaDePagoId)
+    def p = new Pago(
+      fechaDeVencimiento:fechaDeVencimiento,
+      cantidadDePago:esquemaDePago.cantidadDePago,
+      conceptoDePago:esquemaDePago.concepto.descripcion,
+      descuentoAplicable:descuentoAplicable,
+      recargo:esquemaDePago.recargo)
+    p.descuentos = esquemaDePago.descuentos
+    
+    p.save()
+    p
+  }
 
   def obtenerPagosDeUsuario(Usuario usuario) {
     def criteriaDependiente = Dependiente.createCriteria()

@@ -14,12 +14,12 @@
     </div>
     <br />
 
-    <g:form controller="concepto" action="nuevo" class="form-horizontal">
+    <g:form controller="descripcion" action="nuevo" class="form-horizontal">
 
       <div class="control-group">
         <label for="" class="control-label">Concepto : </label>
         <div class="controls">
-          <input type="text" id="concepto" name="concepto" class="input-xxlarge" placeholder="Concepto">
+          <input type="text" id="descripcion" name="descripcion" class="input-xxlarge" placeholder="Descripcion del concepto">
         </div>
       </div>
 

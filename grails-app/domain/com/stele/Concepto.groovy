@@ -2,7 +2,7 @@ package com.stele
 
 class Concepto {
 
-  String concepto
+  String descripcion
 
   Institucion institucion
 
@@ -10,7 +10,11 @@ class Concepto {
   Date lastUpdated
 
   static constraints = {
-    concepto blank:false, size:1..150
+    descripcion blank:false, size:1..150
+  }
+
+  String toString(){
+    descripcion    
   }
 
 }
