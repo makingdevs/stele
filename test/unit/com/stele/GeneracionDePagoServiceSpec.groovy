@@ -215,6 +215,38 @@ class GeneracionDePagoServiceSpec extends Specification {
 
   }
 
+    def "Generar un pago a un dependientes de una camada existente"() {
+    setup:
+        Dependiente dependiente = new Dependiente(camada:camadaExistente)
+        dependiente.addToHistorialAcademico(new HistorialAcademico())
+        dependiente.id = 2
+        dependiente.save()
+      and :
+        CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
+          conceptoDePago:concepto,
+          cantidadDePago:monto,
+          fechaDeVencimiento:fechaDeVencimiento,
+          listaDependientes: listaDependientes
+          )
+        println cmd.listaDependientes
+      and :
+        def mocks = creoColaboradores()
+      when : 
+        def pagos = service.paraCamadaPagoCommand(cmd)
+        mocks*.verify()
+      then :
+        assert pagos.size() == 1
+        assert pagos.first().id == 1
+        assert pagos.first().conceptoDePago == concepto
+        assert pagos.first().cantidadDePago == monto 
+
+      where : 
+        camada | concepto   | monto | fechaDeVencimiento | camadaExistente | listaDependientes
+        "123"  | "concepto" | 1.00  | new Date() + 7     | "1234"          | [[2]]
+
+  }
+
+
   private def creoColaboradores(){
     Usuario usuario = new Usuario()
 
