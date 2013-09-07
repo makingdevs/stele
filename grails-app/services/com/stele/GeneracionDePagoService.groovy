@@ -2,6 +2,7 @@ package com.stele
 
 import com.stele.Descuento
 import com.stele.Recargo
+import com.stele.Dependiente
 
 class GeneracionDePagoService {
 
@@ -22,14 +23,17 @@ class GeneracionDePagoService {
           listaDependientesExistentes.add(it.toLong())
       }
     }
-
     if (dependientes) {
       if (!listaDependientesExistentes?.containsAll(dependientes*.id))
           listaDependientesExistentes?.removeAll(dependientes*.id)
     }      
     if (listaDependientesExistentes){
-      dependientes+= Dependiente.findAllByIdInList(listaDependientesExistentes)
+      dependientes+= Dependiente.withCriteria {
+        'in'('id', listaDependientesExistentes)
+      }
+      println Dependiente.getAll()
     }
+    println dependientes
     def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
     List descuentos = []
     List fechasDescuentos = []
