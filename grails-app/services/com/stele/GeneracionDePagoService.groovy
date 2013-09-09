@@ -24,7 +24,6 @@ class GeneracionDePagoService {
     listaDependientesExistentes?.removeAll(dependientes*.id)
 
     if (listaDependientesExistentes){
-      println listaDependientesExistentes
       dependientes+= Dependiente.withCriteria {
         'in'('id', listaDependientesExistentes)
       }
