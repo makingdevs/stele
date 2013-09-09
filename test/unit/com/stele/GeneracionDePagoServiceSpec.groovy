@@ -217,10 +217,10 @@ class GeneracionDePagoServiceSpec extends Specification {
 
     def "Generar un pago a un dependientes de una camada existente"() {
     setup:
-        Dependiente dependiente = new Dependiente(camada:camadaExistente)
+        Dependiente dependiente = new Dependiente(camada:camada)
         dependiente.addToHistorialAcademico(new HistorialAcademico())
         dependiente.id = 2
-        dependiente.save()
+        dependiente.save(validate:false)
       and :
         CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
           conceptoDePago:concepto,
@@ -228,7 +228,6 @@ class GeneracionDePagoServiceSpec extends Specification {
           fechaDeVencimiento:fechaDeVencimiento,
           listaDependientes: listaDependientes
           )
-        println cmd.listaDependientes
       and :
         def mocks = creoColaboradores()
       when : 
@@ -242,7 +241,7 @@ class GeneracionDePagoServiceSpec extends Specification {
 
       where : 
         camada | concepto   | monto | fechaDeVencimiento | camadaExistente | listaDependientes
-        "123"  | "concepto" | 1.00  | new Date() + 7     | "1234"          | [[2]]
+        "123"  | "concepto" | 1.00  | new Date() + 7     | "1234"          | "[2]"
 
   }
 
