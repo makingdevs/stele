@@ -16,24 +16,20 @@ class GeneracionDePagoService {
     List listaDependientesExistentes = []
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
 
-    camadaPagoCommand?.listaDependientes?.first().each { it ->
-      if (it.equals("[") || it.equals("]") || it.equals(",") || it.equals(" ")){
-        }
-      else{
+    camadaPagoCommand?.listaDependientes?.each { it ->
+      if ( !(it.equals("[") || it.equals("]") || it.equals(",") || it.equals(" ")) ) 
           listaDependientesExistentes.add(it.toLong())
-      }
     }
-    if (dependientes) {
-      if (!listaDependientesExistentes?.containsAll(dependientes*.id))
-          listaDependientesExistentes?.removeAll(dependientes*.id)
-    }      
+
+    listaDependientesExistentes?.removeAll(dependientes*.id)
+
     if (listaDependientesExistentes){
+      println listaDependientesExistentes
       dependientes+= Dependiente.withCriteria {
         'in'('id', listaDependientesExistentes)
       }
-      println Dependiente.getAll()
     }
-    println dependientes
+
     def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
     List descuentos = []
     List fechasDescuentos = []
