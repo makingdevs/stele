@@ -32,7 +32,8 @@ class DependienteController {
             join('perfil')
         }
       }
-      render template:'dependienteCar', model:[dependiente:dependientesPorDistribucionEnHistorial]
+      flash.dependientes = dependientesPorDistribucionEnHistorial.dependiente*.id
+      render template:'dependienteCar', model:[dependiente:dependientesPorDistribucionEnHistorial, institucion:springSecurityService.currentUser.instituciones?.first()]
     }
 
     def busqueda() { 
@@ -100,7 +101,6 @@ class DependienteController {
     }
 
     def ajaxGradoAGrupo() {
-      println "ajaxGradoAGrupo"
       def grado = params.grado
       def grupos = DistribucionInstitucional.withCriteria {
         eq('turno', flash.turno)
