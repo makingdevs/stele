@@ -9,11 +9,12 @@ class CamadaPagoCommand {
   String conceptoDePago
   BigDecimal cantidadDePago
   Date fechaDeVencimiento
+  Integer diasPreviosParaCancelarDescuento
   String[] descuentos
   String[] recargoid
   String[] meses
   String[] pagoDoble
-  List listaDependientes
+  String listaDependientes
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
