@@ -1,5 +1,9 @@
 <g:formRemote name="busquedaDependientes" update="dependientes" url="[controller: 'dependiente', action:'search']">
   <label>
+    Matricula Del Dependiente
+  </label>
+    <input id="matricula" name="matricula" type="text" placeholder="M000001">
+  <label>
     Turno del Dependiente 
   </label>
   <g:select name="turno" from="${turnos}" noSelection="['':'- Selecciona el turno-']" onchange="${remoteFunction(controller:'Dependiente', action:'ajaxTurnoANivel', params:'\'turno=\' + escape(this.value)',update:'busquedaForm')}" value="${turno}"/>
