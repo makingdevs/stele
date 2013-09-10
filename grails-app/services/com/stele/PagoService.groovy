@@ -41,6 +41,7 @@ class PagoService {
     [dependiente: dependientesDeUsuario, pagos: pagosDeUsuario]
   }
 
+  // TODO: Renombrar a obtenerHistorialesAcademicosPorInstitucion y moverlo de este servicio
   def obtenerPagosDeUnaInstitucion(Usuario usuario) {
     def institucionUsuario = usuario.instituciones
 
