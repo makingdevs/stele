@@ -48,7 +48,7 @@ grails.project.dependency.resolution = {
         compile ":font-awesome-resources:3.2.1"
         compile ":spring-security-core:1.2.7.3"
         compile ":grails-melody:1.13"
-        compile ":quartz:1.0-RC9"
+        //compile ":quartz:1.0-RC9"
         compile ":mail:1.0.1"
         test(":spock:0.7") {
           exclude "spock-grails-support"

@@ -2,7 +2,7 @@ package com.stele
 
 class PagosJob {
 
-  def pagoService
+ /* def pagoService
 
     static triggers = {
       cron name: 'pagosVencidos', cronExpression: "0 0 1 * * ?"
@@ -11,5 +11,5 @@ class PagosJob {
     def execute() {
       def resultadoJob = pagoService.buscarPagosConFechasDeVencimientoCumplida()
       log.debug "Ejecucion del job : $resultadoJob"
-    }
+    }*/
 }
