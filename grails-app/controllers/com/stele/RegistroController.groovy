@@ -4,8 +4,11 @@ import com.stele.seguridad.Usuario
 import com.stele.seguridad.Rol
 import com.stele.seguridad.UsuarioRol
 import com.makingdevs.*
+import com.megatome.grails.RecaptchaService
 
 class RegistroController {
+
+   RecaptchaService recaptchaService
 
   def index() { }
 
