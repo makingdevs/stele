@@ -63,6 +63,13 @@
             </div>
             <div class="control-group">
               <div class="controls">
+                <recaptcha:ifEnabled>
+                  <recaptcha:recaptcha theme="white"/>
+                </recaptcha:ifEnabled>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
                 <button type="submit" class="btn btn-primary"><i class="icon-thumbs-up"></i> Registrar mis datos</button>
               </div>
             </div>
