@@ -12,7 +12,13 @@
       <p class="lead">Date de alta con un correo y el nombre de tu institución.</p>
     </div>
   </header>
-
+  <div class="container">
+      <g:if test="${flash.error}">  
+        <div class="alert alert-error">
+          ${flash.error}
+        </div>
+      </g:if>
+  </div>
   <div class="container">
     <div class="row">
       <div class="span12">
@@ -22,7 +28,7 @@
             <div class="control-group">
               <label class="control-label" for="inputInstitucion">Institución : </label>
               <div class="controls">
-                <input id="institucion.nombre" name="institucion.nombre" placeholder="Nombre de la escuela" type="text" class="input-xxlarge">
+                <input id="institucion.nombre" value="${params?.institucion?.nombre}" name="institucion.nombre" placeholder="Nombre de la escuela" type="text" class="input-xxlarge">
               </div>
             </div>
             <div class="control-group">
@@ -64,7 +70,7 @@
             <div class="control-group">
               <div class="controls">
                 <recaptcha:ifEnabled>
-                  <recaptcha:recaptcha theme="white"/>
+                  <recaptcha:recaptcha theme="red"/>
                 </recaptcha:ifEnabled>
               </div>
             </div>
