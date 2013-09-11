@@ -78,6 +78,7 @@ $(document).ready(function(){
         minlength: "La contraseña debe de tener 8 caracteres como minimo"
      },
      'inputConfirmPassword': {
+        required: "",
         equalTo: "La contraseña no coincide, favor de verificarla"
      }
     },
