@@ -24,6 +24,7 @@ modules = {
 
   registrar {
     dependsOn 'validation'
+    dependsOn 'assets'
     resource url:'js/registro/index.js'
   }
 
@@ -45,6 +46,10 @@ modules = {
     resource url: 'css/assets/headers/header1.css'
     resource url: 'css/assets/style_responsive.css'
     resource url: 'css/assets/themes/default.css'
+    resource url: 'js/assets/jquery-1.8.2.min.js'
+    resource url: 'js/assets/modernizr.custom.js'
+    resource url: 'js/assets/back-to-top.js'
+    resource url: 'js/assets/app.js'
   }
 
 }
