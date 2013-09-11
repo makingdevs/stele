@@ -39,4 +39,12 @@ modules = {
   autocomplete {
     resource url: 'js/esquemaDePago/autocomplete.js'
   }
+
+  assets {
+    resource url: 'css/assets/style.css'
+    resource url: 'css/assets/headers/header1.css'
+    resource url: 'css/assets/style_responsive.css'
+    resource url: 'css/assets/themes/default.css'
+  }
+
 }
