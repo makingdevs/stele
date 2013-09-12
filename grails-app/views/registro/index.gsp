@@ -14,8 +14,14 @@
           <h1 class="color-green pull-left">Registro</h1>
         </div><!--/container-->
       </div><!--/breadcrumbs-->
+      <div class="container">
+        <g:if test="${flash.error}">  
+          <div class="alert alert-error">
+            ${flash.error}
+          </div>
+        </g:if>
+      </div>
       <div class="container">	
-
         <div class="row-fluid margin-bottom-10">
           <div class="span3">
             <g:render template="metas" />
@@ -41,35 +47,37 @@
           <div class="control-group">
             <label class="control-label" for="inputNombre"><i class="icon-user"></i> Nombre del responsable <span class="color-red">*</span></label>
             <div class="controls">
-              <input id="perfil.nombre" name="perfil.nombre" type="text" class="span12">
+              <input id="perfil.nombre" value="${params?.perfil?.nombre}" name="perfil.nombre" type="text" class="span12">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="inputApellidoPaterno"><i class="icon-user"></i> Apellido Paterno del responsable <span class="color-red">*</span></label>
             <div class="controls">
-              <input id="perfil.apellidoPaterno" name="perfil.apellidoPaterno" type="text" class="span12">
+              <input id="perfil.apellidoPaterno" value="${params?.perfil?.apellidoPaterno}" name="perfil.apellidoPaterno" type="text" class="span12">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="inputApellidoMaterno"><i class="icon-user"></i> Apellido Materno del responsable <span class="color-blue">No obligatorio</span></label>
             <div class="controls">
-              <input id="perfil.apellidoMaterno" name="perfil.apellidoMaterno" type="text"  class="span12">
+              <input id="perfil.apellidoMaterno" name="perfil.apellidoMaterno"  value="${params?.perfil?.apellidoMaterno}" type="text"  class="span12">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="inputEmail"><i class="icon-envelope"></i> Correo electrónico <span class="color-red">*</span></label>
             <div class="controls">
-              <input id="usuario.username" name="usuario.username" placeholder="your@mail.com" type="text" class="span12">
+              <input id="usuario.username" name="usuario.username" value="${params?.usuario?.username}" placeholder="your@mail.com" type="text" class="span12">
             </div>
           </div>
           <div class="control-group">
             <label><i class="icon-phone"></i> Teléfono <span class="color-red">*</span></label>
-            <input type="text" class="span12" />
+            <div class="controls">
+              <input id="numeroTelefonico" name="numeroTelefonico" value="${params?.numeroTelefonico}" type="tel" class="span12" />
+            </div>
           </div>
-          <div class="control-group">
+
             <div class="span6">
               <div class="control-group">
-                <label class="control-label" for="inputPassword">Contraseña <span class="color-red">*</span></label>
+                <label class="control-label" for="inputPassword"><i class="icon-key"></i> Contraseña <span class="color-red">*</span></label>
                 <div class="controls">
                   <input id="usuario.password" class="passwordOrigin" name="usuario.password" class="span12" type="password">
                 </div>
@@ -77,13 +85,12 @@
             </div>
             <div class="span6">
               <div class="control-group">
-                <label class="control-label" for="inputConfirmPassword">Confirma <span class="color-red">*</span></label>
+                <label class="control-label" for="inputConfirmPassword"><i class="icon-key"></i> Confirma <span class="color-red">*</span></label>
                 <div class="controls">
                   <input id="inputConfirmPassword" name="inputConfirmPassword" type="password" class="span12">
                 </div>
               </div>
             </div>
-          </div>
           <div class="span12">
             <div class="control_group">
               <div class="controls">
@@ -94,8 +101,8 @@
             </div>
           </div>  
         <div class="controls form-inline">
-          <label class="checkbox"><input type="checkbox" />&nbsp; He leído los <a href="">términos y condiciones.</a></label>
-          <button type="submit" class="btn-u pull-right"> Registrar </button>
+          <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; He leído los <a href="">términos y condiciones.</a></label>
+          <button type="submit" id="submitForm" class="btn-u pull-right" disabled="disabled"> Registrar </button>
         </div>
         <hr />
         <p>¿Ya estás registrado? <a href="page_login.html" class="color-green">Accede</a> a tu cuenta.</p>
@@ -107,8 +114,12 @@
 </header>
 
 <script type="text/javascript">
-  jQuery(document).ready(function() {
-    App.init();
+  $('#avisoPrivacidad').click(function(){
+    if($(this).is(":checked")) {
+      document.registroBasico.submitForm.disabled= false;
+    } else {
+      document.registroBasico.submitForm.disabled = true;
+    }
   });
 </script>
 
