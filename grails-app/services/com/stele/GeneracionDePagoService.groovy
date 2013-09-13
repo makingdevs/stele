@@ -36,6 +36,7 @@ class GeneracionDePagoService {
     def meses = camadaPagoCommand.meses
      listaDeDescuentosParaAplicar.each { descuento ->
         fechasDescuentos = obtenerFechaAplicacion(meses, descuento)
+
         fechasDescuentos.each { fecha ->
           Descuento desc = new Descuento()
           desc.nombreDeDescuento = descuento.nombreDeDescuento
@@ -46,6 +47,7 @@ class GeneracionDePagoService {
           desc.save()
           descuentos.add(desc)
         }
+
       }
 
     List<Pago> pagos = []
@@ -148,6 +150,7 @@ class GeneracionDePagoService {
 
     Calendar cal = Calendar.getInstance()
     cal.setTime(descuento.fechaDeVencimiento)
+    fechasAplicacion.add(descuento.fechaDeVencimiento)
 
     def year = cal.get(Calendar.YEAR)
     def month = cal.get(Calendar.MONTH)

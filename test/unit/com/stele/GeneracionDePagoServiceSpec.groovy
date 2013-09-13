@@ -107,8 +107,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       descuento.nombreDeDescuento = "descuento 1"
       descuento.cantidad = 100
       descuento.fechaDeVencimiento = new Date() + 3
-      descuento.id = 1
-      descuento.save(flush:true)
+      descuento.save(validate:false)
     and :
       def mocks = creoColaboradores()
     when:
@@ -117,6 +116,8 @@ class GeneracionDePagoServiceSpec extends Specification {
     then:
       assert pagos.size() == 1
       assert pagos.first().id > 0
+      assert pagos.first().descuentos
+      assert pagos.first().descuentos.first().id > 0
       assert pagos.first().conceptoDePago == concepto
       assert pagos.first().cantidadDePago == monto 
 
