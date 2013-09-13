@@ -211,6 +211,13 @@ class GeneracionDePagoServiceSpec extends Specification {
         assert pagos.first().conceptoDePago == concepto
         assert pagos.first().cantidadDePago == monto 
 
+        pagos.each { pago ->
+          if( pagoDoble.contains( pago.fechaDeVencimiento.getMonth() ) )
+            assert pago.cantidadDePago == 2.00
+          else
+            assert pago.cantidadDePago == 1.00
+        }
+
       where : 
         camada | concepto   | monto | fechaDeVencimiento | meses       | pagoDoble
         "123"  | "concepto" | 1.00  | new Date() + 7     | [1,3,5,7,9] | [1,5,9]
