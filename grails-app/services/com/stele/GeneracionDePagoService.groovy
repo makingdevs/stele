@@ -93,8 +93,7 @@ class GeneracionDePagoService {
         pago.addToDescuentos(descuento)
       }
   
-      if (recargo)
-        pago.addToRecargos(recargo)
+      pago.recargo = recargo
   
       pagos.add(pago.save())
 

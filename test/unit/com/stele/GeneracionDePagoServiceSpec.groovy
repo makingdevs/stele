@@ -140,7 +140,7 @@ class GeneracionDePagoServiceSpec extends Specification {
 
       and :
         Recargo recargos = new Recargo()
-        recargos.save() 
+        recargos.save(validate:false)
       and :
         def mocks = creoColaboradores()
       when : 
@@ -149,6 +149,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       then :
         assert pagos.size() == 1
         assert pagos.first().id > 0
+        assert pagos.first().recargo
         assert pagos.first().conceptoDePago == concepto
         assert pagos.first().cantidadDePago == monto 
       where : 
