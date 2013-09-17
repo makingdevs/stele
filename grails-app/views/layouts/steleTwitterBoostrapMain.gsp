@@ -9,7 +9,7 @@
   <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css" />
 
   <g:layoutHead/>
-  <r:layoutResources />          
+  <r:layoutResources />
 </head> 
 <body>
  
@@ -31,7 +31,7 @@
     <div class="container"> 
       <!-- Logo -->       
       <div class="logo">                                             
-        <a href="index.html"><img id="logo-header" src="${resource(dir: 'images/assets', file: 'logo2-default.png')}" alt="Logo"></a>
+        <a href="index.html"><r:img id="logo-header" uri="images/assets/logo2-default.png" alt="Logo"/></a>
       </div><!-- /logo -->        
 
       <!-- Menu -->       
@@ -175,19 +175,19 @@
           <div class="posts">
             <div class="headline"><h3>Recent Blog Entries</h3></div>
             <dl class="dl-horizontal">
-              <dt><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
+              <dt><a href="#"><r:img uri="images/assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
               <dd>
                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
               </dd>
             </dl>
             <dl class="dl-horizontal">
-              <dt><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
+              <dt><a href="#"><r:img uri="images/assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
               <dd>
                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
               </dd>
             </dl>
             <dl class="dl-horizontal">
-              <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
+              <dt><a href="#"><r:img uri="images/assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
               <dd>
                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
               </dd>
@@ -225,12 +225,12 @@
             <p>2013 &copy; Unify. ALL Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
           </div>
           <div class="span4">  
-            <a href="index.html"><img id="logo-footer" src="${resource(dir: 'images/assets', file: 'logo2-default.png')}" class="pull-right" alt="" /></a>
+            <a href="index.html"><r:img id="logo-footer" uri="images/assets/logo2-default.png" class="pull-right" alt="" /></a>
           </div>
         </div><!--/row-fluid-->
       </div>
     </div>
   </div>
-
+  <r:layoutResources />
 </body>
 </html> 
