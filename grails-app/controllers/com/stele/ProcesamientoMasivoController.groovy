@@ -31,5 +31,10 @@ class ProcesamientoMasivoController {
       listaUsuariosProcesados: dependientesExistentes
     ]
   }
+
+
+  def inscripcionManual() {
+    
+  }
 }
 
