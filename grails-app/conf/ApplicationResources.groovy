@@ -8,6 +8,7 @@ modules = {
   }
 
   auth {
+    dependsOn 'assets'
     resource url:'css/login/auth.css'
   }
 
