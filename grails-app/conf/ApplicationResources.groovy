@@ -49,7 +49,22 @@ modules = {
     resource url: 'js/assets/jquery-1.8.2.min.js'
     resource url: 'js/assets/modernizr.custom.js'
     resource url: 'js/assets/back-to-top.js'
-    resource url: 'js/assets/app.js'
+    resource url: 'js/assets/app.js'    
+  }
+
+  assetsMain {
+    dependsOn 'assets'
+    
+    resource url: 'css/assets/flexslider.css'
+    resource url: 'js/assets/bxslider/jquery.bxslider.css'
+    resource url: 'css/assets/headers/header2.css'
+    resource url: 'js/assets/font-awesome/css/font-awesome.css'
+    resource url: 'css/assets/horizontal-parallax.css'
+    resource url: 'js/assets/bxslider/jquery.bxslider.js'
+    resource url: 'js/assets/jquery.flexslider-min.js'
+    resource url: 'js/assets/sequence.jquery-min.js'
+    resource url: 'js/assets/horizontal-parallax.js'
+
   }
 
 }
