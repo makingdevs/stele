@@ -68,4 +68,17 @@ modules = {
 
   }
 
+  assetsDashBoard {
+    resource url: 'css/assets/font-awesome.min.css'
+    resource url: 'css/assets/ace-fonts.css'
+    resource url: 'css/assets/ace.min.css'
+    resource url: 'css/assets/ace-responsive.min.css'
+    resource url: 'css/assets/ace-skins.min.css'
+    resource url: 'js/assets/ace-extra.min.js'
+    resource url: 'js/assets/jquery-2.0.3.min.js'
+    resource url: 'js/assets/jquery.mobile.custom.min.js'
+    resource url: 'js/assets/ace-elements.min.js'
+    resource url: 'js/assets/ace.min.js'
+
+  }
 }
