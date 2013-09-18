@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-  <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css" />
+  <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css, assetsMain" />
 
   <g:layoutHead/>
   <r:layoutResources />
@@ -19,7 +19,7 @@
         <ul class="loginbar inline">
           <li><a href="mailto:info@stele.com">info@Stele.com </a></li> 
           <li><a>010 4202 2656 </a></li> 
-          <li><a href="page_login.html">LOGIN </a></li>  
+          <li><a href="${createLink(controller: 'login')}">LOGIN </a></li>  
         </ul>
       </div>                
     </div><!--/container-->   
@@ -30,8 +30,8 @@
   <div class="header">               
     <div class="container"> 
       <!-- Logo -->       
-      <div class="logo">                                             
-        <a href="index.html"><r:img id="logo-header" uri="images/assets/logo2-default.png" alt="Logo"/></a>
+      <div class="logo">                                          
+        <a href="index.html"><img id="logo-header" src="${resource(dir: 'images/assets', file: 'logo2-default.png')}" alt="Logo"/></a>
       </div><!-- /logo -->        
 
       <!-- Menu -->       
@@ -175,19 +175,19 @@
           <div class="posts">
             <div class="headline"><h3>Recent Blog Entries</h3></div>
             <dl class="dl-horizontal">
-              <dt><a href="#"><r:img uri="images/assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
+              <dt><a href="#"><img src="${resource(dir: 'images/assets/sliders/elastislide', file: '6.jpg')}" alt="" /></a></dt>
               <dd>
                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
               </dd>
             </dl>
             <dl class="dl-horizontal">
-              <dt><a href="#"><r:img uri="images/assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
+              <dt><a href="#"><img src="${resource(dir: 'images/assets/sliders/elastislide', file: '10.jpg')}" alt="" /></a></dt>
               <dd>
                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
               </dd>
             </dl>
             <dl class="dl-horizontal">
-              <dt><a href="#"><r:img uri="images/assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
+              <dt><a href="#"><img src="${resource(dir: 'images/assets/sliders/elastislide', file: '11.jpg')}" alt="" /></a></dt>
               <dd>
                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
               </dd>
@@ -218,6 +218,7 @@
         </div><!--/span4-->
       </div><!--/row-fluid-->
     </div> 
+    </div>
     <div class="copyright">
       <div class="container">  
         <div class="row-fluid">
@@ -225,12 +226,11 @@
             <p>2013 &copy; Unify. ALL Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
           </div>
           <div class="span4">  
-            <a href="index.html"><r:img id="logo-footer" uri="images/assets/logo2-default.png" class="pull-right" alt="" /></a>
+            <a href="index.html"><img id="logo-footer" src="${resource(dir: 'images/assets', file: 'logo2-default.png')}" class="pull-right" alt="" /></a>
           </div>
         </div><!--/row-fluid-->
       </div>
     </div>
-  </div>
   <r:layoutResources />
 </body>
 </html> 

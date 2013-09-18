@@ -105,7 +105,7 @@
           <button type="submit" id="submitForm" class="btn-u pull-right" disabled="disabled"> Registrar </button>
         </div>
         <hr />
-        <p>¿Ya estás registrado? <a href="page_login.html" class="color-green">Accede</a> a tu cuenta.</p>
+        <p>¿Ya estás registrado? <a href="${createLink(controller: 'login')}" class="color-green">Accede</a> a tu cuenta.</p>
       </g:form>
     </div><!--/row-fluid-->
   </div><!--/container-->		
@@ -114,6 +114,9 @@
 </header>
 
 <script type="text/javascript">
+  jQuery(document).ready(function() {
+        App.init();
+  });
   $('#avisoPrivacidad').click(function(){
     if($(this).is(":checked")) {
       document.registroBasico.submitForm.disabled= false;
