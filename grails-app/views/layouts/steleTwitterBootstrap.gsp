@@ -146,19 +146,21 @@
   </div><!--/header -->       
   
   <!--=== Copyright ===-->
-  <div class="container">
+ 
     <g:layoutBody/>
-    <div class="footer">
-      <div class="row-fluid">
-        <div class="span8">                     
-          <p>2013 &copy; Stele de México, S.A. de C.V. Todos los derechos reservados. <a href="#">Política de privacidad</a> | <a href="#">Términos del servicio</a></p>
+      <r:layoutResources />
+    <div class="copyright">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span8">                     
+            <p>2013 &copy; Stele de México, S.A. de C.V. Todos los derechos reservados. <a href="#">Política de privacidad</a> | <a href="#">Términos del servicio</a></p>
+          </div>
+          <div class="span4"> 
+            <a href="index.html"><img id="logo-footer" src="${resource(dir: 'images/assets', file: 'logo2-default.png')}" class="pull-right" alt="" /></a>
+          </div>
         </div>
-        <div class="span4"> 
-          <a href="index.html"><img id="logo-footer" src="${resource(dir: 'images/assets', file: 'logo2-default.png')}" class="pull-right" alt="" /></a>
-        </div>
-      </div><!--/row-fluid-->
+      </div>
     </div>
-  </div><!--/container--> 
-  <r:layoutResources />
+
 </body>
 </html> 
