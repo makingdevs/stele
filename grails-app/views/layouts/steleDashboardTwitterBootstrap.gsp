@@ -104,7 +104,7 @@
                 <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
                 <span class="user-info">
                   <small>Bienvenido,</small>
-                  ${usuario}
+                  ${usuario.perfil.nombre}
                 </span>
 
                 <i class="icon-caret-down"></i>
