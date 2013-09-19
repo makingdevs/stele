@@ -1,4 +1,6 @@
 <%@ page import="com.stele.NivelDeEstudio" %>
+<%@ page import="com.stele.CicloEscolar" %>
+
 <html >
   <head>
   <meta name="layout" content="steleDashboardTwitterBootstrap"/>
@@ -41,10 +43,17 @@
               </small>
             </h1>
           </div>
+
+            <g:if test="${flash.success}">  
+              <div class="alert alert-success">
+                ${flash.success}
+              </div>
+            </g:if>
+
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
-              <g:form id="registroAlumno" name="registroAlumno" controller="inscripcionManual" action="crearUsuarioCondependiente" class="form-horizontal">
+              <g:formRemote id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
                 <h3 class="header smaller lighter orange">
                   Alumno
                   <small> >>Datos del Alumno</small>
@@ -74,7 +83,7 @@
                           <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" />
                         </span>
                         <span class="input-icon">
-                          <input type="text" id="apellidoMaternoalumno" name="apellidoMaternoalumno" placeholder="apellido materno" />
+                          <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="apellido materno" />
                         </span>
                       </div>
                   </div>
@@ -82,13 +91,7 @@
                   <label class="control-label" for="selectCiclo">Ciclo escolar</label>
 
                   <div class="controls">
-                    <select id="form-field-select-1">
-                      <option value="">ciclo</option>
-                      <option value="2013">2013 Agosto-2014 Julio</option>
-                      <option value="2014">2014 Agosto-2015 Julio</option>
-                      <option value="2015">2015 Agosto-2015 Julio</option>
-                      <option value="2016">2016 Agosto-2017 Julio</option>
-                    </select>
+                    <g:select id="cicloEscolar" name="cicloEscolar" noSelection="['':'-Ciclo escolar-']" from="${CicloEscolar.list()}" optionKey="clave" optionValue="clave" />
                   </div>
                 </div>
 
@@ -124,7 +127,7 @@
                       <label class="control-label" for="selectGrupo">Turno</label>
 
                       <div class="controls">
-                        <g:radioGroup id="turno" name="turno" labels="['Matutino','Vespertino','Nocturno']" values="['Matutino','Vespertino','Nocturno']">
+                        <g:radioGroup id="turno" name="turno" labels="['Matutino','Vespertino']" values="['Matutino','Vespertino']">
                           <p>${it.radio} <g:message code="${it.label}" /></p>
                         </g:radioGroup>
                       </div>
@@ -214,7 +217,7 @@
                   </button>
                 </div>
 
-              </g:form>
+              </g:formRemote>
 
 
               <div id="modal-table" class="modal hide" tabindex="-1">
