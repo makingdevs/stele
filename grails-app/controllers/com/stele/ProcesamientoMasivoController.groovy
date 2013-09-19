@@ -32,9 +32,5 @@ class ProcesamientoMasivoController {
     ]
   }
 
-
-  def inscripcionManual() {
-    
-  }
 }
 
