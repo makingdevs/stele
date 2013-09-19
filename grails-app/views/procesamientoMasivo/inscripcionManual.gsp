@@ -5,14 +5,8 @@
     <r:require modules="assetsDashBoard" />
   </head>
   <body>
-     
-
-        <script type="text/javascript">
-          try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-        </script>
-      </div>
-
-      <div class="main-content">
+    <div class="main-container container-fluid">
+     <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
           <script type="text/javascript">
             try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
@@ -447,33 +441,8 @@
             </div><!--/.span-->
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
-
-        <div class="ace-settings-container" id="ace-settings-container">
-          <div class="btn btn-app btn-mini btn-warning ace-settings-btn" id="ace-settings-btn">
-            <i class="icon-cog bigger-150"></i>
-          </div>
-
-
-
-
-      <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-      <i class="icon-double-angle-up icon-only bigger-110"></i>
-    </a>
-
-
-    <script type="text/javascript">
-      window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
-    </script>
-
-    <script type="text/javascript">
-      if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-    </script>
-
-    <script type="text/javascript">
-      jQuery(function($) {
-        $('[data-rel=tooltip]').tooltip();
-      });
-
-    </script>
+      </div><!--/.main-content-->
+    </div>
+     
   </body>
 </html>
