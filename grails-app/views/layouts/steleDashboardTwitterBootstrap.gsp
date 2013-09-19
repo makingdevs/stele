@@ -12,11 +12,6 @@
   <r:layoutResources />
   </head>
   <body>
-   <div class="container-narrow">
-      <div class="main-container container-fluid">
-      <a class="menu-toggler" id="menu-toggler" href="#">
-        <span class="menu-text"></span>
-      </a>
     <div class="navbar" id="navbar">
       <script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -108,8 +103,8 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
                 <span class="user-info">
-                  <small>Welcome,</small>
-                  Jason
+                  <small>Bienvenido,</small>
+                  ${usuario}
                 </span>
 
                 <i class="icon-caret-down"></i>
@@ -143,15 +138,17 @@
           </ul><!--/.ace-nav-->
         </div><!--/.container-fluid-->
       </div><!--/.navbar-inner-->
+    </div>
 
 
-    <div class="main-container container-fluid">
       <a class="menu-toggler" id="menu-toggler" href="#">
         <span class="menu-text"></span>
       </a>
 
       <div class="sidebar" id="sidebar">
-
+        <script type="text/javascript">
+          try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        </script>
 
         <ul class="nav nav-list">
           <li>
@@ -215,14 +212,26 @@
               <span class="menu-text">Cociliacion</span>
             </a>
           </li>
-        </ul>
-        
+        </ul><!--/.nav-list-->
+<!--#Menu stele-->
 
 
-    </div>
-    </div>
-    </div>
-    </div>
+        <div class="sidebar-collapse" id="sidebar-collapse">
+          <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+        </div>
+
+        <script type="text/javascript">
+          try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+        </script>
+      
+
+      
+    </div><!--/.main-container-->
+
+      <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+      <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+
     
 
 
