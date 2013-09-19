@@ -38,7 +38,7 @@
             <h2>Inscripción manual</h2>
             <p>
             <p> 
-              <a href="${createLink(controller: 'inscripcionManual')}">
+              <a href="${createLink(controller: 'inscripcionManual', action:'inscripcion')}">
                 <button class="btn btn-large btn btn-primary" type="button"><i class="icon-pencil"></i> Inscripción</button>
               </a>
             </p>
