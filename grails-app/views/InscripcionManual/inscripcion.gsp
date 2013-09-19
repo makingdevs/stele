@@ -1,3 +1,4 @@
+<%@ page import="com.stele.NivelDeEstudio" %>
 <html >
   <head>
   <meta name="layout" content="steleDashboardTwitterBootstrap"/>
@@ -43,10 +44,7 @@
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
-              <form class="form-horizontal">
-                
-
-                <!--Alumno Inicia-->
+              <g:form id="registroAlumno" name="registroAlumno" controller="inscripcionManual" action="crearUsuarioCondependiente" class="form-horizontal">
                 <h3 class="header smaller lighter orange">
                   Alumno
                   <small> >>Datos del Alumno</small>
@@ -64,6 +62,23 @@
                 </div>
 
                 <div class="control-group">
+
+                  <div class="control-group">
+                      <label class="control-label" for="txtNombreAlumno">Alumno</label>
+
+                      <div class="controls">
+                        <span class="input-icon">
+                          <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="nombre" />
+                        </span>
+                        <span class="input-icon">
+                          <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" />
+                        </span>
+                        <span class="input-icon">
+                          <input type="text" id="apellidoMaternoalumno" name="apellidoMaternoalumno" placeholder="apellido materno" />
+                        </span>
+                      </div>
+                  </div>
+
                   <label class="control-label" for="selectCiclo">Ciclo escolar</label>
 
                   <div class="controls">
@@ -81,33 +96,25 @@
                   <label class="control-label" for="selectNivel">Ubicacion academica</label>
 
                   <div class="controls">
-                    <span class="form-field-select-1">
-                      <select id="form-field-select-1">
-                        <option value="">nivel</option>
-                        <option value="1">Maternal</option>
-                        <option value="2">Kinder</option>
-                        <option value="3">Primaria</option>
-                        <option value="4">Secundaria</option>
-                      </select>
-                    </span>
-                    <span class="form-field-select">
-                      <select id="form-field-select-2">
-                        <option value="">grado</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                      </select>
-                    </span>
-                    <span class="form-field-select-1">
-                      <select id="form-field-select-1">
-                        <option value="">grupo</option>
-                        <option value="1">A</option>
-                        <option value="2">B</option>
-                        <option value="3">C</option>
-                        <option value="4">D</option>
-                      </select>
-                    </span>
+                    <table class="table table-condensed" border="0"  cellpadding="0" cellspacing="0">
+                      <td>
+                        <span class="form-field-select-1">
+                          <g:select id="nivelDeEstudio" name="nivelDeEstudio" from="${NivelDeEstudio.values()}" optionKey="key" />
+                        </span>
+                      </td>
+                      <td><label>Grado</label></td>
+                      <td>
+                        <span class="form-field-select">
+                          <input id="grado" name="grado" type="text" placeholder="Grado">
+                        </span>
+                      </td>
+                      <td><label>Grupo</label></td>
+                      <td>
+                        <span class="form-field-select-1">
+                          <input id="grupo" name="grupo" type="text" placeholder="Grupo">
+                        </span>
+                      </td>
+                    </table>
                   </div>
                 </div>
 
@@ -117,20 +124,19 @@
                       <label class="control-label" for="selectGrupo">Turno</label>
 
                       <div class="controls">
-                        <input class="ace" type="radio" name="form-field-radio">
-                        <span class="lbl"> Matutino</span>
-                        <input class="ace" type="radio" name="form-field-radio">
-                        <span class="lbl"> Vespertino</span>
+                        <g:radioGroup id="turno" name="turno" labels="['Matutino','Vespertino','Nocturno']" values="['Matutino','Vespertino','Nocturno']">
+                          <p>${it.radio} <g:message code="${it.label}" /></p>
+                        </g:radioGroup>
                       </div>
                     </div>
                   </div>
                   <div class="row-fluid">
                     <div class="span5">
                       <div class="control-group">
-                        <label class="control-label" for="txtNumLista">Numero de lista</label>
+                        <label class="control-label" for="txtNumLista">Matricula</label>
 
                         <div class="controls">
-                          <input type="text" id="txtNombreAlumno" placeholder="num lista" />
+                          <input type="text" id="matricula" name="matricula" placeholder="matricula" />
                         </div>
                       </div>
                     </div>
@@ -158,30 +164,30 @@
                     </div>
 
                     <div class="control-group">
-                      <label class="control-label" for="txtNombreAlumno">Padre o Tutor</label>
+                      <label class="control-label" for="txtNombreTutor">Padre o Tutor</label>
 
                       <div class="controls">
                         <span class="input-icon">
-                          <input type="text" id="txtNombrePadre" placeholder="nombre" />
+                          <input type="text" id="nombrePadre" name="nombrePadre" placeholder="nombre" />
                         </span>
                         <span class="input-icon">
-                          <input type="text" id="txtApellidoPaterno" placeholder="apellido paterno" />
+                          <input type="text" id="apellidoPaternoPadre" name="apellidoPaternoPadre" placeholder="apellido paterno" />
                         </span>
                         <span class="input-icon">
-                          <input type="text" id="txtApellidoMaterno" placeholder="apellido materno" />
+                          <input type="text" id="apellidoMaternoPadre" name="apellidoMaternoPadre" placeholder="apellido materno" />
                         </span>
                       </div>
                     </div>
 
                     <div class="control-group">
-                      <label class="control-label" for="txtNombreAlumno">Contacto</label>
+                      <label class="control-label" for="txtNombreTutor">Contacto</label>
                       <div class="controls">
                         <span class="input-icon">
-                          <input type="text" id="txtTelefono" placeholder="telefono" />
+                          <input type="text" id="telefono" name="telefono" placeholder="telefono" />
                           <i class="icon-phone"></i> 
                         </span>
                         <span class="input-icon">
-                          <input type="email" id="txtemail" placeholder="email" data-placement="bottom" data-rel="tooltip" data-original-title="la cuenta de correo sera su usuario para el sistema" />
+                          <input type="email" id="email" name="email" placeholder="email" data-placement="bottom" data-rel="tooltip" data-original-title="la cuenta de correo sera su usuario para el sistema" />
                           <i class="icon-envelope"></i>
                         </span>
                       </div>
@@ -192,18 +198,12 @@
 
               
                 <div class="form-actions">
-
                   <button class="btn btn-danger" data-toggle="modal" href="#modal-formConfirmar" type="btn-danger">
                     <i class="icon-trash bigger-110"></i>
                     Eliminar
                   </button>
-
-
-
-
-
                   &nbsp; &nbsp; &nbsp;
-                  <button class="btn btn-info"  type="button">
+                  <button class="btn btn-info"  type="submit">
                     <i class="icon-ok bigger-110"></i>
                     Aceptar
                   </button>
@@ -214,7 +214,7 @@
                   </button>
                 </div>
 
-              </form>
+              </g:form>
 
 
               <div id="modal-table" class="modal hide" tabindex="-1">

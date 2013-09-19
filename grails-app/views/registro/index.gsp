@@ -36,7 +36,7 @@
               </ul>
             </div>
           </div><!--/span3-->
-          <g:form id="registroBasico" name="registroBasico" controller="registro" action="crear" class="reg-page">
+      <g:form id="registroBasico" name="registroBasico" controller="registro" action="crear" class="reg-page">
           <h3>Registra una nueva cuenta</h3>
           <div class="control-group">    
             <label class="control-label" for="inputInstitucion"><i class="icon-book"></i> Nombre del colegio <span class="color-red">*</span></label>
