@@ -11,6 +11,7 @@ class ProcesamientoMasivoController {
     def usuariosPersistidos = [] as Set
     def dependientesPersistidos = [] as Set
     def ciclosEscolaresPersistidos = [] as Set
+    def dependientesExistentes = [] as Set
     def camadaGenerada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
 
     listaDeMapaDeDominios*.dependiente*.camada = camadaGenerada
@@ -18,8 +19,17 @@ class ProcesamientoMasivoController {
       def mapaDeDominiosPersistidos = procesamientoMasivoService.procesaMapaConDatosDeFilaDeExcelParaPersistir(l,params.long("institucionId") )
       usuariosPersistidos.add(mapaDeDominiosPersistidos.usuario)
       dependientesPersistidos.add(mapaDeDominiosPersistidos.dependiente)
+      dependientesExistentes.add( mapaDeDominiosPersistidos.dependiente.id)
       ciclosEscolaresPersistidos.add(mapaDeDominiosPersistidos.cicloEscolar)
+      flash.dependientes = dependientesExistentes
     }
-    [camadaGenerada: camadaGenerada,usariosProcesados: usuariosPersistidos.size(), dependientesProcesados: dependientesPersistidos.size(), ciclosEcolaresProcesados: ciclosEscolaresPersistidos.size()]
+    [
+      camadaGenerada: camadaGenerada,
+      usariosProcesados: usuariosPersistidos.size(),
+      dependientesProcesados: dependientesPersistidos.size(),
+      ciclosEcolaresProcesados: ciclosEscolaresPersistidos.size(),
+      listaUsuariosProcesados: dependientesExistentes
+    ]
   }
 }
+

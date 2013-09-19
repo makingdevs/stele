@@ -28,19 +28,18 @@ class PagoService {
     p
   }
 
+  // TODO: Eliminar metodo a favor de estado de cuenta
   def obtenerPagosDeUsuario(Usuario usuario) {
-    def criteriaDependiente = Dependiente.createCriteria()
     def pagosDeUsuario = [] as Set 
-    List<Dependiente> dependientesDeUsuario = criteriaDependiente.list {
-        eq("usuario", usuario)
+
+    usuario?.dependientes.each{ dependiente ->
+      pagosDeUsuario.addAll(dependiente.pagos)
     }
-    dependientesDeUsuario.each{ dependiente ->
-      Dependiente dependienteExistente = dependiente.get(dependiente.id)
-      pagosDeUsuario.addAll(dependienteExistente.pagos)
-    }
-    [dependiente: dependientesDeUsuario, pagos: pagosDeUsuario]
+
+    [pagos: pagosDeUsuario]
   }
 
+  // TODO: Renombrar a obtenerHistorialesAcademicosPorInstitucion y moverlo de este servicio
   def obtenerPagosDeUnaInstitucion(Usuario usuario) {
     def institucionUsuario = usuario.instituciones
 

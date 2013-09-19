@@ -51,6 +51,12 @@ $(document).ready(function(){
         required: true,
         minlength: 8,
         equalTo: "input.passwordOrigin"
+     },
+     'telefono': {
+        required: true,
+        minlength: 8,
+        maxlength: 10,
+        number: true
      }
     },
     messages: {
@@ -78,7 +84,14 @@ $(document).ready(function(){
         minlength: "La contraseña debe de tener 8 caracteres como minimo"
      },
      'inputConfirmPassword': {
+        required: "Se requiere confirmar la contraseña",
         equalTo: "La contraseña no coincide, favor de verificarla"
+     },
+     'telefono': {
+        required: "Un numero telefonico es requerido",
+        minlength: "El numero debe de contener 8 caracteres minimo",
+        number: "Solo se aceptan numeros",
+        maxlength: "El numero solo debe contener 10 caracteres"
      }
     },
       validClass: "success",

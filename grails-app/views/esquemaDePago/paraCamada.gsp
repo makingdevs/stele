@@ -23,6 +23,7 @@
       <div class="row-fluid">
         <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
         <input type="hidden" id="camada" name="camada" value="${camada}">
+        <input type="hidden" id="listaDependientes" name="listaDependientes" value="${flash.dependientes}">
         <div class="row-fluid">
           <div class="span4">
             <div class="control-group">

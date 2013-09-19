@@ -2,6 +2,7 @@ package com.stele
 
 import com.stele.Descuento
 import com.stele.Recargo
+import com.stele.Dependiente
 
 class GeneracionDePagoService {
 
@@ -12,8 +13,22 @@ class GeneracionDePagoService {
     def existeConcepto = conceptoService.verificarConceptoPagoExistente(camadaPagoCommand.conceptoDePago)
     if (!existeConcepto)
         conceptoService.guardarConceptoDePagoGenerado(springSecurityService.currentUser,camadaPagoCommand.conceptoDePago)
-
+    List listaDependientesExistentes = []
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
+
+    camadaPagoCommand?.listaDependientes?.each { it ->
+      if ( !(it.equals("[") || it.equals("]") || it.equals(",") || it.equals(" ")) ) 
+          listaDependientesExistentes.add(it.toLong())
+    }
+
+    listaDependientesExistentes?.removeAll(dependientes*.id)
+
+    if (listaDependientesExistentes){
+      dependientes+= Dependiente.withCriteria {
+        'in'('id', listaDependientesExistentes)
+      }
+    }
+
     def listaDeDescuentosParaAplicar = obtenerDescuentosAsociadosAPagos(camadaPagoCommand)
     List descuentos = []
     List fechasDescuentos = []
@@ -21,6 +36,7 @@ class GeneracionDePagoService {
     def meses = camadaPagoCommand.meses
      listaDeDescuentosParaAplicar.each { descuento ->
         fechasDescuentos = obtenerFechaAplicacion(meses, descuento)
+
         fechasDescuentos.each { fecha ->
           Descuento desc = new Descuento()
           desc.nombreDeDescuento = descuento.nombreDeDescuento
@@ -31,6 +47,7 @@ class GeneracionDePagoService {
           desc.save()
           descuentos.add(desc)
         }
+
       }
 
     List<Pago> pagos = []
@@ -76,8 +93,7 @@ class GeneracionDePagoService {
         pago.addToDescuentos(descuento)
       }
   
-      if (recargo)
-        pago.addToRecargos(recargo)
+      pago.recargo = recargo
   
       pagos.add(pago.save())
 
@@ -133,6 +149,7 @@ class GeneracionDePagoService {
 
     Calendar cal = Calendar.getInstance()
     cal.setTime(descuento.fechaDeVencimiento)
+    fechasAplicacion.add(descuento.fechaDeVencimiento)
 
     def year = cal.get(Calendar.YEAR)
     def month = cal.get(Calendar.MONTH)

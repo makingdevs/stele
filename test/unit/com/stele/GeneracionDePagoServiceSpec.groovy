@@ -107,8 +107,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       descuento.nombreDeDescuento = "descuento 1"
       descuento.cantidad = 100
       descuento.fechaDeVencimiento = new Date() + 3
-      descuento.id = 1
-      descuento.save(flush:true)
+      descuento.save(validate:false)
     and :
       def mocks = creoColaboradores()
     when:
@@ -117,6 +116,8 @@ class GeneracionDePagoServiceSpec extends Specification {
     then:
       assert pagos.size() == 1
       assert pagos.first().id > 0
+      assert pagos.first().descuentos
+      assert pagos.first().descuentos.first().id > 0
       assert pagos.first().conceptoDePago == concepto
       assert pagos.first().cantidadDePago == monto 
 
@@ -139,7 +140,7 @@ class GeneracionDePagoServiceSpec extends Specification {
 
       and :
         Recargo recargos = new Recargo()
-        recargos.save() 
+        recargos.save(validate:false)
       and :
         def mocks = creoColaboradores()
       when : 
@@ -148,6 +149,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       then :
         assert pagos.size() == 1
         assert pagos.first().id > 0
+        assert pagos.first().recargo
         assert pagos.first().conceptoDePago == concepto
         assert pagos.first().cantidadDePago == monto 
       where : 
@@ -209,11 +211,49 @@ class GeneracionDePagoServiceSpec extends Specification {
         assert pagos.first().conceptoDePago == concepto
         assert pagos.first().cantidadDePago == monto 
 
+        pagos.each { pago ->
+          if( pagoDoble.contains( pago.fechaDeVencimiento.getMonth() ) )
+            assert pago.cantidadDePago == 2.00
+          else
+            assert pago.cantidadDePago == 1.00
+        }
+
       where : 
         camada | concepto   | monto | fechaDeVencimiento | meses       | pagoDoble
         "123"  | "concepto" | 1.00  | new Date() + 7     | [1,3,5,7,9] | [1,5,9]
 
   }
+
+    def "Generar un pago a un dependientes de una camada existente"() {
+    setup:
+        Dependiente dependiente = new Dependiente(camada:camada)
+        dependiente.addToHistorialAcademico(new HistorialAcademico())
+        dependiente.id = 2
+        dependiente.save(validate:false)
+      and :
+        CamadaPagoCommand cmd = new CamadaPagoCommand(camada:camada,
+          conceptoDePago:concepto,
+          cantidadDePago:monto,
+          fechaDeVencimiento:fechaDeVencimiento,
+          listaDependientes: listaDependientes
+          )
+      and :
+        def mocks = creoColaboradores()
+      when : 
+        def pagos = service.paraCamadaPagoCommand(cmd)
+        mocks*.verify()
+      then :
+        assert pagos.size() == 1
+        assert pagos.first().id == 1
+        assert pagos.first().conceptoDePago == concepto
+        assert pagos.first().cantidadDePago == monto 
+
+      where : 
+        camada | concepto   | monto | fechaDeVencimiento | camadaExistente | listaDependientes
+        "123"  | "concepto" | 1.00  | new Date() + 7     | "1234"          | "[2]"
+
+  }
+
 
   private def creoColaboradores(){
     Usuario usuario = new Usuario()
