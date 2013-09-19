@@ -25,11 +25,27 @@ class UsuarioService {
     usuario
   }
 
+  def obtenerUsuarioDesdeCommand(InscripcionCommand inscripcionCommand){
+    def usuario = new Usuario()
+    def perfil = new Perfil()
+    def telefono = new Telefono()
+    perfil.nombre = inscripcionCommand.nombrePadre
+    perfil.apellidoPaterno = inscripcionCommand.apellidoPaternoPadre
+    perfil.apellidoMaterno = inscripcionCommand.apellidoMaternoPadre
+    telefono.numeroTelefonico = inscripcionCommand.telefono.replaceAll( "[^\\d.]", "" )
+    perfil.addToTelefonos(telefono)
+    usuario.perfil = perfil
+    usuario.username = inscripcionCommand.email
+    usuario.password = armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico)
+    usuario.enabled = true
+    usuario
+  }
+
   def registrar(Usuario usuario){
     def existeUsuario = Usuario.findByUsername(usuario.username)
     if(!existeUsuario) {
       usuario.perfil = perfilService.registrar(usuario.perfil)
-      usuario.save(flush:true)
+      usuario.save()
       def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
       UsuarioRol.create(usuario, rol, true)
       return  usuario
