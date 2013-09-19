@@ -5,3 +5,4 @@ target/
 s3-plugin-temp/
 stele-*-config.groovy
 .DS_Store
+cobertura.ser
