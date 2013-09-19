@@ -93,7 +93,9 @@ mailhide {
     privateKey = ""
 }
 
-
+coverage {
+  xml = true
+}
 
 // log4j configuration
 log4j = {
