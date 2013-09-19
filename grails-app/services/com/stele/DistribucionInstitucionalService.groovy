@@ -11,6 +11,15 @@ class DistribucionInstitucionalService {
     distribucionInstitucional
   }
 
+  def obtenerDistribucionInstitucionalDesdeCommand(InscripcionCommand insc) {
+    def distribucionInstitucional = new DistribucionInstitucional()
+    distribucionInstitucional.grado = insc.grado.isNumber() ? insc.grado.toInteger() : 0
+    distribucionInstitucional.grupo = insc.grupo.toUpperCase()
+    distribucionInstitucional.nivelDeEstudio = validaNivelDeEstudio(insc.nivelDeEstudio)
+    distribucionInstitucional.turno = validaTurno(insc.turno)
+    distribucionInstitucional
+  }
+
   private NivelDeEstudio validaNivelDeEstudio(String nivel){
     def nivelToUpper = nivel.toUpperCase()
     def preescolar = NivelDeEstudio.PREESCOLAR.toString()toUpperCase()substring(0,3)
@@ -57,6 +66,7 @@ class DistribucionInstitucionalService {
   }
 
   def registrar(DistribucionInstitucional distribucionInstitucional, Long institucionId){
+    println "institucion : $institucionId"
     Institucion institucion = Institucion.get(institucionId)
     if(institucion){
         def criteriaDistribucionInstitucional = DistribucionInstitucional.createCriteria()
