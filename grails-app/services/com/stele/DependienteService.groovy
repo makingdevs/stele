@@ -18,6 +18,17 @@ class DependienteService {
     dependiente
   }
 
+  def obtenerDependienteDesdeCommand(InscripcionCommand incs) {
+    def perfil = new Perfil()
+    def dependiente = new Dependiente()
+    perfil.nombre = incs.nombreAlumno
+    perfil.apellidoPaterno = incs.apellidoPaternoAlumno
+    perfil.apellidoMaterno = incs.apellidoMaternoAlumno
+    dependiente.matricula = incs.matricula
+    dependiente.perfil = perfil
+    dependiente
+  }
+
   Dependiente registrar(Dependiente dependiente, Long usuarioId){
     Usuario usuario = Usuario.get(usuarioId)
     if(usuario){
@@ -28,6 +39,7 @@ class DependienteService {
         dependiente.perfil = perfilService.registrar(dependiente.perfil)
         usuario.addToDependientes(dependiente)
         usuario.save()
+        println dependiente.id
         return dependiente
       }
     }else{
