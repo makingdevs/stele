@@ -16,7 +16,6 @@ class CicloEscolarService {
 
   def registrar(CicloEscolar cicloEscolar){
     def existeCicloEscolar = CicloEscolar.findByClave(cicloEscolar.clave)
-    println "hola"
     existeCicloEscolar ?: cicloEscolar.save()
   }
 }
