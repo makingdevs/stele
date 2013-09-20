@@ -66,7 +66,7 @@ class DistribucionInstitucionalService {
   }
 
   def registrar(DistribucionInstitucional distribucionInstitucional, Long institucionId){
-    println "institucion : $institucionId"
+
     Institucion institucion = Institucion.get(institucionId)
     if(institucion){
         def criteriaDistribucionInstitucional = DistribucionInstitucional.createCriteria()
