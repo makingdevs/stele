@@ -45,7 +45,7 @@
           </div>
 
             <g:if test="${flash.success}">  
-              <div class="alert alert-success">
+              <div id="message"class="alert alert-success">
                 ${flash.success}
               </div>
             </g:if>
@@ -53,7 +53,7 @@
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
-              <g:formRemote id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
+              <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
                 <h3 class="header smaller lighter orange">
                   Alumno
                   <small> >>Datos del Alumno</small>
@@ -217,7 +217,7 @@
                   </button>
                 </div>
 
-              </g:formRemote>
+              </g:form>
 
 
               <div id="modal-table" class="modal hide" tabindex="-1">
