@@ -39,7 +39,6 @@ class DependienteService {
         dependiente.perfil = perfilService.registrar(dependiente.perfil)
         usuario.addToDependientes(dependiente)
         usuario.save()
-        println dependiente.id
         return dependiente
       }
     }else{
