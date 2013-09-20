@@ -38,6 +38,10 @@ modules = {
     resource url: 'js/esquemaDePago/generar.js'
   }
 
+  inscripcion {
+    resource url: 'js/inscripcion/validar.js'
+  }
+
   autocomplete {
     resource url: 'js/esquemaDePago/autocomplete.js'
   }
