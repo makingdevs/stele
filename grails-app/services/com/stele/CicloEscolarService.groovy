@@ -8,8 +8,14 @@ class CicloEscolarService {
     cicloEscolar
   }
 
+  def obtenerCicloEscolarDesdeCommand(InscripcionCommand insc) {
+    def cicloEscolar = new CicloEscolar()
+    cicloEscolar.clave = insc.cicloEscolar
+    cicloEscolar
+  }
+
   def registrar(CicloEscolar cicloEscolar){
     def existeCicloEscolar = CicloEscolar.findByClave(cicloEscolar.clave)
-    existeCicloEscolar ?: cicloEscolar.save(flush:true)
+    existeCicloEscolar ?: cicloEscolar.save()
   }
 }
