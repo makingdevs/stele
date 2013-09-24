@@ -15,6 +15,6 @@ class PagosJob {
       log.debug "Ejecucion del job Busqueda descuentos : $resultadoDescuentoJob"
       //def pagosVencidos = pagoService.cambiarEstatusDePagoAVencido(resultadoRecargosJob)
       //log.debug "Ejecucion del job Servicio: $pagosVencidos"
-      def pagosConDescuento = pagoService.verificarVijenciaDescuentoYAplicacion(resultadoDescuentoJob)
+      def pagosConDescuento = pagoService.verificarVigenciaDescuentoYAplicacion(resultadoDescuentoJob)
     }
 }
