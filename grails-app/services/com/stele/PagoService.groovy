@@ -12,6 +12,7 @@ import com.makingdevs.*
 class PagoService {
 
   def esquemaDePagoService
+  def descuentoService
 
   def crearPago(Date fechaDeVencimiento, Long esquemaDePagoId){
     def esquemaDePago = esquemaDePagoService.obtenerEsquemaDePago(esquemaDePagoId)
@@ -92,10 +93,9 @@ class PagoService {
   def verificarVigenciaDescuentoYAplicacion(List<Pago> pagos) {
     pagos.each { pago ->
       pago.descuentos?.each { descuento -> 
-        def diasPrevios = descuento.diasPreviosParaCancelarDescuento
-        def fechaVencimientoDescuento = pago.fechaDeVencimiento - diasPrevios
-        if (new Date().clearTime() == (fechaVencimientoDescuento + 1) ){
-          pago.descuentoAplicable -= descuento?.cantidad + ((descuento?.porcentaje / 100) * pago.cantidadDePago)
+        if (descuentoService.esDescuentoActivo(pago.fechaDeVencimiento, descuento)){
+          log.debug("if")
+          pago.descuentoAplicable -= descuentoService.obtenerMontoTotalDescuentoVencido(descuento, pago.cantidadDePago)
           pago.save()
         }
       }
