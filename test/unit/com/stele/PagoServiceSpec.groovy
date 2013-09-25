@@ -238,7 +238,6 @@ class PagoServiceSpec extends Specification {
       pago.fechaDeVencimiento = new Date().clearTime() + 6
       pago.addToDescuentos(descuento)
       pago.descuentoAplicable = totalDescuento
-      println pago.descuentoAplicable
       pago.cantidadDePago = cantidadPago
       pago.save(validate:false)
     when :
