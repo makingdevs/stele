@@ -91,11 +91,11 @@ class PagoService {
 
   def verificarVigenciaDescuentoYAplicacion(List<Pago> pagos) {
     pagos.each { pago ->
-      pago.descuentos.each { descuento -> 
+      pago.descuentos?.each { descuento -> 
         def diasPrevios = descuento.diasPreviosParaCancelarDescuento
         def fechaVencimientoDescuento = pago.fechaDeVencimiento - diasPrevios
-        if (new Date().clearTime() > fechaVencimientoDescuento){
-          pago.descuentoAplicable -= descuento?.cantidad - ((descuento?.porcentaje / 100) * pago.cantidadDePago)
+        if (new Date().clearTime() == (fechaVencimientoDescuento + 1) ){
+          pago.descuentoAplicable -= descuento?.cantidad + ((descuento?.porcentaje / 100) * pago.cantidadDePago)
           pago.save()
         }
       }
