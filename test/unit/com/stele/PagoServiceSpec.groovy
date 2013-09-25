@@ -234,6 +234,11 @@ class PagoServiceSpec extends Specification {
       descuento.diasPreviosParaCancelarDescuento = diasPrev
       descuento.save(validate:false)
     and :
+      def decuentoServiceMock = mockFor(DescuentoService)
+      decuentoServiceMock.demand.esDescuentoActivo(1..1){obj1, obj2 -> true}
+      decuentoServiceMock.demand.obtenerMontoTotalDescuentoVencido(1..1){obj1, obj2 -> totalDescuento}
+      service.descuentoService = decuentoServiceMock.createMock()
+    and :
       Pago pago = new Pago()
       pago.fechaDeVencimiento = new Date().clearTime() + 6
       pago.addToDescuentos(descuento)
@@ -244,12 +249,37 @@ class PagoServiceSpec extends Specification {
       List listaPagos = [pago]
       def pagosIterados = service.verificarVigenciaDescuentoYAplicacion(listaPagos)
     then : 
-      assert pagosIterados.first().descuentoAplicable == 0
+      assert pagosIterados.first().descuentoAplicable == montoAssert
     where :
-      nombreDeDescuento   | porcentajeDescuento | diasPrev | cantidadDescuento | cantidadPago | totalDescuento
-       "descuentototote"  |    10               |   7      |     75            |  1000        |  175
+      nombreDeDescuento   | porcentajeDescuento | diasPrev | cantidadDescuento | cantidadPago | totalDescuento | montoAssert
+       "descuentototote"  |    10               |   7      |     75            |  1000        |  175           |  0
+       "descuentototote"  |    15               |   7      |     0             |  1000        |  150           |  0
 
   }
 
 
+  private def crearPagosConDescuento(cantidadDePago, descuentos, totalDescuento) {
+    Pago pago = new Pago(cantidadDePago: cantidadDePago, descuentoAplicable: totalDescuento)
+    descuentos.eachWithIndex { d, i ->
+      Descuento descuento = new Descuento(d)
+      descuento.nombreDeDescuento = "Descuento $i"
+      descuento.save(validate:false)
+      pago.addToDescuentos(descuento)
+    }
+    pago.fechaDeVencimiento = new Date().clearTime() + 6
+    pago.save(validate:false)
+    pago
+  }
+
+  private def crearColaboradores(){
+    def decuentoServiceMock = mockFor(DescuentoService)
+    decuentoServiceMock.demand.esDescuentoActivo(1..1){obj1, obj2 -> true}
+    decuentoServiceMock.demand.obtenerMontoTotalDescuentoVencido(1..1){obj1, obj2 -> totalDescuento}
+    service.descuentoService = decuentoServiceMock.createMock()
+
+    decuentoServiceMock
+  }
+
 }
+
+
