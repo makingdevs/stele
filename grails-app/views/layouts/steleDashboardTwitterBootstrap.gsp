@@ -20,6 +20,13 @@
     .holder {
       width: 300%;
     }
+    div#menu {
+      border:2px solid green;
+      width:150px;
+      float:left;
+      margin:10px 0 10px 5px;
+      height:500px;
+    }
     </style>
   <g:layoutHead/>
   <r:layoutResources />
@@ -152,7 +159,8 @@
         </div><!--/.container-fluid-->
       </div><!--/.navbar-inner-->
     </div>
-        <div class="slider" id="slider">
+    <div id="menu">
+      <div class="slider" id="slider">
           <div class="slide">
             <ul class="nav nav-list">
               <li class="active">
@@ -225,6 +233,7 @@
             </ul><!--/.nav-list-->
           </div>
         </div>
+    </div>   
   <g:layoutBody/>
   <r:layoutResources />
   
