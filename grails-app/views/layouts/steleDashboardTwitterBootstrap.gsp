@@ -9,18 +9,17 @@
     <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css,font-awesome,assetsDashBoard" />
     <style type="text/css"> 
     .slider {
-      width: 300%;
-      height: 200px;
+      width: 300px;
+      height: 400px;
     }
     .slide {
       float: left;
       width: 190px;
-      height: 0px;
+      height: 500px;
     }
     .holder {
       width: 300%;
     }
-
     </style>
   <g:layoutHead/>
   <r:layoutResources />
@@ -153,10 +152,79 @@
         </div><!--/.container-fluid-->
       </div><!--/.navbar-inner-->
     </div>
+        <div class="slider" id="slider">
+          <div class="slide">
+            <ul class="nav nav-list">
+              <li class="active">
+                <a href="index.html">
+                  <i class="icon-dashboard"></i>
+                  <span class="menu-text"> Colegio </span>
+                </a>
+              </li>
+              <li >
+                <a href="#" class="dropdown-toggle">
+                  <i class="icon-edit"></i>
+                  <span class="menu-text"> Inscripcion </span>
+                  <b class="arrow icon-angle-down"></b>
+                </a>
 
-
-
-
+                <ul class="submenu">
+                  <li>
+                    <a href="inscripcionmanual.html">
+                      <i class="icon-double-angle-right"></i>
+                      Manual
+                    </a>
+                  </li>
+                  <li>
+                    <a href="inscripcionarchivo.html">
+                      <i class="icon-double-angle-right"></i>
+                      Archivo
+                    </a>
+                  </li>
+                  <li>
+                    <a href="inscripcionarchivocobro.html">
+                      <i class="icon-double-angle-right"></i>
+                      Archivo + Cobro
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="cobros.html">
+                  <i class="icon-book"></i>
+                  <span class="menu-text">Configurar cobros </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-toggle">
+                  <i class="icon-usd"></i>
+                  <span class="menu-text"> Cobros </span>
+                  <b class="arrow icon-angle-down"></b>
+                </a>
+                <ul class="submenu">
+                  <li>
+                    <a href="cobromanual.html">
+                      <i class="icon-double-angle-right"></i>
+                      Manual
+                    </a>
+                  </li>
+                  <li>
+                    <a href="cobroarchivo.html">
+                      <i class="icon-double-angle-right"></i>
+                      Archivo
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="conciliacion.html">
+                  <i class="icon-random"></i>
+                  <span class="menu-text">Cociliacion</span>
+                </a>
+              </li>
+            </ul><!--/.nav-list-->
+          </div>
+        </div>
   <g:layoutBody/>
   <r:layoutResources />
   
