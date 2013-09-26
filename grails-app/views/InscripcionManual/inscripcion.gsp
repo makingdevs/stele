@@ -8,7 +8,6 @@
     <r:require modules="assetsDashBoard, inscripcion" />
   </head>
   <body>
-    <div class="main-container container-fluid">
      <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
           <script type="text/javascript">
@@ -445,7 +444,7 @@
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
       </div><!--/.main-content-->
-    </div>
+
      
   </body>
 </html>
