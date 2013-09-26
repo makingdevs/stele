@@ -9,22 +9,21 @@
     <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css,font-awesome,assetsDashBoard" />
     <style type="text/css"> 
     .slider {
-      width: 300px;
-      height: 400px;
+      width: 0;
+      height: 300px;
     }
     .slide {
       float: left;
-      width: 190px;
-      height: 500px;
+      width: 184px;
+      height: 400px;
     }
     .holder {
-      width: 300%;
+      width: 600%;
     }
     div#menu {
-      border:2px solid green;
-      width:150px;
+      width:140px;
       float:left;
-      margin:10px 0 10px 5px;
+      margin:7px 0 8px 4px;
       height:500px;
     }
     </style>
@@ -233,7 +232,7 @@
             </ul><!--/.nav-list-->
           </div>
         </div>
-    </div>   
+    </div>
   <g:layoutBody/>
   <r:layoutResources />
   
