@@ -6,8 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="">
-    <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css,font-awesome" />
+    <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css,font-awesome,assetsDashBoard" />
+    <style type="text/css"> 
+    .slider {
+      width: 300%;
+      height: 200px;
+    }
+    .slide {
+      float: left;
+      width: 190px;
+      height: 0px;
+    }
+    .holder {
+      width: 300%;
+    }
 
+    </style>
   <g:layoutHead/>
   <r:layoutResources />
   </head>
@@ -141,98 +155,6 @@
     </div>
 
 
-      <a class="menu-toggler" id="menu-toggler" href="#">
-        <span class="menu-text"></span>
-      </a>
-
-      <div class="sidebar" id="sidebar">
-        <script type="text/javascript">
-          try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-        </script>
-
-        <ul class="nav nav-list">
-          <li>
-            <a href="index.html">
-              <i class="icon-dashboard"></i>
-              <span class="menu-text"> Colegio </span>
-            </a>
-          </li>
-          <li class="active open">
-            <a href="#" class="dropdown-toggle">
-              <i class="icon-edit"></i>
-              <span class="menu-text"> Inscripcion </span>
-              <b class="arrow icon-angle-down"></b>
-            </a>
-
-            <ul class="submenu">
-              <li class="active open">
-                <a href="inscripcionmanual.html">
-                  <i class="icon-double-angle-right"></i>
-                  Manual
-                </a>
-              </li>
-              <li>
-                <a href="inscripcionarchivo.html">
-                  <i class="icon-double-angle-right"></i>
-                  Archivo
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="cobros.html">
-              <i class="icon-book"></i>
-              <span class="menu-text">Configurar cobros </span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="dropdown-toggle">
-              <i class="icon-usd"></i>
-              <span class="menu-text"> Cobros </span>
-              <b class="arrow icon-angle-down"></b>
-            </a>
-            <ul class="submenu">
-              <li>
-                <a href="cobromanual.html">
-                  <i class="icon-double-angle-right"></i>
-                  Manual
-                </a>
-              </li>
-              <li>
-                <a href="cobroarchivo.html">
-                  <i class="icon-double-angle-right"></i>
-                  Archivo
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="conciliacion.html">
-              <i class="icon-random"></i>
-              <span class="menu-text">Cociliacion</span>
-            </a>
-          </li>
-        </ul><!--/.nav-list-->
-<!--#Menu stele-->
-
-
-        <div class="sidebar-collapse" id="sidebar-collapse">
-          <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
-        </div>
-
-        <script type="text/javascript">
-          try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-        </script>
-      
-
-      
-    </div><!--/.main-container-->
-
-      <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-      <i class="icon-double-angle-up icon-only bigger-110"></i>
-    </a>
-
-    
 
 
   <g:layoutBody/>
