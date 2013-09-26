@@ -206,11 +206,9 @@ class GeneracionDePagoServiceSpec extends Specification {
         def pagos = service.paraCamadaPagoCommand(cmd)
         mocks*.verify()
       then :
-        assert pagos.size() == 6
+        assert pagos.size() == 5
         assert pagos.first().id == 1
         assert pagos.first().conceptoDePago == concepto
-        assert pagos.first().cantidadDePago == monto 
-
         pagos.each { pago ->
           if( pagoDoble.contains( pago.fechaDeVencimiento.getMonth() ) )
             assert pago.cantidadDePago == 2.00
