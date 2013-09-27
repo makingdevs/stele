@@ -161,13 +161,13 @@
       <div class="slider" id="slider">
           <div class="slide">
             <ul class="nav nav-list">
-              <li class="active">
+              <li>
                 <a href="index.html">
                   <i class="icon-dashboard"></i>
                   <span class="menu-text"> Colegio </span>
                 </a>
               </li>
-              <li >
+              <li class="active open">
                 <a href="#" class="dropdown-toggle">
                   <i class="icon-edit"></i>
                   <span class="menu-text"> Inscripcion </span>
@@ -181,7 +181,7 @@
                       Manual
                     </a>
                   </li>
-                  <li>
+                  <li class="active open">
                     <a href="inscripcionarchivo.html">
                       <i class="icon-double-angle-right"></i>
                       Archivo
