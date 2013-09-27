@@ -5,7 +5,7 @@
   <head>
   <meta name="layout" content="steleDashboardTwitterBootstrap"/>
     <title>Colegio ABC</title>
-    <r:require modules="assetsDashBoard, inscripcion" />
+    <r:require modules="inscripcion" />
   </head>
   <body>
      <div class="main-content">

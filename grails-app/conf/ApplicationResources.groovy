@@ -81,6 +81,19 @@ modules = {
     resource url: 'js/assets/ace-extra.min.js'
     resource url: 'js/assets/ace-elements.min.js'
     resource url: 'js/assets/ace.min.js'
+  }
 
+  inscripcionArchivo {
+    dependsOn 'upload'
+    resource url: 'js/assets/fuelux/fuelux.wizard.min.js'
+    resource url: 'js/assets/bootbox.min.js'
+    resource url: 'js/assets/jquery.nestable.min.js'
+    resource url: 'js/assets/jquery.dataTables.min.js'
+    resource url: 'js/assets/jquery.dataTables.bootstrap.js'
+    resource url: 'js/assets/jquery-ui-1.10.3.custom.min.js'
+    resource url: 'js/assets/chosen.jquery.min.js'
+    resource url: 'js/assets/jquery.autosize-min.js'
+    resource url: 'js/assets/jquery.inputlimiter.1.3.1.min.js'
+    resource url: 'js/assets/jquery.maskedinput.min.js'
   }
 }

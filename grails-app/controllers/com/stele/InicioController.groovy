@@ -15,7 +15,7 @@ class InicioController {
     }
     def user = springSecurityService.currentUser
     def principal = springSecurityService.principal
-    [instituciones:user.instituciones]
+    [instituciones:user.instituciones, usuario:user]
   }
 
   def preview(){
