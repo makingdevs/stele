@@ -3,6 +3,17 @@
   <meta name="layout" content="steleDashboardTwitterBootstrap"/>
     <title>Colegio ABC</title>
     <r:require modules="inscripcionArchivo" />
+    <r:script>
+      $(function() {
+        var urlValue = $("input#url").val() 
+
+        Dropzone.options.dropzone = {
+          url : urlValue,
+          maxFilesize : .5,
+          addRemoveLinks : false
+        };
+      });
+    </r:script>
   </head>
   <body>
 
@@ -43,8 +54,6 @@
           </div>
           <div class="row-fluid">
             <div class="span12">
-              <!--PAGE CONTENT BEGINS-->
-
               <div class="widget-box">
                 <div class="widget-header widget-header-blue widget-header-flat">
               </div>
@@ -57,38 +66,54 @@
                           <i class="icon-arrow-left"></i>
                           Previo
                         </button>
-
-                        <button class="btn btn-success btn-next" data-last="Finalizar">
+                        <button class="btn btn-success btn-next" >
                           Siguiente
                           <i class="icon-arrow-right icon-on-right"></i>
                         </button>
                       </div>
-                      <div id="fuelux-wizard" class="row-fluid hide" data-target="#step-container">
-                        <ul class="wizard-steps">
-                          <li data-target="#step1" class="active">
-                            <span class="step">1</span>
-                            <span class="title">Importe el archivo</span>
-                          </li>
-
-                          <li data-target="#step2">
-                            <span class="step">2</span>
-                            <span class="title">Verifique</span>
-                          </li>
-
-                          <li data-target="#step3"> 
-                            <span class="step">3</span>
-                            <span class="title">Procesar Incripción</span>
-                          </li>
-
-                          <li data-target="#step4">
-                            <span class="step">4</span>
-                            <span class="title">Resultado</span>
-                          </li>
-                        </ul>
-
+                     
+                      <div class="span10">
+                        <table width="100%">
+                          <th>
+                            <td align="CENTER"><i class="icon-file icon-3x"></i></td>
+                          </th>
+                          <th>
+                            <td align="CENTER"><i class="icon-search icon-3x"></i></td>
+                          </th>
+                          <th>
+                            <td align="CENTER"><i class="icon-cogs icon-3x"></i></td>
+                          </th>
+                          <th>
+                            <td align="CENTER"><i class="icon-ok icon-3x"></td>
+                          </th>
+                        </table>
+                        <div class="progress">
+                            <div class="bar progress-info" style="width: 11%;"></div>
+                            <div class="bar bar-success" style="width: 23%;"></div>
+                            <div class="bar bar-warning" style="width: 26%;"></div>
+                            <div class="bar bar-danger" style="width: 40%;"></div>
+                        </div>
+                        <table width="120%">
+                          <th>
+                            &nbsp;  
+                            &nbsp;
+                            &nbsp;
+                            <td>Importe el archivo</td>
+                          </th>
+                          <th>
+                            <td>Verifique</i></td>
+                          </th>
+                          <th>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td>   Procesar Incripción</td>
+                          </th>
+                          <th>
+                            <td>Resultado</td>
+                          </th>
+                        </table>
+                        <hr />
                       </div>
-
-                      <hr />
+                      
                         <div class="step-content row-fluid  position-relative" id="step-container">
                           <div class="step-pane active" id="step1">
                             <div class="row-fluid">
@@ -118,9 +143,8 @@
                                   <div class="widget-header blue">
                                     <h4><strong>Importar plantilla</strong></h4>
                                   </div>
-                                  <div class="widget-body">
-                                    <div class="widget-main">
-                                      <input  type="file" id="id-input-file-3" />
+                                  <div class="span6">
+                                    <div id="dropzone" class="dropzone">
                                     </div>
                                   </div>
                                 </div>
@@ -3041,27 +3065,6 @@
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
       </div><!--/.main-content-->
-    <script type="text/javascript">
-      jQuery(function($) {
-        console.log("camiza")
-        var $validation = false;
-        $('#fuelux-wizard').ace_wizard().on('change' , function(e, info){
-        console.log("camiza2")
-
-          if(info.step == 1 && $validation) {
-            if(!$('#validation-form').valid()) return false;
-          }
-        }).on('finished', function(e) {
-          bootbox.dialog("Gracias!, Su informacion ha sido guardada satisfactoriamente!", [{
-            "label" : "OK",
-            "class" : "btn-small btn-primary",
-            }]
-          );
-        }).on('stepclick', function(e){
-          //return false;//prevent clicking on steps
-        });
-      })
-    </script>
 
   </body>
 </html>
