@@ -84,7 +84,6 @@ modules = {
   }
 
   inscripcionArchivo {
-    dependsOn 'upload'
     resource url: 'js/assets/fuelux/fuelux.wizard.min.js'
     resource url: 'js/assets/bootbox.min.js'
     resource url: 'js/assets/jquery.nestable.min.js'
