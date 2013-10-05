@@ -5,6 +5,7 @@ class ProcesamientoMasivoController {
   def procesamientoMasivoService
 
   def index() {
+    println flash.proceso = params.cobro
     def listaDeMapaDeDominios = flash.listaDeMapaDeDominios
     def institucion = Institucion.get(params?.long("institucionId"))
     def nombreDeInstitucion = institucion.nombre.size() > 100 ? institucion.nombre.substring(0,80) : institucion.nombre
