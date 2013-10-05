@@ -13,6 +13,7 @@ class InicioController {
       redirect controller:'login'
       return
     }
+    flash.inscripcionCobro = params.cobro
     def user = springSecurityService.currentUser
     def principal = springSecurityService.principal
     [instituciones:user.instituciones, usuario:user]
@@ -35,7 +36,10 @@ class InicioController {
     ]
   }
 
-  def upload(){
-    log.debug params
+  def procesar(){
+    flash.inscripcionCobro = params.cobro
+    def lista = flash.listaDeMapaDeDominios
+    flash.listaDeMapaDeDominios = lista
+    [institucionId: params.long("institucionId")]
   }
 }
