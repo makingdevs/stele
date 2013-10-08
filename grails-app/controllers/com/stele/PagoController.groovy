@@ -1,6 +1,6 @@
 package com.stele
 
-import com.stele.Pago
+import com.payable.*
 
 class PagoController {
 

@@ -7,7 +7,9 @@ class RouterController {
   def index() {
     if(springSecurityService.isLoggedIn()){
       def user = springSecurityService.currentUser
+      println user
       def authorities = user.authorities
+      println authorities
       switch(authorities.first().authority){
         case "ROLE_PADRE_TUTOR":
         redirect uri:"/perfil"

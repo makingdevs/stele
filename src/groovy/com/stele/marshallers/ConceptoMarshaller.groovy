@@ -1,7 +1,7 @@
 package com.stele.marshallers
 
 import grails.converters.JSON
-import com.stele.Concepto
+import com.payable.Concepto
 import org.codehaus.groovy.grails.web.converters.marshaller.ObjectMarshaller
 
 public class ConceptoMarshaller implements ObjectMarshaller<JSON> {

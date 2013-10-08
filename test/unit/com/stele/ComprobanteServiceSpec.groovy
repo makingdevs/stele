@@ -5,6 +5,8 @@ import grails.test.mixin.Mock
 import spock.lang.Specification
 import org.grails.s3.S3Asset
 import org.grails.s3.S3AssetService
+import com.payable.*
+
 
 @TestFor(ComprobanteService)
 @Mock(Pago)

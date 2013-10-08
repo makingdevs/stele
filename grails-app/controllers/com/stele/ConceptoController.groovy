@@ -1,6 +1,6 @@
 package com.stele
 
-import com.stele.Concepto
+import com.payable.*
 import grails.converters.JSON
 
 class ConceptoController {

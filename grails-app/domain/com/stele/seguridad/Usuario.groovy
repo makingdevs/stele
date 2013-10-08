@@ -4,6 +4,7 @@ import groovy.transform.ToString
 import com.stele.Dependiente
 import com.stele.Institucion
 import com.makingdevs.*
+import com.payable.*
 
 @ToString
 class Usuario {

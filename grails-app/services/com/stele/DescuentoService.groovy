@@ -1,8 +1,7 @@
 package com.stele
 
 import com.stele.seguridad.Usuario
-import com.stele.Descuento
-import com.stele.Institucion
+import com.payable.*
 
 class DescuentoService {
 

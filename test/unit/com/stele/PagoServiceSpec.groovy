@@ -5,6 +5,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
+import com.payable.*
 
 @TestFor(PagoService)
 @Mock([HistorialAcademico,Dependiente,DistribucionInstitucional,Institucion,Usuario,Perfil,Pago])

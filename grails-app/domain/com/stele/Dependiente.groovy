@@ -3,9 +3,10 @@ package com.stele
 import groovy.transform.ToString
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
+import com.payable.*
 
 @ToString
-class Dependiente {
+class Dependiente extends Payable{
 
   String matricula
   Perfil perfil

@@ -3,6 +3,7 @@ package com.stele
 import com.stele.HistorialAcademico
 import com.stele.Dependiente
 import com.makingdevs.*
+import com.payable.*
 
 class ComprobanteController {
 

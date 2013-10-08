@@ -4,6 +4,7 @@ import grails.test.mixin.*
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
+import com.payable.*
 
 @TestFor(DescuentoService)
 @Mock([Institucion, Usuario, DistribucionInstitucional, Descuento, Perfil])
@@ -39,12 +40,12 @@ class DescuentoServiceSpec extends Specification {
     descuento.id = 1
     descuento.nombreDeDescuento = "Pago anticipado"
     descuento.porcentaje = 10
-    descuento.fechaDeVencimiento = new java.util.Date(2013, 9, 15, 8, 15, 23);
-    descuento.institucion = institucion
+    descuento.diasPreviosParaCancelarDescuento = 4
+    descuento.organizacion = institucion
     descuento.save(flush:true)
   when: "Se realiza la llamada al metodo buscarDescuentosDeUnaInstitucion"
     def query = "ant"
-    def descuentoInstitucion = service.buscarDescuentosDeUnaInstitucion(usuario, query)
+    def descuentoInstitucion = service.buscarDescuentosDeUnaOrganizacion(institucion, query)
   then: "La cantidad de descuentos debe ser igual a 1"
     assert descuentoInstitucion.size() == 1
 

@@ -5,6 +5,7 @@ import grails.test.mixin.Mock
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
 import grails.plugins.springsecurity.SpringSecurityService
+import com.payable.*
 
 @TestFor(GeneracionDePagoService)
 @Mock([Pago, Dependiente, HistorialAcademico, Descuento, Concepto, Recargo])
