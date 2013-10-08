@@ -3,8 +3,7 @@
 
 <html >
   <head>
-  <meta name="layout" content="steleDashboardTwitterBootstrap"/>
-    <title>Colegio ABC</title>
+  <meta name="layout" content="colegio"/>
     <r:require modules="inscripcion" />
   </head>
   <body>
