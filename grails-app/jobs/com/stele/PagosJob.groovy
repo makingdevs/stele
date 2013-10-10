@@ -5,7 +5,7 @@ class PagosJob {
   def pagoService
 
     static triggers = {
-      cron name: 'pagosVencidos', cronExpression: "10 * * * * ?"
+      cron name: 'pagosVencidos', cronExpression: "0 0 0 * * ?"
     }
 
     def execute() {
@@ -16,5 +16,6 @@ class PagosJob {
       //def pagosVencidos = pagoService.cambiarEstatusDePagoAVencido(resultadoRecargosJob)
       //log.debug "Ejecucion del job Servicio: $pagosVencidos"
       def pagosConDescuento = pagoService.verificarVigenciaDescuentoYAplicacion(resultadoDescuentoJob)
+      log.debug "Resultado de la ejecucion de verificarVigenciaDescuentoYAplicacion : $pagosConDescuento"
     }
 }
