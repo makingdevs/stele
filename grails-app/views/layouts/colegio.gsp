@@ -145,10 +145,10 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="#">
+                  <g:link controller="logout">
                     <i class="icon-off"></i>
                     Logout
-                  </a>
+                  </g:link>
                 </li>
               </ul>
             </li>
@@ -179,7 +179,7 @@
 
             <ul class="submenu">
               <li>
-                <g:link controller="inscripcionManual" action="inscripcion">
+                <g:link controller="inscripcionManual" action="inscripcion" params="[action:manual]">
                   <i class="icon-double-angle-right"></i>
                   Manual
                 </g:link>
