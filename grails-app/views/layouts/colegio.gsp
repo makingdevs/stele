@@ -179,12 +179,6 @@
 
             <ul class="submenu">
               <li>
-                <g:link controller="inscripcionManual" action="inscripcion" params="[action:manual]">
-                  <i class="icon-double-angle-right"></i>
-                  Manual
-                </g:link>
-              </li>
-              <li>
                 <g:link controller="inicio" action="index" params="[cobro:false]">
                   <i class="icon-double-angle-right"></i>
                   Archivo
@@ -194,6 +188,12 @@
                  <g:link controller="inicio" action="index" params="[cobro:true]">
                   <i class="icon-double-angle-right"></i>
                   Archivo + Cobro
+                </g:link>
+              </li>
+              <li>
+                <g:link controller="inscripcionManual" action="inscripcion" params="[accion:'manual']">
+                  <i class="icon-double-angle-right"></i>
+                  Manual
                 </g:link>
               </li>
             </ul>
