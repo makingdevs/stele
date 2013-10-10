@@ -12,6 +12,7 @@ import com.makingdevs.*
 class PagoService {
 
   def esquemaDePagoService
+  def descuentoService
 
   def crearPago(Date fechaDeVencimiento, Long esquemaDePagoId){
     def esquemaDePago = esquemaDePagoService.obtenerEsquemaDePago(esquemaDePagoId)
@@ -57,7 +58,6 @@ class PagoService {
 
   }
 
-
   def estadoDeCuentaUsuario(Usuario usuario) {
     [pagosVencidos:obtenerPagosDeUsuarioQueSon(usuario,"Vencidos"),
      pagosEnTiempo:obtenerPagosDeUsuarioQueSon(usuario,"EnTiempoConDescuento"),
@@ -67,12 +67,41 @@ class PagoService {
   }
 
   def buscarPagosConFechasDeVencimientoCumplida() {
-    List listaDePagosConFechaVencida = Pago.withCriteria{
+    def listaDePagosConFechaVencida = Pago.withCriteria{
       eq('estatusDePago', EstatusDePago.CREADO)
       ge('fechaDeVencimiento', new Date())
     }
+  }
 
+  def cambiarEstatusDePagoAVencido(List<Pago> pagosVencidos) {
+    pagosVencidos.each { pago ->
+      pago.estatusDePago = EstatusDePago.VENCIDO
+      pago.descuentoAplicable = 0
+      pago.recargosAcumulados = (pago.recargo?.cantidad + ((pago.recargo?.porcentaje / 100) * pago.cantidadDePago)) 
+    }
+  }
 
+  def buscarPagosCreadosYEnTiempo() {
+    def fechaActual = new Date()
+    List pagosEnTiepoEnEstusCreados = Pago.withCriteria {
+       eq('estatusDePago', EstatusDePago.CREADO)
+       ge('fechaDeVencimiento', fechaActual.clearTime())
+       join('descuentos')
+    }
+  }
+
+  def verificarVigenciaDescuentoYAplicacion(List<Pago> pagos) {
+    pagos.each { pago ->
+      pago.descuentos?.each { descuento -> 
+        if (descuentoService.esDescuentoActivo(pago.fechaDeVencimiento, descuento)){
+          log.debug("if")
+          pago.descuentoAplicable -= descuentoService.obtenerMontoTotalDescuentoVencido(descuento, pago.cantidadDePago)
+          pago.save()
+        }
+      }
+
+    }
+    pagos
   }
 
   private def cambiarEstatusDeUnPagoAVencido(List listaDePagosConFechaVencida) {

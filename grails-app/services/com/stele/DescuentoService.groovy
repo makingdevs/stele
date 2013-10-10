@@ -15,4 +15,13 @@ class DescuentoService {
     }
   }
 
+  def esDescuentoActivo(Date fechaVencimientoPago, Descuento descuento) {
+    def fechaVencimientoDescuento = (fechaVencimientoPago + descuento.diasPreviosParaCancelarDescuento)
+    (new Date().clearTime() == fechaVencimientoDescuento)
+  }
+
+  def obtenerMontoTotalDescuentoVencido(Descuento descuento, def cantidadDePago) {
+    descuento?.cantidad + ((descuento?.porcentaje / 100) * cantidadDePago)
+  }
+
 }
