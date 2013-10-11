@@ -220,7 +220,7 @@
             </ul>
           </li>
           <li>
-            <g:link controller="pago" action="pagosDeUnaInstitucion" >
+            <g:link controller="pago" action="mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos" >
               <i class="icon-random"></i>
               <span class="menu-text">Cociliacion</span>
             </g:link>
