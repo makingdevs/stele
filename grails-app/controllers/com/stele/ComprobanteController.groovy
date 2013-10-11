@@ -22,12 +22,12 @@ class ComprobanteController {
   def validarComprobante() {
     comprobanteService.aprobarPago(params.transactionId, params.fechaPago, params.tipoPago as TipoDePago)
     flash.success = "El comprobante fue aprobado"
-    redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
+    redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
   def rechazarPago() {
     comprobanteService.rechazarPago(params.transactionId)
-    redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
+    redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
 }
