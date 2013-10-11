@@ -12,7 +12,7 @@
     <div class="row-fluid">
       <div class="span12">
         <ul class="nav nav-tabs">
-          <li><a href="#procesado" data-toggle="tab">Procesados</a></li>
+          <li class="active"><a href="#procesado" data-toggle="tab">Procesados</a></li>
           <li><a href="#rechazado" data-toggle="tab">Rechazados</a></li>
           <li><a href="#vencido" data-toggle="tab">Vencidos</a></li>
           <li><a href="#creado" data-toggle="tab">Creados</a></li>
