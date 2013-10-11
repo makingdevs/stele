@@ -1,5 +1,10 @@
 package com.stele
 
+import com.makingdevs.*
+import com.payable.*
+import com.stele.seguridad.Usuario
+
+
 class HistorialAcademicoService {
   def registrar(HistorialAcademico historialAcademico) {
     Dependiente dependiente = Dependiente.get(historialAcademico.dependiente.id)
@@ -22,5 +27,12 @@ class HistorialAcademicoService {
     historialAcademico.dependiente = dependiente
     historialAcademico
   }
+
+  def obtenerHistorilesAcademicosYPagosDeUnaInstitucion(Usuario usuario) {
+    def distribucionInstitucional = DistribucionInstitucional.findByInstitucion(usuario.instituciones.first())
+    def historialAcademico = HistorialAcademico.findAllByDistribucionInstitucional(distribucionInstitucional)
+    historialAcademico
+  } 
+
 
 }
