@@ -6,18 +6,16 @@ class PagoController {
 
   def springSecurityService
   def pagoService
+  def historialAcademicoService
 
   def index() { 
-    def pagosDeUsuario = pagoService.obtenerPagosDeLosDependientesEnBaseAUsuario(springSecurityService.currentUser)
-    [pagosDeUsuario: pagosDeUsuario.pagos, usuario: springSecurityService.currentUser]
+    def pagosDeUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
+    [pagosDeUsuario: pagosDeUsuario, usuario: springSecurityService.currentUser]
   }
 
-  def pagosDeUnaInstitucion() {
-    def pago = pagoService.obtenerPagosDeUnaInstitucion(springSecurityService.currentUser)
-   [
-   pagosInstitucion: Pago.findAllByHistorialAcademicoInList(pago.historial), 
-   usuario: springSecurityService.currentUser, 
-   pagosCount: pago.dependiente]
+  def mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos() {
+   def pagosAsociadosAInstitucion = historialAcademicoService.obtenerHistorilesAcademicosYPagosDeUnaInstitucion(springSecurityService.currentUser)
+   render (view: "pagosAsociadosAUnaInstitucion", model:[pagosInstitucion:pagosAsociadosAInstitucion, usuario:springSecurityService.currentUser])
   }
 
 }
