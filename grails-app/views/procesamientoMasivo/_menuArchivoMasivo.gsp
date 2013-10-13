@@ -1,12 +1,5 @@
 <div class="row-fluid wizard-actions">
-  <button class="btn btn-prev">
-    <i class="icon-arrow-left"></i>
-    Previo
-  </button>
-  <g:link controller="esquemaDePago" action="paraCamada" class="btn btn-large btn-success" params="[camada:camadaGenerada, listaDeUsuarios: listaUsuariosProcesados]">
-    Siguiente
-    <i class="icon-arrow-right icon-on-right"></i>
-  </g:link>
+
 </div>
 <g:set var="proceso" value="false" scope="flash" />
 <g:hiddenField name="camada" value="${camadaGenerada}" />
