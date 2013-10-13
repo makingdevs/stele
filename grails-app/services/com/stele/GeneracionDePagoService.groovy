@@ -109,9 +109,10 @@ class GeneracionDePagoService {
       if (descuetoId)
         listaIdDescuentos.add(descuetoId.toLong())
     }
-
-    Descuento.withCriteria {
-      'in'('id', listaIdDescuentos)
+    if (!listaIdDescuentos.isEmpty()) {
+      Descuento.withCriteria {
+        'in'('id', listaIdDescuentos)
+      }
     }
   }
 
