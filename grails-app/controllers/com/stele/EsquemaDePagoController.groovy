@@ -8,6 +8,7 @@ class EsquemaDePagoController {
 
   def springSecurityService
   def generacionDePagoService
+  def wrapperCommandService
 
   def scaffold = EsquemaDePago
  
@@ -20,8 +21,8 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
-
-    def pagos = generacionDePagoService.paraCamadaPagoCommand(cpc)
+    def grupoPagoCommand = wrapperCommandService.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, springSecurityService.currentUser.instituciones?.first())
+    def pagos = generacionDePagoService.generaPagoParaGrupo(grupoPagoCommand)
     flash.pago = pagos
     flash.success = "Bien Hecho"
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada]
