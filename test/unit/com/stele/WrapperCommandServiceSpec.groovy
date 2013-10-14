@@ -7,7 +7,7 @@ import spock.lang.Specification
 import com.payable.GrupoPagoCommand
 
 @TestFor(WrapperCommandService)
-@Mock([CamadaPagoCommand, GrupoPagoCommand, Dependiente])
+@Mock(Dependiente)
 class WrapperCommandServiceSpec extends Specification {
 
   def "Generar parseo de camadaCommad a GrupoCommand directo"() {
@@ -30,8 +30,11 @@ class WrapperCommandServiceSpec extends Specification {
       cpc.diasPreviosParaCancelarDescuento = 5
       cpc.meses = [2,4,6,8]  
       cpc.pagoDoble = [2,8]
-      cpc.listaDependientes = 
-
+      cpc.listaDependientes = "[${dependiente1.id}, ${dependiente2.id}]"
+    when: "verificar que el parseo de los command es satisfactorio"
+      def grupoCommand = service.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc)
+    then:
+      assert grupoCommand instanceof GrupoPagoCommand    
   }
 
 }
