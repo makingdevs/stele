@@ -11,7 +11,7 @@ class Dependiente extends Payable{
   String matricula
   Perfil perfil
   String camada
-  static hasMany = [historialAcademico : HistorialAcademico, pagos : Pago]
+  static hasMany = [historialAcademico : HistorialAcademico]
   static belongsTo = [usuario : Usuario]
 
   Date dateCreated
