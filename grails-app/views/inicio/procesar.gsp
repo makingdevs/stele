@@ -66,10 +66,10 @@
                   <div class="widget-main">
                     <div class="row-fluid">
                       <g:if test="${flash.inscripcionCobro == 'true'}">
-                        <g:render template="menuArchivoCobro" />
+                        <g:render template="procesar/menuArchivoCobroProceso" />
                       </g:if>
                       <g:else>
-                        <g:render template="menuArchivo" />
+                        <g:render template="procesar/menuArchivoProceso" />
                       </g:else>
 
                       <hr />
