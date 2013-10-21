@@ -1,4 +1,4 @@
-<%@ page import="com.stele.EstatusDePago" %>
+<%@ page import="com.payable.EstatusDePago" %>
   <table class="table">
     <thead style="background-color:whiteSmoke">
       <tr>
