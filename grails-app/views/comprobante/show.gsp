@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ page import="com.stele.EstatusDePago" %>
+<%@ page import="com.payable.EstatusDePago" %>
 <html>
   <head>
     <meta name="layout" content="twitterBootstrap"/>
