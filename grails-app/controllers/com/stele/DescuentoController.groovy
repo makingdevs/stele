@@ -13,16 +13,18 @@ class DescuentoController {
   static allowedMethods = [obtenerDescuentosInstitucion : 'GET']
 
   def nuevo() {
-    log.debug "descuentos : $params"
     Descuento descuento = findOrSaveDescuentoWithParams(params)
-
     def descuentosIds = [descuento.id]
+    def descuentoConFechaDeVencimiento = params.descuentoConFecha?.replace('[','')?.replace(']','')?.split(',') ?: ""
     if(params.descuentosIds) {
       def listaDescuentos = params.descuentosIds?.replace('[','')?.replace(']','')?.split(',') ?: []
       descuentosIds += listaDescuentos.collect{ s -> Long.valueOf(s) }
     }
-    log.debug "descuentosIds : $descuentosIds"
-    render template:"/descuento/list", model:[descuentos:Descuento.getAll(descuentosIds), descuentosIds:descuentosIds]
+    println descuentoConFechaDeVencimiento
+    if (params.diasPreviosParaCancelarDescuento.equals("1")){
+      descuentoConFechaDeVencimiento += descuento?.id + ":" + params.fechaDeVencimiento 
+    }
+    render template:"/descuento/list", model:[descuentos:Descuento.getAll(descuentosIds), descuentosIds:descuentosIds,descuentosVencimiento:descuentoConFechaDeVencimiento]
   }
 
   def obtenerDescuentosInstitucion() {
@@ -36,7 +38,7 @@ class DescuentoController {
     Descuento descuento = Descuento.findByNombreDeDescuento(params.nombreDeDescuento)
     if(!descuento) {
       descuento = new Descuento(params)
-      descuento.institucion = springSecurityService.currentUser.instituciones?.first()  
+      descuento.organizacion = springSecurityService.currentUser.instituciones?.first()  
       descuento.save(flush:true)
     }
     descuento
