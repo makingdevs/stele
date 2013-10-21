@@ -19,11 +19,11 @@
           <li><a href="#pagado" data-toggle="tab">Pagados</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="procesado"><g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/></div>
-          <div class="tab-pane" id="rechazado"><g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/></div>
-          <div class="tab-pane" id="vencido"><g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/></div>
-          <div class="tab-pane" id="creado"><g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion]"/></div>
-          <div class="tab-pane" id="pagado"><g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/></div>
+          <div class="tab-pane active" id="procesado"><g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion.pagosProcesados]"/></div>
+          <div class="tab-pane" id="rechazado"><g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion.pagosRechazados]"/></div>
+          <div class="tab-pane" id="vencido"><g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion.pagosVencidos]"/></div>
+          <div class="tab-pane" id="creado"><g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion.pagosEnTiempo, pagosPorRealizar:pagosInstitucion.pagosPorRealizar]"/></div>
+          <div class="tab-pane" id="pagado"><g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion.pagosCorrectos]"/></div>
       </div>
     </div>
 
