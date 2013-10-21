@@ -19,13 +19,13 @@ class ConceptoController {
     }
 
     Concepto concepto = new Concepto(cmd.params)
-    concepto.institucion = springSecurityService.currentUser.instituciones?.first()
+    concepto.organizacion = springSecurityService.currentUser.instituciones?.first()
     concepto.save(flush:true)
     concepto
   }
 
   def obtenerListaConceptos() {
-    def contactList = conceptoService.buscarConceptosDeUnaInstitucion(springSecurityService.currentUser,params.query )
+    def contactList = conceptoService.buscarConceptosDeUnaInstitucion(springSecurityService.currentUser.instituciones.first(),params.query )
     JSON.use('stele') {
       render contactList as JSON
     }
