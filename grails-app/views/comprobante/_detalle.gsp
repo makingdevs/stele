@@ -1,4 +1,4 @@
-<%@ page import="com.stele.EstatusDePago" %>
+<%@ page import="com.payable.EstatusDePago" %>
 <div class="container-fluid">
   <div class="row-fluid">
       <dl>
