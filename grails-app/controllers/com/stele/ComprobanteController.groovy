@@ -1,6 +1,5 @@
 package com.stele
 
-import com.stele.HistorialAcademico
 import com.stele.Dependiente
 import com.makingdevs.*
 import com.payable.*
@@ -13,8 +12,11 @@ class ComprobanteController {
 
   def show() {
     def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
-    def historialAcademico = HistorialAcademico.findById(pago.historialAcademicoId)
-    def dependiente = Dependiente.findById(historialAcademico.dependienteId)
+    def dependiente = Payable.withCriteria {
+      pagos {
+        eq "id", pago.id
+      }
+    }
     def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.perfilId)
     [pago: pago, perfil:perfil]
   }
