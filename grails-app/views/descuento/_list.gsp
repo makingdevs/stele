@@ -7,11 +7,5 @@
     <dd>
       ${descuento?.nombreDeDescuento} 
     </dd>
-    <dt>
-      Fecha Vencimiento : 
-    </dt>
-    <dd>
-      ${descuento?.fechaDeVencimiento.format('yyyy-MM-dd')}  
-    </dd>
   </dl>
 </g:each>
