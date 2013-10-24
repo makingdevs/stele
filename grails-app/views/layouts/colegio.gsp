@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <r:require module="colegio" />
+     <r:require modules="bootstrap-js" />
 
     <!--[if IE 7]>
       <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
@@ -121,20 +122,13 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <span class="user-info">
                   <small>Welcome,</small>
-                  Jason
+                  Says
                 </span>
 
                 <i class="icon-caret-down"></i>
               </a>
 
               <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-                <li>
-                  <a href="#">
-                    <i class="icon-cog"></i>
-                    Settings
-                  </a>
-                </li>
-
                 <li>
                   <a href="#">
                     <i class="icon-user"></i>
@@ -145,10 +139,10 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="#">
-                    <i class="icon-off"></i>
-                    Logout
-                  </a>
+                    <g:link controller="logout">
+                      <i class="icon-off"></i>
+                      Logout
+                    </g:link>
                 </li>
               </ul>
             </li>
