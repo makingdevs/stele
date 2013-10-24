@@ -7,7 +7,9 @@ class CamadaPagoCommand {
 
   String camada
   String conceptoDePago
+  String conceptoDePagoRecurrente
   BigDecimal cantidadDePago
+  BigDecimal cantidadDePagoRecurrente
   Date fechaDeVencimiento
   Integer diasPreviosParaCancelarDescuento
   String[] descuentos
@@ -19,8 +21,8 @@ class CamadaPagoCommand {
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
-    conceptoDePago size:1..150, blank:false, nullable:false
-    cantidadDePago min:1.0, nullable:false
+    conceptoDePago size:1..150, blank:false, nullable:true
+    cantidadDePago  nullable:true
     fechaDeVencimiento nullable: false
     diasPreviosParaCancelarDescuento nullable: true
     descuentos nullable:true
