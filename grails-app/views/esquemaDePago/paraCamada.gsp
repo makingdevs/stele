@@ -158,7 +158,7 @@
                                           <label class="control-label" for="txtConcepto">Concepto</label>
                                           <div class="controls">
                                             <div class="input-prepend">
-                                              <input type="text" id="conceptoDePagoRecurrente" class="typeahead" data-provide="typeahead" name="conceptoDePago" placeholder="Concepto" autocomplete="off" >
+                                              <input type="text" id="conceptoDePagoRecurrente" class="typeahead" data-provide="typeahead" name="conceptoDePagoRecurrente" placeholder="Concepto" autocomplete="off" >
                                               <span class="add-on">
                                                 <i class="icon-edit"></i>
                                               </span>
@@ -169,12 +169,12 @@
                                           <label class="control-label" for="txtConcepto"> Dias Vencimiento  </label>
                                           <div class="controls">
                                             <div class="input-prepend">
-                                              <g:select name="diasVencimientoPago" from="${1..30}" noSelection="['':'- Dia -']"/>
+                                              <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..30}" noSelection="['':'- Dia -']"/>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="control-group">
-                                          <label class="control-label" for="txtConcepto">Importe</label>
+                                          <label class="control-label" for="numCantidadDePagoRecurrente">Importe</label>
                                           <div class="controls">
                                             <div class="input-prepend">
                                               <span class="add-on">
@@ -351,7 +351,7 @@
                                         </div>
                                       </div>
                                       <g:form class="form-horizontal" name="descuentosForm" url="[controller:'descuento', action:'nuevo']" id="descuentosForm" >
-                                      <div class="span3">
+                                      <div class="span4">
                                       <p></p><p></p>
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto"> Descuento </label>
@@ -389,7 +389,7 @@
                                           </div>
                                         </div>            
                                       </div>
-                                      <div class="span3">
+                                      <div class="span4">
                                         <div class="control-group">
                                             <div class="input-prepend"> 
 
@@ -413,6 +413,13 @@
                                         <div class="contro-group">
                                           <div class="controls">
                                             <input class="btn btn-primary" type="submit" id="descuentoButton" value ="Crear Descuento">
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="span4">
+                                        <div class="control-group">
+                                          <div id="descuentoCreado">
+                                            <g:render template="/descuento/list", model="[:]" />
                                           </div>
                                         </div>
                                       </div>
