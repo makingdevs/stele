@@ -12,6 +12,7 @@ class CamadaPagoCommand {
   BigDecimal cantidadDePagoRecurrente
   Date fechaDeVencimiento
   Integer diasPreviosParaCancelarDescuento
+  Integer diasVencimientoPago
   String[] descuentos
   String[] recargoid
   String[] meses
