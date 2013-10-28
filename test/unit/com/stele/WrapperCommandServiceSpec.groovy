@@ -30,7 +30,7 @@ class WrapperCommandServiceSpec extends Specification {
       cpc.camada = camada
       cpc.conceptoDePago = conceptoDePago
       cpc.cantidadDePago = cantidadDePago
-      cpc.fechaDeVencimiento = fechaDeVencimiento
+      cpc.fechaDeVencimiento = fechaDeVencimiento.toString()
       cpc.diasPreviosParaCancelarDescuento = diasPrevios
       cpc.meses = meses
       cpc.pagoDoble = pagoDoble
@@ -43,7 +43,7 @@ class WrapperCommandServiceSpec extends Specification {
       assert grupoCommand.organizacion.id  == institucion.id
     where:
      camada        |cantidadDePago | conceptoDePago | fechaDeVencimiento | diasPrevios | meses      | pagoDoble 
-     "Making_Devs" | 15000         | "Inscripcion"  | new Date() + 30    |  6          | [2,4,6,8]  | [2,8]
+     "Making_Devs" | 15000         | "Inscripcion"  | "30/11/2014 "      |  6          | [2,4,6,8]  | [2,8]
   }
 
 }
