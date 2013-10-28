@@ -5,14 +5,27 @@
     <r:require module="pagosParaCamada"/>
     <r:require module="generarPagos" />
     <r:require module="autocomplete" />
+    <r:require module="bootstrapDatePicker" />
   </head>
   <body>
     <script type="text/javascript">
       $(document).ready(function(){
-        console.log("javascript")
         $("#submitFormPayout").click(function(){
-          console.log("click");
           $("#pagoGeneracion").submit();
+        });
+      });
+      $(document).ready(function() {
+        $('#datetimepicker1').datepicker({
+          format : "dd/mm/yyyy",
+          language : 'es',
+          autoclose : true
+        });
+      });
+      $(document).ready(function() {
+        $('#datetimepicker2').datepicker({
+          format : "dd/mm/yyyy",
+          language : 'es',
+          autoclose : true
         });
       });
     </script>
@@ -55,8 +68,8 @@
                       <g:render template="menuArchivoPago" />
                       <hr />
                         <div class="step-content row-fluid  position-relative" id="step-container">
-                        <div class="step-pane active" id="step5">
-                          <div class="tabbable3">
+                          <div class="step-pane active" id="step5">
+                            <div class="tabbable3">
                                 <ul class="nav nav-tabs padding-18 tab-size-bigger" id="myTab3">
                                   <li class="active">
                                     <a data-toggle="tab" href="#faq-tab-111">
@@ -83,11 +96,11 @@
                                     </a>
                                   </li>
                                 </ul>
-                                <div class="tab-content no-border padding-24">
-                                  <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+                                <div class="tab-content">
+                                  <div id="faq-tab-111" class="tab-pane active">
+                                    <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
                                     <input type="hidden" id="camada" name="camada" value="${camada}">
                                     <input type="hidden" id="listaDependientes" name="listaDependientes" value="${flash.dependientes}">
-                                    <div id="faq-tab-111" class="tab-pane fade in active">
                                       <div class="row-fluid">
                                         <div class="span8">
                                         <div class="alert alert-info">
@@ -124,12 +137,12 @@
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
-                                            <div class="input-append">
-                                              <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
+                                            <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                              <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
-                                            </div>  
+                                            </div>
                                           </div>
                                         </div>  
                                         </div>
@@ -142,8 +155,8 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                    <div id="faq-tab-222" class="tab-pane fade">
+                                  </div>
+                                  <div id="faq-tab-222" class="tab-pane">
                                       <div class="row-fluid">
                                       <div class="span12">
                                         <div class="alert alert-info">
@@ -334,9 +347,9 @@
 
                                       </div>
                                       </div>
-                                    </div>
-                                  </g:form>
-                                  <div id="faq-tab-333" class="tab-pane fade">
+                                    </g:form>
+                                  </div>
+                                  <div id="faq-tab-333" class="tab-pane">
                                     <div class="row-fluid">
                                       <div class="span12">
                                         <div class="alert alert-info">
@@ -380,8 +393,8 @@
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
-                                            <div class="input-append">
-                                              <g:datePicker name="fechaDeVencimiento" value="${new Date()}" precision="day" />
+                                            <div id="datetimepicker2" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                              <input data-format="yyyy-mm-dd" id="fechaDeVencimiento" name="fechaDeVencimiento" type="text"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
@@ -426,7 +439,7 @@
                                       </g:form>
                                     </div>
                                   </div>
-                                  <div id="faq-tab-444" class="tab-pane fade">
+                                  <div id="faq-tab-444" class="tab-pane">
                                     <div class="row-fluid">
                                       <div class="span12">
                                             <div class="alert alert-info">
@@ -470,8 +483,8 @@
                                     </div><!--/row-->
                                   </div>  
                                 </div>
+                            </div>
                           </div>
-                        </div>
                         </div>
                       <hr />
                     </div>
