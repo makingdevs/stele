@@ -10,7 +10,7 @@ class CamadaPagoCommand {
   String conceptoDePagoRecurrente
   BigDecimal cantidadDePago
   BigDecimal cantidadDePagoRecurrente
-  Date fechaDeVencimiento
+  String fechaDeVencimiento
   Integer diasPreviosParaCancelarDescuento
   Integer diasVencimientoPago
   String[] descuentos
