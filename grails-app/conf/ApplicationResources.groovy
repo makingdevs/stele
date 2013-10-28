@@ -72,6 +72,11 @@ modules = {
 
   }
 
+  bootstrapDatePicker {
+    resource url: 'datepicker/css/datepicker.css'
+    resource url: 'datepicker/js/bootstrap-datepicker.js'
+  }
+
   customBootsrapCss{
     resource url:'assets/css/bootstrap.min.css'
     resource url:'assets/css/bootstrap-responsive.min.css'
