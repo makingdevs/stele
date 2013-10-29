@@ -24,7 +24,7 @@ class CamadaPagoCommand {
     camada size:1..100, blank:false, nullable:false
     conceptoDePago size:1..150, blank:false, nullable:true
     cantidadDePago  nullable:true
-    fechaDeVencimiento nullable: false
+    fechaDeVencimiento nullable: true
     diasPreviosParaCancelarDescuento nullable: true
     descuentos nullable:true
     recargoid nullable:true
