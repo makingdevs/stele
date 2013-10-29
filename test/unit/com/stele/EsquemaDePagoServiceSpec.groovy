@@ -1,78 +1,48 @@
 package com.stele
 
-import static org.junit.Assert.*
-import grails.test.mixin.*
-import org.junit.*
+import grails.test.mixin.TestFor
+import grails.test.mixin.Mock
 import spock.lang.Specification
-import spock.lang.Unroll
+import com.payable.*
 
 @TestFor(EsquemaDePagoService)
-@Mock([Descuento,EsquemaDePago])
+@Mock([Concepto,Institucion,Recargo,Descuento,EsquemaDePago])
 class EsquemaDePagoServiceSpec extends Specification {
 
-  @Unroll("Dados los descuentos: #descuentos la cantidad aplicable de descuento es #descuentoCalculado para una cantidad de #cantidadDePago")
-	def "Dado un esquema de pago con descuentos en cantidades calcular la cantidad aplicable"() {
-    given:
-      crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos)
+  def "Generar un objeto esquema de pago nuevo"() {
+    setup:
+      Institucion institucion = new Institucion()
+      institucion.nombre = "making_devs"
+      institucion.save(validate:false)
+    and:
+      Concepto concepto = new Concepto()
+      concepto.descripcion = "concepto"
+      concepto.organizacion = institucion
+      concepto.save(validate:false)
+    and:
+      Recargo recargo = new Recargo()
+      recargo.cantidad = 350
+      recargo.save(validate:false) 
+    and:
+      Descuento descuento = new Descuento()
+      descuento.nombreDeDescuento = "descuento"
+      descuento.cantidad = 5000
+      descuento.diasPreviosParaCancelarDescuento = 6
+      descuento.organizacion = institucion
+      descuento.save(validate:false)
+    and:
+      GrupoPagoCommand gpc = new GrupoPagoCommand()
+      gpc.cantidadDePago = 13000
+      gpc.conceptoDePago = "concepto"
+      gpc.recargoId = recargo.id
+      gpc.descuentoIds = ["[${descuento.id}]"]
     when:
-      def cantidadDeDescuentoAplicable = service.obtenerCantidadDeDescuentoAplicable(1L)
+      def esquemaDePago = service.buscarOSalvarEsquemaDePago(gpc)
     then:
-      cantidadDeDescuentoAplicable == descuentoCalculado
-      cantidadDePago - descuentoCalculado == cantidadAPagar
-    where:
-      cantidadDePago     << [
-        1000, 
-        1000, 
-        8000,
-        10000,
-        10000
-      ]
-      descuentos         << [
-        [
-          [porcentaje:0,cantidad:200,diasPreviosParaCancelarDescuento:0]
-        ],
-        [
-          [porcentaje:0,cantidad:200,diasPreviosParaCancelarDescuento:0],
-          [porcentaje:0,cantidad:300,diasPreviosParaCancelarDescuento:0]
-        ],
-        [
-          [porcentaje:0,cantidad:200,diasPreviosParaCancelarDescuento:0],
-          [porcentaje:0,cantidad:100,diasPreviosParaCancelarDescuento:0],
-          [porcentaje:0,cantidad:300,diasPreviosParaCancelarDescuento:0]
-        ],[
-          [porcentaje:10,cantidad:0,diasPreviosParaCancelarDescuento:0]
-        ],[
-          [porcentaje:10,cantidad:0,diasPreviosParaCancelarDescuento:0],
-          [porcentaje:10,cantidad:0,diasPreviosParaCancelarDescuento:0]
-        ]
-
-      ]
-      descuentoCalculado << [
-        200, 
-        500, 
-        600,
-        1000,
-        2000
-      ]
-      cantidadAPagar     << [
-        800, 
-        500, 
-        7400,
-        9000,
-        8000
-      ]
-	}
-
-  private def crearEsquemaDePagoConDescuentos(cantidadDePago, descuentos){
-    EsquemaDePago esquemaDePago = new EsquemaDePago(cantidadDePago:cantidadDePago)
-    descuentos.eachWithIndex { d, i ->
-      Descuento descuento = new Descuento(d)
-      descuento.nombreDeDescuento = "Descuento $i"
-      descuento.fechaDeVencimiento = new Date()
-      descuento.save()
-      esquemaDePago.addToDescuentos(descuento)
-    }
-    esquemaDePago.save(validate:false)
-    esquemaDePago
+      assert esquemaDePago.id > 0
+      assert esquemaDePago.recargo.id >0
+      assert esquemaDePago.cantidadDePago == 13000
   }
+
+
 }

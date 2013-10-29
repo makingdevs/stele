@@ -1,4 +1,4 @@
-<%@ page import="com.stele.EstatusDePago" %>
+<%@ page import="com.payable.EstatusDePago" %>
 <table class="table">
   <thead style="background-color:whiteSmoke">
     <tr>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.PROCESO  ">
+  <g:findAll in="${pagos?.pagosProcesados}" expr="it.estatusDePago == EstatusDePago.PROCESO  ">
       <tr class="info">
         <td> ${it.conceptoDePago} </td>
         <td> $ ${it.cantidadDePago} </td>
@@ -27,20 +27,14 @@
           </g:if>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PROCESO }">
             <td><g:link class="btn" controller="comprobante" action="show" id="${it.id}"><i class="icon-search"></i></g:link>
-            <g:link class="btn"><i class="icon-ok"></i></g:link>
-            <g:link class="btn"><i class="icon-remove"></i></g:link></td>
           </g:elseif>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PAGADO }">
             <td><g:link controller="comprobante" action="show" id="${it.id}" class="btn"><i class="icon-search"></i></g:link></td>
           </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.RECHAZADO }">
-            <td><g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link></td>
-          </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.CANCELADO }">
-          </g:elseif>
+
       </tr>
   </g:findAll>
-  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.RECHAZADO  ">
+  <g:findAll in="${pagos.pagosRechazados}" expr="it.estatusDePago == EstatusDePago.RECHAZADO  ">
       <tr class="error">
         <td> ${it.conceptoDePago} </td>
         <td> $ ${it.cantidadDePago} </td>
@@ -54,20 +48,14 @@
           </g:if>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PROCESO }">
             <td><g:link class="btn" controller="comprobante" action="show" id="${it.id}"><i class="icon-search"></i></g:link>
-            <g:link class="btn"><i class="icon-ok"></i></g:link>
-            <g:link class="btn"><i class="icon-remove"></i></g:link></td>
           </g:elseif>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PAGADO }">
             <td><g:link controller="comprobante" action="show" id="${it.id}" class="btn"><i class="icon-search"></i></g:link></td>
           </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.RECHAZADO }">
-            <td><g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link></td>
-          </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.CANCELADO }">
-          </g:elseif>
+
       </tr>
   </g:findAll>
-  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.CREADO  ">
+  <g:findAll in="${pagos.pagosEnTiempo}" expr="it.estatusDePago == EstatusDePago.CREADO  ">
       <tr>
         <td> ${it.conceptoDePago} </td>
         <td> $ ${it.cantidadDePago} </td>
@@ -81,20 +69,35 @@
           </g:if>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PROCESO }">
             <td><g:link class="btn" controller="comprobante" action="show" id="${it.id}"><i class="icon-search"></i></g:link>
-            <g:link class="btn"><i class="icon-ok"></i></g:link>
-            <g:link class="btn"><i class="icon-remove"></i></g:link></td>
           </g:elseif>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PAGADO }">
             <td><g:link controller="comprobante" action="show" id="${it.id}" class="btn"><i class="icon-search"></i></g:link></td>
           </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.RECHAZADO }">
-            <td><g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link></td>
+
+      </tr>
+  </g:findAll>
+  <g:findAll in="${pagos.pagosPorRealizar}" expr="it.estatusDePago == EstatusDePago.CREADO  ">
+      <tr>
+        <td> ${it.conceptoDePago} </td>
+        <td> $ ${it.cantidadDePago} </td>
+        <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDeVencimiento}"/> </td>
+        <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDePago}"/> </td>
+        <td> ${it.tipoDePago} </td>
+        <td>${(new Date() - it.lastUpdated)}</td>
+        <td> ${it.estatusDePago} </td>
+          <g:if test="${it.estatusDePago == EstatusDePago.CREADO }">
+            <td> <g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
+          </g:if>
+          <g:elseif test="${it.estatusDePago == EstatusDePago.PROCESO }">
+            <td><g:link class="btn" controller="comprobante" action="show" id="${it.id}"><i class="icon-search"></i></g:link>
+
           </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.CANCELADO }">
+          <g:elseif test="${it.estatusDePago == EstatusDePago.PAGADO }">
+            <td><g:link controller="comprobante" action="show" id="${it.id}" class="btn"><i class="icon-search"></i></g:link></td>
           </g:elseif>
       </tr>
   </g:findAll>
-  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.PAGADO  ">
+  <g:findAll in="${pagos.pagoCorrectos}" expr="it.estatusDePago == EstatusDePago.PAGADO  ">
       <tr class="success"> 
         <td> ${it.conceptoDePago} </td>
         <td> $ ${it.cantidadDePago} </td>
@@ -108,17 +111,12 @@
           </g:if>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PROCESO }">
             <td><g:link class="btn" controller="comprobante" action="show" id="${it.id}"><i class="icon-search"></i></g:link>
-            <g:link class="btn"><i class="icon-ok"></i></g:link>
-            <g:link class="btn"><i class="icon-remove"></i></g:link></td>
+
           </g:elseif>
           <g:elseif test="${it.estatusDePago == EstatusDePago.PAGADO }">
             <td><g:link controller="comprobante" action="show" id="${it.id}" class="btn"><i class="icon-search"></i></g:link></td>
           </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.RECHAZADO }">
-            <td><g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link></td>
-          </g:elseif>
-          <g:elseif test="${it.estatusDePago == EstatusDePago.CANCELADO }">
-          </g:elseif>
+
       </tr>
   </g:findAll>
   </tbody>

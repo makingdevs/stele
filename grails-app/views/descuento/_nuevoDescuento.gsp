@@ -43,7 +43,7 @@
   <div class="control-group">
     <label for="diasPreviosParaCancelarDescuento" class="control-label">Anular descuento a los : </label>
     <div class="controls">
-      <g:select class="span1" name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- 0 -']"/>
+      <g:select class="span1" name="diasPreviosParaCancelarDescuento" from="${1..30}"/>
       día(s) antes de la fecha de vencimiento.
     </div>
   </div>

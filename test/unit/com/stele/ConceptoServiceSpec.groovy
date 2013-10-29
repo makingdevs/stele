@@ -4,6 +4,7 @@ import grails.test.mixin.*
 import spock.lang.Specification
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
+import com.payable.*
 
 @TestFor(ConceptoService)
 @Mock([Institucion,Usuario,DistribucionInstitucional,Concepto,Perfil])
@@ -39,15 +40,15 @@ class ConceptoServiceSpec extends Specification {
       usuario.save(flush:true)
       concepto1.id = 1
       concepto1.descripcion = "Colegiatura"
-      concepto1.institucion = institucion
+      concepto1.organizacion = institucion
       concepto1.save(flush:true)
       concepto2.id = 2
       concepto2.descripcion = "Primera colegiatura"
-      concepto2.institucion = institucion
+      concepto2.organizacion = institucion
       concepto2.save(flush:true)
       def query = "giat"
       when: "Se realiza la llamada al metodo buscarConceptosDeUnaInstitucion"
-      def conceptoInstitucion = service.buscarConceptosDeUnaInstitucion(usuario, query)
+      def conceptoInstitucion = service.buscarConceptosDeUnaInstitucion(usuario.instituciones.first(), query)
       then: "la cantidad de conceptos debe de ser igual a 2"
       assert conceptoInstitucion.size() == 2
 
@@ -83,10 +84,8 @@ class ConceptoServiceSpec extends Specification {
       usuario.save(flush:true)
       String descripcionConcepto = "concepto no existente"
       when: "se Realiza la llamada al servicio que verifica la existencia del concepto"
-      def resultadoBusquedaConcepto = service.verificarConceptoPagoExistente(descripcionConcepto)
-      def conceptoGuardado = service.guardarConceptoDePagoGenerado(usuario, descripcionConcepto)
+      def conceptoGuardado = service.buscarOSalvarConceptoDePago(usuario.instituciones.first(), descripcionConcepto)
       then:
-      assert resultadoBusquedaConcepto == false
       assert conceptoGuardado.id == 1
       assert conceptoGuardado.descripcion =="concepto no existente"
   }
@@ -121,13 +120,13 @@ class ConceptoServiceSpec extends Specification {
       usuario.save(flush:true)
       concepto1.id = 1
       concepto1.descripcion = "Colegiatura"
-      concepto1.institucion = institucion
+      concepto1.organizacion = institucion
       concepto1.save(flush:true)    
       String descripcionConcepto = "Colegiatura"    
       when:
-      def resultadoBusquedaConcepto = service.verificarConceptoPagoExistente(descripcionConcepto)
+      def resultadoBusquedaConcepto = service.buscarOSalvarConceptoDePago(usuario.instituciones.first(),descripcionConcepto)
       then:
-      assert resultadoBusquedaConcepto == true
+      assert resultadoBusquedaConcepto.first().id == 1
   }
 
 }

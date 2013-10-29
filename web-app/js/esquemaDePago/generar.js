@@ -21,20 +21,12 @@ $(document).ready(function(){
       $(element).parents(".control-group").first().removeClass(errorClass).addClass(validClass);
     },
     rules: {
-      'conceptoDePago':{
-        required: true
-      },
       'cantidadDePago': {
-        required: true, 
         number: true
       }, 
     },
     messages: {
-      'conceptoDePago': {
-        required: "El concepto es requerido"
-      },
       'cantidadDePago': {
-        required: "El monto es requerido",
         number: "El campo solo accepta Numeros"
       }
     }, 
@@ -55,7 +47,6 @@ $(document).ready(function(){
       data: data,
       success: function(data) {
         $("#descuentoCreado").html(data)
-        $('#descuentoModal').modal('hide');
       }
     });
     

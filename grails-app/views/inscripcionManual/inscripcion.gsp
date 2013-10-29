@@ -3,7 +3,7 @@
 
 <html >
   <head>
-  <meta name="layout" content="colegio"/>
+    <meta name="layout" content="colegio"/>
     <r:require modules="inscripcion" />
   </head>
   <body>

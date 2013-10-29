@@ -1,6 +1,7 @@
 package com.stele
 
 import grails.test.mixin.TestFor
+import com.payable.*
 import spock.lang.Specification
 
 /**

@@ -1,8 +1,8 @@
 package com.stele
 
-import com.stele.HistorialAcademico
 import com.stele.Dependiente
 import com.makingdevs.*
+import com.payable.*
 
 class ComprobanteController {
 
@@ -12,8 +12,11 @@ class ComprobanteController {
 
   def show() {
     def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
-    def historialAcademico = HistorialAcademico.findById(pago.historialAcademicoId)
-    def dependiente = Dependiente.findById(historialAcademico.dependienteId)
+    def dependiente = Payable.withCriteria {
+      pagos {
+        eq "id", pago.id
+      }
+    }
     def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.perfilId)
     [pago: pago, perfil:perfil]
   }
@@ -21,12 +24,12 @@ class ComprobanteController {
   def validarComprobante() {
     comprobanteService.aprobarPago(params.transactionId, params.fechaPago, params.tipoPago as TipoDePago)
     flash.success = "El comprobante fue aprobado"
-    redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
+    redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
   def rechazarPago() {
     comprobanteService.rechazarPago(params.transactionId)
-    redirect (controller: "Pago", action: "pagosDeUnaInstitucion")
+    redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
 }

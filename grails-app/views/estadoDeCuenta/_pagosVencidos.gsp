@@ -1,4 +1,4 @@
-<%@ page import="com.stele.EstatusDePago" %>
+<%@ page import="com.payable.EstatusDePago" %>
   <table class="table">
    <caption>Pagos Pendientes hasta <font style="text-transform: capitalize;">${ new Date().format('MMMM')} </font> </caption>
    <thead style="background-color:whiteSmoke">

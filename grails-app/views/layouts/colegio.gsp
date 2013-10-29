@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <r:require module="colegio" />
+     <r:require modules="bootstrap-js" />
 
     <!--[if IE 7]>
       <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
@@ -121,7 +122,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <span class="user-info">
                   <small>Welcome,</small>
-                  Jason
+                  Says
                 </span>
 
                 <i class="icon-caret-down"></i>
@@ -130,20 +131,11 @@
               <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
                 <li>
                   <a href="#">
-                    <i class="icon-cog"></i>
-                    Settings
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#">
                     <i class="icon-user"></i>
                     Profile
                   </a>
                 </li>
-
                 <li class="divider"></li>
-
                 <li>
                   <g:link controller="logout">
                     <i class="icon-off"></i>
@@ -220,7 +212,7 @@
             </ul>
           </li>
           <li>
-            <g:link controller="pago" action="pagosDeUnaInstitucion" >
+            <g:link controller="pago" action="mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos" >
               <i class="icon-random"></i>
               <span class="menu-text">Cociliacion</span>
             </g:link>

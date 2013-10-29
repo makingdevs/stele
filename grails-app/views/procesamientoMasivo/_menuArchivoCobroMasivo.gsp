@@ -3,7 +3,7 @@
 		<i class="icon-arrow-left"></i>
 		Previo
 	</button>
-	<g:link controller="esquemaDePago" action="paraCamada" class="btn btn-large btn-success" params="[camada:camadaGenerada, listaDeUsuarios: listaUsuariosProcesados]">
+	<g:link controller="esquemaDePago" action="paraCamada" class="btn btn-success" params="[camada:camadaGenerada, listaDeUsuarios: listaUsuariosProcesados]">
 		Siguiente
 		<i class="icon-arrow-right icon-on-right"></i>
 	</g:link>

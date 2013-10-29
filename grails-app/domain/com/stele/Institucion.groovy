@@ -3,14 +3,10 @@ package com.stele
 import com.stele.seguridad.Usuario
 import groovy.transform.ToString
 import com.makingdevs.*
+import com.payable.*
 
 @ToString
-class Institucion {
-
-  String nombre
-
-  Date dateCreated
-  Date lastUpdated
+class Institucion extends Organizacion{
 
   static belongsTo = Usuario
   static hasMany = [direcciones: Direccion, telefonos: Telefono, distribucionesInstitucionales : DistribucionInstitucional, usuarios : Usuario]
