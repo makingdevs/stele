@@ -4,7 +4,7 @@
 <html >
   <head>
   <meta name="layout" content="colegio"/>
-    <title>Colegio ABC</title>
+    <title></title>
     <r:require modules="inscripcion" />
   </head>
   <body>
