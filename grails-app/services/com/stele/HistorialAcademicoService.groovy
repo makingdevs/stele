@@ -28,9 +28,9 @@ class HistorialAcademicoService {
     historialAcademico
   }
 
-  def obtenerHistorilesAcademicosYPagosDeUnaInstitucion(Usuario usuario) {
-    def distribucionInstitucional = DistribucionInstitucional.findByInstitucion(usuario.instituciones.first())
-    def historialAcademico = HistorialAcademico.findAllByDistribucionInstitucional(distribucionInstitucional)
+  def obtenerHistorilesAcademicosDelaInstitucion(Usuario usuario) {
+    def distribucionInstitucional = DistribucionInstitucional.findAllByInstitucion(usuario.instituciones.first())
+    def historialAcademico = HistorialAcademico.findAllByDistribucionInstitucionalInList(distribucionInstitucional)
     historialAcademico
   } 
 
