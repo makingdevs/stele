@@ -166,7 +166,7 @@ class HistorialAcademicoServiceSpec extends Specification {
       assert historialAcademico.equals(historialAcademicoDuplicado)
   }
 
-  def "validar la busqueda de historiales y pagos de una institucion"() {
+  def "validar la busqueda de historiales de una institucion"() {
     given: 
       Pago pago = new Pago()
       pago.cantidadDePago = 1000
@@ -195,8 +195,8 @@ class HistorialAcademicoServiceSpec extends Specification {
       dependiente.addToHistorialAcademico(historial)
       dependiente.usuario = user
       dependiente.save(validate:false)
-    when: "Se buscara los historiales academicos y pagos asociados a la institucion"
-      def historialesYPagos = service.obtenerHistorilesAcademicosYPagosDeUnaInstitucion(user)
+    when: "Se buscara los historiales academicos asociados a la institucion"
+      def historialesYPagos = service.obtenerHistorilesAcademicosDelaInstitucion(user)
     then:
       assert historialesYPagos.first().id > 0
       assert historialesYPagos.first().dependiente.pagos.first().cantidadDePago == 1000
