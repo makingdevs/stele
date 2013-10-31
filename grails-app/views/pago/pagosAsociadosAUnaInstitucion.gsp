@@ -26,7 +26,6 @@
               </small>
             </h1>
           </div><!--/.page-header-->
-
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
@@ -65,23 +64,23 @@
                     </ul>
                     <div class="tab-content">
                       <div id="pendientes" class="tab-pane in active">
-                        <g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosCreados" model="[dependientes:pagosInstitucion]"/>
                       </div>
 
                       <div id="xconciliar" class="tab-pane">
-                        <g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/>
+                        <!--g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/-->
                       </div>
 
                       <div id="conciliados" class="tab-pane ">
-                        <g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/>
+                        <!--g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/-->
                       </div>
 
                       <div id="rechazados" class="tab-pane ">
-                        <g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/>
+                        <!--g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/-->
                       </div>
 
                       <div id="vencidos" class="tab-pane">
-                        <g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/>
+                        <!--g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/-->
                       </div>
                     </div>
                   </div>
