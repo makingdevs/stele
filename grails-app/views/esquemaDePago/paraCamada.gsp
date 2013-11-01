@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <title></title>
+    <r:require modules="bootstrap-js" />
     <r:require module="pagosParaCamada"/>
     <r:require module="generarPagos" />
     <r:require module="autocomplete" />
