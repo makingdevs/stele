@@ -64,11 +64,11 @@
                     </ul>
                     <div class="tab-content">
                       <div id="pendientes" class="tab-pane in active">
-                        <g:render template="estatusDePago/pagosCreados" model="[dependientes:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion]"/>
                       </div>
 
                       <div id="xconciliar" class="tab-pane">
-                        <!--g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/-->
+                        <g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/>
                       </div>
 
                       <div id="conciliados" class="tab-pane ">
