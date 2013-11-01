@@ -34,7 +34,7 @@ class DescuentoController {
     if(!descuento) {
       descuento = new Descuento(params)
       descuento.organizacion = springSecurityService.currentUser.instituciones?.first()  
-      if (!params.diasPreviosParaCancelarDescuento){
+      if (!params.diasVencimientoPago){
         def diasAntes = getLastDayOfMothByDate(new Date().parse("dd/MM/yyyy",params.fechaDeVencimiento))
         descuento.diasPreviosParaCancelarDescuento = diasAntes
       }
