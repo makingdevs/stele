@@ -38,16 +38,20 @@ class EsquemaDePagoController {
     render(view: "generarPagosParaLaCamada", model: [pagos: listaPagos])
   }
 
-  private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
+ private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
     def listaDePagos
     def listaDeDescuentos = grupoPagoCommand.descuentoIds.first()
     listaDeDescuentos = listaDeDescuentos.replace('[','')?.replace(']','')?.split(',')
     listaDeDescuentos.each { idDescuento ->
       def descuentoAplicable 
-      def descuento = Descuento.get(idDescuento.toLong())
-      
-      descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, grupoPagoCommand.fechaDeVencimiento)
-
+      def fechasReferancia = pagos*.fechaDeVencimiento*.format('yyyy-MM-dd').unique()
+      if (grupoPagoCommand.fechaDeVencimiento)
+        descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, grupoPagoCommand.fechaDeVencimiento)
+      else {
+        fechasReferancia.each { fecha ->
+          descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, Date.parse('yyyy-MM-dd', fecha))
+        }
+      } 
       listaDePagos = asignarDescuntosAplicablesAlosPagos(descuentoAplicable, pagos)
 
     }
