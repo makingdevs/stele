@@ -44,10 +44,15 @@ class EsquemaDePagoController {
     listaDeDescuentos = listaDeDescuentos.replace('[','')?.replace(']','')?.split(',')
     listaDeDescuentos.each { idDescuento ->
       def descuentoAplicable 
-      def descuento = Descuento.get(idDescuento.toLong())
-      
-      descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, grupoPagoCommand.fechaDeVencimiento)
+      def fechasReferancia = pagos*.fechaDeVencimiento*.format('yyyy-MM-dd').unique()
 
+      if (grupoPagoCommand.fechaDeVencimiento)
+        descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, grupoPagoCommand.fechaDeVencimiento)
+      else {
+        fechasReferancia.each { fecha ->
+          descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, Date.parse('yyyy-MM-dd', fecha))
+        }
+      } 
       listaDePagos = asignarDescuntosAplicablesAlosPagos(descuentoAplicable, pagos)
 
     }
@@ -57,6 +62,7 @@ class EsquemaDePagoController {
   private def asignarDescuntosAplicablesAlosPagos(def descuentoAplicable, List pagos) {
     def listadePagos = []
     pagos.each { pago ->
+
       if (descuentoAplicable instanceof DescuentoAplicable)
         listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoAplicable, pago.id)
       else if (descuentoAplicable instanceof List<DescuentoAplicable>) {
