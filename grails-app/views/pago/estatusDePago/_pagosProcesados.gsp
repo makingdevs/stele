@@ -6,7 +6,6 @@
         <th>Cantidad</th>
         <th>Vencimiento</th>
         <th>Fecha de pago</th>
-        <th>Tipo de pago</th>
         <th>Días sin conciliar</th>
         <th>Estatus</th>
         <th>&nbsp;</th>
@@ -19,7 +18,6 @@
           <td> $ ${it.cantidadDePago} </td>
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDeVencimiento}"/> </td>
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDePago}"/> </td>
-          <td> ${it.tipoDePago} </td>
           <td>${(new Date() - it.lastUpdated)}</td>
           <td> ${it.estatusDePago} </td>
             <g:if test="${it.estatusDePago == EstatusDePago.CREADO }">
