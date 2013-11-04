@@ -121,8 +121,10 @@
             <li class="light-blue">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <span class="user-info">
-                  <small>Welcome,</small>
-                  Says
+                  <small>
+                    Welcome,
+                  </small>
+                  <sec:loggedInUserInfo field="username"/> 
                 </span>
 
                 <i class="icon-caret-down"></i>
