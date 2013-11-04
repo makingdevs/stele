@@ -1,5 +1,5 @@
 <%@ page import="com.payable.EstatusDePago" %>
-  <table class="table">
+  <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
         <th>Concepto de pago</th>
