@@ -3,6 +3,7 @@
     <thead style="background-color:whiteSmoke">
       <tr>
         <th>&nbsp;</th>
+        <th>Nombre</th>
         <th>Concepto de pago</th>
         <th>Vencimiento</th>
         <th>Cantidad</th>
@@ -19,7 +20,7 @@
           <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
             <td align="justify"><g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link></td>
           </sec:ifAllGranted>
-
+          <td><g:nombreDependiente idPago="${it.id}"></g:nombreDependiente></td>
           <td> ${it.conceptoDePago} </td>
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDeVencimiento}"/> </td>
           <td> $ ${it.cantidadDePago} </td>

@@ -2,6 +2,7 @@
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
+        <th>Nombre</th>
         <th>Concepto de pago</th>
         <th>Vencimiento</th>
         <th>Monto</th>
@@ -9,12 +10,12 @@
         <th>Recargo</th>
         <th>Total</th>
         <th>Estatus</th>
-        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
       <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.CREADO  ">
         <tr>
+          <td><g:nombreDependiente idPago="${it.id}"></g:nombreDependiente></td>
           <td> ${it.conceptoDePago} </td>
           <td> <g:formatDate format="dd/MM/yyyy" date="${it.fechaDeVencimiento}"/> </td>
           <td> $ ${it.cantidadDePago} </td>
