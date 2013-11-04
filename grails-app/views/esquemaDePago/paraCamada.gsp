@@ -29,7 +29,7 @@
         });
       });
     </script>
-   <div class="main-content">
+      <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
           <ul class="breadcrumb">
             <li>
@@ -101,8 +101,6 @@
                                     <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
                                     <input type="hidden" id="camada" name="camada" value="${camada}">
                                     <input type="hidden" id="listaDependientes" name="listaDependientes" value="${flash.dependientes}">
-                                      <div class="row-fluid">
-                                        <div class="span8">
                                         <div class="alert alert-info">
                                           <button class="close" data-dismiss="alert" type="button">
                                             <i class="icon-remove"></i>
@@ -111,8 +109,9 @@
                                             Solo puede seleccionar un concepto cobro unitario o recurrente
                                           <br>
                                         </div>
-
-                                        <div class="control-group">
+                                      <div class="row-fluid">
+                                        <div class="span8">
+                                          <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Concepto</label>
                                           <div class="controls">
                                             <div class="input-prepend">
@@ -122,8 +121,8 @@
                                               </span>
                                             </div>
                                           </div>
-                                        </div>                          
-                                        <div class="control-group">
+                                          </div>                          
+                                          <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Importe</label>
                                           <div class="controls">
                                             <div class="input-prepend">
@@ -133,19 +132,19 @@
                                               <input type="text" id="cantidadDePago" name="cantidadDePago" placeholder="0.0">
                                             </div>  
                                           </div>
-                                        </div>
-                                        <div class="control-group">
+                                          </div>
+                                          <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
-                                            <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                            <div id="datetimepicker2" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
                                               <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
                                             </div>
                                           </div>
-                                        </div>  
-                                        </div>
+                                          </div>  
+                                          </div>
                                         <div class="span4">
                                           <div id="descuentoCreado">
                                             <g:render template="/descuento/list", model="[:]" />
@@ -364,8 +363,8 @@
                                         </div>
                                       </div>
                                       <g:form class="form-horizontal" name="descuentosForm" url="[controller:'descuento', action:'nuevo']" id="descuentosForm" >
-                                      <div class="span4">
-                                      <p></p><p></p>
+                                        <div class="span5">
+                                        <p></p><p></p>
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto"> Descuento </label>
                                           <div class="controls">
@@ -377,7 +376,6 @@
                                             </div>  
                                           </div>
                                         </div>
-                                            
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto"> Importe </label>
                                           <div class="controls">
@@ -389,20 +387,19 @@
                                             </div>
                                           </div>
                                         </div>
-
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
-                                            <div id="datetimepicker2" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                            <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
                                               <input data-format="yyyy-mm-dd" id="fechaDeVencimiento" name="fechaDeVencimiento" type="text"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
                                             </div>
                                           </div>
-                                        </div>            
-                                      </div>
-                                      <div class="span4">
+                                        </div>             
+                                        </div>
+                                        <div class="span4">
                                         <div class="control-group">
                                             <div class="input-prepend"> 
 
@@ -428,14 +425,12 @@
                                             <input class="btn btn-primary" type="submit" id="descuentoButton" value ="Crear Descuento">
                                           </div>
                                         </div>
-                                      </div>
-                                      <div class="span4">
-                                        <div class="control-group">
-                                          <div id="descuentoCreado">
+                                        </div>
+                                        <div class="span3">
+                                         <div id="descuentoCreado2">
                                             <g:render template="/descuento/list", model="[:]" />
                                           </div>
                                         </div>
-                                      </div>
                                       </g:form>
                                     </div>
                                   </div>
@@ -451,7 +446,7 @@
                                             <br>
                                           </div>
                                       </div>
-                                      <g:formRemote name="recargoForm" update="recargoCreado" url="[controller:'recargo', action: 'nuevo']">
+                                      <g:formRemote name="recargoForm" update="recargoCreado, recargoCreado2" url="[controller:'recargo', action: 'nuevo']">
                                       <div class="span6">
                                           <div class="control-group">
                                             <label class="control-label" for="txtConcepto">Importe</label>
@@ -477,6 +472,11 @@
                                           <div class="controls">
                                             <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
                                           </div>
+                                        </div>
+                                      </div>
+                                      <div class="span5">
+                                        <div id="recargoCreado2" name="recargoCreado">
+                                            <g:render template="/recargo/list" />
                                         </div>
                                       </div>
                                       </g:formRemote>
