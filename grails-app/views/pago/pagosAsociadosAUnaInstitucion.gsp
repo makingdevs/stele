@@ -1,3 +1,4 @@
+<%@ page import="com.payable.EstatusDePago" %>
 <html>
   <head>
     <meta name="layout" content="colegio"/>
@@ -39,7 +40,7 @@
 
                       <li>
                         <a data-toggle="tab" href="#xconciliar">
-                          Por Conciliar
+                          Por Conciliar  <span class="badge badge-warning">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.PROCESO}}</span>
                           <span class="badge badge-warning"></span>
                         </a>
                       </li>
@@ -52,13 +53,13 @@
                       <li>
                         <a data-toggle="tab" href="#rechazados">
                           Rechazados
-                          <span class="badge badge-important"></span>
+                          <span class="badge badge-important">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.RECHAZADO}}</span>
                         </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#vencidos">
                           Vencidos
-                          <span class="badge badge-pink"></span>
+                          <span class="badge badge-pink">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.VENCIDO}}</span>
                         </a>
                       </li>
                     </ul>
@@ -72,15 +73,15 @@
                       </div>
 
                       <div id="conciliados" class="tab-pane ">
-                        <!--g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/-->
+                        <g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/>
                       </div>
 
                       <div id="rechazados" class="tab-pane ">
-                        <!--g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/-->
+                        <g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/>
                       </div>
 
                       <div id="vencidos" class="tab-pane">
-                        <!--g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/-->
+                        <g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/>
                       </div>
                     </div>
                   </div>
