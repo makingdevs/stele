@@ -1,27 +1,25 @@
 <%@ page import="com.payable.EstatusDePago" %>
-  <table class="table">
+  <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
         <th>Concepto de pago</th>
-        <th>Cantidad</th>
         <th>Vencimiento</th>
-        <th>Fecha de pago</th>
-        <th>Tipo de pago</th>
+        <th>Cantidad</th>
+        <th class="text-info">Recargo</th>
+        <th class="text-info">Total</th>
         <th>Días sin conciliar</th>
-        <th>Estatus</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
        <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.VENCIDO  ">
-        <tr class="error">
+        <tr>
           <td> ${it.conceptoDePago} </td>
-          <td> $ ${it.cantidadDePago} </td>
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDeVencimiento}"/> </td>
-          <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDePago}"/> </td>
-          <td> ${it.tipoDePago} </td>
+          <td> $ ${it.cantidadDePago} </td>
+          <td> ${it.recargosAcumulados} </td>
+          <td> ${it.cantidadDePago + it.recargosAcumulados} </td>
           <td>${(new Date() - it.lastUpdated)}</td>
-          <td> ${it.estatusDePago} </td>
             <g:if test="${it.estatusDePago == EstatusDePago.CREADO }">
               <td> <g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
             </g:if>
