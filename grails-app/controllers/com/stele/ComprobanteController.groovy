@@ -33,7 +33,6 @@ class ComprobanteController {
   }
 
   def detalle() {
-    println params
     def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
     def dependiente = Payable.withCriteria {
       pagos {
