@@ -34,33 +34,25 @@ class EsquemaDePagoController {
   }
 
   def muestraPagosDeCamada(){
-    def listaPagos = Pago.findAllByIdInList(flash.pago*.id)
+    def listaPagos = Pago.findAllByIdInList(flash.pago.flatten()*.id)
     render(view: "generarPagosParaLaCamada", model: [pagos: listaPagos])
   }
 
- private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
-    def listaDePagos
+  private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
+    def listaDePagos = []
     def listaDeDescuentos = grupoPagoCommand.descuentoIds.first()
     listaDeDescuentos = listaDeDescuentos.replace('[','')?.replace(']','')?.split(',')
-    listaDeDescuentos.each { idDescuento ->
-      def descuentoAplicable 
-      def fechasReferancia = pagos*.fechaDeVencimiento*.format('yyyy-MM-dd').unique()
-      if (grupoPagoCommand.fechaDeVencimiento)
-        descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, grupoPagoCommand.fechaDeVencimiento)
-      else {
-        fechasReferancia.each { fecha ->
-          descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, Date.parse('yyyy-MM-dd', fecha))
-        }
-      } 
-      listaDePagos = asignarDescuntosAplicablesAlosPagos(descuentoAplicable, pagos)
-
+    pagos.each{ pago -> 
+      listaDeDescuentos.each { idDescuento ->
+        def descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento)
+        listaDePagos << asignarDescuntosAplicablesAlosPagos(descuentoAplicable, pago)
+      }
     }
     listaDePagos
   }
 
-  private def asignarDescuntosAplicablesAlosPagos(def descuentoAplicable, List pagos) {
+  private def asignarDescuntosAplicablesAlosPagos(def descuentoAplicable, Pago pago) {
     def listadePagos = []
-    pagos.each { pago ->
       if (descuentoAplicable instanceof DescuentoAplicable)
         listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoAplicable, pago.id)
       else if (descuentoAplicable instanceof List<DescuentoAplicable>) {
@@ -68,7 +60,6 @@ class EsquemaDePagoController {
           listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoApl, pago.id)
         }
       }
-    }
     listadePagos
   }
 

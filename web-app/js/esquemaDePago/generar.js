@@ -47,6 +47,7 @@ $(document).ready(function(){
       data: data,
       success: function(data) {
         $("#descuentoCreado").html(data)
+        $("#descuentoCreado2").html(data)
       }
     });
     

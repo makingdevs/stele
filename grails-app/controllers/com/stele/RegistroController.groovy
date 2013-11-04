@@ -29,7 +29,6 @@ class RegistroController {
         usuario.perfil = perfil.save()
         usuario.addToInstituciones(institucion)
         usuario.save()
-        log.debug usuario.instituciones
         UsuarioRol.create(usuario, rol, true)
       }
       redirect controller:'login'

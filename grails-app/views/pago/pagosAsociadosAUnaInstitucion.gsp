@@ -1,31 +1,118 @@
+<%@ page import="com.payable.EstatusDePago" %>
 <html>
-<head>
-  <meta name="layout" content="twitterBootstrap"/>
-  <title>Pagos Institucion</title>
-</head>
-
+  <head>
+    <meta name="layout" content="colegio"/>
+  </head>
   <body>
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+            <li>
+              <i class="icon-home home-icon"></i>
+              <a href="#">Colegio</a>
+              <span class="divider">
+                <i class="icon-angle-right arrow-icon"></i>
+              </span>
+            <li class="active">Conciliacion</li>
+          </ul><!--.breadcrumb-->
+        </div>
 
-    <div class="page-header">
-      <h1><i class="icon-dollar"></i> · Pagos de la Instituci&oacuten   <small>    ${usuario.instituciones.nombre}</small></h1>
-    </div>
-    <div class="row-fluid">
-      <div class="span12">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#procesado" data-toggle="tab">Procesados</a></li>
-          <li><a href="#rechazado" data-toggle="tab">Rechazados</a></li>
-          <li><a href="#vencido" data-toggle="tab">Vencidos</a></li>
-          <li><a href="#creado" data-toggle="tab">Creados</a></li>
-          <li><a href="#pagado" data-toggle="tab">Pagados</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="procesado"><g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion.pagosProcesados]"/></div>
-          <div class="tab-pane" id="rechazado"><g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion.pagosRechazados]"/></div>
-          <div class="tab-pane" id="vencido"><g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion.pagosVencidos]"/></div>
-          <div class="tab-pane" id="creado"><g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion.pagosEnTiempo, pagosPorRealizar:pagosInstitucion.pagosPorRealizar]"/></div>
-          <div class="tab-pane" id="pagado"><g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion.pagosCorrectos]"/></div>
-      </div>
-    </div>
+        <div class="page-content">
+          <div class="page-header position-relative">
+            <h1>
+              Conciliacion 
+              <small>
+                <i class="icon-double-angle-right"></i>
+                Pagos <i class="icon-double-angle-right"></i> Pendientes, Rechazados, Por Conciliar y Vencidos
+              </small>
+            </h1>
+          </div><!--/.page-header-->
+          <div class="row-fluid">
+            <div class="span12">
+              <!--PAGE CONTENT BEGINS-->
+                  <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                      <li class="active">
+                        <a data-toggle="tab" href="#pendientes">
+                          Pendientes
+                        </a>
+                      </li>
 
+                      <li>
+                        <a data-toggle="tab" href="#xconciliar">
+                          Por Conciliar  <span class="badge badge-warning">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.PROCESO}}</span>
+                          <span class="badge badge-warning"></span>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a data-toggle="tab" href="#conciliados">
+                          Conciliados                         
+                        </a>
+                      </li>
+                      <li>
+                        <a data-toggle="tab" href="#rechazados">
+                          Rechazados
+                          <span class="badge badge-important">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.RECHAZADO}}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-toggle="tab" href="#vencidos">
+                          Vencidos
+                          <span class="badge badge-pink">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.VENCIDO}}</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div id="pendientes" class="tab-pane in active">
+                        <g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion]"/>
+                      </div>
+
+                      <div id="xconciliar" class="tab-pane">
+                        <g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/>
+                      </div>
+
+                      <div id="conciliados" class="tab-pane ">
+                        <g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/>
+                      </div>
+
+                      <div id="rechazados" class="tab-pane ">
+                        <g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/>
+                      </div>
+
+                      <div id="vencidos" class="tab-pane">
+                        <g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/>
+                      </div>
+                    </div>
+                  </div>
+              <!--PAGE CONTENT ENDS-->
+            </div><!--/.span-->
+          </div><!--/.row-fluid-->
+        </div>       
+
+        <div class="ace-settings-container" id="ace-settings-container">
+          <div class="ace-settings-box" id="ace-settings-box">
+            <div>
+              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+              <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+            </div>
+            <div>
+              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+              <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+            </div>
+            <div>
+              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+              <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+            </div>
+            <div>
+              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+              <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+            </div>
+          </div>
+        </div><!--/#ace-settings-container-->
+    </div><!--/.main-content-->
+      <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+      </a>
   </body>
 </html>

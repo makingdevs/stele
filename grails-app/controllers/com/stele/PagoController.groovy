@@ -14,7 +14,8 @@ class PagoController {
   }
 
   def mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos() {
-   def pagosAsociadosAInstitucion = historialAcademicoService.obtenerHistorilesAcademicosYPagosDeUnaInstitucion(springSecurityService.currentUser)
+   def historialesAcademicos = historialAcademicoService.obtenerHistorilesAcademicosDelaInstitucion(springSecurityService.currentUser)
+   def pagosAsociadosAInstitucion = historialesAcademicos*.dependiente*.pagos.flatten()
    render (view: "pagosAsociadosAUnaInstitucion", model:[pagosInstitucion:pagosAsociadosAInstitucion, usuario:springSecurityService.currentUser])
   }
 

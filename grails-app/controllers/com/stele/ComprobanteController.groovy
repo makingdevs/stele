@@ -17,12 +17,12 @@ class ComprobanteController {
         eq "id", pago.id
       }
     }
-    def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.perfilId)
+    def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.usuario.perfil.first().id)
     [pago: pago, perfil:perfil]
   }
 
   def validarComprobante() {
-    comprobanteService.aprobarPago(params.transactionId, params.fechaPago, params.tipoPago as TipoDePago)
+    def pago = comprobanteService.aprobarPago(params.transactionId, Date.parse('dd/MM/yyyy',params.fechaDePago), params.tipoDePago as TipoDePago)
     flash.success = "El comprobante fue aprobado"
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
@@ -30,6 +30,17 @@ class ComprobanteController {
   def rechazarPago() {
     comprobanteService.rechazarPago(params.transactionId)
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
+  }
+
+  def detalle() {
+    def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
+    def dependiente = Payable.withCriteria {
+      pagos {
+        eq "id", pago.id
+      }
+    }
+    def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.usuario.perfil.first().id)
+    [pago: pago, perfil:perfil] 
   }
 
 }
