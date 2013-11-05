@@ -204,12 +204,16 @@
             </a>
             <ul class="submenu">
               <li>
-                <i class="icon-double-angle-right"></i>
-                Manual
+                <g:link controller="dependiente" action="busqueda">
+                  <i class="icon-double-angle-right"></i>
+                  Manual
+                </g:link>
               </li>
               <li>
-                <i class="icon-double-angle-right"></i>
-                Archivo
+                <g:link>
+                  <i class="icon-double-angle-right"></i>
+                  Archivo
+                </g:link>
               </li>
             </ul>
           </li>
