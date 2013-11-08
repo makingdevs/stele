@@ -10,6 +10,7 @@
         <table id="sample-table-1" class="table table-striped table-bordered table-hover">
           <thead >
             <tr>
+              <th></th>
               <th>
                 <i class="icon-compass blue"></i>
                 Turno
@@ -36,19 +37,18 @@
           <tbody>
             <g:each in="${dependiente}">
               <tr>
-                <td>${it.distribucionInstitucional.turno}</td>
-                <td>${it.distribucionInstitucional.nivelDeEstudio}</td>
-                <td>${it.distribucionInstitucional.grado}</td>
-                <td>${it.distribucionInstitucional.grupo}</td>
+                <td class="center">
+                  <label>
+                    <g:checkBox name="listaDependientes" value="${it.dependiente*.id}" checked="false" />
+                    <span class="lbl"></span>
+                  </label>
+                </td>
+                <td>${it.distribucionInstitucional.turno.first()}</td>
+                <td>${it.distribucionInstitucional.nivelDeEstudio.first()}</td>
+                <td>${it.distribucionInstitucional.grado.first()}</td>
+                <td>${it.distribucionInstitucional.grupo.first()}</td>
                 <td >
-                  <div class="action-buttons">
-                    <a class="blue" href="#">
-                      <i class="icon-zoom-in bigger-130"></i>
-                    </a>
-                    <a class="red" href="#">
-                      <i class="icon-trash bigger-130"></i>
-                    </a>
-                  </div>
+                  ${it.size()}
                 </td>
               </tr>
             </g:each>
