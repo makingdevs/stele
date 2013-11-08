@@ -1,40 +1,52 @@
 package com.stele
 
-import com.stele.DistribucionInstitucional
 import com.stele.Turno
 import com.stele.NivelDeEstudio
-import com.stele.HistorialAcademico
 
 class DependienteController {
 
     def springSecurityService
-
-    def nuevo() { }
+    def searchableService
+    def distribucionInstitucionalService
+    def historialAcademicoService
+    def dependienteService
 
     def search() {
-      def distribucionInstitucional = DistribucionInstitucional.withCriteria {
-        if (params.turno)
-          eq('turno', Turno.find{it.value == params?.turno})
-        if (params.nivel)
-          eq('nivelDeEstudio', NivelDeEstudio.find{it.value == params.nivel})
-        if (params.grado)
-          eq('grado', params?.grado.toInteger())
-        if (params.grupo)
-          eq('grupo', params?.grupo)
-        eq('institucion', springSecurityService.currentUser.instituciones?.first())
+      def distribucionesInstitucionales = distribucionInstitucionalService.obtenerDistribucionInstitucionalEnBaseAParametros(params,springSecurityService.currentUser.instituciones?.first())
+      def historialesAcademicos = historialAcademicoService.obtenerHistorialesAcademicosEnBaseADistribucionInstitucional(distribucionesInstitucionales)
+      def listaDependientesPorEstructura = generarEstructuraDependientes(historialesAcademicos)
+      render template:'dependienteCar', model:[dependiente:listaDependientesPorEstructura, institucion:springSecurityService.currentUser.instituciones?.first()]
+    }
 
+
+    private def generarEstructuraDependientes(historialesAcademicos) {
+      def dependientesPorNivel = []
+      def dependientesPorGrado = []
+      def dependientesPorGrupo = []
+      def dependientesEstructura = []
+      
+      def dependientesPorTurno = dependienteService.agruparDependientesPorTurno(historialesAcademicos)
+      dependientesPorTurno.each{ dependientesTurno ->
+        dependientesPorNivel << dependienteService.agruparDependientesPorNivel(dependientesTurno.key,dependientesTurno.value,springSecurityService.currentUser.instituciones?.first())
       }
-      def dependientesPorDistribucionEnHistorial = HistorialAcademico.withCriteria {
-        'in'('distribucionInstitucional', distribucionInstitucional)
-        dependiente{
-            if(params.matricula)
-              ilike('matricula', params.matricula)
-            join('perfil')
+      dependientesPorNivel.each { niveles ->
+        niveles.each{ estructura ->
+          dependientesPorGrado << dependienteService.agruparDependientesPorGrado(estructura.key, estructura.value)
         }
       }
-      flash.dependientes = dependientesPorDistribucionEnHistorial.dependiente*.id
-      render template:'dependienteCar', model:[dependiente:dependientesPorDistribucionEnHistorial, institucion:springSecurityService.currentUser.instituciones?.first()]
+      dependientesPorGrado.each{ grados ->
+        grados.each{ estructura -> 
+          dependientesPorGrupo << dependienteService.agruparDependientesPorGrupo(estructura.key, estructura.value)
+        }
+      }
+      dependientesPorGrupo.each{ grupos ->
+        grupos.each{ estructura ->
+          dependientesEstructura << estructura.value
+        }
+      }
+      dependientesEstructura
     }
+
 
     def busqueda() { 
       def turnos = DistribucionInstitucional.withCriteria {
@@ -125,7 +137,9 @@ class DependienteController {
     }
 
     def ajaxGrupo() { }
+
+    def busquedaDependienteParaGenerarPago() {
+      def searchResult = searchableService.search(params.nombreDependiente)
+      render template:'busquedaDependiente', model:[dependientes: searchResult ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+    }
 }
-
-
-
