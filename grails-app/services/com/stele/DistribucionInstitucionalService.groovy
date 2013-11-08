@@ -89,4 +89,19 @@ class DistribucionInstitucionalService {
       }
   }
 
+  def obtenerDistribucionInstitucionalEnBaseAParametros(def params, def institucion) {
+    DistribucionInstitucional.withCriteria {
+        if (params.turno)
+          eq('turno', Turno.find{it.value == params?.turno})
+        if (params.nivel)
+          eq('nivelDeEstudio', NivelDeEstudio.find{it.value == params.nivel})
+        if (params.grado)
+          eq('grado', params?.grado.toInteger())
+        if (params.grupo)
+          eq('grupo', params?.grupo)
+        eq('institucion', institucion)
+      }
+  }
+
+
 }
