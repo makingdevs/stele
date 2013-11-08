@@ -19,6 +19,10 @@ class Usuario {
 	boolean passwordExpired
 	Perfil perfil
 
+	static searchable = {
+		root false
+		perfil component: true
+	}
 	static hasMany = [dependientes : Dependiente, instituciones : Institucion]
 
 	static constraints = {
