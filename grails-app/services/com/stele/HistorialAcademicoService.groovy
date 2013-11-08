@@ -34,5 +34,15 @@ class HistorialAcademicoService {
     historialAcademico
   } 
 
+  def obtenerHistorialesAcademicosEnBaseADistribucionInstitucional(def distribucionInstitucional) {
+    HistorialAcademico.withCriteria {
+      'in'('distribucionInstitucional', distribucionInstitucional)
+      dependiente{
+        //if(params.matricula)
+          //ilike('matricula', params.matricula)
+        join('perfil')
+      }
+    }
+  }
 
 }
