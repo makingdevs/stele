@@ -2,6 +2,7 @@ package stele
 
 import com.payable.Pago
 import com.stele.Dependiente
+import com.stele.HistorialAcademico
 
 class DependienteTagLib {
 
@@ -19,4 +20,17 @@ class DependienteTagLib {
     out <<  dependiente.perfil.first().apellidoMaterno
   }
 
+  def ubicacionDependiente = { attrs, body ->
+    def dependiente = Dependiente.findById(attrs.idDependiente)
+    def historialAcademico = HistorialAcademico.findByDependiente(dependiente)
+    out << historialAcademico.distribucionInstitucional.grado
+    out << ' '
+    out << historialAcademico.distribucionInstitucional.grupo
+  }
+
+  def turnoDependiente = { attrs, body ->
+    def dependiente = Dependiente.findById(attrs.idDependiente)
+    def historialAcademico = HistorialAcademico.findByDependiente(dependiente)
+    out << historialAcademico.distribucionInstitucional.turno
+  }
 }
