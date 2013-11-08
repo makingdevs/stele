@@ -1,4 +1,5 @@
 <%@ page import="com.payable.EstatusDePago" %>
+<%@ page import="com.payable.TipoDePago" %>
 <div class="container-fluid">
   <div class="row-fluid">
     <g:form id="conciliacion" name="conciliacion" controller="comprobante" action="validarComprobante">
@@ -19,13 +20,7 @@
         <dt>Tipo de Pago: </dt>
           <dd>
             <p>
-            <select class="selectpicker" name="tipoPago">
-              <option value="TRANSFERENCIA_BANCARIA">Transferencia Bancaria</option>
-              <option value="FICHA_REFERENCIADA">Ficha Referenciada</option>
-              <option value="CHEQUE_FICHA">Cheque Ficha</option> 
-              <option value="EFECTIVO">Efectivo</option>    
-              <option value="TERMINAL">Terminal</option>   
-            </select>
+              <g:select id="tipoDePago" name="tipoDePago" from="${TipoDePago.values()}" optionKey="key" />
             </p>
           </dd>
         <dt>Folio Banco</dt><dd><input type="text" id="folioBanco" name="folioBanco"></dd> 
