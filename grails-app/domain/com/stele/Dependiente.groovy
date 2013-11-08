@@ -11,6 +11,11 @@ class Dependiente extends Payable{
   String matricula
   Perfil perfil
   String camada
+
+  static searchable = {
+    perfil component: true
+  }
+
   static hasMany = [historialAcademico : HistorialAcademico]
   static belongsTo = [usuario : Usuario]
 
