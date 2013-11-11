@@ -23,15 +23,12 @@ class WrapperCommandService {
   private def obtenerListaDePayables(CamadaPagoCommand camadaPagoCommand) {
     def listaDependientesExistentes = []
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
-    camadaPagoCommand?.listaDependientes?.each { it ->
-      if ( !(it.equals("[") || it.equals("]") || it.equals(",") || it.equals(" ")) ) 
-          listaDependientesExistentes.add(it.toLong())
-    }
+    listaDependientesExistentes << camadaPagoCommand?.listaDependientes?.replace('[','')?.replace(']','')?.split(',')
     listaDependientesExistentes?.removeAll(dependientes*.id)
 
     if (listaDependientesExistentes){
       dependientes+= Dependiente.withCriteria {
-        'in'('id', listaDependientesExistentes)
+        'in'('id', listaDependientesExistentes.flatten()*.toLong())
       }
     }
     dependientes
