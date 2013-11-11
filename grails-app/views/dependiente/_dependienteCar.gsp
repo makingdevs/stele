@@ -35,7 +35,9 @@
           </thead>
 
           <tbody>
-            <g:each in="${dependiente}">
+            <g:form id="searchDependientes" namme="searchDependientes" url="[action:'paraCamada', controller:'esquemaDePago']">
+              <input type="hidden" id="camada" name="camada", value="dependientesSearch_${new Date().format('dd-MM-yyyy')}">
+              <g:each in="${dependiente}">
               <tr>
                 <td class="center">
                   <label>
@@ -51,16 +53,14 @@
                   ${it.size()}
                 </td>
               </tr>
-            </g:each>
+              </g:each>
+            </g:form>
           </tbody>
         </table>
       </div>
 
       <div class="widget-toolbox padding-8 clearfix">
-        <g:link controller="esquemaDePago" action="paraCamada" params="[camada:'${institucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")}']" class="btn btn-primary   btn-success">
-          Generar cobro
-          <i class="icon-arrow-right icon-on-right"></i>
-        </g:link>
+        <input type="button" id="searchDependientesButton" name="searchDependientesButton" class="btn btn-primary btn-success" value="Generar Cobro">
       </div>
     </div>
   </div>
