@@ -2,9 +2,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="layout" content="colegio"/>listaDependientes
+    <meta name="layout" content="colegio"/>
+    <r:require modules="bootstrap-js" />
+
   </head>
   <body>
+    <script type="text/javascript">
+      $(function(){
+        $("#faq-tab-1").on( "click", "#searchDependientesButton", function(){
+          $("#searchDependientes").submit();
+        });
+      });
+    </script>
     <div class="main-content">
       <div class="breadcrumbs" id="breadcrumbs">
         <script type="text/javascript">
@@ -56,7 +65,7 @@
                       </div>
                       <div class="span1"></div>
                       <div id="dependientes" name="dependientes" >
-                        <g:render template="dependienteCar" />
+                        <g:render template="dependienteCar" modal="[organizacion:institucion]"/>
                       </div>
                     </div>
                   </div>            
