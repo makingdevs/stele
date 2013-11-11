@@ -15,9 +15,13 @@ class EsquemaDePagoController {
   def scaffold = EsquemaDePago
  
   def paraCamada() {
-    println params
-    if(params.listaDependientes)
-      flash.dependientes = params.listaDependientes as List
+    if(params.listaDependientes) {
+      if (params.listaDependientes instanceof String)
+        flash.dependientes = params.listaDependientes
+      else
+        flash.dependientes = params.listaDependientes.flatten()
+
+    }
     [camada:params?.camada]
   }
 
