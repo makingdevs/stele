@@ -5,7 +5,7 @@ grails.project.test.reports.dir = "target/test-reports"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 // Module plugins
-//grails.plugin.location.profile='../profile'
+grails.plugin.location.profile='../profile'
 //grails.plugin.location.payable='../payable'
 grails.project.war.file = "target/${appName}-${appVersion}.war"
 
@@ -45,12 +45,12 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
+        compile ":quartz:1.0-RC13"
         runtime ':twitter-bootstrap:2.3.0'
         compile ":font-awesome-resources:3.2.1"
         compile ":spring-security-core:1.2.7.3"
         compile ":grails-melody:1.13"
         compile ":searchable:0.6.4"
-        //compile ":quartz:1.0-RC9"
         compile ":mail:1.0.1"
         compile ':recaptcha:0.6.2'
         test ":code-coverage:1.2.6"
@@ -58,7 +58,6 @@ grails.project.dependency.resolution = {
           exclude "spock-grails-support"
         }
         compile ":amazon-s3:0.8.2"
-        compile ":quartz:1.0-RC6"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
@@ -70,7 +69,7 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 
         compile ':cache:1.0.1'
-        compile 'com.makingdevs:profile:latest.integration'
+        //compile 'com.makingdevs:profile:latest.integration'
         compile ':payable:latest.integration'
     }
 }

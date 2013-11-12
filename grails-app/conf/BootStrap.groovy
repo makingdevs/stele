@@ -12,6 +12,7 @@ import com.payable.*
 class BootStrap {
 
   def dataSource
+  def searchableService
 
   def init = { servletContext ->
     wrapperMelodyDataSource()
@@ -20,6 +21,19 @@ class BootStrap {
     JSON.createNamedConfig('stele') {
       it.registerObjectMarshaller(new ConceptoMarshaller())
       it.registerObjectMarshaller(new DescuentoMarshaller())
+    }
+
+    switch(Environment.current){
+      case Environment.DEVELOPMENT :
+        log.debug "do your shit for DEVELOPMENT here"
+        searchableService.index()
+      break
+      case Environment.TEST :
+        log.debug "do your shit for TEST here"
+      break
+      case Environment.PRODUCTION :
+        searchableService.index()
+      break
     }
 
   }
