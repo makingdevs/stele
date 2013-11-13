@@ -48,7 +48,16 @@
           </a><!--/.brand-->
 
           <ul class="nav ace-nav pull-right">
-
+            <li class="white">  
+                  <strong> &nbsp &nbsp &nbsp ${new Date().format('dd MMMM yyyy')} &nbsp &nbsp &nbsp</strong>
+            </li>
+            <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
+              <li class="grey">
+                <g:link controller="estadoDeCuenta" action="show" class="dropdown-toggle">
+                  <i class="icon-home icon-large"></i>                
+                </g:link>
+              </li>
+            </sec:ifAllGranted>
             <li class="green">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <i class="icon-envelope icon-animated-vertical"></i>
@@ -117,7 +126,6 @@
                 </li>
               </ul>
             </li>
-
             <li class="light-blue">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <span class="user-info">
@@ -151,19 +159,16 @@
       </div><!--/.navbar-inner-->
     </div>
 
+  <sec:ifAllGranted roles="ROLE_DIRECTOR">
     <div class="main-container container-fluid">
       <a class="menu-toggler" id="menu-toggler" href="#">
         <span class="menu-text"></span>
       </a>
 
-      <div class="sidebar" id="sidebar">
+        <div class="sidebar" id="sidebar">
         
 <!--#Menu stele-->
-        <ul class="nav nav-list">
-          <li>
-            <i class="icon-dashboard"></i>
-            <span class="menu-text"> Colegio </span>
-          </li>
+          <ul class="nav nav-list">
           <li class="active open">
             <a href="#" class="dropdown-toggle">
               <i class="icon-edit"></i>
@@ -193,8 +198,10 @@
             </ul>
           </li>
           <li>
-            <i class="icon-book"></i>
-            <span class="menu-text">Configurar cobros </span>
+            <g:link>
+              <i class="icon-book"></i>
+                <span class="menu-text">Configurar cobros </span>
+            </g:link>
           </li>
           <li>
             <a href="#" class="dropdown-toggle">
@@ -223,7 +230,8 @@
               <span class="menu-text">Cociliacion</span>
             </g:link>
           </li>
-        </ul><!--/.nav-list-->
+          </ul><!--/.nav-list-->
+        
 <!--#Menu stele-->
 
 
@@ -235,7 +243,7 @@
           try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
         </script>
       </div>
-
+ </sec:ifAllGranted>
 
     <!--basic scripts-->
     
