@@ -12,47 +12,13 @@
     <div class="row-fluid">
       <div class="span12">
         <!--PAGE CONTENT BEGINS-->
-        <div class="span3 center">
-          <img  src="assets/avatars/profile-pic.jpg"   width="120" height="120" />
-          <div class="row-fluid">
-            <div class="width-50 label label-info  arrowed-in arrowed-in-right">
-              <span class="white middle bigger-120">Segio Alejandro </span>             
-            </div>  
-          </div>
-        </div>
-
-        <div class="span2 center">
-          <img  src="assets/avatars/avatar3.png"   width="100" height="100" />
-          <div class="row-fluid">           
-            <div class="width-50 label  label-grey">
-              <span class="white middle bigger-120">Segia Daniela</span>              
-            </div>  
-          </div>
-        </div>
-
-        <div class="span2 center">
-          <img  src="assets/avatars/avatar2.png"   width="100" height="100" />
-          <div class="row-fluid">
-            <div class="width-50 label  label-grey">
-              <span class="white middle bigger-120">Segio Alejandro </span>             
-            </div>  
-          </div>
-        </div>
-
-        <div class="span2 center">
-          <img  src="assets/avatars/avatar1.png"   width="100" height="100" />
-          <div class="row-fluid">
-            <div class="width-50 label  label-grey">
-              <span class="white middle bigger-120">Segio Alejandro </span>             
-            </div>  
-          </div>
-        </div>
+        <g:render template="/perfil/header" model="[usuarioActual:usuarioActual, dependiente:dependiente , perfil:perfil]" />
         
         <div class="row-fluid">
           <div class="span12">
             <form class="form-horizontal">
               <div class="row-fluid">
-                <div class="span12 widget-container-span">
+                <!--div class="span12 widget-container-span">
                   <div class="widget-box">
                     <div class="widget-header widget-header-small header-color-green2">
                       <h5 class="bigger lighter">
@@ -117,7 +83,7 @@
                       </div>
                     </div>
                   </div>
-                </div>                
+                </div-->                
                 <div class="row-fluid">
                   <div class="span12 widget-container-span">
                     <div class="widget-box">
@@ -414,7 +380,6 @@
                                                 </a>
                                               </div>
                                             </td>
-                                            
                                           </tr>
                                         </tbody>
                                       </table>
@@ -424,22 +389,17 @@
                               </div><!--/span-->  
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
                   </div><!--/span-->
                 </div>
-
-
-
-              </form>
-            </div>
+              </div>
+            </form>
           </div>          
-
           <!--PAGE CONTENT ENDS-->
         </div><!--/.span-->
       </div><!--/.row-fluid-->
-    </div><!--/.page-content-->
-  </body>
-  </html>
+  </div><!--/.page-content-->
+</body>
+</html>
