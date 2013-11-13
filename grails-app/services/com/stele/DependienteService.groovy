@@ -86,4 +86,11 @@ class DependienteService {
     }
     estructuraGrupos
   }
+
+  def obnerDependientesPorUsuario(Usuario usuario) {
+    def dependientesDelUsuario = Dependiente.findAllByUsuario(usuario)
+    def perfilDelDependeinte = dependientesDelUsuario*.perfil
+    [dependientes: dependientesDelUsuario, perfiles: perfilDelDependeinte]
+  }
+
 }
