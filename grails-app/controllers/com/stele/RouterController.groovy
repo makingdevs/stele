@@ -10,7 +10,7 @@ class RouterController {
       def authorities = user.authorities
       switch(authorities.first().authority){
         case "ROLE_PADRE_TUTOR":
-        redirect uri:"/perfil"
+        redirect uri:"/estadoDeCuenta/show"
         break
         case "ROLE_DIRECTOR":
         redirect controller:"inicio", action:"index"
