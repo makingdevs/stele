@@ -84,75 +84,7 @@
                     </div>
                   </div>
                 </div-->                
-                <div class="row-fluid">
-                  <div class="span12 widget-container-span">
-                    <div class="widget-box">
-                      <div class="widget-header widget-header-small header-color-red3">
-                        <h5 class="bigger lighter">
-                          <i class="icon-warning-sign"></i>
-                          Pagos Pendientes
-                        </h5> 
-                        <div class="widget-toolbar">
-                          <i class="icon-usd"></i>                  
-                          <strong> 11,000.00 </strong>                  
-                        </div>
-                      </div>
-
-                      <div class="widget-body">
-                        <div class="widget-main no-padding">
-                          <table class="table table-striped table-bordered table-hover">
-                            <thead>
-                              <tr>
-                                <th>Concepto</th>
-                                <th>F. Vencido</th>
-                                <th>Debes</th>
-                                <th>Recargo</th>
-                                <th>Total</th>
-                                <th></th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="">Colegiaura</td>
-                                <td class="">01-Oct-21013</td>
-                                <td class="">$5,300.00</td>
-                                <td class="">$900.00</td>
-                                <td class="">$6,200.00</td>
-                                <td width="70"><span class="label label-important arrowed-in">&nbsp Vencido &nbsp</span></td>
-                                <td class="center" width="140"> 
-                                  <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
-                                </td>                             
-                              </tr>
-                              <tr>
-                                <td class="">Teatro de titeres para padres</td>
-                                <td class="">01-Oct-21013</td>
-                                <td class="">$5,300.00</td>
-                                <td class="">$900.00</td>
-                                <td class="">$6,200.00</td>
-                                <td width="70"><span class="label label-warning arrowed-in">&nbsp Revision &nbsp</span></td>
-                                <td class="center" width="140"> 
-                                  <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
-                                </td>                         
-                              </tr>
-                              <tr>
-                                <td class="">Colegiaura</td>
-                                <td class="">01-Oct-21013</td>
-                                <td class="">$5,300.00</td>
-                                <td class="">$900.00</td>
-                                <td class="">$6,200.00</td>
-                                <td width="70"><span class="label label-important arrowed-in">Rechazado</span></td>
-                                <td class="center" width="140"> 
-                                  <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!--/span-->
-                </div>
+                <g:render template="pagosVencidos" modal="[pagoVencido:pagosVencidos, pagoRechazo: pagosRechazados]" />
                 <div class="row-fluid">
                   <div class="span12 widget-container-span">
                     <div class="widget-box">
