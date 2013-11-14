@@ -11,8 +11,9 @@ class EstadoDeCuentaController {
     def usuarioActual = springSecurityService.currentUser
     def estadoDeCuentaUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
     def dependientes = dependienteService.obnerDependientesPorUsuario(usuarioActual)
-    separarPagosPorDependiente(estadoDeCuentaUsuario, dependientes.dependientes)
+    //separarPagosPorDependiente(estadoDeCuentaUsuario, dependientes.dependientes)
     [usuarioActual : usuarioActual, 
+     pagosRechazados : estadoDeCuentaUsuario.pagosRechazados,
      pagosVencidos:estadoDeCuentaUsuario.pagosVencidos,
      pagosEnTiempo:estadoDeCuentaUsuario.pagosEnTiempo,
      pagosPorRealizar:estadoDeCuentaUsuario.pagosPorRealizar,
