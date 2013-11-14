@@ -8,8 +8,8 @@ import com.megatome.grails.RecaptchaService
 
 class RegistroController {
 
-   RecaptchaService recaptchaService
-    def mailService
+  RecaptchaService recaptchaService
+  def notificacionService
 
   def index() { }
 
@@ -31,12 +31,7 @@ class RegistroController {
         usuario.addToInstituciones(institucion)
         usuario.save()
         UsuarioRol.create(usuario, rol, true)
-        mailService.sendMail {
-          to usuario.username
-          from "says.rodriguez@gmail.com"
-          subject "New user"
-          text "A new user has been created"
-        }
+        notificacionService.notificarRegistroUsuarioAdministrador(usuario.username)
       }
       redirect controller:'login'
     }
