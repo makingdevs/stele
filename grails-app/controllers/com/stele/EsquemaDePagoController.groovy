@@ -11,6 +11,8 @@ class EsquemaDePagoController {
   def wrapperCommandService
   def esquemaDePagoService
   def descuentoAplicableService
+  def dependienteService
+  def notificacionService
 
   def scaffold = EsquemaDePago
  
@@ -36,6 +38,7 @@ class EsquemaDePagoController {
       def esquemaDePago = esquemaDePagoService.buscarOSalvarEsquemaDePago(grupoPagoCommand)
       pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos)
     }
+    notificarCreacionDePago(pagos)
     flash.pago = pagos
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada]
   }
@@ -68,6 +71,12 @@ class EsquemaDePagoController {
         }
       }
     listadePagos
+  }
+
+  private def notificarCreacionDePago(def listaDePagos) {
+    def dependientes = dependienteService.obtenerDependientesPorPagos(listaDePagos)
+    notificacionService.notificarPagosCreados(dependientes)
+
   }
 
 }
