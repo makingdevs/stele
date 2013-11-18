@@ -4,10 +4,12 @@ import com.stele.Turno
 import com.stele.NivelDeEstudio
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
+import com.payable.*
 
 class DependienteService {
 
   def perfilService
+  def notificacionService
 
   def obtenerDependienteDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def perfil = new Perfil()
@@ -41,6 +43,7 @@ class DependienteService {
         dependiente.perfil = perfilService.registrar(dependiente.perfil)
         usuario.addToDependientes(dependiente)
         usuario.save()
+        notificacionService.notificarRegistroUsuarioTutor(usuario.username)
         return dependiente
       }
     }else{
@@ -86,4 +89,13 @@ class DependienteService {
     }
     estructuraGrupos
   }
+
+  def obtenerDependientesPorPagos(def listaPagos) {
+    Dependiente.withCriteria{
+      pagos{
+        'in'('id', listaPagos*.id)
+      }
+    }
+  }
+
 }

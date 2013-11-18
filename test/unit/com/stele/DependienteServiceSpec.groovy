@@ -67,6 +67,10 @@ class DependienteServiceSpec extends Specification{
       def perfilServiceMock = mockFor(PerfilService)
       perfilServiceMock.demand.registrar { p -> perfilExistente }
       service.perfilService = perfilServiceMock.createMock()
+    and: "envio de notificacion"
+      def notificacionServiceMock = mockFor(NotificacionService)
+      notificacionServiceMock.demand.notificarRegistroUsuarioTutor(1..1){obj -> }
+      service.notificacionService = notificacionServiceMock.createMock()
     and:"y un dependiente listo para registrar"
       def dependiente = new Dependiente()
       def perfil = new Perfil()
@@ -110,6 +114,10 @@ class DependienteServiceSpec extends Specification{
       def perfilServiceMock = mockFor(PerfilService)
       perfilServiceMock.demand.registrar(1..2) { p -> perfilExistente }
       service.perfilService = perfilServiceMock.createMock()
+    and: "enviar notificacion"
+      def notificacionServiceMock2 = mockFor(NotificacionService)
+      notificacionServiceMock2.demand.notificarRegistroUsuarioTutor(0..0){obj -> }
+      service.notificacionService = notificacionServiceMock2.createMock()
     and: "registro un dependiente"
       service.registrar(dependienteAsociado,usuarioExistente.id)
     and:"y un dependiente listo para registrar"
@@ -121,6 +129,10 @@ class DependienteServiceSpec extends Specification{
       perfil.apellidoPaterno = "Perez"
       perfil.apellidoMaterno = "Perez"
       dependiente.perfil = perfil
+    and: "enviar notificacion"
+      def notificacionServiceMock = mockFor(NotificacionService)
+      notificacionServiceMock.demand.notificarRegistroUsuarioTutor(1..1){obj -> }
+      service.notificacionService = notificacionServiceMock.createMock()
     when:"Guardo el dependiente en la relación con el usuario"
       dependiente = service.registrar(dependiente,usuarioExistente.id)
       def usuarioGuardado = Usuario.findByUsername(usuarioExistente.username)
