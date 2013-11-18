@@ -28,7 +28,8 @@ class ProcesamientoMasivoController {
       usariosProcesados: usuariosPersistidos.size(),
       dependientesProcesados: dependientesPersistidos.size(),
       ciclosEcolaresProcesados: ciclosEscolaresPersistidos.size(),
-      listaUsuariosProcesados: dependientesExistentes
+      listaUsuariosProcesados: dependientesExistentes,
+      dependientes: dependientesPersistidos
     ]
   }
 
