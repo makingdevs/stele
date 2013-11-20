@@ -5,15 +5,15 @@
 
   <r:script>
   $(function() {
-  var urlValue = $("input#url").val() 
+    var urlValue = $("input#url").val() 
 
-  Dropzone.options.dropzone = {
-  url : urlValue,
-  maxFilesize : .5,
-  addRemoveLinks : false
-};
-});
-</r:script>
+      Dropzone.options.dropzone = {
+      url : urlValue,
+      maxFilesize : .5,
+      addRemoveLinks : false
+      };
+  });
+  </r:script>
 
 </head>
 
@@ -62,12 +62,12 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Teatro de titeles pradres de familia</td>
+                        <td>${pago.conceptoDePago}</td>
                         <td>01-Nov-2013</td>
-                        <td>$600.00</td>
-                        <td>$5,400.00</td>
-                        <td>01-Nov-2013</td>
-                        <td>$6,000.00</td>      
+                        <td>$ ${pago.descuentoAplicable}</td>
+                        <td>$ ${pago.cantidadDePago - pago.descuentoAplicable}</td>
+                        <td>${pago.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
+                        <td>$ ${pago.cantidadDePago}</td>      
                       </tr>
                     </tbody>  
                   </table>
@@ -88,103 +88,14 @@
 
                 <div class="widget-box">
                   <div class="widget-header widget-header-small header-color-green">
-
-                    <h5 class="bigger lighter">
-                      Adjunte su comprobante
-                    </h5>
+                    <h5 class="bigger lighter">Adjunte su comprobante</h5>
                   </div>
-
                   <div class="widget-body">
                     <div class="widget-main">
                       <input type="file" id="id-input-file-2" />
                     </div>
-                  </div>
+                  </div>  
                 </div>
-
-
-                <div class="row-fluid">
-                  <div class=" widget-container-span">
-                    <div class="widget-box">
-                      <div class="widget-header widget-header-small header-color-green2">
-                        <h5 class="bigger lighter">
-                          Confirmar pago
-                        </h5>
-                      </div>
-                      <div class="widget-body">
-                        <div class="widget-main no-padding">
-                          <table class="table table-striped table-bordered table-hover">
-                            <tbody>
-                              <tr>
-                                <td class="">Fecha comprobante</td>
-                                <td class="">
-                                  <div class="input-append">
-                                    <input type="text" id="datepicker" class="input-medium" placeholder="vencimiento"  />
-                                    <span class="add-on">
-                                      <i class="icon-calendar"></i>
-                                    </span>
-                                  </div>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td  class="">Monto</td>
-                                <td class="">                                     
-                                  <div class="input-prepend"> 
-                                    <span class="add-on">
-                                      <i class="icon-usd"></i>
-                                    </span>
-                                    <input id="form-field-mask-2" class="input-medium " type="text" placeholder="importe" >
-                                  </div>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td  class="">Tipo pago</td>
-                                <td class="">                                     
-                                  <span class="form-field-select-1">
-                                    <select id="form-field-select-1">
-                                      <option value="">tipo pago</option>
-                                      <option value="1">Transferencia Electronica </option>
-                                      <option value="2">Deposito Bancomer</option>
-                                      <option value="2">Deposito Banorte</option>
-                                    </select>
-                                  </span>
-                                </td>
-                              </tr>
-
-
-                              <tr>
-                                <td  class="">Referencia Banco</td>
-                                <td class="">                                     
-                                  <div class="input-prepend">
-                                    <input id="form-field-mask-2" class="input-medium " type="text" placeholder="referencia banco" >
-                                    <span class="add-on">
-                                      <i class="icon-edit"></i>
-                                    </span>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!--/span-->
-                </div>
-
-                <div class="form-actions center">
-                  <button class="btn btn-info"  type="button">
-                    <i class="icon-ok bigger-110"></i>
-                    Aceptar
-                  </button>
-
-                  <button class="btn" type="limpiar">
-                    <i class="icon-undo bigger-110"></i>
-                    Limpiar
-                  </button>
-
-                </div>  
-
               </form>
             </div>
 
