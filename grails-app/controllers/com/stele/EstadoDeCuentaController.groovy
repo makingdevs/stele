@@ -1,32 +1,45 @@
 package com.stele
 
+import com.payable.*
+
 
 class EstadoDeCuentaController {
 
   def springSecurityService
   def pagoService
-  def dependienteService
 
   def show() {
+    def dependiente
     def usuarioActual = springSecurityService.currentUser
-    def estadoDeCuentaUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
-    def dependientes = dependienteService.obnerDependientesPorUsuario(usuarioActual)
-    //separarPagosPorDependiente(estadoDeCuentaUsuario, dependientes.dependientes)
-    [usuarioActual : usuarioActual, 
-     pagosRechazados : estadoDeCuentaUsuario.pagosRechazados,
-     pagosVencidos:estadoDeCuentaUsuario.pagosVencidos,
-     pagosEnTiempo:estadoDeCuentaUsuario.pagosEnTiempo,
-     pagosPorRealizar:estadoDeCuentaUsuario.pagosPorRealizar,
-     pagosMensuales:estadoDeCuentaUsuario.pagoMensual,
-     dependiente: dependientes.dependientes,
-     perfil: dependientes.perfiles]
+    def estatusDeCuenta = pagoService.estadoDeCuentaUsuario(usuarioActual)
+    println estatusDeCuenta
+    def dependientes = Dependiente.findAllByUsuario(usuarioActual)
+    if (params.idDependiente) 
+      dependiente = Dependiente.findById(params.idDependiente)
+    else
+      dependiente = Dependiente.findById(dependientes.first().id)
+    def pagosDependiente = dependiente.pagos
+    println pagosDependiente
+    [
+     usuarioActual : usuarioActual,
+     listDependiente : dependientes,
+     pagosVencido : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosVencidos, pagosDependiente),
+     pagosEnTiempo : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosEnTiempo, pagosDependiente),
+     pagosPorRealizar : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosPorRealizar, pagosDependiente),
+     pagoMensual : separarPagosEstadoDeCuenta(estatusDeCuenta.pagoMensual, pagosDependiente),
+     pagosRechazados : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosRechazados, pagosDependiente),
+     pagosProcesados : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosProcesados, pagosDependiente),
+     pagoCorrectos : separarPagosEstadoDeCuenta(estatusDeCuenta.pagoCorrectos, pagosDependiente)
+    ]
   }
 
-  def separarPagosPorDependiente(def estadoDeCuentaUsuario, def dependientes) {
-    dependientes.each{ dependiente ->
-      println dependiente.pagos*.id
+  def separarPagosEstadoDeCuenta(def estadodeCuenta, def pagosDependiente) {
+    def pagosSeparados = []
+    estadodeCuenta.each{ pago -> 
+      if (pagosDependiente.contains(pago))
+        pagosSeparados.add(pago) 
     }
-
-  } 
+    pagosSeparados
+  }
 
 }
