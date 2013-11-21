@@ -9,6 +9,8 @@ class ComprobanteController {
   def pagoService
   def comprobanteService
   def perfilService
+  def dependienteService
+  def notificacionService
 
   def show() {
     def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
@@ -23,12 +25,16 @@ class ComprobanteController {
 
   def validarComprobante() {
     def pago = comprobanteService.aprobarPago(params.transactionId, Date.parse('dd/MM/yyyy',params.fechaDePago), params.tipoDePago)
+    def dependiente = dependienteService.obtenerDependientesPorPagos(pago)
+    notificacionService.notificarPagoAprovado(dependiente)
     flash.success = "El comprobante fue aprobado"
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
   def rechazarPago() {
-    comprobanteService.rechazarPago(params.transactionId)
+    def pago = comprobanteService.rechazarPago(params.transactionId)
+    def dependiente = dependienteService.obtenerDependientesPorPagos(pago)
+    notificacionService.notificarPagoRechazado(dependiente)
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 

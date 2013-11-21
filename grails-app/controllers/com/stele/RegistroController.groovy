@@ -8,7 +8,8 @@ import com.megatome.grails.RecaptchaService
 
 class RegistroController {
 
-   RecaptchaService recaptchaService
+  RecaptchaService recaptchaService
+  def notificacionService
 
   def index() { }
 
@@ -30,6 +31,7 @@ class RegistroController {
         usuario.addToInstituciones(institucion)
         usuario.save()
         UsuarioRol.create(usuario, rol, true)
+        notificacionService.notificarRegistroUsuarioAdministrador(usuario.username)
       }
       redirect controller:'login'
     }

@@ -109,6 +109,9 @@
 
                             <!--Inica DEtalleRA-->
                             <h3 class="header smaller lighter purple">Detalle alumnos</h3>
+                            <div class="row-fluid">
+                              <g:render template="listaDependientesProcesados" model="[listaDeMapaDeDominios:dependientes]" />
+                            </div>
                           </div>  
 
 

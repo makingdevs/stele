@@ -6,9 +6,7 @@
           <i class="icon-warning-sign"></i>
           Pagos Vencidos
         </h5> 
-        <div class="widget-toolbar">
-          <i class="icon-usd"></i>                  
-          <strong> cantidad total </strong>                  
+        <div class="widget-toolbar">              
         </div>
       </div>
       <div class="widget-body">
@@ -35,7 +33,9 @@
                   <td class="">$ ${it.cantidadDePago + it.recargosAcumulados}</td>
                   <td width="70"><span class="label label-important arrowed-in">Vencidos</span></td>
                   <td class="center" width="140"> 
-                    <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
+                    <g:link controller="reciboPago" id="${it.id}" class="btn btn-mini btn-purple">
+                      Adjunte Comprobante
+                    </g:link>
                   </td>
                 </tr>
               </g:each>
@@ -48,7 +48,9 @@
                   <td class="">$ ${it.cantidadDePago + it.recargosAcumulados}</td>
                   <td width="70"><span class="label label-important arrowed-in">Rechazados</span></td>
                   <td class="center" width="140"> 
-                    <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
+                    <g:link controller="reciboPago" id="${it.id}" class="btn btn-mini btn-purple">
+                      Adjunte Comprobante
+                    </g:link>
                   </td>
                 </tr>
               </g:each>
