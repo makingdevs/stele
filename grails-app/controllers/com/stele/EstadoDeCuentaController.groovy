@@ -12,14 +12,12 @@ class EstadoDeCuentaController {
     def dependiente
     def usuarioActual = springSecurityService.currentUser
     def estatusDeCuenta = pagoService.estadoDeCuentaUsuario(usuarioActual)
-    println estatusDeCuenta
     def dependientes = Dependiente.findAllByUsuario(usuarioActual)
     if (params.idDependiente) 
       dependiente = Dependiente.findById(params.idDependiente)
     else
       dependiente = Dependiente.findById(dependientes.first().id)
     def pagosDependiente = dependiente.pagos
-    println pagosDependiente
     [
      usuarioActual : usuarioActual,
      listDependiente : dependientes,
