@@ -19,7 +19,7 @@
           <tbody>
             <g:each in="${pagoMensual}">
               <tr>
-              <td class="">${it.key.capitalize()}${it.key.capitalize()}</td>
+              <td class="">${it.key.capitalize()}</td>
               <td class="">$ ${it.value*.cantidadDePago.sum()}</td>
               <td>
                 <div class="action-buttons center">
