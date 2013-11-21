@@ -94,7 +94,7 @@
                           <i class="icon-table"></i>
                           <strong> Estado de cuenta </strong>
                         </h5> 
-                        <div class="widget-toolbar">
+                        <!--div class="widget-toolbar">
                           <button class="btn btn-success btn-small">
                             <i class="icon-cloud-download "></i>
                             Excel
@@ -104,127 +104,15 @@
                             PDF
                           </button>
 
-                        </div>
+                        </div-->
                       </div>
 
                       <div class="widget-body">
                         <div class="widget-main no-padding">
                           <div class="row-fluid"> 
                             <div class="span12">              
-
-                              <div class="span6 widget-container-span">
-                                <div class="widget-box">
-                                  <div class="widget-header widget-header-small center">
-                                    <h5 class="bigger lighter">
-                                      <strong>Movimientos a la fecha</strong> 
-                                    </h5>
-                                  </div>
-
-                                  <div class="widget-body">
-                                    <div class="widget-main no-padding">
-                                      <table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                          <tr>
-                                            <th>Mes</th>
-                                            <th>Cargos</th>
-                                            <th>Abonos</th>
-                                            <th class="center">Detalle</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td class="">Agosto</td>
-                                            <td class="">$12,000.00</td>
-                                            <td class="">$12,000.00</td>
-                                            <td>
-                                              <div class="action-buttons center">
-                                                <a class="pink" href="conciliarpagado.html">
-                                                  <i class="icon-zoom-in bigger-130"></i>
-                                                </a>
-                                              </div>
-                                            </td>     
-                                          </tr>
-                                          <tr>
-                                            <td class="">Setpiembre</td>
-                                            <td class="">$12,000.00</td>
-                                            <td class="">$12,000.00</td>
-                                            <td>
-                                              <div class="action-buttons center">
-                                                <a class="pink" href="conciliarpagado.html">
-                                                  <i class="icon-zoom-in bigger-130"></i>
-                                                </a>
-                                              </div>
-                                            </td>     
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div><!--/span-->
-                              <div class="span6 widget-container-span">
-                                <div class="widget-box">
-                                  <div class="widget-header widget-header-small center">
-                                    <h5 class="bigger lighter">
-                                      <strong>Movimientos por aplicar</strong> 
-                                    </h5>
-                                  </div>
-
-                                  <div class="widget-body">
-                                    <div class="widget-main no-padding">
-                                      <table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                          <tr>
-                                            <th>Mes</th>
-                                            <th>Cargos</th>
-                                            <th>Abonos</th>
-                                            <th class="center">Detalle</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td class="">Enero</td>
-                                            <td class="">$12,000.00</td>
-                                            <td class="">$0</td>
-                                            <td>
-                                              <div class="action-buttons center">
-                                                <a class="pink" href="conciliarpagado.html">
-                                                  <i class="icon-zoom-in bigger-130"></i>
-                                                </a>
-                                              </div>
-                                            </td>     
-                                          </tr>
-                                          <tr>
-                                            <td class="">Febrero</td>
-                                            <td class="">$12,000.00</td>
-                                            <td class="">$0</td>
-                                            <td>
-                                              <div class="action-buttons center">
-                                                <a class="pink" href="conciliarpagado.html">
-                                                  <i class="icon-zoom-in bigger-130"></i>
-                                                </a>
-                                              </div>
-                                            </td>
-                                            
-                                          </tr>
-                                          <tr>
-                                            <td class="">Mazro</td>
-                                            <td class="">$12,000.00</td>
-                                            <td class="">$0</td>
-                                            <td>
-                                              <div class="action-buttons center">
-                                                <a class="pink" href="conciliarpagado.html">
-                                                  <i class="icon-zoom-in bigger-130"></i>
-                                                </a>
-                                              </div>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div><!--/span-->  
+                              <g:render template="pagoMensual" modal="['pagoMensual':pagoMensual]" />
+                              <g:render template="pagosPorRealizar" modal="['pagosPorRealizar':pagosPorRealizar]" />
                             </div>
                           </div>
                         </div>

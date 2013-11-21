@@ -52,20 +52,6 @@
                   </td>
                 </tr>
               </g:each>
-              <g:each in="${pagosPorRealizar}">
-                <tr>
-                  <td>${it.conceptoDePago}</td>
-                  <td>01-Nov-2013</td>
-                  <td>$ ${it.descuentoAplicable}</td>
-                  <td>$ ${it.cantidadDePago - it.descuentoAplicable}</td>
-                  <td>${it.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
-                  <td>$ ${it.cantidadDePago}</td>      
-                  <td width="70"><span class="label label-info arrowed-in">Pendiente</span></td>
-                  <td class="center" width="140"> 
-                    <g:link controller="reciboPago" id="${it.id}" class="btn btn-mini btn-purple">Adjunte Comprobante</g:link>
-                  </td>
-                </tr>
-              </g:each>
               <g:each in="${pagosProcesados}">
                 <tr>
                   <td>${it.conceptoDePago}</td>
