@@ -26,14 +26,27 @@
               </tr>
             </thead>
             <tbody>
-              <g:each in="${pagoVencido}">
+              <g:each in="${pagosVencido}">
                 <tr>
                   <td class="">${it.conceptoDePago}</td>
-                  <td class="">${it.fechaDeVencimiento}</td>
-                  <td class="">$ ${it.cangtidadDePago }</td>
+                  <td class="">${it.fechaDeVencimiento.format('dd-MM-yyyy')}</td>
+                  <td class="">$ ${it.cantidadDePago }</td>
                   <td class="">$ ${it.recargosAcumulados}</td>
                   <td class="">$ ${it.cantidadDePago + it.recargosAcumulados}</td>
                   <td width="70"><span class="label label-important arrowed-in">Vencidos</span></td>
+                  <td class="center" width="140"> 
+                    <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
+                  </td>
+                </tr>
+              </g:each>
+              <g:each in="${pagosRechazados}">
+                <tr>
+                  <td class="">${it.conceptoDePago}</td>
+                  <td class="">${it.fechaDeVencimiento.format('dd-MM-yyyy')}</td>
+                  <td class="">$ ${it.cantidadDePago }</td>
+                  <td class="">$ ${it.recargosAcumulados}</td>
+                  <td class="">$ ${it.cantidadDePago + it.recargosAcumulados}</td>
+                  <td width="70"><span class="label label-important arrowed-in">Rechazados</span></td>
                   <td class="center" width="140"> 
                     <button class="btn btn-mini btn-purple">Adjunte comprobante...</button>
                   </td>
