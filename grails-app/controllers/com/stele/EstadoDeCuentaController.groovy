@@ -1,6 +1,7 @@
 package com.stele
 
 import com.payable.*
+import java.text.SimpleDateFormat 
 
 
 class EstadoDeCuentaController {
@@ -23,8 +24,8 @@ class EstadoDeCuentaController {
      listDependiente : dependientes,
      pagosVencido : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosVencidos, pagosDependiente),
      pagosEnTiempo : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosEnTiempo, pagosDependiente),
-     pagosPorRealizar : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosPorRealizar, pagosDependiente),
-     pagoMensual : separarPagosEstadoDeCuenta(estatusDeCuenta.pagoMensual, pagosDependiente),
+     pagosPorRealizar : separarPagosPorMeses(separarPagosEstadoDeCuenta(estatusDeCuenta.pagosPorRealizar, pagosDependiente)),
+     pagoMensual : separarPagosPorMeses(separarPagosEstadoDeCuenta(estatusDeCuenta.pagoMensual, pagosDependiente)),
      pagosRechazados : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosRechazados, pagosDependiente),
      pagosProcesados : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosProcesados, pagosDependiente),
      pagoCorrectos : separarPagosEstadoDeCuenta(estatusDeCuenta.pagoCorrectos, pagosDependiente)
@@ -38,6 +39,36 @@ class EstadoDeCuentaController {
         pagosSeparados.add(pago) 
     }
     pagosSeparados
+  }
+
+  def separarPagosPorMeses(def pagos) {
+    def listaPagosMes = [:]
+    def listaPagos = pagos
+    def mesActual = obtenerNumeroDeMes(new Date()) + 1
+    pagos.each{ pago ->
+      def pagosList = []
+      def month = obtenerNumeroDeMes(pago.fechaDeVencimiento)
+        listaPagos.each{ v ->
+          def mes = obtenerNumeroDeMes(v.fechaDeVencimiento)
+          if (month == mes)
+            pagosList.add(v)
+        }
+      if (mesActual != month)
+        listaPagosMes.put(obtenerNombreMesPorFecha(month),pagosList)
+    } 
+    listaPagosMes
+  }
+
+  def obtenerNumeroDeMes(def fecha) {
+    Calendar cal = Calendar.getInstance()
+    cal.setTime(fecha)
+    cal.get(Calendar.MONTH)
+  }
+
+  def obtenerNombreMesPorFecha(def month) {
+    SimpleDateFormat monthParse = new SimpleDateFormat("MM")
+    SimpleDateFormat monthDisplay = new SimpleDateFormat("MMMM")
+    monthDisplay.format(monthParse.parse(month.toString()))
   }
 
 }
