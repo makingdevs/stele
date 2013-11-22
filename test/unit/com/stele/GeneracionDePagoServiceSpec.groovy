@@ -203,7 +203,7 @@ class GeneracionDePagoServiceSpec extends Specification {
         def pagos = service.generaPagoParaGrupo(gpc)
         mocks*.verify()
       then :
-        assert pagos.size() == 3
+        assert pagos.size() == 4
         assert pagos.first().id > 0
         assert pagos.first().conceptoDePago == concepto
         assert pagos.first().cantidadDePago == monto 
