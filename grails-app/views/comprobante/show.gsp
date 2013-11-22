@@ -56,8 +56,7 @@
               <!--PAGE CONTENT BEGINS-->
                 
               <div class="span6">         
-                <g:form class="form-horizontal" id="conciliacion" name="conciliacion" controller="comprobante" action="validarComprobante">   
-                  <input type="hidden" name="transactionId" value="${pago.transactionId}">                        
+                <g:form class="form-horizontal" id="conciliacion" name="conciliacion" controller="comprobante" action="validarComprobante">                          
                   <div class="span12 widget-container-span">
                     <div class="widget-box">
                       <div class="widget-header widget-header-small header-color-blue">
