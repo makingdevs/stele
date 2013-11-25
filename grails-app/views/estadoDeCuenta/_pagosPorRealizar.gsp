@@ -23,9 +23,9 @@
               <td class="">$ ${it.value*.cantidadDePago.sum()}</td>
               <td>
                 <div class="action-buttons center">
-                  <a class="pink" href="conciliarpagado.html">
+                  <g:link controller="estadoDeCuenta" action="detalleEstadoDeCuentaMensual" params='[mes:"${it.key}", ids: "${it.value*.id}"]'>
                     <i class="icon-zoom-in bigger-130"></i>
-                  </a>
+                  </g:link>
                 </div>
               </td>     
               </tr>
