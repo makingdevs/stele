@@ -70,5 +70,10 @@ class EstadoDeCuentaController {
     SimpleDateFormat monthDisplay = new SimpleDateFormat("MMMM")
     monthDisplay.format(monthParse.parse(month.toString()))
   }
+  def detalleEstadoDeCuentaMensual(){
+    def pagos =  params.ids.replace('[','')?.replace(']','')?.split(',')
+    def pagosDelMes = Pago.getAll(pagos*.toLong())
+    [pagosDelMes:pagosDelMes, mes: params.mes]
+  }
 
 }
