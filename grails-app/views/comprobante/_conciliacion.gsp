@@ -25,7 +25,7 @@
           </dd>
         <dt>Folio Banco</dt><dd><input type="text" id="folioBanco" name="folioBanco"></dd> 
       </dl>
-      <input type="hidden" name="transactionId" value="${pago.transactionId}">
+      <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">
         <div class="btn-group">
           <button type="submit" class="btn btn-success"><i class="icon-thumbs-up-alt"></i> Aprobar</button>
           <g:link controller="comprobante" action="rechazarPago" params="[transactionId: "${pago.transactionId}"]" ><button type="button" class="btn btn-danger"><i class="icon-thumbs-down-alt"></i> Rechazar</button></g:link>

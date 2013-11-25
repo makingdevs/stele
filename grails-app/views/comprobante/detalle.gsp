@@ -124,7 +124,7 @@
                             </table>
                           </div>
                         </div>
-                        <input type="hidden" name="transactionId" value="${pago.transactionId}">
+                        <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">
                       </div>
                     </div><!--/span-->
                     </div>
