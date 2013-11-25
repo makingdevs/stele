@@ -49,4 +49,14 @@ class ComprobanteController {
     [pago: pago, perfil:perfil] 
   }
 
+  def comprobantePagoMes(){
+    def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
+    def dependiente = Payable.withCriteria {
+      pagos {
+        eq "id", pago.id
+      }
+    }
+    [pago: pago]
+  }
+
 }
