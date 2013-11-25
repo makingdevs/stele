@@ -1,3 +1,6 @@
+<%@ page import="com.payable.EstatusDePago" %>
+
+
 <html>
 <head>
   <meta name="layout" content="colegio"/>
@@ -43,15 +46,17 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>10/11/2013</td>
-                              <td>Colegiatura</td>
-                              <td>$3,500.00</td>
-                            </tr>
+                            <g:each in="${pagosDelMes}">
+                              <tr>
+                                <td>${it.fechaDeVencimiento.format("dd/MM/yy")}</td>
+                                <td>${it.conceptoDePago}</td>
+                                <td>${it.cantidadDePago}</td>
+                              </tr>
+                            </g:each>
                           </tbody>
                         </table>
                         <div class="alert alert-info center">
-                          <strong>$4,300.00</strong>
+                          <strong>$ ${pagosDelMes*.cantidadDePago.sum()}</strong>
                         </div>                          
                       </div>
                     </div>
@@ -77,29 +82,29 @@
                               <th>Concepto</th>
                               <th>Monto</th>
                               <th>Forma pago</th>
-                              <th>Referencia</th>
                               <th>Comprobante</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>10/11/2013</td>
-                              <td>Pago</td>
-                              <td>$4,000.00</td>
-                              <td>Transferencia</td>
-                              <td>Colegiatura Noviembre Yair 5a</td>
-                              <td>
-                                <div class="action-buttons center">
-                                  <a class="pink" href="comprobantepapa.html">
-                                    <i class="icon-file-text-alt bigger-140"></i>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
+                            <g:findAll in="${pagosDelMes}" expr="it.estatusDePago == EstatusDePago.PAGADO">
+                              <tr>
+                                <td>${it.fechaDePago.format("dd/MM/yy")}</td>
+                                <td>${it.conceptoDePago}</td>
+                                <td>$ ${it.cantidadDePago}</td>
+                                <td>${it.tipoDePago}</td>
+                                <td>
+                                  <div class="action-buttons center">
+                                    <g:link controller="comprobante" action="comprobantePagoMes" params='[id:"${it.id}"]'>
+                                      <i class="icon-file-text-alt bigger-140"></i>
+                                    </g:link>
+                                  </div>
+                                </td>
+                             </tr>
+                            </g:findAll>
                           </tbody>
                         </table>
                       <div class="alert alert-info center">
-                        <strong>$4,300.00</strong>
+                        <strong>$ ${pagosDelMes.findAll{ pago -> pago.estatusDePago == EstatusDePago.PAGADO}*.cantidadDePago.sum()} </strong>
                       </div>
 
                     </div>
@@ -110,10 +115,10 @@
           </div>
           <div class="row-fluid"> 
             <div class="span12">
-              <a class="btn btn-primary pull-right"  href="estadoctapapa.html">
-                <i class="icon-reply  bigger-125"></i>
-                Regresar
-              </a>
+              <g:link  class="btn btn-primary pull-right" controller="estadoDeCuenta" action="show">
+              <i class="icon-reply  bigger-125"></i>
+              Regresar
+              </g:link>
             </div>
           </div>
         </div>
