@@ -120,15 +120,15 @@ ace.general_things = function($) {
  
  $('#ace-settings-navbar').on('click', function(){
 	ace.settings.navbar_fixed(this.checked);//@ ace-extra.js
- }).get(0).checked = ace.settings.is('navbar', 'fixed')
+ }).get(0)
 
  $('#ace-settings-sidebar').on('click', function(){
 	ace.settings.sidebar_fixed(this.checked);//@ ace-extra.js
- }).get(0).checked = ace.settings.is('sidebar', 'fixed')
+ }).get(0)
  
  $('#ace-settings-breadcrumbs').on('click', function(){
 	ace.settings.breadcrumbs_fixed(this.checked);//@ ace-extra.js
- }).get(0).checked = ace.settings.is('breadcrumbs', 'fixed')
+ }).get(0)
 
 
  //Switching to RTL (right to left) Mode
