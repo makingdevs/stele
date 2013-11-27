@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono"/>
+    <r:require modules="telefono, uploadImg"/>
   </head>
 
   <body>
