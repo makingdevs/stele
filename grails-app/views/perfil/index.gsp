@@ -1,4 +1,4 @@
-<%@ page import="com.payable.TipoDeTelefono" %>
+<%@ page import="com.makingdevs.TipoDeTelefono" %>
 <html>
   <head>
     <meta name="layout" content="colegio"/>
@@ -6,6 +6,15 @@
   </head>
 
   <body>
+    <r:script type="text/javascript">
+      $(document).ready(function() {
+        $('#fechaNacimiento').datepicker({
+          format : "dd/mm/yyyy",
+          language : 'es',
+          autoclose : true
+        });
+      });
+    </r:script>
     <div class="page-content">
      <div class="page-header position-relative">
        <h1>
@@ -96,11 +105,11 @@
                              <div class="profile-info-name"> Fecha Nacimiento </div>
 
                              <div class="profile-info-value">
-                               <div class="input-append">
-                                 <input type="text" id="datepicker" class="input-medium" placeholder="fecha nacimiento"  />
-                                 <span class="add-on">
-                                   <i class="icon-calendar"></i>
-                                 </span>
+                               <div id="fechaNamiciento" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                 <input id="fechaNacimiento" name="fechaNacimiento" data-format="yyyy-mm-dd" type="text"></input>
+                                      <span class="add-on">
+                                        <i class="icon-calendar"></i>
+                                      </span>
                                </div>
                              </div>
                            </div>
@@ -164,131 +173,36 @@
                    </div><!--#home-->
 
                 <div id="feed" class="tab-pane">
-                   <div class="row-fluid">
-                    <div class="span12">
-                      <div class="span4">
-                       <div class="profile-user-info profile-user-info-striped">
-                         <div class="profile-info-row ">
-                           <div class="profile-info-name"> 
-                           <i class="icon-phone"></i>
-                             Telefono 
-                           </div>
-
-                           <div class="profile-info-value  align-left">
-                             <input type="text" class="input-mini" maxlength="3" name="lada"></input>
-                           </div>
-
-                           <div class="profile-info-value  align-left">
-                             <input type="text" class="input-small" maxlength="10" name="numeroTelefonico"></input>
-                           </div>
-                           <div class="profile-info-value  align-left">
-                             <input type="text" class="input-mini" maxlength="6" name="extension"></input>
-                           </div>
-                         </div>
-                         <div class="profile-info-row">
-                           <div class="profile-info-name"> Tipo </div>
-                           <div class="profile-info-value">
-                             <input class="ace" type="radio" name="form-field-radio-tel">
-                             <span class="lbl"> Personal</span>
-                             <input class="ace" type="radio" name="form-field-radio-tel">
-                             <span class="lbl"> Celular</span>   
-                             <input class="ace" type="radio" name="form-field-radio-tel">
-                             <span class="lbl"> Trabajo</span>
-                           </div>
-                         </div>
-                         <div class="profile-info-row">
-                           <div class="profile-info-name">  </div>
-                           <div class="profile-info-value center">
-                            <button class="btn btn-primary" style="text-align:center;">
-                              <i class="icon-plus-sign icon-white"></i>
-                            </button>
-                           </div>
-                         </div>
-                       </div>
-                      </div>
-                     <div class="span8" id="listaTelefono">
-                      <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                         <thead >
-                           <tr>
-                             <th class="center">
-                               <i class="icon-ok-circle blue"></i>
-                               Principal 
-                             </th>
-                             <th>
-                               <i class="icon-bookmark-empty blue"></i>
-                               Tipo
-                             </th>
-                             <th>
-                               <i class="icon-phone blue"></i>
-                               Telefono
-                             </th> <th>                  
-                           </tr>
-                         </thead>
-
-                         <tbody>
-                          <g:each in="${usuarioActual.perfil.telefonos}">
-                            <tr>
-                             <td class="center">
-                              <g:if test="it.principal == true">
-                                <i class="fa fa-check"></i>
-                              </g:if>
-                             </td>
-                             <td class="center">
-                              
-                             </td>
-                             <td class="center">
-                              
-                             </td>
-                            </tr>     
-                          </g:each>
-                         </tbody>
-                       </table>
-                     </div>
-                   </div>
-                  </div>
+                  <g:render template="/telefono/list" model="[telefonos:usuarioActual.perfil.telefonos]" />
                 </div>
 
-
-
                 <div id="password" class="tab-pane">
-                     <div class="space-6"></div>
-                     <div class="profile-user-info profile-user-info-striped">
+                  <g:form name="password" controller="perfil" action="actualizarPassword">
+                    <div class="profile-user-info profile-user-info-striped">
+                      <div class="profile-info-row ">
+                        <div class="profile-info-name"> Nueva contraseña </div>
 
-                       <div class="profile-info-row ">
-                         <div class="profile-info-name"> Actual contraseña </div>
-
-                         <div class="profile-info-value  align-left">
-                           <input type="password" id="form-field-pass" />
-                         </div>
-                       </div>
-
-                       <div class="profile-info-row ">
-                         <div class="profile-info-name"> Nueva contraseña </div>
-
-                         <div class="profile-info-value  align-left">
-                           <input type="password" id="form-field-pass1" />
-                         </div>
-                       </div>
-                       <div class="profile-info-row ">
-                         <div class="profile-info-name"> Confirmar  </div>
-                         <div class="profile-info-value  align-left">
-                           <input type="password" id="form-field-pass2" />
-                         </div>
-                       </div>
-                     </div>
+                        <div class="profile-info-value  align-left">
+                          <input type="password" id="nuevaContrasenia" name="nuevaContrasenia" placeholder="Nueva contraseña">
+                        </div>
+                      </div>
+                      <div class="profile-info-row ">
+                        <div class="profile-info-name"> Confirmar  </div>
+                        <div class="profile-info-value  align-left">
+                          <input type="password" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
+                        </div>
+                      </div>
+                      <div class="profile-info-value  align-left" style="text-align:right;">
+                        <button type="submit" class="btn btn-primary">
+                          Actualizar contraseña
+                        </button>
+                      </div>
+                    </div>
+                  </g:form>
                 </div>
 
                <div class="form-actions center">
-                 <button class="btn btn-info" type="button">
-                   <i class="icon-ok bigger-110"></i>
-                   Guarda
-                 </button>
-
-                 &nbsp; &nbsp; &nbsp;
-                 <button class="btn" type="reset">
-                   <i class="icon-undo bigger-110"></i>
-                   Limpiar
-                 </button>
+                 
                </div>
 
 
