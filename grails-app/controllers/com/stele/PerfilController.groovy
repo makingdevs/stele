@@ -20,6 +20,12 @@ class PerfilController {
     perfilService.actualizarPasswordForUser(upc.nuevaContrasenia, springSecurityService.currentUser)
     redirect controller:'perfil'
   }
+
+  def actualizarFechaNacimiento() {
+    def perfil = Perfil.get(params.id)
+    perfil.fechaDeNacimiento = new Date().parse("dd/MM/yyyy",params.fechaNacimiento)
+    perfil.save(failOnError:true)
+  }
 }
 
 class UpdatePasswordCommand {
