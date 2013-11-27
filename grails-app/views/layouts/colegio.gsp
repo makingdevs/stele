@@ -140,10 +140,10 @@
 
               <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
                 <li>
-                  <a href="#">
+                  <g:link controller="perfil">
                     <i class="icon-user"></i>
                     Profile
-                  </a>
+                  </g:link>
                 </li>
                 <li class="divider"></li>
                 <li>
