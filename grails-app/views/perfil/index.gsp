@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono, uploadImg"/>
+    <r:require modules="telefono, uploadImg,bootstrap-js,bootstrapDatePicker"/>
   </head>
 
   <body>
     <r:script type="text/javascript">
       $(document).ready(function() {
-        $('#fechaNacimiento').datepicker({
+        $('.fechaNacimiento').datepicker({
           format : "dd/mm/yyyy",
           language : 'es',
           autoclose : true
@@ -103,15 +103,20 @@
 
                            <div class="profile-info-row">
                              <div class="profile-info-name"> Fecha Nacimiento </div>
-
-                             <div class="profile-info-value">
-                               <div id="fechaNamiciento" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                 <input id="fechaNacimiento" name="fechaNacimiento" data-format="yyyy-mm-dd" type="text"></input>
-                                      <span class="add-on">
-                                        <i class="icon-calendar"></i>
-                                      </span>
-                               </div>
-                             </div>
+                              <g:formRemote name="fechaDeNacimiento" update="fechaNacimientoDiv" url="[controller:'perfil', action:'actualizarFechaNacimiento', params:[id: "${usuarioActual.perfil.id}"]]">
+                                <div class="profile-info-value" id="fechaNacimientoDiv">
+                                  <div id="fechaNamiciento" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                    <input id="fechaNacimiento" name="fechaNacimiento" class="fechaNacimiento" data-format="yyyy-mm-dd" type="text" placeholder="${usuarioActual.perfil.fechaDeNacimiento.format("dd/MM/yyyy") ?: ''}"></input>
+                                    <span class="add-on">
+                                      <i class="icon-calendar"></i>
+                                    </span>
+                                    <p></p>
+                                     <button type="submit" class="btn btn-mini">
+                                        Actualizar
+                                      </button>
+                                  </div>
+                                </div>
+                              </g:formRemote>
                            </div>
                          </div>
                        </div>
@@ -154,16 +159,21 @@
                            </div>
 
                            <div class="profile-info-row">
-                             <div class="profile-info-name"> Fecha Nacimiento </div>
-
-                             <div class="profile-info-value">
-                               <div class="input-append">
-                                 <input type="text" id="datepicker" class="input-medium" placeholder="fecha nacimiento"  />
-                                 <span class="add-on">
-                                   <i class="icon-calendar"></i>
-                                 </span>
-                               </div>
-                             </div>
+                            <div class="profile-info-name"> Fecha Nacimiento </div>
+                              <g:formRemote name="fechaDeNacimiento" update="fechaNacimientoDiv" url="[controller:'perfil', action:'actualizarFechaNacimiento', params:[id: "${it.perfil.id}"]]">
+                                <div class="profile-info-value" id="fechaNacimientoDiv">
+                                  <div id="fechaNamiciento" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                    <input id="fechaNacimiento" name="fechaNacimiento" class="fechaNacimiento"data-format="yyyy-mm-dd" type="text" placeholder="${it.perfil.fechaDeNacimiento?.format("dd/MM/yyyy") ?: ''}"></input>
+                                    <span class="add-on">
+                                      <i class="icon-calendar"></i>
+                                    </span>
+                                    <p></p>
+                                     <button type="submit" class="btn btn-mini">
+                                        Actualizar
+                                      </button>
+                                  </div>
+                                </div>
+                              </g:formRemote>
                            </div>
                          </div>
                          </div>
@@ -208,7 +218,6 @@
 
            </div>
          </div>
-
          <!--PAGE CONTENT ENDS-->
        </div><!--/.span-->
      </div><!--/.row-fluid-->
