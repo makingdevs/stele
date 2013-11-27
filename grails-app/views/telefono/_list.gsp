@@ -1,77 +1,83 @@
 <%@ page import="com.makingdevs.TipoDeTelefono" %>
 <g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
-<div id="listaTelefono">
-<h4>Mis teléfonos de contacto</h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Principal</th>
-      <th>Tipo</th>
-      <th>Lada</th>
-      <th>Numero</th>
-      <th>Ext</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <g:each in="${telefonos?.sort({ it.id })}" var="t">
-      <tr>
-        <td>
-          <g:if test="${t.principal}">
-            <i class="icon-ok"></i>
-          </g:if>
-        </td>
-        <td> 
-          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.CASA}">
-            <i class="icon-phone-sign"></i> 
-          </g:if>
-          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.CELULAR}">
-            <i class="icon-mobile-phone"></i> 
-          </g:if>
-          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.TRABAJO}">
-            <i class="icon-briefcase"></i> 
-          </g:if>
-          <g:if test="${t.tipoDeTelefono == TipoDeTelefono.RECADOS}">
-            <i class="icon-phone"></i> 
-          </g:if>
-          ${t.tipoDeTelefono}
-        </td>
-        <td> ${t.lada} </td>
-        <td> ${t.numeroTelefonico} </td>
-        <td> ${t.extension} </td>
-        <td style="text-align:center;">
-          <div class="btn-group">
-            <g:remoteLink id="${t.id}" class="btn btn-warning"><i class="icon-edit icon-white"></i></g:remoteLink>
-            <g:remoteLink id="${t.id}" class="btn btn-danger"><i class="icon-trash icon-white"></i></g:remoteLink>
-          </div>
-        </td>
-      </tr>
-    </g:each>
-    <tr id="agregar">
-      <td>
-        <label class="checkbox">
-          <g:checkBox name="principal" />
-        </label>
-      </td>
-      <td>
-        <g:select class="input-small" name="tipoDeTelefono" from="${TipoDeTelefono.values()}" optionKey="key"/>
-      </td>
-      <td>
-        <input type="text" class="input-mini" maxlength="3" name="lada"></input>
-      </td>
-      <td>
-        <input type="text" class="input-small" maxlength="10" name="numeroTelefonico"></input>
-      </td>
-      <td>
-        <input type="text" class="input-mini" maxlength="6" name="extension"></input>
-      </td>
-      <td style="text-align:center;">
+<div class="row-fluid">
+  <div class="span12" id="listaTelefono">
+    <div class="span4">
+     <div class="profile-user-info profile-user-info-striped">
+       <div class="profile-info-row ">
+         <div class="profile-info-name"> 
+           <i class="icon-phone"></i>
+           Telefono 
+         </div>
+         <div class="profile-info-value  align-left">
+           <input type="text" class="input-mini" maxlength="3" name="lada" placeholder="Lada"></input>
+         </div>
+         <div class="profile-info-value  align-left">
+           <input type="text" class="input-small" maxlength="10" name="numeroTelefonico" placeholder="Numero"></input>
+         </div>
+         <div class="profile-info-value  align-left">
+           <input type="text" class="input-mini" maxlength="6" name="extension" placeholder="Ext"></input>
+         </div>
+       </div>
+       <div class="profile-info-row">
+        <div class="profile-info-name"> Tipo </div>
+        <div class="profile-info-value">
+          <g:select class="input-small" name="tipoDeTelefono" from="${TipoDeTelefono.values()}" optionKey="key"/>
+          <label class="checkbox">
+            <g:checkBox name="principal" /> Principal
+          </label>
+        </div>
+      </div>
+      <div class="profile-info-row">
+       <div class="profile-info-name">  </div>
+       <div class="profile-info-value center">
         <button class="btn btn-primary">
           <i class="icon-plus-sign icon-white"></i>
         </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="span8" id="listaTelefono" name="listaTelefono">
+      <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+       <thead >
+         <tr>
+           <th class="center">
+             <i class="icon-ok-circle blue"></i>
+             Principal 
+           </th>
+           <th>
+             <i class="icon-bookmark-empty blue"></i>
+             Tipo
+           </th>
+           <th>
+             <i class="icon-phone blue"></i>
+             Telefono
+           </th> <th>                  
+         </tr>
+       </thead>
+       <tbody>
+        <g:each in="${telefonos?.sort({ it.id })}">
+          <tr>
+            <td class="center">
+              <g:if test="${it.principal == true}">
+              <i class="icon-phone bigger-125 blue"></i>
+            </g:if>
+            </td>
+            <td class="center">
+              ${it.tipoDeTelefono}
+            </td>
+            <td class="center">
+              (${it.lada ?: " - "}) ${it.numeroTelefonico} Ext. ${it.extension ?: " - "}
+            </td>
+            <td>
+              <g:remoteLink id="${it.id}" class="danger" controller="telefono" action="borrarTelefonoASync" update="listaTelefono"><i class="icon-trash icon-white"></i></g:remoteLink>
+            </td>
+          </tr>
+        </g:each>
+       </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 </g:formRemote>
