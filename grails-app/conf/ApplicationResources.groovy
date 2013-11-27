@@ -7,6 +7,10 @@ modules = {
     resource url:'js/telefono/index.js'
   }
 
+  uploadImg{
+    resource url:'js/perfil/uploadImg.js'
+  }
+
   auth {
     dependsOn 'assets'
     resource url:'css/login/auth.css'
@@ -125,7 +129,8 @@ modules = {
     resource url:'assets/js/ace-extra.min.js'
     resource url:'assets/js/bootstrap.min.js'
     resource url:'assets/js/ace-elements.min.js'
-    resource url:'assets/js/ace.min.js'
+    resource url:'assets/js/uncompressed/ace.js'
+    
     resource url:'assets/js/fuelux/fuelux.wizard.min.js'
     resource url:'assets/js/bootbox.min.js'
     resource url:'assets/js/dropzone.min.js'
