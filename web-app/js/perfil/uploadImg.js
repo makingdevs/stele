@@ -27,3 +27,44 @@ $('#user-profile-1')
 					}
 				})
 });
+
+$(function() {
+    var urlValue = $("input#img1").val() 
+      Dropzone.options.dropzone = {
+      url : urlValue,
+      maxFilesize : .5,
+      addRemoveLinks : false
+    };
+});
+$(function() {
+    var urlValue = $("input#img2").val() 
+      Dropzone.options.dropzone = {
+      url : urlValue,
+      maxFilesize : .5,
+      addRemoveLinks : false
+    };
+});
+$(function() {
+    var urlValue = $("input#img3").val() 
+      Dropzone.options.dropzone = {
+      url : urlValue,
+      maxFilesize : .5,
+      addRemoveLinks : false
+    };
+});
+$(function() {
+    var urlValue = $("input#img4").val() 
+      Dropzone.options.dropzone = {
+      url : urlValue,
+      maxFilesize : .5,
+      addRemoveLinks : false
+    };
+});
+$(function() {
+    var urlValue = $("input#img5").val() 
+      Dropzone.options.dropzone = {
+      url : urlValue,
+      maxFilesize : .5,
+      addRemoveLinks : false
+    };
+});
