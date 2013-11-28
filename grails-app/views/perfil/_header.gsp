@@ -1,5 +1,5 @@
 <div class="span3 center">
-  <img  src="${usuarioActual.perfil.avatar.url()}"   width="120" height="120" />
+  <img  src="${usuarioActual.perfil?.avatar?.url()}"   width="120" height="120" />
   <div class="row-fluid">
     <div class="width-50 label label-info  arrowed-in arrowed-in-right">
       <span class="white middle bigger-120">${usuarioActual.perfil.nombre} ${usuarioActual.perfil.apellidoPaterno} ${usuarioActual.perfil.apellidoMaterno}</span>             
