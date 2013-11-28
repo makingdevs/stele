@@ -57,8 +57,7 @@ class BootStrap {
     def usuario = Usuario.findByUsername("nelson@muntz.com")
     if(!usuario) {
       Perfil perfil = new Perfil( nombre: "Nelson",
-                                  apellidoPaterno: "Muntz",
-                                  avatar : "http://www.blogdelossimpson.com.ar/wp-content/uploads/2008/08/nelson1.gif")
+                                  apellidoPaterno: "Muntz")
       perfil.save(flush:true)
       usuario = new Usuario( username:"nelson@muntz.com",
                    password:"haha",
@@ -82,8 +81,7 @@ class BootStrap {
       usuarioRol = UsuarioRol.create(user, rol, true)
 
     Perfil perfilDependiente = new Perfil(nombre: "Nelson Jr.",
-                                          apellidoPaterno: "Muntz",
-                                          avatar : "http://images1.wikia.nocookie.net/__cb20100606175810/simpsons/images/6/64/Nelson_jr.jpg")
+                                          apellidoPaterno: "Muntz")
     perfilDependiente.save(flush:true)
     Dependiente dependiente = new Dependiente(matricula : "2013A9023",
                                               perfil : perfilDependiente,
