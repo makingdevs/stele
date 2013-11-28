@@ -1,6 +1,7 @@
 package com.stele
 
 import com.makingdevs.*
+import grails.converters.JSON
 
 class PerfilController {
 
@@ -26,6 +27,14 @@ class PerfilController {
     perfil.fechaDeNacimiento = new Date().parse("dd/MM/yyyy",params.fechaNacimiento)
     perfil.save(failOnError:true)
   }
+
+  def uploadImage(){
+    println "hooolllllaaaa : $params"
+    def perfil = perfilService.subirImagenPerfil(params.id, params.file)
+    println perfil
+    render perfil as JSON
+  }
+
 }
 
 class UpdatePasswordCommand {
