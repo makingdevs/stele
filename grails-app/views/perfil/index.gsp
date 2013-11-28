@@ -15,13 +15,12 @@
         });
       });
       $(function() {
-        console.log("hola");
         var urlValue = $("input#url").val() 
-          Dropzone.options.dropzone = {
+        $("#imagenPrincipal").dropzone({
           url : urlValue,
           maxFilesize : .5,
           addRemoveLinks : false
-          };
+        });
       });
     </r:script>
     <div class="page-content">
@@ -65,7 +64,12 @@
                      <div class="span12">
                        <div class="span3 center">
                          <input type="hidden" value="${createLink(controller:'perfil', action:'uploadImage', id: usuarioActual.perfil.id)}" id="url" />
-                         <input type="file" id="dropzone" class="dropzone" />
+                         <g:if test="${usuarioActual.perfil.avatar}">
+                          <img  src="${usuarioActual.perfil.avatar.url()}" width="100" height="500" id="imagenPrincipal" />
+                         </g:if>
+                         <g:else>
+                          <input type="file" id="imagenPrincipal" class="dropzone" />
+                         </g:else>
                          <div class="space-4"></div>
                          <div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
                            <div class="inline position-relative">
@@ -136,11 +140,19 @@
                  <div class="row-fluid">                           
                     <div class="hr dotted"></div>
                      </div>
-                    <g:each in="${usuarioActual.dependientes}"> 
+                     <g:set var="counter" value="${1}" />
+                    <g:each in="${usuarioActual.dependientes}">
+                      <input type="hidden" value="${createLink(controller:'perfil', action:'uploadImage', id: it.perfil.id)}" id="img${counter}" />
                       <div class="row-fluid">
                       <div class="span12">
                        <div class="span3 center">
-                         <input type="file" />
+                         <g:if test="${it.perfil.avatar}" >
+                          <img  src="${it.perfil.avatar.url()}" width="100" height="500" id="perfil${counter}" />
+                         </g:if>
+                         <g:else>
+                          <input type="file" id="perfil${counter}" class="dropzone" />
+                         </g:else>
+                         <g:set var="counter" value="${counter + 1}" />
                          <div class="space-4"></div>
                          <div class="width-80 label label-purple label-large arrowed-in arrowed-in-right">
                            <div class="inline position-relative">
