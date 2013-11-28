@@ -29,9 +29,7 @@ class PerfilController {
   }
 
   def uploadImage(){
-    println "hooolllllaaaa : $params"
-    def perfil = perfilService.subirImagenPerfil(params.id, params.file)
-    println perfil
+    def perfil = perfilService.subirImagenPerfil(params.long('id'), params.file)
     render perfil as JSON
   }
 
