@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono, uploadImg,bootstrap-js,bootstrapDatePicker"/>
+    <r:require modules="telefono, uploadImg,bootstrap-js,bootstrapDatePicker,upload"/>
   </head>
 
   <body>
@@ -13,6 +13,15 @@
           language : 'es',
           autoclose : true
         });
+      });
+      $(function() {
+        console.log("hola");
+        var urlValue = $("input#url").val() 
+          Dropzone.options.dropzone = {
+          url : urlValue,
+          maxFilesize : .5,
+          addRemoveLinks : false
+          };
       });
     </r:script>
     <div class="page-content">
@@ -55,7 +64,8 @@
                      <div class="row-fluid">
                      <div class="span12">
                        <div class="span3 center">
-                         <input type="file" />
+                         <input type="hidden" value="${createLink(controller:'perfil', action:'uploadImage', id: usuarioActual.perfil.id)}" id="url" />
+                         <input type="file" id="dropzone" class="dropzone" />
                          <div class="space-4"></div>
                          <div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
                            <div class="inline position-relative">
@@ -106,7 +116,7 @@
                               <g:formRemote name="fechaDeNacimiento" update="fechaNacimientoDiv" url="[controller:'perfil', action:'actualizarFechaNacimiento', params:[id: "${usuarioActual.perfil.id}"]]">
                                 <div class="profile-info-value" id="fechaNacimientoDiv">
                                   <div id="fechaNamiciento" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                    <input id="fechaNacimiento" name="fechaNacimiento" class="fechaNacimiento" data-format="yyyy-mm-dd" type="text" placeholder="${usuarioActual.perfil.fechaDeNacimiento.format("dd/MM/yyyy") ?: ''}"></input>
+                                    <input id="fechaNacimiento" name="fechaNacimiento" class="fechaNacimiento" data-format="yyyy-mm-dd" type="text" placeholder="${usuarioActual.perfil?.fechaDeNacimiento?.format("dd/MM/yyyy") ?: ''}"></input>
                                     <span class="add-on">
                                       <i class="icon-calendar"></i>
                                     </span>
@@ -163,7 +173,7 @@
                               <g:formRemote name="fechaDeNacimiento" update="fechaNacimientoDiv" url="[controller:'perfil', action:'actualizarFechaNacimiento', params:[id: "${it.perfil.id}"]]">
                                 <div class="profile-info-value" id="fechaNacimientoDiv">
                                   <div id="fechaNamiciento" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                    <input id="fechaNacimiento" name="fechaNacimiento" class="fechaNacimiento"data-format="yyyy-mm-dd" type="text" placeholder="${it.perfil.fechaDeNacimiento?.format("dd/MM/yyyy") ?: ''}"></input>
+                                    <input id="fechaNacimiento" name="fechaNacimiento" class="fechaNacimiento"data-format="yyyy-mm-dd" type="text" placeholder="${it.perfil?.fechaDeNacimiento?.format("dd/MM/yyyy") ?: ''}"></input>
                                     <span class="add-on">
                                       <i class="icon-calendar"></i>
                                     </span>
