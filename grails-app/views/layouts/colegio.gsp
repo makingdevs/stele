@@ -140,10 +140,18 @@
 
               <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
                 <li>
-                  <g:link controller="perfil">
-                    <i class="icon-user"></i>
-                    Profile
-                  </g:link>
+                  <sec:ifAllGranted roles="ROLE_DIRECTOR">
+                    <g:link controller="perfil" action="administrador">
+                        <i class="icon-user"></i>
+                        Profile
+                      </g:link>
+                    </sec:ifAllGranted>
+                  <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
+                    <g:link controller="perfil">
+                      <i class="icon-user"></i>
+                      Profile
+                    </g:link>
+                  </sec:ifAllGranted>
                 </li>
                 <li class="divider"></li>
                 <li>
