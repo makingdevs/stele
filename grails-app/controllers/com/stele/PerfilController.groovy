@@ -13,19 +13,28 @@ class PerfilController {
     [usuarioActual : usuarioActual]
   }
 
+  def administrador(){
+    def usuarioAdministrador = springSecurityService.currentUser
+    [usuarioAdministrador : usuarioAdministrador]
+  }
+
   def actualizarPassword(UpdatePasswordCommand upc) {
     if(upc.hasErrors()) {
       render upc.errors
       return 
     }
     perfilService.actualizarPasswordForUser(upc.nuevaContrasenia, springSecurityService.currentUser)
-    redirect controller:'perfil'
+    def role = springSecurityService.principal.authorities.first()
+    if(role.toString() == ("ROLE_DIRECTOR"))
+     redirect (controller:'perfil', action:'administrador')
+    else
+     redirect controller:'perfil'
   }
 
   def actualizarFechaNacimiento() {
     def perfil = Perfil.get(params.id)
     perfil.fechaDeNacimiento = new Date().parse("dd/MM/yyyy",params.fechaNacimiento)
-    perfil.save(failOnError:true)
+    perfil.save()
   }
 
   def uploadImage(){
