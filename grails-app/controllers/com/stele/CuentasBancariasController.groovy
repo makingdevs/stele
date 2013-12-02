@@ -10,19 +10,19 @@ class CuentasBancariasController {
 
 	def crearCuentaBancariaTransferencia() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
-		def cuenta = cuentasBancariasService.crearNuevaCuentaDePagoElectronico(params, organizacion)
-		[electronica:cuenta]
+		cuentasBancariasService.crearNuevaCuentaDePagoElectronico(params, organizacion)
+		render template:'/cuentasBancarias/listaTransferenciaElectronica', model:[electronica:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.TRANSFERENCIAELECTRONICA)]
 	}
 
 	def crearCuentaBancariaCheque() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
-		def cuenta = cuentasBancariasService.crearNuevaCuentaDePago(params, organizacion)
-		[cheque:cuenta]		
+		cuentasBancariasService.crearNuevaCuentaDePagoCheque(params, organizacion)
+		render template: '/cuentasBancarias/listaCheque', model:[cheque:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.CHEQUE) ]
 	}
 
 	def crearCuentaBancariaFicha() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
-		def cuenta = cuentasBancariasService.crearNuevaCuentaDePago(params, organizacion)
+		def cuenta = cuentasBancariasService.crearNuevaCuentaDePagoFicha(params, organizacion)
 		[ficha:cuenta]
 	}
 
