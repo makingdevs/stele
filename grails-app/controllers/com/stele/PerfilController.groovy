@@ -7,10 +7,15 @@ class PerfilController {
 
   def springSecurityService
   def perfilService
+  def cuentasBancariasService
 
   def index() {
     def usuarioActual = springSecurityService.currentUser
-    [usuarioActual : usuarioActual]
+    def cuentasBancariasExistentes = cuentasBancariasService.obtenerCuentasExistentesPorInstitucion(springSecurityService.currentUser.instituciones?.first())
+    [usuarioActual : usuarioActual,
+     electronica : cuentasBancariasExistentes.transferencias,
+     cheque : cuentasBancariasExistentes.cheques,
+     ficha : cuentasBancariasExistentes.ficha]
   }
 
   def administrador(){
