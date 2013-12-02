@@ -9,7 +9,7 @@ import com.payable.*
 class Institucion extends Organizacion{
 
   static belongsTo = Usuario
-  static hasMany = [direcciones: Direccion, telefonos: Telefono, distribucionesInstitucionales : DistribucionInstitucional, usuarios : Usuario]
+  static hasMany = [direcciones: Direccion, telefonos: Telefono, distribucionesInstitucionales : DistribucionInstitucional, usuarios : Usuario, cuentaBancari : CuentasBancarias]
 
   static constraints = {
     nombre size:1..100,blank:false
