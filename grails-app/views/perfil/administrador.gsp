@@ -184,94 +184,22 @@
                           </div>
                         </div>
                         <div id="banco" class="tab-pane">
-                          <g:render template="cuentasBancarias/trasnferenciaElectronica" />
+                          <div class="span4">
+                            <g:render template="/cuentasBancarias/trasnferenciaElectronica"  />
+                          </div>
+                          <div class="span8" id="transferencia">
+                            <g:render template="/cuentasBancarias/listaTransferenciaElectronica" model="[electronica:electronica]" />
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span12">                        
+                              <div class="hr dotted"></div>
+                            </div>
+                          </div>
                           <div class="row-fluid">
                             <div class="span12">
-                              <div class="span4">
-                                <div class="profile-user-info profile-user-info-striped">
-                                  <div class="profile-contact-info">
-                                    <div class="profile-contact-links center">
-                                      Cheque
-                                    </div>
-                                  </div>  
-
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Banco 
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <input type="text" id="txtBanco" placeholder="banco" />
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Cuenta 
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <input type="text" id="txtBancocta" placeholder="cuenta" />
-                                    </div>
-                                  </div>
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Beneficiario 
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <textarea class="span12 limited" id="form-field-9" maxlength="50"></textarea>
-                                    </div>
-                                  </div>
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name">  </div>
-                                    <div class="profile-info-value center">
-                                    <button class="btn btn-mini btn-success ">
-                                      Agregar
-                                      <i class="icon-arrow-right  icon-on-right"></i>
-                                    </button>
-                                    </div>
-                                  </div>                                      
-                                </div>
-                              </div>
-
-                              <div class="span8">
-                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                  <thead >
-                                    <tr>
-                                      <th>Banco</th>
-                                      <th>Cuenta</th>
-                                      <th>Beneficiario</th>
-                                      <th></tr>
-                                  </thead>
-
-                                  <tbody>
-                                    <tr>
-                                      <td>Bancomer</td>
-                                      <td>1234567890</td>
-                                      <td>Instituto Makingdevs SC</td>
-                                      <td >
-                                        <div class="action-buttons center">
-                                          <a class="red" href="#">
-                                            <i class="icon-trash bigger-130"></i>
-                                          </a>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Bancomer</td>
-                                      <td>1234567890</td>
-                                      <td>Instituto Makingdevs SC</td>
-                                      <td >
-                                        <div class="action-buttons center">
-                                          <a class="red" href="#">
-                                            <i class="icon-trash bigger-130"></i>
-                                          </a>
-                                        </div>
-                                      </td>
-                                    </tr>                   
-                                  </tbody>
-                                </table>
+                              <g:render template="/cuentasBancarias/cheque" />
+                              <div class="span8" id="listaCheque">
+                                <g:render template="/cuentasBancarias/listaCheque" model="[cheque:cheque]"/>
                               </div>
                             </div>
                           </div>
@@ -285,104 +213,10 @@
                           <div class="row-fluid">
                             <div class="span12">
                               <div class="span4">
-                                <div class="profile-user-info profile-user-info-striped">
-                                  <div class="profile-contact-info">
-                                    <div class="profile-contact-links center">
-                                      Ficha de Pago
-                                    </div>
-                                  </div>  
-
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Banco 
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <input type="text" id="txtBanco" placeholder="banco" />
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Cuenta 
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <input type="text" id="txtBancocta" placeholder="cuenta" />
-                                    </div>
-                                  </div>
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Beneficiario 
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <textarea class="span12 limited" id="form-field-9" maxlength="50"></textarea>
-                                    </div>
-                                  </div>
-                                  <div class="profile-info-row ">
-                                    <div class="profile-info-name"> 
-                                      Referencia
-                                    </div>
-
-                                    <div class="profile-info-value  align-left">
-                                      <textarea class="span12 limited" id="form-field-9" maxlength="50"></textarea>
-                                    </div>
-                                  </div>
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name">  </div>
-                                    <div class="profile-info-value center">
-                                      <button class="btn btn-mini btn-success ">
-                                        Agregar
-                                        <i class="icon-arrow-right  icon-on-right"></i>
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
+                                <g:render template="/cuentasBancarias/ficha"/>
                               </div>
-
                               <div class="span8">
-
-                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                  <thead >
-                                    <tr>
-                                      <th>Banco</th>
-                                      <th>Cuenta</th>
-                                      <th>Beneficiario</th>
-                                      <th>Referencia</th>   
-                                      <th></tr>
-                                  </thead>
-
-                                  <tbody>
-                                    <tr>
-                                      <td>Bancomer</td>
-                                      <td>1234567890</td>
-                                      <td>Instituto Makingdevs SC</td>
-                                      <td>Los 2 primeros digitos el numero de colegiaturo ms la matricula del alumno ejemplo 03-123454</td>
-                                      <td >
-                                        <div class="action-buttons center">
-                                          <a class="red" href="#">
-                                            <i class="icon-trash bigger-130"></i>
-                                          </a>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Bancomer</td>
-                                      <td>1234567890</td>
-                                      <td>Instituto Makingdevs SC</td>
-                                      <td>Los 2 primeros digitos el numero de colegiaturo ms la matricula del alumno ejemplo 03-123454</td>
-                                      <td >
-                                        <div class="action-buttons center">
-                                          <a class="red" href="#">
-                                            <i class="icon-trash bigger-130"></i>
-                                          </a>
-                                        </div>
-                                      </td>
-                                    </tr>                   
-                                  </tbody>
-                                </table>
-
+                              <g:render template="/cuentasBancarias/listaFicha" model="[ficha:ficha]" />
                               </div>
                             </div>
                           </div>
@@ -432,8 +266,6 @@
 
                 </div>
               </div>
-
               <!--PAGE CONTENT ENDS-->
-
   </body>
 </html>
