@@ -1113,4 +1113,7 @@ databaseChangeLog = {
 	changeSet(author: "synergyj (generated)", id: "1385648898160-63") {
 		addForeignKeyConstraint(baseColumnNames: "usuario_id", baseTableName: "usuario_rol", constraintName: "FK3118953E2AB2F39E", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "usuario", referencesUniqueColumn: "false")
 	}
+
+	include file: 'add-relation-account-transactionBanking.groovy'
+
 }
