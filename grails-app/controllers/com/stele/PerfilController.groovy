@@ -19,8 +19,12 @@ class PerfilController {
   }
 
   def administrador(){
-    def usuarioAdministrador = springSecurityService.currentUser
-    [usuarioAdministrador : usuarioAdministrador]
+    def usuarioActual = springSecurityService.currentUser
+    def cuentasBancariasExistentes = cuentasBancariasService.obtenerCuentasExistentesPorInstitucion(springSecurityService.currentUser.instituciones?.first())
+    [usuarioAdministrador : usuarioActual,
+     electronica : cuentasBancariasExistentes.electronica,
+     cheque : cuentasBancariasExistentes.cheque,
+     ficha : cuentasBancariasExistentes.ficha]
   }
 
   def actualizarPassword(UpdatePasswordCommand upc) {
