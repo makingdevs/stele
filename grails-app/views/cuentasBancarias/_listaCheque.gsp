@@ -15,9 +15,9 @@
         <td>${it.beneficiario}</td>
         <td >
           <div class="action-buttons center">
-            <a class="red" href="#">
+            <g:remoteLink id="${it.id}" class="danger" controller="cuentasBancarias" action="borrarCuentaCheque" update="listaCheque">
               <i class="icon-trash bigger-130"></i>
-            </a>
+            </g:remoteLink>
           </div>
         </td>
       </tr>

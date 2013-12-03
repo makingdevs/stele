@@ -10,15 +10,15 @@
   <tbody>
   <g:each in="${ficha}" >
       <tr>
-        <td>Bancomer</td>
-        <td>1234567890</td>
-        <td>Instituto Makingdevs SC</td>
-        <td>Los 2 primeros digitos el numero de colegiaturo msmatricula del alumno ejemplo 03-123454</td>
+        <td>${it.nombreDeBanco}</td>
+        <td>${it.numeroDeCuenta}</td>
+        <td>${it.beneficiario}</td>
+        <td>${it.referencia}</td>
         <td >
           <div class="action-buttons center">
-            <a class="red" href="#">
+            <g:remoteLink id="${it.id}" class="danger" controller="cuentasBancarias" action="borrarCuentaFicha" update="listaFicha">
               <i class="icon-trash bigger-130"></i>
-            </a>
+            </g:remoteLink>
           </div>
         </td>
       </tr>             

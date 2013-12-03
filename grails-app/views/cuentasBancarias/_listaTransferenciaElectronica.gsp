@@ -16,9 +16,9 @@
           <td>${it.cuentaInterbancaria}</td>
           <td >
             <div class="action-buttons center">
-              <a class="red" href="#">
-                <i class="icon-trash bigger-130"></i>
-              </a>
+              <g:remoteLink id="${it.id}" class="danger" controller="cuentasBancarias" action="borrarCuentaTransferencia" update="transferencia">
+              <i class="icon-trash bigger-130"></i>
+            </g:remoteLink>
             </div>
           </td>
         </tr>
