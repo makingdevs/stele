@@ -215,7 +215,7 @@
                               <div class="span4">
                                 <g:render template="/cuentasBancarias/ficha"/>
                               </div>
-                              <div class="span8">
+                              <div class="span8" id="listaFicha">
                               <g:render template="/cuentasBancarias/listaFicha" model="[ficha:ficha]" />
                               </div>
                             </div>
