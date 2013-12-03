@@ -22,8 +22,28 @@ class CuentasBancariasController {
 
 	def crearCuentaBancariaFicha() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
-		def cuenta = cuentasBancariasService.crearNuevaCuentaDePagoFicha(params, organizacion)
-		[ficha:cuenta]
+		cuentasBancariasService.crearNuevaCuentaDePagoFicha(params, organizacion)
+		render template: '/cuentasBancarias/listaFicha', model:[ficha:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.FICHADEPAGO)]
 	}
 
+	def borrarCuentaTransferencia() {
+		def organizacion = springSecurityService.currentUser.instituciones?.first()
+		def cuenta = CuentasBancarias.get(params.id)
+		cuenta.delete()
+		render template:'/cuentasBancarias/listaTransferenciaElectronica', model:[electronica:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.TRANSFERENCIAELECTRONICA)]
+	}
+
+	def borrarCuentaCheque() {
+		def organizacion = springSecurityService.currentUser.instituciones?.first()
+		def cuenta = CuentasBancarias.get(params.id)
+		cuenta.delete()
+		render template: '/cuentasBancarias/listaCheque', model:[cheque:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.CHEQUE) ]
+	}
+
+	def borrarCuentaFicha() {
+		def organizacion = springSecurityService.currentUser.instituciones?.first()
+		def cuenta = CuentasBancarias.get(params.id)
+		cuenta.delete()
+		render template: '/cuentasBancarias/listaFicha', model:[ficha:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.FICHADEPAGO)]
+	}
 }
