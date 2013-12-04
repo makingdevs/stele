@@ -42,11 +42,11 @@ class UsuarioService {
     usuario
   }
 
-  def registrar(Usuario usuario){
+  def registrar(Usuario usuario, def institucion){
     def existeUsuario = Usuario.findByUsername(usuario.username)
     if(!existeUsuario) {
       usuario.perfil = perfilService.registrar(usuario.perfil)
-      usuario.addToInstituciones(springSecurityService.currentUser.instituciones?.first())
+      usuario.addToInstituciones(institucion)
       usuario.save()
       def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
       UsuarioRol.create(usuario, rol, true)
