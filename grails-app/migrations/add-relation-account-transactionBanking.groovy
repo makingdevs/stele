@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-	changeSet(author: "says (generated)", id: "1385845466765-1") {
+	changeSet(author: "jorge (generated)", id: "1386104507085-1") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "cuentas_bancarias") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -15,7 +15,7 @@ databaseChangeLog = {
 				constraints(nullable: "false")
 			}
 
-			column(name: "cuenta_interbancaria", type: "decimal(19,2)")
+			column(name: "cuenta_interbancaria", type: "varchar(18)")
 
 			column(name: "date_created", type: "datetime") {
 				constraints(nullable: "false")
@@ -45,13 +45,13 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "says (generated)", id: "1385845466765-3") {
+	changeSet(author: "jorge (generated)", id: "1386104507085-3") {
 		createIndex(indexName: "FKD9D2BCC2418DE2A1", tableName: "cuentas_bancarias") {
 			column(name: "organizacion_id")
 		}
 	}
 
-	changeSet(author: "says (generated)", id: "1385845466765-2") {
+	changeSet(author: "jorge (generated)", id: "1386104507085-2") {
 		addForeignKeyConstraint(baseColumnNames: "organizacion_id", baseTableName: "cuentas_bancarias", constraintName: "FKD9D2BCC2418DE2A1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
