@@ -82,8 +82,11 @@ class UsuarioServiceSpec  extends Specification{
         telefono.numeroTelefonico = "123456789"
         perfil.addToTelefonos(telefono)
         usuario.perfil = perfil
+      and:
+        Institucion institucion = new Institucion()
+        institucion.save(validate:false)
       when: "Guardamos el usuario con el servicio"
-        usuario = service.registrar(usuario)
+        usuario = service.registrar(usuario, institucion)
       then: "El id debe ser mayor que 0"
         assert usuario.id > 0
     }
@@ -98,6 +101,7 @@ class UsuarioServiceSpec  extends Specification{
         def usuarioExistente = new Usuario()
         def perfilExistente = new Perfil()
         def telefono = new Telefono()
+        def inst = new Institucion()
         usuarioExistente.id = 1001
         usuarioExistente.username = "pepito@gmail.com"
         usuarioExistente.password = "pepe6789"
@@ -108,7 +112,7 @@ class UsuarioServiceSpec  extends Specification{
         telefono.numeroTelefonico = "123456789"
         perfilExistente.addToTelefonos(telefono)
         usuarioExistente.perfil = perfilExistente
-        service.registrar(usuarioExistente)
+        service.registrar(usuarioExistente, inst.save(validate:false))
         def contador = Usuario.count()
       and: "Un usuario con datos"
         def usuario = new Usuario()
@@ -123,8 +127,11 @@ class UsuarioServiceSpec  extends Specification{
         telefono.numeroTelefonico = "123456789"
         perfil.addToTelefonos(telefono)
         usuario.perfil = perfil
+      and:
+        Institucion institucion = new Institucion()
+        institucion.save(validate:false)
       when: "Se intenta guardar el usuario"
-        usuario = service.registrar(usuario)
+        usuario = service.registrar(usuario, institucion)
       then: "El id debe ser igual a 1001"
         assert usuario.id == 1001
         assert contador == Usuario.count()
@@ -151,10 +158,11 @@ class UsuarioServiceSpec  extends Specification{
         telefono.numeroTelefonico = "123456789"
         perfil.addToTelefonos(telefono)
         institucion.nombre = "Escuela patito"
+        institucion.save(validate:false)
         usuario.addToInstituciones(institucion)
         usuario.perfil = perfil
       when: "Guardamos el usuario y la institucion con el servicio"
-        usuario = service.registrar(usuario)
+        usuario = service.registrar(usuario, institucion)
       then: "El id debe ser mayor que 0"
         assert usuario.id > 0
         usuario.instituciones.each{
