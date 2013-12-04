@@ -55,7 +55,7 @@ class InscripcionManualServiceSpec extends Specification {
 
       def usuarioServiceMock = mockFor(UsuarioService)
       usuarioServiceMock.demand.obtenerUsuarioDesdeCommand(1..1){ obj -> return user}
-      usuarioServiceMock.demand.registrar(1..1){ obj -> return user}
+      usuarioServiceMock.demand.registrar(1..1){ obj , obj2-> return user}
       service.usuarioService  = usuarioServiceMock.createMock()
 
       def dependienteServiceMock = mockFor(DependienteService)
