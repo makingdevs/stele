@@ -5,7 +5,7 @@ class CuentasBancarias {
 	String nombreDeBanco
 	BigInteger numeroDeCuenta
 	String beneficiario
-	BigInteger cuentaInterbancaria
+	String cuentaInterbancaria
 	String referencia
 	TipoTransferencia tipoTransferencia
 
@@ -16,9 +16,9 @@ class CuentasBancarias {
 
 	static constraints = {
 		nombreDeBanco size:1..60,blank:false
-		numeroDeCuenta nullable:false
+		numeroDeCuenta size:1..10, nullable:false
 		beneficiario size:1..80, nullable:false
-		cuentaInterbancaria nullable:true
+		cuentaInterbancaria size:1..18, nullable:true
 		referencia size:1..120, nullable:true
 	}
 
