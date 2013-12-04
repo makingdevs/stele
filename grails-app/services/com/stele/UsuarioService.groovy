@@ -8,6 +8,7 @@ import com.makingdevs.*
 class UsuarioService {
 
   def perfilService
+  def springSecurityService
 
   def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def usuario = new Usuario()
@@ -45,6 +46,7 @@ class UsuarioService {
     def existeUsuario = Usuario.findByUsername(usuario.username)
     if(!existeUsuario) {
       usuario.perfil = perfilService.registrar(usuario.perfil)
+      usuario.addToInstituciones(springSecurityService.currentUser.instituciones?.first())
       usuario.save()
       def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
       UsuarioRol.create(usuario, rol, true)
