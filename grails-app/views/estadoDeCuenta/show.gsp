@@ -93,6 +93,7 @@
                                       <tr>
                                         <td class="center">${it.nombreDeBanco}</td>
                                         <td class="center">${it.numeroDeCuenta}</td>
+                                        <td class="center">${it.beneficiario}</td>  
                                         <td class="center">${it.referencia}</td>
                                       </tr>
                                     </g:each>
