@@ -17,7 +17,7 @@ class InscripcionManualService {
     
 
     mapaDomains.dependiente.camada = generarNombreCamada(institucion)
-    def usuarioCargado = usuarioService.registrar(mapaDomains.usuario)
+    def usuarioCargado = usuarioService.registrar(mapaDomains.usuario, institucion)
     def dependienteCargado = dependienteService.registrar(mapaDomains.dependiente, usuarioCargado.id)
     def cicloEscolarCargado = cicloEscolarService.registrar(mapaDomains.cicloEscolar)
     def distribucionInstitucionalCargado = distribucionInstitucionalService.registrar(mapaDomains.distribucionInstitucional, institucion.id)
