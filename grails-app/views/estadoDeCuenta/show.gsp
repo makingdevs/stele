@@ -18,7 +18,7 @@
           <div class="span12">
             <form class="form-horizontal">
               <div class="row-fluid">
-                <!--div class="span12 widget-container-span">
+                <div class="span12 widget-container-span">
                   <div class="widget-box">
                     <div class="widget-header widget-header-small header-color-green2">
                       <h5 class="bigger lighter">
@@ -46,7 +46,26 @@
 
                             <div class="accordion-body collapse" id="faq-1-1">
                               <div class="accordion-inner">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                <table class="table table-striped table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th class="center">Banco</th>
+                                      <th class="center">Numero de Cuenta</th>
+                                      <th class="center">Beneficiario</th>
+                                      <th class="center">CLABE</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <g:each in="${electronica}">
+                                      <tr>
+                                        <td class="center">${it.nombreDeBanco}</td>
+                                        <td class="center">${it.numeroDeCuenta}</td>
+                                        <td class="center">${it.beneficiario}</td>
+                                        <td class="center">${it.cuentaInterbancaria}</td>
+                                      </tr>
+                                    </g:each>
+                                  </tbody>
+                                </table>
                               </div>
                             </div>
                           </div>
@@ -60,7 +79,25 @@
                             </div>
                             <div class="accordion-body collapse" id="faq-1-2">
                               <div class="accordion-inner">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                <table class="table table-striped table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th class="center">Banco</th>
+                                      <th class="center">Numero de Cuenta</th>
+                                      <th class="center">Beneficiario</th>
+                                      <th class="center">Referencia</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <g:each in="${ficha}">
+                                      <tr>
+                                        <td class="center">${it.nombreDeBanco}</td>
+                                        <td class="center">${it.numeroDeCuenta}</td>
+                                        <td class="center">${it.referencia}</td>
+                                      </tr>
+                                    </g:each>
+                                  </tbody>
+                                </table>
                               </div>
                             </div>
                           </div>
@@ -75,7 +112,24 @@
 
                             <div class="accordion-body collapse" id="faq-1-3">
                               <div class="accordion-inner">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                <table class="table table-striped table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th class="center">Banco</th>
+                                      <th class="center">Numero de Cuenta</th>
+                                      <th class="center">Beneficiario</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <g:each in="${ficha}">
+                                      <tr>
+                                        <td class="center">${it.nombreDeBanco}</td>
+                                        <td class="center">${it.numeroDeCuenta}</td>
+                                        <td class="center">${it.beneficiario}</td>
+                                      </tr>
+                                    </g:each>
+                                  </tbody>
+                                </table>
                               </div>
                             </div>
                           </div>
@@ -83,7 +137,7 @@
                       </div>
                     </div>
                   </div>
-                </div-->          
+                </div>          
                 <g:render template="pagosVencidos" modal="['pagoVencido':pagosVencido, 'pagoRechazo': pagosRechazados]" />
                 <g:render template="pagosEnTiempo" modal="[pagoTiempo:pagosEnTiempo, pagoRealizar:pagosPorRealizar,pagoValidandon:pagosProcesados,pagosConciliados:pagoCorrectos]" />
                 <div class="row-fluid">
