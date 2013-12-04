@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat
 class EstadoDeCuentaController {
 
   def springSecurityService
+  def cuentasBancariasService
   def pagoService
 
   def show() {
@@ -19,6 +20,7 @@ class EstadoDeCuentaController {
     else
       dependiente = Dependiente.findById(dependientes.first().id)
     def pagosDependiente = dependiente.pagos
+    def cuentasBancariasExistentes = cuentasBancariasService.obtenerCuentasExistentesPorInstitucion(usuarioActual?.instituciones?.first())
     [
      usuarioActual : usuarioActual,
      listDependiente : dependientes,
@@ -28,7 +30,10 @@ class EstadoDeCuentaController {
      pagoMensual : separarPagosPorMeses(separarPagosEstadoDeCuenta(estatusDeCuenta.pagoMensual, pagosDependiente)),
      pagosRechazados : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosRechazados, pagosDependiente),
      pagosProcesados : separarPagosEstadoDeCuenta(estatusDeCuenta.pagosProcesados, pagosDependiente),
-     pagoCorrectos : separarPagosEstadoDeCuenta(estatusDeCuenta.pagoCorrectos, pagosDependiente)
+     pagoCorrectos : separarPagosEstadoDeCuenta(estatusDeCuenta.pagoCorrectos, pagosDependiente),
+     electronica : cuentasBancariasExistentes.electronica,
+     cheque : cuentasBancariasExistentes.cheque,
+     ficha : cuentasBancariasExistentes.ficha
     ]
   }
 
