@@ -10,7 +10,7 @@ class ConceptoController {
   def springSecurityService
   def conceptoService
 
-  static allowedMethods = [obtenerListaconceptos : 'GET']
+  static allowedMethods = [obtenerListaConceptos : 'GET']
 
   def nuevo(ConceptoCommand cmd) {
     if(cmd.hasErrors()) {
