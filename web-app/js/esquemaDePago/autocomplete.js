@@ -17,6 +17,7 @@ $(function() {
             group = {
               id: data.id,
               name: data.value,
+              alterno: 1000,
               toString: function () {
                 return JSON.stringify(this);
               },
@@ -51,8 +52,9 @@ $(function() {
     minLength: 2,
     updater: function (item) {
         var item = JSON.parse(item);
-        console.log(item.name); 
-        $('#hiddenID').val(item.id);       
+        console.log(item);
+        $('#hiddenID').val(item.id);
+        $('#cantidadDePago').val(item.alterno);
         return item.name;
     }     
   });
