@@ -19,8 +19,10 @@ class BootStrap {
     creaInstituciones()
     creaUsuario()
     JSON.createNamedConfig('stele') {
+      it.registerObjectMarshaller(new EsquemaDePagoMarshaller())
       it.registerObjectMarshaller(new ConceptoMarshaller())
       it.registerObjectMarshaller(new DescuentoMarshaller())
+      it.registerObjectMarshaller(new RecargosMarshaller())
     }
 
     switch(Environment.current){
