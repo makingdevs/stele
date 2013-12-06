@@ -15,6 +15,8 @@ class EsquemaDePagoController {
   def notificacionService
 
   def scaffold = EsquemaDePago
+
+  static allowedMethods = [obtenerEsquemaDePagoPorConcepto : 'GET']
  
   def paraCamada() {
     if(params.listaDependientes) {
@@ -25,6 +27,19 @@ class EsquemaDePagoController {
 
     }
     [camada:params?.camada]
+  }
+
+  def obtenerEsquemaDePagoPorConcepto(){
+    def organizacion = springSecurityService.currentUser.instituciones.first()
+    def esquemasDePagos = EsquemaDePago.withCriteria {
+      concepto {
+        like('descripcion', "%${params.query}%" )
+      }
+      eq ('organizacion', organizacion)
+    }
+    JSON.use('stele') {
+      render esquemasDePagos as JSON
+    }
   }
 
   def generarPagoParaLaCamada(CamadaPagoCommand cpc) {
