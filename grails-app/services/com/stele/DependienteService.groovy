@@ -93,7 +93,7 @@ class DependienteService {
   def obtenerDependientesPorPagos(def listaPagos) {
     Dependiente.withCriteria{
       pagos{
-        'in'('id', listaPagos*.id)
+        'in'('id', listaPagos.flatten()*.id.toLong())
       }
     }
   }
