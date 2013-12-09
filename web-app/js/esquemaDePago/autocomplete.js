@@ -16,7 +16,8 @@ $(function() {
             var group;
             group = {
               id: data.id,
-              name: data.value,
+              name: data.value.concepto,
+              cantidadDePago: data.cantidadDePago, 
               alterno: 1000,
               toString: function () {
                 return JSON.stringify(this);
@@ -52,9 +53,7 @@ $(function() {
     minLength: 2,
     updater: function (item) {
         var item = JSON.parse(item);
-        console.log(item);
-        $('#hiddenID').val(item.id);
-        $('#cantidadDePago').val(item.alterno);
+        $('#cantidadDePago').val(item.cantidadDePago);
         return item.name;
     }     
   });
