@@ -34,8 +34,8 @@ class EsquemaDePagoController {
     def esquemasDePagos = EsquemaDePago.withCriteria {
       concepto {
         like('descripcion', "%${params.query}%" )
+        eq ('organizacion', organizacion)
       }
-      eq ('organizacion', organizacion)
     }
     JSON.use('stele') {
       render esquemasDePagos as JSON
