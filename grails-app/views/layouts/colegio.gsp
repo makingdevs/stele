@@ -225,9 +225,9 @@
                 </g:link>
               </li>
               <li>
-                <g:link>
+                <g:link controller="esquemaDePago" action="nuevo">
                   <i class="icon-double-angle-right"></i>
-                  Archivo
+                  Esquema de Pago
                 </g:link>
               </li>
             </ul>
