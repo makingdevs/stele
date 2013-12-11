@@ -19,6 +19,8 @@ class CamadaPagoCommand {
   String[] pagoDoble
   String listaDependientes
   String descuentoConFecha
+  String idRecargo
+  String idsDescuentos
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
@@ -31,6 +33,8 @@ class CamadaPagoCommand {
     meses nullable:true
     listaDependientes nullable:true
     descuentoConFecha nullable:true
+    idRecargo nullable:true
+    idsDescuentos nullable:true
   }
 
 }
