@@ -6,12 +6,12 @@ class WrapperCommandService {
 
   GrupoPagoCommand generarParseoDeCamadaPagoCommandAGrupoPagoCommand(CamadaPagoCommand camadaPagoCommand, Institucion institucion) {
     GrupoPagoCommand gcp = new GrupoPagoCommand()
-    gcp.recargoId = camadaPagoCommand.recargoid?.first()?.toLong()
+    gcp.recargoId = camadaPagoCommand.recargoid?.first()?.toLong() ?: camadaPagoCommand?.idRecargo?.toLong()
     gcp.cantidadDePago = camadaPagoCommand.cantidadDePago ?: camadaPagoCommand.cantidadDePagoRecurrente
     gcp.conceptoDePago = camadaPagoCommand.conceptoDePago ?: camadaPagoCommand.conceptoDePagoRecurrente
     if (camadaPagoCommand?.fechaDeVencimiento)  
       gcp.fechaDeVencimiento = new Date().parse("dd/MM/yyyy", camadaPagoCommand?.fechaDeVencimiento)
-    gcp.descuentoIds = camadaPagoCommand.descuentos
+    gcp.descuentoIds = camadaPagoCommand?.descuentos ?: camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
     gcp.organizacion = institucion
     gcp.diasVencimientoPago = camadaPagoCommand.diasVencimientoPago
     gcp.payables = obtenerListaDePayables(camadaPagoCommand)
