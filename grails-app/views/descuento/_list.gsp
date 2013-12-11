@@ -5,7 +5,7 @@
       Nombre Descuento : 
     </dt>
     <dd>
-      ${descuento?.nombreDeDescuento} 
+      <input type="text" class="descuento" value="${descuento?.nombreDeDescuento}" readonly>
     </dd>
   </dl>
 </g:each>
