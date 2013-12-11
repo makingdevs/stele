@@ -18,7 +18,11 @@ $(function() {
               id: data.id,
               name: data.value.concepto,
               cantidadDePago: data.cantidadDePago, 
-              alterno: 1000,
+              idRecargo: data.recargo.id,
+              recargoCantidad: data.recargo.cantidad,
+              recargoPorcentaje: data.recargo.porcentaje,
+              nombredescuentos: data.nombresDescuentos,
+              descuentosIds: data.descuentosIds,
               toString: function () {
                 return JSON.stringify(this);
               },
@@ -53,7 +57,23 @@ $(function() {
     minLength: 2,
     updater: function (item) {
         var item = JSON.parse(item);
+        $('#conceptoDePagoRecurrente').val(item.name);
         $('#cantidadDePago').val(item.cantidadDePago);
+        $('#cantidadDePagoRecurrente').val(item.cantidadDePago);
+        $('#idRecargo').val(item.idRecargo);
+        if (item.recargoCantidad != null){
+          $('#cantidadRecargo').val(item.recargoCantidad);
+          $('#cantidadRecargo').removeClass("hidden");
+          $('#labelRecargoCantidad').removeClass("hidden");
+        } else if (item.recargoPorcentaje != null) {
+          $('#recargoPorcentaje').val(item.recargoPorcentaje);
+          $('#recargoPorcentaje').removeClass("hidden");
+          $('#labelRecargoPorcentaje').removeClass("hidden");
+        }
+        $('#idsDescuentos').val(item.descuentosIds);
+        $('#nombreDescuentos').val(item.nombredescuentos);
+        $('#nombreDescuentos').removeClass("hidden");
+        $('#labelDescuentos').removeClass("hidden");
         return item.name;
     }     
   });
