@@ -17,6 +17,9 @@ class EsquemaDePagoController {
   def scaffold = EsquemaDePago
 
   static allowedMethods = [obtenerEsquemaDePagoPorConcepto : 'GET']
+
+  def nuevo(){
+  }
  
   def paraCamada() {
     if(params.listaDependientes) {
