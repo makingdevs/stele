@@ -110,7 +110,7 @@
                                           <br>
                                         </div>
                                       <div class="row-fluid">
-                                        <div class="span8">
+                                        <div class="span6">
                                           <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Concepto</label>
                                           <div class="controls">
@@ -145,7 +145,14 @@
                                           </div>
                                           </div>  
                                           </div>
-                                        <div class="span4">
+                                        <div class="span3">
+                                          <input type="hidden" id="idRecargo" name="idRecargo">
+                                          <input type="hidden" id="idsDescuentos" name="idsDescuentos">
+                                          <label class="hidden" id="labelRecargoCantidad">Recargo Cantidad</label><input class="hidden" id="cantidadRecargo" name="cantidadRecargo" readonly>
+                                          <label class="hidden" id="labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
+                                          <label class="hidden" id="labelDescuentos">Descuentos </label><input class="hidden" id="nombreDescuentos" name="nombreDescuentos" readonly>
+                                        </div>
+                                        <div class="span3">
                                           <div id="descuentoCreado">
                                             <g:render template="/descuento/list", model="[:]" />
                                           </div>
