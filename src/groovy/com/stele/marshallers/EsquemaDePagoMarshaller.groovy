@@ -12,7 +12,7 @@ public class EsquemaDePagoMarshaller implements ObjectMarshaller<JSON> {
 
   public void marshalObject(Object object,JSON converter) {
     def esquemaDePago = object as EsquemaDePago
-    def esquemaDePagoValues = [key:esquemaDePago.id, value:esquemaDePago.concepto, cantidadDePago:esquemaDePago.cantidadDePago,recargo:esquemaDePago.recargo, descuentos: esquemaDePago.descuentos]
+    def esquemaDePagoValues = [key:esquemaDePago.id, value:esquemaDePago.concepto, cantidadDePago:esquemaDePago.cantidadDePago,recargo:esquemaDePago.recargo, descuentosIds: esquemaDePago.descuentos*.id.toString(), nombresDescuentos: esquemaDePago.descuentos*.nombreDeDescuento.toString()]
     converter.convertAnother(esquemaDePagoValues)
   }
 
