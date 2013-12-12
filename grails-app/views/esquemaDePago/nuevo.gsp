@@ -1,7 +1,24 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <title></title>
+    <script type="text/javascript">
+      $("#descuentosForm").submit(function(event){
+        event.stopPropagation();
+        var url = $(this).attr('action');
+        var data = $(this).serialize()
+        var descuentosIds = $("input#descuentos").val();
+        $.ajax({
+          type: "POST",
+          url: url + "?descuentosIds=" + descuentosIds,
+          data: data,
+          success: function(data) {
+            $("#descuentoCreado").html(data)
+            $("#descuentoCreado2").html(data)
+          }
+        });
+        return false;
+      });
+    </script>
   </head>
   <body>
     <div class="main-content">
@@ -51,25 +68,35 @@
                         <div class="widget-main padding-6">
                           <div class="tab-content">
                             <div id="cobro" class="tab-pane in active">
-                              <div class="control-group">
-                                <label class="control-label" for="txtConcepto">Concepto</label>
-                                <div class="controls">
-                                  <div class="input-prepend">
-                                    <input id="form-field-mask-2" class="input-large " type="text" placeholder="Datos del cobro" >
+                              <g:form id="crearEsquemaDePago" name="crearEsquemaDePago" url="[controller:'esquemaDePago', action:'']">
+                                <div class="control-group">
+                                  <label class="control-label" for="txtConcepto">Concepto</label>
+                                  <div class="controls">
+                                    <div class="input-prepend">
+                                      <input id="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" >
+                                    </div>
+                                  </div>
+                                </div>                          
+                                <div class="control-group">
+                                  <label class="control-label" for="txtConcepto">Importe</label>
+                                  <div class="controls">
+                                    <div class="input-prepend">
+                                      <span class="add-on">
+                                        <i class="icon-usd"></i>
+                                      </span>
+                                      <input id="importeEsquemaDePago" class="input-medium " type="text" placeholder="importe" >
+                                    </div>  
+                                  </div>
+                                </div> 
+                                <div id="descuentoCreado" name="descuentoCreado">
+                                  <g:render template="/descuento/list", model="[:]" />
+                                </div>
+                                <div class="control-group">
+                                  <div id="recargoCreado" name="recargoCreado" class="controls">
+                                    <g:render template="/recargo/list" />
                                   </div>
                                 </div>
-                              </div>                          
-                              <div class="control-group">
-                                <label class="control-label" for="txtConcepto">Importe</label>
-                                <div class="controls">
-                                  <div class="input-prepend">
-                                    <span class="add-on">
-                                      <i class="icon-usd"></i>
-                                    </span>
-                                    <input id="form-field-mask-2" class="input-medium " type="text" placeholder="importe" >
-                                  </div>  
-                                </div>
-                              </div>  
+                              </g:form>
                             </div>
                             <div id="descuento" class="tab-pane">
                               <div class="alert alert-info">
@@ -84,7 +111,7 @@
                                     <label class="control-label" for="txtConcepto"> Descuento </label>
                                     <div class="controls">
                                       <div class="input-prepend">
-                                        <input id="form-field-mask-2" class="input-large" type="text" placeholder="descuento" >
+                                        <input id="form-field-mask-2" class="input-large"id="nombreDeDescuento" name="nombreDeDescuento" type="text" placeholder="descuento" >
                                       </div>  
                                     </div>
                                   </div>                                
@@ -95,7 +122,7 @@
                                         <span class="add-on">
                                           <i class="icon-usd"></i>
                                         </span>
-                                        <input id="form-field-mask-2" class="input-medium " type="text" placeholder="importe" >
+                                        <input id="form-field-mask-2" class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe" >
                                       </div>
                                     </div>
                                   </div>
@@ -103,7 +130,7 @@
                                     <label class="control-label" for="txtConcepto"> Porcentaje </label>
                                     <div class="controls">
                                       <div class="input-prepend"> 
-                                        <input id="form-field-mask-2" class="input-mini " type="text" placeholder="porcentaje" >
+                                        <input id="form-field-mask-2" class="input-mini" id="porcentaje" name="porcentaje" type="text" placeholder="porcentaje" >
                                         <span class="add-on">%</span>
                                       </div>
                                     </div>
@@ -141,7 +168,7 @@
                                         <span class="add-on">
                                           <i class="icon-usd"></i>
                                         </span>           
-                                        <input id="form-field-mask-2" class="input-medium " type="text" placeholder="importe " >
+                                        <input id="form-field-mask-2" class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe " >
                                       </div>
                                     </div>
                                   </div>
@@ -149,7 +176,7 @@
                                     <label class="control-label" for="txtConcepto">Porcentaje</label>
                                     <div class="controls">
                                       <div class="input-append">
-                                        <input  id="form-field-mask-2" class="input-mini " type="text"  />
+                                        <input  id="form-field-mask-2" class="input-mini" id="porcentaje" name="porcentaje" type="text"  />
                                         <span class="add-on">%</span>
                                       </div>
                                     </div>
