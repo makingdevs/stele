@@ -30,20 +30,15 @@ class EsquemaDePagoController {
   }
 
   def crearEsquemaDePago(){
-    def organizacion = springSecurityService.currentUser.instituciones.first()
-    def concepto = conceptoService.buscarOSalvarConceptoDePago(organizacion, params.nombreConcepto)
+    def institucion = springSecurityService.currentUser.instituciones.first()
+    def concepto = conceptoService.buscarOSalvarConceptoDePago(institucion, params.nombreConcepto)
     GrupoPagoCommand gpc = new GrupoPagoCommand()
-    gpc.recargoId = params.recargoid
-    gpc.cantidadDePago = params.importeEsquemaDePago
+    gpc.recargoId = params.recargoid.toLong()
+    gpc.cantidadDePago = params.importeEsquemaDePago.toBigDecimal()
     gpc.conceptoDePago = concepto.descripcion
-    gpc.descuentoIds = params.descuentos
-    esquemaDePagoService.buscarOSalvarEsquemaDePago(gpc)
-     def esquemasDePagos = EsquemaDePago.withCriteria {
-      concepto {
-        eq ('organizacion', organizacion)
-      }
-    }
-    render template:"lista", model:[esquemasDePagos:esquemasDePagos] 
+    gpc.descuentoIds = params.descuentos.replace('[','')?.replace(']','')?.split(',') as List
+    def esquema = esquemaDePagoService.buscarOSalvarEsquemaDePago(gpc)
+    redirect(action:'nuevo')
   }
  
   def paraCamada() {
