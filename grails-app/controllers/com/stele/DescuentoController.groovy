@@ -17,7 +17,7 @@ class DescuentoController {
     def descuentosIds = [descuento.id]
     if(params.descuentosIds) {
       def listaDescuentos = params.descuentosIds?.replace('[','')?.replace(']','')?.split(',') ?: []
-      descuentosIds += listaDescuentos.collect{ s -> Long.valueOf(s) }
+      descuentosIds += listaDescuentos*.toLong()
     }
     render template:"/descuento/list", model:[descuentos:Descuento.getAll(descuentosIds), descuentosIds:descuentosIds]
   }
