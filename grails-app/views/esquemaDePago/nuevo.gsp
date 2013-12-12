@@ -68,12 +68,12 @@
                         <div class="widget-main padding-6">
                           <div class="tab-content">
                             <div id="cobro" class="tab-pane in active">
-                              <g:form id="crearEsquemaDePago" name="crearEsquemaDePago" url="[controller:'esquemaDePago', action:'']">
+                              <g:form id="crearEsquemaDePago" name="crearEsquemaDePago" url="[controller:'esquemaDePago', action:'crearEsquemaDePago']">
                                 <div class="control-group">
                                   <label class="control-label" for="txtConcepto">Concepto</label>
                                   <div class="controls">
                                     <div class="input-prepend">
-                                      <input id="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" >
+                                      <input id="nombreConcepto" name="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" >
                                     </div>
                                   </div>
                                 </div>                          
@@ -84,7 +84,7 @@
                                       <span class="add-on">
                                         <i class="icon-usd"></i>
                                       </span>
-                                      <input id="importeEsquemaDePago" class="input-medium " type="text" placeholder="importe" >
+                                      <input id="importeEsquemaDePago" name="importeEsquemaDePago" class="input-medium " type="text" placeholder="importe" >
                                     </div>  
                                   </div>
                                 </div> 
@@ -199,66 +199,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="span7 widget-container-span">
-                    <div class="widget-box">
-                      <div class="widget-header widget-header-small header-color-blue">
-                        <h5 class="bigger lighter">
-                          <i class="icon-money"></i>
-                          Cobros
-                        </h5> 
-                      </div>
-                      <div class="widget-body">
-                        <div class="widget-main no-padding">
-                          <table class="table table-striped table-bordered table-hover">
-                            <thead>
-                              <tr>
-                                <th class="blue">Concepto</th>
-                                <th class="blue">Importe</th>
-                                <th class="pink">
-                                  Descuento
-                                </th>
-                                <th class="pink">
-                                  Importe
-                                </th>
-                                <th class="orange">Recargo</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Teatro de titeles pradres de familia</td>
-                                <td>$1,000</td>
-                                <td>Por pronto pago</td>
-                                <td>$100</td>
-                                <td>5%</td> 
-                                <td >
-                                  <div class="action-buttons center">
-                                    <a class="red" href="#">
-                                      <i class="icon-trash bigger-130"></i>
-                                    </a>
-                                  </div>
-                                </td>                                   
-                              </tr>
-                              <tr>
-                                <td>Teatro de titeles pradres de familia</td>
-                                <td>$1,000</td>
-                                <td>Por pronto pago</td>
-                                <td>$100</td>
-                                <td>5%</td> 
-                                <td >
-                                  <div class="action-buttons center">
-                                    <a class="red" href="#">
-                                      <i class="icon-trash bigger-130"></i>
-                                    </a>
-                                  </div>
-                                </td>                                   
-                              </tr>
-                            </tbody>  
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!--/span-->
+                  <g:render template="lista", model="[esquemasDePagos: esquemasDePagos]"/>
                 </div>    
   </body>
 </html>
