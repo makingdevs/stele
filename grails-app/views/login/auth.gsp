@@ -3,6 +3,11 @@
     <meta name="layout" content="steleTwitterBootstrapAuth"/>
     <title>Inicia tu sesión</title>
     <r:require module="auth"/>
+    <r:script>
+        $(function() {
+         $('#username').focus();
+        });
+    </r:script>
 </head> 
 
 <body>
