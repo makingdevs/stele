@@ -13,12 +13,37 @@ class EsquemaDePagoController {
   def descuentoAplicableService
   def dependienteService
   def notificacionService
+  def conceptoService
 
   def scaffold = EsquemaDePago
 
   static allowedMethods = [obtenerEsquemaDePagoPorConcepto : 'GET']
 
   def nuevo(){
+    def organizacion = springSecurityService.currentUser.instituciones.first()
+     def esquemasDePagos = EsquemaDePago.withCriteria {
+      concepto {
+        eq ('organizacion', organizacion)
+      }
+    }
+    [esquemasDePagos:esquemasDePagos] 
+  }
+
+  def crearEsquemaDePago(){
+    def organizacion = springSecurityService.currentUser.instituciones.first()
+    def concepto = conceptoService.buscarOSalvarConceptoDePago(organizacion, params.nombreConcepto)
+    GrupoPagoCommand gpc = new GrupoPagoCommand()
+    gpc.recargoId = params.recargoid
+    gpc.cantidadDePago = params.importeEsquemaDePago
+    gpc.conceptoDePago = concepto.descripcion
+    gpc.descuentoIds = params.descuentos
+    esquemaDePagoService.buscarOSalvarEsquemaDePago(gpc)
+     def esquemasDePagos = EsquemaDePago.withCriteria {
+      concepto {
+        eq ('organizacion', organizacion)
+      }
+    }
+    render template:"lista", model:[esquemasDePagos:esquemasDePagos] 
   }
  
   def paraCamada() {
