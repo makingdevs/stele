@@ -1,24 +1,26 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <script type="text/javascript">
-      $("#descuentosForm").submit(function(event){
-        event.stopPropagation();
-        var url = $(this).attr('action');
-        var data = $(this).serialize()
-        var descuentosIds = $("input#descuentos").val();
-        $.ajax({
-          type: "POST",
-          url: url + "?descuentosIds=" + descuentosIds,
-          data: data,
-          success: function(data) {
-            $("#descuentoCreado").html(data)
-            $("#descuentoCreado2").html(data)
-          }
+    <r:script>
+      $(function() {
+        $("#descuentosForm").submit(function(event){
+          event.stopPropagation();
+          var url = $(this).attr('action');
+          var data = $(this).serialize()
+          var descuentosIds = $("input#descuentos").val();
+          $.ajax({
+            type: "POST",
+            url: url + "?descuentosIds=" + descuentosIds,
+            data: data,
+            success: function(data) {
+              $("#descuentoCreado").html(data)
+              $("#descuentoCreado2").html(data)
+            }
+          });
+          return false;
         });
-        return false;
       });
-    </script>
+    </r:script>
   </head>
   <body>
     <div class="main-content">
@@ -44,7 +46,6 @@
           </div>
           <div class="row-fluid">
             <div class="span12">
-              <form class="form-horizontal">
                 <div class="row-fluid">
                   <div class="span5 widget-container-span">
                     <div class="widget-box">
@@ -67,37 +68,40 @@
                       <div class="widget-body">
                         <div class="widget-main padding-6">
                           <div class="tab-content">
-                            <div id="cobro" class="tab-pane in active">
-                              <g:form id="crearEsquemaDePago" name="crearEsquemaDePago" url="[controller:'esquemaDePago', action:'crearEsquemaDePago']">
-                                <div class="control-group">
-                                  <label class="control-label" for="txtConcepto">Concepto</label>
-                                  <div class="controls">
-                                    <div class="input-prepend">
-                                      <input id="nombreConcepto" name="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" >
+                              <div id="cobro" class="tab-pane in active">
+                                <g:form name="esquemasDePago" url="[controller: 'esquemaDePago', action: 'crearEsquemaDePago']">
+                                  <div class="control-group">
+                                    <label class="control-label" for="txtConcepto">Concepto</label>
+                                    <div class="controls">
+                                      <div class="input-prepend">
+                                        <input id="nombreConcepto" name="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" >
+                                      </div>
+                                    </div>
+                                  </div>                          
+                                  <div class="control-group">
+                                    <label class="control-label" for="txtConcepto">Importe</label>
+                                    <div class="controls">
+                                      <div class="input-prepend">
+                                        <span class="add-on">
+                                          <i class="icon-usd"></i>
+                                        </span>
+                                        <input id="importeEsquemaDePago" name="importeEsquemaDePago" class="input-medium " type="text" placeholder="importe" >
+                                      </div>  
+                                    </div>
+                                  </div> 
+                                  <div id="descuentoCreado" name="descuentoCreado">
+                                    <g:render template="/descuento/list", model="[:]" />
+                                  </div>
+                                  <div class="control-group">
+                                    <div id="recargoCreado" name="recargoCreado" class="controls">
+                                      <g:render template="/recargo/list" />
                                     </div>
                                   </div>
-                                </div>                          
-                                <div class="control-group">
-                                  <label class="control-label" for="txtConcepto">Importe</label>
-                                  <div class="controls">
-                                    <div class="input-prepend">
-                                      <span class="add-on">
-                                        <i class="icon-usd"></i>
-                                      </span>
-                                      <input id="importeEsquemaDePago" name="importeEsquemaDePago" class="input-medium " type="text" placeholder="importe" >
-                                    </div>  
+                                  <div class="widget-toolbox padding-8 clearfix">
+                                    <input class="btn btn-mini btn-success pull-right" type="submit" id="crearEsquema" value ="Agregar">
                                   </div>
-                                </div> 
-                                <div id="descuentoCreado" name="descuentoCreado">
-                                  <g:render template="/descuento/list", model="[:]" />
-                                </div>
-                                <div class="control-group">
-                                  <div id="recargoCreado" name="recargoCreado" class="controls">
-                                    <g:render template="/recargo/list" />
-                                  </div>
-                                </div>
-                              </g:form>
-                            </div>
+                                </g:form>
+                              </div>
                             <div id="descuento" class="tab-pane">
                               <div class="alert alert-info">
                                 <button class="close" data-dismiss="alert" type="button">
@@ -190,16 +194,12 @@
                             </div>
                           </div>
                         </div>
-                        <div class="widget-toolbox padding-8 clearfix">
-                          <button class="btn btn-mini btn-success pull-right">
-                            Agregar
-                            <i class="icon-arrow-right icon-on-right"></i>
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
-                  <g:render template="lista", model="[esquemasDePagos: esquemasDePagos]"/>
+                  <div class="span7 widget-container-span" id="listaEsquemas">
+                   <g:render template="lista", model="[esquemasDePagos: esquemasDePagos]"/>
+                  </div>
                 </div>    
   </body>
 </html>
