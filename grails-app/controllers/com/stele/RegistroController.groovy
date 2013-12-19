@@ -25,7 +25,7 @@ class RegistroController {
       if(!Usuario.findByUsername(usuario.username)){
         def rol = Rol.findByAuthority("ROLE_DIRECTOR")
         telefono.numeroTelefonico = params.numeroTelefonico
-        telefono.save()
+        //telefono.save()
         perfil.addToTelefonos(telefono)
         usuario.perfil = perfil.save()
         usuario.addToInstituciones(institucion)
