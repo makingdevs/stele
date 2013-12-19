@@ -8,7 +8,9 @@ class RouterController {
     if(springSecurityService.isLoggedIn()){
       def user = springSecurityService.currentUser
       def authorities = user.authorities
-      switch(authorities.first().authority){
+      log.debug authorities
+
+      switch(authorities?.first()?.authority){
         case "ROLE_PADRE_TUTOR":
         redirect uri:"/estadoDeCuenta/show"
         break
