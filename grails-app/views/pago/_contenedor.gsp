@@ -1,0 +1,2 @@
+<g:render template="/estadoDeCuenta/pagosVencidos" modal="['pagoVencido':pagosVencido, 'pagoRechazo': pagosRechazados]" />
+<g:render template="/estadoDeCuenta/pagosEnTiempo" modal="[pagoTiempo:pagosEnTiempo, pagoRealizar:pagosPorRealizar]" />
