@@ -5,7 +5,7 @@ grails.project.test.reports.dir = "target/test-reports"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 // Module plugins
-//grails.plugin.location.profile='../profile'
+grails.plugin.location.profile='../profile'
 //grails.plugin.location.payable='../payable'
 grails.project.war.file = "target/${appName}-${appVersion}.war"
 
@@ -69,7 +69,7 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 
         compile ':cache:1.0.1'
-        compile 'com.makingdevs:profile:latest.integration'
+        //compile 'com.makingdevs:profile:latest.integration'
         compile 'com.payable:payable:latest.integration'
     }
 }

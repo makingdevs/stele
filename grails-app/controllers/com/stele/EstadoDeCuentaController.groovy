@@ -81,4 +81,15 @@ class EstadoDeCuentaController {
     [pagosDelMes:pagosDelMes, mes: params.mes]
   }
 
+  def obtenerPagosPorDependiente() {
+    def dependiente = Dependiente.findById(params.idDependiente,[fetch:['pago':'join']])
+    flash.ventanilla = true
+    render template:'/pago/contenedor', model:[
+              pagosVencido:dependiente.pagos.findAll { pago -> pago.estatusDePago == EstatusDePago.VENCIDO }, 
+              pagosRechazados:dependiente.pagos.findAll { pago -> pago.estatusDePago == EstatusDePago.RECHAZADO }, 
+              pagosEnTiempo:dependiente.pagos.findAll { pago -> pago.estatusDePago == EstatusDePago.CREADO },
+              pagosPorRealizar:[]]
+    }
+
+
 }

@@ -46,9 +46,16 @@
                   <td>$ ${it.cantidadDePago}</td>      
                   <td width="70"><span class="label label-info arrowed-in">Pendiente</span></td>
                   <td class="center" width="140">
-                    <g:link controller="reciboPago" id="${it.id}" class="btn btn-mini btn-purple">
-                      Adjunte Comprobante
-                    </g:link>
+                     <g:if test="${!flash.ventanilla}">
+                      <g:link controller="reciboPago" id="${it.id}" class="btn btn-mini btn-purple">
+                        Adjunte Comprobante
+                      </g:link>
+                    </g:if>
+                    <g:elseif test="${flash.ventanilla}">
+                      <g:link controller="pagoVentanilla" id="${it.id}" class="btn btn-minier btn-success">
+                        Pagar
+                      </g:link>
+                    </g:elseif>
                   </td>
                 </tr>
               </g:each>

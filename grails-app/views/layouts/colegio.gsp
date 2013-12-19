@@ -219,7 +219,7 @@
             </a>
             <ul class="submenu">
               <li>
-                <g:link controller="dependiente" action="busqueda">
+                <g:link controller="pago" action="generarPagoEnEfectivo">
                   <i class="icon-double-angle-right"></i>
                   Manual
                 </g:link>
@@ -228,6 +228,12 @@
                 <g:link controller="esquemaDePago" action="nuevo">
                   <i class="icon-double-angle-right"></i>
                   Esquema de Pago
+                </g:link>
+              </li>
+              <li>
+                <g:link controller="dependiente" action="busqueda">
+                  <i class="icon-double-angle-right"></i>
+                  Busqueda
                 </g:link>
               </li>
             </ul>

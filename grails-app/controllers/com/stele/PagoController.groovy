@@ -19,5 +19,8 @@ class PagoController {
    render (view: "pagosAsociadosAUnaInstitucion", model:[pagosInstitucion:pagosAsociadosAInstitucion, usuario:springSecurityService.currentUser])
   }
 
+  def generarPagoEnEfectivo() {
+    render (view:"manual")
+  }
 
 }
