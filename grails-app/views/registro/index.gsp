@@ -91,15 +91,17 @@
                 </div>
               </div>
             </div>
-          <div class="span12">
-            <div class="control_group">
-              <div class="controls">
-                <recaptcha:ifEnabled>
-                  <recaptcha:recaptcha theme="red"/>
-                </recaptcha:ifEnabled>
+          <g:if env="production">
+            <div class="span12">
+              <div class="control_group">
+                <div class="controls">
+                  <recaptcha:ifEnabled>
+                    <recaptcha:recaptcha theme="red"/>
+                  </recaptcha:ifEnabled>
+                </div>
               </div>
-            </div>
-          </div>  
+            </div>  
+          </g:if>
         <div class="controls form-inline">
           <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; He leído los <a href="">términos y condiciones.</a></label>
           <button type="submit" id="submitForm" class="btn-u pull-right" disabled="disabled"> Registrar </button>
