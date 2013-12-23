@@ -206,12 +206,6 @@
             </ul>
           </li>
           <li>
-            <g:link>
-              <i class="icon-book"></i>
-                <span class="menu-text">Configurar cobros </span>
-            </g:link>
-          </li>
-          <li>
             <a href="#" class="dropdown-toggle">
               <i class="icon-usd"></i>
               <span class="menu-text"> Cobros </span>
@@ -219,7 +213,7 @@
             </a>
             <ul class="submenu">
               <li>
-                <g:link controller="pago" action="generarPagoEnEfectivo">
+                <g:link controller="pago" action="generarPagoEnVentanilla">
                   <i class="icon-double-angle-right"></i>
                   Manual
                 </g:link>
