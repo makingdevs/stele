@@ -1,6 +1,18 @@
+<%@ page import="com.payable.TipoDePago" %>
 <html>
   <head>
     <meta name="layout" content="colegio"/>
+    <r:require module="bootstrap-js"/>
+    <r:require module="bootstrapDatePicker" />
+    <r:script>
+      $(document).ready(function() {
+        $('#fechaPago').datepicker({
+          format : "dd/mm/yyyy",
+          language : 'es',
+          autoclose : false
+        });
+      });
+    </r:script>
   </head>
   <body>
     <div class="page-content">
@@ -57,72 +69,86 @@
               </div>
             </div><!--/span-->
           </div>
+          <div class="widget-box">
+            <div class="widget-header widget-header-small header-color-green">
+              <h5 class="bigger lighter">
+                Adjunte su comprobante
+              </h5>
+            </div>
+            <div class="widget-body">
+              <div class="widget-main">
+                <input type="file" id="id-input-file-2" />
+              </div>
+            </div>
+          </div>
           <div class="row-fluid">
-            <div class="span12">
-              <div class="span8">                                    
-                <div class="row-fluid">
-                  <div class=" widget-container-span">
-                    <div class="widget-box">
-                      <div class="widget-header widget-header-small header-color-green2">
-                        <h5 class="bigger lighter">
-                          Confirmar pago
-                        </h5>
-                      </div>
-                      <div class="widget-body">
-                        <div class="widget-main no-padding">
-                          <table class="table table-striped table-bordered table-hover">
-                            <tbody>
-                              <tr>
-                                <td class="">Fecha comprobante</td>
-                                <td class="">
-                                  <div class="input-append">
-                                    <input type="text" id="datepicker" class="input-medium" placeholder="vencimiento"  />
-                                    <span class="add-on">
-                                      <i class="icon-calendar"></i>
-                                    </span>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td  class="">Monto</td>
-                                <td class="">                                     
-                                  <div class="input-prepend"> 
-                                    <span class="add-on">
-                                      <i class="icon-usd"></i>
-                                    </span>
-                                    <input id="form-field-mask-2" class="input-medium " type="text" placeholder="importe" >
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td  class="">Tipo pago</td>
-                                <td class="">                                     
-                                  <span class="form-field-select-1">
-                                  Efectivo
-                                  </span>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+          <g:form name="pagoInmediato" url="[action:'pagoInmediatoVentanilla', controller:'pago']">
+              <div class="span12">
+                <div class="span8">                                    
+                  <div class="row-fluid">
+                    <div class=" widget-container-span">
+                      <div class="widget-box">
+                        <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">
+                        <div class="widget-header widget-header-small header-color-green2">
+                          <h5 class="bigger lighter">
+                            Confirmar pago
+                          </h5>
+                        </div>
+                        <div class="widget-body">
+                          <div class="widget-main no-padding">
+                            <table class="table table-striped table-bordered table-hover">
+                              <tbody>
+                                <tr>
+                                  <td class="">Fecha comprobante</td>
+                                  <td>
+                                    <div id="fechaPago" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                      <input id="fechaDePago" name="fechaDePago" data-format="yyyy-mm-dd" typeinput>
+                                      <span class="add-on">
+                                        <i class="icon-calendar"></i>
+                                      </span>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td  class="">Monto</td>
+                                  <td class="">                                     
+                                    <div class="input-prepend"> 
+                                      <span class="add-on">
+                                        <i class="icon-usd"></i>
+                                      </span>
+                                      <input id="form-field-mask-2" class="input-medium " type="text" placeholder="importe" >
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td  class="">Tipo pago</td>
+                                  <td class="">                                     
+                                     <g:select id="tipoDePago" name="tipoDePago" from="${TipoDePago.values()}" optionKey="key" />
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Folio Banco</td>
+                                  <td>
+                                    <input type="text" id="folioBanco" name="folioBanco" placeholder="Folio">
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div><!--/span-->
+                    </div><!--/span-->
+                  </div>
+                  <div class="form-actions center">
+                    <button class="btn btn-info"  type="submit">
+                      <i class="icon-ok bigger-110"></i>
+                      Aceptar
+                    </button>
+                  </div>  
                 </div>
-                <div class="form-actions center">
-                  <button class="btn btn-info"  type="button">
-                    <i class="icon-ok bigger-110"></i>
-                    Aceptar
-                  </button>
-                  <button class="btn" type="limpiar">
-                    <i class="icon-undo bigger-110"></i>
-                    Limpiar
-                  </button>
-                </div>  
-              </div>
-              <!--PAGE CONTENT ENDS-->
-            </div><!--/.span-->
-
+              </div><!--/.span-->
+            </g:form>
+          </div>
         </div>
       </div><!--/.main-content-->
     </div><!--/.main-container-->
