@@ -7,6 +7,7 @@ class PagoController {
   def springSecurityService
   def pagoService
   def historialAcademicoService
+  def comprobanteService
 
   def index() { 
     def pagosDeUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
@@ -19,8 +20,14 @@ class PagoController {
    render (view: "pagosAsociadosAUnaInstitucion", model:[pagosInstitucion:pagosAsociadosAInstitucion, usuario:springSecurityService.currentUser])
   }
 
-  def generarPagoEnEfectivo() {
+  def generarPagoEnVentanilla() {
     render (view:"manual")
+  }
+
+  def pagoInmediatoVentanilla() {
+    def fecha = new Date().parse("dd/MM/yyyy", params.fechaDePago)
+    def pago = comprobanteService.aprobarPago(params.transactionId,fecha, params.tipoDePago)
+    render view:"manual"
   }
 
 }
