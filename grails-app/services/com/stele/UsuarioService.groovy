@@ -9,6 +9,7 @@ class UsuarioService {
 
   def perfilService
   def springSecurityService
+  def notificacionService
 
   def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
     def usuario = new Usuario()
@@ -60,6 +61,25 @@ class UsuarioService {
                               correo?.substring(0,2) + 
                               telefono?.substring((telefono.length()-4)) 
     passworGenerado.toLowerCase()
+  }
+
+  def registrarUsuarioDirector(params) {
+    Institucion institucion = new Institucion(params.institucion)
+    Usuario usuario = new Usuario(params.usuario + [enabled:true])
+    Perfil perfil = new Perfil(params.perfil)
+    Telefono telefono = new Telefono()
+    if (!Usuario.findByUsername(usuario.username)) {
+      def rol = Rol.findByAuthority("ROLE_DIRECTOR")
+      telefono.numeroTelefonico = params.numeroTelefonico
+      telefono.save()
+      perfil.addToTelefonos(telefono)
+      usuario.perfil = perfil.save()
+      usuario.addToInstituciones(institucion)
+      usuario.save()
+      UsuarioRol.create(usuario, rol, true)
+      notificacionService.notificarRegistroUsuarioAdministrador(usuario.username)
+    }
+    usuario
   }
 
 }
