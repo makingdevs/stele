@@ -169,5 +169,23 @@ class UsuarioServiceSpec  extends Specification{
           assert it.id > 0
         }
     }
+
+    def "Registrar usuario Director y enviar notificacion"() {
+      given:
+        def params = [institucion:[nombre:'makingdevs'],
+                      usuario:[username:'juan@makingdevs.com', password:12345678],
+                      perfil:[apellidoPaterno:'rodriguez', nombre:'sergio', apellidoMaterno:'duran'],
+                      numeroTelefonico:55158898]
+      and:
+        def notificacionServiceMock = mockFor(NotificacionService)
+        notificacionServiceMock.demand.notificarRegistroUsuarioAdministrador(1..1){obj -> }
+        service.notificacionService = notificacionServiceMock.createMock()
+      when:
+        def registro = service.registrarUsuarioDirector(params)
+      then:
+        assert registro.id > 0
+        assert registro.username == 'juan@makingdevs.com'
+        assert registro.perfil.nombre == 'sergio'
+    }
     
 }
