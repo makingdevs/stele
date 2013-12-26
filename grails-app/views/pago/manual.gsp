@@ -26,6 +26,11 @@
             </h1>
           </div>
           <div class="row-fluid">
+            <g:if test="${flash.pagoCorrecto}">  
+              <div id="message"class="alert alert-success">
+                Se a procesado el pago correctamente
+              </div>
+            </g:if>
             <div class="span12">
               <div class="row-fluid">
                 <div class="span12">
