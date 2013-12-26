@@ -27,6 +27,7 @@ class PagoController {
   def pagoInmediatoVentanilla() {
     def fecha = new Date().parse("dd/MM/yyyy", params.fechaDePago)
     def pago = comprobanteService.aprobarPago(params.transactionId,fecha, params.tipoDePago)
+    flash.pagoCorrecto = pago.estatusDePago
     render view:"manual"
   }
 
