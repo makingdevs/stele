@@ -12,10 +12,19 @@
           autoclose : false
         });
       });
+      $(function() {
+          var urlValue = $("input#url").val() 
+          Dropzone.options.dropzone = {
+          url : urlValue,
+          maxFilesize : .5,
+          addRemoveLinks : false
+          };
+      });
     </r:script>
   </head>
   <body>
     <div class="page-content">
+      <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
       <div class="page-header position-relative  ">
         <h1> Comprobante de pago </h1>
       </div><!--/.page-header-->
@@ -31,6 +40,7 @@
                   </h5> 
                 </div>
                 <div class="widget-body">
+
                   <div class="widget-main no-padding">
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
@@ -77,7 +87,7 @@
             </div>
             <div class="widget-body">
               <div class="widget-main">
-                <input type="file" id="id-input-file-2" />
+                <div id="dropzone" class="dropzone">
               </div>
             </div>
           </div>
