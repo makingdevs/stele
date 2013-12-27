@@ -56,7 +56,7 @@ class EsquemaDePagoController {
     def organizacion = springSecurityService.currentUser.instituciones.first()
     def esquemasDePagos = EsquemaDePago.withCriteria {
       concepto {
-        like('descripcion', "%${params.query}%" )
+        like('descripcion', "%${params.id}%" )
         eq ('organizacion', organizacion)
       }
     }
