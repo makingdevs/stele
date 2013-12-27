@@ -1,7 +1,8 @@
 $(function() {
   $( '.typeahead' ).typeahead({
     source: function( query, process ) {
-      var $url = '/stele/listaConcepto/' + query;
+      var $direccion = $('#urlConcepto')
+      var $url = $direccion[0].value+'/'+ query;
       var $items = new Array;
       $items = [""];
       $.ajax({
@@ -14,36 +15,67 @@ $(function() {
           console.log(data);
           $.map(data, function(data){
             var group;
-            group = {
-              id: data.id,
-              name: data.value.concepto,
-              cantidadDePago: data.cantidadDePago, 
-              idRecargo: data.recargo.id,
-              recargoCantidad: data.recargo.cantidad,
-              recargoPorcentaje: data.recargo.porcentaje,
-              nombredescuentos: data.nombresDescuentos,
-              descuentosIds: data.descuentosIds,
-              toString: function () {
-                return JSON.stringify(this);
-              },
-              toLowerCase: function () {
-                return this.name.toLowerCase();
-              },
-              indexOf: function (string) {
-                return String.prototype.indexOf.apply(this.name, arguments);
-              },
-              replace: function (string) {
-                var value = '';
-                value +=  this.name;
-                if(typeof(this.level) != 'undefined') {
-                  value += ' <span class="pull-right muted">';
-                  value += this.level;
-                  value += '</span>';
-              }
-                return String.prototype.replace.apply(
-                  '<div style="padding: 0.5px; font-size: 1em;">' + value + '</div>', arguments);
-              }
-            };
+            if (data.recargo.id != null){
+              group = {
+                id: data.id,
+                name: data.value.concepto,
+                cantidadDePago: data.cantidadDePago, 
+                nombredescuentos: data.nombresDescuentos,
+                descuentosIds: data.descuentosIds,
+                toString: function () {
+                  return JSON.stringify(this);
+                },
+                toLowerCase: function () {
+                  return this.name.toLowerCase();
+                },
+                indexOf: function (string) {
+                  return String.prototype.indexOf.apply(this.name, arguments);
+                },
+                replace: function (string) {
+                  var value = '';
+                  value +=  this.name;
+                  if(typeof(this.level) != 'undefined') {
+                    value += ' <span class="pull-right muted">';
+                    value += this.level;
+                    value += '</span>';
+                }
+                  return String.prototype.replace.apply(
+                    '<div style="padding: 0.5px; font-size: 1em;">' + value + '</div>', arguments);
+                }
+              };
+            } else {
+              group = {
+                id: data.id,
+                name: data.value.concepto,
+                cantidadDePago: data.cantidadDePago, 
+                idRecargo: data.recargo.id ,
+                recargoCantidad: data.recargo.cantidad,
+                recargoPorcentaje: data.recargo.porcentaje,
+                nombredescuentos: data.nombresDescuentos,
+                descuentosIds: data.descuentosIds,
+                toString: function () {
+                  return JSON.stringify(this);
+                },
+                toLowerCase: function () {
+                  return this.name.toLowerCase();
+                },
+                indexOf: function (string) {
+                  return String.prototype.indexOf.apply(this.name, arguments);
+                },
+                replace: function (string) {
+                  var value = '';
+                  value +=  this.name;
+                  if(typeof(this.level) != 'undefined') {
+                    value += ' <span class="pull-right muted">';
+                    value += this.level;
+                    value += '</span>';
+                }
+                  return String.prototype.replace.apply(
+                    '<div style="padding: 0.5px; font-size: 1em;">' + value + '</div>', arguments);
+                }
+              };
+            }
+
             $items.push(group);
           });
         process($items);
@@ -60,20 +92,31 @@ $(function() {
         $('#conceptoDePagoRecurrente').val(item.name);
         $('#cantidadDePago').val(item.cantidadDePago);
         $('#cantidadDePagoRecurrente').val(item.cantidadDePago);
-        $('#idRecargo').val(item.idRecargo);
+        if (item.idRecargo != null){
+          $('#idRecargo').val(item.idRecargo);
+        }
         if (item.recargoCantidad != null){
           $('#cantidadRecargo').val(item.recargoCantidad);
           $('#cantidadRecargo').removeClass("hidden");
           $('#labelRecargoCantidad').removeClass("hidden");
+          $('#cantidadRecargo1').val(item.recargoCantidad);
+          $('#cantidadRecargo1').removeClass("hidden");
+          $('#labelRecargoCantidad1').removeClass("hidden");
         } else if (item.recargoPorcentaje != null) {
           $('#recargoPorcentaje').val(item.recargoPorcentaje);
           $('#recargoPorcentaje').removeClass("hidden");
           $('#labelRecargoPorcentaje').removeClass("hidden");
+          $('#recargoPorcentaje1').val(item.recargoPorcentaje);
+          $('#recargoPorcentaje1').removeClass("hidden");
+          $('#labelRecargoPorcentaje1').removeClass("hidden");
         }
         $('#idsDescuentos').val(item.descuentosIds);
         $('#nombreDescuentos').val(item.nombredescuentos);
         $('#nombreDescuentos').removeClass("hidden");
         $('#labelDescuentos').removeClass("hidden");
+        $('#nombreDescuentos1').val(item.nombredescuentos);
+        $('#nombreDescuentos1').removeClass("hidden");
+        $('#labelDescuentos1').removeClass("hidden");
         return item.name;
     }     
   });
@@ -83,7 +126,8 @@ $(function() {
 $(function() {
   $( '.typeahead2' ).typeahead({
     source: function( query, process ) {
-      var $url = '/stele/listaDescuento/' + query;
+      var $address = $('#urlDescuento')
+      var $url = $address[0].value+ '/' + query;
       var $items = new Array;
       $items = [""];
       $.ajax({
@@ -99,6 +143,9 @@ $(function() {
             group = {
               id: data.id,
               name: data.value,
+              cantidad: data.cantidad,
+              porcentaje: data.porcentaje,
+              dias: data.dias,
               toString: function () {
                 return JSON.stringify(this);
               },
@@ -133,8 +180,9 @@ $(function() {
     minLength: 2,
     updater: function (item) {
         var item = JSON.parse(item);
-        console.log(item.name); 
-        $('#hiddenID').val(item.id);       
+        $('#cantidad').val(item.cantidad);
+        $('#porcentaje').val(item.porcentaje);
+        $('#diasPreviosParaCancelarDescuento').val(item.dias);
         return item.name;
     }     
   });
