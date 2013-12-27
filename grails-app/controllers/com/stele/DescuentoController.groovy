@@ -13,9 +13,8 @@ class DescuentoController {
   static allowedMethods = [obtenerDescuentosInstitucion : 'GET']
 
   def nuevo() {
-    println params
     Descuento descuento = findOrSaveDescuentoWithParams(params)
-    def descuentosIds = [descuento.id]
+    def descuentosIds = descuento.id
     if(params.descuentosIds) {
       def listaDescuentos = params.descuentosIds?.replace('[','')?.replace(']','')?.split(',') ?: []
       descuentosIds += listaDescuentos*.toLong()
@@ -37,7 +36,8 @@ class DescuentoController {
       descuento.organizacion = springSecurityService.currentUser.instituciones?.first()  
       if (!params.diasPreviosParaCancelarDescuento){
         def diasAntes = getLastDayOfMothByDate(new Date().parse("dd/MM/yyyy",params.fechaDeVencimiento))
-        descuento.diasPreviosParaCancelarDescuento = diasAntes
+
+        descuento.diasPreviosParaCancelarDescuento = diasAntes 
       }
       descuento.save(flush:true)
     }
@@ -54,6 +54,11 @@ class DescuentoController {
     calendario.set(year,month,day)  
     def lastDay = calendario.getActualMaximum(GregorianCalendar.DAY_OF_MONTH)
     def dias = lastDay - day
+    if (dias == 0){
+      return 1
+    } else {
+      return dias
+    }
   }
 
 }
