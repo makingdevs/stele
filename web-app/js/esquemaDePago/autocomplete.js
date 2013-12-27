@@ -15,13 +15,16 @@ $(function() {
           console.log(data);
           $.map(data, function(data){
             var group;
-            if (data.recargo.id != null){
+            if (data.recargo != null){
               group = {
                 id: data.id,
                 name: data.value.concepto,
                 cantidadDePago: data.cantidadDePago, 
                 nombredescuentos: data.nombresDescuentos,
                 descuentosIds: data.descuentosIds,
+                idRecargo: data.recargo.id ,
+                recargoCantidad: data.recargo.cantidad,
+                recargoPorcentaje: data.recargo.porcentaje,
                 toString: function () {
                   return JSON.stringify(this);
                 },
@@ -48,9 +51,6 @@ $(function() {
                 id: data.id,
                 name: data.value.concepto,
                 cantidadDePago: data.cantidadDePago, 
-                idRecargo: data.recargo.id ,
-                recargoCantidad: data.recargo.cantidad,
-                recargoPorcentaje: data.recargo.porcentaje,
                 nombredescuentos: data.nombresDescuentos,
                 descuentosIds: data.descuentosIds,
                 toString: function () {
