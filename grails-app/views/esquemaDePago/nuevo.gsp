@@ -144,17 +144,20 @@
                                       <label class="control-label" for="txtConcepto"> Dias antes </label> 
                                       <div class="controls">
                                         <div class="input-prepend">
-                                          <g:select name="diasVencimientoPago" from="${1..30}" noSelection="['':'- Dia -']"/>
+                                          <g:select name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                   <div class="contro-group">
                                     <div class="controls">
-                                      <input class="btn btn-primary" type="submit" id="descuentoButton" value ="Crear Descuento">
+                                      <input class="btn btn-mini btn-success pull-right" type="submit" id="descuentoButton" value ="Crear Descuento">
                                     </div>
                                   </div>
                                 </g:form>
+                                <div id="descuentoCreado2" name="descuentoCreado2">
+                                    <g:render template="/descuento/list", model="[:]" />
+                                </div>
                             </div>
                             <div id="recargo" class="tab-pane">
                               <div class="alert alert-info">
