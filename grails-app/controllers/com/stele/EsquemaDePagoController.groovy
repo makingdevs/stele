@@ -76,7 +76,8 @@ class EsquemaDePagoController {
       def esquemaDePago = esquemaDePagoService.buscarOSalvarEsquemaDePago(grupoPagoCommand)
       pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos)
     }
-    notificarCreacionDePago(pagos)
+    if (pagos)
+      notificarCreacionDePago(pagos)
     flash.pago = pagos
     redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada]
   }
