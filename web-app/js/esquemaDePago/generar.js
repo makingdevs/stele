@@ -34,7 +34,7 @@ $(document).ready(function(){
     errorClass: "error",
     errorElement: "span"
   });
-
+});
   $("#descuentosForm").submit(function(event){
     event.stopPropagation();
     var url = $(this).attr('action');
@@ -48,9 +48,28 @@ $(document).ready(function(){
       success: function(data) {
         $("#descuentoCreado").html(data)
         $("#descuentoCreado2").html(data)
+        $("#descuentoCreado3").html(data)
       }
     });
     
     return false;
   });
-});
+
+  $("#recargoForm").submit(function(event){
+    event.stopPropagation();
+    var url = $(this).attr('action');
+    var data = $(this).serialize()
+    var recargoid = $("input#recargoid").val();
+
+    $.ajax({
+      type: "POST",
+      url: url + "?recargoid=" + recargoid,
+      data: data,
+      success: function(data) {
+        $("#recargoCreado").html(data)
+        $("#recargoCreado2").html(data)
+        $("#recargoCreado3").html(data)
+      }
+    });
+    return false;
+  });
