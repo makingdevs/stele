@@ -6,7 +6,7 @@ class WrapperCommandService {
 
   GrupoPagoCommand generarParseoDeCamadaPagoCommandAGrupoPagoCommand(CamadaPagoCommand camadaPagoCommand, Institucion institucion) {
     GrupoPagoCommand gcp = new GrupoPagoCommand()
-    if (camadaPagoCommand.recargoid.first())
+    if (camadaPagoCommand.recargoid?.first())
       gcp.recargoId = camadaPagoCommand.recargoid?.first()?.toLong()
     if (!gcp.recargoId)
       gcp.recargoId = camadaPagoCommand?.idRecargo?.toLong()
