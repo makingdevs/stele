@@ -33,7 +33,8 @@ class EsquemaDePagoController {
     def institucion = springSecurityService.currentUser.instituciones.first()
     def concepto = conceptoService.buscarOSalvarConceptoDePago(institucion, params.nombreConcepto)
     GrupoPagoCommand gpc = new GrupoPagoCommand()
-    gpc.recargoId = params.recargoid.toLong()
+    if (params.recargoid)
+      gpc.recargoId = params.recargoid.toLong()
     gpc.cantidadDePago = params.importeEsquemaDePago.toBigDecimal()
     gpc.conceptoDePago = concepto.descripcion
     gpc.descuentoIds = params.descuentos.replace('[','')?.replace(']','')?.split(',') as List
