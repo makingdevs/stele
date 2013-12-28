@@ -14,7 +14,10 @@ class WrapperCommandService {
     gcp.conceptoDePago = camadaPagoCommand.conceptoDePago ?: camadaPagoCommand.conceptoDePagoRecurrente
     if (camadaPagoCommand?.fechaDeVencimiento)  
       gcp.fechaDeVencimiento = new Date().parse("dd/MM/yyyy", camadaPagoCommand?.fechaDeVencimiento)
-    gcp.descuentoIds = camadaPagoCommand?.descuentos ?: camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
+    if (camadaPagoCommand.descuentos)
+      gcp.descuentoIds = camadaPagoCommand?.descuentos
+    if (gcp.descuentoIds)
+      gcp.descuentoIds = camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
     gcp.organizacion = institucion
     gcp.diasVencimientoPago = camadaPagoCommand.diasVencimientoPago
     gcp.payables = obtenerListaDePayables(camadaPagoCommand)
