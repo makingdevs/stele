@@ -85,7 +85,7 @@
                                   </div>
 
                                   <div class="infobox-data">
-                                    <span class="infobox-data-number">${usariosProcesados}</span>
+                                    <span class="infobox-data-number">${usariosProcesados ?: 0}</span>
                                     <div class="infobox-content">Total Registros Archivo</div>
                                   </div>
                                 </div>
@@ -96,10 +96,22 @@
                                   </div>
 
                                   <div class="infobox-data">
-                                    <span class="infobox-data-number">${dependientesProcesados}</span>
+                                    <span class="infobox-data-number">${dependientesProcesados ?: 0}</span>
                                     <div class="infobox-content">Registros Correctos</div>
                                   </div>
                                 </div>
+
+                                <div class="infobox infobox-red  ">
+                                  <div class="infobox-icon ">
+                                    <i class="icon-frown red"></i>
+                                  </div>
+
+                                  <div class="infobox-data">
+                                    <span class="infobox-data-number">${erroneos ?: 0}</span>
+                                    <div class="infobox-content">Registros Erroneos</div>
+                                  </div>
+                                </div>
+
 
                                 <div class="space-6"></div>
 
