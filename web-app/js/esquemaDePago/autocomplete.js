@@ -1,8 +1,9 @@
 $(function() {
   $( '.typeahead' ).typeahead({
-    source: function( query, process ) {
+    source: function( id, process ) {
       var $direccion = $('#urlConcepto')
-      var $url = $direccion[0].value+'/'+ query;
+      console.log($direccion[0].value);
+      var $url = $direccion[0].value+'/'+ id;
       var $items = new Array;
       $items = [""];
       $.ajax({
