@@ -4,7 +4,7 @@
     Previo
   </button>
 
-  <button  type="submit" class="btn btn-success btn-next">
+  <button  id="siguiente" class="btn btn-success btn-next">
     Siguiente
     <i class="icon-arrow-right icon-on-right"></i>
   </button>
