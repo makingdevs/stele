@@ -53,7 +53,16 @@ class UsuarioService {
       UsuarioRol.create(usuario, rol, true)
       return  usuario
     }
-    existeUsuario
+    def usuarioInstitucion = Usuario.withCriteria{
+      eq('username', usuario.username)
+      instituciones {
+        eq('id', institucion.id)
+      }
+    }
+
+    if(!usuarioInstitucion.isEmpty())
+      return usuarioInstitucion.first()
+
   }
 
   private String armaPasswordTemporal(String nombre, String correo, String telefono){
