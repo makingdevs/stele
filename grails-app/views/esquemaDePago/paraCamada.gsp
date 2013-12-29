@@ -8,7 +8,7 @@
     <r:require module="bootstrapDatePicker" />
   </head>
   <body>
-    <script type="text/javascript">
+    <r:script>
       $(document).ready(function(){
         $("#submitFormPayout").click(function(){
           $("#pagoGeneracion").submit();
@@ -28,7 +28,7 @@
           autoclose : true
         });
       });
-    </script>
+    </r:script>
       <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
           <ul class="breadcrumb">
@@ -135,17 +135,17 @@
                                           </div>
                                           </div>
                                           <div class="control-group">
-                                          <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
-                                          <div class="controls">
-                                            <div id="datetimepicker2" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                              <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
-                                              <span class="add-on">
-                                                <i class="icon-calendar"></i>
-                                              </span>
+                                            <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
+                                            <div class="controls">
+                                              <div id="datetimepicker2" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                                <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
+                                                <span class="add-on">
+                                                  <i class="icon-calendar"></i>
+                                                </span>
+                                              </div>
                                             </div>
-                                          </div>
                                           </div>  
-                                          </div>
+                                        </div>
                                         <div class="span3">
                                           <input type="hidden" id="idRecargo" name="idRecargo">
                                           <input type="hidden" id="idsDescuentos" name="idsDescuentos">
@@ -153,7 +153,7 @@
                                           <label class="hidden" id="labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
                                           <label class="hidden" id="labelDescuentos">Descuentos </label><input class="hidden" id="nombreDescuentos" name="nombreDescuentos" readonly>
                                         </div>
-                                        <div class="span3">
+                                        <div class="span2">
                                           <div id="descuentoCreado">
                                             <g:render template="/descuento/list", model="[:]" />
                                           </div>
@@ -366,7 +366,7 @@
                                         </div>
                                       </div>
                                       <g:form class="form-horizontal" name="descuentosForm" url="[controller:'descuento', action:'nuevo']" id="descuentosForm" >
-                                        <div class="span4">
+                                        <div class="span5">
                                         <p></p><p></p>
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto"> Descuento </label>
@@ -395,7 +395,7 @@
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
                                             <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                              <input data-format="yyyy-mm-dd" id="fechaDeVencimiento" name="fechaDeVencimiento" type="text"></input>
+                                              <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
@@ -403,7 +403,7 @@
                                           </div>
                                         </div>             
                                         </div>
-                                        <div class="span4">
+                                        <div class="span3">
                                         <div class="control-group">
                                             <div class="input-prepend"> 
 
@@ -430,7 +430,7 @@
                                           </div>
                                         </div>
                                         </div>
-                                        <div class="span3">
+                                        <div class="span2">
                                          <div id="descuentoCreado2">
                                             <g:render template="/descuento/list", model="[:]" />
                                           </div>
