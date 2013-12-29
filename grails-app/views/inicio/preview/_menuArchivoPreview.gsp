@@ -4,7 +4,7 @@
     Previo
   </button>
   <g:link action="procesar" params="[institucionId:institucionId, cobro:false]">
-    <button class="btn btn-success btn-next">
+    <button class="btn btn-success btn-next" id="procesar">
       Siguiente
       <i class="icon-arrow-right icon-on-right"></i>
     </button>
