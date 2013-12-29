@@ -27,9 +27,8 @@ class DistribucionInstitucionalService {
     def bachillerato = NivelDeEstudio.BACHILLERATO.toString()toUpperCase()substring(0,3)
     def educacionSuperior = NivelDeEstudio.EDUCACION_SUPERIOR.toString()toUpperCase()substring(0,3)
     def resultado
-
     switch (nivelToUpper) {
-      case {it?.startsWith(preescolar) || it?.startsWith("kin")}:
+      case {it?.startsWith(preescolar) || it?.startsWith("KIN")}:
       return NivelDeEstudio.PREESCOLAR
       break
       case {it?.startsWith(secundaria) }:
