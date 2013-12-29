@@ -33,17 +33,30 @@ class DependienteService {
     dependiente
   }
 
-  Dependiente registrar(Dependiente dependiente, Long usuarioId){
-    Usuario usuario = Usuario.get(usuarioId)
-    if(usuario){
-      def dependienteExistente = Dependiente.findByMatricula(dependiente.matricula)
+  Dependiente registrar(Dependiente dependiente, Long usuarioId, def institucion){
+    def user = Usuario.withCriteria{
+      eq('id', usuarioId)
+      instituciones {
+        eq('id', institucion.id)
+      }
+    }
+    def usuarios = user.first()
+    if(usuarios){
+      def dependienteExistente = Dependiente.withCriteria{
+        eq('matricula', dependiente.matricula)
+        usuario {
+          instituciones {
+            eq('id', institucion.id)
+          }
+        }
+      }
       if(dependienteExistente){
-        return dependienteExistente
+        return dependienteExistente.first()
       }else{
         dependiente.perfil = perfilService.registrar(dependiente.perfil)
-        usuario.addToDependientes(dependiente)
-        usuario.save()
-        notificacionService.notificarRegistroUsuarioTutor(usuario.username)
+        usuarios.addToDependientes(dependiente)
+        usuarios.save()
+        notificacionService.notificarRegistroUsuarioTutor(usuarios.username)
         return dependiente
       }
     }else{
