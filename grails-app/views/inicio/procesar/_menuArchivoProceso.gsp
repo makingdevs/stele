@@ -3,10 +3,6 @@
     <i class="icon-arrow-left"></i>
     Previo
   </button>
-  <button class="btn btn-success btn-next">
-    Siguiente
-    <i class="icon-arrow-right icon-on-right"></i>
-  </button>
 </div>
 <g:set var="proceso" value="false" scope="flash" />
 <div id="fuelux-wizard" class="row-fluid" data-target="#step-container">
