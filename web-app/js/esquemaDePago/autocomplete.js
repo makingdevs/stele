@@ -138,7 +138,7 @@ $(function() {
         url: $url,
         date: "{}",
         success: function(data){
-          console.log(data);
+          console.log(data.value);
           $.map(data, function(data){
             var group;
             group = {
