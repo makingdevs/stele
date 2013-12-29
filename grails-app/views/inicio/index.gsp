@@ -3,12 +3,18 @@
     <meta name="layout" content="colegio"/>
     <r:script>
       function check() {
-        console.log("hola");
         if (document.layout.datosEscolares.value == '') {
           alert('No existe un archivo pra procesar !!');
           return false;
-        } 
+        }
+        $('#imagenCarga').removeClass("hidden");
+
       }
+      $(document).ready(function(){
+        $("#siguiente").click(function(){
+          $("#cargaArchivo").submit();
+        });
+      });
     </r:script>
   </head>
   <body>
@@ -64,7 +70,7 @@
           </g:else>
 
           <div class="row-fluid">
-          <g:uploadForm name="layout" controller="inicio" action="preview" onsubmit="return check()">    
+          <g:uploadForm name="layout" id="cargaArchivo" controller="inicio" action="preview" onsubmit="return check()">    
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
 
@@ -83,6 +89,9 @@
                       </g:else>
 
                       <hr />
+                        <div align="center" id="imagenCarga" class="hidden">
+                          <img class="prev" aling="center"  width="60" height="60" src="${resource(dir: 'images', file: 'loading.gif')}" alt="Previous" /> CARGANDO
+                        </div>
                         <div class="step-content row-fluid  position-relative" id="step-container">
                           <div class="step-pane active" id="step1">
                             <div class="row-fluid">
@@ -122,7 +131,6 @@
                                     </div>
                                   </div>
                                 </div>
-
                                 <div class="widget-box">
                                   <div class="widget-header blue">
                                     <h4><strong>Importar plantilla</strong></h4>
