@@ -92,7 +92,10 @@ class UsuarioServiceSpec  extends Specification{
     }
 
     def "No registrar un usuario ya existente"(){
-      given: "Un usuario ya existente y "
+      given:
+        Institucion institucion = new Institucion()
+        institucion.save(validate:false)
+      and: "Un usuario ya existente y "
         def perfilServiceMock = mockFor(PerfilService)
         perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
         service.perfilService = perfilServiceMock.createMock()
@@ -102,7 +105,6 @@ class UsuarioServiceSpec  extends Specification{
         def perfilExistente = new Perfil()
         def telefono = new Telefono()
         def inst = new Institucion()
-        usuarioExistente.id = 1001
         usuarioExistente.username = "pepito@gmail.com"
         usuarioExistente.password = "pepe6789"
         usuarioExistente.enabled = true
@@ -111,6 +113,7 @@ class UsuarioServiceSpec  extends Specification{
         perfilExistente.apellidoMaterno = "Juarez"
         telefono.numeroTelefonico = "123456789"
         perfilExistente.addToTelefonos(telefono)
+        usuarioExistente.addToInstituciones(institucion)
         usuarioExistente.perfil = perfilExistente
         service.registrar(usuarioExistente, inst.save(validate:false))
         def contador = Usuario.count()
@@ -126,14 +129,12 @@ class UsuarioServiceSpec  extends Specification{
         perfil.apellidoMaterno = "Juarez"
         telefono.numeroTelefonico = "123456789"
         perfil.addToTelefonos(telefono)
-        usuario.perfil = perfil
-      and:
-        Institucion institucion = new Institucion()
-        institucion.save(validate:false)
+        usuario.perfil = perfil        
       when: "Se intenta guardar el usuario"
         usuario = service.registrar(usuario, institucion)
+        println usuario
       then: "El id debe ser igual a 1001"
-        assert usuario.id == 1001
+        assert usuario.id > 0
         assert contador == Usuario.count()
     }
 
