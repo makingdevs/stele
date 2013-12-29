@@ -1,34 +1,21 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
+    <r:script>
+      $(document).ready(function(){
+        $("#procesar").click(function(){
+          $('#imagenCarga').removeClass("hidden");
+        });
+      });
+      $(document).ready(function(){
+        $("#procesarCobro").click(function(){
+          $('#imagenCarga').removeClass("hidden");
+        });
+      });
+    </r:script>
   </head>
   <body>
    <div class="main-content">
-        <div class="breadcrumbs" id="breadcrumbs">
-          <script type="text/javascript">
-            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-          </script>
-
-          <ul class="breadcrumb">
-            <li>
-              <i class="icon-home home-icon"></i>
-              <a href="#">Colegio</a>
-
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-
-            <li>
-              <a href="#">Inscripcion</a>
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-            </li>
-            <li class="active">Archivo</li>
-          </ul><!--.breadcrumb-->
-
-
-        </div>
 
         <div class="page-content">
           <g:if test="${flash.inscripcionCobro == 'true'}">
@@ -73,6 +60,9 @@
                       </g:else>
 
                       <hr />
+                        <div align="center" id="imagenCarga" class="hidden">
+                          <img class="prev" aling="center"  width="60" height="60" src="${resource(dir: 'images', file: 'loading.gif')}" alt="Previous" /> CARGANDO
+                        </div>
                         <div class="step-content row-fluid  position-relative" id="step-container">
 
                           <div class="step-pane active" id="step3">
@@ -89,8 +79,8 @@
 
                                   <p>
                                     <g:if test="${flash.inscripcionCobro == 'true'}">
-                                      <g:link  controller="procesamientoMasivo" params="[institucionId:institucionId, cobro:true]">
-                                      <span class="btn btn-app btn-success " href="#">
+                                      <g:link  name="procesarCobro" controller="procesamientoMasivo" params="[institucionId:institucionId, cobro:true]">
+                                      <span class="btn btn-app btn-success" id="procesarCobro">
                                         <i class="icon-cogs bigger-230 "></i>
                                         <strong>  Procesar  </strong>
                                       <br>
@@ -98,8 +88,8 @@
                                       </g:link>
                                     </g:if>
                                     <g:else>
-                                      <g:link  controller="procesamientoMasivo" params="[institucionId:institucionId, cobro:false]">
-                                      <span class="btn btn-app btn-success " href="#">
+                                      <g:link name="procesar" controller="procesamientoMasivo" params="[institucionId:institucionId, cobro:false]">
+                                      <span class="btn btn-app btn-success" id="procesar" >
                                         <i class="icon-cogs bigger-230 "></i>
                                         <strong>  Procesar  </strong>
                                       <br>
