@@ -2,10 +2,10 @@
 <g:each in="${descuentos?.sort({ it.id })}" var="descuento">
   <dl class="dl-horizontal">
     <dt>
-      Nombre Descuento : 
+      Nombre Descuento:  
     </dt>
     <dd>
-      <input type="text" class="descuento" value="${descuento?.nombreDeDescuento}" readonly>
+      ${descuento?.nombreDeDescuento}
     </dd>
   </dl>
 </g:each>

@@ -14,7 +14,7 @@
         Cantidad : 
       </dt>
       <dd>
-      <input id="recargoCantidad" name="recargoCantidad" readonly value="${recargo.cantidad}">
+        ${recargo.cantidad}
       </dd>
     </g:elseif>
   </dl>
