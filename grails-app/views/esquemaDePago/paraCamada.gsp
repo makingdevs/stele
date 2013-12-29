@@ -11,6 +11,7 @@
     <r:script>
       $(document).ready(function(){
         $("#submitFormPayout").click(function(){
+          $('#imagenCarga').removeClass("hidden");
           $("#pagoGeneracion").submit();
         });
       });
@@ -67,6 +68,9 @@
                     <div class="row-fluid">
                       <g:render template="menuArchivoPago" />
                       <hr />
+                        <div align="center" id="imagenCarga" class="hidden">
+                          <img class="prev" aling="center"  width="60" height="60" src="${resource(dir: 'images', file: 'loading.gif')}" alt="Previous" /> CARGANDO
+                        </div>
                         <div class="step-content row-fluid  position-relative" id="step-container">
                           <div class="step-pane active" id="step5">
                             <div class="tabbable3">

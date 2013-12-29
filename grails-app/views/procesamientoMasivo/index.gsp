@@ -4,32 +4,6 @@
   </head>
   <body>
    <div class="main-content">
-        <div class="breadcrumbs" id="breadcrumbs">
-          <script type="text/javascript">
-            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-          </script>
-
-          <ul class="breadcrumb">
-            <li>
-              <i class="icon-home home-icon"></i>
-              <a href="#">Colegio</a>
-
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-
-            <li>
-              <a href="#">Inscripcion</a>
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-            </li>
-            <li class="active">Archivo</li>
-          </ul><!--.breadcrumb-->
-
-
-        </div>
-
         <div class="page-content">
           <g:if test="${flash.proceso == 'true'}">
             <div class="page-header position-relative">
