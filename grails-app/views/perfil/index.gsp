@@ -1,4 +1,6 @@
 <%@ page import="com.makingdevs.TipoDeTelefono" %>
+<%@ page import="com.makingdevs.Sexo" %>
+
 <html>
   <head>
     <meta name="layout" content="colegio"/>
@@ -105,14 +107,18 @@
 
 
                            <div class="profile-info-row">
-                             <div class="profile-info-name"> Sexo </div>
-
-                             <div class="profile-info-value">
-                                 <input class="ace" type="radio" name="form-field-sexo" >
-                                 <span class="lbl"> Femenino</span>
-                                 <input class="ace" type="radio"   name="form-field-sexo">
-                                 <span class="lbl"> Masculino</span> 
-                             </div>
+                            <div class="profile-info-name"> Sexo </div>
+                              <g:formRemote name="sexoUsuario" update="sexoDiv" url="[controller:'perfil', action:'actialuzarSexo', params:[id: "${usuarioActual.perfil.id}"]]">
+                                <div class="profile-info-value" id="sexoDiv">
+                                 <g:radioGroup name="sexo" labels="['Femenino','Masculino']" values="['Femenino','Masculino']" value="${usuarioActual.perfil.sexo}" >
+                                  <p>${it.label} ${it.radio}</p>
+                                 </g:radioGroup>
+                                  <p></p>
+                                    <button type="submit" class="btn btn-mini">
+                                      Actualizar
+                                    </button>
+                                </div>
+                              </g:formRemote>
                            </div>
 
                            <div class="profile-info-row">
@@ -124,7 +130,7 @@
                                     <span class="add-on">
                                       <i class="icon-calendar"></i>
                                     </span>
-                                    <p></p>
+                                    <p></p><p></p><p></p><p></p><p></p><p></p>
                                      <button type="submit" class="btn btn-mini">
                                         Actualizar
                                       </button>
