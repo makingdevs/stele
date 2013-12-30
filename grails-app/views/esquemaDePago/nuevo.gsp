@@ -20,6 +20,22 @@
           return false;
         });
       });
+      $("#recargoForm").submit(function(event){
+        event.stopPropagation();
+        var url = $(this).attr('action');
+        var data = $(this).serialize()
+        var recargoid = $("input#recargoid").val();
+        $.ajax({
+          type: "POST",
+          url: url + "?recargoid=" + recargoid,
+          data: data,
+          success: function(data) {
+            $("#recargoCreado").html(data)
+            $("#recargoCreado2").html(data)
+          }
+        });
+        return false;
+      });
     </r:script>
   </head>
   <body>
@@ -167,7 +183,7 @@
                                 <strong>Nota! </strong>
                                 Solo puede llenar importe o porcentaje
                               </div>
-                              <g:formRemote name="recargoForm" update="recargoCreado" url="[controller:'recargo', action: 'nuevo']">
+                              <g:form name="recargoForm" id="recargoForm" url="[controller:'recargo', action: 'nuevo']">
                                   <div class="control-group">
                                     <label class="control-label" for="txtConcepto">Importe</label>
                                     <div class="controls">
@@ -188,12 +204,17 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="contro-group">
+                                  <div class="contro-group" >
                                     <div class="controls">
-                                      <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
+                                      <input class="btn btn-mini btn-success pull-right" type="submit" id="recargoButton" value ="Crear Recargo">
                                     </div>
                                   </div>
-                              </g:formRemote>
+                              </g:form>
+                              <div class="control-group">
+                                <div id="recargoCreado2" name="recargoCreado" class="controls">
+                                  <g:render template="/recargo/list" />
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
