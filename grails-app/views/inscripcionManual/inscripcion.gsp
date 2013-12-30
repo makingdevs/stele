@@ -63,63 +63,69 @@
                     </a>
                   </div>
                 </div>
-
                 <div class="control-group">
-
-                  <div class="control-group">
-                      <label class="control-label" for="txtNombreAlumno">Alumno</label>
-
-                      <div class="controls">
-                        <span class="input-icon">
-                          <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="nombre" />
-                        </span>
-                        <span class="input-icon">
-                          <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" />
-                        </span>
-                        <span class="input-icon">
-                          <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="apellido materno" />
-                        </span>
-                      </div>
+                  <label class="control-label" for="txtNombreAlumno">Alumno</label>
+                  <div class="controls">
+                    <span class="input-icon">
+                      <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="nombre" />
+                    </span>
                   </div>
-
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <span class="input-icon">
+                      <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" />
+                    </span>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <span class="input-icon">
+                      <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="apellido materno" />
+                    </span>
+                  </div>
+                </div>
+                <div class="control-group">
                   <label class="control-label" for="selectCiclo">Ciclo escolar</label>
-
                   <div class="controls">
                     <g:select id="cicloEscolar" name="cicloEscolar" noSelection="['':'-Ciclo escolar-']" from="${CicloEscolar.list()}" optionKey="clave" optionValue="clave" />
                   </div>
                 </div>
-
-                <div class="control-group">
-                  <label class="control-label" for="selectNivel">Ubicacion academica</label>
-
-                  <div class="controls">
                     <table class="table table-condensed" border="0"  cellpadding="0" cellspacing="0">
                       <td>
-                        <span class="form-field-select-1">
-                          <g:select id="nivelDeEstudio" name="nivelDeEstudio" from="${NivelDeEstudio.values()}" optionKey="key" />
-                        </span>
+                        <div class="control-group">
+                          <div class="controls">
+                            <label>Ubicacion academica</label>
+                            <g:select id="nivelDeEstudio" name="nivelDeEstudio" from="${NivelDeEstudio.values()}" noSelection="['':'-Nivel-']" optionKey="key" />
+                          </div>
+                        </div>
                       </td>
-                      <td><label>Grado</label></td>
                       <td>
-                        <span class="form-field-select">
-                          <input id="grado" name="grado" type="text" placeholder="Grado">
-                        </span>
+                        <div class="control-group">
+                          <div class="controls">
+                            <label>Grado</label>
+                            <span class="form-field-select">
+                              <input id="grado" name="grado" type="text" placeholder="Grado">
+                            </span>
+                          </div>
+                        </div>
                       </td>
-                      <td><label>Grupo</label></td>
                       <td>
-                        <span class="form-field-select-1">
-                          <input id="grupo" name="grupo" type="text" placeholder="Grupo">
-                        </span>
+                        <div class="control-group">
+                          <div class="controls">
+                            <label>Grupo</label>
+                            <span class="form-field-select-1">
+                              <input id="grupo" name="grupo" type="text" placeholder="Grupo">
+                            </span>
+                          </div>
+                        </div>
                       </td>
                     </table>
-                  </div>
-                </div>
 
                 <div class="row-fluid">
                   <div class="span4">
                     <div class="control-group">
                       <label class="control-label" for="selectGrupo">Turno</label>
-
                       <div class="controls">
                         <g:radioGroup id="turno" name="turno" labels="['Matutino','Vespertino']" values="['Matutino','Vespertino']">
                           <p>${it.radio} <g:message code="${it.label}" /></p>
@@ -127,15 +133,12 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row-fluid">
-                    <div class="span5">
-                      <div class="control-group">
-                        <label class="control-label" for="txtNumLista">Matricula</label>
-
-                        <div class="controls">
-                          <input type="text" id="matricula" name="matricula" placeholder="matricula" />
-                        </div>
-                      </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <label>Matricula</label>
+                      <span class="form-field-select-1">
+                        <input type="text" id="matricula" name="matricula" placeholder="matricula" />
+                      </span>
                     </div>
                   </div>
                 </div>
