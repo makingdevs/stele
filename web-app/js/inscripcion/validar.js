@@ -1,4 +1,6 @@
-
+jQuery.validator.addMethod("alphabetical", (function(value, element){
+   return /^[\D]+$/.test(value);
+}), "No se permiten caracteres especiales y/o numericos");
 
 $(document).ready(function(){
   $("#registroAlumno").validate({
@@ -87,6 +89,14 @@ $(document).ready(function(){
         required: "El nombre es requerido",
         minlength: "No es válido"
       },
+      'apellidoPaternoAlumno':{
+        required: "El apellido paterno es requerido",
+        minlength: "No es válido"
+      },
+      'apellidoMaternoAlumno':{
+        required: "El apellido materno es requerido",
+        minlength: "No es válido"
+      },
       'institucion.nombre':{
         required: "La institucion es requerida",
         minlength: "No es válido"
@@ -95,20 +105,43 @@ $(document).ready(function(){
        required: "El apellido paterno es requerido",
        minlength: "No es válido"
      },
-     'usuario.username': {
+     'cicloEscolar':{
+        required: "Se requiere seleccionar un Ciclo Escolar"
+     },
+     'nivelDeEstudio':{
+        required: "Se requiere seleccionar Nivel de Estudios"
+     },
+     'grado':{
+        required: "Se requiere ingresar un Grado",
+        minlength: "el grado debe de contener por lo menos 1 caracter",
+        number: "Solo se aceptan numeros",
+     },
+     'grupo':{
+        required: "Se requiere ingresar un Grupo",
+        minlength: "el grupo debe de contener por lo menos 1 caracter"
+     },
+     'turno':{
+        required: "Seleccione un turno"
+     },
+     'matricula':{
+        required: "Se requiere ingresar la Matricula",
+        minlength: "La Matricula debe contener 5 caracteres como minimo"
+     },
+     'email': {
         required: "Es requerido un email válido",
         email: "Introduzca una direccion de email válida"
      },
-     'perfil.apellidoMaterno': {
+     'nombrePadre': {
+        required: "El nombre es requerido",
         minlength: "No es válido"
      },
-     'usuario.password': {
-        required: "Es requerida una contraseña",
-        minlength: "La contraseña debe de tener 8 caracteres como minimo"
+     'apellidoPaternoPadre': {
+        required: "Es requerida el apellido Paterno",
+        minlength: "el apellido debe de tener minimo 2 caracteres"
      },
-     'inputConfirmPassword': {
-        required: "Se requiere confirmar la contraseña",
-        equalTo: "La contraseña no coincide, favor de verificarla"
+     'apellidoMaternoPadre': {
+        required: "Es requerida el apellido Materno",
+        minlength: "el apellido debe de tener minimo 2 caracteres"
      },
      'telefono': {
         required: "Un numero telefonico es requerido",
