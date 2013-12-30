@@ -47,6 +47,15 @@ class PerfilController {
     render perfil as JSON
   }
 
+  def actialuzarSexo(){
+    def perfil = Perfil.get(params.id)
+    if (params.sexo == "Femenino")
+      perfil.sexo = Sexo.FEMENINO
+    else 
+      perfil.sexo = Sexo.MASCULINO
+    perfil.save()    
+  }
+
 }
 
 class UpdatePasswordCommand {
