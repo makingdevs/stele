@@ -31,7 +31,12 @@
          Editar perfil
        </h1>
      </div><!--/.page-header-->
-
+     <g:if test='${flash.errorPassword}'>
+       <div class="alert alert-error">
+         <button type="button" class="close" data-dismiss="alert">×</button>
+         <div class='login_message'><strong>Cuidado!</strong> ${flash.errorPassword}</div>
+       </div>
+     </g:if>
      <div class="row-fluid">
        <div class="span12">
          <!--PAGE CONTENT BEGINS-->
@@ -217,6 +222,13 @@
                 <div id="password" class="tab-pane">
                   <g:form name="password" controller="perfil" action="actualizarPassword">
                     <div class="profile-user-info profile-user-info-striped">
+                      <div class="profile-info-row ">
+                        <div class="profile-info-name"> Contraseña Actual </div>
+
+                        <div class="profile-info-value  align-left">
+                          <input type="password" id="actualContraseña" name="actualContraseña" placeholder="Nueva contraseña">
+                        </div>
+                      </div>
                       <div class="profile-info-row ">
                         <div class="profile-info-name"> Nueva contraseña </div>
 

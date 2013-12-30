@@ -26,10 +26,6 @@
     </r:script>
     <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
-          <script type="text/javascript">
-            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-          </script>
-
           <ul class="breadcrumb">
             <li>
               <i class="icon-home home-icon"></i>
@@ -57,7 +53,12 @@
               Editar perfil
             </h1>
           </div><!--/.    row-fluidpage-header-->
-
+          <g:if test='${flash.errorPassword}'>
+            <div class="alert alert-error">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <div class='login_message'><strong>Cuidado!</strong> ${flash.errorPassword}</div>
+            </div>
+          </g:if>
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
@@ -231,6 +232,12 @@
                         <div id="password" class="tab-pane">
                   <g:form name="password" controller="perfil" action="actualizarPassword">
                     <div class="profile-user-info profile-user-info-striped">
+                      <div class="control-group">
+                        <label for="" class="">Contraseña Actual: </label>
+                        <div class="controls">
+                          <input type="password" id="actualContraseña" name="actualContraseña" placeholder="Actual contraseña">
+                        </div>
+                      </div>
                       <div class="profile-info-row ">
                         <div class="profile-info-name"> Nueva contraseña </div>
 
