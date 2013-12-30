@@ -41,6 +41,8 @@ modules = {
   }
 
   inscripcion {
+    dependsOn 'validation'
+    dependsOn 'assets'
     resource url: 'js/inscripcion/validar.js'
   }
 
