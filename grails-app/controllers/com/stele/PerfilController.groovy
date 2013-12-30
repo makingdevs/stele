@@ -28,7 +28,12 @@ class PerfilController {
       render upc.errors
       return 
     }
-    perfilService.actualizarPasswordForUser(upc.nuevaContrasenia, springSecurityService.currentUser)
+    def user = springSecurityService.currentUser
+    def pass = springSecurityService.encodePassword(upc.actualContraseña)
+    if (pass == user.password)
+      perfilService.actualizarPasswordForUser(upc.nuevaContrasenia, springSecurityService.currentUser)
+    else
+      flash.errorPassword = "La contraseña actual no coincide vuelva a intentarlo"
     def role = springSecurityService.principal.authorities.first()
     if(role.toString() == ("ROLE_DIRECTOR"))
      redirect (controller:'perfil', action:'administrador')
@@ -60,6 +65,7 @@ class PerfilController {
 
 class UpdatePasswordCommand {
 
+  String actualContraseña
   String nuevaContrasenia
   String confirmaContrasenia
 
