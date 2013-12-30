@@ -87,6 +87,12 @@ class EsquemaDePagoController {
     render(view: "generarPagosParaLaCamada", model: [pagos: listaPagos])
   }
 
+  def eliminarEsquemaDePago(){
+    def esquemaDePago = EsquemaDePago.get(params.id)
+    esquemaDePago.delete()
+    redirect(action:'nuevo')
+  }
+
   private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
     def listaDePagos = []
     def listaDeDescuentos = grupoPagoCommand.descuentoIds?.first() ?: ""
