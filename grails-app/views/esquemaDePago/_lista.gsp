@@ -38,12 +38,10 @@
               <g:elseif test="${!it.recargo}">
                 <td>$ 0</td>
               </g:elseif>
-              <td >
-                <div class="action-buttons center">
-                  <a class="red" href="#">
+              <td>
+                <g:link controller="esquemaDePago" action="eliminarEsquemaDePago" params="[id:it.id]">
                     <i class="icon-trash bigger-130"></i>
-                  </a>
-                </div>
+                </g:link>
               </td>            
             </tr>
           </g:each>
