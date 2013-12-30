@@ -6,16 +6,20 @@ class WrapperCommandService {
 
   GrupoPagoCommand generarParseoDeCamadaPagoCommandAGrupoPagoCommand(CamadaPagoCommand camadaPagoCommand, Institucion institucion) {
     GrupoPagoCommand gcp = new GrupoPagoCommand()
-    if (camadaPagoCommand.recargoid?.first())
-      gcp.recargoId = camadaPagoCommand.recargoid?.first()?.toLong()
+    if (camadaPagoCommand.recargoid){
+      if (camadaPagoCommand.recargoid.first() != "")
+        gcp.recargoId = camadaPagoCommand.recargoid?.first()?.toLong()
+    }
     if (!gcp.recargoId)
       gcp.recargoId = camadaPagoCommand?.idRecargo?.toLong()
     gcp.cantidadDePago = camadaPagoCommand.cantidadDePago ?: camadaPagoCommand.cantidadDePagoRecurrente
     gcp.conceptoDePago = camadaPagoCommand.conceptoDePago ?: camadaPagoCommand.conceptoDePagoRecurrente
     if (camadaPagoCommand?.fechaDeVencimiento)  
       gcp.fechaDeVencimiento = new Date().parse("dd/MM/yyyy", camadaPagoCommand?.fechaDeVencimiento)
-    if (camadaPagoCommand.descuentos)
-      gcp.descuentoIds = camadaPagoCommand?.descuentos
+    if (camadaPagoCommand.descuentos){
+       if (camadaPagoCommand.descuentos.first() != "") 
+        gcp.descuentoIds = camadaPagoCommand?.descuentos
+    }
     if (!gcp.descuentoIds)
       gcp.descuentoIds = camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
     gcp.organizacion = institucion
