@@ -2,7 +2,6 @@ $(document).ready(function(){
   $("#pagoGeneracion").validate({
     // TODO: Refactor de funciones comunes en la validación
     errorPlacement: function(error, element) {
-      console.log(error);
       $(element).parents(".control-group").first().addClass("error");
       error.addClass("help-inline");
       if($(element).parents(".input-prepend,.input-append").size() > 0){
@@ -21,14 +20,48 @@ $(document).ready(function(){
       $(element).parents(".control-group").first().removeClass(errorClass).addClass(validClass);
     },
     rules: {
+      'conceptoDePago': {
+        required: true
+      },
       'cantidadDePago': {
+        required: true,
         number: true
-      }, 
+      },
+     'fechaDeVencimiento': {
+       required: true
+     },
+     'conceptoDePagoRecurrente': {
+        required: true
+     },
+     'diasVencimientoPago': {
+        required: true
+     },
+     'cantidadDePagoRecurrente': {
+        required:true,
+        number: true
+     }
     },
     messages: {
-      'cantidadDePago': {
-        number: "El campo solo accepta Numeros"
-      }
+      'conceptoDePago': {
+        required: "Es requerida ingresar un concepto"
+      },
+      'cantidadDePago':{
+        required: "Ingrese un monto",
+        number: "Solo se aceptan numeros"
+      },
+      'fechaDeVencimiento': {
+       required: "Seleccione la fecha de vencimiento"
+     },
+     'conceptoDePagoRecurrente': {
+        required: "Es requerida ingresar un concepto"
+     },
+     'diasVencimientoPago': {
+        required: "seleccione el numero del dia en que vence el pago"
+     },
+     'cantidadDePagoRecurrente': {
+        required: "Ingrese un monto",
+        number: "Solo se aceptan numeros"
+     }
     }, 
     validClass: "success",
     errorClass: "error",
