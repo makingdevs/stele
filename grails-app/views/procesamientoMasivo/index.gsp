@@ -28,14 +28,11 @@
             </div>
           </g:else>
           <div class="row-fluid">
-<!--aqui el update-->
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
-
               <div class="widget-box">
                 <div class="widget-header widget-header-blue widget-header-flat">
               </div>
-
                 <div class="widget-body">
                   <div class="widget-main">
                     <div class="row-fluid">
@@ -45,10 +42,8 @@
                       <g:else>
                         <g:render template="menuArchivoMasivo" />
                       </g:else>
-
                       <hr />
                         <div class="step-content row-fluid  position-relative" id="step-container">
-
                           <div class="step-pane active" id="step4">
                             <h3 class="header  green ">Alumnos Inscritos</h3>
                             <div class="row-fluid">
@@ -57,96 +52,48 @@
                                   <div class="infobox-icon">
                                     <i class="icon-file-text blue icon-2x"></i>
                                   </div>
-
                                   <div class="infobox-data">
                                     <span class="infobox-data-number">${usariosProcesados ?: 0}</span>
                                     <div class="infobox-content">Total Registros Archivo</div>
                                   </div>
                                 </div>
-
                                 <div class="infobox infobox-green  ">
                                   <div class="infobox-icon">
                                     <i class="icon-smile  icon-large green"></i>
                                   </div>
-
                                   <div class="infobox-data">
                                     <span class="infobox-data-number">${dependientesProcesados ?: 0}</span>
                                     <div class="infobox-content">Registros Correctos</div>
                                   </div>
                                 </div>
-
                                 <div class="infobox infobox-red  ">
                                   <div class="infobox-icon ">
                                     <i class="icon-frown red"></i>
                                   </div>
-
                                   <div class="infobox-data">
                                     <span class="infobox-data-number">${erroneos ?: 0}</span>
                                     <div class="infobox-content">Registros Erroneos</div>
                                   </div>
                                 </div>
-
-
-                                <div class="space-6"></div>
-
                               </div>
                             </div>
-
-
                             <!--Inica DEtalleRA-->
                             <h3 class="header smaller lighter purple">Detalle alumnos</h3>
                             <div class="row-fluid">
-                              <g:render template="listaDependientesProcesados" model="[listaDeMapaDeDominios:dependientes]" />
+                              <g:render template="listaDependientesProcesados" model="[historial:historiales]" />
                             </div>
-                          </div>  
-
-
-                          <div class="step-pane" id="step4" align="center">
-                            <img style="-webkit-user-select: none" src="http://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif" align="middle">
-                          </div>
-                          
+                          </div> 
                         </div>
                       <hr />
                     </div>
                   </div><!--/widget-main-->
                 </div><!--/widget-body-->
               </div>
-
-
-
               <!--PAGE CONTENT ENDS-->
             </div><!--/.span-->
             <!-- aqui cierra --> 
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
-
-        <div class="ace-settings-container" id="ace-settings-container">
-
-
-          <div class="ace-settings-box" id="ace-settings-box">
-         
-
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-              <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-            </div>
-
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-              <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-            </div>
-
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-              <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-            </div>
-
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-              <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-            </div>
-          </div>
-        </div><!--/#ace-settings-container-->
       </div><!--/.main-content-->
     </div><!--/.main-container-->
 
