@@ -13,6 +13,7 @@ class ProcesamientoMasivoController {
     def ciclosEscolaresPersistidos = [] as Set
     def dependientesExistentes = [] as Set
     def usuariosErroneos = [] as Set
+    def historialesAcademicos = [] as Set
     def camadaGenerada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
 
     listaDeMapaDeDominios*.dependiente*.camada = camadaGenerada
@@ -23,6 +24,7 @@ class ProcesamientoMasivoController {
         dependientesPersistidos.add(mapaDeDominiosPersistidos.dependiente)
         dependientesExistentes.add( mapaDeDominiosPersistidos.dependiente.id)
         ciclosEscolaresPersistidos.add(mapaDeDominiosPersistidos.cicloEscolar)
+        historialesAcademicos.add(mapaDeDominiosPersistidos.historialAcademico)
         flash.dependientes = dependientesExistentes
       } else{
         usuariosErroneos.add(mapaDeDominiosPersistidos.usuariosOtraInstitucion)
@@ -36,7 +38,8 @@ class ProcesamientoMasivoController {
       ciclosEcolaresProcesados: ciclosEscolaresPersistidos?.size(),
       listaUsuariosProcesados: dependientesExistentes,
       dependientes: dependientesPersistidos,
-      erroneos: usuariosErroneos?.size()
+      erroneos: usuariosErroneos?.size(),
+      historiales: historialesAcademicos
     ]
   }
 
