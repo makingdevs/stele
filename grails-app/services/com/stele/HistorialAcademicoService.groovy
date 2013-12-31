@@ -15,7 +15,7 @@ class HistorialAcademicoService {
           eq("dependiente",dependiente)
           eq("distribucionInstitucional",distribucionInstitucional)
         }
-        historialAcademicoExistente ?: historialAcademico.save()
+       return historialAcademicoExistente ?: historialAcademico.save()
       }else{
         throw RuntimeException("Se intentó persistir un historila academico con dependiente o distribucionInstitucional inválida...")
       }
