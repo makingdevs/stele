@@ -1,18 +1,14 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="bootstrap-js" />
-    <r:require module="pagosParaCamada"/>
-    <r:require module="generarPagos" />
-    <r:require module="autocomplete" />
-    <r:require module="bootstrapDatePicker" />
+    <r:require modules="bootstrap-js,pagosParaCamada,generarPagos,autocomplete,bootstrapDatePicker" />
   </head>
   <body>
     <r:script>
       $(document).ready(function(){
         $("#submitFormPayout").click(function(){
-          $('#imagenCarga').removeClass("hidden");
           $("#pagoGeneracion").submit();
+          $('#imagenCarga').removeClass("hidden");
         });
       });
       $(document).ready(function() {
@@ -103,8 +99,8 @@
                                 <div class="tab-content">
                                   <div id="faq-tab-111" class="tab-pane active">
                                     <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
-                                    <input type="hidden" id="camada" name="camada" value="${camada}">
-                                    <input type="hidden" id="listaDependientes" name="listaDependientes" value="${flash.dependientes}">
+                                      <input type="hidden" name="camada" value="${camada}">
+                                      <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
                                         <div class="alert alert-info">
                                           <button class="close" data-dismiss="alert" type="button">
                                             <i class="icon-remove"></i>
@@ -166,8 +162,12 @@
                                           </div>
                                         </div>
                                       </div>
+                                    </g:form>
                                   </div>
                                   <div id="faq-tab-222" class="tab-pane">
+                                    <g:form id="pagoGeneracionRecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+                                      <input type="hidden" name="camada" value="${camada}">
+                                      <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
                                       <div class="row-fluid">
                                         <div class="span11">
                                           <div class="alert alert-info">
