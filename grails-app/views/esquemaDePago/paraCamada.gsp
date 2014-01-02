@@ -7,8 +7,14 @@
     <r:script>
       $(document).ready(function(){
         $("#submitFormPayout").click(function(){
-          $("#pagoGeneracion").submit();
-          $('#imagenCarga').removeClass("hidden");
+          var $fecha = $('#fechaDeVencimiento')
+          if ($fecha[0].value != "") {
+            $("#pagoGeneracion").submit();
+            $('#imagenCarga').removeClass("hidden");
+          } else if ($fecha[0].value != null){
+            $("#pagoGeneracionrecurrente").submit();
+            $('#imagenCarga').removeClass("hidden");
+          }
         });
       });
       $(document).ready(function() {
@@ -165,7 +171,7 @@
                                     </g:form>
                                   </div>
                                   <div id="faq-tab-222" class="tab-pane">
-                                    <g:form id="pagoGeneracionRecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+                                    <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
                                       <input type="hidden" name="camada" value="${camada}">
                                       <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
                                       <div class="row-fluid">
@@ -399,7 +405,7 @@
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
                                             <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                              <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
+                                              <input id="fechaDeVencimientoDesc" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text" ></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
@@ -414,7 +420,7 @@
                                               <label class="control-label" for="txtConcepto"> Dias antes </label> 
                                               <div class="controls">
                                                 <div class="input-prepend">
-                                                  <g:select name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
+                                                  <g:select name="diasPreviosParaCancelarDescuento" id="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
                                                 </div>
                                               </div>
                                             </div>
@@ -430,7 +436,7 @@
                                         </div>
                                         <div class="contro-group">
                                           <div class="controls">
-                                            <input class="btn btn-primary" type="submit" id="descuentoButton" value ="Crear Descuento">
+                                            <input class="btn btn-primary" type="button" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
                                           </div>
                                         </div>
                                         </div>
@@ -463,7 +469,7 @@
                                                 <span class="add-on">
                                                   <i class="icon-usd"></i>
                                                 </span>                 
-                                                <input class="input-mini" id="cantidad" name="cantidad" type="text" placeholder="0.0">
+                                                <input class="input-mini" id="recCantidad" name="cantidad" type="text" placeholder="0.0">
                                               </div>
                                             </div>
                                           </div>
@@ -471,14 +477,14 @@
                                             <label class="control-label" for="txtConcepto">Porcentaje</label>
                                             <div class="controls">
                                               <div class="input-append">
-                                                <input class="input-mini" id="porcentaje" name="porcentaje" type="text" placeholder="0.0">
+                                                <input class="input-mini" id="recPorcentaje" name="porcentaje" type="text" placeholder="0.0">
                                                 <span class="add-on">%</span>
                                               </div>
                                             </div>
                                           </div>
                                           <div class="contro-group">
                                           <div class="controls">
-                                            <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
+                                            <input class="btn btn-primary" type="button" id="recargoButton" value ="Crear Recargo">
                                           </div>
                                         </div>
                                       </div>
@@ -502,27 +508,6 @@
             </div><!--/.span-->
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
-
-        <div class="ace-settings-container" id="ace-settings-container">
-          <div class="ace-settings-box" id="ace-settings-box">
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-              <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-            </div>
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-              <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-            </div>
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-              <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-            </div>
-            <div>
-              <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-              <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-            </div>
-          </div>
-        </div><!--/#ace-settings-container-->
     </div><!--/.main-content-->
 
 
