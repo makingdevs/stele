@@ -29,21 +29,21 @@ class CuentasBancariasController {
 	def borrarCuentaTransferencia() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
 		def cuenta = CuentasBancarias.get(params.id)
-		cuenta.delete()
+		cuenta.delete(flush: true)
 		render template:'/cuentasBancarias/listaTransferenciaElectronica', model:[electronica:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.TRANSFERENCIAELECTRONICA)]
 	}
 
 	def borrarCuentaCheque() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
 		def cuenta = CuentasBancarias.get(params.id)
-		cuenta.delete()
+		cuenta.delete(flush: true)
 		render template: '/cuentasBancarias/listaCheque', model:[cheque:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.CHEQUE) ]
 	}
 
 	def borrarCuentaFicha() {
 		def organizacion = springSecurityService.currentUser.instituciones?.first()
 		def cuenta = CuentasBancarias.get(params.id)
-		cuenta.delete()
+		cuenta.delete(flush: true)
 		render template: '/cuentasBancarias/listaFicha', model:[ficha:CuentasBancarias.findAllByOrganizacionAndTipoTransferencia(organizacion,TipoTransferencia.FICHADEPAGO)]
 	}
 }
