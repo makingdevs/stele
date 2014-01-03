@@ -1,5 +1,5 @@
 <%@ page import="com.makingdevs.TipoDeTelefono" %>
-<g:formRemote name="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
+<g:formRemote name="telefonoAsync" id="telefonoAsync" update="listaTelefono" url="[controller:'telefono', action:'agregarTelefonoAsync']">
 <div class="row-fluid">
   <div class="span12" id="listaTelefono">
     <div class="span4">
@@ -10,13 +10,13 @@
            Telefono 
          </div>
          <div class="profile-info-value  align-left">
-           <input type="text" class="input-mini" maxlength="3" name="lada" placeholder="Lada"></input>
+           <input type="text" class="input-mini" maxlength="3" name="lada" id="lada" placeholder="Lada"></input>
          </div>
          <div class="profile-info-value  align-left">
-           <input type="text" class="input-small" maxlength="10" name="numeroTelefonico" placeholder="Numero"></input>
+           <input type="text" class="input-small" maxlength="10" name="numeroTelefonico" placeholder="Numero" id="numeroTelefonico"></input>
          </div>
          <div class="profile-info-value  align-left">
-           <input type="text" class="input-mini" maxlength="6" name="extension" placeholder="Ext"></input>
+           <input type="text" class="input-mini" maxlength="6" name="extension" id="extension" placeholder="Ext"></input>
          </div>
        </div>
        <div class="profile-info-row">
@@ -31,8 +31,8 @@
       <div class="profile-info-row">
        <div class="profile-info-name">  </div>
        <div class="profile-info-value center">
-        <button class="btn btn-primary">
-          <i class="icon-plus-sign icon-white"></i>
+        <button class="btn btn-mini">
+          <i class="icon-plus-sign icon-white"> Agregar</i>
         </button>
         </div>
       </div>
