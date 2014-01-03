@@ -149,6 +149,7 @@ class DependienteController {
     }
 
     def buscarDependienteInscripcion() {
-
+      def dependientesCoincidentes = searchableService.search(params.nombreDependiente)
+      [dependiente: dependientesCoincidentes ?: ""]
     }
 }
