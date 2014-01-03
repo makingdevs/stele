@@ -47,39 +47,44 @@
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
+              <h3>
+                <div class="control-group">
+                  <div class="controls">
+                  &nbsp; &nbsp; &nbsp;
+                  <g:form name="buscarChamaco" url="[controller:'dependiente', action: 'buscarDependienteInscripcion']">
+                    <small> Nombre del Alumno</small>
+                      <input  type="text" id="txtBusquedaAlumno" placeholder="nombre alumno" >
+                      <button class="btn btn-purple btn-small" type="submit">
+                        Buscar
+                        <i class="icon-search icon-on-right bigger-110"></i>
+                      </button>
+                  </g:form>
+                  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                    <small> Nombre del Papa</small>
+                      <input  type="text" id="txtBusquedaPadre" placeholder="nombre padre" >
+                      <a  data-toggle="modal" href="#modal-tablePadre">
+                        <button class="btn btn-purple btn-small" >
+                          Buscar
+                          <i class="icon-search icon-on-right bigger-110"></i>
+                        </button>
+                      </a>
+                   </div>
+                 </div>
+              </h3>
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
                 <h3 class="header smaller lighter orange">
                   Alumno
                   <small> >>Datos del Alumno</small>
                 </h3>
                 <div class="control-group">
-                  <div class="controls">
-                    <input  type="text" id="txtBusquedaAlumno" placeholder="nombre alumno" >
-                    <a  data-toggle="modal" href="#modal-table">
-                    <button class="btn btn-purple btn-small" >
-                      Buscar
-                    <i class="icon-search icon-on-right bigger-110"></i>
-                    </button>
-                    </a>
-                  </div>
-                </div>
-                <div class="control-group">
                   <label class="control-label" for="txtNombreAlumno">Alumno</label>
                   <div class="controls">
                     <span class="input-icon">
                       <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="nombre" />
                     </span>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
                     <span class="input-icon">
                       <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" />
                     </span>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
                     <span class="input-icon">
                       <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="apellido materno" />
                     </span>
@@ -150,18 +155,6 @@
                       Padre o Tutor
                       <small> >>Datos del Padre o Tutor</small>
                     </h3>
-
-                    <div class="control-group">
-                      <div class="controls">
-                        <input  type="text" id="txtBusquedaPadre" placeholder="nombre padre" >
-                        <a  data-toggle="modal" href="#modal-tablePadre">
-                          <button class="btn btn-purple btn-small" >
-                            Buscar
-                            <i class="icon-search icon-on-right bigger-110"></i>
-                          </button>
-                        </a>
-                      </div>
-                    </div>
 
                     <div class="control-group">
                       <label class="control-label" for="txtNombreTutor">Padre o Tutor</label>
