@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono, uploadImg,bootstrap-js,bootstrapDatePicker,upload"/>
+    <r:require modules="telefono,styledrop,uploadImg,bootstrap-js,bootstrapDatePicker,upload,perfilValidate"/>
   </head>
 
   <body>
@@ -243,7 +243,7 @@
                         </div>
                       </div>
                       <div class="profile-info-value  align-left" style="text-align:right;">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-mini">
                           Actualizar contraseña
                         </button>
                       </div>
