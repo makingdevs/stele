@@ -3,9 +3,8 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono, uploadImg,bootstrap-js,bootstrapDatePicker,upload"/>
+    <r:require modules="telefono, styledrop,bootstrap-js,bootstrapDatePicker,upload,perfilValidate"/>
   </head>
-
   <body>
     <r:script type="text/javascript">
       $(document).ready(function() {
@@ -228,38 +227,35 @@
                             </div>
                           </div>
                         </div>
-
                         <div id="password" class="tab-pane">
-                  <g:form name="password" controller="perfil" action="actualizarPassword">
-                    <div class="profile-user-info profile-user-info-striped">
-                      <div class="control-group">
-                        <label for="" class="">Contraseña Actual: </label>
-                        <div class="controls">
-                          <input type="password" id="actualContraseña" name="actualContraseña" placeholder="Actual contraseña">
+                          <g:form name="passwordForm" controller="perfil" action="actualizarPassword">
+                            <div class="profile-user-info profile-user-info-striped">
+                              <div class="profile-info-row ">
+                                <div class="profile-info-name"> Contraseña Actual </div>
+                                <div class="profile-info-value  align-left">
+                                  <input type="password" id="actualContraseña" name="actualContraseña" placeholder="Nueva contraseña">
+                                </div>
+                              </div>
+                              <div class="profile-info-row ">
+                                <div class="profile-info-name"> Nueva contraseña </div>
+                                <div class="profile-info-value  align-left">
+                                  <input type="password" id="nuevaContrasenia" class="passwordNuevo" name="nuevaContrasenia" placeholder="Nueva contraseña">
+                                </div>
+                              </div>
+                              <div class="profile-info-row ">
+                                <div class="profile-info-name"> Confirmar  </div>
+                                <div class="profile-info-value  align-left">
+                                  <input type="password" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
+                                </div>
+                              </div>
+                              <div class="profile-info-value  align-left" style="text-align:right;">
+                                <button type="submit" class="btn btn-mini" >
+                                  Actualizar contraseña
+                                </button>
+                              </div>
+                            </div>
+                          </g:form>
                         </div>
-                      </div>
-                      <div class="profile-info-row ">
-                        <div class="profile-info-name"> Nueva contraseña </div>
-
-                        <div class="profile-info-value  align-left">
-                          <input type="password" id="nuevaContrasenia" name="nuevaContrasenia" placeholder="Nueva contraseña">
-                        </div>
-                      </div>
-                      <div class="profile-info-row ">
-                        <div class="profile-info-name"> Confirmar  </div>
-                        <div class="profile-info-value  align-left">
-                          <input type="password" id="confirmaContrasenia" name="confirmaContrasenia" placeholder="Confirma contraseña">
-                        </div>
-                      </div>
-                      <div class="profile-info-value  align-left" style="text-align:right;">
-                        <button type="submit" class="btn btn-primary" >
-                          Actualizar contraseña
-                        </button>
-                      </div>
-                    </div>
-                  </g:form>
-                </div>
-
                       </div>
                     </div>
 
