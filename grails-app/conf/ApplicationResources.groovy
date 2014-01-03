@@ -17,18 +17,28 @@ modules = {
     resource url:'js/upload/css/dropzone.css'
   }
 
+  styledrop {
+    resource url:'js/perfil/styleDropzone.js'
+  }
+
   uploadImg{
+    dependsOn 'styledrop'
     resource url:'js/perfil/uploadImg.js'
   }
   
   validation {
+    resource url: 'js/assets/jquery-1.8.2.min.js'
     resource url:'js/common/jquery.validate.min.js'
   }
 
   registrar {
     dependsOn 'validation'
-    dependsOn 'assets'
     resource url:'js/registro/index.js'
+  }
+
+  perfilValidate {
+    dependsOn 'validation'
+    resource url:'js/perfil/validates.js'
   }
 
   pagosParaCamada {
@@ -42,7 +52,6 @@ modules = {
 
   inscripcion {
     dependsOn 'validation'
-    dependsOn 'assets'
     resource url: 'js/inscripcion/validar.js'
   }
 
