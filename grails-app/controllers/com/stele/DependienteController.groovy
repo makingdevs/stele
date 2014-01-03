@@ -147,4 +147,8 @@ class DependienteController {
       def searchResult = searchableService.search(params.nombreDependiente)
       render template:'resultados', model:[dependientes: searchResult ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
+
+    def buscarDependienteInscripcion() {
+
+    }
 }
