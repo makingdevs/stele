@@ -51,24 +51,21 @@
                 <div class="control-group">
                   <div class="controls">
                   &nbsp; &nbsp; &nbsp;
-                  <g:form name="buscarChamaco" url="[controller:'dependiente', action: 'buscarDependienteInscripcion']">
                     <small> Nombre del Alumno</small>
-                      <input  type="text" id="txtBusquedaAlumno" placeholder="nombre alumno" >
-                      <button class="btn btn-purple btn-small" type="submit">
-                        Buscar
-                        <i class="icon-search icon-on-right bigger-110"></i>
-                      </button>
-                  </g:form>
+                      <input  type="text" id="nombreDependienteBusqueda" name="nombreDependienteBusqueda" placeholder="nombre alumno" >
+                        <button class="btn btn-purple btn-small">
+                          Buscar
+                          <i class="icon-search icon-on-right bigger-110"></i>
+                        </button>
                   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                     <small> Nombre del Papa</small>
-                      <input  type="text" id="txtBusquedaPadre" placeholder="nombre padre" >
-                      <a  data-toggle="modal" href="#modal-tablePadre">
+                      <input  type="text" id="nombreTutorBusqueda" name="nombreTutorBusqueda" placeholder="nombre padre" >
                         <button class="btn btn-purple btn-small" >
                           Buscar
                           <i class="icon-search icon-on-right bigger-110"></i>
                         </button>
-                      </a>
                    </div>
+                  <input type="hidden" value="${createLink(controller:'dependiente', action:'buscarDependienteInscripcion')}" id="urlDependiente" />
                  </div>
               </h3>
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
@@ -188,8 +185,6 @@
                   </div>
                 </div>
                 <!--Padre Fin-->
-
-              
                 <div class="form-actions">
                   <button class="btn btn-danger" data-toggle="modal" href="#modal-formConfirmar" type="btn-danger">
                     <i class="icon-trash bigger-110"></i>
@@ -206,230 +201,7 @@
                     Limpiar
                   </button>
                 </div>
-
               </g:form>
-
-
-              <div id="modal-table" class="modal hide" tabindex="-1">
-                <div class="modal-header no-padding">
-                  <div class="table-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    Resultados para "Busqueda de Alumos"
-                  </div>
-                </div>
-
-                <div class="modal-body no-padding">
-                  <div class="row-fluid">
-                    <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
-                      <thead>
-                        <tr>
-                          <th>Nombre</th>
-                          <th>Nivel</th>
-                          <th>Grado</th>
-                          <th>Grupo</th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <tr>
-                          <td>
-                            <li class="blue">
-                            Sergio Reyes Rodriguez
-                            </li>
-                          </td>
-                          <td>Primaria</td>
-                          <td>6to</td>
-                          <td>A</td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <li class="blue">
-                            Sergio2 Reyes Rodriguez2
-                            </li>
-                          </td>
-                          <td>Secundaria</td>
-                          <td>1ro</td>
-                          <td>A</td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <li class="blue">
-                            Sergio3 Reyes Rodriguez3
-                            </li>
-                          </td>
-                          <td>Kinder</td>
-                          <td>1</td>
-                          <td>A</td>
-                        </tr>                   
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button class="btn btn-small btn-danger pull-left" data-dismiss="modal">
-                    <i class="icon-remove"></i>
-                    Close
-                  </button>
-
-                  <div class="pagination pull-right no-margin">
-                    <ul>
-                      <li class="prev disabled">
-                        <a href="#">
-                          <i class="icon-double-angle-left"></i>
-                        </a>
-                      </li>
-
-                      <li class="active">
-                        <a href="#">1</a>
-                      </li>
-
-                      <li>
-                        <a href="#">2</a>
-                      </li>
-
-                      <li>
-                        <a href="#">3</a>
-                      </li>
-
-                      <li class="next">
-                        <a href="#">
-                          <i class="icon-double-angle-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div id="modal-tablePadre" class="modal hide" tabindex="-1">
-                <div class="modal-header no-padding">
-                  <div class="table-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    Resultados para "Busqueda de Padres"
-                  </div>
-                </div>
-
-                <div class="modal-body no-padding">
-                  <div class="row-fluid">
-                    <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
-                      <thead>
-                        <tr>
-                          <th>Nombre</th>
-                          <th>Email</th>
-                          <th>Hijo</th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <tr>
-                          <td>
-                            <li class="blue">
-                              Sergio Reyes
-                            </li>
-                          </td>
-                          <td>sergio@gmail.com</td>
-                          <td>Sergio Jr.</td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <li class="blue">
-                              Sergio Reyes1
-                            </li>
-                          </td>
-                          <td>sergio1@gmail.com</td>
-                          <td>Sergio1 Jr.</td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <li class="blue">
-                              Sergio Reyes2
-                            </li>
-                          </td>
-                          <td>sergio2@gmail.com</td>
-                          <td>Sergio2 Jr.</td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <li class="blue">
-                              Sergio Reyes3
-                            </li>
-                          </td>
-                          <td>sergio3@gmail.com</td>
-                          <td>Sergio3 Jr.</td>
-                        </tr>                     
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button class="btn btn-small btn-danger pull-left" data-dismiss="modal">
-                    <i class="icon-remove"></i>
-                    Close
-                  </button>
-
-                  <div class="pagination pull-right no-margin">
-                    <ul>
-                      <li class="prev disabled">
-                        <a href="#">
-                          <i class="icon-double-angle-left"></i>
-                        </a>
-                      </li>
-
-                      <li class="active">
-                        <a href="#">1</a>
-                      </li>
-
-                      <li>
-                        <a href="#">2</a>
-                      </li>
-
-                      <li>
-                        <a href="#">3</a>
-                      </li>
-
-                      <li class="next">
-                        <a href="#">
-                          <i class="icon-double-angle-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div id="modal-formConfirmar" class="modal hide" tabindex="-1">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="red bigger" >Confirmar Eliminar?</h4>
-                </div>
-
-                <div class="modal-body overflow-visible">
-                  <div class="row-fluid">
-                    <div class="span5">
-                      <label class="control-label">Sergio Reyes Rodriguez</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button class="btn btn-small" data-dismiss="modal">
-                    <i class="icon-remove"></i>
-                    Cancelar
-                  </button>
-
-                  <button class="btn btn-small btn-primary">
-                    <i class="icon-ok"></i>
-                    Confirmar
-                  </button>
-                </div>
-              </div>
-
               <!--PAGE CONTENT ENDS-->
             </div><!--/.span-->
           </div><!--/.row-fluid-->
