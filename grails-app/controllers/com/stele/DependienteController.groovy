@@ -79,17 +79,32 @@ class DependienteController {
 
     def busquedaDependienteParaGenerarPago() {
       def searchResult = searchableService.search(params.nombreDependiente)
-      render template:'busquedaDependiente', model:[dependientes: searchResult ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+      def resultados = []
+      searchResult.results.each{ row ->
+        if (row instanceof Dependiente)
+          resultados.add(row)
+      }
+      render template:'busquedaDependiente', model:[dependientes: resultados ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
 
     def busquedaDependienteParaObtenerPagos() {
       def searchResult = searchableService.search(params.nombreDependiente)
-      render template:'resultados', model:[dependientes: searchResult ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+      def resultados = []
+      searchResult.results.each{ row ->
+        if (row instanceof Dependiente)
+          resultados.add(row)
+      }
+      render template:'resultados', model:[dependientes: resultados ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
 
     def buscarDependienteInscripcion() {
       def dependientesCoincidentes = searchableService.search(params.nombreDependienteBusqueda)
-      render template:'/inscripcionManual/listaDependientes', model:[dependientes: dependientesCoincidentes.results]
+      def resultados = []
+      dependientesCoincidentes.results.each{ row ->
+        if (row instanceof Dependiente)
+          resultados.add(row)
+      }
+      render template:'/inscripcionManual/listaDependientes', model:[dependientes: resultados]
     }
     
 }
