@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-  <r:require modules="bootstrap-js,bootstrap-css,bootstrap-responsive-css,stele" />
+  <r:require modules="bootstrap-js,bootstrap-css,stele" />
 
   <g:layoutHead/>
   <r:layoutResources />
@@ -30,14 +30,14 @@
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="span3 navbar-header">
                 <a class="navbar-brand" href="index.html">
-                    <img id="logo-header" src="new/assets/img/logo1-default.png" alt="Logo">
+                    <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-header">
+            <div class="span9 navbar-header">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
                         <a href="inicio.html">
@@ -114,9 +114,8 @@
                 </p>
             </div>
             <div class="col-md-6">  
-                <a href="index.html">
-                    <img id="logo-footer" src="new/assets/img/logo2-default.png" class="pull-right" alt="" />
-                </a>
+                <g:img dir="/new/assets/img"  class="pull-right" file="logo2-default.png" />
+                
             </div>
         </div><!--/row-->
     </div><!--/container--> 
