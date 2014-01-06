@@ -1,6 +1,3 @@
-<%@ page import="com.stele.NivelDeEstudio" %>
-<%@ page import="com.stele.CicloEscolar" %>
-
 <html >
   <head>
     <meta name="layout" content="colegio"/>
@@ -33,7 +30,7 @@
           }
         });
         return false;
-      });
+      }); 
     </r:script>
   </head>
   <body>
@@ -106,120 +103,13 @@
                 <g:render template="listaTutores"/>
               </div>
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
-                <h3 class="header smaller lighter orange">
-                  Alumno
-                  <small> >>Datos del Alumno</small>
-                </h3>
-                <div class="control-group">
-                  <label class="control-label" for="txtNombreAlumno">Alumno</label>
-                  <div class="controls">
-                    <span class="input-icon">
-                      <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="nombre" />
-                    </span>
-                    <span class="input-icon">
-                      <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" />
-                    </span>
-                    <span class="input-icon">
-                      <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="apellido materno" />
-                    </span>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="selectCiclo">Ciclo escolar</label>
-                  <div class="controls">
-                    <g:select id="cicloEscolar" name="cicloEscolar" noSelection="['':'-Ciclo escolar-']" from="${CicloEscolar.list()}" optionKey="clave" optionValue="clave" />
-                  </div>
-                </div>
-                    <table class="table table-condensed" border="0"  cellpadding="0" cellspacing="0">
-                      <td>
-                        <div class="control-group">
-                          <div class="controls">
-                            <label>Ubicacion academica</label>
-                            <g:select id="nivelDeEstudio" name="nivelDeEstudio" from="${NivelDeEstudio.values()}" noSelection="['':'-Nivel-']" optionKey="key" />
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="control-group">
-                          <div class="controls">
-                            <label>Grado</label>
-                            <span class="form-field-select">
-                              <input id="grado" name="grado" type="text" placeholder="Grado">
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="control-group">
-                          <div class="controls">
-                            <label>Grupo</label>
-                            <span class="form-field-select-1">
-                              <input id="grupo" name="grupo" type="text" placeholder="Grupo">
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-                    </table>
-
-                <div class="row-fluid">
-                  <div class="span4">
-                    <div class="control-group">
-                      <label class="control-label" for="selectGrupo">Turno</label>
-                      <div class="controls">
-                        <g:radioGroup id="turno" name="turno" labels="['Matutino','Vespertino']" values="['Matutino','Vespertino']">
-                          <p>${it.radio} <g:message code="${it.label}" /></p>
-                        </g:radioGroup>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <div class="controls">
-                      <label>Matricula</label>
-                      <span class="form-field-select-1">
-                        <input type="text" id="matricula" name="matricula" placeholder="matricula" />
-                      </span>
-                    </div>
-                  </div>
+                <div id="alumnosPart">
+                  <g:render template="seccionAlumno"/>
                 </div>
                 <!--Alumno Fin-->
                 <!--Padre Inicia-->
-                <div class="row-fluid">
-                  <div class="span12">
-                    <h3 class="header smaller lighter purple">
-                      Padre o Tutor
-                      <small> >>Datos del Padre o Tutor</small>
-                    </h3>
-
-                    <div class="control-group">
-                      <label class="control-label" for="txtNombreTutor">Padre o Tutor</label>
-
-                      <div class="controls">
-                        <span class="input-icon">
-                          <input type="text" id="nombrePadre" name="nombrePadre" placeholder="nombre" />
-                        </span>
-                        <span class="input-icon">
-                          <input type="text" id="apellidoPaternoPadre" name="apellidoPaternoPadre" placeholder="apellido paterno" />
-                        </span>
-                        <span class="input-icon">
-                          <input type="text" id="apellidoMaternoPadre" name="apellidoMaternoPadre" placeholder="apellido materno" />
-                        </span>
-                      </div>
-                    </div>
-
-                    <div class="control-group">
-                      <label class="control-label" for="txtNombreTutor">Contacto</label>
-                      <div class="controls">
-                        <span class="input-icon">
-                          <input type="text" id="telefono" name="telefono" placeholder="telefono" />
-                          <i class="icon-phone"></i> 
-                        </span>
-                        <span class="input-icon">
-                          <input type="email" id="email" name="email" placeholder="email" data-placement="bottom" data-rel="tooltip" data-original-title="la cuenta de correo sera su usuario para el sistema" />
-                          <i class="icon-envelope"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <div class="row-fluid" id="tutorPart">
+                  <g:render template="seccionTutor" />
                 </div>
                 <!--Padre Fin-->
                 <div class="form-actions">
