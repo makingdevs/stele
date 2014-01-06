@@ -5,6 +5,31 @@
   <head>
     <meta name="layout" content="colegio"/>
     <r:require modules="inscripcion" />
+    <r:script>
+      $(function(){
+        $("#listaAlumnos").on( "click", "#alumnosForm", function(){
+          $("#dependientesCoincidentesForm").submit();
+        });
+      });
+      $("#dependientesCoincidentesForm").submit(function(event){
+        event.stopPropagation();
+        alert("perra");
+        var url = $(this).attr('action');
+        var data = $(this).serialize()
+        $.ajax({
+          type: "GET",
+          url: url,
+          dataType: "json",
+          contentType: "application/json",
+          data: data,
+          success: function(data) {
+            console.log(data);
+            $("#listaAlumnos").html(data)  
+          }
+        });
+        return false;
+      });
+    </r:script>
   </head>
   <body>
      <div class="main-content">
@@ -50,13 +75,14 @@
               <h3>
                 <div class="control-group">
                   <div class="controls">
-                  &nbsp; &nbsp; &nbsp;
+                  <g:formRemote id="busquedaDependiente" name="busquedaDependiente" update="listaAlumnos" url="[controller:'dependiente', action:'buscarDependienteInscripcion']">
                     <small> Nombre del Alumno</small>
                       <input  type="text" id="nombreDependienteBusqueda" name="nombreDependienteBusqueda" placeholder="nombre alumno" >
-                        <button class="btn btn-purple btn-small">
+                        <button class="btn btn-purple btn-small" type="submit">
                           Buscar
                           <i class="icon-search icon-on-right bigger-110"></i>
                         </button>
+                  </g:formRemote>
                   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                     <small> Nombre del Papa</small>
                       <input  type="text" id="nombreTutorBusqueda" name="nombreTutorBusqueda" placeholder="nombre padre" >
@@ -65,9 +91,11 @@
                           <i class="icon-search icon-on-right bigger-110"></i>
                         </button>
                    </div>
-                  <input type="hidden" value="${createLink(controller:'dependiente', action:'buscarDependienteInscripcion')}" id="urlDependiente" />
                  </div>
               </h3>
+              <div id="listaAlumnos" name="listaAlumnos">
+                <g:render template="listaDependientes" />
+              </div>
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
                 <h3 class="header smaller lighter orange">
                   Alumno
