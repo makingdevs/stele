@@ -36,5 +36,5 @@
         </g:form>
       </tbody>
     </table>
-    <input type="button" id="alumnosForm" class="btn btn-small" value="Listo" >
+    <input type="button" id="alumnosForm" name="alumnosForm" class="btn btn-small" value="Listo" >
 </g:if>
