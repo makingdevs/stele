@@ -61,7 +61,7 @@
                   <div class="row-fluid">
                     <div class="span12">
                       <div id="busquedaForm">
-                        <g:render template="busquedaForm" model="[turno:turno]" />
+                        <g:render template="/utilidades/busquedaForm" model="[turno:turno]" />
                       </div>
                       <div class="span1"></div>
                       <div id="dependientes" name="dependientes" >
