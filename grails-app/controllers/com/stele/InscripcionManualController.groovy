@@ -1,9 +1,12 @@
 package com.stele
 
+import grails.converters.JSON
+
 class InscripcionManualController {
 
 	  def springSecurityService
     def inscripcionManualService
+    def historialAcademicoService
 
 		def inscripcion() {
     	def user = springSecurityService.currentUser
@@ -18,5 +21,8 @@ class InscripcionManualController {
       render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser])
     }
 
-   
+    def parsearDependiente(){
+      def historial = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(params.idDependiente)
+      render template:'listaDependientes', model:[action:historial]
+    }
 }
