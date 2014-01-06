@@ -18,7 +18,7 @@
       </th>
     </tr>
       <tbody>
-        <g:form name="dependientesCoincidentesForm" id="dependientesCoincidentesForm" url="[action:'parsearDependiente',controller:'inscripcionManual']" >
+        <g:formRemote name="dependientesCoincidentesForm" id="dependientesCoincidentesForm" url="[action:'parsearDependiente',controller:'inscripcionManual']" update="alumnosPart">
           <g:each in="${dependientes}">
             <tr>
               <td>${it.perfil.nombreCompleto()}</td>
@@ -33,7 +33,7 @@
               </td>
             </tr>
           </g:each>
-        </g:form>
+        </g:formRemote>
       </tbody>
     </table>
     <input type="button" id="alumnosForm" name="alumnosForm" class="btn btn-small" value="Listo" >
