@@ -15,21 +15,21 @@
       </th>
     </tr>
       <tbody>
-        <g:form name="tutorCoincidentesForm" id="tutorCoincidentesForm" url="[action:'parsearTutor',controller:'inscripcionManual']" >
+        <g:formRemote name="tutorCoincidentesForm" id="tutorCoincidentesForm" url="[action:'parsearTutor',controller:'inscripcionManual']" update="tutorPart">
           <g:each in="${tutor}">
             <tr>
               <td>${it.perfil.nombreCompleto()}</td>
-              <td>${it.perfil?.telefonos?.numeroTelefonico}</td>
+              <td>${it.perfil.telefonos}</td>
               <td>${it.username}</td>
               <td>
                 <label>
-                  <g:checkBox id="idDependiente" name="idDependiente" value="${it.id}" checked="false" />
+                  <g:checkBox id="idTutor" name="idTutor" value="${it.id}" checked="false" />
                   <span class="lbl"></span>
                 </label>
               </td>
             </tr>
           </g:each>
-        </g:form>
+        </g:formRemote>
       </tbody>
     </table>
     <input type="button" id="tutorForm" name="tutorForm" class="btn btn-small" value="Listo" >
