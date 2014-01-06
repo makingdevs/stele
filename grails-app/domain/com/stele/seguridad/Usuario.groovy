@@ -20,7 +20,6 @@ class Usuario {
 	Perfil perfil
 
 	static searchable = {
-		root false
 		perfil component: true
 	}
 	static hasMany = [dependientes : Dependiente, instituciones : Institucion]
