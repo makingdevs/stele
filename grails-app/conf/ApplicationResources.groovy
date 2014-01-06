@@ -50,6 +50,37 @@ modules = {
     resource url: 'js/esquemaDePago/autocomplete.js'
   }
 
+  steleCss {
+    dependsOn 'customBootsrapCss'
+    resource url:'new/assets/css/style.css'
+    resource url:'new/assets/css/headers/header1.css'
+    resource url:'new/assets/css/responsive.css'
+    resource url:'images/favicon.ico'
+    dependsOn 'customFontAwesomeCss'
+    resource url:'new/assets/plugins/flexslider/flexslider.css'
+    resource url:'new/assets/plugins/bxslider/jquery.bxslider.css'
+    resource url:'new/assets/plugins/horizontal-parallax/css/horizontal-parallax.css'
+    resource url:'new/assets/css/pages/page_promo.css'
+    resource url:'new/assets/css/themes/default.css'
+  }
+
+  steleJS {
+    resource url:'new/assets/plugins/jquery-1.10.2.min.js'
+    resource url:'new/assets/plugins/jquery-migrate-1.2.1.min.js'
+    resource url:'new/assets/plugins/hover-dropdown.min.js'
+    resource url:'new/assets/plugins/back-to-top.js'
+    resource url:'new/assets/plugins/flexslider/jquery.flexslider-min.js'
+    resource url:'new/assets/plugins/horizontal-parallax/js/sequence.jquery-min.js'
+    resource url:'new/assets/plugins/horizontal-parallax/js/horizontal-parallax.js'
+    resource url:'new/assets/plugins/bxslider/jquery.bxslider.js'
+    resource url:'new/assets/js/app.js'
+  }
+
+  stele {
+    dependsOn 'steleCss'
+    dependsOn 'steleJS'
+  }
+
   assets {
     resource url: 'css/assets/style.css'
     resource url: 'css/assets/headers/header1.css'
