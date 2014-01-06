@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <g:each in="${dependientes?.results}">
+        <g:each in="${dependientes}">
           <tr>
             <td class="center">
               <label>
