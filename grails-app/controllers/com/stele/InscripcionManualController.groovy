@@ -1,6 +1,7 @@
 package com.stele
 
 import grails.converters.JSON
+import com.stele.seguridad.Usuario
 
 class InscripcionManualController {
 
@@ -23,6 +24,16 @@ class InscripcionManualController {
 
     def parsearDependiente(){
       def historial = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(params.idDependiente)
-      render template:'listaDependientes', model:[action:historial]
+      render template:'seccionAlumno', model:[action:historial]
+    }
+
+    def parsearTutor(){
+      def usuario = Usuario.withCriteria{
+        eq('id', params.idTutor)
+        perfil{
+          join('telefono')
+        }
+      }
+      render template:'seccionTutor', model:[user: usuario]
     }
 }
