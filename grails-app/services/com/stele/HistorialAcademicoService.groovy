@@ -45,4 +45,13 @@ class HistorialAcademicoService {
     }
   }
 
+  def obtenerhistorialAcademicoPorDependiente (def id) {
+    def dependiente = Dependiente.get(id)
+    def criteriaHistorialAcademico = HistorialAcademico.createCriteria()
+    def historialAcademicoExistente = criteriaHistorialAcademico.get {
+      eq("dependiente",dependiente)
+    }
+    historialAcademicoExistente
+  }
+
 }
