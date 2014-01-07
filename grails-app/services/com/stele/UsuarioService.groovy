@@ -11,7 +11,7 @@ class UsuarioService {
   def springSecurityService
   def notificacionService
 
-  def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) {
+  def obtenerUsuarioDesdeCommand(FilaExcelCommand filaExcelCommand) throws Exception{
     def usuario = new Usuario()
     def perfil = new Perfil()
     def telefono = new Telefono()
@@ -65,7 +65,7 @@ class UsuarioService {
 
   }
 
-  private String armaPasswordTemporal(String nombre, String correo, String telefono){
+  private String armaPasswordTemporal(String nombre, String correo, String telefono) throws Exception{
     String passworGenerado = nombre?.substring(0,2) + 
                               correo?.substring(0,2) + 
                               telefono?.substring((telefono.length()-4)) 
