@@ -70,7 +70,11 @@
                 ${flash.success}
               </div>
             </g:if>
-
+            <g:if test="${flash.error}">  
+              <div id="message"class="alert alert-error">
+                ${flash.error}
+              </div>
+            </g:if>
           <div class="row-fluid">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
