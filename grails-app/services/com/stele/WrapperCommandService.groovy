@@ -25,8 +25,8 @@ class WrapperCommandService {
     gcp.organizacion = institucion
     gcp.diasVencimientoPago = camadaPagoCommand.diasVencimientoPago
     gcp.payables = obtenerListaDePayables(camadaPagoCommand)
-    gcp.meses = camadaPagoCommand?.meses
-    gcp.pagoDoble = camadaPagoCommand?.pagoDoble
+    gcp.meses = camadaPagoCommand.meses ?: []
+    gcp.pagoDoble = camadaPagoCommand?.pagoDoble ?:[]
     gcp
   }
 
