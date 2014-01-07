@@ -20,20 +20,24 @@ class InicioController {
   }
 
   def preview(){
-    FileInputStream excelParaProcesar = params.datosEscolares.inputStream
-    def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(excelParaProcesar)
-    def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
-    flash.listaDeMapaDeDominios = listaDeMapaDeDominios
-    def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
-    
-    [
-      alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),
-      alumnosPorGrado:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.GRADO),
-      alumnosPorTurno:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO),
-      estructuraInstitucional:estructuraInstitucional,
-      listaDeMapaDeDominios:listaDeMapaDeDominios,
-      institucionId: params.long("institucionId")
-    ]
+    try {
+      FileInputStream excelParaProcesar = params.datosEscolares.inputStream
+      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(excelParaProcesar)
+      def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
+      flash.listaDeMapaDeDominios = listaDeMapaDeDominios
+      def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
+      [
+        alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),
+        alumnosPorGrado:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.GRADO),
+        alumnosPorTurno:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO),
+        estructuraInstitucional:estructuraInstitucional,
+        listaDeMapaDeDominios:listaDeMapaDeDominios,
+        institucionId: params.long("institucionId")
+      ]
+    } catch(Exception ex){
+      flash.error = "Por favor validar el archivo que se esta procesando"
+      redirect (controller: "inicio", action: "index")
+    }
   }
 
   def procesar(){
