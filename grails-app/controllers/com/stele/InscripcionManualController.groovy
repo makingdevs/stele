@@ -15,10 +15,12 @@ class InscripcionManualController {
 		}
 
 		def crearUsuarioCondependiente(InscripcionCommand insc ) {
-      
       def institucion = springSecurityService.currentUser.instituciones?.first()
       def registroAlumnoTutor = inscripcionManualService.generarRegistroDeAlumnoYTutor(insc, institucion)
-      flash.success = "Se ha creado correctamente el Estudiante $registroAlumnoTutor.dependiente.perfil.nombre $registroAlumnoTutor.dependiente.perfil.apellidoPaterno $registroAlumnoTutor.dependiente.perfil.apellidoMaterno" 
+      if (registroAlumnoTutor instanceof String)
+        flash.error = registroAlumnoTutor
+      else
+        flash.success = registroAlumnoTutor.values()
       render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser])
     }
 
@@ -29,11 +31,11 @@ class InscripcionManualController {
 
     def parsearTutor(){
       def usuario = Usuario.withCriteria{
-        eq('id', params.idTutor)
+        eq('id', params.idTutor.toLong())
         perfil{
           join('telefono')
         }
       }
-      render template:'seccionTutor', model:[user: usuario]
+      render template:'seccionTutor', model:[user: usuario.first()]
     }
 }
