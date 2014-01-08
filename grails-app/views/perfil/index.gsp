@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono,styledrop,uploadImg,bootstrap-js,bootstrapDatePicker,upload,perfilValidate"/>
+    <r:require modules="telefono,styledrop,uploadImg,bootstrapDatePicker,upload,perfilValidate"/>
   </head>
 
   <body>
