@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono, styledrop,bootstrap-js,bootstrapDatePicker,upload,perfilValidate"/>
+    <r:require modules="telefono, styledrop,bootstrapDatePicker,upload,perfilValidate"/>
   </head>
   <body>
     <r:script type="text/javascript">
