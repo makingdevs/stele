@@ -3,12 +3,11 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="bootstrap-js" />
     <r:require module="bootstrapDatePicker" />
   </head>
 
   <body>
-    <script type="text/javascript">
+    <r:script>
       $(document).ready(function() {
         $('#datetimepicker1').datepicker({
           format : "dd/mm/yyyy",
@@ -16,7 +15,7 @@
           autoclose : true
         });
       });
-    </script>
+    </r:script>
 
   <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
