@@ -1,10 +1,11 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="bootstrap-js,pagosParaCamada,generarPagos,autocomplete,bootstrapDatePicker" />
+    <r:require modules="pagosParaCamada,generarPagos,autocomplete,bootstrapDatePicker" />
   </head>
   <body>
     <r:script>
+
       $(document).ready(function(){
         $("#submitFormPayout").click(function(){
           var $fecha = $('#fechaDeVencimiento')
