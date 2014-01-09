@@ -35,6 +35,10 @@ $(document).ready(function(){
        minlength: 2,
        alphabetical: true
      },
+     'perfil.apellidoMaterno': {
+       minlength: 2,
+       alphabetical: true
+     },
      'usuario.username': {
         required: true,
         email: true  
@@ -85,6 +89,7 @@ $(document).ready(function(){
      },
      'inputConfirmPassword': {
         required: "Se requiere confirmar la contraseña",
+        minlength: "La contraseña debe de tener 8 caracteres como minimo",
         equalTo: "La contraseña no coincide, favor de verificarla"
      },
      'telefono': {
