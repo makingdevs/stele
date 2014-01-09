@@ -2,15 +2,10 @@
 <head>
     <meta name="layout" content="steleTwitterBoostrapMain"/>
     <title>Inicia tu sesión</title>
-    <r:require modules="stele"/>
+
     <r:script>
         $(function() {
          $('#username').focus();
-        });
-        jQuery(document).ready(function() {
-          App.init();
-          App.initSliders();
-          App.initBxSlider();
         });
     </r:script>
 </head> 
@@ -26,30 +21,40 @@
   </g:if>
 <!--=== Content Part ===-->
   <div class="container">   
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-        <form action='${postUrl}' method='POST' id='loginForm' class='reg-page' autocomplete='off'>
-          <div class="reg-header">            
-            <h2>Ingresa </h2>
+    <div class="row-fluid">
+      <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" align="center">
+        <form action='${postUrl}' method='POST' id='loginForm' class="log-page" autocomplete='off' style="border: 1px groove #EEEEEE; width: 360px; height: 420px; padding-left: 10px">
+          <div class="reg-header" align="CENTER">            
+            <p>&nbsp;</p> 
+            <h3>Ingresa </h3>
+            <hr>
           </div>
           <div class="input-group margin-bottom-200" align="center">
-              <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" class="input-xlarge" placeholder="Correo     electrónico" name='j_username' id='username'>
+              <span class="add-on"><i class="icon-user"></i></span>
+              <input type="text" class="input-xlarge" placeholder="Correo electrónico" name='j_username' id='username'>
           </div>                    
           <div class="input-group margin-bottom-200" align="center">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
               <input type="password" class="input-xlarge" placeholder=" Contraseña" name='j_password' id='password'>
-          </div>                    
-          <div class="row">
-              <div class="col-md-6"></div>
-              <div class="col-md-6" align="center">
+          </div>         
+          <div class="reg-header" align="center">
+              <div class="span11">
                 <button class="btn-u pull-right" type="submit">Login</button>
               </div>
           </div>
-          <hr>
-          <h4>Olvidaste tu contraseña?</h4>
-          <p>Mandanos un email a <a href="mailto:info@stele..mx" class="">soporte@stele.mx</a> </br>con la siguiente información:</br>
-          <strong> Colegio, nombre completo y teléfono</strong> </br>
+          <p>&nbsp;</p>     
+          <p>&nbsp;</p>   
+          <HR>  
+          <div class="span12">
+            <div align="left">
+              <h4>Olvidaste tu contraseña?</h4>
+              <p>Mandanos un email a <a href="mailto:info@stele..mx" class="">soporte@stele.mx</a> </br>con la siguiente información:</br>
+              <strong> Colegio, nombre completo y teléfono</strong> </br>
+            </div>
+          </div>
+          <p>&nbsp;</p>     
+          <p>&nbsp;</p>     
+          <p>&nbsp;</p>  
         </form>
       </div>
     </div><!--/row-fluid-->
