@@ -27,13 +27,13 @@
           Beneficiario 
         </div>
         <div class="profile-info-value  align-left">
-          <g:textArea class="span12 limited" name="beneficiario" rows="3" cols="40"/>
+          <g:textArea class="span12 limited" name="beneficiario" rows="3" cols="40" style="resize: none;"/>
         </div>
       </div>
       <div class="profile-info-row">
         <div class="profile-info-name">  </div>
         <div class="profile-info-value center">
-          <button type="submit" class="btn btn-mini btn-success ">
+          <button type="submit" class="btn btn-mini">
             Agregar
             <i class="icon-arrow-right  icon-on-right"></i>
           </button>

@@ -10,7 +10,7 @@ class DatosEscolaresDomainWrapperService {
   def cicloEscolarService
   def distribucionInstitucionalService
 
-  def obtenerListaDeMapasDesdeListaDeCommands(List filaExcelCommand){ 
+  def obtenerListaDeMapasDesdeListaDeCommands(List filaExcelCommand) throws Exception{ 
     def listaDeMapasDomain = []
 
     filaExcelCommand.each{

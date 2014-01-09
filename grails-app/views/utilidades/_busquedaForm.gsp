@@ -9,25 +9,25 @@
         <div class="control-group">
           <label class="control-label" for="selectGrupo">Turno</label>
           <div class="controls">
-            <g:select name="turno" from="${turnos}" noSelection="['':'- Selecciona el turno-']" onchange="${remoteFunction(controller:'Dependiente', action:'ajaxTurnoANivel', params:'\'turno=\' + escape(this.value)',update:'busquedaForm')}" value="${turno}"/>
+            <g:select name="turno" from="${turnos}" noSelection="['':'- Selecciona el turno-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxTurnoANivel', params:'\'turno=\' + escape(this.value)',update:'busquedaForm')}" value="${turno}"/>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label" for="selectNivel">Nivel</label>
           <div class="controls">
-           <g:select name="nivel" from="${niveles}" noSelection="['':'- Selecciona el Nivel-']" onchange="${remoteFunction(controller:'Dependiente', action:'ajaxNivelAGrado', params:'\'nivel=\' + escape(this.value)',update:'busquedaForm')}" value="${nivel}"/>
+           <g:select name="nivel" from="${niveles}" noSelection="['':'- Selecciona el Nivel-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxNivelAGrado', params:'\'nivel=\' + escape(this.value)',update:'busquedaForm')}" value="${nivel}"/>
          </div>
        </div>  
        <div class="control-group">
         <label class="control-label" for="selectNivel">Grado</label>
         <div class="controls">
-          <g:select name="grado" from="${grados}" noSelection="['':'- Selecciona el Grado-']" onchange="${remoteFunction(controller:'Dependiente', action:'ajaxGradoAGrupo', params:'\'grado=\' + escape(this.value)',update:'busquedaForm')}" value="${grado}"/>
+          <g:select name="grado" from="${grados}" noSelection="['':'- Selecciona el Grado-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxGradoAGrupo', params:'\'grado=\' + escape(this.value)',update:'busquedaForm')}" value="${grado}"/>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="selectNivel">Grupo</label>
         <div class="controls">
-          <g:select name="grupo" from="${grupos}" noSelection="['':'- Selecciona el Grupo-']" onchange="${remoteFunction(controller:'Dependiente', action:'ajaxGrupo', params:'\'grupo=\' + escape(this.value)',update:'busquedaForm')}" value="${grupo}"/>
+          <g:select name="grupo" from="${grupos}" noSelection="['':'- Selecciona el Grupo-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxGrupo', params:'\'grupo=\' + escape(this.value)',update:'busquedaForm')}" value="${grupo}"/>
         </div>
       </div>  
     </div>

@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require module="bootstrap-js"/>
-    <r:require module="bootstrapDatePicker" />
+    <r:require modules="telefono,styledrop,uploadImg,bootstrapDatePicker,upload,perfilValidate"/>
     <r:script>
       $(document).ready(function() {
         $('#fechaPago').datepicker({
@@ -13,12 +12,12 @@
         });
       });
       $(function() {
-          var urlValue = $("input#url").val() 
-          Dropzone.options.dropzone = {
+        var urlValue = $("input#url").val() 
+        $("#comprobante").dropzone({
           url : urlValue,
           maxFilesize : .5,
           addRemoveLinks : false
-          };
+        });
       });
     </r:script>
   </head>
@@ -87,7 +86,7 @@
             </div>
             <div class="widget-body">
               <div class="widget-main">
-                <div id="dropzone" class="dropzone">
+                <div id="comprobante" type="file" class="dropzone">
               </div>
             </div>
           </div>

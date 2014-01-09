@@ -68,6 +68,11 @@
               </h1>
             </div>
           </g:else>
+          <g:if test="${flash.error}">
+            <div id="message"class="alert alert-error">
+              ${flash.error}
+            </div>
+          </g:if>
 
           <div class="row-fluid">
           <g:uploadForm name="layout" id="cargaArchivo" controller="inicio" action="preview" onsubmit="return check()">    

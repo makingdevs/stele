@@ -36,9 +36,9 @@ class InscripcionManualServiceSpec extends Specification {
       when :
         def registro = service.generarRegistroDeAlumnoYTutor(command, institucion)
         mocks*.verify()
-
+        println registro.getClass()
       then : 
-        assert registro.dependiente.camada.contains(institucionNombre.replaceAll(" ","_"))
+        assert registro instanceof LinkedHashMap
 
       where :
         cicloEscolar | nombreAlumno | apellidoPaternoAlumno | apellidoMaternoAlumno | nivelDeEstudio | grado | grupo | turno      | matricula | nombrePadre | apellidoPaternoPadre | apellidoMaternoPadre | telefono    | email           | institucionNombre
