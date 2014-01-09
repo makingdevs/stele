@@ -27,7 +27,7 @@ modules = {
   }
   
   validation {
-    resource url:'js/assets/jquery-1.8.2.min.js'
+    resource url:'js/jquery-1.8.2.min.js'
     resource url:'js/common/jquery.validate.min.js'
   }
 
@@ -70,6 +70,7 @@ modules = {
     resource url:'new/assets/plugins/bxslider/jquery.bxslider.css'
     resource url:'new/assets/plugins/horizontal-parallax/css/horizontal-parallax.css'
     resource url:'new/assets/css/pages/page_promo.css'
+    resource url:'new/assets/css/pages/page_log_reg_v1.css'
     resource url:'new/assets/css/themes/default.css'
   }
 
