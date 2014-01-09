@@ -22,103 +22,85 @@
         </ul>
     </div>      
 </div><!--/top-->    
-
-  <!--=== Header ===-->
   <div class="header">               
     <div class="container"> 
-      <!-- Logo -->       
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="span3 navbar-header">
-                <a class="navbar-brand" href="index.html">
-                    <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="span9 navbar-header">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <a href="inicio.html">
-                            Inicio                            
-                        </a>
-                    </li>
-                    <li >
-                        <a href="steleprecio.html">
-                            Precios                            
-                        </a>
-                    </li>
-                    <li >
-                        <g:link controller="registro">
-                            Registro                            
-                        </g:link>
-                    </li>
-                    <li >
-                        <a href="steleservicios.html" >
-                            Servicios                            
-                        </a>
-                    </li>                     
-                    <li >
-                        <a href="stelecontacto.html" >
-                            Contacto                            
-                        </a>
-                    </li>
-                    <li >
-                        <g:link controller="login">
-                            Ingresar                            
-                        </g:link>
-                    </li>                  
-                </ul>
-            </div><!-- /navbar-collapse -->
-        </div>    
-    </div>    
-                        
-    </div><!-- /container -->               
-  </div><!--/header -->    
-
-    <g:layoutBody/>
-
+        <div class="span3">
+          <g:link mapping="/">
+            <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
+          </g:link>
+        </div>
+        <div class="span8">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="inicio.html">
+                Inicio                            
+              </a>
+            </li>
+            <li >
+              <a href="steleprecio.html">
+                Precios                            
+              </a>
+            </li>
+            <li >
+              <g:link controller="registro">
+                Registro                            
+              </g:link>
+            </li>
+            <li >
+              <a href="steleservicios.html" >
+                Servicios                            
+              </a>
+            </li>                     
+            <li >
+              <a href="stelecontacto.html" >
+                Contacto                            
+              </a>
+            </li>
+            <li >
+              <g:link controller="login">
+                Ingresar                            
+              </g:link>
+            </li>                  
+          </ul>
+        </div><!-- /navbar-collapse --> 
+    </div>                    
+  </div><!-- /container -->               
+</div><!--/header -->    
+<g:layoutBody/>
 <div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 md-margin-bottom-20">
-                <div class="headline"><h2>Contáctanos</h2></div> 
-                <address class="md-margin-bottom-20">
-                    Av. México 145, Int. 404, Col. Del Carmen Coyoacán
-                    Del. Coyoacán. México, D.F.<br />
-                    Telefono:  (55) 6363 - 8147 <br />
-                    Email: <a href="mailto:info@stele.com.mx" class="">info@stele.com.mx</a>
-                </address>
-                       
-            </div><!--/col-md-6-->  
-            
-
-            <div class="col-md-6">
-                <!-- Monthly Newsletter -->
-
-            </div><!--/col-md-4-->
-        </div><!--/row-->   
-    </div><!--/container--> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 md-margin-bottom-20">
+        <div class="headline"><h2>Contáctanos</h2></div> 
+        <address class="md-margin-bottom-20">
+          Av. México 145, Int. 404, Col. Del Carmen Coyoacán
+          Del. Coyoacán. México, D.F.<br />
+          Telefono:  (55) 6363 - 8147 <br />
+          Email: <a href="mailto:info@stele.com.mx" class="">info@stele.com.mx</a>
+        </address>         
+      </div><!--/col-md-6-->  
+      <div class="col-md-6">
+      </div><!--/col-md-4-->
+    </div><!--/row-->   
+  </div><!--/container--> 
 </div><!--/footer-->    
-<!--=== End Footer ===-->
-
-<!--=== Copyright ===-->
 <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">                      
-                <p class="copyright-space">
-                    2014 &copy; - Stele. Derechos Reservados. 
-                    <a href="steleterminos.html">Términos y Condiciones</a>
-                </p>
-            </div>
-            <div class="col-md-6">  
-                <g:img dir="/new/assets/img"  class="pull-right" file="logo2-default.png" />
-                
-            </div>
-        </div><!--/row-->
-    </div><!--/container--> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">                      
+        <p class="copyright-space">
+          2014 &copy; - Stele. Derechos Reservados. 
+          <a href="steleterminos.html">Términos y Condiciones</a>
+        </p>
+      </div>
+      <div class="col-md-6">  
+        <g:link mapping="/">
+          <g:img dir="/new/assets/img"  class="pull-right" file="logo2-default.png" />
+        </g:link>
+      </div>
+    </div><!--/row-->
+  </div><!--/container--> 
 </div><!--/copyright--> 
   <r:layoutResources />
 </body>
