@@ -23,11 +23,10 @@
   <div class="container">   
     <div class="row-fluid">
       <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" align="center">
-        <form action='${postUrl}' method='POST' id='loginForm' class="log-page" autocomplete='off' style="border: 1px groove #EEEEEE; width: 360px; height: 420px; padding-left: 10px">
+        <form action='${postUrl}' method='POST' id='loginForm' class="log-page" autocomplete='off' style="border: 1px groove #EEEEEE; width: 360px; height: 450px; padding-left: 10px">
           <div class="reg-header" align="CENTER">            
             <p>&nbsp;</p> 
             <h3>Ingresa </h3>
-            <hr>
           </div>
           <div class="input-group margin-bottom-200" align="center">
               <span class="add-on"><i class="icon-user"></i></span>
@@ -36,13 +35,14 @@
           <div class="input-group margin-bottom-200" align="center">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
               <input type="password" class="input-xlarge" placeholder=" Contraseña" name='j_password' id='password'>
-          </div>         
-          <div class="reg-header" align="center">
+          </div>     
+          <p></p>    
+          <div  align="center">
               <div class="span11">
                 <button class="btn-u pull-right" type="submit">Login</button>
               </div>
           </div>
-          <p>&nbsp;</p>     
+          <p>&nbsp;</p>       
           <p>&nbsp;</p>   
           <HR>  
           <div class="span12">
