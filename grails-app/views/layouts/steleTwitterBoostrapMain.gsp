@@ -33,14 +33,14 @@
         <div class="span8">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-              <a href="inicio.html">
+              <g:link mapping="/">
                 Inicio                            
-              </a>
+              </g:link>
             </li>
             <li >
-              <a href="steleprecio.html">
+              <g:link controller="utilidades" action="precio">
                 Precios                            
-              </a>
+              </g:link>
             </li>
             <li >
               <g:link controller="registro">
@@ -48,14 +48,14 @@
               </g:link>
             </li>
             <li >
-              <a href="steleservicios.html" >
+              <g:link controller="utilidades" action="servicios">
                 Servicios                            
-              </a>
+              </g:link>
             </li>                     
             <li >
-              <a href="stelecontacto.html" >
+              <g:link controller="utilidades" action="contacto">
                 Contacto                            
-              </a>
+              </g:link>
             </li>
             <li >
               <g:link controller="login">
