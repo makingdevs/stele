@@ -77,35 +77,6 @@
             </g:if>
           <div class="row-fluid">
             <div class="span12">
-              <!--PAGE CONTENT BEGINS-->
-              <h3>
-                <div class="control-group">
-                  <div class="controls">
-                    <g:formRemote id="busquedaDependiente" name="busquedaDependiente" update="listaAlumnos" url="[controller:'dependiente', action:'buscarDependienteInscripcion']">
-                      <small> Nombre del Alumno</small>
-                        <input  type="text" id="nombreDependienteBusqueda" name="nombreDependienteBusqueda" placeholder="nombre alumno" >
-                          <button class="btn btn-purple btn-small" type="submit">
-                            Buscar
-                            <i class="icon-search icon-on-right bigger-110"></i>
-                          </button>
-                    </g:formRemote>
-                    <g:formRemote id="busquedaTutor" name="busquedaTutor" update="listaTutor" url="[controller: 'usuario', action:'buscarTutorInscripcion']">
-                      <small> Nombre del Papa</small>
-                        <input  type="text" id="nombreTutorBusqueda" name="nombreTutorBusqueda" placeholder="nombre padre" >
-                          <button class="btn btn-purple btn-small" type="submit">
-                            Buscar
-                            <i class="icon-search icon-on-right bigger-110"></i>
-                          </button>
-                    </g:formRemote>
-                  </div>
-                </div>
-              </h3>
-              <div id="listaAlumnos" name="listaAlumnos">
-                <g:render template="listaDependientes" />
-              </div>
-              <div id="listaTutor" name="listaTutor">
-                <g:render template="listaTutores"/>
-              </div>
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
                 <div id="alumnosPart">
                   <g:render template="seccionAlumno"/>
