@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-  <r:require modules="bootstrap-js,bootstrap-css,stele" />
 
   <g:layoutHead/>
   <r:layoutResources />
@@ -22,15 +21,21 @@
         </ul>
     </div>      
 </div><!--/top-->    
-  <div class="header">               
-    <div class="container"> 
-      <div class="navbar navbar-default" role="navigation">
-        <div class="span3">
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <g:link mapping="/">
             <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
           </g:link>
-        </div>
-        <div class="span8">
+      </div>
+        <div class="collapse navbar-collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
               <g:link mapping="/">
