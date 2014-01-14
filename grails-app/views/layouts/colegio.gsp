@@ -62,7 +62,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <span class="user-info">
                   <small>
-                    Welcome,
+                    Bienvenido
                   </small>
                   <sec:loggedInUserInfo field="username"/> 
                 </span>
@@ -75,13 +75,13 @@
                   <sec:ifAllGranted roles="ROLE_DIRECTOR">
                     <g:link controller="perfil" action="administrador">
                         <i class="icon-user"></i>
-                        Profile
+                        Perfil
                       </g:link>
                     </sec:ifAllGranted>
                   <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
                     <g:link controller="perfil">
                       <i class="icon-user"></i>
-                      Profile
+                      Perfil
                     </g:link>
                   </sec:ifAllGranted>
                 </li>
@@ -89,7 +89,7 @@
                 <li>
                   <g:link controller="logout">
                     <i class="icon-off"></i>
-                    Logout
+                    Salir
                   </g:link>
                 </li>
               </ul>
