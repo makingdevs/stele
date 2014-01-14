@@ -137,7 +137,7 @@
               </li>
             </ul>
           </li>
-          <li>
+          <li class="active open">
             <a href="#" class="dropdown-toggle">
               <i class="icon-usd"></i>
               <span class="menu-text"> Cobros </span>
