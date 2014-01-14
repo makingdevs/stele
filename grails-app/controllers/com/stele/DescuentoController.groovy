@@ -14,7 +14,7 @@ class DescuentoController {
 
   def nuevo() {
     Descuento descuento = findOrSaveDescuentoWithParams(params)
-    def descuentosIds = descuento.id
+    def descuentosIds = [descuento.id]
     if(params.descuentosIds) {
       def listaDescuentos = params.descuentosIds?.replace('[','')?.replace(']','')?.split(',') ?: []
       descuentosIds += listaDescuentos*.toLong()
