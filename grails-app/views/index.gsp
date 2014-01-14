@@ -2,35 +2,43 @@
 <html> 
 <head>
   <meta name="layout" content="steleTwitterBoostrapMain"/>
-  <r:require module="stele" />
+    <r:require modules="steleCss,steleJs" />  
+    
+    
+    
+    
+    
+    
+    
 </head> 
 <body>
-  <div id="sequence-theme" class="sequence-inner">
+    <div id="sequence-theme" class="sequence-inner">
     <div id="sequence">
-        <img class="prev" src="new/assets/plugins/horizontal-parallax/images/bt-prev1.png" alt="Previous" />
-        <img class="next" src="new/assets/plugins/horizontal-parallax/images/bt-next1.png" alt="Next" />
+        <g:img dir="new/assets/plugins/horizontal-parallax/images/"  class="prev" file="bt-prev1.png" alt="Previous" />
+        <g:img dir="new/assets/plugins/horizontal-parallax/images/"  class="next" file="bt-next1.png" alt="Next" />
+
         <ul>
-            <li class="animate-in">
-                <div class="info">
-                    <h2>Controle sus finanzas</h2>
-                    <p>Olvídese de recibir y envíar esos correos de cobros realizados y de tener su administración en excel.</p>
-                </div>
-                <img class="balloon" src="new/assets/plugins/horizontal-parallax/images/stele1.png" alt="Balloon" />
-            </li>
-            <li>
-                <div class="info">
-                    <h2>Colaboración </h2>
-                    <p>Trabaje mejor en equipo proporcionandole a los padres de familia y colegio: un sistema innovador, sencillo y flexible.</p>
-                </div>
-                <img class="aeroplane" src="new/assets/plugins/horizontal-parallax/images/stele2.png" alt="Aeroplane" />
-            </li>
-            <li>
-                <div class="info">
-                    <h2>Innovación</h2>
-                    <p>Entre a un nuevo mundo donde administre y controle la situación financiera de su colegio desde un sistema en la nube.</p>
-                </div>
-                <img class="kite" src="new/assets/plugins/horizontal-parallax/images/stele3.png" alt="Kite" />
-            </li>
+          <li class="animate-in">
+            <div class="info">
+              <h2>Controle sus finanzas</h2>
+              <p>Olvídese de recibir y envíar esos correos de cobros realizados, asi como la administración de cobros en excel.</p>
+            </div>
+            <g:img dir="new/assets/plugins/horizontal-parallax/images/" class="balloon" file="stele1.png" alt="Balloon" />
+          </li>
+          <li>
+            <div class="info">
+              <h2>Colaboración </h2>
+              <p>Trabaje mejor en equipo proporcionandole a los padres de familia y colegio: un sistema innovador, sencillo y flexibl</p>
+            </div>
+            <g:img dir="new/assets/plugins/horizontal-parallax/images/" class="aeroplane" file="stele2.png" alt="Aeroplane" />
+          </li>
+          <li>
+            <div class="info">
+              <h2>Innovación</h2>
+              <p>Entre a un nuevo mundo donde administre y controle la situación financiera de su colegio desde un sistema en la nube.</p>
+            </div>
+            <g:img dir="new/assets/plugins/horizontal-parallax/images/" class="kite" file="stele3.png" alt="Kite" />
+          </li>
         </ul>
     </div>
 </div><!--/sequence-theme-->
@@ -40,15 +48,13 @@
 <div class="purchase">
     <div class="container">
         <div class="row">
-            <div class="span9">
+            <div class="col-md-9">
                 <span>Stele es innovador, fácil e increible: sistema en la nube.</span>
-                <p>Somos una empresa innovadora, que apoya a su colegio transformando la manera de operar la situación financiera de su colegio, mejorando sus procesos operativos y estratégicos.</p>
-                <p>Stele integra de forma simple y clara la situación financiera  entre el colegio y padres de familia.</p>
+                <p>Somos una empresa innovadora, que apoya a su colegio transformando la manera de operar la situación financiera de su colegio, mejorando sus procesos operativos y estratégicos. Stele integra de forma simple y clara la situación financiera  entre el colegio y padres de familia.</p>
+                <p></p>
             </div>            
-            <div class="span3">
-              <g:link controller="registro">
-                <button class="btn btn-large btn-info" type="button">Registro</button>
-              </g:link>            
+            <div class="col-md-3">
+                <a href="steleregistro.html" class="btn-buy hover-effect">Registro</a>            
             </div>
         </div>
     </div>
@@ -60,7 +66,7 @@
 <div class="container"> 
     <!-- Service Blocks -->
     <div class="row margin-bottom-10">
-        <div class="span4 service-alternative">
+        <div class="col-md-4 service-alternative">
             <div class="service">
                 <i class="icon-globe service-icon"></i>
                 <div class="desc">
@@ -69,7 +75,7 @@
                 </div>
             </div>  
         </div>
-        <div class="span4 service-alternative">
+        <div class="col-md-4 service-alternative">
             <div class="service">
                 <i class="icon-signal service-icon"></i>
                 <div class="desc">
@@ -78,7 +84,7 @@
                 </div>
             </div>  
         </div>
-        <div class="span4 service-alternative">
+        <div class="col-md-4 service-alternative">
             <div class="service">
                 <i class="icon-money service-icon"></i>
                 <div class="desc">
@@ -91,13 +97,7 @@
         </div>              
     </div><!--/row-->
     <!-- End Service Blokcs -->
-    
-
-
-
-
 </div><!--/container-->     
 <!-- End Content Part -->
-
 </body>
-</html>	
+</html> 
