@@ -2,6 +2,8 @@ package com.stele
 
 import grails.converters.JSON
 import com.stele.seguridad.Usuario
+import com.stele.Institucion
+import com.stele.Dependiente
 
 class InscripcionManualController {
 
@@ -17,25 +19,36 @@ class InscripcionManualController {
 		def crearUsuarioCondependiente(InscripcionCommand insc ) {
       def institucion = springSecurityService.currentUser.instituciones?.first()
       def registroAlumnoTutor = inscripcionManualService.generarRegistroDeAlumnoYTutor(insc, institucion)
-      if (registroAlumnoTutor instanceof String)
-        flash.error = registroAlumnoTutor
-      else
-        flash.success = registroAlumnoTutor.values()
+      flash.success = registroAlumnoTutor.values()
       render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser])
     }
-
-    def parsearDependiente(){
-      def historial = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(params.idDependiente)
-      render template:'seccionAlumno', model:[action:historial]
-    }
-
-    def parsearTutor(){
-      def usuario = Usuario.withCriteria{
-        eq('id', params.idTutor.toLong())
-        perfil{
-          join('telefono')
+      
+    def validarUsuarioExistente() {
+      def institucion = springSecurityService.currentUser.instituciones?.first()
+      def usuario = Usuario.withCriteria(uniqueResult:true){
+        eq('username', params.username)
+        instituciones{
+          eq('id', institucion.id)
         }
       }
-      render template:'seccionTutor', model:[user: usuario.first()]
+      JSON.use('stele'){ 
+        render usuario as JSON
+      }
     }
+
+    def validarDependienteExistente() {
+      def institucion = springSecurityService.currentUser.instituciones?.first()
+      def dependiente = Dependiente.findByMatricula(params.matricula)
+      def usuarioDependiente = Usuario.withCriteria(uniqueResult: true){
+        dependientes{
+          eq('id', dependiente.id)
+        }
+        instituciones{
+          eq('id', institucion.id)
+        }
+      }
+      JSON.use('stele'){
+        render usuarioDependiente as JSON
+      }
+    } 
 }
