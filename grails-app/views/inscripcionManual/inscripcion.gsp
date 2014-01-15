@@ -1,4 +1,4 @@
-<html >
+<html> 
   <head>
     <meta name="layout" content="colegio"/>
     <r:require modules="inscripcion" />
@@ -13,24 +13,6 @@
           $("#tutorCoincidentesForm").submit();
         })
       });
-      $("#dependientesCoincidentesForm").submit(function(event){
-        event.stopPropagation();
-        alert("perra");
-        var url = $(this).attr('action');
-        var data = $(this).serialize()
-        $.ajax({
-          type: "GET",
-          url: url,
-          dataType: "json",
-          contentType: "application/json",
-          data: data,
-          success: function(data) {
-            console.log(data);
-            $("#listaAlumnos").html(data)  
-          }
-        });
-        return false;
-      }); 
     </r:script>
   </head>
   <body>
@@ -78,27 +60,23 @@
           <div class="row-fluid">
             <div class="span12">
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
+                <input type="hidden" id="urlValidarDependiente" value="${g.createLink(action:'validarDependienteExistente', controller:'inscripcionManual')}" />
                 <div id="alumnosPart">
                   <g:render template="seccionAlumno"/>
                 </div>
-                <!--Alumno Fin-->
-                <!--Padre Inicia-->
+                <input type="hidden" id="urlValueUsername" value="${g.createLink(action:'validarUsuarioExistente', controller:'inscripcionManual')}" />
                 <div class="row-fluid" id="tutorPart">
                   <g:render template="seccionTutor" />
                 </div>
                 <!--Padre Fin-->
-                <div class="form-actions">
-                  <button class="btn btn-danger" data-toggle="modal" href="#modal-formConfirmar" type="btn-danger">
-                    <i class="icon-trash bigger-110"></i>
-                    Eliminar
-                  </button>
+                <div id="seccionBotones" class="form-actions">
                   &nbsp; &nbsp; &nbsp;
-                  <button class="btn btn-info"  type="submit">
+                  <button id="inscripcionForm"  class="btn btn-info"  type="button">
                     <i class="icon-ok bigger-110"></i>
                     Aceptar
                   </button>
-                  &nbsp; &nbsp; &nbsp;
-                  <button class="btn" type="reset">
+                  &nbsp;&nbsp; &nbsp;
+                  <button class="btn" type="reset" type="button">
                     <i class="icon-undo bigger-110"></i>
                     Limpiar
                   </button>
