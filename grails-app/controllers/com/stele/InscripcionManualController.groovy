@@ -41,7 +41,7 @@ class InscripcionManualController {
       def dependiente = Dependiente.findByMatricula(params.matricula)
       def usuarioDependiente = Usuario.withCriteria(uniqueResult: true){
         dependientes{
-          eq('id', dependiente.id)
+          eq('id', dependiente?.id)
         }
         instituciones{
           eq('id', institucion.id)
