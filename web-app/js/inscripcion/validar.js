@@ -154,4 +154,61 @@ $(document).ready(function(){
       errorClass: "error",
       errorElement: "span"
   });
-}); 
+});
+
+$(document).ready(function(){
+  $("#seccionBotones").on("click","#inscripcionForm", function(){
+    var $urlUser = $("#urlValueUsername").val();
+    var $urlDependiente = $("#urlValidarDependiente").val();
+    var $username = $("#email").val();
+    var $matricula = $("#matricula").val();
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      contentType: "application/json",
+      url: $urlUser + "?username=" + $username,
+      success:function(result){
+        if(result != null){
+         var question = confirm("Ya existe un usuario con cuenta "+result.username+", desea continuar?");
+          if(question == true){
+            $.ajax({
+              type:"GET",
+              dataType: "json",
+              contentType: "application/json",
+              url: $urlDependiente + "?matricula=" + $matricula,
+              success:function(result){
+                if(result != null) {
+                  var questions = confirm("Ya existe un dependiente con esta matricula, desea continuar?");
+                  if (questions == true) {
+                    $('#registroAlumno').submit();
+                  } else {
+                   return false;
+                  }
+                }
+              }
+            });
+          } else {
+            return false;
+          }
+        }
+      }     
+    });  
+    $.ajax({
+     type:"GET",
+     dataType: "json",
+     contentType: "application/json",
+     url: $urlDependiente + "?matricula=" + $matricula,
+      success:function(result){
+        if(result != null) {
+          var questions = confirm("Ya existe un dependiente con esta matricula, desea continuar?");
+           if (questions == true) {
+              $('#registroAlumno').submit();
+           } else {
+             return false;
+           }
+        }
+      }
+    }); 
+    return false;
+  });
+});
