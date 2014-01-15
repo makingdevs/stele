@@ -209,6 +209,7 @@ $(document).ready(function(){
         }
       }
     }); 
+    $('#registroAlumno').submit();
     return false;
   });
 });
