@@ -85,7 +85,7 @@
                         <div class="widget-main padding-6">
                           <div class="tab-content">
                               <div id="cobro" class="tab-pane in active">
-                                <g:form name="esquemasDePago" url="[controller: 'esquemaDePago', action: 'crearEsquemaDePago']">
+                                <g:form id="esquemaDePagoForm" name="esquemasDePago" url="[controller: 'esquemaDePago', action: 'crearEsquemaDePago']">
                                   <div class="control-group">
                                     <label class="control-label" for="txtConcepto">Concepto</label>
                                     <div class="controls">
