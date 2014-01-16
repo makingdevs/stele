@@ -32,13 +32,13 @@ $(document).ready(function(){
         required: "El nombre del concepto es requerido"
       },
       'importeEsquemaDePago':{
-        required: "El monto del esquema es requerido",
-        number: "Solo se aceptan numeros"
+        required: "es requerido",
+        number: "No e aceptan letras en este campo"
       }
-   },
-    validClass: "success",
-    errorClass: "error",
-    errorElement: "span"
+    },
+      validClass: "success",
+      errorClass: "error",
+      errorElement: "span"
   });
 });
 
