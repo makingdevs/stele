@@ -59,7 +59,7 @@ $(document).ready(function(){
       $(element).parent().parent().parent().removeClass(errorClass).addClass(validClass);
     },
     rules: {
-      'nombredescuento': {
+      'nombreDeDescuento': {
         required: true
       },
       'cantidad': {
@@ -73,7 +73,7 @@ $(document).ready(function(){
       }
     },
     messages: {
-      'nombredescuento': {
+      'nombreDeDescuento': {
         required: "Se requiere un nombre para el descuento" 
       },
       'cantidad': {
@@ -83,7 +83,7 @@ $(document).ready(function(){
         number: "solo se aceptan numeros"
       },
       'diasPreviosParaCancelarDescuento': {
-        required: "Se requiere seleccionar un numero de dias"
+        required: "Se requiere seleccionar un numero de dia"
       }
     },
       validClass: "success",
