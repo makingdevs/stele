@@ -161,7 +161,7 @@
                                       <label class="control-label" for="txtConcepto"> Dias antes </label> 
                                       <div class="controls">
                                         <div class="input-prepend">
-                                          <g:select name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
+                                          <g:select id="diasPreviosParaCancelarDescuento" name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
                                         </div>
                                       </div>
                                     </div>
