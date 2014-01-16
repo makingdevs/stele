@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
+    <r:require modules="validarEsquemaDePago" /> 
     <r:script>
       $(function() {
         $("#descuentosForm").submit(function(event){
