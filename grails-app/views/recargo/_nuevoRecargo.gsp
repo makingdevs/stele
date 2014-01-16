@@ -1,7 +1,7 @@
 <div class="control-group">
   <dl class="dl-horizontal">
     <dt>
-      <label for="porcentaje" class="control-label">Porcentaje  : </label>
+      <label for="porcentaje" class="control-label">Porcentaje de Recargo : </label>
     </dt>
     <dd>
       <div class="controls">
@@ -17,7 +17,7 @@
 <div class="control-group">
   <dl class="dl-horizontal">
     <dt>
-      <label for="cantidad" class="control-label">Cantidad  : </label>
+      <label for="cantidad" class="control-label">Cantidad de Recargo : </label>
     </dt>
     <dd>
       <div class="controls">
