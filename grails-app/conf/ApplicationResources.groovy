@@ -31,6 +31,11 @@ modules = {
     resource url:'js/common/jquery.validate.min.js'
   }
 
+  validarEsquemaDePago {
+    dependsOn 'validation'
+    resource url:'js/esquemaDePago/validarEsquema.js'
+  }
+
   registrar {
     dependsOn 'validation'
     resource url:'js/registro/index.js'
