@@ -192,7 +192,7 @@
                                         <span class="add-on">
                                           <i class="icon-usd"></i>
                                         </span>           
-                                        <input id="form-field-mask-2" class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe " >
+                                        <input class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe " >
                                       </div>
                                     </div>
                                   </div>
@@ -200,8 +200,8 @@
                                     <label class="control-label" for="txtConcepto">Porcentaje</label>
                                     <div class="controls">
                                       <div class="input-append">
-                                        <input  id="form-field-mask-2" class="input-mini" id="porcentaje" name="porcentaje" type="text"  />
                                         <span class="add-on">%</span>
+                                        <input class="input-mini" id="porcentaje" name="porcentaje" type="text"  />
                                       </div>
                                     </div>
                                   </div>
