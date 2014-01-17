@@ -91,3 +91,42 @@ $(document).ready(function(){
       errorElement: "span"
   });
 });
+
+$(document).ready(function(){
+  $("#recargoForm").validate({
+    errorPlacement: function(error, element) {
+      $(element).parent().parent().parent().addClass("error");
+      error.addClass("help-inline").appendTo(element.parent());
+      error.insertAfter(element);
+    },
+    success: function(element) {
+        $(element).parent().parent().parent().addClass("success");
+    },
+    highlight: function(element, errorClass, validClass){
+      $(element).parent().parent().parent().addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).parent().parent().parent().removeClass(errorClass).addClass(validClass);
+    },
+    rules: {
+      'cantidad': {
+        number: true
+      },
+      'porcentaje': {
+        number: true
+      }
+    },
+    messages: {
+      'cantidad': {
+        number: "Solo se aceptan numeros" 
+      },
+      'porcentaje':{
+        number: "No e aceptan letras en este campo"
+      }
+    },
+      validClass: "success",
+      errorClass: "error",
+      errorElement: "span"
+  });
+});
+
