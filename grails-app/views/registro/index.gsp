@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html> 
   <head>
-    <title>Stete | Registro</title>
-    <meta name="layout" content="steleTwitterBootstrap"/>
-    <r:require modules="registrar,stele" />
+  <meta name="layout" content="steleTwitterBoostrapMain"/>
+    <r:require modules="steleCss,steleJs,registrar" /> 
     <r:script type="text/javascript">
       $('#avisoPrivacidad').click(function(){
         if($(this).is(":checked")) {
@@ -15,7 +14,7 @@
     </r:script>
   </head> 
   <body>
-    <div class=" margin-bottom-10"> </div>
+<div class=" margin-bottom-10"> </div>
 
 <!--=== Content Part ===-->
 <div class="container">  
@@ -27,7 +26,7 @@
     </g:if>
   </div>   
   <div class="row margin-bottom-30">
-    <div class="span3 mb-margin-bottom-30"> 
+    <div class="col-md-3 mb-margin-bottom-30"> 
       <div class="posts margin-bottom-40">
         <div class="headline headline-md"><h2>Elige bien:</h2></div>
         <div class="blog-twitter-inner">
@@ -58,11 +57,11 @@
         </dl>                
       </div><!--/posts-->
     </div><!--/col-md-8-->
-    <div class="span8">
+     <div class="col-md-8">º
       <div class="container">
         <div class="row">
           <div class=" margin-bottom-30"> </div>
-          <div class="span6 offset2 span7 offset4 ">
+          <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2  ">
             <form id="registroBasico" name="registroBasico" controller="registro" action="crear" class="reg-page">
               <div class="reg-header">
                 <h2>Registra un nuevo colegio</h2>                 
@@ -141,7 +140,6 @@
           </div>
         </div>
       </div><!--/container-->             
-    </div><!--/col-md-4-->
   </div><!--/row-->        
 </div>
   
