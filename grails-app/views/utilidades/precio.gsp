@@ -2,11 +2,20 @@
 <html> 
 <head>
   <meta name="layout" content="steleTwitterBoostrapMain"/>
-  <r:require modules="steleCss,steleJs" />
+        <r:script type="text/javascript">
+        $(document).ready(function() {
+        App.init();
+        App.initSliders();
+        App.initBxSlider();
+      });
+    </r:script> 
 </head> 
 <body>
+  
 <div class=" margin-bottom-40"> </div>
+<!--=== Content Part ===-->
 <div class="container">     
+    <!-- Pricing -->
     <div class="row margin-bottom-40">
         <div class="col-md-4 col-sm-6">
         </div>        
@@ -26,12 +35,20 @@
                 <div class="pricing-footer">
                     <p> Comunícate con nosotros y solicita una presentación, podemos ofrecerte una nueva solución para tu colegio</br></p>
                      <a href="stelecontacto.html" class="btn-buy hover-effect">Contáctanos</a> 
+                    
                 </div>                    
             </div>
         </div>
         <div class="col-md-4 col-sm-6">
         </div> 
+
     </div><!--/row-->
+    <!--//End Pricing -->
+
+
+
+    <!--//End Pricing "No Spacing" -->
 </div><!--/container-->     
+<!--=== End Content Part ===-->   
 </body>
 </html>	
