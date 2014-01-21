@@ -71,10 +71,11 @@ modules = {
   }
 
   steleJs {
+    resource url:'new/assets/plugins/jquery-1.10.2.min.js'
     resource url:'new/assets/plugins/jquery-migrate-1.2.1.min.js'
     resource url:'new/assets/plugins/bootstrap/js/bootstrap.min.js'
-    resource url:'new/assets/plugins/hover-dropdown.min.js'
     resource url:'new/assets/plugins/back-to-top.js'
+    resource url:'new/assets/plugins/flexslider/jquery.flexslider-min.js'
     resource url:'new/assets/plugins/horizontal-parallax/js/sequence.jquery-min.js'
     resource url:'new/assets/plugins/horizontal-parallax/js/horizontal-parallax.js'
     resource url:'new/assets/plugins/bxslider/jquery.bxslider.js'
@@ -83,7 +84,7 @@ modules = {
 
   stele {
     dependsOn 'steleCss'
-    dependsOn 'steleJS'
+    dependsOn 'steleJs'
   }
 
 
