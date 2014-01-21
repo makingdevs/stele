@@ -73,8 +73,6 @@ modules = {
   }
 
   steleJs {
-    resource url:'new/assets/plugins/jquery-1.10.2.min.js'
-    resource url:'new/assets/plugins/jquery-migrate-1.2.1.min.js'
     resource url:'new/assets/plugins/bootstrap/js/bootstrap.min.js'
     resource url:'new/assets/plugins/back-to-top.js'
     resource url:'new/assets/plugins/flexslider/jquery.flexslider-min.js'
