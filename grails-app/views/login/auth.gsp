@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta name="layout" content="steleTwitterBoostrapMain"/>
-    <title>Inicia tu sesión</title>
+    <r:require modules="steleCss,steleJs" /> 
 
     <r:script>
         $(function() {
