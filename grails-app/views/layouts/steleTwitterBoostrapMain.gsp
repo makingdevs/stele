@@ -11,7 +11,7 @@
   <r:layoutResources />
 </head> 
 <body>
- 
+  <!--=== Top ===-->    
 <div class="top">
     <div class="container">         
         <ul class="loginbar pull-right">
@@ -20,58 +20,64 @@
  
         </ul>
     </div>      
-</div><!--/top-->    
+</div><!--/top-->
+<!--=== End Top ===-->    
+
+<!--=== Header ===-->    
 <div class="header">
-  <div class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <g:link mapping="/">
-            <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
-          </g:link>
-      </div>
-        <div class="collapse navbar-collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <g:link mapping="/">
-                Inicio                            
-              </g:link>
-            </li>
-            <li >
-              <g:link controller="utilidades" action="precio">
-                Precios                            
-              </g:link>
-            </li>
-            <li >
-              <g:link controller="registro">
-                Registro                            
-              </g:link>
-            </li>
-            <li >
-              <g:link controller="utilidades" action="servicios">
-                Servicios                            
-              </g:link>
-            </li>                     
-            <li >
-              <g:link controller="utilidades" action="contacto">
-                Contacto                            
-              </g:link>
-            </li>
-            <li >
-              <g:link controller="login">
-                Ingresar                            
-              </g:link>
-            </li>                  
-          </ul>
-        </div><!-- /navbar-collapse --> 
-    </div>                    
-  </div><!-- /container -->               
-</div><!--/header -->    
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <g:link mapping="/">
+                  <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
+                </g:link>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                      <g:link mapping="/">
+                        Inicio                            
+                      </g:link>
+                    </li>
+                    <li >
+                      <g:link controller="utilidades" action="precio">
+                        Precios                            
+                      </g:link>
+                    </li>
+                    <li >
+                      <g:link controller="registro">
+                        Registro                            
+                      </g:link>
+                    </li>
+                    <li >
+                      <g:link controller="utilidades" action="servicios">
+                        Servicios                            
+                      </g:link>
+                    </li>                     
+                    <li >
+                      <g:link controller="utilidades" action="contacto">
+                        Contacto                            
+                      </g:link>
+                    </li>
+                    <li >
+                      <g:link controller="login">
+                        Ingresar                            
+                      </g:link>
+                    </li>                  
+                </ul>
+            </div><!-- /navbar-collapse -->
+        </div>    
+    </div>    
+</div><!--/header-->
 <g:layoutBody/>
 <div class="footer">
   <div class="container">
