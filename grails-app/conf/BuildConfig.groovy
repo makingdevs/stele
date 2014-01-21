@@ -70,6 +70,6 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.1'
         compile 'com.makingdevs:profile:0.1.6'
-        compile 'com.payable:payable:latest.integration'
+        compile 'com.payable:payable:0.2.14'
     }
 }
