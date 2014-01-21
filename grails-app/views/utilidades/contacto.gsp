@@ -5,9 +5,14 @@
   <r:require module="stele" />
 </head> 
 <body>
-	<div class="container">     
+    <div class=" margin-bottom-10"> </div>
+
+
+
+<!--=== Content Part ===-->
+<div class="container">     
     <div class="row margin-bottom-30">
-        <div class="span8 mb-margin-bottom-30">
+        <div class="col-md-8 mb-margin-bottom-30">
             <div class="headline">
                 <h2>Contáctanos</h2>
             </div>
@@ -16,32 +21,41 @@
             <form>
                 <label><i class="icon-user"></i> Nombre <span class="color-red">*</span> </label>
                 <div class="row margin-bottom-20">
-                    <div class="span7">
-                        <input type="text" class="span4">
+                    <div class="col-md-7 col-md-offset-0">
+                        <input type="text" class="form-control">
                     </div>                
                 </div>
+
+
                 <label><i class="icon-phone  "></i> Telefono <span class="color-red">*</span></label>
                 <div class="row margin-bottom-20">
-                    <div class="span7 offset0">
-                        <input type="text" class="span4">
+                    <div class="col-md-7 col-md-offset-0">
+                        <input type="text" class="form-control">
                     </div>                
                 </div>
+                
                 <label><i class="icon-envelope"></i> Email <span class="color-red">*</span></label>
                 <div class="row margin-bottom-20">
-                    <div class="span7 offset0">
-                        <input type="text" class="span4">
+                    <div class="col-md-7 col-md-offset-0">
+                        <input type="text" class="form-control">
                     </div>                
                 </div>
+
+
+
                 <label><i class="icon-comment"></i> Comentario <span class="color-red">*</span> </label>
                 <div class="row margin-bottom-20">
-                    <div class="span11 offset0">
-                        <textarea rows="6" class="span7"></textarea>
+                    <div class="col-md-11 col-md-offset-0">
+                        <textarea rows="6" class="form-control"></textarea>
                     </div>                
                 </div>
+                
                 <p><button type="submit" class="btn-u">Envíar</button></p>
             </form>
         </div><!--/col-md-8-->
-        <div class="span4">
+        
+        <div class="col-md-4">
+            <!-- Contacts -->
             <div class="headline"><h2>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2></div>
             <ul class="list-unstyled who margin-bottom-30">
                 <li><a href="#"><i class="icon-home"></i>Av. México 145, Int. 404, Col. Del Carmen Coyoacán <br>  &nbsp &nbsp &nbsp  Del. Coyoacán. México, D.F.</a></li>
@@ -49,12 +63,20 @@
                 <li><a href="#"><i class="icon-phone-sign"></i> (55) 6363-8147 </a></li>
                 <li><a href="#"><i class="icon-globe"></i>http://www.stele.mx</a></li>
             </ul>
+
+            <!-- Business Hours -->
             <div class="headline"><h2>Horario de contacto</h2></div>
             <ul class="list-unstyled margin-bottom-30">
                 <li><strong>Lunes-Viernes:</strong> 9:00 am a  03:00pm</li>
+
             </ul>
+
+
         </div><!--/col-md-4-->
     </div><!--/row-->        
-</div><!--/container--> 
+
+</div><!--/container-->     
+<!--=== End Content Part ===-->
+
 </body>
 </html>	
