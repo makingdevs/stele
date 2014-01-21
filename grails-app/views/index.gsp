@@ -2,7 +2,13 @@
 <html> 
 <head>
   <meta name="layout" content="steleTwitterBoostrapMain"/>
-    <r:require modules="steleCss,steleJs" />  
+        <r:script type="text/javascript">
+        $(document).ready(function() {
+        App.init();
+        App.initSliders();
+        App.initBxSlider();
+      });
+    </r:script> 
 </head> 
 <body>
     <div id="sequence-theme" class="sequence-inner">
