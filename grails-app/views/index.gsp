@@ -3,13 +3,6 @@
 <head>
   <meta name="layout" content="steleTwitterBoostrapMain"/>
     <r:require modules="steleCss,steleJs" />  
-    
-    
-    
-    
-    
-    
-    
 </head> 
 <body>
     <div id="sequence-theme" class="sequence-inner">
@@ -59,10 +52,6 @@
         </div>
     </div>
 </div><!--/row-->
-<!-- End Purchase Block -->
-
-
-<!--=== Content Part ===-->
 <div class="container"> 
     <!-- Service Blocks -->
     <div class="row margin-bottom-10">
