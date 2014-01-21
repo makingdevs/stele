@@ -22,15 +22,27 @@
     </r:script>
   </head>
   <body>
+  <div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <li>
+          <i class="icon-home home-icon"></i>
+          <a href="#">Colegio</a>
+          <span class="divider">
+            <i class="icon-angle-right arrow-icon"></i>
+          </span>
+        <li class="active">Pago Manual</li>
+      </ul><!--.breadcrumb-->
+    </div>
     <div class="page-content">
       <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
       <div class="page-header position-relative  ">
-        <h1> Comprobante de pago </h1>
+         <font color="2E9AFE"><h1>Comprobante de pago</h3></font>
       </div><!--/.page-header-->
-        <div class="span12">
+        <div class="page-content">
           <!--PAGE CONTENT BEGINS-->
           <div class="row-fluid">
-            <div class="span12 widget-container-span">
+            <div class="span12 ">
               <div class="widget-box">
                 <div class="widget-header widget-header-small header-color-blue2">
                   <h5 class="bigger lighter">
@@ -38,8 +50,6 @@
                     Pago
                   </h5> 
                 </div>
-                <div class="widget-body">
-
                   <div class="widget-main no-padding">
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
@@ -74,27 +84,13 @@
                       </tbody>  
                     </table>
                   </div>
-                </div>
-              </div>
-            </div><!--/span-->
-          </div>
-          <div class="widget-box">
-            <div class="widget-header widget-header-small header-color-green">
-              <h5 class="bigger lighter">
-                Adjunte su comprobante
-              </h5>
-            </div>
-            <div class="widget-body">
-              <div class="widget-main">
-                <div id="comprobante" type="file" class="dropzone">
               </div>
             </div>
-          </div>
-          <div class="row-fluid">
-          <g:form name="pagoInmediato" url="[action:'pagoInmediatoVentanilla', controller:'pago']">
-              <div class="span12">
-                <div class="span8">                                    
-                  <div class="row-fluid">
+            <div class="span12">
+            <div class="span4">
+              <g:form name="pagoInmediato" url="[action:'pagoInmediatoVentanilla', controller:'pago']">
+                <div class="span12">                                    
+                  <div class="row">
                     <div class=" widget-container-span">
                       <div class="widget-box">
                         <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">
@@ -155,15 +151,24 @@
                     </button>
                   </div>  
                 </div>
-              </div><!--/.span-->
-            </g:form>
+              </g:form>
+            </div>
+            <div class="span7">
+            <div class="widget-header widget-header-small header-color-green">
+              <h5 class="bigger lighter">
+                Adjunte su comprobante
+              </h5>
+            </div>
+            <div>
+              <div class="widget-main">
+                <div id="comprobante" type="file" class="dropzone">
+              </div>
+            </div>
+            </div>
           </div>
         </div>
+          </div>
       </div><!--/.main-content-->
-    </div><!--/.main-container-->
-      <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-        <i class="icon-double-angle-up icon-only bigger-110"></i>
-      </a>
-     
+  </div><!--/.main-container-->
   </body>
 </html>
