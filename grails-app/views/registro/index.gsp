@@ -58,56 +58,94 @@
         
         <div class="col-md-8">
 
-
+<p>&nbsp;</p><p></p>
 <div class="container">
     <div class="row">
         <div class=" margin-bottom-30"> </div>
-        <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2  ">
-            <form class="reg-page  ">
-                <div class="reg-header">
-                    <h2>Registra un nuevo colegio</h2>                 
+        <div class="span8 offset2  span5 offset2  ">
+            <form id="registroBasico" name="registroBasico" controller="registro" action="crear" class="reg-page">
+              <div class="reg-header">
+                <h2>Registra un nuevo colegio</h2>                 
+              </div>
+              <div class="control-group">    
+                <label class="control-label" for="inputInstitucion"><i class="icon-book"></i> Nombre del colegio <span class="color-red">*</span></label>
+                <div class="controls">
+                  <input id="institucion.nombre" value="${params?.institucion?.nombre}" name="institucion.nombre"  type="text" class="form-control margin-bottom-20" />
                 </div>
-
-                <label><i class="icon-book"></i> Nombre del colegio <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
-
-                <label><i class="icon-user"></i> Nombre del responsable <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
-                <label><i class="icon-user"></i> Apellido del responsable <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
-                <label><i class="icon-envelope"></i> Correo electrónico <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
+              </div>
+              <p>&nbsp;</p>
+              <div class="control-group">
+                <label class="control-label" for="inputNombre"><i class="icon-user"></i> Nombre del responsable <span class="color-red">*</span></label>
+                <div class="controls">
+                  <input id="perfil.nombre" value="${params?.perfil?.nombre}" name="perfil.nombre" type="text" class="form-control margin-bottom-20">
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <div class="control-group">
+                <label class="control-label" for="inputApellidoPaterno"><i class="icon-user"></i> Apellido Paterno del responsable <span class="color-red">*</span></label>
+                <div class="controls">
+                  <input id="perfil.apellidoPaterno" value="${params?.perfil?.apellidoPaterno}" name="perfil.apellidoPaterno" type="text" class="form-control margin-bottom-20">
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <div class="control-group">
+                <label class="control-label" for="inputApellidoMaterno"><i class="icon-user"></i> Apellido Materno del responsable <span class="color-blue">No obligatorio</span></label>
+                <div class="controls">
+                  <input id="perfil.apellidoMaterno" name="perfil.apellidoMaterno"  value="${params?.perfil?.apellidoMaterno}" type="text"  class="form-control margin-bottom-20">
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail"><i class="icon-envelope"></i> Correo electrónico <span class="color-red">*</span></label>
+                <div class="controls">
+                  <input id="usuario.username" name="usuario.username" value="${params?.usuario?.username}" type="text" class="form-control margin-bottom-20">
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <div class="control-group">
                 <label><i class="icon-phone"></i> Teléfono <span class="color-red">*</span></label>
-                <input type="text" class="form-control margin-bottom-20">
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label><i class="icon-key"></i> Contraseña <span class="color-red">*</span></label>
-                        <input type="text" class="form-control margin-bottom-20">
-                    </div>
-                    <div class="col-sm-6">
-                        <label><i class="icon-key"></i> Confirma <span class="color-red">*</span></label>
-                        <input type="text" class="form-control margin-bottom-20">
-                    </div>
+                <div class="controls">
+                  <input id="numeroTelefonico" name="numeroTelefonico" value="${params?.numeroTelefonico}" type="tel" class="form-control margin-bottom-20" />
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label><img src="assets/img/recaptcha.gif">   </label>
+              </div>
+              <p>&nbsp;</p>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="control-group">
+                    <label class="control-label" for="inputPassword"><i class="icon-key"></i> Contraseña <span class="color-red">*</span></label>
+                    <div class="controls">
+                      <input id="usuario.password" class="passwordOrigin form-control margin-bottom-20" name="usuario.password" type="password">
                     </div>
-                </div>                
-
-                <hr>
-
-                <div class="controls form-inline">
-                    <label class="checkbox"><input type="checkbox" />&nbsp; Acepto <a href="steleterminos.html" class="color-green">Términos y Condiciones</a> </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y el <a href="steleavisopriv.html" class="color-green">aviso de privacidad</a></label>
-
-                    <button class="btn-u pull-right" type="submit">Registro</button>
-
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="control-group">
+                    <label class="control-label" for="inputConfirmPassword"><i class="icon-key"></i> Confirma <span class="color-red">*</span></label>
+                    <div class="controls">
+                      <input id="inputConfirmPassword" name="inputConfirmPassword" type="password"  class="passwordConfirm form-control margin-bottom-20" >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <g:if env="production">
+                <div class="span12">
+                  <div class="control_group">
+                    <div class="controls">
+                      <recaptcha:ifEnabled>
+                        <recaptcha:recaptcha theme="red"/>
+                      </recaptcha:ifEnabled>
+                    </div>
+                  </div>
+                </div>  
+              </g:if>             
+              <hr>
+              <div class="controls form-inline">
+                <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; Acepto <a href="steleterminos.html" class="color-green">Términos y Condiciones</a> </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y el <g:link controller="utilidades" action="avisoPrivacidad">aviso de privacidad</g:link></label>
+                <button type="submit" id="submitForm" class="btn btn-info pull-right" disabled="disabled"> Registro </button>
                 </div>
                 <hr />
-                <p>¿Ya estás registrado? <a href="stelelogin.html" class="color-green">Accede</a> a tu cuenta.</p>
-            </form>
+                <p>¿Ya estás registrado? <a href="${createLink(controller: 'login')}" class="color-green">Accede</a> a tu cuenta.</p>
             </form>
         </div>
     </div>
@@ -119,5 +157,6 @@
 
 </div><!--/container-->     
 <!--=== End Content Part ===-->
+<p>&nbsp;</p><p></p>
 </body>
 </html> 
