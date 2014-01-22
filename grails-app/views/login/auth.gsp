@@ -2,22 +2,20 @@
 <head>
     <meta name="layout" content="steleTwitterBoostrapMain"/>
     <r:require modules="steleCss,steleJs" /> 
-    <r:script>
-        $(document).ready(function() {
-         $('#username').focus();
-        });
+    <r:script type="text/javascript">
+            $('#username').focus();
     </r:script>
 </head> 
 <body>
 <div class=" margin-bottom-40"> </div>
+<p>&nbsp;</p> 
+<div class="container">     
   <g:if test='${flash.message}'>
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       <button type="button" class="close" data-dismiss="alert">×</button>
       <div class='login_message'><strong>Cuidado!</strong> Nombre de usuario o contraseña incorrectos</div>
     </div>
   </g:if>
-<p>&nbsp;</p> 
-<div class="container">     
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
             <form action='${postUrl}' method='POST' id='loginForm' class="reg-page" autocomplete='off'>
