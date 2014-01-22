@@ -22,7 +22,10 @@
 <div class="control-group">
   <label class="control-label" for="selectCiclo">Ciclo escolar</label>
   <div class="controls">
-    <g:select id="cicloEscolar" name="cicloEscolar" noSelection="['':'-Ciclo escolar-']" from="${CicloEscolar.list()}" optionKey="clave" optionValue="clave" />
+  <select>
+    <option value="2013/2014">2013/2014</option>
+    <option value="2014/2015">2014/2015</option>
+  </select>
   </div>
 </div>
     <table class="table table-condensed" border="0"  cellpadding="0" cellspacing="0">

@@ -1,4 +1,4 @@
-<html >
+<html> 
   <head>
     <meta name="layout" content="colegio"/>
     <r:require modules="inscripcion" />
@@ -13,24 +13,6 @@
           $("#tutorCoincidentesForm").submit();
         })
       });
-      $("#dependientesCoincidentesForm").submit(function(event){
-        event.stopPropagation();
-        alert("perra");
-        var url = $(this).attr('action');
-        var data = $(this).serialize()
-        $.ajax({
-          type: "GET",
-          url: url,
-          dataType: "json",
-          contentType: "application/json",
-          data: data,
-          success: function(data) {
-            console.log(data);
-            $("#listaAlumnos").html(data)  
-          }
-        });
-        return false;
-      }); 
     </r:script>
   </head>
   <body>
@@ -77,57 +59,24 @@
             </g:if>
           <div class="row-fluid">
             <div class="span12">
-              <!--PAGE CONTENT BEGINS-->
-              <h3>
-                <div class="control-group">
-                  <div class="controls">
-                    <g:formRemote id="busquedaDependiente" name="busquedaDependiente" update="listaAlumnos" url="[controller:'dependiente', action:'buscarDependienteInscripcion']">
-                      <small> Nombre del Alumno</small>
-                        <input  type="text" id="nombreDependienteBusqueda" name="nombreDependienteBusqueda" placeholder="nombre alumno" >
-                          <button class="btn btn-purple btn-small" type="submit">
-                            Buscar
-                            <i class="icon-search icon-on-right bigger-110"></i>
-                          </button>
-                    </g:formRemote>
-                    <g:formRemote id="busquedaTutor" name="busquedaTutor" update="listaTutor" url="[controller: 'usuario', action:'buscarTutorInscripcion']">
-                      <small> Nombre del Papa</small>
-                        <input  type="text" id="nombreTutorBusqueda" name="nombreTutorBusqueda" placeholder="nombre padre" >
-                          <button class="btn btn-purple btn-small" type="submit">
-                            Buscar
-                            <i class="icon-search icon-on-right bigger-110"></i>
-                          </button>
-                    </g:formRemote>
-                  </div>
-                </div>
-              </h3>
-              <div id="listaAlumnos" name="listaAlumnos">
-                <g:render template="listaDependientes" />
-              </div>
-              <div id="listaTutor" name="listaTutor">
-                <g:render template="listaTutores"/>
-              </div>
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
+                <input type="hidden" id="urlValidarDependiente" value="${g.createLink(action:'validarDependienteExistente', controller:'inscripcionManual')}" />
                 <div id="alumnosPart">
                   <g:render template="seccionAlumno"/>
                 </div>
-                <!--Alumno Fin-->
-                <!--Padre Inicia-->
+                <input type="hidden" id="urlValueUsername" value="${g.createLink(action:'validarUsuarioExistente', controller:'inscripcionManual')}" />
                 <div class="row-fluid" id="tutorPart">
                   <g:render template="seccionTutor" />
                 </div>
                 <!--Padre Fin-->
-                <div class="form-actions">
-                  <button class="btn btn-danger" data-toggle="modal" href="#modal-formConfirmar" type="btn-danger">
-                    <i class="icon-trash bigger-110"></i>
-                    Eliminar
-                  </button>
+                <div id="seccionBotones" class="form-actions">
                   &nbsp; &nbsp; &nbsp;
-                  <button class="btn btn-info"  type="submit">
+                  <button id="inscripcionForm"  class="btn btn-info"  type="button">
                     <i class="icon-ok bigger-110"></i>
                     Aceptar
                   </button>
-                  &nbsp; &nbsp; &nbsp;
-                  <button class="btn" type="reset">
+                  &nbsp;&nbsp; &nbsp;
+                  <button class="btn" type="reset" type="button">
                     <i class="icon-undo bigger-110"></i>
                     Limpiar
                   </button>

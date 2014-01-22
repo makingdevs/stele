@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
+    <r:require modules="validarEsquemaDePago" /> 
     <r:script>
       $(function() {
         $("#descuentosForm").submit(function(event){
@@ -85,7 +86,7 @@
                         <div class="widget-main padding-6">
                           <div class="tab-content">
                               <div id="cobro" class="tab-pane in active">
-                                <g:form name="esquemasDePago" url="[controller: 'esquemaDePago', action: 'crearEsquemaDePago']">
+                                <g:form id="esquemaDePagoForm" name="esquemasDePago" url="[controller: 'esquemaDePago', action: 'crearEsquemaDePago']">
                                   <div class="control-group">
                                     <label class="control-label" for="txtConcepto">Concepto</label>
                                     <div class="controls">
@@ -160,7 +161,7 @@
                                       <label class="control-label" for="txtConcepto"> Dias antes </label> 
                                       <div class="controls">
                                         <div class="input-prepend">
-                                          <g:select name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
+                                          <g:select id="diasPreviosParaCancelarDescuento" name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
                                         </div>
                                       </div>
                                     </div>
@@ -191,7 +192,7 @@
                                         <span class="add-on">
                                           <i class="icon-usd"></i>
                                         </span>           
-                                        <input id="form-field-mask-2" class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe " >
+                                        <input class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe " >
                                       </div>
                                     </div>
                                   </div>
@@ -199,8 +200,8 @@
                                     <label class="control-label" for="txtConcepto">Porcentaje</label>
                                     <div class="controls">
                                       <div class="input-append">
-                                        <input  id="form-field-mask-2" class="input-mini" id="porcentaje" name="porcentaje" type="text"  />
                                         <span class="add-on">%</span>
+                                        <input class="input-mini" id="porcentaje" name="porcentaje" type="text"  />
                                       </div>
                                     </div>
                                   </div>

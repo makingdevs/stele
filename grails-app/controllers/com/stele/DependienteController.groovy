@@ -2,6 +2,8 @@ package com.stele
 
 import com.stele.Turno
 import com.stele.NivelDeEstudio
+import com.stele.seguridad.Usuario
+import com.stele.Dependiente
 
 class DependienteController {
 
@@ -84,27 +86,34 @@ class DependienteController {
         if (row instanceof Dependiente)
           resultados.add(row)
       }
-      render template:'busquedaDependiente', model:[dependientes: resultados ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+      resultados = separarDependientesPorInstitucion(resultados)
+      render template:'busquedaDependiente', model:[dependientes: resultados*.dependientes.flatten() ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
 
     def busquedaDependienteParaObtenerPagos() {
+      def institucion = springSecurityService.currentUser.instituciones?.first()
       def searchResult = searchableService.search(params.nombreDependiente)
       def resultados = []
       searchResult.results.each{ row ->
         if (row instanceof Dependiente)
           resultados.add(row)
       }
-      render template:'resultados', model:[dependientes: resultados ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+      resultados = separarDependientesPorInstitucion(resultados)
+      render template:'resultados', model:[dependientes: resultados*.dependientes.flatten() ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
 
-    def buscarDependienteInscripcion() {
-      def dependientesCoincidentes = searchableService.search(params.nombreDependienteBusqueda)
-      def resultados = []
-      dependientesCoincidentes.results.each{ row ->
-        if (row instanceof Dependiente)
-          resultados.add(row)
+    private def separarDependientesPorInstitucion(dependiente){
+      def ids = dependiente*.id
+      def institucion = springSecurityService.currentUser.instituciones?.first()
+      def resultados = Usuario.withCriteria{
+        dependientes{
+          'in'('id', ids) 
+        }
+        instituciones{
+          eq('id', institucion.id)
+        }
       }
-      render template:'/inscripcionManual/listaDependientes', model:[dependientes: resultados]
-    }
-    
+    resultados
+  }
+
 }

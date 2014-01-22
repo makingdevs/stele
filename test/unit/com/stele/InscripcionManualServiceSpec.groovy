@@ -36,7 +36,6 @@ class InscripcionManualServiceSpec extends Specification {
       when :
         def registro = service.generarRegistroDeAlumnoYTutor(command, institucion)
         mocks*.verify()
-        println registro.getClass()
       then : 
         assert registro instanceof LinkedHashMap
 

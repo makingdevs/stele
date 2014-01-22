@@ -23,6 +23,7 @@ class BootStrap {
       it.registerObjectMarshaller(new ConceptoMarshaller())
       it.registerObjectMarshaller(new DescuentoMarshaller())
       it.registerObjectMarshaller(new RecargosMarshaller())
+      it.registerObjectMarshaller(new PerfilMarshaller())
     }
 
     switch(Environment.current){
