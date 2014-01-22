@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <title>Colegio ABC</title>
+    <title></title>
 
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,8 +42,8 @@
         <div class="container-fluid">
           <a href="#" class="brand">
             <small>
-              <i class="icon-cloud"></i>
-              <strong>Colegio ABC</strong>
+              <i class="icon-home"></i>
+              <strong><g:nombreDeLaInstitucion /></strong>
             </small>
           </a><!--/.brand-->
 
