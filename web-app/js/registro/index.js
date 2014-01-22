@@ -7,12 +7,12 @@ $(document).ready(function(){
   $("#registroBasico").validate({
     // TODO: Refactor de funciones comunes en la validación
     errorPlacement: function(error, element) {
-      $(element).parent().parent().addClass("error");
+      $(element).parent().parent().addClass("has-error");
       error.addClass("help-inline").appendTo(element.parent());
       error.insertAfter(element);
     },
     success: function(element) {
-        $(element).parent().parent().addClass("success");
+        $(element).parent().parent().addClass("has-success");
     },
     highlight: function(element, errorClass, validClass){
       $(element).parent().parent().addClass(errorClass).removeClass(validClass);
@@ -56,7 +56,7 @@ $(document).ready(function(){
         minlength: 8,
         equalTo: "input.passwordOrigin"
      },
-     'telefono': {
+     'numeroTelefonico': {
         required: true,
         minlength: 8,
         maxlength: 10,
@@ -92,7 +92,7 @@ $(document).ready(function(){
         minlength: "La contraseña debe de tener 8 caracteres como minimo",
         equalTo: "La contraseña no coincide, favor de verificarla"
      },
-     'telefono': {
+     'numeroTelefonico': {
         required: "Un numero telefonico es requerido",
         minlength: "El numero debe de contener 8 caracteres minimo",
         number: "Solo se aceptan numeros",
