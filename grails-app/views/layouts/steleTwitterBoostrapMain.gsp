@@ -2,11 +2,12 @@
 <html lang="en"> 
 <head>
   <meta charset="utf-8">
-  <title>. : Bienvenido a Stele - <g:layoutTitle default="Principal"/> : .</title>
+  <title>Stele.mx | Bienvenido...<g:layoutTitle default="Principal"/> : .</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-    <r:require modules="steleCss,steleJs,bootstrap-js" />   
+    <r:require modules="steleCss,steleJs,bootstrap-js" />  
+    <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
   <g:layoutHead/>
   <r:layoutResources />
 </head> 
