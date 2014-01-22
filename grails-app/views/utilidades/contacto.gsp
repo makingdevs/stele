@@ -5,13 +5,13 @@
   <r:require module="stele" />
 </head> 
 <body>
-    <div class=" margin-bottom-10"> </div>
+<div class=" margin-bottom-10"> </div>
 
 
 
 <!--=== Content Part ===-->
 <div class="container">     
-    <div class="row margin-bottom-30">
+    <div class="row margin-bottom-40">
         <div class="col-md-8 mb-margin-bottom-30">
             <div class="headline">
                 <h2>Contáctanos</h2>
@@ -44,13 +44,13 @@
 
 
                 <label><i class="icon-comment"></i> Comentario <span class="color-red">*</span> </label>
-                <div class="row margin-bottom-20">
+                <div class="row margin-bottom-25">
                     <div class="col-md-11 col-md-offset-0">
                         <textarea rows="6" class="form-control"></textarea>
                     </div>                
                 </div>
-                
-                <p><button type="submit" class="btn-u">Envíar</button></p>
+                <p></p>
+                <p><button type="submit" class="btn btn-info">Envíar</button></p>
             </form>
         </div><!--/col-md-8-->
         
@@ -76,7 +76,6 @@
     </div><!--/row-->        
 
 </div><!--/container-->     
-<!--=== End Content Part ===-->
 
 </body>
 </html>	
