@@ -24,7 +24,7 @@
          </ul>
          <div class="pricing-footer">
            <p> Comunícate con nosotros y solicita una presentación, podemos ofrecerte una nueva solución para tu colegio</br></p>
-           <a href="stelecontacto.html" class="btn-buy hover-effect">Contáctanos</a> 
+           <g:link controller="utilidades" action="contacto" class="btn-buy hover-effect">Contáctanos</g:link>
          </div>                    
         </div>
        </div>
