@@ -69,6 +69,7 @@ modules = {
     resource url:'new/assets/plugins/flexslider/flexslider.css'
     resource url:'new/assets/plugins/bxslider/jquery.bxslider.css'
     resource url:'new/assets/plugins/horizontal-parallax/css/horizontal-parallax.css'
+    resource url:'new/assets/css/pages/page_pricing.css'
     resource url:'new/assets/css/themes/default.css'
   }
 
