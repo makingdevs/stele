@@ -18,9 +18,14 @@
 <div class=" margin-bottom-10"> </div>
 
 
-
 <!--=== Content Part ===-->
-<div class="container">     
+<div class="container">   
+  <g:if test='${flash.error}'>  
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <div class='login_message'><strong>Cuidado!</strong> flash.error</div>
+    </div>  
+  </g:if>
     <div class="row margin-bottom-30">
         <div class="col-md-3 mb-margin-bottom-30">
             <!-- Posts -->
@@ -103,7 +108,7 @@
               </div>
               <p>&nbsp;</p>
               <div class="control-group">
-                <label><i class="icon-phone"></i> Teléfono <span class="color-red">*</span></label>
+                <label class="control-label" for="inputTelefono"><i class="icon-phone"></i> Teléfono <span class="color-red">*</span></label>
                 <div class="controls">
                   <input id="numeroTelefonico" name="numeroTelefonico" value="${params?.numeroTelefonico}" type="tel" class="form-control margin-bottom-20" />
                 </div>
@@ -142,10 +147,15 @@
               <hr>
               <div class="controls form-inline">
                 <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; Acepto <a href="steleterminos.html" class="color-green">Términos y Condiciones</a> </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y el <g:link controller="utilidades" action="avisoPrivacidad">aviso de privacidad</g:link></label>
-                <button type="submit" id="submitForm" class="btn btn-info pull-right" disabled="disabled"> Registro </button>
-                </div>
-                <hr />
-                <p>¿Ya estás registrado? <a href="${createLink(controller: 'login')}" class="color-green">Accede</a> a tu cuenta.</p>
+              </div>
+              <p>&nbsp;</p>
+
+              <div class="controls form-inline">
+               <button type="submit" id="submitForm" class="btn btn-large btn-block btn-info pull-right" disabled="disabled"> Registro     </button>
+              </div>
+              <p>&nbsp;</p>
+              <hr />
+              <p>¿Ya estás registrado? <a href="${createLink(controller: 'login')}" class="color-green">Accede</a> a tu cuenta.</p>
             </form>
         </div>
     </div>
