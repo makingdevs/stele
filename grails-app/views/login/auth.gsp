@@ -39,7 +39,7 @@
                     <div class="col-md-6">
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-info pull-right" type="submit">Login</button>                        
+                        <button class="btn btn-info pull-right" type="submit">Ingresar</button>
                     </div>
                 </div>
 
