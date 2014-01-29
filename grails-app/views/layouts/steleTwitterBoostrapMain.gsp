@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <g:link mapping="/">
+                <g:link uri="/">
                   <g:img dir="/new/assets/img"  file="logo1-default.png" alt="Logo" />
                 </g:link>
             </div>
@@ -44,8 +44,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                      <g:link mapping="/">
+                    <li>
+                      <g:link uri="/">
                         Inicio                            
                       </g:link>
                     </li>
@@ -107,7 +107,7 @@
         </p>
       </div>
       <div class="col-md-6">  
-        <g:link mapping="/">
+        <g:link uri="/">
           <g:img dir="/new/assets/img"  class="pull-right" file="logo2-default.png" />
         </g:link>
       </div>
