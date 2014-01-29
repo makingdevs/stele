@@ -69,7 +69,7 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 
         compile ':cache:1.0.1'
-        compile 'com.makingdevs:profile:0.1.6'
+        compile 'com.makingdevs:profile:0.1.7'
         compile 'com.payable:payable:0.2.14'
     }
 }
