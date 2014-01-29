@@ -98,23 +98,9 @@
                         <div id="home" class="tab-pane in active">
                           <div class="row-fluid">
                           <div class="span12">
+                            <g:set var="datos" value="${usuarioAdministrador.perfil}" />
                             <div class="span3 center">
-
-                              <input type="hidden" value="${createLink(controller:'perfil', action:'uploadImage', id: usuarioAdministrador.perfil.id)}" id="url" />
-                              <g:if test="${usuarioAdministrador.perfil.avatar}">
-                              <img  src="${usuarioAdministrador.perfil.avatar.url()}" width="100" height="500" id="imagenPrincipal" />
-                              </g:if>
-                              <g:else>
-                              <input type="file" id="imagenAdministrador" class="dropzone"       />
-                              </g:else>
-                              <div class="space-4"></div>
-                              <div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
-                                <div class="inline position-relative">
-                                  <span class="white middle bigger-120">
-                                  ${usuarioAdministrador.perfil.nombre} ${usuarioAdministrador.perfil.apellidoPaterno} ${usuarioAdministrador.perfil.apellidoMaterno}
-                                  </span>
-                                </div>
-                              </div>
+                              <g:render template="sectionImage" model="[usuario:datos]"/>
                             </div>
 
                             <div class="span9">
@@ -125,7 +111,6 @@
                                       <i class="icon-envelope bigger-120 pink"></i>
                                       ${usuarioAdministrador.username}
                                     </a>
-
                                     <a class="btn btn-link" href="#">
                                       <i class="icon-phone bigger-125 blue"></i>
                                       <g:findAll in="${usuarioAdministrador.perfil.telefonos}" expr="it.principal ==  true">
