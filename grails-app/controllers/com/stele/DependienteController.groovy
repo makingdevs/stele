@@ -82,10 +82,7 @@ class DependienteController {
     def busquedaDependienteParaGenerarPago() {
       def searchResult = searchableService.search(params.nombreDependiente)
       def resultados = []
-      searchResult.results.each{ row ->
-        if (row instanceof Dependiente)
-          resultados.add(row)
-      }
+      resultados = searchResult.results.findAll{ row -> row instanceof Dependiente}
       resultados = separarDependientesPorInstitucion(resultados)
       render template:'busquedaDependiente', model:[dependientes: resultados*.dependientes.flatten() ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
@@ -94,10 +91,7 @@ class DependienteController {
       def institucion = springSecurityService.currentUser.instituciones?.first()
       def searchResult = searchableService.search(params.nombreDependiente)
       def resultados = []
-      searchResult.results.each{ row ->
-        if (row instanceof Dependiente)
-          resultados.add(row)
-      }
+      resultados = searchResult.results.findAll{row -> row instanceof Dependiente}
       resultados = separarDependientesPorInstitucion(resultados)
       render template:'resultados', model:[dependientes: resultados*.dependientes.flatten() ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
     }
