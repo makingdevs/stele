@@ -51,6 +51,11 @@ class PerfilController {
     def perfil = perfilService.subirImagenPerfil(params.long('id'), params.file)
     render perfil as JSON
   }
+  
+  def removeImageProfile(){
+    def perfil = perfilService.eliminarImagenPerfil(params.long('id'))
+    render template: 'sectionImage', model:[usuario:perfil]
+  }
 
   def actialuzarSexo(){
     def perfil = Perfil.get(params.id)
