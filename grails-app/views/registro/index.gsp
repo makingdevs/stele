@@ -133,7 +133,17 @@
                 </div>
               </div>
               <p>&nbsp;</p>
-              
+              <g:if env="production">
+                <div class="span12">
+                  <div class="control_group">
+                    <div class="controls">
+                      <recaptcha:ifEnabled>
+                        <recaptcha:recaptcha theme="red"/>
+                      </recaptcha:ifEnabled>
+                    </div>
+                  </div>
+                </div>  
+              </g:if>             
               <hr>
               <div class="controls form-inline">
                 <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; Acepto <a href="steleterminos.html" class="color-green">Términos y Condiciones</a> </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y el <g:link controller="utilidades" action="avisoPrivacidad">aviso de privacidad</g:link></label>
