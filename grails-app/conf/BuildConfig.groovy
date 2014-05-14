@@ -55,7 +55,7 @@ grails.project.dependency.resolution = {
         compile ":searchable:0.6.4"
         compile ":mail:1.0.1"
         compile ':recaptcha:0.6.7'
-        test ":code-coverage:1.2.6"
+        test ":code-coverage:1.2.7"
         test(":spock:0.7") {
           exclude "spock-grails-support"
         }
