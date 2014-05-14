@@ -53,7 +53,9 @@
                 <p></p>
             </div>            
             <div class="col-md-3">
-                <a href="steleregistro.html" class="btn-buy hover-effect">Registro</a>            
+                <g:link controller="registro" class="btn-buy hover-effect">
+                    Registro
+                </g:link>
             </div>
         </div>
     </div>
