@@ -41,7 +41,7 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.20'
         compile 'net.bull.javamelody:javamelody-core:1.13.0'
         compile 'net.sourceforge.jexcelapi:jxl:2.6.12'
-        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+        compile "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
     plugins {
@@ -59,7 +59,7 @@ grails.project.dependency.resolution = {
         }
         compile ':recaptcha:0.6.7'
         test ":code-coverage:1.2.7"
-        test(":spock:0.7") {
+        compile(":spock:0.7") {
           exclude "spock-grails-support"
         }
         compile ":amazon-s3:0.8.2"
