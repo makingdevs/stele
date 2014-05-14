@@ -54,7 +54,9 @@ grails.project.dependency.resolution = {
         compile ":spring-security-core:1.2.7.3"
         compile ":grails-melody:1.13"
         compile ":searchable:0.6.4"
-        compile ":mail:1.0.1"
+        compile(":mail:1.0.1"){
+          exclude "spring-test"
+        }
         compile ':recaptcha:0.6.7'
         test ":code-coverage:1.2.7"
         test(":spock:0.7") {
@@ -73,6 +75,9 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.1'
         compile 'com.makingdevs:profile:0.1.7'
-        compile 'com.payable:payable:0.2.18'
+        compile('com.payable:payable:0.2.18'){
+          exclude "profile"
+        }
+
     }
 }
