@@ -32,6 +32,7 @@ grails.project.dependency.resolution = {
         mavenLocal()
         mavenCentral()
         mavenRepo name:"grails", root:"http://repo.grails.org/grails/plugins"
+        mavenRepo name:"spring", root:"http://repo.spring.io/release"
         mavenRepo "http://repo.grails.org/grails/core"
         mavenRepo name: "MakingDevs", root: "http://makingdevs.com:8081/nexus/content/repositories/thirdparty"
     }
