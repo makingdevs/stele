@@ -1,6 +1,6 @@
 package com.stele
 
-import grails.plugin.spock.IntegrationSpec
+import grails.test.spock.IntegrationSpec
 
 class DatosEscolaresWrapperServiceIntegrationSpec extends IntegrationSpec {
 

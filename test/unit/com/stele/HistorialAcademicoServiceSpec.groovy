@@ -2,6 +2,7 @@ package com.stele
 
 import grails.test.mixin.*
 import spock.lang.Specification
+import spock.lang.Ignore
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
 import com.payable.*
@@ -166,6 +167,7 @@ class HistorialAcademicoServiceSpec extends Specification {
       assert historialAcademico.equals(historialAcademicoDuplicado)
   }
 
+  @Ignore
   def "validar la busqueda de historiales de una institucion"() {
     given: 
       Pago pago = new Pago()
