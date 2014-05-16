@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-1") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-1") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "ciclo_escolar") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -31,7 +31,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-2") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-2") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "concepto") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -60,7 +60,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-3") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-3") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "dependiente") {
 			column(name: "id", type: "bigint") {
@@ -93,7 +93,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-4") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-4") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "descuento") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -130,7 +130,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-5") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-5") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "descuento_aplicable") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -167,7 +167,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-6") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-6") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "direccion") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -218,7 +218,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-7") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-7") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "distribucion_institucional") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -259,7 +259,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-8") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-8") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "esquema_de_pago") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -282,7 +282,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-9") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-9") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "esquema_de_pago_descuento") {
 			column(name: "esquema_de_pago_descuentos_id", type: "bigint")
@@ -291,7 +291,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-10") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-10") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "historial_academico") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -320,7 +320,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-11") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-11") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "organizacion") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -349,7 +349,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-12") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-12") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "organizacion_direccion") {
 			column(name: "organizacion_direcciones_id", type: "bigint")
@@ -358,7 +358,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-13") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-13") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "organizacion_telefono") {
 			column(name: "organizacion_telefonos_id", type: "bigint")
@@ -367,7 +367,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-14") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-14") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "pago") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -426,7 +426,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-15") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-15") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "payable") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -439,7 +439,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-16") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-16") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "payable_pago") {
 			column(name: "payable_pagos_id", type: "bigint")
@@ -448,7 +448,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-17") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-17") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "perfil") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -487,7 +487,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-18") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-18") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "perfil_direccion") {
 			column(name: "perfil_direccion_id", type: "bigint")
@@ -496,7 +496,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-19") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-19") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "perfil_telefono") {
 			column(name: "perfil_telefonos_id", type: "bigint")
@@ -505,7 +505,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-20") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-20") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "recargo") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -534,7 +534,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-21") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-21") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "requestmap") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -555,7 +555,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-22") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-22") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "rol") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -572,7 +572,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-23") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-23") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "s3asset") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -623,7 +623,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-24") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-24") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "s3asset_options") {
 			column(name: "options", type: "bigint") {
@@ -644,7 +644,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-25") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-25") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "telefono") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -681,7 +681,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-26") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-26") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "usuario") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -722,7 +722,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-27") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-27") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "usuario_instituciones") {
 			column(name: "institucion_id", type: "bigint")
@@ -733,7 +733,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-28") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-28") {
 		sql("set storage_engine=InnoDB;")
 		createTable(tableName: "usuario_rol") {
 			column(name: "rol_id", type: "bigint") {
@@ -746,371 +746,371 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-64") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-64") {
 		createIndex(indexName: "FKDD3FD3073E78BE13", tableName: "concepto") {
 			column(name: "organizacion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-65") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-65") {
 		createIndex(indexName: "FKCFA005D72AB2F39E", tableName: "dependiente") {
 			column(name: "usuario_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-66") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-66") {
 		createIndex(indexName: "FKCFA005D782201412", tableName: "dependiente") {
 			column(name: "perfil_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-67") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-67") {
 		createIndex(indexName: "FK598EC6E83E78BE13", tableName: "descuento") {
 			column(name: "organizacion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-68") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-68") {
 		createIndex(indexName: "FK6332753A3A058EF3", tableName: "descuento_aplicable") {
 			column(name: "pago_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-69") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-69") {
 		createIndex(indexName: "FK6332753AF2105881", tableName: "descuento_aplicable") {
 			column(name: "descuento_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-70") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-70") {
 		createIndex(indexName: "FK4B3D26CA8C0A9FFC", tableName: "distribucion_institucional") {
 			column(name: "institucion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-71") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-71") {
 		createIndex(indexName: "FK8DEE0F7F531802A1", tableName: "esquema_de_pago") {
 			column(name: "recargo_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-72") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-72") {
 		createIndex(indexName: "FK8DEE0F7F7DB3FBB3", tableName: "esquema_de_pago") {
 			column(name: "concepto_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-73") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-73") {
 		createIndex(indexName: "FKC12BBE28398B8C97", tableName: "esquema_de_pago_descuento") {
 			column(name: "esquema_de_pago_descuentos_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-74") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-74") {
 		createIndex(indexName: "FKC12BBE28F2105881", tableName: "esquema_de_pago_descuento") {
 			column(name: "descuento_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-75") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-75") {
 		createIndex(indexName: "FK75CB2FB89F4E613C", tableName: "historial_academico") {
 			column(name: "dependiente_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-76") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-76") {
 		createIndex(indexName: "FK75CB2FB8CE969931", tableName: "historial_academico") {
 			column(name: "distribucion_institucional_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-77") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-77") {
 		createIndex(indexName: "FK126F2D955BBE1F94", tableName: "organizacion_direccion") {
 			column(name: "organizacion_direcciones_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-78") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-78") {
 		createIndex(indexName: "FK126F2D95A649AEE2", tableName: "organizacion_direccion") {
 			column(name: "direccion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-79") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-79") {
 		createIndex(indexName: "FKC3169EFD364AC93", tableName: "organizacion_telefono") {
 			column(name: "organizacion_telefonos_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-80") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-80") {
 		createIndex(indexName: "FKC3169EFE8FC8D12", tableName: "organizacion_telefono") {
 			column(name: "telefono_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-81") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-81") {
 		createIndex(indexName: "FK3462993F5C68BA", tableName: "pago") {
 			column(name: "comprobante_de_pago_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-82") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-82") {
 		createIndex(indexName: "FK346299531802A1", tableName: "pago") {
 			column(name: "recargo_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-83") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-83") {
 		createIndex(indexName: "FK34215AB63A058EF3", tableName: "payable_pago") {
 			column(name: "pago_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-84") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-84") {
 		createIndex(indexName: "FK34215AB6D65FEFA6", tableName: "payable_pago") {
 			column(name: "payable_pagos_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-85") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-85") {
 		createIndex(indexName: "FKC4E369CC73BBF74D", tableName: "perfil") {
 			column(name: "avatar_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-86") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-86") {
 		createIndex(indexName: "FK268BE27D165511C1", tableName: "perfil_direccion") {
 			column(name: "perfil_direccion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-87") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-87") {
 		createIndex(indexName: "FK268BE27DA649AEE2", tableName: "perfil_direccion") {
 			column(name: "direccion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-88") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-88") {
 		createIndex(indexName: "FK88B678073F1CC492", tableName: "perfil_telefono") {
 			column(name: "perfil_telefonos_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-89") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-89") {
 		createIndex(indexName: "FK88B67807E8FC8D12", tableName: "perfil_telefono") {
 			column(name: "telefono_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-90") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-90") {
 		createIndex(indexName: "FK4080C1693E78BE13", tableName: "recargo") {
 			column(name: "organizacion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-91") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-91") {
 		createIndex(indexName: "url_unique_1385648898060", tableName: "requestmap", unique: "true") {
 			column(name: "url")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-92") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-92") {
 		createIndex(indexName: "authority_unique_1385648898067", tableName: "rol", unique: "true") {
 			column(name: "authority")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-93") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-93") {
 		createIndex(indexName: "idx_asset_status", tableName: "s3asset") {
 			column(name: "aws_status")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-94") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-94") {
 		createIndex(indexName: "FKE6010E2F42CEF82A", tableName: "s3asset_options") {
 			column(name: "options")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-95") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-95") {
 		createIndex(indexName: "option_name_idx", tableName: "s3asset_options") {
 			column(name: "options_idx")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-96") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-96") {
 		createIndex(indexName: "FKF814F32E82201412", tableName: "usuario") {
 			column(name: "perfil_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-97") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-97") {
 		createIndex(indexName: "username_unique_1385648898077", tableName: "usuario", unique: "true") {
 			column(name: "username")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-98") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-98") {
 		createIndex(indexName: "FKF5FF5E862AB2F39E", tableName: "usuario_instituciones") {
 			column(name: "usuario_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-99") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-99") {
 		createIndex(indexName: "FKF5FF5E868C0A9FFC", tableName: "usuario_instituciones") {
 			column(name: "institucion_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-100") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-100") {
 		createIndex(indexName: "FK3118953E2AB2F39E", tableName: "usuario_rol") {
 			column(name: "usuario_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-101") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-101") {
 		createIndex(indexName: "FK3118953EF83C55FE", tableName: "usuario_rol") {
 			column(name: "rol_id")
 		}
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-29") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-29") {
 		addPrimaryKey(columnNames: "options, options_idx", constraintName: "s3asset_optioPK", tableName: "s3asset_options")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-30") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-30") {
 		addPrimaryKey(columnNames: "rol_id, usuario_id", constraintName: "usuario_rolPK", tableName: "usuario_rol")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-31") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-31") {
 		addForeignKeyConstraint(baseColumnNames: "organizacion_id", baseTableName: "concepto", constraintName: "FKDD3FD3073E78BE13", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-32") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-32") {
 		addForeignKeyConstraint(baseColumnNames: "perfil_id", baseTableName: "dependiente", constraintName: "FKCFA005D782201412", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "perfil", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-33") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-33") {
 		addForeignKeyConstraint(baseColumnNames: "usuario_id", baseTableName: "dependiente", constraintName: "FKCFA005D72AB2F39E", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "usuario", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-34") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-34") {
 		addForeignKeyConstraint(baseColumnNames: "organizacion_id", baseTableName: "descuento", constraintName: "FK598EC6E83E78BE13", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-35") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-35") {
 		addForeignKeyConstraint(baseColumnNames: "descuento_id", baseTableName: "descuento_aplicable", constraintName: "FK6332753AF2105881", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "descuento", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-36") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-36") {
 		addForeignKeyConstraint(baseColumnNames: "pago_id", baseTableName: "descuento_aplicable", constraintName: "FK6332753A3A058EF3", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "pago", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-37") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-37") {
 		addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "distribucion_institucional", constraintName: "FK4B3D26CA8C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-38") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-38") {
 		addForeignKeyConstraint(baseColumnNames: "concepto_id", baseTableName: "esquema_de_pago", constraintName: "FK8DEE0F7F7DB3FBB3", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "concepto", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-39") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-39") {
 		addForeignKeyConstraint(baseColumnNames: "recargo_id", baseTableName: "esquema_de_pago", constraintName: "FK8DEE0F7F531802A1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "recargo", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-40") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-40") {
 		addForeignKeyConstraint(baseColumnNames: "descuento_id", baseTableName: "esquema_de_pago_descuento", constraintName: "FKC12BBE28F2105881", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "descuento", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-41") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-41") {
 		addForeignKeyConstraint(baseColumnNames: "esquema_de_pago_descuentos_id", baseTableName: "esquema_de_pago_descuento", constraintName: "FKC12BBE28398B8C97", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "esquema_de_pago", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-42") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-42") {
 		addForeignKeyConstraint(baseColumnNames: "dependiente_id", baseTableName: "historial_academico", constraintName: "FK75CB2FB89F4E613C", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "dependiente", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-43") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-43") {
 		addForeignKeyConstraint(baseColumnNames: "distribucion_institucional_id", baseTableName: "historial_academico", constraintName: "FK75CB2FB8CE969931", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "distribucion_institucional", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-44") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-44") {
 		addForeignKeyConstraint(baseColumnNames: "direccion_id", baseTableName: "organizacion_direccion", constraintName: "FK126F2D95A649AEE2", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "direccion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-45") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-45") {
 		addForeignKeyConstraint(baseColumnNames: "organizacion_direcciones_id", baseTableName: "organizacion_direccion", constraintName: "FK126F2D955BBE1F94", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-46") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-46") {
 		addForeignKeyConstraint(baseColumnNames: "organizacion_telefonos_id", baseTableName: "organizacion_telefono", constraintName: "FKC3169EFD364AC93", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-47") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-47") {
 		addForeignKeyConstraint(baseColumnNames: "telefono_id", baseTableName: "organizacion_telefono", constraintName: "FKC3169EFE8FC8D12", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "telefono", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-48") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-48") {
 		addForeignKeyConstraint(baseColumnNames: "comprobante_de_pago_id", baseTableName: "pago", constraintName: "FK3462993F5C68BA", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "s3asset", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-49") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-49") {
 		addForeignKeyConstraint(baseColumnNames: "recargo_id", baseTableName: "pago", constraintName: "FK346299531802A1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "recargo", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-50") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-50") {
 		addForeignKeyConstraint(baseColumnNames: "pago_id", baseTableName: "payable_pago", constraintName: "FK34215AB63A058EF3", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "pago", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-51") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-51") {
 		addForeignKeyConstraint(baseColumnNames: "payable_pagos_id", baseTableName: "payable_pago", constraintName: "FK34215AB6D65FEFA6", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "payable", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-52") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-52") {
 		addForeignKeyConstraint(baseColumnNames: "avatar_id", baseTableName: "perfil", constraintName: "FKC4E369CC73BBF74D", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "s3asset", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-53") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-53") {
 		addForeignKeyConstraint(baseColumnNames: "direccion_id", baseTableName: "perfil_direccion", constraintName: "FK268BE27DA649AEE2", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "direccion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-54") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-54") {
 		addForeignKeyConstraint(baseColumnNames: "perfil_direccion_id", baseTableName: "perfil_direccion", constraintName: "FK268BE27D165511C1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "perfil", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-55") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-55") {
 		addForeignKeyConstraint(baseColumnNames: "perfil_telefonos_id", baseTableName: "perfil_telefono", constraintName: "FK88B678073F1CC492", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "perfil", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-56") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-56") {
 		addForeignKeyConstraint(baseColumnNames: "telefono_id", baseTableName: "perfil_telefono", constraintName: "FK88B67807E8FC8D12", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "telefono", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-57") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-57") {
 		addForeignKeyConstraint(baseColumnNames: "organizacion_id", baseTableName: "recargo", constraintName: "FK4080C1693E78BE13", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-58") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-58") {
 		addForeignKeyConstraint(baseColumnNames: "options", baseTableName: "s3asset_options", constraintName: "FKE6010E2F42CEF82A", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "s3asset", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-59") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-59") {
 		addForeignKeyConstraint(baseColumnNames: "perfil_id", baseTableName: "usuario", constraintName: "FKF814F32E82201412", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "perfil", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-60") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-60") {
 		addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "usuario_instituciones", constraintName: "FKF5FF5E868C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organizacion", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-61") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-61") {
 		addForeignKeyConstraint(baseColumnNames: "usuario_id", baseTableName: "usuario_instituciones", constraintName: "FKF5FF5E862AB2F39E", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "usuario", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-62") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-62") {
 		addForeignKeyConstraint(baseColumnNames: "rol_id", baseTableName: "usuario_rol", constraintName: "FK3118953EF83C55FE", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "rol", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "synergyj (generated)", id: "1385648898160-63") {
+	changeSet(author: "makingdevs (generated)", id: "1385648898160-63") {
 		addForeignKeyConstraint(baseColumnNames: "usuario_id", baseTableName: "usuario_rol", constraintName: "FK3118953E2AB2F39E", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "usuario", referencesUniqueColumn: "false")
 	}
 
