@@ -12,6 +12,11 @@
     <div class="row-fluid">
       <div class="span12">
         <!--PAGE CONTENT BEGINS-->
+        <g:if test="${!listDependiente}">
+          <div class="alert alert-block">
+            <i class="icon-warning-sign"></i> - No tienes dependientes aun 
+          </div>
+        </g:if>
         <g:render template="/perfil/header" model="[usuarioActual:usuarioActual, dependiente:dependiente , perfil:perfil]" />
         
         <div class="row-fluid">
