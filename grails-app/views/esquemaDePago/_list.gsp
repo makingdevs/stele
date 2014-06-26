@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.CREADO  ">
+  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.CREADO || it.estatusDePago == EstatusDePago.VENCIDO">
       <tr>
         <td> ${it.conceptoDePago} </td>
         <td> $ ${it.cantidadDePago} </td>

@@ -145,6 +145,7 @@ log4j = {
       'org.jets3t',
       'httpclient',
       'grails.app.jobs.org.grails',
+      'grails.plugins.quartz',
       'QuartzGrailsPlugin'
 
   warn 'grails.plugin.jms',
