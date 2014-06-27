@@ -49,6 +49,11 @@
                                 <form class="form-horizontal" id="sample-form2">
                                   <div class="span12 widget-container-span">
                                     <div class="widget-box">
+                                      <g:if test="${flash.success}">
+                                        <div id="message"class="alert alert-success">
+                                          ${flash.success}
+                                        </div>
+                                      </g:if>
                                       <div class="widget-header ">
                                         <h5 class="bigger ">
                                           Pagos Genenrados
