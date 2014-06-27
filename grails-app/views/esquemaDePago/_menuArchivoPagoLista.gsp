@@ -3,7 +3,7 @@
     <i class="icon-arrow-left"></i>
     Previo
   </button>
-  <button  id="submitFormPayout" class="btn btn-prev btn-next">
+  <button  id="submitFormPayout" class="btn btn-success btn-next" disabled="true">
     Siguiente
     <i class="icon-arrow-right icon-on-right"></i>
   </button>  
