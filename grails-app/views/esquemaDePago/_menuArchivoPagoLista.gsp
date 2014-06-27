@@ -3,7 +3,10 @@
     <i class="icon-arrow-left"></i>
     Previo
   </button>
-  <input type="button" id="submitFormPayout" class="btn btn-success" value="Siguiente">
+  <button  id="submitFormPayout" class="btn btn-prev btn-next">
+    Siguiente
+    <i class="icon-arrow-right icon-on-right"></i>
+  </button>  
 </div>
 <g:set var="proceso" value="true" scope="flash" />
 <g:hiddenField name="camada" value="${camadaGenerada}" />
