@@ -202,7 +202,7 @@
 
         $('#datosEscolares').ace_file_input({
           style:'well',
-          btn_choose:'Arrastre el archivo o click',
+          btn_choose:'Arrastre el archivo',
           btn_change:null,
           no_icon:'icon-cloud-upload pink',
           droppable:true,
