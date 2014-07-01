@@ -34,10 +34,11 @@ class InicioController {
 
   def preview(){
     try {      
-      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(session.excelParaProcesar)
-      session.removeAttribute('excelParaProcesar')
-      def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
+      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(session.excelParaProcesar)      
+      def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)      
+      flash.inscripcionCobro = params.cobro
       flash.listaDeMapaDeDominios = listaDeMapaDeDominios
+      session.removeAttribute('excelParaProcesar')
       def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
       [
         alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),

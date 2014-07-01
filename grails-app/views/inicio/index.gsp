@@ -112,7 +112,8 @@
                                     <div class="widget-main">
                                       <div class="center">
                                         <span class="control-group warning">
-                                          <g:if test="${flash.inscripcionCobro == 'true'}">
+                                          <g:if  test="${flash.inscripcionCobro == 'true'}">
+                                            <input type="hidden" value="${flash.inscripcionCobro}" name="cobro"/>
                                             <div class="alert alert-warning">
                                             <strong>NOTA!</strong>
                                             El sistema genera un cobro generico por todos los alumnos en el archivo<br> por lo que si los pagos no son iguales <strong> genere un archivo de alumnos por tipo de cobro</strong>
