@@ -199,7 +199,7 @@
 
     <r:script>      
       Dropzone.options.cargaArchivo = {        
-        url:"/stele/inicio/upload",
+        url:"../inicio/upload",
         paramName: "datosEscolares",
         addRemoveLinks: true,
         autoProcessQueue: true,
@@ -210,7 +210,7 @@
           
           $.ajax({
             type:"POST",
-            url:"/stele/inicio/deleteFile"            
+            url:"../inicio/deleteFile"            
           });
 
           var _ref;

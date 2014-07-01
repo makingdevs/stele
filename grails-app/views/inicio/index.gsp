@@ -70,7 +70,7 @@
           </g:if>
 
           <div class="row-fluid">
-            <form name="layout" id="cargaArchivo" action="/stele/inicio/preview" onsubmit="return check()">
+            <g:form name="layout" id="cargaArchivo" controller="inicio" action="preview" onsubmit="return check()">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
 
@@ -161,7 +161,7 @@
 
               <!--PAGE CONTENT ENDS-->
             </div><!--/.span-->
-            </form>
+            </g:form>
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
 
