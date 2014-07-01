@@ -119,8 +119,8 @@ modules = {
   colegioCss {
     dependsOn 'customBootsrapCss'
     dependsOn 'customFontAwesomeCss'
-    dependsOn 'dropzoneCss'
     dependsOn 'customAceCss'
+    dependsOn 'dropzoneCss'
   }
   jquery2{
     resource url:'assets/js/jquery-2.0.3.min.js', wrapper: { s ->

@@ -8,6 +8,8 @@ class InicioController {
   def estructuraInstitucionalService
   def reporteMigracionService
 
+  static allowedMethods = [deleteFile:"POST"]
+
   def index() {
     if (!springSecurityService.isLoggedIn()) {
       redirect controller:'login'
@@ -18,11 +20,22 @@ class InicioController {
     def principal = springSecurityService.principal
     [instituciones:user.instituciones, usuario:user]
   }
+  
+  def deleteFile(){    
+    session.removeAttribute('excelParaProcesar')
+    render ""
+  }
+
+  def upload(){
+    FileInputStream excelParaProcesar = params.datosEscolares.inputStream
+    session.excelParaProcesar = excelParaProcesar    
+    render ""
+  }
 
   def preview(){
-    try {
-      FileInputStream excelParaProcesar = params.datosEscolares.inputStream
-      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(excelParaProcesar)
+    try {      
+      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(session.excelParaProcesar)
+      session.removeAttribute('excelParaProcesar')
       def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)
       flash.listaDeMapaDeDominios = listaDeMapaDeDominios
       def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
@@ -33,9 +46,13 @@ class InicioController {
         estructuraInstitucional:estructuraInstitucional,
         listaDeMapaDeDominios:listaDeMapaDeDominios,
         institucionId: params.long("institucionId")
-      ]
+      ]      
     } catch(Exception ex){
-      flash.error = "Por favor validar el archivo que se esta procesando"
+      if(!session.excelParaProcesar)
+        flash.error = "No existe un archivo para procesar !!"
+      else  
+        flash.error = "Por favor validar el archivo que se esta procesando"
+
       redirect (controller: "inicio", action: "index")
     }
   }

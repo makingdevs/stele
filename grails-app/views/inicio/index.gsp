@@ -2,13 +2,8 @@
   <head>
     <meta name="layout" content="colegio"/>
     <r:script>
-      function check() {
-        if (document.layout.datosEscolares.value == '') {
-          alert('No existe un archivo pra procesar !!');
-          return false;
-        }
+      function check() {        
         $('#imagenCarga').removeClass("hidden");
-
       }
       $(document).ready(function(){
         $("#siguiente").click(function(){
@@ -75,7 +70,7 @@
           </g:if>
 
           <div class="row-fluid">
-          <g:uploadForm name="layout" id="cargaArchivo" controller="inicio" action="preview" onsubmit="return check()">    
+            <form name="layout" id="cargaArchivo" action="/stele/inicio/preview" onsubmit="return check()">
             <div class="span12">
               <!--PAGE CONTENT BEGINS-->
 
@@ -141,8 +136,10 @@
                                     <h4><strong>Importar plantilla</strong></h4>
                                   </div>
                                   <div class="widget-body">
-                                    <div class="widget-main">
-                                      <input  type="file" id="datosEscolares"  name="datosEscolares"/>
+                                    <div class="widget-main">                                      
+                                      <div id="carga-archivo" class="dropzone dz-default dz-message">
+                                        
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -164,7 +161,7 @@
 
               <!--PAGE CONTENT ENDS-->
             </div><!--/.span-->
-            </g:uploadForm> 
+            </form>
           </div><!--/.row-fluid-->
         </div><!--/.page-content-->
 
