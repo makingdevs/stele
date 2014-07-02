@@ -22,6 +22,7 @@ class DistribucionInstitucionalService {
 
   private NivelDeEstudio validaNivelDeEstudio(String nivel){
     def nivelToUpper = nivel.toUpperCase()
+    def maternal = NivelDeEstudio.MATERNAL.toString()toUpperCase()substring(0,3)
     def preescolar = NivelDeEstudio.PREESCOLAR.toString()toUpperCase()substring(0,3)
     def secundaria = NivelDeEstudio.SECUNDARIA.toString()toUpperCase()substring(0,3)
     def bachillerato = NivelDeEstudio.BACHILLERATO.toString()toUpperCase()substring(0,3)
@@ -39,6 +40,9 @@ class DistribucionInstitucionalService {
       break
       case {it?.startsWith(educacionSuperior) }:
       return NivelDeEstudio.EDUCACION_SUPERIOR
+      break
+      case {it?.startsWith(maternal) }:
+      return NivelDeEstudio.MATERNAL
       break
       default:
       return NivelDeEstudio.PRIMARIA

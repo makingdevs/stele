@@ -1,6 +1,7 @@
 package com.stele
 
 enum NivelDeEstudio {
+  MATERNAL("Maternal"),
   PREESCOLAR("Preescolar"),
   PRIMARIA("Primaria"),
   SECUNDARIA("Secundaria"),
