@@ -22,19 +22,19 @@ class InicioController {
   }
   
   def deleteFile(){    
-    session.removeAttribute('excelParaProcesar')
+    flash.excelParaProcesar = null
     render ""
   }
 
   def upload(){
     FileInputStream excelParaProcesar = params.datosEscolares.inputStream
-    session.excelParaProcesar = excelParaProcesar    
+    flash.excelParaProcesar = excelParaProcesar
     render ""
   }
 
   def preview(){
     try {      
-      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(session.excelParaProcesar)      
+      def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(flash.excelParaProcesar)      
       def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)      
       flash.inscripcionCobro = params.cobro
       flash.listaDeMapaDeDominios = listaDeMapaDeDominios
@@ -49,7 +49,7 @@ class InicioController {
         institucionId: params.long("institucionId")
       ]      
     } catch(Exception ex){
-      if(!session.excelParaProcesar)
+      if(!flash.excelParaProcesar)
         flash.error = "No existe un archivo para procesar !!"
       else  
         flash.error = "Por favor validar el archivo que se esta procesando"
