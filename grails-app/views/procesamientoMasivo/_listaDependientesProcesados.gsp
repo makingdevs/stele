@@ -4,6 +4,12 @@
                             <div class="tabbable3">
                                 <ul class="nav nav-tabs padding-18 tab-size-bigger" id="myTab3">
                                   <li class="active">
+                                    <a data-toggle="tab" href="#faq-tab-011">
+                                      <i class="grey icon-group   bigger-120"></i>
+                                      Maternal
+                                    </a>
+                                  </li>
+                                  <li>
                                     <a data-toggle="tab" href="#faq-tab-111">
                                       <i class="pink icon-group   bigger-120"></i>
                                       Preescolar
@@ -34,12 +40,41 @@
                                     </a>
                                   </li>
                                 </ul>
-                                <div class="tab-content">
-                                  <div id="faq-tab-111" class="tab-pane active">
+                                
+                                <div class="tab-content">                                                                    
+                                  <div id="faq-tab-011" class="tab-pane active">
                                     <table width="100%" class="table table-condensed table-hover table-striped">
                                       <thead>
                                         <tr>
+                                          <th>Nombre del padre/tutor</th>
+                                          <th>Matrícula</th>
+                                          <th>Nombre del estudiante</th>
+                                          <th>Nivel de Estudios</th>
+                                          <th>Grado</th>
+                                          <th>Grupo</th>
+                                          <th>Turno</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <g:findAll in="${historial}" expr="it.distribucionInstitucional.nivelDeEstudio == NivelDeEstudio.MATERNAL">
+                                        <tr>
 
+                                          <td>${it.dependiente.usuario.perfil.nombre} ${it.dependiente.usuario.perfil.apellidoPaterno} ${it.dependiente.usuario.perfil.apellidoMaterno}</td>
+                                          <td>${it.dependiente.matricula}</td>
+                                          <td>${it.dependiente.perfil.nombre} ${it.dependiente.perfil.apellidoPaterno} ${it.dependiente.perfil.apellidoMaterno}</td>
+                                          <td>${it.distribucionInstitucional.nivelDeEstudio}</td>
+                                          <td>${it.distribucionInstitucional.grado}</td>
+                                          <td>${it.distribucionInstitucional.grupo}</td>
+                                          <td>${it.distribucionInstitucional.turno}</td>
+                                        </tr>
+                                        </g:findAll>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div id="faq-tab-111" class="tab-pane">
+                                    <table width="100%" class="table table-condensed table-hover table-striped">
+                                      <thead>
+                                        <tr>
                                           <th>Nombre del padre/tutor</th>
                                           <th>Matrícula</th>
                                           <th>Nombre del estudiante</th>
