@@ -8,12 +8,11 @@ class ReciboDePagoService {
   
   def dependienteService
   def historialAcademicoService
-  def perfilService
 
   def obtenerDatosReciboDePago(pagoId){
     def pago = Pago.get(pagoId)
     def dependiente = dependienteService.obtenerDependientesPorPagos([pago])[0];
-    def tutor = perfilService.obtenerPerfilDesdeUsuario(dependiente.usuario.id)
+    def tutor = dependiente.usuario.perfil    
     def historialAcademico = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(dependiente.id)
 
     new ComprobantePagoCommand(nombreAlumno:dependiente.perfil.nombre,

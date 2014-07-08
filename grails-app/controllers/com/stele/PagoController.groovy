@@ -8,6 +8,7 @@ class PagoController {
   def pagoService
   def historialAcademicoService
   def comprobanteService
+  def reciboDePagoService
 
   def index() { 
     def pagosDeUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
@@ -27,6 +28,7 @@ class PagoController {
   def pagoInmediatoVentanilla() {
     def fecha = new Date().parse("dd/MM/yyyy", params.fechaDePago)
     def pago = comprobanteService.aprobarPago(params.transactionId,fecha, params.tipoDePago)
+    def informacionReciboPago = reciboDePagoService.obtenerDatosReciboDePago(pago.id)
     flash.pagoCorrecto = pago.estatusDePago
     render view:"manual"
   }

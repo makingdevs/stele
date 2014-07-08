@@ -6,7 +6,6 @@ import spock.lang.Specification
 import spock.lang.Unroll
 import com.payable.TipoDePago
 import com.payable.Pago
-import com.makingdevs.PerfilService
 import com.makingdevs.Perfil
 import com.stele.seguridad.Usuario
 
@@ -37,18 +36,13 @@ class ReciboDePagoServiceSpec extends Specification {
     and: 
       def dependienteServiceMock = mockFor(DependienteService)
       def historialAcademicoServiceMock = mockFor(HistorialAcademicoService)
-      def perfilServiceMock = mockFor(PerfilService)
       service.dependienteService = dependienteServiceMock.createMock()
       service.historialAcademicoService = historialAcademicoServiceMock.createMock()
-      service.perfilService = perfilServiceMock.createMock()
       dependienteServiceMock.demand.obtenerDependientesPorPagos{ listaPagos -> dependienteList }
       historialAcademicoServiceMock.demand.obtenerhistorialAcademicoPorDependiente{id -> historialAcademico} 
-      perfilServiceMock.demand.obtenerPerfilDesdeUsuario{ idUsuario -> perfilTutor}
-
     when:
       ComprobantePagoCommand datosReciboDePago = service.obtenerDatosReciboDePago(pagoConciliado.id);
       dependienteServiceMock.verify()
-      perfilServiceMock.verify()
       historialAcademicoServiceMock.verify()
     then:
       datosReciboDePago.nombreAlumno == "Gamaliel"
