@@ -4,38 +4,66 @@ import grails.text.mixin.*
 import org.junit.*
 import spock.lang.Specification
 import spock.lang.Unroll
+import com.payable.TipoDePago
 import com.payable.Pago
+import com.makingdevs.PerfilService
 import com.makingdevs.Perfil
+import com.stele.seguridad.Usuario
 
 @TestFor(ReciboDePagoService)
-@Mock([Pago,Dependiente,Perfil])
+@Mock([Pago,Dependiente,Perfil,Usuario,HistorialAcademico,DistribucionInstitucional])
 class ReciboDePagoServiceSpec extends Specification {
   
   def "Obtener datos del recibo de Pago"(){
     given:"Se tiene un pago conciliado de un dependiente"
-      def pagoConciliado = new Pago(conceptoDePago:"Inscripcion",cantidadDePago:900).save(validate:false);
+      def fecha = new GregorianCalendar(2014, Calendar.MARCH, 11) 
+      def pagoConciliado = new Pago(conceptoDePago:"Inscripcion",cantidadDePago:900,recargosAcumulados:400,
+                                    fechaDePago:fecha.time,fechaDeVencimiento:fecha.time,
+                                    tipoDePago:TipoDePago.TRANSFERENCIA_BANCARIA).save(validate:false);
       def perfilTutor = new Perfil(nombre:"Silvia",
-                                   apellido_paterno:"García",
-                                   apellido_materno:"Campos").save(validate:false)
+                                   apellidoPaterno:"Garcia",
+                                   apellidoMaterno:"Campos").save(validate:false)
+      Usuario.metaClass.encodePassword() {}
 
+      def usuario = new Usuario(username:"egjimenezg@gmail.com",perfil:perfilTutor).save(validate:false)
       def perfilAlumno = new Perfil(nombre:"Gamaliel",
-                                    apellido_paterno:"Jimenez",
-                                    apellido_materno:"Garcia").save(validate:false)
-      def dependiente = new Dependiente(perfil:perfilAlumno,pagos:[pagoConciliado]).save(validate:false)
+                                    apellidoPaterno:"Jimenez",
+                                    apellidoMaterno:"Garcia").save(validate:false)
+      def dependiente = new Dependiente(perfil:perfilAlumno,pagos:[pagoConciliado],usuario:usuario).save(validate:false)
+      def distribucionInstitucional = new DistribucionInstitucional(nivelDeEstudio:NivelDeEstudio.PRIMARIA,grado:4,grupo:"A").save(validate:false)
+      def historialAcademico = new HistorialAcademico(distribucionInstitucional:distribucionInstitucional,
+                                                      dependiente:dependiente).save(validate:false)
       def dependienteList = [dependiente]
-      Dependiente.metaClass.static.withCriteria = {  dependienteList }
     and: 
       def dependienteServiceMock = mockFor(DependienteService)
-      dependienteServiceMock.demand.obtenerDependientesPorPagos{ listaPagos ->}
+      def historialAcademicoServiceMock = mockFor(HistorialAcademicoService)
+      def perfilServiceMock = mockFor(PerfilService)
       service.dependienteService = dependienteServiceMock.createMock()
+      service.historialAcademicoService = historialAcademicoServiceMock.createMock()
+      service.perfilService = perfilServiceMock.createMock()
+      dependienteServiceMock.demand.obtenerDependientesPorPagos{ listaPagos -> dependienteList }
+      historialAcademicoServiceMock.demand.obtenerhistorialAcademicoPorDependiente{id -> historialAcademico} 
+      perfilServiceMock.demand.obtenerPerfilDesdeUsuario{ idUsuario -> perfilTutor}
+
     when:
       ComprobantePagoCommand datosReciboDePago = service.obtenerDatosReciboDePago(pagoConciliado.id);
+      dependienteServiceMock.verify()
+      perfilServiceMock.verify()
+      historialAcademicoServiceMock.verify()
     then:
-      datosReciboDePago != null      
       datosReciboDePago.nombreAlumno == "Gamaliel"
-      //datosReciboDePago.apellidoPaternoAlumno == "Jimenez"
-      //datosReciboDePago.apellidoMaternoAlumno == "Garcia"
-      datosReciboDePago.cantidadPago == 900
+      datosReciboDePago.apellidoPaternoAlumno == "Jimenez"
+      datosReciboDePago.apellidoMaternoAlumno == "Garcia"
+      datosReciboDePago.nombreTutor == "Silvia";
+      datosReciboDePago.apellidoPaternoTutor == "Garcia"
+      datosReciboDePago.apellidoMaternoTutor == "Campos"
+      datosReciboDePago.nivelEstudio == NivelDeEstudio.PRIMARIA.toString()
+      datosReciboDePago.grado == 4 
+      datosReciboDePago.grupo == "A"
       datosReciboDePago.conceptoPago == "Inscripcion"
+      datosReciboDePago.cantidadPago == 900
+      datosReciboDePago.recargosAcumulados == 400
+      datosReciboDePago.fechaPago == fecha.time
+      datosReciboDePago.tipoPago == TipoDePago.TRANSFERENCIA_BANCARIA.toString()
   }
 }
