@@ -1,12 +1,11 @@
 package com.stele
 
 class ComprobantePagoCommand{
-  
   String nombreAlumno
   String apellidoMaternoAlumno
   String apellidoPaternoAlumno
   String nombreTutor
-  String apellidoMaternoTutor;
+  String apellidoMaternoTutor
   String apellidoPaternoTutor
   String nivelEstudio
   Integer grado
@@ -14,7 +13,6 @@ class ComprobantePagoCommand{
   String conceptoPago
   BigDecimal cantidadPago
   BigDecimal recargosAcumulados
-  Date fechaPago;
-  String tipoPago;
-
+  Date fechaPago
+  String tipoPago
 }

@@ -145,7 +145,7 @@
                     </div><!--/span-->
                   </div>
                   <div class="form-actions center">
-                    <button class="btn btn-info"  type="submit">
+                    <button class="btn btn-info"  type="submit" formtarget="_blank">
                       <i class="icon-ok bigger-110"></i>
                       Aceptar
                     </button>

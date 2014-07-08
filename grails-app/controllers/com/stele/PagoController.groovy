@@ -1,6 +1,8 @@
 package com.stele
 
 import com.payable.*
+import org.codehaus.groovy.grails.plugins.jasper.JasperExportFormat
+import org.codehaus.groovy.grails.plugins.jasper.JasperReportDef
 
 class PagoController {
 
@@ -9,6 +11,7 @@ class PagoController {
   def historialAcademicoService
   def comprobanteService
   def reciboDePagoService
+  def jasperService
 
   def index() { 
     def pagosDeUsuario = pagoService.estadoDeCuentaUsuario(springSecurityService.currentUser)
@@ -29,8 +32,11 @@ class PagoController {
     def fecha = new Date().parse("dd/MM/yyyy", params.fechaDePago)
     def pago = comprobanteService.aprobarPago(params.transactionId,fecha, params.tipoDePago)
     def informacionReciboPago = reciboDePagoService.obtenerDatosReciboDePago(pago.id)
+    def data = [informacionReciboPago]
+    def report = new JasperReportDef(name:"reciboPago.jasper",fileFormat:JasperExportFormat.PDF_FORMAT,reportData:data)
     flash.pagoCorrecto = pago.estatusDePago
-    render view:"manual"
+    response.outputStream << jasperService.generateReport(report).toByteArray()
+    redirect action: 'generarPagoEnVentanilla'
   }
 
 }
