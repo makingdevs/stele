@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require module="bootstrapDatePicker" />
+    <r:require modules="bootstrapDatePicker,perfilValidate"/>
   </head>
 
   <body>
@@ -166,7 +166,7 @@
                                   <td >Fecha comprobante</td>
                                   <td >
                                     <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                      <input id="fechaDePago" name="fechaDePago" data-format="yyyy-mm-dd" type="text"></input>
+                                      <input id="fechaDePago" name="fechaDePago" data-format="yyyy-mm-dd" type="text" />
                                       <span class="add-on">
                                         <i class="icon-calendar"></i>
                                       </span>
