@@ -31,12 +31,17 @@ class PagoController {
   def pagoInmediatoVentanilla() {
     def fecha = new Date().parse("dd/MM/yyyy", params.fechaDePago)
     def pago = comprobanteService.aprobarPago(params.transactionId,fecha, params.tipoDePago)
-    def informacionReciboPago = reciboDePagoService.obtenerDatosReciboDePago(pago.id)
-    def data = [informacionReciboPago]
-    def report = new JasperReportDef(name:"reciboPago.jasper",fileFormat:JasperExportFormat.PDF_FORMAT,reportData:data)
     flash.pagoCorrecto = pago.estatusDePago
+    render(template:"/pagoVentanilla/reporte",model:[pagoId:pago.id])
+  }
+
+  def generarComprobante(){
+    def informacionReciboPago = reciboDePagoService.obtenerDatosReciboDePago(params.pagoId)
+    informacionReciboPago.referencia = params.folioBanco 
+    def report = new JasperReportDef(name:"reciboPago.jasper",fileFormat:JasperExportFormat.PDF_FORMAT,reportData:[informacionReciboPago],locale:Locale.US)
+    response.setContentType("application/pdf")   
+    response.setHeader "Content-disposition", "attachment; filename=reciboPago.pdf";
     response.outputStream << jasperService.generateReport(report).toByteArray()
-    redirect action: 'generarPagoEnVentanilla'
   }
 
 }

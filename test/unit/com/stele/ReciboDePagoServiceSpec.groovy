@@ -45,18 +45,15 @@ class ReciboDePagoServiceSpec extends Specification {
       dependienteServiceMock.verify()
       historialAcademicoServiceMock.verify()
     then:
-      datosReciboDePago.nombreAlumno == "Gamaliel"
-      datosReciboDePago.apellidoPaternoAlumno == "Jimenez"
-      datosReciboDePago.apellidoMaternoAlumno == "Garcia"
-      datosReciboDePago.nombreTutor == "Silvia";
-      datosReciboDePago.apellidoPaternoTutor == "Garcia"
-      datosReciboDePago.apellidoMaternoTutor == "Campos"
+      datosReciboDePago.nombreAlumno == "Gamaliel Jimenez Garcia"
+      datosReciboDePago.nombreTutor == "Silvia Garcia Campos";
       datosReciboDePago.nivelEstudio == NivelDeEstudio.PRIMARIA.toString()
       datosReciboDePago.grado == 4 
       datosReciboDePago.grupo == "A"
       datosReciboDePago.conceptoPago == "Inscripcion"
       datosReciboDePago.cantidadPago == 900
       datosReciboDePago.recargosAcumulados == 400
+      datosReciboDePago.total == 500
       datosReciboDePago.fechaPago == fecha.time
       datosReciboDePago.tipoPago == TipoDePago.TRANSFERENCIA_BANCARIA.toString()
   }

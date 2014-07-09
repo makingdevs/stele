@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reciboPago" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8d8e9aa-f68c-40ac-a01d-e2718a8c714e">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="780"/>
 	<property name="ireport.y" value="0"/>
 	<field name="nombreTutor" class="java.lang.String"/>
-	<field name="apellidoPaternoTutor" class="java.lang.String"/>
-	<field name="apellidoMaternoTutor" class="java.lang.String"/>
 	<field name="nombreAlumno" class="java.lang.String"/>
-	<field name="apellidoPaternoAlumno" class="java.lang.String"/>
-	<field name="apellidoMaternoAlumno" class="java.lang.String"/>
 	<field name="grupo" class="java.lang.String"/>
+	<field name="grado" class="java.lang.String"/>
+	<field name="nivelEstudio" class="java.lang.String"/>
+	<field name="conceptoPago" class="java.lang.String"/>
+	<field name="cantidadPago" class="java.math.BigDecimal"/>
+	<field name="recargosAcumulados" class="java.math.BigDecimal"/>
+	<field name="fechaPago" class="java.util.Date"/>
+	<field name="tipoPago" class="java.lang.String"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="referencia" class="java.lang.String"/>
 	<variable name="fecha" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -52,6 +57,7 @@
 			<staticText>
 				<reportElement x="0" y="32" width="36" height="14" uuid="a8474ea3-1c42-4242-bdcf-e0361f5883e7"/>
 				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
 					<paragraph firstLineIndent="6"/>
 				</textElement>
 				<text><![CDATA[Tutor:]]></text>
@@ -59,6 +65,7 @@
 			<staticText>
 				<reportElement x="0" y="52" width="49" height="14" uuid="a8ed4141-e96d-4900-b2d7-bf04563954df"/>
 				<textElement>
+					<font isBold="true"/>
 					<paragraph leftIndent="6"/>
 				</textElement>
 				<text><![CDATA[Alumno:]]></text>
@@ -133,26 +140,26 @@
 				<reportElement x="555" y="89" width="1" height="160" uuid="86ddf645-8c46-4e8e-8f36-ab89d8a1c493"/>
 			</line>
 			<staticText>
-				<reportElement x="356" y="32" width="87" height="14" uuid="62f55707-9592-4a96-bea5-1635fe91a7f0"/>
+				<reportElement x="356" y="32" width="77" height="14" uuid="62f55707-9592-4a96-bea5-1635fe91a7f0"/>
 				<textElement verticalAlignment="Top">
-					<font isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de pago:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="397" y="227" width="63" height="22" uuid="de931a27-25e9-4b7e-955a-f08b4d6982d5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="413" y="227" width="46" height="22" uuid="de931a27-25e9-4b7e-955a-f08b4d6982d5"/>
+				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="36" y="32" width="304" height="14" uuid="be6ec13c-f440-48df-bf00-2252f0572487"/>
-				<textFieldExpression><![CDATA[$F{nombreTutor} + " " +$F{apellidoPaternoTutor} + " " + $F{apellidoMaternoTutor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombreTutor}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="49" y="52" width="290" height="14" uuid="58a7cece-ee5e-4d81-b0c1-390c3e841171"/>
-				<textFieldExpression><![CDATA[$F{nombreAlumno} + " "+ $F{apellidoPaternoAlumno}+ " " + $F{apellidoMaternoAlumno}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombreAlumno}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="155" width="72" height="14" uuid="80bef5ef-ebfd-4bc7-8e74-64800cb5ccfe"/>
@@ -162,16 +169,81 @@
 				<text><![CDATA[Recargo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="410" y="52" width="44" height="14" uuid="db9490c6-3383-4001-b5f7-8365eb999249"/>
+				<reportElement x="416" y="52" width="44" height="14" uuid="db9490c6-3383-4001-b5f7-8365eb999249"/>
 				<textElement>
 					<paragraph leftIndent="6"/>
 				</textElement>
-				<text><![CDATA[Grupo:]]></text>
+				<text><![CDATA[GRUPO]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="455" y="52" width="75" height="14" uuid="ee1125f0-bfa7-4665-9392-a15162c8eb37"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="462" y="52" width="67" height="14" uuid="ee1125f0-bfa7-4665-9392-a15162c8eb37"/>
 				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
 			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="356" y="52" width="57" height="14" uuid="128a82b8-934e-4536-958f-e2bb7685dc26"/>
+				<textFieldExpression><![CDATA[$F{nivelEstudio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="121" width="100" height="20" uuid="7de04e0b-5ee8-416c-90dd-ffc36dee1909"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conceptoPago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00" isBlankWhenNull="true">
+				<reportElement x="443" y="121" width="100" height="20" uuid="4f4a1054-95d0-4be0-a25c-5188f920c0c7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidadPago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00" isBlankWhenNull="true">
+				<reportElement x="443" y="155" width="100" height="14" uuid="2518091e-ae73-4838-beb6-58739a12808f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recargosAcumulados}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="207" width="134" height="20" uuid="0e6db952-5032-4fd6-a27e-c1215a1f0ff1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoPago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="141" y="207" width="72" height="20" uuid="643b447a-4042-402e-8ace-861e948705c9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Referencia:]]></text>
+			</staticText>
+			<textField pattern="¤#,##0.00" isBlankWhenNull="true">
+				<reportElement x="459" y="227" width="78" height="22" uuid="55c19c16-c50b-4f7e-8f12-b2db1c347fe2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement x="433" y="32" width="100" height="14" uuid="5edc46bc-71e7-41c1-84e8-8c4672a964cc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="215" y="207" width="100" height="20" uuid="dcabcae2-7e86-4ced-b6cb-fc313ce30c69"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="414" y="52" width="1" height="14" uuid="5b29a8e7-f061-4250-a185-e7cadc9c98f4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

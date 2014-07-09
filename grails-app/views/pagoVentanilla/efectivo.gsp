@@ -10,6 +10,20 @@
           language : 'es',
           autoclose : false
         });
+        
+        $('#pagoInmediato').submit(function(e){
+          e.preventDefault();
+          $.ajax({
+            url:"../../pago/pagoInmediatoVentanilla",
+            data:$(this).serialize(),
+            success:function(data){
+              $("form").each(function(){ 
+                this.reset();
+              });
+              $("div.form-actions").html(data);
+            } 
+          });
+        });
       });
       $(function() {
         var urlValue = $("input#url").val() 
@@ -19,6 +33,8 @@
           addRemoveLinks : false
         });
       });
+      
+      
     </r:script>
   </head>
   <body>
@@ -88,7 +104,7 @@
             </div>
             <div class="span12">
             <div class="span4">
-              <g:form name="pagoInmediato" url="[action:'pagoInmediatoVentanilla', controller:'pago']">
+              <g:form id="pagoInmediato" name="pagoInmediato" url="[action:'pagoInmediatoVentanilla', controller:'pago']">
                 <div class="span12">                                    
                   <div class="row">
                     <div class=" widget-container-span">

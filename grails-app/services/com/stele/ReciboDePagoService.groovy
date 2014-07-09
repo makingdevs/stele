@@ -15,18 +15,15 @@ class ReciboDePagoService {
     def tutor = dependiente.usuario.perfil    
     def historialAcademico = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(dependiente.id)
 
-    new ComprobantePagoCommand(nombreAlumno:dependiente.perfil.nombre,
-                               apellidoPaternoAlumno:dependiente.perfil.apellidoPaterno,
-                               apellidoMaternoAlumno:dependiente.perfil.apellidoMaterno,
-                               nombreTutor:tutor.nombre,
-                               apellidoPaternoTutor:tutor.apellidoPaterno,
-                               apellidoMaternoTutor:tutor.apellidoMaterno,
+    new ComprobantePagoCommand(nombreAlumno:dependiente.perfil.nombre + " " + dependiente.perfil.apellidoPaterno + " " + dependiente.perfil.apellidoMaterno,
+                               nombreTutor:tutor.nombre +" "+ tutor.apellidoPaterno + " " + tutor.apellidoMaterno,
                                nivelEstudio:historialAcademico.distribucionInstitucional.nivelDeEstudio,
                                grado:historialAcademico.distribucionInstitucional.grado,
                                grupo:historialAcademico.distribucionInstitucional.grupo,
                                conceptoPago:pago.conceptoDePago,
                                cantidadPago:pago.cantidadDePago,
                                recargosAcumulados:pago.recargosAcumulados,
+                               total:pago.cantidadDePago.subtract(pago.recargosAcumulados),
                                fechaPago:pago.fechaDePago,
                                tipoPago:pago.tipoDePago)
 
