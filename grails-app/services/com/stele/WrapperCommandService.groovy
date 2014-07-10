@@ -17,8 +17,8 @@ class WrapperCommandService {
     if (camadaPagoCommand?.fechaDeVencimiento)  
       gcp.fechaDeVencimiento = new Date().parse("dd/MM/yyyy", camadaPagoCommand?.fechaDeVencimiento)
     if (camadaPagoCommand.descuentos){
-       if (camadaPagoCommand.descuentos.first() != "") 
-        gcp.descuentoIds = camadaPagoCommand?.descuentos
+      if (camadaPagoCommand.descuentos.first() != "") 
+        gcp.descuentoIds = camadaPagoCommand?.descuentos.collect{it.replace('[','').replace(']','')}
     }
     if (!gcp.descuentoIds)
       gcp.descuentoIds = camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
