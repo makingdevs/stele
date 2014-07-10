@@ -228,13 +228,14 @@
                       <div class="center">
     
                         <span class="control-group warning">
-
-                          <span class="btn btn-large btn-info  blue" href="#">
-                            <i class="icon-file-text bigger-160"></i>
-                            Comporbante Pago
-                          </span>
+                          <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:pago.id]">
+                            <span class="btn btn-large btn-info  blue" href="#">
+                              <i class="icon-file-text bigger-160"></i>
+                              Comprobante Pago
+                            </span>
+                          </g:link>
                           <span class=" help-inline pink">
-                              Comporbante adjuntado <strong> ${pago.lastUpdated.format('dd/MM/yyyy')} </strong>
+                              Comprobante adjuntado <strong> ${pago.lastUpdated.format('dd/MM/yyyy')} </strong>
                           </span>
                         </span>
                       </div>

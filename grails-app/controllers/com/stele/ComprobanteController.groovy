@@ -59,4 +59,9 @@ class ComprobanteController {
     [pago: pago]
   }
 
+  def descargarComprobante(){
+    response.setHeader "Content-disposition", "attachment; filename=comprobante";
+    response.outputStream <<  comprobanteService.obtenerBytesDeComprobante(params.pagoId)
+  }
+
 }
