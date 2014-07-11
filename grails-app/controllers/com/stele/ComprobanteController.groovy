@@ -35,7 +35,6 @@ class ComprobanteController {
     def pago = comprobanteService.rechazarPago(params.transactionId)
     def dependiente = dependienteService.obtenerDependientesPorPagos([pago])
     notificacionService.notificarPagoRechazado(dependiente)
-    log.error "El pago se ha rechazado"
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
