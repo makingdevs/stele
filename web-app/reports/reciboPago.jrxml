@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reciboPago" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8d8e9aa-f68c-40ac-a01d-e2718a8c714e">
-	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="780"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<field name="nombreTutor" class="java.lang.String"/>
 	<field name="nombreAlumno" class="java.lang.String"/>
@@ -20,9 +20,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="57" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="285" height="21" forecolor="#003399" uuid="9f801a17-641d-4f6b-bf9c-d397bc8c4a9a"/>
+				<reportElement x="0" y="12" width="285" height="21" forecolor="#003399" uuid="9f801a17-641d-4f6b-bf9c-d397bc8c4a9a"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
@@ -31,7 +31,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="306" splitType="Stretch">
+		<band height="651" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="565" width="555" height="22" backcolor="#F5F5F5" uuid="f0d5c597-72ef-44ea-be9f-c78e713eb7a1"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
 			<line>
 				<reportElement x="356" y="0" width="1" height="29" uuid="0bb12553-d2ca-4472-bf07-52961945b75b"/>
 			</line>
@@ -114,7 +120,7 @@
 				<text><![CDATA[Importe]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="1" y="227" width="555" height="22" backcolor="#F5F5F5" uuid="9b28a11c-42e5-4676-9577-f6c697906648"/>
+				<reportElement x="0" y="227" width="555" height="22" backcolor="#F5F5F5" uuid="9b28a11c-42e5-4676-9577-f6c697906648"/>
 				<graphicElement>
 					<pen lineWidth="0.0"/>
 				</graphicElement>
@@ -125,7 +131,7 @@
 				<text><![CDATA[RECIBIÓ: Nombre y Firma]]></text>
 			</staticText>
 			<line>
-				<reportElement x="213" y="280" width="130" height="1" uuid="7ddb6106-3edb-4309-a21d-3c832c671901"/>
+				<reportElement x="213" y="281" width="130" height="1" uuid="7ddb6106-3edb-4309-a21d-3c832c671901"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>
@@ -158,7 +164,7 @@
 				<textFieldExpression><![CDATA[$F{nombreTutor}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="49" y="52" width="290" height="14" uuid="58a7cece-ee5e-4d81-b0c1-390c3e841171"/>
+				<reportElement x="48" y="52" width="290" height="14" uuid="58a7cece-ee5e-4d81-b0c1-390c3e841171"/>
 				<textFieldExpression><![CDATA[$F{nombreAlumno}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -176,7 +182,7 @@
 				<text><![CDATA[GRUPO]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="462" y="52" width="67" height="14" uuid="ee1125f0-bfa7-4665-9392-a15162c8eb37"/>
+				<reportElement x="480" y="52" width="20" height="14" uuid="ee1125f0-bfa7-4665-9392-a15162c8eb37"/>
 				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -244,15 +250,211 @@
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="339" width="356" height="29" backcolor="#CCCCCC" uuid="a53d9bf3-429c-4a93-a508-30f1376bc8bf"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTE DE PAGO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="357" y="339" width="198" height="29" backcolor="#CCCCCC" uuid="220f57f2-0d17-499d-bd85-15cb5c909a35"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="356" y="339" width="1" height="29" uuid="54612766-fefb-4f30-b2ea-a439c958c582"/>
+			</line>
+			<rectangle>
+				<reportElement mode="Opaque" x="1" y="368" width="554" height="47" uuid="6afe8b8f-7038-44d6-a8ee-c7db52e0ef7a"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="-1" y="339" width="1" height="76" forecolor="#0099FF" uuid="2a45a782-6e40-4d6b-9a91-f89964caf558"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-1" y="414" width="557" height="1" uuid="f1a5973c-33d8-4dff-86dc-e45a989bf4cd"/>
+			</line>
+			<line>
+				<reportElement x="555" y="339" width="1" height="76" forecolor="#0099FF" uuid="bb3c95f7-5f47-4b84-94ca-3a8a8ca082c1"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="372" width="36" height="14" uuid="931b6422-5fc1-4008-86bd-27a82acd99fd"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<text><![CDATA[Tutor:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="39" y="372" width="304" height="14" uuid="ca08d284-e766-4864-b778-eb40136123e2"/>
+				<textFieldExpression><![CDATA[$F{nombreTutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="392" width="49" height="14" uuid="4ea43178-6384-4793-8c71-40687560b892"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Alumno:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="48" y="392" width="290" height="14" uuid="21ead62d-c5f6-40ac-9fa8-01c891fbf9c2"/>
+				<textFieldExpression><![CDATA[$F{nombreAlumno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="356" y="372" width="77" height="14" uuid="8731ac89-eb81-4a4a-a322-ed698c325a24"/>
+				<textElement verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de pago:]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement x="433" y="372" width="100" height="14" uuid="f043044a-5001-4b6d-96b9-fb905891c97e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="414" y="392" width="1" height="14" uuid="56164f21-ed4b-4f81-8e24-98507ef81fee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="416" y="392" width="44" height="14" uuid="972c7ad3-ab12-485a-b26e-2d332fce4851"/>
+				<textElement>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[GRUPO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="427" width="555" height="27" backcolor="#CCCCCC" uuid="f86487c2-e840-48a3-9300-1737e02de879"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="427" width="111" height="27" uuid="97e64ef9-9679-4c7a-b757-2f888d1ef7dd"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="427" width="1" height="160" uuid="55e47980-d75f-4c44-ab4a-8494d9942789"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="458" width="100" height="20" uuid="a6afb842-2eda-4b9b-8861-92a91db449fb"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conceptoPago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00" isBlankWhenNull="true">
+				<reportElement x="443" y="458" width="100" height="20" uuid="66d0fbe7-43c0-4085-9bd7-0071057149de"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidadPago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00" isBlankWhenNull="true">
+				<reportElement x="443" y="492" width="100" height="14" uuid="fc2bdc1a-e80d-48aa-b7e8-9b31d7503a20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recargosAcumulados}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="492" width="72" height="14" uuid="5effdd51-39d2-4bc2-a656-e7ac8c3e12b6"/>
+				<textElement>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Recargo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="544" width="134" height="20" uuid="42a32273-2dd4-47ee-982c-b5ed37ca3730"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph firstLineIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoPago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="141" y="544" width="72" height="20" uuid="010f2a70-6246-453d-aaf5-2209517a7447"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Referencia:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="215" y="544" width="100" height="20" uuid="a8721ee2-75d9-4c11-b0d4-f7e1ee0c010d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="555" y="427" width="1" height="160" uuid="705990c6-0426-4477-ba08-24714c26fada"/>
+			</line>
+			<line>
+				<reportElement x="0" y="587" width="556" height="1" uuid="87139928-911b-45a9-85be-68b350319a01"/>
+			</line>
+			<staticText>
+				<reportElement x="413" y="565" width="46" height="22" uuid="1c300aa6-826a-453f-a905-b3bdb51fa682"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="¤#,##0.00" isBlankWhenNull="true">
+				<reportElement x="459" y="565" width="78" height="22" uuid="3fb5abbd-0a9c-46d3-9e83-a12de078aac0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="213" y="623" width="130" height="1" uuid="945d9983-217b-499f-8ed4-428dd0df41c2"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="623" width="554" height="22" uuid="8d83bcce-a9c5-476f-9257-268e283fed0a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[RECIBIÓ: Nombre y Firma]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="462" y="52" width="20" height="14" uuid="b0be69f4-b475-4e9a-8d16-4dd8a4f1a5f7"/>
+				<textFieldExpression><![CDATA[$F{grado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="356" y="392" width="57" height="14" uuid="5e70cbec-50ab-4946-988c-c37391e81ad6"/>
+				<textFieldExpression><![CDATA[$F{nivelEstudio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="462" y="392" width="20" height="14" uuid="f717ca1d-2c1a-4d73-9411-d5ec2a64d169"/>
+				<textFieldExpression><![CDATA[$F{grado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="480" y="392" width="20" height="14" uuid="a020dba2-95c8-4e74-9212-d7b69691f867"/>
+				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-19" y="321" width="593" height="1" uuid="5f25e66d-0cce-4a7b-8670-bb6a905ac336"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
