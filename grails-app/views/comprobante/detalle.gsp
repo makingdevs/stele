@@ -145,19 +145,44 @@
                       <div class="center">
     
                         <span class="control-group warning">
-
+                          <g:if test="${pago.comprobanteDePago}">
+                            <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:pago.id]">
+                            <span class="btn btn-large btn-info  blue" href="#">
+                              <i class="icon-file-text bigger-160"></i>
+                              Comprobante Pago
+                            </span>
+                            </g:link>
+                          <span class=" help-inline pink">
+                            Comprobante adjuntado <strong> ${pago.lastUpdated.format('dd/MM/yyyy')} </strong>
+                          </span>
+                          </g:if>
+                          <g:else>
+                            <span class=" help-inline pink">
+                              No hay comprobante, el pago fue en efectivo.
+                            </span>
+                          </g:else>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header blue">
+                    <h4>Descargar recibo de pago</h4>
+                  </div>
+                  <div class="widget-body">
+                    <div class="widget-main">
+                      <div class="center">
+                        <span class="control-group warning">
                           <span class="btn btn-large btn-info  blue" href="#">
                             <i class="icon-file-text bigger-160"></i>
-                            Comporbante Pago
-                          </span>
-                          <span class=" help-inline pink">
-                              Comporbante adjuntado <strong> ${pago.lastUpdated.format('dd/MM/yyyy')} </strong>
+                              Recibo de pago
                           </span>
                         </span>
                       </div>
                     </div>
                   </div>
-                </div>           
+                </div>          
               </div>  
 
               </div>
