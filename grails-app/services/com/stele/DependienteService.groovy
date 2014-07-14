@@ -34,6 +34,7 @@ class DependienteService {
   }
 
   Dependiente registrar(Dependiente dependiente, Long usuarioId, def institucion){
+    dependiente.save()
     def user = Usuario.withCriteria{
       eq('id', usuarioId)
       instituciones {
