@@ -25,7 +25,8 @@ class ReciboDePagoService {
                                recargosAcumulados:pago.recargosAcumulados,
                                total:pago.cantidadDePago.subtract(pago.recargosAcumulados),
                                fechaPago:pago.fechaDePago,
-                               tipoPago:pago.tipoDePago)
+                               tipoPago:pago.tipoDePago,
+                               referencia:pago.referencia)
 
   }
 

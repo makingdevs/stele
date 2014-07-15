@@ -18,7 +18,8 @@ class ReciboDePagoServiceSpec extends Specification {
       def fecha = new GregorianCalendar(2014, Calendar.MARCH, 11) 
       def pagoConciliado = new Pago(conceptoDePago:"Inscripcion",cantidadDePago:900,recargosAcumulados:400,
                                     fechaDePago:fecha.time,fechaDeVencimiento:fecha.time,
-                                    tipoDePago:TipoDePago.TRANSFERENCIA_BANCARIA).save(validate:false);
+                                    tipoDePago:TipoDePago.TRANSFERENCIA_BANCARIA,
+                                    referencia:"2000").save(validate:false);
       def perfilTutor = new Perfil(nombre:"Silvia",
                                    apellidoPaterno:"Garcia",
                                    apellidoMaterno:"Campos").save(validate:false)
@@ -56,5 +57,6 @@ class ReciboDePagoServiceSpec extends Specification {
       datosReciboDePago.total == 500
       datosReciboDePago.fechaPago == fecha.time
       datosReciboDePago.tipoPago == TipoDePago.TRANSFERENCIA_BANCARIA.toString()
+      datosReciboDePago.referencia == "2000"
   }
 }

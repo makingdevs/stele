@@ -24,7 +24,7 @@ class ComprobanteController {
   }
 
   def validarComprobante() {
-    def pago = comprobanteService.aprobarPago(params.transactionId, Date.parse('dd/MM/yyyy',params.fechaDePago), params.tipoDePago)
+    def pago = comprobanteService.aprobarPago(params.transactionId, Date.parse('dd/MM/yyyy',params.fechaDePago), params.tipoDePago, params.folioBanco)
     def dependiente = dependienteService.obtenerDependientesPorPagos([pago])
     notificacionService.notificarPagoAprovado(dependiente)
     flash.success = "El comprobante fue aprobado"
