@@ -1114,6 +1114,6 @@ databaseChangeLog = {
 		addForeignKeyConstraint(baseColumnNames: "usuario_id", baseTableName: "usuario_rol", constraintName: "FK3118953E2AB2F39E", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "usuario", referencesUniqueColumn: "false")
 	}
 
-
 	include file: 'add-relation-account-transactionBanking.groovy'
+  include file: 'agregando-referencia-pago.groovy'
 }
