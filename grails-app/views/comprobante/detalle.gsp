@@ -174,10 +174,10 @@
                     <div class="widget-main">
                       <div class="center">
                         <span class="control-group warning">
-                          <span class="btn btn-large btn-info  blue" href="#">
+                          <g:link class="btn btn-large btn-info  blue" controller="pago" action="generarComprobante" params="[pagoId:pago.id]">
                             <i class="icon-file-text bigger-160"></i>
                               Recibo de pago
-                          </span>
+                          </g:link>
                         </span>
                       </div>
                     </div>
