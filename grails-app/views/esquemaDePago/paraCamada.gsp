@@ -121,9 +121,9 @@
                                           <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Concepto</label>
                                           <div class="controls">
+                                            <input type="hidden" id="urlConcepto" value="${g.createLink(action:'obtenerEsquemaDePagoPorConcepto', controller:'esquemaDePago')}" />
                                             <div class="input-prepend">
-                                              <input type="hidden" id="urlConcepto" value="${g.createLink(action:'obtenerEsquemaDePagoPorConcepto', controller:'esquemaDePago')}" />
-                                              <input type="text" id="conceptoDePago" class="typeahead" data-provide="typeahead" name="conceptoDePago" placeholder="Concepto" autocomplete="off" >
+                                              <input type="text" id="conceptoDePago" class="typeahead2" data-provide="typeahead" name="conceptoDePago" placeholder="Concepto" autocomplete="off" >
                                               <span class="add-on">
                                                 <i class="icon-edit"></i>
                                               </span>
@@ -190,7 +190,7 @@
                                               <label class="control-label" for="txtConcepto">Concepto</label>
                                               <div class="controls">
                                                 <div class="input-prepend">
-                                                  <input type="text" id="conceptoDePagoRecurrente" class="typeahead" data-provide="typeahead" name="conceptoDePagoRecurrente" placeholder="Concepto" autocomplete="off" >
+                                                  <input type="text" id="conceptoDePagoRecurrente" class="typeahead2" data-provide="typeahead" name="conceptoDePagoRecurrente" placeholder="Concepto" autocomplete="off" >
                                                   <span class="add-on">
                                                     <i class="icon-edit"></i>
                                                   </span>

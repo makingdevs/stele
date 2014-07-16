@@ -1,5 +1,5 @@
 $(function() {
-  $( '.typeahead' ).typeahead({
+  $('#conceptoDePago,#conceptoDePagoRecurrente').typeahead({
     source: function( id, process ) {
       var $direccion = $('#urlConcepto')
       console.log($direccion[0].value);
@@ -125,7 +125,7 @@ $(function() {
 
 
 $(function() {
-  $( '.typeahead2' ).typeahead({
+  $( '#nombreDeDescuento' ).typeahead({
     source: function( query, process ) {
       var $address = $('#urlDescuento')
       var $url = $address[0].value+ '/' + query;

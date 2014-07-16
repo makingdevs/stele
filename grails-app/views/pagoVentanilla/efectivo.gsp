@@ -53,7 +53,7 @@
     <div class="page-content">
       <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
       <div class="page-header position-relative  ">
-         <font color="2E9AFE"><h1>Comprobante de pago</h3></font>
+         <font color="2E9AFE"><h1>Comprobante de pago</h1></font>
       </div><!--/.page-header-->
         <div class="page-content">
           <!--PAGE CONTENT BEGINS-->
