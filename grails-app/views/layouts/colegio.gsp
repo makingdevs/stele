@@ -167,7 +167,7 @@
           <li>
             <g:link controller="pago" action="mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos" >
               <i class="icon-random"></i>
-              <span class="menu-text">Cociliacion</span>
+              <span class="menu-text">Conciliación</span>
             </g:link>
           </li>
           </ul><!--/.nav-list-->
