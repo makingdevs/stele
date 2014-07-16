@@ -17,6 +17,7 @@
                 <th colspan="2" ></th>
                 <th></th>
                 <th></th>
+                <th></th>
               </tr>
               <tr>
                 <th>Concepto</th>
@@ -32,7 +33,8 @@
                 <th>F. Vencimiento</th>
                 <th>Monto</th>
                 <th></th>
-                <th></th>
+                <th>Comprobante</th>
+                <th>Recibo de pago</th>
               </tr>
             </thead>
             <tbody>
@@ -46,7 +48,7 @@
                   <td>$ ${it.cantidadDePago}</td>      
                   <td width="70"><span class="label label-info arrowed-in">Pendiente</span></td>
                   <td class="center" width="140">
-                     <g:if test="${!flash.ventanilla}">
+                    <g:if test="${!flash.ventanilla}">
                       <g:link controller="reciboPago" id="${it.id}" class="btn btn-mini btn-purple">
                         Adjunte Comprobante
                       </g:link>
@@ -57,6 +59,7 @@
                       </g:link>
                     </g:elseif>
                   </td>
+                  <td></td>
                 </tr>
               </g:each>
               <g:each in="${pagosProcesados}">
@@ -68,8 +71,8 @@
                   <td>${it.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
                   <td>$ ${it.cantidadDePago}</td>      
                   <td width="70"><span class="label label-warning arrowed-in">Revision</span></td>
-                  <td class="center" width="140"> 
-                  </td>
+                  <td class="center" width="140"></td>
+                  <td></td>
                 </tr>
               </g:each>
               <g:each in="${pagoCorrectos}">
@@ -82,6 +85,16 @@
                   <td>$ ${it.cantidadDePago}</td>      
                   <td width="70"><span class="label label-success arrowed-in">Pagado</span></td>
                   <td class="center" width="140">
+                  <g:if test="${it.comprobanteDePago}">
+                    <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:it.id]" class="btn btn-mini btn-info">
+                      Descargar
+                    </g:link>
+                  </g:if>
+                  </td> 
+                  <td class="center" width="140">
+                    <g:link controller="pago" action="generarComprobante" params="[pagoId:it.id]" class="btn btn-mini btn-info">
+                      Descargar 
+                    </g:link>
                   </td>
                 </tr>
               </g:each>
