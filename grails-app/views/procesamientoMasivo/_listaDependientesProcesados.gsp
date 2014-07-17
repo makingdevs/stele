@@ -49,7 +49,7 @@
                                           <th>Nombre del padre/tutor</th>
                                           <th>Matrícula</th>
                                           <th>Nombre del estudiante</th>
-                                          <th>Nivel de Estudios</th>
+                                          <th>Nivel</th>
                                           <th>Grado</th>
                                           <th>Grupo</th>
                                           <th>Turno</th>

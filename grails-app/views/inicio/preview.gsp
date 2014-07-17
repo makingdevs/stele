@@ -24,7 +24,7 @@
                 Inscripcion Archivo + Cobro
                 <small>
                   <i class="icon-double-angle-right"></i>
-                  Inscripcion Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+                  Inscripción Archivo de Alumnos y su Padre o Tutor, mas agregar un cobro a los alumnos del archivo
                 </small>
               </h1>
             </div>
@@ -77,7 +77,7 @@
                             </div><!--PAGE EDN CIFRA-->
 
                             <!--Inica DEtalleRA-->
-                            <h3 class="header smaller lighter purple">Detalle alumnos</h3>
+                            <h3 class="header smaller lighter purple">Detalle de alumnos</h3>
                             <div class="row-fluid">
                               <g:render template="datosTabulares" model="[listaDeMapaDeDominios:listaDeMapaDeDominios]" />
                             </div>
