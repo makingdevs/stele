@@ -132,7 +132,7 @@
               <li>
                 <g:link controller="inscripcionManual" action="inscripcion" params="[accion:'manual']">
                   <i class="icon-double-angle-right"></i>
-                  Manual
+                  Alta por alumno
                 </g:link>
               </li>
             </ul>
@@ -145,24 +145,24 @@
             </a>
             <ul class="submenu">
               <li>
-                <g:link controller="pago" action="generarPagoEnVentanilla">
-                  <i class="icon-double-angle-right"></i>
-                  Manual
-                </g:link>
-              </li>
-              <li>
                 <g:link controller="esquemaDePago" action="nuevo">
                   <i class="icon-double-angle-right"></i>
-                  Esquema de Pago
+                  Catálogo de Conceptos
                 </g:link>
               </li>
               <li>
                 <g:link controller="dependiente" action="busqueda">
                   <i class="icon-double-angle-right"></i>
-                  Busqueda
+                  Generar Cobros
                 </g:link>
               </li>
             </ul>
+          </li>
+          <li>
+            <g:link controller="pago" action="generarPagoEnVentanilla">
+              <i class="icon-check"></i>
+              <span class="menu-text">Registrar Pago</span>
+            </g:link>
           </li>
           <li>
             <g:link controller="pago" action="mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos" >
@@ -170,7 +170,7 @@
               <span class="menu-text">Conciliación</span>
             </g:link>
           </li>
-          </ul><!--/.nav-list-->
+         </ul><!--/.nav-list-->
         
 <!--#Menu stele-->
 
