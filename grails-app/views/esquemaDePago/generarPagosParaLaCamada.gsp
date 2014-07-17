@@ -14,7 +14,7 @@
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
             <li>
-              <a href="#">Inscripcion</a>
+              <a href="#">Inscripción</a>
               <span class="divider">
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
@@ -57,7 +57,7 @@
                                         </g:if>
                                         <div class="widget-header ">
                                           <h5 class="bigger ">
-                                            Pagos Genenrados
+                                            Cobros Generados
                                           </h5>
                                         </div>
                                         <div class="row-fluid">

@@ -32,7 +32,7 @@
       <td>
         <div class="control-group">
           <div class="controls">
-            <label>Ubicacion academica</label>
+            <label>Ubicación académica</label>
             <g:if test="${action?.distribucionInstitucional?.nivelDeEstudio}">
               <g:select id="nivelDeEstudio" name="nivelDeEstudio" from="${NivelDeEstudio.values()}" value="${action?.distribucionInstitucional?.nivelDeEstudio.key}" optionKey="key" />
             </g:if>
@@ -77,9 +77,9 @@
   </div>
   <div class="control-group">
     <div class="controls">
-      <label>Matricula</label>
+      <label>Matrícula</label>
       <span class="form-field-select-1">
-        <input type="text" id="matricula" name="matricula" placeholder="matricula" value="${action?.dependiente?.matricula}" />
+        <input type="text" id="matricula" name="matricula" placeholder="matrícula" value="${action?.dependiente?.matricula}" />
       </span>
     </div>
   </div>

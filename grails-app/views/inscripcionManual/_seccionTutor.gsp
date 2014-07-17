@@ -21,7 +21,7 @@
     <label class="control-label" for="txtNombreTutor">Contacto</label>
     <div class="controls">
       <span class="input-icon">
-        <input type="text" id="telefono" name="telefono" placeholder="telefono" value="${user?.perfil?.telefonos?.first()?.numeroTelefonico}" />
+        <input type="text" id="telefono" name="telefono" placeholder="teléfono" value="${user?.perfil?.telefonos?.first()?.numeroTelefonico}" />
         <i class="icon-phone"></i> 
       </span>
       <span class="input-icon">

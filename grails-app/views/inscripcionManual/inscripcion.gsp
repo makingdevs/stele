@@ -27,7 +27,7 @@
               </span>
 
             <li>
-              <a href="#">Inscripcion</a>
+              <a href="#">Inscripción</a>
               <span class="divider">
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
@@ -39,10 +39,10 @@
         <div class="page-content">
           <div class="page-header position-relative">
             <h1>
-              Inscripcion Manual
+              Inscripción Manual
               <small>
                 <i class="icon-double-angle-right"></i>
-                Inscripcion Manual de un Alumno y Padre o Tutor
+                Inscripción Manual de un Alumno y Padre o Tutor
               </small>
             </h1>
           </div>
