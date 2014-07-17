@@ -49,7 +49,7 @@ class EsquemaDePagoController {
         flash.dependientes = params.listaDependientes
       else
         flash.dependientes = params.listaDependientes.flatten()
-
+      flash.message = params.message
     }
     [camada:params?.camada]
   }
@@ -79,12 +79,13 @@ class EsquemaDePagoController {
     if (pagos)
       notificarCreacionDePago(pagos)
     flash.pago = pagos
-    redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada]
+    redirect action:"muestraPagosDeCamada",params: params + [camada:cpc.camada,message:params.message]
   }
 
   def muestraPagosDeCamada(){
     def listaPagos = Pago.findAllByIdInList(flash.pago.flatten()*.id)
     flash.success = "Los cobros han sido registrados"
+    flash.message = params.message
     render(view: "generarPagosParaLaCamada", model: [pagos: listaPagos])
   }
 

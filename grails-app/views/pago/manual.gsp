@@ -18,7 +18,7 @@
         <div class="page-content">
           <div class="page-header position-relative">
             <h1>
-              Pago manual
+              Registrar pago 
               <small>
                 <i class="icon-double-angle-right"></i>
                 Pago manual

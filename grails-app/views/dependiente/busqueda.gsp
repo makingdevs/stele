@@ -26,16 +26,16 @@
             <span class="divider">
               <i class="icon-angle-right arrow-icon"></i>
             </span>
-          <li class="active">Conciliacion</li>
+          <li class="active">Generar Cobros</li>
         </ul><!--.breadcrumb-->
       </div>
       <div class="page-content">
         <div class="page-header position-relative">
           <h1>
-            Inscripcion Archivo + Cobro
+            Generar Cobros
             <small>
               <i class="icon-double-angle-right"></i>
-              Inscripcion Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+              Registrar un cobro unitario o por bloque 
             </small>
           </h1>
         </div>

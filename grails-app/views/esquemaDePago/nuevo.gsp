@@ -49,13 +49,13 @@
             <span class="divider">
               <i class="icon-angle-right arrow-icon"></i>
             </span>
-            <li class="active">Conciliacion</li>
+            <li class="active">Alta de Conceptos</li>
           </ul><!--.breadcrumb-->
         </div>
         <div class="page-content">
           <div class="page-header position-relative">
             <h1>
-              Esquemas de Cobro
+              Catálogo de Conceptos
               <small>
                 <i class="icon-double-angle-right"></i>
               </small>

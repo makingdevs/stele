@@ -36,6 +36,7 @@
           </thead>
 
           <tbody>            
+              <input type="hidden" name="message" value="Generar Cobros"/>
               <input type="hidden" id="camada" name="camada", value="dependientesSearch_${new Date().format('dd-MM-yyyy')}">
               <g:each in="${dependiente}">
               <tr>

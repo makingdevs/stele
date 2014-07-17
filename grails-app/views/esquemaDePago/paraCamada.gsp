@@ -54,10 +54,21 @@
         <div class="page-content">
           <div class="page-header position-relative">
             <h1>
-              Inscripcion Archivo + Cobro
+              <g:if test="${flash.message}">
+                <input type="hidden" name="message" value="${flash.message}"/>
+                ${flash.message}
+              </g:if>
+              <g:else>
+                Inscripcion Archivo + Cobro
+              </g:else>
               <small>
                 <i class="icon-double-angle-right"></i>
-                Inscripcion Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+                <g:if test="${flash.message}">
+                  Registrar un cobro unitario o por bloque
+                </g:if>
+                <g:else>
+                  Inscripcion Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+                </g:else>
               </small>
             </h1>
           </div>
@@ -106,6 +117,9 @@
                                 <div class="tab-content">
                                   <div id="faq-tab-111" class="tab-pane active">
                                     <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+                                      <g:if test="${flash.message}">
+                                        <input type="hidden" name="message" value="${flash.message}"/>
+                                      </g:if>
                                       <input type="hidden" name="camada" value="${camada}">
                                       <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
                                         <div class="alert alert-info">
