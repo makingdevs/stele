@@ -2,21 +2,16 @@
 <g:each in="${descuentos?.sort({ it.id })}" var="descuento">
   <dl class="dl-horizontal">
     <dt>
-      Nombre Descuento:  
+      Nombre:  
     </dt>
     <dd>
-      ${descuento?.nombreDeDescuento}
-    </dd>
-    <dt>
-       Descuento: 
-     </dt>
-     <dd>
-       <g:if test="${descuento?.cantidad}">
-         ${"\$"+descuento?.cantidad}
-       </g:if>
-       <g:else>
-         ${"%"+descuento?.porcentaje}
-       </g:else>
+      ${descuento?.nombreDeDescuento}&nbsp;&nbsp;&nbsp;&nbsp;Descuento:
+      <g:if test="${descuento?.cantidad}">
+        <span class="add-on">$</span>${descuento?.cantidad}
+      </g:if>
+      <g:else>
+        <span class="add-on">%</span>${descuento?.porcentaje}
+      </g:else>
     </dd>
   </dl>
 </g:each>

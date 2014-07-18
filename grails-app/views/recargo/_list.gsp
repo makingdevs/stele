@@ -3,15 +3,15 @@
   <dl class="dl-horizontal">
     <g:if test="${recargo.porcentaje}">
       <dt>
-        Porcentaje : 
+        Recargo <span class="add-on">%</span>: 
       </dt>
       <dd>
-        ${recargo.porcentaje} <span class="add-on">%</span>
+        ${recargo.porcentaje}       
       </dd>
     </g:if>
     <g:elseif test="${recargo.cantidad}">
        <dt>
-        Cantidad : 
+        Recargo <span class="add-on">$<span>: 
       </dt>
       <dd>
         ${recargo.cantidad}
