@@ -7,16 +7,5 @@
     <dd>
       ${descuento?.nombreDeDescuento}
     </dd>
-    <dt>
-      Descuento: 
-    </dt>
-    <dd>
-      <g:if test="${descuento?.cantidad}">
-        ${"\$"+descuento?.cantidad}
-      </g:if>
-      <g:else>
-        ${"%"+descuento?.porcentaje}
-      </g:else>
-   </dd>
   </dl>
 </g:each>
