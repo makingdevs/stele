@@ -5,17 +5,14 @@
   </head>
   <body>
     <r:script>
-
       $(document).ready(function(){
         $("#submitFormPayout").click(function(){
-          var $fecha = $('#fechaDeVencimiento')
-          if ($fecha[0].value != "") {
+          if($('a[href=#faq-tab-111]').parent().attr("class") == 'active'){
             $("#pagoGeneracion").submit();
-            $('#imagenCarga').removeClass("hidden");
-          } else if ($fecha[0].value != null){
+          }else if($('a[href=#faq-tab-222]').parent().attr("class") == 'active'){
             $("#pagoGeneracionrecurrente").submit();
-            $('#imagenCarga').removeClass("hidden");
           }
+          $('#imagenCarga').removeClass("hidden");
         });
       });
       $(document).ready(function() {

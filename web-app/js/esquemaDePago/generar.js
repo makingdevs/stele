@@ -34,7 +34,7 @@
       },
       messages: {
         'conceptoDePago': {
-          required: "Es requerida ingresar un concepto"
+          required: "Es necesario ingresar un concepto"
         },
         'cantidadDePago':{
           required: "Ingrese un monto",
@@ -78,18 +78,24 @@
        'cantidadDePagoRecurrente': {
           required:true,
           number: true
+       },
+       'meses':{
+         required:true
        }
       },
       messages: {
        'conceptoDePagoRecurrente': {
-          required: "Es requerida ingresar un concepto"
+          required: "Es necesario ingresar un concepto"
        },
        'diasVencimientoPago': {
-          required: "seleccione el numero del dia en que vence el pago"
+          required: "Seleccione el numero del dia en que vence el pago"
        },
        'cantidadDePagoRecurrente': {
           required: "Ingrese un monto",
           number: "Solo se aceptan numeros"
+       },
+       'meses': {
+          required: ""
        }
       }, 
       validClass: "success",
