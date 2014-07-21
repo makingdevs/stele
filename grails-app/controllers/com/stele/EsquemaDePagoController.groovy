@@ -97,8 +97,7 @@ class EsquemaDePagoController {
 
   private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
     def listaDePagos = []
-    def listaDeDescuentos = grupoPagoCommand.descuentoIds?.first() ?: ""
-    listaDeDescuentos = listaDeDescuentos?.replace('[','')?.replace(']','')?.split(',') 
+    def listaDeDescuentos = grupoPagoCommand.descuentoIds ?: [] 
     pagos.each{ pago -> 
       listaDeDescuentos.each { idDescuento ->
         def descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento)
