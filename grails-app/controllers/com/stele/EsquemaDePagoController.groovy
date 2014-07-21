@@ -75,7 +75,7 @@ class EsquemaDePagoController {
     def grupoPagoCommand = wrapperCommandService.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, springSecurityService.currentUser.instituciones?.first())
     def pagos = generacionDePagoService.generaPagoParaGrupo(grupoPagoCommand)
     def esquemaDePago = esquemaDePagoService.buscarOSalvarEsquemaDePago(grupoPagoCommand)
-    pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos)
+    pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos) ?: pagos
     if (pagos)
       notificarCreacionDePago(pagos)
     flash.pago = pagos
@@ -97,24 +97,22 @@ class EsquemaDePagoController {
 
   private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
     def listaDePagos = []
-    def listaDeDescuentos = grupoPagoCommand.descuentoIds ?: [] 
     pagos.each{ pago -> 
-      listaDeDescuentos.each { idDescuento ->
-        def descuentoAplicable = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento)
-        listaDePagos << asignarDescuntosAplicablesAlosPagos(descuentoAplicable, pago)
-      }
+      def descuentosAplicables = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento)
+      listaDePagos +=  asignarDescuntosAplicablesAlosPagos(descuentosAplicables,pago)
     }
+    listaDePagos
   }
 
   private def asignarDescuntosAplicablesAlosPagos(def descuentoAplicable, Pago pago) {
     def listadePagos = []
-      if (descuentoAplicable instanceof DescuentoAplicable)
-        listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoAplicable, pago.id)
-      else if (descuentoAplicable instanceof List<DescuentoAplicable>) {
-        descuentoAplicable.each { descuentoApl ->
-          listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoApl, pago.id)
-        }
+    if (descuentoAplicable instanceof DescuentoAplicable)
+      listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoAplicable, pago.id)
+    else if (descuentoAplicable instanceof List<DescuentoAplicable>) {
+      descuentoAplicable.each { descuentoApl ->
+        listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoApl, pago.id)
       }
+    }
     listadePagos
   }
 
