@@ -52,7 +52,7 @@ $(function() {
                 id: data.id,
                 name: data.value.concepto,
                 cantidadDePago: data.cantidadDePago, 
-                nombredescuentos: data.nombresDescuentos,
+                descuentos: data.descuentos,
                 descuentosIds: data.descuentosIds,
                 toString: function () {
                   return JSON.stringify(this);
@@ -89,8 +89,7 @@ $(function() {
     items: 10,
     minLength: 2,
     updater: function (item) {
-        var item = JSON.parse(item);        
-        var descuentos = item.nombredescuentos.replace("[","").replace("]","").split(",")
+        var item = JSON.parse(item);         
         $('#conceptoDePagoRecurrente').val(item.name);
         $('#cantidadDePago').val(item.cantidadDePago);
         $('#cantidadDePagoRecurrente').val(item.cantidadDePago);
@@ -113,11 +112,19 @@ $(function() {
           $('#labelRecargoPorcentaje1').removeClass("hidden");
         }
         $('#idsDescuentos').val(item.descuentosIds);        
-                
-        $.each(descuentos,function(index,value){
-          $(".descuentosTableBody").append('<tr><td>'+value.trim()+'</td><td></td></tr>');
-        });        
-        $('.table').removeClass("hidden");
+        
+        
+        $(".descuentosTableBody").html("");
+        $('.table').removeClass("hidden");        
+        if(item.descuentos.length){          
+          $.each(item.descuentos,function(index,value){          
+            $(".descuentosTableBody").append('<tr><td>'+value.descuento+'</td><td>'+value.cantidad+'</td></tr>');
+          });          
+        }
+        else{
+          $(".descuentosTableBody").append('<tr><td colspan="2">El concepto no tiene descuentos</td></tr>');
+        }
+
         $('#nombreDescuentos1').val(item.nombredescuentos);
         $('#nombreDescuentos1').removeClass("hidden");
         $('#labelDescuentos1').removeClass("hidden");
