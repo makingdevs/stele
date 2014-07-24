@@ -169,11 +169,19 @@
                                           <input type="hidden" id="idsDescuentos" name="idsDescuentos">
                                           <label class="hidden" id="labelRecargoCantidad">Recargo Cantidad</label><input class="hidden" id="cantidadRecargo" name="cantidadRecargo" readonly>
                                           <label class="hidden" id="labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
-                                          <div class="descuentosDiv">
-                                            <label class="hidden" id="labelDescuentos">Descuentos </label>
-                                            <div class="descuentosList">
-                                            </div>
+                                          <div class="descuentosDiv">                                            
+                                            <table class="table hidden">
+                                              <thead>
+                                                <tr>
+                                                  <th>Descuento</th>
+                                                  <th>Importe</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody class="descuentosTableBody">
+                                              </tbody>
+                                            </table>                                            
                                           </div>
+
                                         </div>
                                         <div class="span2">
                                           <div id="descuentoCreado">

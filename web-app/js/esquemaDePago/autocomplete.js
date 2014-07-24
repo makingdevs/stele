@@ -113,14 +113,11 @@ $(function() {
           $('#labelRecargoPorcentaje1').removeClass("hidden");
         }
         $('#idsDescuentos').val(item.descuentosIds);        
-        
-        $(".descuentosList").html("");
-        $.each(descuentos,function(index,value){          
-          $(".descuentosList").append('<input value="'+value.trim()+'" name="nombreDescuentos'+index+'" readonly>');
-        });
-        $('#nombreDescuentos').val();
-        $('#nombreDescuentos').removeClass("hidden");
-        $('#labelDescuentos').removeClass("hidden");
+                
+        $.each(descuentos,function(index,value){
+          $(".descuentosTableBody").append('<tr><td>'+value.trim()+'</td><td></td></tr>');
+        });        
+        $('.table').removeClass("hidden");
         $('#nombreDescuentos1').val(item.nombredescuentos);
         $('#nombreDescuentos1').removeClass("hidden");
         $('#labelDescuentos1').removeClass("hidden");
