@@ -28,7 +28,7 @@
           <div class="row-fluid">
             <g:if test="${flash.pagoCorrecto}">  
               <div id="message"class="alert alert-success">
-                Se a procesado el pago correctamente
+                Se ha procesado el pago correctamente
               </div>
             </g:if>
             <div class="span12">
@@ -41,24 +41,19 @@
                     <g:formRemote name="busquedaIndividual" update="listaResultados" url="[controller: 'dependiente', action: 'busquedaDependienteParaObtenerPagos']">
                       <div class="widget-body">
                         <div class="widget-main">
-                          <input type="text" id="nombreDependiente" name="nombreDependiente" placeholder="Nombre del Dependiente" />
-                          <button type="submit" class="btn btn-purple btn-small">
-                            Buscar
-                            <i class="icon-search icon-on-right bigger-110"></i>
-                          </button>
+                          <div class="input-append">
+                            <input type="text" id="nombreDependiente" name="nombreDependiente" placeholder="Nombre del Dependiente" />
+                            <button type="submit" class="btn btn-purple btn-small">
+                              Buscar
+                              <i class="icon-search icon-on-right bigger-110"></i>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </g:formRemote>
                   </div>
-                  <div class="widget-box" >
-                    <div class="widget-header">
-                      <h5> Lista de Alumnos </h5>
-                    </div>
-                    <div class="widget-body">
-                      <div class="widget-main no-padding" id="listaResultados">
-                        <g:render template="/dependiente/resultados" />
-                      </div>
-                    </div>
+                  <div class="widget-box" id="listaResultados" >
+                    <g:render template="/dependiente/resultados" />
                   </div>
                 </div>
               </div>  
