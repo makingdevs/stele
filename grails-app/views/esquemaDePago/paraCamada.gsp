@@ -40,7 +40,7 @@
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
             <li>
-              <a href="#">Inscripcion</a>
+              <a href="#">Inscripción</a>
               <span class="divider">
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
@@ -56,7 +56,7 @@
                 ${flash.message}
               </g:if>
               <g:else>
-                Inscripcion Archivo + Cobro
+                Inscripción Archivo + Cobro
               </g:else>
               <small>
                 <i class="icon-double-angle-right"></i>
@@ -64,7 +64,7 @@
                   Registrar un cobro unitario o por bloque
                 </g:if>
                 <g:else>
-                  Inscripcion Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+                  Inscripción Archivo de Alumnos y su Padre o Tutor, más a gregar un cobro a los alumnos del archivo
                 </g:else>
               </small>
             </h1>
@@ -124,7 +124,7 @@
                                             <i class="icon-remove"></i>
                                           </button>
                                           <strong>Nota! </strong>
-                                            Solo puede seleccionar un concepto cobro unitario o recurrente
+                                            Sólo puede seleccionar un concepto: cobro unitario o recurrente
                                           <br>
                                         </div>
                                       <div class="row-fluid">
@@ -205,7 +205,7 @@
                                               <i class="icon-remove"></i>
                                             </button>
                                             <strong>Nota! </strong>
-                                              Solo puede seleccionar un concepto cobro recurrente o unitario
+                                              Sólo puede seleccionar un concepto cobro recurrente o unitario
                                             <br>
                                           </div>
                                           <div class="span4">
@@ -404,7 +404,7 @@
                                             <i class="icon-remove"></i>
                                           </button>
                                           <strong>Nota! </strong>
-                                            Solo puede seleccionar importe o porcentaje de descuento <br>
+                                            Sólo puede seleccionar importe o porcentaje de descuento <br>
                                           <strong>Nota! </strong>
                                             Por fecha de vencimiento o dias antes de vencer el pago
                                           <br>
@@ -491,7 +491,7 @@
                                               <i class="icon-remove"></i>
                                             </button>
                                             <strong>Nota! </strong>
-                                              Solo puede seleccionar un concepto cobro recurrente o unitario
+                                              Sólo puede seleccionar un concepto cobro recurrente o unitario
                                             <br>
                                           </div>
                                       </div>

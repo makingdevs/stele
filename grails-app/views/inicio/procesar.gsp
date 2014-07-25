@@ -24,7 +24,7 @@
                 Inscripción Archivo + Cobro
                 <small>
                   <i class="icon-double-angle-right"></i>
-                  Inscripción Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+                  Inscripción Archivo de Alumnos y su Padre o Tutor, más a gregar un cobro a los alumnos del archivo
                 </small>
               </h1>
             </div>

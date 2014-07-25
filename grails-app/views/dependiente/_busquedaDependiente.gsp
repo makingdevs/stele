@@ -15,7 +15,7 @@
             </th>
             <th>
               <i class="icon-compass blue"></i>
-              Ubicacion
+              Ubicación
             </th>
             <th>
               <i class="icon-compass blue"></i>

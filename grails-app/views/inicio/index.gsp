@@ -34,7 +34,7 @@
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
             </li>
-            <li class="active">Archivo</li>
+            <li class="active">Generar cobro</li>
           </ul><!--.breadcrumb-->
 
 

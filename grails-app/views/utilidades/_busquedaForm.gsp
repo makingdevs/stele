@@ -2,7 +2,7 @@
 <div class="span3 widget-container-span">
   <div class="widget-box">
     <div class="widget-header">
-      <h5>Busqueda</h5>
+      <h5>Búsqueda</h5>
     </div>
     <div class="widget-body">
       <div class="widget-main">
