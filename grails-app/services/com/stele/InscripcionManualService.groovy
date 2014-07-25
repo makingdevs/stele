@@ -23,7 +23,7 @@ class InscripcionManualService {
       def cicloEscolarCargado = cicloEscolarService.registrar(mapaDomains.cicloEscolar)
       def distribucionInstitucionalCargado = distribucionInstitucionalService.registrar(mapaDomains.distribucionInstitucional, institucion.id)
       def historialAcademicoCargado = historialAcademicoService.registrar(historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependienteCargado,distribucionInstitucionalCargado))
-      [success:"Se a Inscrito Correctamen el padre y su dependiente"]
+      [success:"Se he inscrito correctamente el padre y su dependiente"]
   } 
 
   def generarNombreCamada(Institucion institucion) {
