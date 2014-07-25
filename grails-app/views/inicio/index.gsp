@@ -63,11 +63,6 @@
               </h1>
             </div>
           </g:else>
-          <g:if test="${flash.error}">
-            <div id="message"class="alert alert-error">
-              ${flash.error}
-            </div>
-          </g:if>
 
           <div class="row-fluid">
             <g:form name="layout" id="cargaArchivo" controller="inicio" action="preview" onsubmit="return check()">
@@ -89,6 +84,12 @@
                       </g:else>
 
                       <hr />
+                      <g:if test="${flash.error}">
+                        <div id="message"class="alert alert-error">
+                          ${flash.error}
+                        </div>
+                      </g:if>
+
                         <div align="center" id="imagenCarga" class="hidden">
                           <img class="prev" aling="center"  width="60" height="60" src="${resource(dir: 'images', file: 'loading.gif')}" alt="Previous" /> CARGANDO
                         </div>
