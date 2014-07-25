@@ -169,4 +169,8 @@ modules = {
     dependsOn 'jquery1'
     dependsOn 'colegioJs'
   }
+
+  registroManual{ 
+    resource url: 'js/pago/manual.js'
+  }
 }

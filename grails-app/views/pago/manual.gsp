@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
+    <r:require module="registroManual" />
   </head>
   <body>
       <div class="main-content">
