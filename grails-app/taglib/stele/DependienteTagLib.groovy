@@ -26,6 +26,8 @@ class DependienteTagLib {
     out << historialAcademico.distribucionInstitucional.grado
     out << ' '
     out << historialAcademico.distribucionInstitucional.grupo
+    out << ' '
+    out << historialAcademico.distribucionInstitucional.nivelDeEstudio
   }
 
   def turnoDependiente = { attrs, body ->
