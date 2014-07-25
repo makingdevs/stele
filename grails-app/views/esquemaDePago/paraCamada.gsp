@@ -243,7 +243,18 @@
                                           <div class="span2">
                                             <label class="hidden" id="labelRecargoCantidad1">Recargo Cantidad</label><input class="hidden" id="  cantidadRecargo1" name="cantidadRecargo1" readonly>
                                             <label class="hidden" id="labelRecargoPorcentaje1">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje1" name="recargoPorcentaje1" readonly>
-                                            <label class="hidden" id="labelDescuentos1">Descuentos </label><input class="hidden" id="nombreDescuentos1" name="nombreDescuentos1" readonly>
+                                            <div class="descuentosDiv">
+                                              <table class="table hidden">
+                                                <thead>
+                                                  <tr>
+                                                    <th>Descuento</th>
+                                                    <th>Importe</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody class="descuentosTableBody">
+                                                </tbody>
+                                              </table>
+                                            </div>
                                           </div>
                                           <div class="span2">
                                             <div id="descuentoCreado3">

@@ -5,14 +5,17 @@ $(function() {
       console.log($direccion[0].value);
       var $url = $direccion[0].value+'/'+ id;      
       var $items = new Array;
-      $items = [""];
+      $items = [""];      
+      $(".descuentosDiv table").addClass("hidden");
+      $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
+      $("#cantidadDePago,#cantidadDePagoRecurrente").val("")
       $.ajax({
         type: "GET",
         dataType: "json",
         contentType: "application/json",
         url: $url,
         date: "{}",
-        success: function(data){
+        success: function(data){          
           console.log(data);
           $.map(data, function(data){
             var group;
@@ -71,8 +74,7 @@ $(function() {
                     value += this.level;
                     value += '</span>';
                 }
-                  return String.prototype.replace.apply(
-                    '<div style="padding: 0.5px; font-size: 1em;">' + value + '</div>', arguments);
+                  return String.prototype.replace.apply('<div style="padding: 0.5px; font-size: 1em;">' + value + '</div>',arguments);
                 }
               };
             }
@@ -90,9 +92,9 @@ $(function() {
     minLength: 2,
     updater: function (item) {
         var item = JSON.parse(item);         
-        $('#conceptoDePagoRecurrente').val(item.name);
-        $('#cantidadDePago').val(item.cantidadDePago);
-        $('#cantidadDePagoRecurrente').val(item.cantidadDePago);
+        $('#conceptoDePagoRecurrente,#conceptoDePago').val(item.name);
+        $('#cantidadDePago,#cantidadDePagoRecurrente').val(item.cantidadDePago);        
+        
         if (item.idRecargo != null){
           $('#idRecargo').val(item.idRecargo);
         }
@@ -112,10 +114,10 @@ $(function() {
           $('#labelRecargoPorcentaje1').removeClass("hidden");
         }
         $('#idsDescuentos').val(item.descuentosIds);        
-        
-        
+                
+        $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
         $(".descuentosTableBody").html("");
-        $('.table').removeClass("hidden");        
+        $('.descuentosDiv table').removeClass("hidden");        
         if(item.descuentos.length){          
           $.each(item.descuentos,function(index,value){          
             $(".descuentosTableBody").append('<tr><td>'+value.descuento+'</td><td>'+value.cantidad+'</td></tr>');
@@ -137,10 +139,10 @@ $(function() {
 $(function() {
   $( '#nombreDeDescuento' ).typeahead({
     source: function( query, process ) {
-      var $address = $('#urlDescuento')
+      var $address = $('#urlDescuento');
       var $url = $address[0].value+ '/' + query;
       var $items = new Array;
-      $items = [""];
+      $items = [""];      
       $.ajax({
         type: "GET",
         dataType: "json",
