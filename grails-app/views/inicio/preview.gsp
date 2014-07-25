@@ -21,7 +21,7 @@
           <g:if test="${flash.inscripcionCobro == 'true'}">
             <div class="page-header position-relative">
               <h1>
-                Inscripcion Archivo + Cobro
+                Inscripción Archivo + Cobro
                 <small>
                   <i class="icon-double-angle-right"></i>
                   Inscripción Archivo de Alumnos y su Padre o Tutor, mas agregar un cobro a los alumnos del archivo
@@ -32,10 +32,10 @@
           <g:else>
             <div class="page-header position-relative">
               <h1>
-                Inscripcion Archivo
+                Inscripción Archivo
                 <small>
                   <i class="icon-double-angle-right"></i>
-                  Inscripcion Archivo de Alumnos y su Padre o Tutor
+                  Inscripción Archivo de Alumnos y su Padre o Tutor
                 </small>
               </h1>
             </div>

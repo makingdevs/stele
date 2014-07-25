@@ -47,7 +47,7 @@
                 Inscripción Archivo + Cobro
                 <small>
                   <i class="icon-double-angle-right"></i>
-                  Inscripción Archivo de Alumnos y su Padre o Tutor, mas agregar un cobro a los alumnos del archivo
+                  Inscripción Archivo de Alumnos y su Padre o Tutor, más agregar un cobro a los alumnos del archivo
                 </small>
               </h1>
             </div>
@@ -116,7 +116,7 @@
                                             <input type="hidden" value="${flash.inscripcionCobro}" name="cobro"/>
                                             <div class="alert alert-warning">
                                             <strong>NOTA!</strong>
-                                            El sistema genera un cobro genérico por todos los alumnos en el archivo<br> por lo que si los cobros no son iguales <strong> genere un archivo de alumnos por tipo de cobro</strong>
+                                            El sistema genera un cobro genérico para todos los alumnos en el archivo,<br> por lo que si los cobros no son iguales <strong> genere un archivo de alumnos por tipo de cobro</strong>
                                             <br>
                                           </div>
                                           </g:if>

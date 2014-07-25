@@ -21,10 +21,10 @@
           <g:if test="${flash.inscripcionCobro == 'true'}">
             <div class="page-header position-relative">
               <h1>
-                Inscripcion Archivo + Cobro
+                Inscripción Archivo + Cobro
                 <small>
                   <i class="icon-double-angle-right"></i>
-                  Inscripcion Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
+                  Inscripción Archivo de Alumnos y su Padre o Tutor, mas a gregar un cobro a los alumnos del archivo
                 </small>
               </h1>
             </div>
@@ -32,10 +32,10 @@
           <g:else>
             <div class="page-header position-relative">
               <h1>
-                Inscripcion Archivo
+                Inscripción Archivo
                 <small>
                   <i class="icon-double-angle-right"></i>
-                  Inscripcion Archivo de Alumnos y su Padre o Tutor
+                  Inscripción Archivo de Alumnos y su Padre o Tutor
                 </small>
               </h1>
             </div>
@@ -74,7 +74,7 @@
                                       <i class="icon-ok"></i>
                                       Confirmar!
                                     </strong>
-                                    Este proceso registra la informacion en el sistema, por lo que es importante que de <strong> click </strong> en procesar.
+                                    Este proceso registra la información en el sistema, por lo que es importante que de <strong> click </strong> en procesar.
                                   </p>
 
                                   <p>
