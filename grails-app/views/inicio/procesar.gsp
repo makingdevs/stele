@@ -74,7 +74,7 @@
                                       <i class="icon-ok"></i>
                                       Confirmar!
                                     </strong>
-                                    Este proceso registra la informacion en el sistema, por lo que importante que de <strong> click </strong> en procesar.
+                                    Este proceso registra la informacion en el sistema, por lo que es importante que de <strong> click </strong> en procesar.
                                   </p>
 
                                   <p>

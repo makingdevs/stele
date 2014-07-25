@@ -72,7 +72,7 @@
                                   </div>
                                   <div class="infobox-data">
                                     <span class="infobox-data-number">${erroneos ?: 0}</span>
-                                    <div class="infobox-content">Registros Erroneos</div>
+                                    <div class="infobox-content">Registros Erróneos</div>
                                   </div>
                                 </div>
                               </div>

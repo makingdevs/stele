@@ -112,7 +112,7 @@
           <li class="active open">
             <a href="#" class="dropdown-toggle">
               <i class="icon-edit"></i>
-              <span class="menu-text"> Inscripcion </span>
+              <span class="menu-text"> Inscripción </span>
               <b class="arrow icon-angle-down"></b>
             </a>
 
