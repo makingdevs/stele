@@ -170,7 +170,7 @@ modules = {
     dependsOn 'colegioJs'
   }
 
-  registroManual{ 
-    resource url: 'js/pago/manual.js'
+  busquedaDependientes{ 
+    resource url: 'js/dependiente/busqueda.js'
   }
 }
