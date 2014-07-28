@@ -13,7 +13,7 @@ class UtilidadesController {
           groupProperty('nivelDeEstudio')
         }
     }
-    def turnos = flash.turnos
+    def turnos = Turno.findAll{it.value != 'Nocturno'}    
     def nivel=null
     flash.turnos = turnos
     flash.turno = turno
