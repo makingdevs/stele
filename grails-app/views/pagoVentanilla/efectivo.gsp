@@ -181,6 +181,14 @@
               </div>
             </div>
             </div>
+            <div class="span6">
+              <g:link controller="pago" action="generarPagoEnVentanilla">
+              <button type="button" class="btn btn-purple">
+              <i class="icon-reply bigger-150"></i>
+                Regresar
+              </button>
+              </g:link>
+            </div>
           </div>
         </div>
           </div>
