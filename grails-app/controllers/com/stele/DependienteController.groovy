@@ -87,11 +87,10 @@ class DependienteController {
         if(resultados){
           resultados = separarDependientesPorInstitucion(resultados)
           resultados = resultados*.dependientes.flatten() 
-          flash.sinDependientes = ""
+          flash.dependiente = ""
         }
         else{
-          log.error "No hay"
-          flash.sinDependientes = "No se encontraron dependientes con ese nombre"
+          flash.dependiente = "No se encontraron dependientes con ese nombre"
         }
 
         render template:'busquedaDependiente', model:[dependientes:resultados ?: [], institucion: springSecurityService.currentUser.instituciones?.first()]
@@ -107,10 +106,10 @@ class DependienteController {
         if(resultados){
           resultados = separarDependientesPorInstitucion(resultados)
           resultados = resultados*.dependientes.flatten()
-          flash.sinDependientes = ""
+          flash.dependiente = ""
         }
         else{
-          flash.sinDependientes = "No se encontraron dependientes con ese nombre"
+          flash.dependiente = "No se encontraron dependientes con ese nombre"
         } 
         
         render template:'resultados', model:[dependientes: resultados ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]

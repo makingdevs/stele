@@ -49,8 +49,8 @@
   </div>
 </g:form>
 </g:if>
-<g:if test="${flash.sinDependientes}">
+<g:if test="${flash.dependiente}">
   <div class="alert alert-error">
-    <p>${flash.sinDependientes}</p>
+    ${flash.dependiente}
   </div>
 </g:if> 
