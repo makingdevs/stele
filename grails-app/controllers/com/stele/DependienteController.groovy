@@ -80,11 +80,22 @@ class DependienteController {
     }
 
     def busquedaDependienteParaGenerarPago() {
-      def searchResult = searchableService.search(params.nombreDependiente)
       def resultados = []
-      resultados = searchResult.results.findAll{ row -> row instanceof Dependiente}
-      resultados = separarDependientesPorInstitucion(resultados)
-      render template:'busquedaDependiente', model:[dependientes: resultados*.dependientes.flatten() ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+      if(params.nombreDependiente){
+        def searchResult = searchableService.search(params.nombreDependiente)
+        resultados = searchResult.results.findAll{ row -> row instanceof Dependiente}
+        if(resultados){
+          resultados = separarDependientesPorInstitucion(resultados)
+          resultados = resultados*.dependientes.flatten() 
+          flash.sinDependientes = ""
+        }
+        else{
+          log.error "No hay"
+          flash.sinDependientes = "No se encontraron dependientes con ese nombre"
+        }
+
+        render template:'busquedaDependiente', model:[dependientes:resultados ?: [], institucion: springSecurityService.currentUser.instituciones?.first()]
+      }
     }
 
     def busquedaDependienteParaObtenerPagos() {
