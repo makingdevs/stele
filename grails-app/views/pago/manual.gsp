@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require module="registroManual" />
+    <r:require module="busquedaDependientes" />
   </head>
   <body>
       <div class="main-content">

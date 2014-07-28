@@ -3,8 +3,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="bootstrap-js" />
-
+    <r:require modules="bootstrap-js,busquedaDependientes" />
   </head>
   <body>
     <script type="text/javascript">
@@ -81,19 +80,18 @@
 
                           <div class="widget-body">
                             <div class="widget-main">
-                              <input type="text" id="nombreDependiente" name="nombreDependiente" placeholder="Nombre del Dependiente" />
-                              <button type="submit" class="btn btn-purple btn-small">
-                                Buscar
-                                <i class="icon-search icon-on-right bigger-110"></i>
-                              </button>
+                              <div class="input-append"> 
+                                <input type="text" id="nombreDependiente" name="nombreDependiente" placeholder="Nombre del Dependiente" />
+                                <button type="submit" class="btn btn-purple btn-small">
+                                  Buscar
+                                  <i class="icon-search icon-on-right bigger-110"></i>
+                                </button>
+                              </div>
                             </div>
                           </div>
                       </g:formRemote>
                       </div>
                       <div id="listaResultados" class="widget-box">
-                        <div class="widget-header">
-                          <h5> Lista de Alumnos </h5>
-                        </div>
                         <g:render template="busquedaDependiente" />
                       </div>
                     </div>

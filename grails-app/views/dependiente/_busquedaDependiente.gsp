@@ -1,3 +1,4 @@
+<g:if test="${dependientes}">
 <g:form id="pagosUnitarios" name="pagosUnitarios" controller="esquemaDePago" action="paraCamada" params="[camada:'${institucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")}']">
   <div class="widget-body">
     <div class="widget-main no-padding">
@@ -40,11 +41,12 @@
         </tbody>
       </table>
     </div>
-    <div class="widget-toolbox padding-8 clearfix">
-      <button  type="submit" id="listaDependientes" class="btn  btn-success pull-right">
-        Generar cobro
-        <i class="icon-arrow-right icon-on-right"></i>
-      </button>
+    <div class="widget-toolbox padding-8 clearfix center" id="searchButtonDiv">
+      <div class="alert alert-warning">
+        Seleccione un alumno para generar un cobro   
+      </div>
     </div>
   </div>
 </g:form>
+</g:if>
+
