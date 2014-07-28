@@ -54,8 +54,8 @@
     </div>
   </div>
 </g:if>
-<g:else>
+<g:if test="${flash.sinDependientes}">
   <div class="alert alert-error ">
-    <p>No se encontraron dependientes con ese nombre</p>
+    <p>${flash.sinDependientes}</p>
   </div> 
-</g:else>
+</g:if>
