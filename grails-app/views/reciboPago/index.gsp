@@ -80,12 +80,6 @@
           <div class="span12">
             <div class="span4">         
               <form class="form-horizontal" id="sample-form">                             
-
-
-
-
-
-
                 <div class="widget-box">
                   <div class="widget-header widget-header-small header-color-green">
                     <h5 class="bigger lighter">Adjunte su comprobante</h5>
@@ -112,9 +106,16 @@
                     </div>
                   </div>
                 </div>
-              </div>              
+              </div>
+              <div class="span8">
+                <g:link controller="estadoDeCuenta" action="show">
+                <button type="button" class="btn btn-purple">
+                  <i class="icon-reply bigger-150"></i>
+                  Regresar
+                </button>
+                </g:link>
+              </div>  
             </div>  
-
 
             <!--PAGE CONTENT ENDS-->
           </div><!--/.span-->
