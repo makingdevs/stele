@@ -65,7 +65,7 @@ grails.project.dependency.resolution = {
     }  
     compile ':recaptcha:0.6.7'
     test ":code-coverage:1.2.7"
-    compile ":amazon-s3:0.8.2"
+
 
     // Uncomment these (or add new ones) to enable additional resources capabilities
     //runtime ":zipped-resources:1.0"
