@@ -6,6 +6,7 @@
   <body>
     <r:script>
       $(document).ready(function(){
+
         $("#submitFormPayout").click(function(){
           if($('a[href=#faq-tab-111]').parent().attr("class") == 'active'){
             $("#pagoGeneracion").submit();
@@ -14,20 +15,18 @@
           }
           $('#imagenCarga').removeClass("hidden");
         });
-      });
-      $(document).ready(function() {
+
         $('#datetimepicker1').datepicker({
           format : "dd/mm/yyyy",
-          language : 'es',
-          autoclose : true
+          language : 'es'
         });
-      });
-      $(document).ready(function() {
+
         $('#datetimepicker2').datepicker({
           format : "dd/mm/yyyy",
           language : 'es',
-          autoclose : true
+          startDate: new Date()
         });
+
       });
     </r:script>
       <div class="main-content">
