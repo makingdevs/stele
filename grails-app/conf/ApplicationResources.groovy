@@ -101,10 +101,10 @@ modules = {
   }
 
   cobro {
-    dependsOn pagosParaCamada
-    dependsOn generarPagos
-    dependsOn autocomplete
-    dependsOn bootstrapDatePicker
+    dependsOn 'pagosParaCamada'
+    dependsOn 'generarPagos'
+    dependsOn 'autocomplete'
+    dependsOn 'bootstrapDatePicker'
     resource url: 'js/cobro/cobro.js'
   }
   
