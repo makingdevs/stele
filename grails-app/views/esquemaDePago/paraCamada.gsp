@@ -17,11 +17,17 @@
         });
 
         $('#fechaDeVencimiento').datepicker({
-          orientation: "top auto"
+          format: "dd/mm/yy",
+          language: "es",
+          orientation: "top auto",
+          todayHighlight: true
         });
 
         $('#fechaDeVencimientoDesc').datepicker({
-          orientation: "top auto"
+          format: "dd/mm/yy",
+          language: "es",
+          orientation: "top auto",
+          todayHighlight: true
         });
 
       });
