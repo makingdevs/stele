@@ -100,6 +100,13 @@ modules = {
     resource url: 'datepicker/js/locales/bootstrap-datepicker.es.js'
   }
 
+  cobro {
+    dependsOn pagosParaCamada
+    dependsOn generarPagos
+    dependsOn autocomplete
+    dependsOn bootstrapDatePicker
+    resource url: 'js/cobro/cobro.js'
+  }
   /*
   bootstrapDatePicker {
     resource url: 'datepicker/css/datepicker.css'

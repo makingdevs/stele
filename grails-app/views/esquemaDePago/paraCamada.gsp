@@ -1,36 +1,10 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="pagosParaCamada,generarPagos,autocomplete,bootstrapDatePicker" />
+    <r:require module="cobro" />
   </head>
   <body>
-    <r:script>
-      $(document).ready(function(){
-
-        $("#submitFormPayout").click(function(){
-          if($('a[href=#faq-tab-111]').parent().attr("class") == 'active'){
-            $("#pagoGeneracion").submit();
-          }else if($('a[href=#faq-tab-222]').parent().attr("class") == 'active'){
-            $("#pagoGeneracionrecurrente").submit();
-          }
-          $('#imagenCarga').removeClass("hidden");
-        });
-
-        $('#fechaDeVencimiento').datepicker({
-          format: "dd/mm/yy",
-          language: "es",
-          orientation: "top auto",
-          todayHighlight: true
-        });
-
-        $('#fechaDeVencimientoDesc').datepicker({
-          format: "dd/mm/yy",
-          language: "es",
-          orientation: "top auto",
-          todayHighlight: true
-        });
-
-      });
+    <r:script>      
     </r:script>
       <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
