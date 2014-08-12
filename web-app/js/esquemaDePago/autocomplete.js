@@ -7,7 +7,6 @@ $(function() {
       var $items = new Array;
       $items = [""];      
       $(".descuentosDiv table").addClass("hidden");
-      $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
       $("#cantidadDePago,#cantidadDePagoRecurrente").val("")
       $.ajax({
         type: "GET",
