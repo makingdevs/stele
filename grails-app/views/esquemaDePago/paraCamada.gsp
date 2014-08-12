@@ -16,15 +16,12 @@
           $('#imagenCarga').removeClass("hidden");
         });
 
-        $('#datetimepicker1').datepicker({
-          format : "dd/mm/yyyy",
-          language : 'es'
+        $('#fechaDeVencimiento').datepicker({
+          orientation: "top auto"
         });
 
-        $('#datetimepicker2').datepicker({
-          format : "dd/mm/yyyy",
-          language : 'es',
-          startDate: new Date()
+        $('#fechaDeVencimientoDesc').datepicker({
+          orientation: "top auto"
         });
 
       });
@@ -154,8 +151,8 @@
                                           <div class="control-group">
                                             <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                             <div class="controls">
-                                              <div id="datetimepicker2" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                                <input id="fechaDeVencimiento" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text"></input>
+                                              <div  class="input-append date">                                                
+                                                <input id="fechaDeVencimiento" name="fechaDeVencimiento" type="text" class="form-control"/>
                                                 <span class="add-on">
                                                   <i class="icon-calendar"></i>
                                                 </span>
@@ -438,8 +435,8 @@
                                         <div class="control-group">
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
-                                            <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                              <input id="fechaDeVencimientoDesc" name="fechaDeVencimiento" data-format="yyyy-mm-dd" type="text" ></input>
+                                            <div class="input-append date">
+                                              <input id="fechaDeVencimientoDesc" name="fechaDeVencimiento" type="text" class="form-control"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
