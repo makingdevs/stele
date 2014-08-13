@@ -249,7 +249,7 @@
                   <div class="widget-body">
                     <div class="widget-main">
                       <div class="center">
-                        <iframe class="cboxPhoto" src="${pago.comprobanteDePago.url()}"  width="100%" height="450px" ></iframe>  
+                        <iframe class="cboxPhoto" src="${pago.comprobanteDePago?.url()}"  width="100%" height="450px" ></iframe>  
                       </div>
                     </div>
                   </div>
