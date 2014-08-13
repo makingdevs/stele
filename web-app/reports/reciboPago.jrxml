@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reciboPago" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8d8e9aa-f68c-40ac-a01d-e2718a8c714e">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="1220"/>
+	<property name="ireport.y" value="96"/>
+	<parameter name="nombreEscuela" class="java.lang.String"/>
 	<field name="nombreTutor" class="java.lang.String"/>
 	<field name="nombreAlumno" class="java.lang.String"/>
 	<field name="grupo" class="java.lang.String"/>
@@ -21,13 +22,13 @@
 	</background>
 	<columnHeader>
 		<band height="41" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="12" width="285" height="21" forecolor="#003399" uuid="9f801a17-641d-4f6b-bf9c-d397bc8c4a9a"/>
-				<textElement verticalAlignment="Middle">
+			<textField>
+				<reportElement x="0" y="12" width="500" height="21" forecolor="#003399" uuid="c3eaae39-4c7d-4a55-ba3b-1089b448f09e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[INSTITUTO MEXICANO NIÑOS DEL FUTURO]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{nombreEscuela}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -77,12 +78,12 @@
 				<text><![CDATA[Alumno:]]></text>
 			</staticText>
 			<textField pattern="dd-MMM-yyyy">
-				<reportElement x="487" y="0" width="68" height="29" uuid="d1d1b341-d2f3-4954-a5b6-f8e945e3c23c"/>
+				<reportElement x="480" y="7" width="76" height="16" uuid="d1d1b341-d2f3-4954-a5b6-f8e945e3c23c"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="454" y="0" width="37" height="29" uuid="bfe43b82-e57b-4b32-ad01-62278389456d"/>
+				<reportElement x="442" y="7" width="37" height="16" uuid="bfe43b82-e57b-4b32-ad01-62278389456d"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
@@ -175,18 +176,18 @@
 				<text><![CDATA[Recargo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="416" y="52" width="44" height="14" uuid="db9490c6-3383-4001-b5f7-8365eb999249"/>
+				<reportElement x="448" y="52" width="44" height="14" uuid="db9490c6-3383-4001-b5f7-8365eb999249"/>
 				<textElement>
 					<paragraph leftIndent="6"/>
 				</textElement>
 				<text><![CDATA[GRUPO]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="480" y="52" width="20" height="14" uuid="ee1125f0-bfa7-4665-9392-a15162c8eb37"/>
+				<reportElement x="512" y="52" width="20" height="14" uuid="ee1125f0-bfa7-4665-9392-a15162c8eb37"/>
 				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="356" y="52" width="57" height="14" uuid="128a82b8-934e-4536-958f-e2bb7685dc26"/>
+				<reportElement x="349" y="52" width="95" height="14" uuid="128a82b8-934e-4536-958f-e2bb7685dc26"/>
 				<textFieldExpression><![CDATA[$F{nivelEstudio}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -245,7 +246,7 @@
 				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="414" y="52" width="1" height="14" uuid="5b29a8e7-f061-4250-a185-e7cadc9c98f4"/>
+				<reportElement x="446" y="52" width="1" height="14" uuid="5b29a8e7-f061-4250-a185-e7cadc9c98f4"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -434,7 +435,7 @@
 				<text><![CDATA[RECIBIÓ: Nombre y Firma]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="462" y="52" width="20" height="14" uuid="b0be69f4-b475-4e9a-8d16-4dd8a4f1a5f7"/>
+				<reportElement x="492" y="52" width="20" height="14" uuid="b0be69f4-b475-4e9a-8d16-4dd8a4f1a5f7"/>
 				<textFieldExpression><![CDATA[$F{grado}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
