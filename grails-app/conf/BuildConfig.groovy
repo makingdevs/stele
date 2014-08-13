@@ -87,7 +87,7 @@ grails.project.dependency.resolution = {
     runtime ":resources:1.2.7"
 
     compile 'com.makingdevs:profile:0.1.7'
-    compile('com.payable:payable:0.2.27'){
+    compile('com.payable:payable:0.2.28'){
       exclude "profile"
     }
   }
