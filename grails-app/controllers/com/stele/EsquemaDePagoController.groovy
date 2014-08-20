@@ -55,16 +55,18 @@ class EsquemaDePagoController {
   }
 
   def obtenerEsquemaDePagoPorConcepto(){
+    def esquemasDePagos = []
+    def conceptos = []
     def organizacion = springSecurityService.currentUser.instituciones.first()
-    def esquemasDePagos = EsquemaDePago.withCriteria {
-      concepto {
-        like('descripcion', "%${params.id}%" )
-        eq ('organizacion',organizacion)
-      }
-    }    
-    JSON.use('stele') {
-      render esquemasDePagos as JSON
+
+    conceptos = Concepto.withCriteria{
+      like("descripcion","${params.id}%")
+      eq("organizacion",organizacion)
     }
+
+    esquemasDePagos = EsquemaDePago.findAllByConceptoInList(conceptos)
+
+    JSON.use('stele') { render esquemasDePagos as JSON }
   }
 
   def generarPagoParaLaCamada(CamadaPagoCommand cpc) {
