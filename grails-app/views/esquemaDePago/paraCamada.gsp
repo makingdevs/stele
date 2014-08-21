@@ -148,7 +148,7 @@
                                               <span class="add-on">
                                                 <i class="icon-usd"></i>
                                               </span>
-                                              <input type="text" id="cantidadDePago" name="cantidadDePago" placeholder="0.0">
+                                              <input type="text" class="cantidadDePago" id="cantidadDePago" name="cantidadDePago" placeholder="0.0">
                                             </div>  
                                           </div>
                                           </div>
@@ -167,7 +167,7 @@
                                         <div class="span3">
                                           <input type="hidden" id="idRecargo" name="idRecargo">
                                           <input type="hidden" id="idsDescuentos" name="idsDescuentos">
-                                          <label class="hidden" id="labelRecargoCantidad">Recargo Cantidad</label><input class="hidden" id="cantidadRecargo" name="cantidadRecargo" readonly>
+                                          <label class="hidden labelRecargoCantidad" >Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo" name="cantidadRecargo" readonly>
                                           <label class="hidden" id="labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
                                           <div class="descuentosDiv">                                            
                                             <table class="table hidden">
@@ -235,13 +235,13 @@
                                                   <span class="add-on">
                                                     <i class="icon-usd"></i>
                                                   </span>
-                                                  <input type="text" id="cantidadDePagoRecurrente" name="cantidadDePagoRecurrente" placeholder="0.0">
+                                                  <input type="text" id="cantidadDePagoRecurrente" class="cantidadDePago" name="cantidadDePagoRecurrente" placeholder="0.0">
                                                 </div>  
                                               </div>
                                             </div> 
                                           </div>
-                                          <div class="span2">
-                                            <label class="hidden" id="labelRecargoCantidad1">Recargo Cantidad</label><input class="hidden" id="  cantidadRecargo1" name="cantidadRecargo1" readonly>
+                                          <div class="span2 infoRecargosDescuentos">
+                                            <label class="hidden labelRecargoCantidad">Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo1" name="cantidadRecargo1" readonly>
                                             <label class="hidden" id="labelRecargoPorcentaje1">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje1" name="recargoPorcentaje1" readonly>
                                             <div class="descuentosDiv">
                                               <table class="table hidden">
