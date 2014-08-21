@@ -5,9 +5,10 @@ $(function() {
     source: function( id, process ) {
       var $direccion = "/stele/esquemaDePago/obtenerEsquemaDePagoPorConcepto"
       var $url = $direccion+'/'+ id;      
-      $(".descuentosDiv table").addClass("hidden");
+      $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
       $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
       $("#cantidadDePago,#cantidadDePagoRecurrente").val("");
+
       return $.getJSON(
         $url,
         function(data){
@@ -32,20 +33,35 @@ $(function() {
         
           if(item.recargo != null){
             if(item.recargo.cantidad != null){
-              $(".cantidadRecargo").val(item.recargo.cantidad);
-              $(".labelRecargoCantidad,.cantidadRecargo").removeClass("hidden");
-              $(".porcentajeRecargo").val();
-              $(".labelRecargoPorcentaje,.porcentajeRecargo").addClass("hidden");
+              $("input.cantidadRecargo").val(item.recargo.cantidad);
+              $(".cantidadRecargo").removeClass("hidden");
+              $("input.porcentajeRecargo").val();
+              $(".porcentajeRecargo").addClass("hidden");
             }
             else if(item.recargo.porcentaje != null){
-              $(".porcentajeRecargo").val(item.recargo.porcentaje);
-              $(".labelRecargoPorcentaje,.porcentajeRecargo").removeClass("hidden");
-              $(".cantidadRecargo").val();
-              $(".labelRecargoCantidad,.cantidadRecargo").addClass("hidden");
+              $("input.porcentajeRecargo").val(item.recargo.porcentaje);
+              $(".porcentajeRecargo").removeClass("hidden");
+              $("input.cantidadRecargo").val();
+              $(".cantidadRecargo").addClass("hidden");
             }
           }
+          else{
+            $('.porcentajeRecargo,.cantidadRecargo').addClass("hidden");
+          }
+
           $("#idsDescuentos").val(item.descuentosIds);
           $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
+          $(".descuentosTableBody").html("");
+          $('.descuentosDiv table').removeClass("hidden"); 
+
+          if(item.descuentos.length){ 
+            $.each(item.descuentos,function(index,value){
+              $(".descuentosTableBody").append('<tr><td>'+value.descuento+'</td><td>'+value.cantidad+'</td></tr>');
+            }); 
+          }
+          else{
+            $(".descuentosTableBody").append('<tr><td colspan="2">El concepto no tiene descuentos</td></tr>'); 
+          }
 
           return;
         } 
