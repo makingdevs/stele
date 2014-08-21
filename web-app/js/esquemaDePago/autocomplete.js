@@ -1,5 +1,6 @@
 $(function() {
   var paymentSchemas
+
   $('#conceptoDePago,#conceptoDePagoRecurrente').typeahead({
     source: function( id, process ) {
       var $direccion = "/stele/esquemaDePago/obtenerEsquemaDePagoPorConcepto"
@@ -30,12 +31,22 @@ $(function() {
             $("#idRecargo").val(item.recargo.id)
         
           if(item.recargo != null){
-            $(".cantidadRecargo").val(item.recargo.cantidad);
-            $(".cantidadRecargo").removeClass("hidden"); 
-            $(".labelRecargoCantidad").removeClass("hidden");
-          } 
-             
+            if(item.recargo.cantidad != null){
+              $(".cantidadRecargo").val(item.recargo.cantidad);
+              $(".labelRecargoCantidad,.cantidadRecargo").removeClass("hidden");
+              $(".porcentajeRecargo").val();
+              $(".labelRecargoPorcentaje,.porcentajeRecargo").addClass("hidden");
+            }
+            else if(item.recargo.porcentaje != null){
+              $(".porcentajeRecargo").val(item.recargo.porcentaje);
+              $(".labelRecargoPorcentaje,.porcentajeRecargo").removeClass("hidden");
+              $(".cantidadRecargo").val();
+              $(".labelRecargoCantidad,.cantidadRecargo").addClass("hidden");
+            }
+          }
+          $("#idsDescuentos").val(item.descuentosIds);
           $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
+
           return;
         } 
       }); 
