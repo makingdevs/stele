@@ -91,7 +91,7 @@
                                     <label class="control-label" for="txtConcepto">Concepto</label>
                                     <div class="controls">
                                       <div class="input-prepend">
-                                        <input id="nombreConcepto" name="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" >
+                                        <input id="nombreConcepto" name="nombreConcepto" class="input-large " type="text" placeholder="Datos del cobro" autocomplete="off" >
                                       </div>
                                     </div>
                                   </div>                          
