@@ -24,7 +24,9 @@ class EsquemaDePagoController {
      def esquemasDePagos = EsquemaDePago.withCriteria {
       concepto {
         eq ('organizacion', organizacion)
+        order("descripcion","asc")
       }
+
     }
     [esquemasDePagos:esquemasDePagos] 
   }
