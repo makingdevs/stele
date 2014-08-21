@@ -1,4 +1,5 @@
 $(function() {
+  var paymentSchemas
   $('#conceptoDePago,#conceptoDePagoRecurrente').typeahead({
     source: function( id, process ) {
       var $direccion = "/stele/esquemaDePago/obtenerEsquemaDePagoPorConcepto"
@@ -6,37 +7,39 @@ $(function() {
       $(".descuentosDiv table").addClass("hidden");
       $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
       $("#cantidadDePago,#cantidadDePagoRecurrente").val("");
-
       return $.getJSON(
         $url,
         function(data){
+          paymentSchemas = data
           var concepts = [];
-          $.each(data, function(){
-            var paymentScheme;
-            paymentScheme = {
-              concept: this.value.concepto,
-              toString: function(){
-                return JSON.stringify(this); 
-              },
-              replace: function(string){
-                var value = '';
-                value += this.name;
-                if(typeOf(this.level) != 'undefined'){
-                  value += '<span class="pull-right muted">'+this.level+'</span>'; 
-                }
-                return String.prototype.replace.apply('<div style="padding: 0.5px; font-size: 1em;">' + value +   '</div>', arguments);
-              }
-            }
-            concepts.push(paymentScheme)
+          $.each(data, function(index, item){
+            concepts.push(item.value.concepto);
           });
          
           return process(concepts);
         }); 
     },
-    property: 'value',
     items:10,
-    updater: function(item){
-      alert(item);
+    updater: function (concept){
+      $.each(paymentSchemas, function(i,item){
+        if(item.value.concepto == concept){
+          $('#conceptoDePagoRecurrente').val(concept);   
+          $(".cantidadDePago").val(item.cantidadDePago); 
+         
+          if(item.recargo != null)
+            $("#idRecargo").val(item.recargo.id)
+        
+          if(item.recargo != null){
+            $(".cantidadRecargo").val(item.recargo.cantidad);
+            $(".cantidadRecargo").removeClass("hidden"); 
+            $(".labelRecargoCantidad").removeClass("hidden");
+          } 
+             
+          $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
+          return;
+        } 
+      }); 
+      return concept;
     }
   });
 });
