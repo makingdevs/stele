@@ -168,7 +168,7 @@
                                           <input type="hidden" id="idRecargo" name="idRecargo">
                                           <input type="hidden" id="idsDescuentos" name="idsDescuentos">
                                           <label class="hidden labelRecargoCantidad" >Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo" name="cantidadRecargo" readonly>
-                                          <label class="hidden" id="labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
+                                          <label class="hidden labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden porcentajeRecargo" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
                                           <div class="descuentosDiv">                                            
                                             <table class="table hidden">
                                               <thead>
@@ -242,7 +242,7 @@
                                           </div>
                                           <div class="span2 infoRecargosDescuentos">
                                             <label class="hidden labelRecargoCantidad">Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo1" name="cantidadRecargo1" readonly>
-                                            <label class="hidden" id="labelRecargoPorcentaje1">Recargo Porcentaje</label><input class="hidden" id="recargoPorcentaje1" name="recargoPorcentaje1" readonly>
+                                            <label class="hidden labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden porcentajeRecargo" id="recargoPorcentaje1" name="recargoPorcentaje1" readonly>
                                             <div class="descuentosDiv">
                                               <table class="table hidden">
                                                 <thead>
