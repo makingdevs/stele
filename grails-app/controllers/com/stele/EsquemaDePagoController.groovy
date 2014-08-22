@@ -39,6 +39,7 @@ class EsquemaDePagoController {
       gpc.recargoId = params.recargoid.toLong()
     gpc.cantidadDePago = params.importeEsquemaDePago.toBigDecimal()
     gpc.conceptoDePago = concepto.descripcion
+    gpc.organizacion = institucion
     if (params.descuentos)
       gpc.descuentoIds = params.descuentos.replace('[','')?.replace(']','')?.split(',') as List
     def esquema = esquemaDePagoService.buscarOSalvarEsquemaDePago(gpc)
