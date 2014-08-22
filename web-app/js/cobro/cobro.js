@@ -25,18 +25,19 @@ $(document).ready(function(){
     orientation: "top auto",
     todayHighlight: true,
     autoclose: true
-
   }).on('changeDate',function(event){    
-    date = $(this).datepicker("getDate");
-    timeDiff = date.getTime() - new Date().getTime();
-    diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))-1;
+    if($(this).attr("class").indexOf("vencimiento") != -1){
+      date = $(this).datepicker("getDate");
+      timeDiff = date.getTime() - new Date().getTime();
+      diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))-1;
 
-    if($(this).datepicker("getDate") != "Invalid Date")
-      $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
-    else
-      $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
+      if($(this).datepicker("getDate") != "Invalid Date")
+        $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
+      else
+        $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
 
       $('#fechaDeVencimientoDesc').datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
-    });
+    }
+  });
 
 });
