@@ -5,6 +5,7 @@ $(function() {
     source: function( id, process ) {      
       var $direccion = $('#urlConcepto').val();
       var $url = $direccion+'/'+ id;      
+      $("#fechaDeVencimiento").addClass("vencimiento");
       $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
       $("#cantidadDePago,#cantidadDePagoRecurrente").val("");
 
@@ -24,9 +25,9 @@ $(function() {
     updater: function (concept){
       $.each(paymentSchemas, function(i,item){
         if(item.value.concepto == concept){
+          $('#fechaDeVencimiento').removeClass("vencimiento");
           $('#conceptoDePagoRecurrente').val(concept);   
           $(".cantidadDePago").val(item.cantidadDePago); 
-         
           if(item.recargo != null)
             $("#idRecargo").val(item.recargo.id)
         
