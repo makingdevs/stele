@@ -6,6 +6,9 @@ import com.stele.seguridad.Usuario
 
 
 class HistorialAcademicoService {
+  
+  def springSecurityService
+
   def registrar(HistorialAcademico historialAcademico) {
     Dependiente dependiente = Dependiente.get(historialAcademico.dependiente.id)
     DistribucionInstitucional distribucionInstitucional = DistribucionInstitucional.get(historialAcademico.distribucionInstitucional.id)
@@ -48,9 +51,13 @@ class HistorialAcademicoService {
   def obtenerhistorialAcademicoPorDependiente (def id) {
     def dependiente = Dependiente.get(id)
     def criteriaHistorialAcademico = HistorialAcademico.createCriteria()
+    
     def historialAcademicoExistente = criteriaHistorialAcademico.get {
       eq("dependiente",dependiente)
-    }
+      distribucionInstitucional{
+        eq("institucion",springSecurityService.currentUser.instituciones?.first())
+      }      
+    }    
     historialAcademicoExistente
   }
 

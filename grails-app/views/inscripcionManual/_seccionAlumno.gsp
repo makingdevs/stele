@@ -9,13 +9,13 @@
   <label class="control-label" for="txtNombreAlumno">Alumno</label>
   <div class="controls">
     <span class="input-icon">
-      <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="nombre" value="${action?.dependiente?.perfil?.nombre}" />
+      <input type="text" id="nombreAlumno" name="nombreAlumno" placeholder="Nombre" value="${action?.dependiente?.perfil?.nombre}" />
     </span>
     <span class="input-icon">
-      <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="apellido paterno" value="${action?.dependiente?.perfil?.apellidoPaterno}" />
+      <input type="text" id="apellidoPaternoAlumno" name="apellidoPaternoAlumno" placeholder="Apellido paterno" value="${action?.dependiente?.perfil?.apellidoPaterno}" />
     </span>
     <span class="input-icon">
-      <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="apellido materno" value="${action?.dependiente?.perfil?.apellidoMaterno}" />
+      <input type="text" id="apellidoMaternoAlumno" name="apellidoMaternoAlumno" placeholder="Apellido materno" value="${action?.dependiente?.perfil?.apellidoMaterno}" />
     </span>
   </div>
 </div>
@@ -79,7 +79,7 @@
     <div class="controls">
       <label>Matrícula</label>
       <span class="form-field-select-1">
-        <input type="text" id="matricula" name="matricula" placeholder="matrícula" value="${action?.dependiente?.matricula}" />
+        <input type="text" id="matricula" name="matricula" placeholder="Matrícula" value="${action?.dependiente?.matricula}" />
       </span>
     </div>
   </div>
