@@ -7,6 +7,7 @@ $(function() {
       var $url = $direccion+'/'+ id;      
       $("#fechaDeVencimiento").addClass("vencimiento");
       $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
+      $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
       $("#cantidadDePago,#cantidadDePagoRecurrente").val("");
 
       return $.getJSON(
