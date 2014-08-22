@@ -3,7 +3,7 @@ $(function() {
 
   $('#conceptoDePago,#conceptoDePagoRecurrente').typeahead({
     source: function( id, process ) {
-      var $direccion = "/stele/esquemaDePago/obtenerEsquemaDePagoPorConcepto"
+      var $direccion = $('#urlConcepto').val();
       var $url = $direccion+'/'+ id;      
       $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
       $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
