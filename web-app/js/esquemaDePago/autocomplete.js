@@ -1,5 +1,14 @@
+function setExpirationDateForDiscount(dueDate){
+  if(dueDate.datepicker("getDate") != "Invalid Date"){  
+    date = dueDate.datepicker("getDate");
+    timeDiff = date.getTime() - new Date().getTime();
+    diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    $('#fechaDeVencimientoDesc').datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
+  }
+}
+
 $(function() {
-  var paymentSchemas
+  var paymentSchemas = [];
 
   $('#conceptoDePago,#conceptoDePagoRecurrente').typeahead({
     source: function( id, process ) {      
@@ -9,6 +18,7 @@ $(function() {
       $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
       $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
       $("#cantidadDePago,#cantidadDePagoRecurrente").val("");
+      setExpirationDateForDiscount($("#fechaDeVencimiento"));
 
       return $.getJSON(
         $url,
