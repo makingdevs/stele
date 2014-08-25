@@ -3,12 +3,6 @@
 <head>
   <meta name="layout" content="steleTwitterBoostrapMain"/>
   <r:require module="stele" />
-  <!-- TODO Mover a archivo .css-->
-  <style>
-  p{
-    text-align: justify;
-  }  
-  </style>
 </head> 
 <body>
 	<div class="container">     
@@ -18,7 +12,7 @@
             <h2>Aviso de Privacidad</h2>
         </div>
 
-        <div class="row-fluid privacy">
+        <div class="row-fluid privacy notice">
             <p>Grupo STELE en cumplimiento de la Ley de Protección de datos Personales en Posesión de Particulares, pone a su disposición su política de privacidad, confidencialidad y manejo de datos personales.</p>
             <p><strong>Entidad Responsable de la información</strong></p>
             <p>Grupo STELE es el modulo que define al sistema de control escolar, representado por Makingdevs, S.C, con domicilio en Calzada Ermita Iztapalapa 278 Depto. 501, Colonia Sinatel Iztapalapa, C.P. 09470 en México, D.F, es la entidad responsable del tratamiento de sus datos personales del uso que se le dé a los mismos y de su protección. Para cualquier información relacionada con este aviso de privacidad puede dirigirse al área de Servicios de Tecnologías de Información, ubicada en la misma dirección, o bien puede enviarnos un correo electrónico a info@stele.mx.</p>
