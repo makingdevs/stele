@@ -86,8 +86,9 @@
       <div class="col-md-6 md-margin-bottom-20">
         <div class="headline"><h2>Contáctanos</h2></div> 
         <address class="md-margin-bottom-20">
-          Av. México 145, Int. 404, Col. Del Carmen Coyoacán
-          Del. Coyoacán. México, D.F.<br />
+          Arq. Jesus Urquiaga #20A, Col. Del Valle
+          Del. Benito Juarez. <br/>
+          México, D.F. <br />
           Telefono:  (55) 6363 - 8147 <br />
           Email: <a href="mailto:info@stele.com.mx" class="">info@stele.com.mx</a>
         </address>         
@@ -103,7 +104,7 @@
       <div class="col-md-6">                      
         <p class="copyright-space">
           2014 &copy; - Stele. Derechos Reservados. 
-          <a href="steleterminos.html">Términos y Condiciones</a>
+          <g:link controller="utilidades" action="terminosYCondiciones">Términos y Condiciones</g:link>
         </p>
       </div>
       <div class="col-md-6">  

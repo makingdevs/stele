@@ -68,6 +68,8 @@ class UtilidadesController {
   def ajaxGrupo() { }
 
   def avisoPrivacidad(){}
+  
+  def terminosYCondiciones(){}
 
   def precio(){}
 

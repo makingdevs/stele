@@ -1441,3 +1441,7 @@ ul.blog-tags a:hover i {
 .info-blocks .info-blocks-in p {
 	font-size: 12px;
 }
+
+div.notice p, div.notice ol li{
+  text-align: justify;
+}

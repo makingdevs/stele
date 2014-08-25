@@ -146,7 +146,7 @@
               </g:if>             
               <hr>
               <div class="controls form-inline">
-                <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; Acepto <a href="steleterminos.html" class="color-green">Términos y Condiciones</a> </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y el <g:link controller="utilidades" action="avisoPrivacidad">aviso de privacidad</g:link></label>
+                <label class="checkbox"><input id="avisoPrivacidad" name="avisoPrivacidad" type="checkbox" />&nbsp; Acepto <g:link controller="utilidades" action="terminosYCondiciones">Términos y Condiciones</g:link> </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y el <g:link controller="utilidades" action="avisoPrivacidad">Aviso de Privacidad</g:link></label>
               </div>
               <p>&nbsp;</p>
 
