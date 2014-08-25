@@ -103,7 +103,7 @@
       <div class="col-md-6">                      
         <p class="copyright-space">
           2014 &copy; - Stele. Derechos Reservados. 
-          <a href="steleterminos.html">Términos y Condiciones</a>
+          <g:link controller="utilidades" action="terminosYCondiciones">Términos y Condiciones</g:link>
         </p>
       </div>
       <div class="col-md-6">  
