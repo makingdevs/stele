@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require module="cobro" />
+    <r:require module="paraCamada" />
   </head>
   <body>
     <div class="main-content">
@@ -89,7 +89,7 @@
                             </li>
                           </ul>
 
-                          <div class="tab-content">
+                          <div class="tab-content">                          
                           <div id="faq-tab-111" class="tab-pane active">
                             <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
                               <g:if test="${flash.message}">
@@ -149,36 +149,48 @@
                                 </div><!--/ span5 -->
 
                                 
-                                <div class="span3">
+                                <div class="span4">
+                                  
                                   <input type="hidden" id="idRecargo" name="idRecargo">
+                                  
                                   <input type="hidden" id="idsDescuentos" name="idsDescuentos">                                  
-                                  <label class="hidden cantidadRecargo" >Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo" name="cantidadRecargo" readonly>
-                                  <label class="hidden porcentajeRecargo">Recargo Porcentaje</label><input class="hidden porcentajeRecargo" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
+                                  
+                                  <label class="hidden cantidadRecargo" >Recargo Cantidad</label>
+                                  <input class="hidden cantidadRecargo" id="cantidadRecargo" name="cantidadRecargo" readonly>
+                                  
+                                  <label class="hidden porcentajeRecargo">Recargo Porcentaje</label>
+                                  <input class="hidden porcentajeRecargo" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
+                                  
                                   <div class="descuentosDiv">
-                                    <table class="table hidden">
+                                    <!-- TODO Poner estilo en un archivo .css -->
+                                    <table class="table hidden" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
                                       <thead>
                                         <tr>
                                           <th>Descuento</th>
                                           <th>Importe</th>
+                                          <th>Fecha de Vencimiento</th>
                                         </tr>
                                       </thead>
                                       <tbody class="descuentosTableBody">
                                       </tbody>
                                     </table>
                                   </div>
+                                
                                 </div>
                                 
                                 <div class="span2">
-                                          <div id="descuentoCreado">
-                                            <g:render template="/descuento/list", model="[:]" />
-                                          </div>
-                                          <div id="recargoCreado" name="recargoCreado">
-                                            <g:render template="/recargo/list" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </g:form>
+                                  <div id="descuentoCreado">
+                                    <g:render template="/descuento/list", model="[:]" />
                                   </div>
+                                  
+                                  <div id="recargoCreado" name="recargoCreado">
+                                    <g:render template="/recargo/list" />
+                                  </div>
+                                </div>
+
+                              </div>
+                            </g:form>
+                          </div>
                                   <div id="faq-tab-222" class="tab-pane">
                                     <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
                                       <input type="hidden" name="camada" value="${camada}">
@@ -229,7 +241,7 @@
                                             <label class="hidden labelRecargoCantidad">Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo1" name="cantidadRecargo1" readonly>
                                             <label class="hidden labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden porcentajeRecargo" id="recargoPorcentaje1" name="recargoPorcentaje1" readonly>
                                             <div class="descuentosDiv col-md-6">
-                                              <table class="table table-striped" style="max-width:200px;">
+                                              <table class="table">
                                                 <thead>
                                                   <tr>
                                                     <th>Descuento</th>
@@ -534,6 +546,16 @@
       <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
       <i class="icon-double-angle-up icon-only bigger-110"></i>
     </a>
-   
+
+    <script id="descuento-template" type="text/x-handlebars-template">
+    {{#each this}}
+    <tr>
+      <td>{{descuento}}</td>
+      <td>{{cantidad}}</td>
+      <td style="padding-left:0px;"><input type="text" style="width:100%;" /></td>
+    </tr>    
+    {{/each}}
+    </script>
+
   </body>
 </html>
