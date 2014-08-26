@@ -9,8 +9,9 @@ jQuery(function ($) {
       var selectors = {
         conceptoDePagoSelector : '#conceptoDePago,#conceptoDePagoRecurrente',
         tabsSelector: 'a[href=#faq-tab-333],a[href=#faq-tab-444]',
-        fechaDeVencimientoSelector: '#fechaDeVencimiento',
-        cantidadDePagoSelector: '#cantidadDePago,#cantidadDePagoRecurrente'
+        fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
+        cantidadDePagoSelector: '#cantidadDePago,#cantidadDePagoRecurrente',
+        tablaDeDescuentosSelector: ''
       };
       this.cobroUnitario = new CobroUnitario(selectors);
     }
@@ -26,19 +27,25 @@ window.CobroUnitario = (function() {
   CobroUnitario.prototype.tabsSelector = '';
   CobroUnitario.prototype.fechaDeVencimientoSelector = '';
   CobroUnitario.prototype.cantidadDePagoSelector = '';
+  CobroUnitario.prototype.tablaDeDescuentosSelector = '';
 
   function CobroUnitario(selectores){
     this.conceptoDePagoSelector = selectores.conceptoDePagoSelector;
     this.tabsSelector = selectores.tabsSelector;
-    this.fechaDeVencimientoSelector = selectores.fechaDeVencimientoSelector
-    this.cantidadDePagoSelector = selectores.cantidadDePagoSelector
+    this.fechaDeVencimiento = selectores.fechaDeVencimientoSelector;
+    this.cantidadDePagoSelector = selectores.cantidadDePagoSelector;
+    this.tablaDeDescuentosSelector = selectores.tablaDeDescuentosSelector;
+    this.initDatePickerParaFechaDeVencimiento();
     this.initTypeaheadParaConceptos();
   }
-
-  CobroUnitario.prototype.render = function(){
-
-  }
   
+  CobroUnitario.prototype.renderDiscountsTable = function(item){
+    var source   = $("#descuento-template").html();
+    var template = Handlebars.compile(source);
+    var html = template(item.descuentos);
+    $(".descuentosTableBody").append(html);
+  }
+
   CobroUnitario.prototype.setExpirationDateForDiscount = function(dueDate){
     if(dueDate.datepicker("getDate") != "Invalid Date"){  
       date = dueDate.datepicker("getDate");
@@ -47,10 +54,31 @@ window.CobroUnitario = (function() {
       $('#fechaDeVencimientoDesc').datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
     }
   }
-
-  CobroUnitario.prototype.initTypeaheadParaConceptos = function(){
-    
+  
+  CobroUnitario.prototype.initDatePickerParaFechaDeVencimiento = function(){
     that = this;
+
+    this.fechaDeVencimiento.datepicker({
+      format:"dd/mm/yy",
+      language: "es",
+      orientation: "top auto",
+      todayHighlight: true,
+      autoclose: true 
+    }).on('changeDate',function(event){    
+      if($(this).attr("class").indexOf("vencimiento") != -1){
+        that.setExpirationDateForDiscount($(this)); 
+        if($(this).datepicker("getDate") != "Invalid Date")
+          $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().show();
+        else
+          $("a[href=#faq-tab-333],a[href=#faq-tab-444]").parent().hide();
+      }
+    });
+
+  }
+  
+  CobroUnitario.prototype.initTypeaheadParaConceptos = function(){
+    that = this;
+
     $(this.conceptoDePagoSelector).typeahead({
       source: function( id, process ) {      
         var $direccion = $('#urlConcepto').val();
@@ -60,7 +88,7 @@ window.CobroUnitario = (function() {
         $(this.cantidadDePagoSelector).val("");
         
         $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");        
-        that.setExpirationDateForDiscount($(this.fechaDeVencimientoSelector));
+        that.setExpirationDateForDiscount(that.fechaDeVencimiento);
         return $.getJSON(
           $url,
           function(data){
@@ -77,7 +105,7 @@ window.CobroUnitario = (function() {
       updater: function (concept){
         $.each(that.paymentSchemas, function(i,item){
           if(item.value.concepto == concept){
-            $('#fechaDeVencimiento').removeClass("vencimiento");
+            $(that.fechaDeVencimientoSelector).removeClass("vencimiento");
             $('#conceptoDePagoRecurrente').val(concept);   
             $(".cantidadDePago").val(item.cantidadDePago); 
             if(item.recargo != null)
@@ -106,14 +134,7 @@ window.CobroUnitario = (function() {
             $(".descuentosTableBody").html("");
             $('.descuentosDiv table').removeClass("hidden"); 
 
-            if(item.descuentos.length){
-              var source   = $("#descuento-template").html();
-              var template = Handlebars.compile(source);
-              var html = template(item.descuentos);
-              $(".descuentosTableBody").append(html);
-            }
-            else
-              $(".descuentosTableBody").append('<tr><td colspan="2">El concepto no tiene descuentos</td></tr>');            
+            that.renderDiscountsTable(item);
 
             return;
           } 
