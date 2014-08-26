@@ -548,13 +548,21 @@
     </a>
 
     <script id="descuento-template" type="text/x-handlebars-template">
-    {{#each this}}
-    <tr>
-      <td>{{descuento}}</td>
-      <td>{{cantidad}}</td>
-      <td style="padding-left:0px;"><input type="text" style="width:100%;" /></td>
-    </tr>    
-    {{/each}}
+    {{#if this}}
+      {{#each this}}
+      <tr>
+        <td>{{descuento}}</td>
+        <td>{{cantidad}}</td>
+        <td style="padding-left:0px;"><input type="text" style="width:100%;" /></td>
+      </tr>    
+      {{/each}}
+    {{else}}
+      <tr>
+        <td colspan="3">
+          El concepto no tiene descuentos.
+        </td>
+      </tr> 
+    {{/if}}
     </script>
 
   </body>
