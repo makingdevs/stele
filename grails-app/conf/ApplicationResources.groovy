@@ -3,6 +3,16 @@ modules = {
     resource url:'js/application.js'
   }
 
+  paraCamada {
+    dependsOn 'bootstrapDatePicker'
+    dependsOn 'handlebars'
+    resource url:'js/paraCamada/app.js'
+  }
+
+  handlebars{
+    resource url:'js/handlebars/handlebars-v1.3.0.js'
+  }
+
   telefono {
     resource url:'js/telefono/index.js'
   }
@@ -131,7 +141,7 @@ modules = {
     dependsOn 'dropzoneCss'
   }
   jquery2{
-    resource url:'assets/js/jquery-2.0.3.min.js', wrapper: { s ->
+    resource url:'assets/js/jquery-2.0.3.min.js', disposition:'head', wrapper: { s ->
       def url = s.find(/src.+.js|.css/) - "src=\""
       """
         <!--[if !IE]>-->
@@ -143,7 +153,7 @@ modules = {
     }
   }
   jquery1{
-    resource url:'assets/js/jquery-1.10.2.min.js', wrapper: { s ->
+    resource url:'assets/js/jquery-1.10.2.min.js', disposition:'head', wrapper: { s ->
       def url = s.find(/src.+.js|.css/) - "src=\""
       """
         <!--[if IE]>
