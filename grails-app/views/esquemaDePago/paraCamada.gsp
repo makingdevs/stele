@@ -468,7 +468,7 @@
                                         </div>
                                         <div class="contro-group">
                                           <div class="controls">
-                                            <input class="btn btn-primary" type="button" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
+                                            <input class="btn btn-primary" type="submit" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
                                           </div>
                                         </div>
                                         </div>
@@ -553,7 +553,9 @@
       <tr>
         <td>{{descuento}}</td>
         <td>{{cantidad}}</td>
-        <td style="padding-left:0px;"><input type="text" class="expiracionDescuento" style="width:100%;" /></td>
+        <td style="padding-left:0px;">
+          <input type="text" class="expiracionDescuento" style="width:100%;" name="expiracion" />
+        </td>
       </tr>    
       {{/each}}
     {{else}}

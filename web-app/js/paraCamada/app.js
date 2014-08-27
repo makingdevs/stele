@@ -3,6 +3,7 @@ jQuery(function ($) {
 
   window.App = {
     init : function(){
+      this.initButtonActions();
       this.initCobroUnitario();
     },
     initCobroUnitario : function(){
@@ -14,6 +15,22 @@ jQuery(function ($) {
         tablaDeDescuentosSelector: $('div.descuentosDiv table')
       };
       this.cobroUnitario = new CobroUnitario(selectors);
+    },
+    initButtonActions: function(){
+      $("#submitFormPayout").click(function(){
+        if($('a[href=#faq-tab-111]').parent().attr("class") == 'active')
+          $("#pagoGeneracion").submit();
+        else if($('a[href=#faq-tab-222]').parent().attr("class") == 'active')
+          $("#pagoGeneracionrecurrente").submit();
+
+        $('#imagenCarga').removeClass("hidden");
+      });                       
+
+      $("#descuentosForm").submit(function(event){
+        event.stopPropagation();
+        //console.log($("input#descuentos").val()); 
+        return false;
+      });
     }
   };
   App.init();
