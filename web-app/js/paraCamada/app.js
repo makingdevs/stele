@@ -45,26 +45,28 @@ window.CobroUnitario = (function() {
     var template = Handlebars.compile(source);
     var html = template(item.descuentos);
     $(".descuentosTableBody").append(html);
-    this.initDatePickerParaDescuentos('expiracionDescuento');
+    this.initDatePickerParaDescuento('.expiracionDescuento');
   }
 
-  CobroUnitario.prototype.setExpirationDateForDiscount = function(dueDate){
-    if(dueDate.datepicker("getDate") != "Invalid Date"){  
-      date = dueDate.datepicker("getDate");
+  CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
+    if(this.fechaDeVencimiento.datepicker("getDate") != "Invalid Date"){  
+      date = this.fechaDeVencimiento.datepicker("getDate");
       timeDiff = date.getTime() - new Date().getTime();
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      $('#fechaDeVencimientoDesc').datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
+      discount.datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
     }
   }
   
-  CobroUnitario.prototype.initDatePickerParaDescuentos = function(className){
-    this.fechaDeVencimientoDescuento = $('.'+className);
+  CobroUnitario.prototype.initDatePickerParaDescuento = function(descuento){
+    this.fechaDeVencimientoDescuento = $(descuento);
     this.fechaDeVencimientoDescuento.datepicker({
       format:"dd/mm/yy",
       language: "es",
       orientation: "top auto",
       autoclose:true
     }); 
+    this.setExpirationDateForDiscount($(descuento));
+
   }
   CobroUnitario.prototype.initDatePickerParaFechaDeVencimiento = function(){
     that = this;
@@ -77,7 +79,7 @@ window.CobroUnitario = (function() {
       autoclose: true 
     }).on('changeDate',function(event){    
       if($(this).attr("class").indexOf("vencimiento") != -1){
-        that.setExpirationDateForDiscount($(this)); 
+        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc')); 
         if($(this).datepicker("getDate") != "Invalid Date")
           that.tabs.parent().show();
         else
@@ -98,7 +100,7 @@ window.CobroUnitario = (function() {
         that.importe.val("");
         
         $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");        
-        that.setExpirationDateForDiscount(that.fechaDeVencimiento);
+        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
         return $.getJSON(
           $url,
           function(data){
