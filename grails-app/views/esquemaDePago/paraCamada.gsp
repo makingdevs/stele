@@ -553,7 +553,7 @@
       <tr>
         <td>{{descuento}}</td>
         <td>{{cantidad}}</td>
-        <td style="padding-left:0px;"><input type="text" style="width:100%;" /></td>
+        <td style="padding-left:0px;"><input type="text" class="expiracionDescuento" style="width:100%;" /></td>
       </tr>    
       {{/each}}
     {{else}}
