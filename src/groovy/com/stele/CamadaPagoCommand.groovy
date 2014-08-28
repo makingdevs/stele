@@ -17,6 +17,7 @@ class CamadaPagoCommand {
   String[] recargoid
   String[] meses
   String[] pagoDoble
+  List<String> expiracionDescuento 
   String listaDependientes
   String descuentoConFecha
   String idRecargo
