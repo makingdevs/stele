@@ -14,7 +14,8 @@ public class EsquemaDePagoMarshaller implements ObjectMarshaller<JSON> {
     def esquemaDePago = object as EsquemaDePago
     def descuentos = []
     esquemaDePago.descuentos.each{ descuento ->
-      descuentos << [descuento:descuento.nombreDeDescuento,
+      descuentos << [id:descuento.id, 
+                     descuento:descuento.nombreDeDescuento,
                      cantidad:descuento.cantidad ? "\$${descuento.cantidad}":"%${descuento.porcentaje}"]
     }
     def esquemaDePagoValues = [key:esquemaDePago.id,
