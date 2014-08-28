@@ -160,7 +160,6 @@ window.CobroUnitario = (function() {
             that.tabs.parent().hide();
             $(".descuentosTableBody").html("");
             that.tablaDeDescuentos.removeClass("hidden"); 
-
             that.renderDiscountsTable(item);
 
             return;
