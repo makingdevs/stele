@@ -554,7 +554,7 @@
         <td>{{descuento}}</td>
         <td>{{cantidad}}</td>
         <td style="padding-left:0px;">
-          <input type="text" class="expiracionDescuento" style="width:100%;" name="{{idDescuento}}expiracionDescuento[{{@index}}]" />
+          <input type="text" class="expiracionDescuento" style="width:100%;" name="fechasDeExpiracionDescuento[{{@index}}]" />
           <input type="hidden" value="{{id}}" name="idDescuento[{{@index}}]" />
         </td>
       </tr>    
