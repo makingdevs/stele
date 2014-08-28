@@ -77,7 +77,9 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
+
     def grupoPagoCommand = wrapperCommandService.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, springSecurityService.currentUser.instituciones?.first())
+
     def pagos = generacionDePagoService.generaPagoParaGrupo(grupoPagoCommand)
     def esquemaDePago = esquemaDePagoService.buscarOSalvarEsquemaDePago(grupoPagoCommand)
     pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos) ?: pagos
@@ -103,7 +105,7 @@ class EsquemaDePagoController {
   private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
     def listaDePagos = []
     pagos.each{ pago -> 
-      def descuentosAplicables = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento)
+      def descuentosAplicables = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento, grupoPagoCommand.fechasDeExpiracionDescuento)
       listaDePagos +=  asignarDescuntosAplicablesAlosPagos(descuentosAplicables,pago)
     }
     listaDePagos
