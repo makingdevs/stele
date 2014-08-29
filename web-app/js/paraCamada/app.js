@@ -28,7 +28,6 @@ jQuery(function ($) {
 
       $("#descuentosForm").submit(function(event){
         event.stopPropagation();
-        //console.log($("input#descuentos").val()); 
         return false;
       });
     }
@@ -62,7 +61,7 @@ window.CobroUnitario = (function() {
     var template = Handlebars.compile(source);
     var html = template(item.descuentos);
     $(".descuentosTableBody").append(html);
-    this.initDatePickerParaDescuento('.expiracionDescuento');
+    this.initDatePickerParaDescuento($('.expiracionDescuento'));
   }
 
   CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
@@ -74,17 +73,17 @@ window.CobroUnitario = (function() {
     }
   }
   
-  CobroUnitario.prototype.initDatePickerParaDescuento = function(descuento){
-    this.fechaDeVencimientoDescuento = $(descuento);
+  CobroUnitario.prototype.initDatePickerParaDescuento = function(descuentoField){
+    this.fechaDeVencimientoDescuento = descuentoField;
     this.fechaDeVencimientoDescuento.datepicker({
       format:"dd/mm/yy",
       language: "es",
       orientation: "top auto",
       autoclose:true
     }); 
-    this.setExpirationDateForDiscount($(descuento));
-
+    this.setExpirationDateForDiscount(descuentoField);
   }
+
   CobroUnitario.prototype.initDatePickerParaFechaDeVencimiento = function(){
     that = this;
 
