@@ -191,32 +191,32 @@
                               </div>
                             </g:form>
                           </div>
-                                  <div id="faq-tab-222" class="tab-pane">
-                                    <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
-                                      <input type="hidden" name="camada" value="${camada}">
-                                      <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
-                                      <div class="row-fluid">
-                                        <div class="span11">
-                                          <div class="alert alert-info">
-                                            <button class="close" data-dismiss="alert" type="button">
-                                              <i class="icon-remove"></i>
-                                            </button>
-                                            <strong>Nota! </strong>
-                                              Sólo puede seleccionar un concepto cobro recurrente o unitario
-                                            <br>
-                                          </div>
-                                          <div class="span4">
-                                            <div class="control-group">
-                                              <label class="control-label" for="txtConcepto">Concepto</label>
-                                              <div class="controls">
-                                                <div class="input-prepend">
-                                                  <input type="text" id="conceptoDePagoRecurrente" class="typeahead2" data-provide="typeahead" name="conceptoDePagoRecurrente" placeholder="Concepto" autocomplete="off" >
-                                                  <span class="add-on">
-                                                    <i class="icon-edit"></i>
-                                                  </span>
-                                                </div>          
-                                              </div>
-                                            </div>
+                          <div id="faq-tab-222" class="tab-pane">
+                            <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+                              <input type="hidden" name="camada" value="${camada}">
+                              <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
+                              <div class="row-fluid">
+                                <div class="span11">
+                                  <div class="alert alert-info">
+                                    <button class="close" data-dismiss="alert" type="button">
+                                      <i class="icon-remove"></i>
+                                    </button>
+                                    <strong>Nota! </strong>
+                                    Sólo puede seleccionar un concepto cobro recurrente o unitario
+                                    <br>
+                                  </div>
+                                  <div class="span4">
+                                    <div class="control-group">
+                                      <label class="control-label" for="txtConcepto">Concepto</label>
+                                      <div class="controls">
+                                        <div class="input-prepend">
+                                          <input type="text" id="conceptoDePagoRecurrente" class="typeahead2" data-provide="typeahead" name="conceptoDePagoRecurrente" placeholder="Concepto" autocomplete="off" >
+                                          <span class="add-on">
+                                            <i class="icon-edit"></i>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
                                             <div class="control-group">
                                               <label class="control-label" for="txtConcepto"> Dias Vencimiento  </label>
                                               <div class="controls">
