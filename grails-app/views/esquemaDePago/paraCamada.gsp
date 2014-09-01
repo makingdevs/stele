@@ -217,51 +217,60 @@
                                         </div>
                                       </div>
                                     </div>
-                                            <div class="control-group">
-                                              <label class="control-label" for="txtConcepto"> Dias Vencimiento  </label>
-                                              <div class="controls">
-                                                <div class="input-prepend">
-                                                  <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..30}" noSelection="['':'- Dia -']"/>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="control-group">
-                                              <label class="control-label" for="numCantidadDePagoRecurrente">Importe</label>
-                                              <div class="controls">
-                                                <div class="input-prepend">
-                                                  <span class="add-on">
-                                                    <i class="icon-usd"></i>
-                                                  </span>
-                                                  <input type="text" id="cantidadDePagoRecurrente" class="cantidadDePago" name="cantidadDePagoRecurrente" placeholder="0.0">
-                                                </div>  
-                                              </div>
-                                            </div> 
-                                          </div>
-                                          <div class="span2 infoRecargosDescuentos">
-                                            <label class="hidden labelRecargoCantidad">Recargo Cantidad</label><input class="hidden cantidadRecargo" id="cantidadRecargo1" name="cantidadRecargo1" readonly>
-                                            <label class="hidden labelRecargoPorcentaje">Recargo Porcentaje</label><input class="hidden porcentajeRecargo" id="recargoPorcentaje1" name="recargoPorcentaje1" readonly>
-                                            <div class="descuentosDiv col-md-6">
-                                              <table class="table">
-                                                <thead>
-                                                  <tr>
-                                                    <th>Descuento</th>
-                                                    <th>Importe</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody class="descuentosTableBody">
-                                                </tbody>
-                                              </table>
-                                            </div>
-                                          </div>
-                                          <div class="span2">
-                                            <div id="descuentoCreado3">
-                                              <g:render template="/descuento/list", model="[:]" />
-                                            </div>
-                                            <div id="recargoCreado3" name="recargoCreado">
-                                              <g:render template="/recargo/list" />
-                                            </div>
-                                          </div> 
+
+                                    <div class="control-group">
+                                      <label class="control-label" for="txtConcepto"> Dias Vencimiento  </label>
+                                      <div class="controls">
+                                        <div class="input-prepend">
+                                          <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..30}" noSelection="['':'- Dia -']"/>
                                         </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                      <label class="control-label" for="numCantidadDePagoRecurrente">Importe</label>
+                                      <div class="controls">
+                                        <div class="input-prepend">
+                                          <span class="add-on">
+                                            <i class="icon-usd"></i>
+                                          </span>
+                                          <input type="text" id="cantidadDePagoRecurrente" class="cantidadDePago" name="cantidadDePagoRecurrente" placeholder="0.0">
+                                        </div>
+                                      </div>
+                                    </div> 
+                                  </div>
+
+                                  <div class="span2 infoRecargosDescuentos">
+                                    <label class="hidden cantidadRecargoRecurrente">Recargo Cantidad</label>
+                                    
+                                    <input class="hidden cantidadRecargoRecurrente" name="cantidadRecargo1" readonly>
+                                    
+                                    <label class="hidden porcentajeRecargoRecurrente">Recargo Porcentaje</label>
+
+                                    <input class="hidden porcentajeRecargoRecurrente" name="recargoPorcentaje1" readonly>
+                                    <div class="descuentosDiv col-md-6">
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th>Descuento</th>
+                                            <th>Importe</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody class="descuentosTableBody">
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+
+                                  <div class="span2">
+                                    <div id="descuentoCreado3">
+                                      <g:render template="/descuento/list", model="[:]" />
+                                    </div>
+                                    <div id="recargoCreado3" name="recargoCreado">
+                                      <g:render template="/recargo/list" />
+                                    </div>
+                                  </div>
+                                </div>
                                         <div class="span11">
                                           <div class="span2">
                                             <label>
