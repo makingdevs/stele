@@ -23,7 +23,8 @@ jQuery(function ($) {
         cantidadDePagoRecurrente: $('#cantidadDePagoRecurrente'),
         cantidadRecargoRecurrente: $('input.cantidadRecargoRecurrente'),
         porcentajeRecargoRecurrente: $('input.porcentajeRecargoRecurrente'),
-        idRecargo: $("#idRecargo")
+        idRecargo: $("#idRecargo"),
+        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]')
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },

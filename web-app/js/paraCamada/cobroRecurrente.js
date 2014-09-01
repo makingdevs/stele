@@ -2,8 +2,10 @@ window.CobroRecurrente = (function(){
 
   CobroRecurrente.prototype.conceptoDePagoRecurrente = '';
   CobroRecurrente.prototype.cantidadDePagoRecurrente = '';
+  CobroRecurrente.prototype.idRecargo = '';
   CobroRecurrente.prototype.cantidadRecargoRecurrente = '';
   CobroRecurrente.prototype.porcentajeRecargoRecurrente = '';
+  CobroRecurrente.prototype.tabs = '';
   CobroRecurrente.prototype.paymentSchemas = [];
 
   function CobroRecurrente(selectores){    
@@ -12,7 +14,7 @@ window.CobroRecurrente = (function(){
     this.idRecargo = selectores.idRecargo
     this.cantidadRecargoRecurrente = selectores.cantidadRecargoRecurrente;
     this.porcentajeRecargoRecurrente = selectores.porcentajeRecargoRecurrente;
-
+    this.tabs = selectores.tabsSelector;
     this.initTypeaheadParaCobroRecurrente();
   }
 
@@ -47,9 +49,8 @@ window.CobroRecurrente = (function(){
       source: function( id, process ){
         var $direccion = $('#urlConcepto').val();
         var $url = $direccion+'/'+ id;        
-        //that.tabs.parent().show();
-        //that.importe.val("");
-        
+        that.tabs.parent().show();
+
         $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
         //that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
       
@@ -71,6 +72,7 @@ window.CobroRecurrente = (function(){
           if(paymentSchema.value.concepto == concept){
             that.cantidadDePagoRecurrente.val(paymentSchema.cantidadDePago);             
             that.showSurchargeFromPaymentSchema(paymentSchema);
+            that.tabs.parent().hide();
             return;
           }
 

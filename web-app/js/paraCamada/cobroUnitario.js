@@ -16,14 +16,14 @@ window.CobroUnitario = (function() {
     this.tabs = selectores.tabsSelector;
     this.tablaDeDescuentos = selectores.tablaDeDescuentosSelector;
     this.initDatePickerParaFechaDeVencimiento();
-    this.initTypeaheadParaConceptos();
+    this.initTypeaheadParaConcepto();
   }
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
     var source   = $("#descuento-template").html();
     var template = Handlebars.compile(source);
     var html = template(item.descuentos);
-    $(".descuentosTableBody").append(html);
+    $(".cobroUnitarioDescuentosTableBody").append(html);
     this.initDatePickerParaDescuento($('.expiracionDescuento'));
   }
 
@@ -67,7 +67,7 @@ window.CobroUnitario = (function() {
     });
   }
   
-  CobroUnitario.prototype.initTypeaheadParaConceptos = function(){    
+  CobroUnitario.prototype.initTypeaheadParaConcepto = function(){    
     var that = this;
 
     this.conceptoDePago.typeahead({
