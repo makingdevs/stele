@@ -171,7 +171,7 @@
                                           <th>Fecha de Vencimiento</th>
                                         </tr>
                                       </thead>
-                                      <tbody class="descuentosTableBody">
+                                      <tbody class="cobroUnitarioDescuentosTableBody">
                                       </tbody>
                                     </table>
                                   </div>
