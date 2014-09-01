@@ -4,6 +4,7 @@ jQuery(function ($) {
   window.App = {
     init : function(){
       this.initButtonActions();
+      this.initCobroRecurrente();
       this.initCobroUnitario();
     },
     initCobroUnitario : function(){
@@ -15,6 +16,12 @@ jQuery(function ($) {
         tablaDeDescuentosSelector: $('div.descuentosDiv table')
       };
       this.cobroUnitario = new CobroUnitario(selectors);
+    },
+    initCobroRecurrente : function(){
+      var selectors = {
+        conceptoDePagoRecurrente: $('#conceptoDePagoRecurrente')
+      };
+      this.cobroRecurrente = new CobroRecurrente(selectors);
     },
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){
@@ -34,6 +41,81 @@ jQuery(function ($) {
   };
   App.init();
 });
+
+window.CobroRecurrente = (function(){
+
+  CobroRecurrente.prototype.conceptoDePagoRecurrente = '';
+  CobroRecurrente.prototype.paymentSchemas = [];
+
+  function CobroRecurrente(selectores){    
+    this.conceptoDePagoRecurrente = selectores.conceptoDePagoRecurrente;
+    this.initTypeaheadParaCobroRecurrente();
+  }
+
+  CobroRecurrente.prototype.initTypeaheadParaCobroRecurrente = function(){
+    that = this;
+    
+    this.conceptoDePagoRecurrente.typeahead({
+      source: function( id, process ){
+        var $direccion = $('#urlConcepto').val();
+        var $url = $direccion+'/'+ id;
+        //that.tabs.parent().show();
+        //that.importe.val("");
+        
+        $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
+        //that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
+      
+        return $.getJSON(
+          $url,
+          function(data){
+            that.paymentSchemas = data
+            var concepts = [];
+            $.each(data, function(index, item){
+              concepts.push(item.value.concepto);
+            });
+           
+            return process(concepts);
+          }); 
+      },
+      items:10,
+      updater: function(concept){
+        $.each(that.paymentSchemas, function(i,item){
+          if(item.value.concepto == concept){
+            //that.importe.val(item.cantidadDePago); 
+            
+            if(item.recargo != null)
+              $("#idRecargo").val(item.recargo.id);
+
+            if(item.recargo != null){
+              if(item.recargo.cantidad != null){
+                $("input.cantidadRecargo").val(item.recargo.cantidad);
+                $(".cantidadRecargo").removeClass("hidden");
+                $("input.porcentajeRecargo").val();
+                $(".porcentajeRecargo").addClass("hidden");
+              }
+              else if(item.recargo.porcentaje != null){
+                $("input.porcentajeRecargo").val(item.recargo.porcentaje);
+                $(".porcentajeRecargo").removeClass("hidden");
+                $("input.cantidadRecargo").val();
+                $(".cantidadRecargo").addClass("hidden");
+              }
+            }
+            else
+              $('.porcentajeRecargo,.cantidadRecargo').addClass("hidden");
+
+            return;
+          }
+
+        });
+        return concept.trim();
+      }
+
+    });
+  }
+
+  return CobroRecurrente;
+
+})();
 
 window.CobroUnitario = (function() {
 
@@ -164,7 +246,7 @@ window.CobroUnitario = (function() {
             return;
           } 
         }); 
-        return concept;
+        return concept.trim();
       }
     });
 
