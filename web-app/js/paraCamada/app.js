@@ -13,7 +13,7 @@ jQuery(function ($) {
         tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
         fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
         cantidadDePagoSelector: $('#cantidadDePago'),
-        tablaDeDescuentosSelector: $('div.descuentosDiv table')
+        tablaDeDescuentosSelector: $('.cuTable')
       };
       this.cobroUnitario = new CobroUnitario(selectors);
     },
@@ -24,7 +24,8 @@ jQuery(function ($) {
         cantidadRecargoRecurrente: $('input.cantidadRecargoRecurrente'),
         porcentajeRecargoRecurrente: $('input.porcentajeRecargoRecurrente'),
         idRecargo: $("#idRecargo"),
-        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]')
+        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
+        tablaDeDescuentos: $('.crTable')
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },

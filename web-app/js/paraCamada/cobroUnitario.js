@@ -23,7 +23,7 @@ window.CobroUnitario = (function() {
     var source   = $("#descuento-template").html();
     var template = Handlebars.compile(source);
     var html = template(item.descuentos);
-    $(".cobroUnitarioDescuentosTableBody").append(html);
+    $(".cobroUnitarioDescuentosTableBody").html(html);
     this.initDatePickerParaDescuento($('.expiracionDescuento'));
   }
 
@@ -120,10 +120,8 @@ window.CobroUnitario = (function() {
 
             $("#idsDescuentos").val(item.descuentosIds);
             that.tabs.parent().hide();
-            $(".descuentosTableBody").html("");
             that.tablaDeDescuentos.removeClass("hidden"); 
             that.renderDiscountsTable(item);
-
             return;
           } 
         }); 

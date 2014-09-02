@@ -6,6 +6,7 @@ window.CobroRecurrente = (function(){
   CobroRecurrente.prototype.cantidadRecargoRecurrente = '';
   CobroRecurrente.prototype.porcentajeRecargoRecurrente = '';
   CobroRecurrente.prototype.tabs = '';
+  CobroRecurrente.prototype.tablaDeDescuentos = '';
   CobroRecurrente.prototype.paymentSchemas = [];
 
   function CobroRecurrente(selectores){    
@@ -15,7 +16,16 @@ window.CobroRecurrente = (function(){
     this.cantidadRecargoRecurrente = selectores.cantidadRecargoRecurrente;
     this.porcentajeRecargoRecurrente = selectores.porcentajeRecargoRecurrente;
     this.tabs = selectores.tabsSelector;
+    this.tablaDeDescuentos = selectores.tablaDeDescuentos;
     this.initTypeaheadParaCobroRecurrente();
+  }
+
+  CobroRecurrente.prototype.renderDiscountsTable = function(paymentScheme){
+    this.tablaDeDescuentos.removeClass("hidden");
+    var source = $("#descuento-template").html();
+    var template = Handlebars.compile(source);
+    var html = template(paymentScheme.descuentos);    
+    $(".cobroRecurrenteDescuentosTableBody").html(html);
   }
 
   CobroRecurrente.prototype.showSurchargeFromPaymentSchema = function(paymentSchema){    
@@ -73,6 +83,7 @@ window.CobroRecurrente = (function(){
             that.cantidadDePagoRecurrente.val(paymentSchema.cantidadDePago);             
             that.showSurchargeFromPaymentSchema(paymentSchema);
             that.tabs.parent().hide();
+            that.renderDiscountsTable(paymentSchema);
             return;
           }
 

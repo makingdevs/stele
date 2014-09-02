@@ -163,7 +163,7 @@
                                   
                                   <div class="descuentosDiv">
                                     <!-- TODO Poner estilo en un archivo .css -->
-                                    <table class="table hidden" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
+                                    <table class="table hidden cuTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
                                       <thead>
                                         <tr>
                                           <th>Descuento</th>
@@ -249,7 +249,7 @@
 
                                     <input class="hidden porcentajeRecargoRecurrente" name="recargoPorcentaje1" readonly>
                                     <div class="descuentosDiv col-md-6">
-                                      <table class="table hidden">
+                                      <table class="table hidden crTable">
                                         <thead>
                                           <tr>
                                             <th>Descuento</th>
