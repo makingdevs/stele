@@ -6,6 +6,7 @@ jQuery(function ($) {
       this.initButtonActions();
       this.initCobroUnitario();
       this.initCobroRecurrente();
+      this.initDescuento();
     },
     initCobroUnitario : function(){
       var selectors = {
@@ -29,6 +30,12 @@ jQuery(function ($) {
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },
+    initDescuento: function(){
+      var selectors = {
+        nombreDescuento: $("#nombreDeDescuento")
+      };
+      this.descuento = new Descuento(selectors);
+    },
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){
         if($('a[href=#faq-tab-111]').parent().attr("class") == 'active')
@@ -47,5 +54,4 @@ jQuery(function ($) {
   };
   App.init();
 });
-
 

@@ -16,8 +16,6 @@ window.Descuento = (function(){
       source: function(id, process){
         var $direccion = $('#urlDescuento').val();
         var $url = $direccion+'/'+id;
-        console.log($url);
-        console.log("It works");
         /*
         return $.getJSON(
           $url,
