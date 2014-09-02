@@ -26,5 +26,5 @@ window.Descuento = (function(){
     });
 
   }
-
+  return Descuento;
 })();
