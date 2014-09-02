@@ -249,14 +249,15 @@
 
                                     <input class="hidden porcentajeRecargoRecurrente" name="recargoPorcentaje1" readonly>
                                     <div class="descuentosDiv col-md-6">
-                                      <table class="table">
+                                      <table class="table hidden">
                                         <thead>
                                           <tr>
                                             <th>Descuento</th>
                                             <th>Importe</th>
+                                            <th>Fecha de Vencimiento</th>
                                           </tr>
                                         </thead>
-                                        <tbody class="descuentosTableBody">
+                                        <tbody class="cobroRecurrenteDescuentosTableBody">
                                         </tbody>
                                       </table>
                                     </div>
@@ -271,36 +272,39 @@
                                     </div>
                                   </div>
                                 </div>
-                                        <div class="span11">
-                                          <div class="span2">
-                                            <label>
-                                              <span class="lbl  blue"> <strong> Meses </strong> </span>
-                                            </label>
-                                            <label>
-                                              <g:checkBox name="meses" value="7" checked="${false}" />
-                                              <span class="lbl"> Agosto</span>
-                                            </label>
-                                            <label>
-                                              <g:checkBox name="meses" value="8" checked="${false}" />
-                                              <span class="lbl"> Septiembre </span>
-                                            </label>
-                                            <label>
-                                              <g:checkBox name="meses" value="9" checked="${false}" />
-                                              <span class="lbl"> Octubre </span>
-                                            </label>
-                                            <label>
-                                              <g:checkBox name="meses" value="10" checked="${false}" />
-                                              <span class="lbl"> Noviembre</span>
-                                            </label>
-                                          </div>    
-                                          <div class="span2">
-                                            <label>
-                                              <span class="lbl orange"> Doble </span>
-                                            </label>                                
-                                            <label>
-                                              <g:checkBox name="pagoDoble" value="7" checked="${false}"  /> 
-                                              <span class="lbl"> <br> </span>
-                                            </label>
+                                
+                                <div class="span11">
+                                  <div class="span2">
+                                    <label>
+                                      <span class="lbl  blue"> <strong> Meses </strong> </span>
+                                    </label>
+                                    <label>
+                                      <g:checkBox name="meses" value="7" checked="${false}" />
+                                    <span class="lbl"> Agosto</span>
+                                    </label>
+                                    <label>
+                                      <g:checkBox name="meses" value="8" checked="${false}" />
+                                      <span class="lbl">Septiembre </span>
+                                    </label>
+                                    <label>
+                                      <g:checkBox name="meses" value="9" checked="${false}" />
+                                      <span class="lbl"> Octubre </span>
+                                    </label>
+                                    <label>
+                                      <g:checkBox name="meses" value="10" checked="${false}" />
+                                      <span class="lbl"> Noviembre</span>
+                                    </label>
+                                  </div>
+                                  
+                                  <div class="span2">
+                                    <label>
+                                      <span class="lbl orange"> Doble </span>
+                                    </label>           
+                                    <label>
+                                      <g:checkBox name="pagoDoble" value="7" checked="${false}"  />
+                                      <span class="lbl"> <br> </span>
+                                    </label>
+
                                             <label>
                                               <g:checkBox name="pagoDoble" value="8" checked="${false}"  />
                                               <span class="lbl"> <br> </span>
