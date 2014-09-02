@@ -240,7 +240,7 @@
                                     </div> 
                                   </div>
 
-                                  <div class="span2 infoRecargosDescuentos">
+                                  <div class="span4">
                                     <label class="hidden cantidadRecargoRecurrente">Recargo Cantidad</label>
                                     
                                     <input class="hidden cantidadRecargoRecurrente" name="cantidadRecargo1" readonly>
@@ -248,8 +248,8 @@
                                     <label class="hidden porcentajeRecargoRecurrente">Recargo Porcentaje</label>
 
                                     <input class="hidden porcentajeRecargoRecurrente" name="recargoPorcentaje1" readonly>
-                                    <div class="descuentosDiv col-md-6">
-                                      <table class="table hidden crTable">
+                                    <div class="descuentosDiv">
+                                      <table class="table hidden crTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
                                         <thead>
                                           <tr>
                                             <th>Descuento</th>
