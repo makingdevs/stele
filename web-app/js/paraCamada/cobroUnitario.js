@@ -78,7 +78,7 @@ window.CobroUnitario = (function() {
         that.tabs.parent().show();
         that.importe.val("");
         
-        $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");        
+        $(".cuTable, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");        
         that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
         return $.getJSON(
           $url,

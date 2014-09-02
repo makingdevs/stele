@@ -61,7 +61,7 @@ window.CobroRecurrente = (function(){
         var $url = $direccion+'/'+ id;        
         that.tabs.parent().show();
 
-        $(".descuentosDiv table, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");
+        $(".crTable, .porcentajeRecargoRecurrente, .cantidadRecargoRecurrente").addClass("hidden");
         //that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
       
         return $.getJSON(
