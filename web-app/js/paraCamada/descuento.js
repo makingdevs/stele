@@ -4,7 +4,6 @@ window.Descuento = (function(){
   Descuento.prototype.descuentos = [];  
 
   function Descuento(selectores){
-    console.log("It has been initialized");
     this.nombreDescuento = selectores.nombreDescuento;
     this.initTypeaheadParaDescuento();
   }
@@ -16,12 +15,18 @@ window.Descuento = (function(){
       source: function(id, process){
         var $direccion = $('#urlDescuento').val();
         var $url = $direccion+'/'+id;
-        /*
+
         return $.getJSON(
           $url,
           function(data){
             that.descuentos = data;
-          });*/
+            var descuentos = [];
+            $.each(data, function(index,descuento){ 
+              descuentos.push(descuento.value);  
+            });
+
+            return process(descuentos);
+          });
       }
     });
 
