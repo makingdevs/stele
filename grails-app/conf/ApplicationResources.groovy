@@ -6,8 +6,9 @@ modules = {
   paraCamada {
     dependsOn 'bootstrapDatePicker'
     dependsOn 'handlebars'
-    resource url:'js/paraCamada/cobroRecurrente.js'
     resource url:'js/paraCamada/cobroUnitario.js'
+    resource url:'js/paraCamada/cobroRecurrente.js'
+    resource url:'js/paraCamada/descuento.js'
     resource url:'js/paraCamada/app.js'
   }
 
