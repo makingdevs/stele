@@ -32,7 +32,8 @@ jQuery(function ($) {
     },
     initDescuento: function(){
       var selectors = {
-        nombreDescuento: $("#nombreDeDescuento")
+        nombreDescuento: $("#nombreDeDescuento"),
+        form:$("#descuentoForm")
       };
       this.descuento = new Descuento(selectors);
     },
