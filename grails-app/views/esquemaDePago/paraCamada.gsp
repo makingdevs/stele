@@ -408,20 +408,19 @@
                                       </div>
                                     </g:form>
                                   </div>
+                                  
                                   <div id="faq-tab-333" class="tab-pane">
-                                    <div class="row-fluid">
-                                      <div class="span12">
-                                        <div class="alert alert-info">
-                                          <button class="close" data-dismiss="alert" type="button">
-                                            <i class="icon-remove"></i>
-                                          </button>
-                                          <strong>Nota! </strong>
-                                            Sólo puede seleccionar importe o porcentaje de descuento <br>
-                                          <strong>Nota! </strong>
-                                            Por fecha de vencimiento o dias antes de vencer el pago
-                                          <br>
-                                        </div>
-                                      </div>
+                                    <div class="alert alert-info">
+                                      <button class="close" data-dismiss="alert" type="button">
+                                        <i class="icon-remove"></i>
+                                      </button>
+                                      <strong>Nota! </strong>
+                                        Sólo puede seleccionar importe o porcentaje de descuento <br>
+                                      <strong>Nota! </strong>
+                                        Por fecha de vencimiento o dias antes de vencer el pago
+                                      <br>
+                                    </div>
+                                    <div class="row-fluid">    
                                       <g:form class="form-horizontal" name="descuentoForm" url="[controller:'descuento', action:'nuevo']" id="descuentoForm" >
                                         <div class="span5">
                                         <p></p><p></p>
