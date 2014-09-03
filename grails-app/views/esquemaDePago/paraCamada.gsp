@@ -178,7 +178,7 @@
                                 </div>
                                 
                                 <div class="span2">
-                                  <div id="descuentoCreado">
+                                  <div class="descuentoCreado">
                                     <g:render template="/descuento/list", model="[:]" />
                                   </div>
                                   
@@ -266,7 +266,7 @@
                                 </div>
 
                                   <div class="span2">
-                                    <div id="descuentoCreado3">
+                                    <div  class="descuentoCreado">
                                       <g:render template="/descuento/list", model="[:]" />
                                     </div>
                                     <div id="recargoCreado3" name="recargoCreado">
@@ -422,7 +422,7 @@
                                           <br>
                                         </div>
                                       </div>
-                                      <g:form class="form-horizontal" name="descuentosForm" url="[controller:'descuento', action:'nuevo']" id="descuentosForm" >
+                                      <g:form class="form-horizontal" name="descuentoForm" url="[controller:'descuento', action:'nuevo']" id="descuentoForm" >
                                         <div class="span5">
                                         <p></p><p></p>
                                         <div class="control-group">
@@ -488,7 +488,7 @@
                                         </div>
                                         </div>
                                         <div class="span2">
-                                         <div id="descuentoCreado2">
+                                         <div class="descuentoCreado">
                                             <g:render template="/descuento/list", model="[:]" />
                                           </div>
                                         </div>
