@@ -65,6 +65,9 @@ window.Descuento = (function(){
         data:$(this).serialize(),
         success: function(data){
           $(".descuentoCreado").html(data);
+          that.form.each(function(){
+            this.reset();
+          }); 
         }  
       });
 
