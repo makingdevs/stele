@@ -43,9 +43,9 @@ window.Descuento = (function(){
       updater:function(descuento){
         $.each(that.descuentos,function(i,item){
           if(item.value == descuento){
-            this.cantidad.val(item.cantidad);
-            this.porcentaje.val(item.porcentaje);
-            this.diasPreviosParaCancelarDescuento.val(item.dias); 
+            that.cantidad.val(item.cantidad);
+            that.porcentaje.val(item.porcentaje);
+            that.diasPreviosParaCancelarDescuento.val(item.dias); 
             return; 
           }
         });
