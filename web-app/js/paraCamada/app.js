@@ -33,6 +33,9 @@ jQuery(function ($) {
     initDescuento: function(){
       var selectors = {
         nombreDescuento: $("#nombreDeDescuento"),
+        cantidadDescuento: $("#cantidad"),
+        porcentajeDescuento: $("#porcentaje"),
+        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento"),
         fechaExpiracion: $("#fechaDeVencimientoDesc"),
         form:$("#descuentoForm")
       };
