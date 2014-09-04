@@ -29,11 +29,16 @@ window.CobroUnitario = (function() {
 
   CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
     if(this.fechaDeVencimiento.datepicker("getDate") != "Invalid Date"){  
+      discount.prop("disabled",false) 
       date = this.fechaDeVencimiento.datepicker("getDate");
       timeDiff = date.getTime() - new Date().getTime();
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       discount.datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
     }
+    else{
+      discount.prop("disabled",true);
+      discount.val("");
+    } 
   }
   
   CobroUnitario.prototype.initDatePickerParaDescuento = function(descuentoField){
@@ -57,11 +62,10 @@ window.CobroUnitario = (function() {
       autoclose: true 
     }).on('changeDate',function(event){    
       if($(this).attr("class").indexOf("vencimiento") != -1){
-        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc')); 
-        if($(this).datepicker("getDate") != "Invalid Date")
-          that.tabs.parent().show();
-        else
-          that.tabs.parent().hide();
+        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
+      }
+      else{
+        that.setExpirationDateForDiscount($('.expiracionDescuento'));
       }
     });
   }
@@ -79,6 +83,7 @@ window.CobroUnitario = (function() {
         
         $(".cuTable, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");        
         that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
+
         return $.getJSON(
           $url,
           function(data){
