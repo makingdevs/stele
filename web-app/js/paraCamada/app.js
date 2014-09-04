@@ -4,9 +4,9 @@ jQuery(function ($) {
   window.App = {
     init : function(){
       this.initButtonActions();
+      this.initDescuento();
       this.initCobroUnitario();
       this.initCobroRecurrente();
-      this.initDescuento();
     },
     initCobroUnitario : function(){
       var selectors = {
@@ -33,6 +33,7 @@ jQuery(function ($) {
     initDescuento: function(){
       var selectors = {
         nombreDescuento: $("#nombreDeDescuento"),
+        fechaExpiracion: $("#fechaDeVencimientoDesc"),
         form:$("#descuentoForm")
       };
       this.descuento = new Descuento(selectors);

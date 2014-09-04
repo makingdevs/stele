@@ -37,8 +37,7 @@ window.CobroUnitario = (function() {
   }
   
   CobroUnitario.prototype.initDatePickerParaDescuento = function(descuentoField){
-    this.fechaDeVencimientoDescuento = descuentoField;
-    this.fechaDeVencimientoDescuento.datepicker({
+    descuentoField.datepicker({
       format:"dd/mm/yy",
       language: "es",
       orientation: "top auto",

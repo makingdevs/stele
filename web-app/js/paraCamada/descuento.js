@@ -1,14 +1,17 @@
 window.Descuento = (function(){
   
   Descuento.prototype.nombreDescuento = '';
+  Descuento.prototype.fechaExpiracion = '';
   Descuento.prototype.descuentos = [];  
   Descuento.prototype.form = ' ';
 
   function Descuento(selectores){
     this.nombreDescuento = selectores.nombreDescuento;
+    this.fechaExpiracion = selectores.fechaExpiracion;
     this.form = selectores.form;
     this.initFormAction();
     this.initTypeaheadParaDescuento();
+    this.initDatePickerForFechaExpiracion();
   }
 
   Descuento.prototype.initTypeaheadParaDescuento = function(){
@@ -38,18 +41,27 @@ window.Descuento = (function(){
     var that = this;
     this.form.submit(function(event){
       event.stopPropagation();
-      
+
       $.ajax({
         type: "POST",
         url:$(this).attr("action"),
         data:$(this).serialize(),
         success: function(data){
-          $(".descuentoCreado").html();
+          $(".descuentoCreado").html(data);
         }  
       });
 
       return false
     });  
+  }
+
+  Descuento.prototype.initDatePickerForFechaExpiracion = function(){
+    this.fechaExpiracion.datepicker({
+      format:"dd/mm/yy",
+      language: "es",
+      orientation: "top auto",
+      autoclose:true
+    }); 
   }
 
   return Descuento;
