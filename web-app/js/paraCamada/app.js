@@ -38,7 +38,7 @@ jQuery(function ($) {
         porcentajeDescuento: $("#porcentaje"),
         diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento"),
         fechaExpiracion: $("#fechaDeVencimientoDesc"),
-        form:$("#descuentoForm")
+        form: $("#descuentoForm")
       };
       this.descuento = new Descuento(selectors);
     },
@@ -46,7 +46,7 @@ jQuery(function ($) {
       var selectors = {
         cantidadRecargo: $("#cantidadRecargo"),
         porcentajeRecargo: $("#porcentajeRecargo"),
-        form:$("form#recargoForm")  
+        formulario: $("#recargoForm")  
       };
       this.recargo = new Recargo(selectors);
     },
