@@ -9,6 +9,7 @@ modules = {
     resource url:'js/paraCamada/cobroUnitario.js'
     resource url:'js/paraCamada/cobroRecurrente.js'
     resource url:'js/paraCamada/descuento.js'
+    resource url:'js/paraCamada/recargo.js'
     resource url:'js/paraCamada/app.js'
   }
 

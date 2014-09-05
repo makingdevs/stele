@@ -7,6 +7,7 @@ jQuery(function ($) {
       this.initDescuento();
       this.initCobroUnitario();
       this.initCobroRecurrente();
+      this.initRecargo();
     },
     initCobroUnitario : function(){
       var selectors = {
@@ -40,6 +41,14 @@ jQuery(function ($) {
         form:$("#descuentoForm")
       };
       this.descuento = new Descuento(selectors);
+    },
+    initRecargo: function(){
+      var selectors = {
+        cantidadRecargo: $("#cantidadRecargo"),
+        porcentajeRecargo: $("#porcentajeRecargo"),
+        form:$("form#recargoForm")  
+      };
+      this.recargo = new Recargo(selectors);
     },
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){

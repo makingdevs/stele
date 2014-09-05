@@ -158,7 +158,7 @@
                                   <input class="hidden cantidadRecargo" id="cantidadRecargo" name="cantidadRecargo" readonly>
                                   
                                   <label class="hidden porcentajeRecargo">Recargo Porcentaje</label>
-                                  <input class="hidden porcentajeRecargo" id="recargoPorcentaje" name="recargoPorcentaje" readonly>
+                                  <input class="hidden porcentajeRecargo" id="porcentajeRecargo" name="recargoPorcentaje" readonly>
                                   
                                   <div class="descuentosDiv">
                                     <!-- TODO Poner estilo en un archivo .css -->
@@ -182,7 +182,7 @@
                                     <g:render template="/descuento/list", model="[:]" />
                                   </div>
                                   
-                                  <div id="recargoCreado" name="recargoCreado">
+                                  <div class="recargoCreado" name="recargoCreado">
                                     <g:render template="/recargo/list" />
                                   </div>
                                 </div>
@@ -269,7 +269,7 @@
                                     <div  class="descuentoCreado">
                                       <g:render template="/descuento/list", model="[:]" />
                                     </div>
-                                    <div id="recargoCreado3" name="recargoCreado">
+                                    <div class="recargoCreado" name="recargoCreado">
                                       <g:render template="/recargo/list" />
                                     </div>
                                   </div>                                
@@ -535,7 +535,7 @@
                                         </div>
                                       </div>
                                       <div class="span5">
-                                        <div id="recargoCreado2" name="recargoCreado2">
+                                        <div class="recargoCreado" name="recargoCreado2">
                                             <g:render template="/recargo/list" />
                                         </div>
                                       </div>
