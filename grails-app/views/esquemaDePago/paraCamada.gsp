@@ -496,16 +496,16 @@
                                   </div>
                                   <div id="faq-tab-444" class="tab-pane">
                                     <div class="row-fluid">
-                                      <div class="span12">
-                                            <div class="alert alert-info">
-                                            <button class="close" data-dismiss="alert" type="button">
-                                              <i class="icon-remove"></i>
-                                            </button>
-                                            <strong>Nota! </strong>
-                                              Sólo puede seleccionar un concepto cobro recurrente o unitario
-                                            <br>
-                                          </div>
+                                      <div class="alert alert-info">
+                                        <button class="close" data-dismiss="alert" type="button">
+                                        <i class="icon-remove"></i>
+                                        </button>
+                                        <strong>Nota! </strong>
+                                          Sólo puede seleccionar un concepto cobro recurrente o unitario
+                                        <br>
                                       </div>
+                                    </div>
+                                    <div class="row-fluid">
                                       <g:form name="recargoForm" url="[controller:'recargo', action: 'nuevo']" id="recargoForm">
                                       <div class="span6">
                                           <div class="control-group">
@@ -530,14 +530,16 @@
                                           </div>
                                           <div class="contro-group">
                                           <div class="controls">
-                                            <input class="btn btn-primary" type="button" id="recargoButton" value ="Crear Recargo">
+                                            <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="span5">
+                                      <div class="span2">
                                         <div class="recargoCreado" name="recargoCreado2">
                                             <g:render template="/recargo/list" />
                                         </div>
+                                      </div>
+                                      <div class="span4">
                                       </div>
                                       </g:form>
                                     </div><!--/row-->
