@@ -156,16 +156,6 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="control-group">
-                                    <div class="input-prepend"> 
-                                      <label class="control-label" for="txtConcepto"> Dias antes </label> 
-                                      <div class="controls">
-                                        <div class="input-prepend">
-                                          <g:select id="diasPreviosParaCancelarDescuento" name="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
                                   <div class="contro-group">
                                     <div class="controls">
                                       <input class="btn btn-mini btn-success pull-right" type="submit" id="descuentoButton" value ="Crear Descuento">
