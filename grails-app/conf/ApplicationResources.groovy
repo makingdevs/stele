@@ -3,6 +3,20 @@ modules = {
     resource url:'js/application.js'
   }
 
+  paraCamada {
+    dependsOn 'bootstrapDatePicker'
+    dependsOn 'handlebars'
+    resource url:'js/paraCamada/cobroUnitario.js'
+    resource url:'js/paraCamada/cobroRecurrente.js'
+    resource url:'js/paraCamada/descuento.js'
+    resource url:'js/paraCamada/recargo.js'
+    resource url:'js/paraCamada/app.js'
+  }
+
+  handlebars{
+    resource url:'js/handlebars/handlebars-v1.3.0.js'
+  }
+
   telefono {
     resource url:'js/telefono/index.js'
   }
@@ -93,13 +107,21 @@ modules = {
     dependsOn 'steleCss'
     dependsOn 'steleJs'
   }
-
-
-  bootstrapDatePicker {
+  
+  bootstrapDatePicker{
     resource url: 'datepicker/css/datepicker.css'
     resource url: 'datepicker/js/bootstrap-datepicker.js'
+    resource url: 'datepicker/js/locales/bootstrap-datepicker.es.js'
   }
 
+  cobro {
+    dependsOn 'pagosParaCamada'
+    dependsOn 'generarPagos'
+    dependsOn 'autocomplete'
+    dependsOn 'bootstrapDatePicker'
+    resource url: 'js/cobro/cobro.js'
+  }
+  
   customBootsrapCss{
     resource url:'assets/css/bootstrap.min.css'
     resource url:'assets/css/bootstrap-responsive.min.css'
@@ -123,7 +145,7 @@ modules = {
     dependsOn 'dropzoneCss'
   }
   jquery2{
-    resource url:'assets/js/jquery-2.0.3.min.js', wrapper: { s ->
+    resource url:'assets/js/jquery-2.0.3.min.js', disposition:'head', wrapper: { s ->
       def url = s.find(/src.+.js|.css/) - "src=\""
       """
         <!--[if !IE]>-->
@@ -135,7 +157,7 @@ modules = {
     }
   }
   jquery1{
-    resource url:'assets/js/jquery-1.10.2.min.js', wrapper: { s ->
+    resource url:'assets/js/jquery-1.10.2.min.js', disposition:'head', wrapper: { s ->
       def url = s.find(/src.+.js|.css/) - "src=\""
       """
         <!--[if IE]>

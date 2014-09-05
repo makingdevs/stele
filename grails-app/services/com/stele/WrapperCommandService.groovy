@@ -1,6 +1,7 @@
 package com.stele
 
 import com.payable.GrupoPagoCommand
+import java.text.SimpleDateFormat
 
 class WrapperCommandService {
 
@@ -10,6 +11,21 @@ class WrapperCommandService {
       if (camadaPagoCommand.recargoid.first() != "")
         gcp.recargoId = camadaPagoCommand.recargoid?.first()?.toLong()
     }
+    
+    if(camadaPagoCommand.fechasDeExpiracionDescuento){
+      def sdf = new SimpleDateFormat("dd/MM/yy")
+      def fechasDeExpiracionParaDescuentos = [];
+
+      camadaPagoCommand.fechasDeExpiracionDescuento.each{ fechaDeExpiracion ->
+        try{
+          fechasDeExpiracionParaDescuentos << sdf.parse(fechaDeExpiracion) 
+        }catch(Exception exception){
+          log.error "The date has not been converted"
+        }
+      }
+      gcp.fechasDeExpiracionDescuento = fechasDeExpiracionParaDescuentos
+    }
+
     if (!gcp.recargoId)
       gcp.recargoId = camadaPagoCommand?.idRecargo?.toLong()
     gcp.cantidadDePago = camadaPagoCommand.cantidadDePago ?: camadaPagoCommand.cantidadDePagoRecurrente
