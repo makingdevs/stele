@@ -9,11 +9,23 @@ class RecargoController {
   def springSecurityService
 
   def nuevo(){
-    Recargo recargo = Recargo.get(params.recargoId ?: 0) ?: new Recargo(cantidad:params.cantidad,
-                                                                       porcentaje:params.porcentaje,
-                                                                       organizacion:springSecurityService.currentUser.instituciones?.first()).save(flush:true)
+    def recargo
+    def message = ""
 
-    render template:"/recargo/list", model:[recargos:recargo, recargoId:recargo.id]
+    if((recargo = Recargo.get(params.recargoId ?: 0)))
+      message = "No se puede agregar más de un recargo." 
+    else
+      recargo = new Recargo(cantidad:params.cantidad,
+                            porcentaje:params.porcentaje,
+                            organizacion:springSecurityService.currentUser.instituciones?.first()).save(flush:true)
+
+    render template:"/recargo/list", model:[recargo:recargo,message:message]
+  }
+  
+  def delete(){
+    Recargo recargo = Recargo.get(params.id)
+    recargo.delete()
+    redirect(action:'nuevo')
   }
   
 }
