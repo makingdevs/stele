@@ -15,7 +15,7 @@
         <p><strong>TÉRMINOS Y CONDICIONES</strong></p>
 
         <p><strong>PRIMERA. Definiciones.</strong></p> 
-        <p>Para la interpretación de los términos del presente Contrato, se entiende por:iPara la interpretación de los términos del presente Contrato, se entiende por:</p>
+        <p>Para la interpretación de los términos del presente Contrato, se entiende por:</p>
 
         <ol>
           <li>Cliente: Persona física o moral que utiliza la plataforma de STELE con el objeto de obtener la prestación de servicios.</li>
