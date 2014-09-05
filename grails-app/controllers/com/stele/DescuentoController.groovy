@@ -52,7 +52,7 @@ class DescuentoController {
   private Descuento saveDescuentoWithParams(params){
     def descuento = new Descuento(params)
     descuento.organizacion = springSecurityService.currentUser.instituciones?.first()
-    if (!params.diasPreviosParaCancelarDescuento){
+    if (params.fechaDeVencimiento){
       def diasAntes = getLastDayOfMothByDate(new Date().parse("dd/MM/yyyy",params.fechaDeVencimiento))
       descuento.diasPreviosParaCancelarDescuento = diasAntes
     }
