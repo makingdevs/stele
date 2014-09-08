@@ -1,4 +1,3 @@
-<input type="hidden" id="descuentos" name="descuentos" value="${descuentosIds}">
 <g:if test="${descuentos}">
 <table class="table table-striped table-bordered table-hover">
   <thead>
@@ -8,11 +7,13 @@
     </tr>
   </thead>
   <tbody>
-    <g:each in="${descuentos?.sort({ it.id })}" var="descuento">
+    <g:each in="${descuentos?.sort({ it.id })}" var="descuento" status="i">
       <tr>
-        <td>${descuento?.nombreDeDescuento}</td>
+        <td>
+          <input type="hidden" name="descuento" value="${descuento?.id}" />  
+          ${descuento?.nombreDeDescuento}</td>
         <td><g:if test="${descuento?.cantidad}">
-              <span class="add-on">$</span>${descuento?.cantidad}
+              <g:formatNumber number="${descuento?.cantidad}" type="currency" />
             </g:if>
             <g:else>
               <span class="add-on">%</span>${descuento?.porcentaje}

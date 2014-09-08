@@ -78,7 +78,7 @@ window.Descuento = (function(){
   Descuento.prototype.initDatePickerForFechaExpiracion = function(){
     this.fechaExpiracion.prop("disabled",true);
     this.fechaExpiracion.datepicker({
-      format:"dd/mm/yy",
+      format:"dd/mm/yyyy",
       language: "es",
       orientation: "top auto",
       autoclose:true

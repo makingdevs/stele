@@ -13,19 +13,20 @@ class DescuentoController {
   static allowedMethods = [obtenerDescuentosInstitucion : 'GET']
 
   def nuevo() {
-    def descuentosIds = []
+    def descuentos = []
     def descuento
-    if(params.descuentosIds)
-      descuentosIds = (params.descuentosIds?.replace('[','')?.replace(']','')?.split(','))*.toLong() ?: []
+
+    if(params.list("descuento")) 
+      descuentos = params.list("descuento")*.toLong() ?: []
     
     if((descuento = Descuento.findByNombreDeDescuento(params.nombreDeDescuento)))
       flash.message = "El descuento ya ha sido registrado"
     else
       descuento = saveDescuentoWithParams(params)
 
-    descuentosIds << descuento.id
+    descuentos << descuento.id
 
-    render template:"/descuento/list", model:[descuentos:Descuento.findAllByIdInList(descuentosIds),descuentosIds:descuentosIds]
+    render template:"/descuento/list", model:[descuentos:Descuento.findAllByIdInList(descuentos.unique())]
   }
 
   def obtenerDescuentosInstitucion() {
