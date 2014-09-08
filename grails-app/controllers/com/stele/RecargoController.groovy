@@ -13,7 +13,7 @@ class RecargoController {
     def message = ""
 
     if((recargo = Recargo.get(params.recargoId ?: 0)))
-      message = "No se puede agregar más de un recargo." 
+      message = "Sólo puede agregarse un recargo" 
     else
       recargo = new Recargo(cantidad:params.cantidad,
                             porcentaje:params.porcentaje,
@@ -22,10 +22,10 @@ class RecargoController {
     render template:"/recargo/list", model:[recargo:recargo,message:message]
   }
   
-  def delete(){
+  def deleteRecargo(Long id){
     Recargo recargo = Recargo.get(params.id)
     recargo.delete()
-    redirect(action:'nuevo')
+    render template:"/recargo/list"
   }
   
 }

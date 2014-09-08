@@ -15,7 +15,7 @@
           ${recargo.porcentaje ?: recargo.cantidad}
       </td>  
       <td style="width:10px;">
-        <g:link controller="recargo" action="eliminarRecargo" params="[id:recargo.id]">
+        <g:link class="deleteRecargo" controller="recargo" action="deleteRecargo" params="[id:recargo.id]">
           <i class="icon-trash bigger-130"></i>
         </g:link>
       </td>
