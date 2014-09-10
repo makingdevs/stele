@@ -6,7 +6,7 @@ import com.makingdevs.*
 import com.payable.*
 
 @ToString
-class Dependiente extends Payable{
+class Dependiente implements IPayable{
 
   String matricula
   Perfil perfil
