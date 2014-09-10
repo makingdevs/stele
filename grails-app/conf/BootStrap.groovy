@@ -16,8 +16,8 @@ class BootStrap {
 
   def init = { servletContext ->
     wrapperMelodyDataSource()
-    creaInstituciones()
-    creaUsuario()
+    //creaInstituciones()
+    //creaUsuario()
     JSON.createNamedConfig('stele') {
       it.registerObjectMarshaller(new EsquemaDePagoMarshaller())
       it.registerObjectMarshaller(new ConceptoMarshaller())
@@ -46,7 +46,7 @@ class BootStrap {
   private def wrapperMelodyDataSource(){
     dataSource.targetDataSource = JdbcWrapper.SINGLETON.createDataSourceProxy(dataSource.targetDataSource)
   }
-  
+/*  
   private def creaInstituciones(){
     new Institucion(nombre:"Instituto Juana de Arco").save(flush:true)
     new Institucion(nombre:"Kinder Primeros pasitos").save(flush:true)
@@ -102,5 +102,5 @@ class BootStrap {
     usuario.addToDependientes( dependiente )
     usuario.save(flush:true)
   }
-
+*/
 }
