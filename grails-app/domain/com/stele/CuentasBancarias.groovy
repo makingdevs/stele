@@ -12,7 +12,7 @@ class CuentasBancarias {
 	Date dateCreated
 	Date lastUpdated
 
-	static belongsTo = [organization : Institucion]
+	static belongsTo = [organizacion : Institucion]
 
 	static constraints = {
 		nombreDeBanco size:1..60,blank:false
