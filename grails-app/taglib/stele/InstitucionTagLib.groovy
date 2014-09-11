@@ -6,7 +6,7 @@ class InstitucionTagLib {
 
   def nombreDeLaInstitucion = {body->
     def institucion = springSecurityService.currentUser.instituciones?.first()
-    out << institucion.nombre.capitalize()
+    out << institucion.name.capitalize()
   }
 
 }

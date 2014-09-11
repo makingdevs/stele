@@ -101,7 +101,7 @@
                                   <div class="widget-header blue">
                                     <h4>Selecciona la institución:</h3> <p>
                                     <div align="center">
-                                      <g:select name="institucionId" from="${instituciones}" optionKey="id" optionValue="nombre" value="${institucionId}" class="input-xxlarge"/>
+                                    <g:select name="institucionId" from="${instituciones}" optionKey="id" optionValue="name" value="${institucionId}" class="input-xxlarge"/> 
                                     </div>
                                   </div>
                                 </div>

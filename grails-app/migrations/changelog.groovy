@@ -1116,5 +1116,6 @@ databaseChangeLog = {
 
 	include file: 'add-relation-account-transactionBanking.groovy'
   include file: 'agregando-referencia-pago.groovy'
-  include file: 'agregando-payable-con-implements.groovy'
+  //include file: 'agregando-payable-con-implements.groovy'
+  //include file: 'cambiando-extends-institucion.groovy'
 }
