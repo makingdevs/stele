@@ -100,14 +100,6 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-5") {
-		createTable(tableName: "institucion_telefono") {
-			column(name: "institucion_telefonos_id", type: "bigint")
-
-			column(name: "telefono_id", type: "bigint")
-		}
-	}
-
 	changeSet(author: "makingdevs (generated)", id: "1410455619251-6") {
 		createTable(tableName: "organization") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
@@ -366,30 +358,6 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-49") {
-		createIndex(indexName: "FK6F9EC3DA53AFD0FD", tableName: "institucion_direccion") {
-			column(name: "institucion_direcciones_id")
-		}
-	}
-
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-50") {
-		createIndex(indexName: "FK6F9EC3DAA649AEE2", tableName: "institucion_direccion") {
-			column(name: "direccion_id")
-		}
-	}
-
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-51") {
-		createIndex(indexName: "FK5143770AE8FC8D12", tableName: "institucion_telefono") {
-			column(name: "telefono_id")
-		}
-	}
-
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-52") {
-		createIndex(indexName: "FK5143770AFB39D8BC", tableName: "institucion_telefono") {
-			column(name: "institucion_telefonos_id")
-		}
-	}
-
 	changeSet(author: "makingdevs (generated)", id: "1410455619251-53") {
 		createIndex(indexName: "FK1229912460815670", tableName: "organization_direccion") {
 			column(name: "organization_addresses_id")
@@ -500,14 +468,6 @@ databaseChangeLog = {
 
 	changeSet(author: "makingdevs (generated)", id: "1410455619251-26") {
 		addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "distribucion_institucional", constraintName: "FK4B3D26CA8C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
-	}
-
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-29") {
-		addForeignKeyConstraint(baseColumnNames: "institucion_telefonos_id", baseTableName: "institucion_telefono", constraintName: "FK5143770AFB39D8BC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
-	}
-
-	changeSet(author: "makingdevs (generated)", id: "1410455619251-30") {
-		addForeignKeyConstraint(baseColumnNames: "telefono_id", baseTableName: "institucion_telefono", constraintName: "FK5143770AE8FC8D12", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "telefono", referencesUniqueColumn: "false")
 	}
 
 	changeSet(author: "makingdevs (generated)", id: "1410455619251-31") {
