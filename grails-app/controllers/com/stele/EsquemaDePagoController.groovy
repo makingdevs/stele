@@ -9,11 +9,11 @@ class EsquemaDePagoController {
   def springSecurityService
   def generacionDePagoService
   def wrapperCommandService
-  def esquemaDePagoService
+  def paymentSchemeService 
   def descuentoAplicableService
   def dependienteService
   def notificacionService
-  def conceptoService
+  def conceptService
 
   def scaffold = EsquemaDePago
 
@@ -33,16 +33,17 @@ class EsquemaDePagoController {
 
   def crearEsquemaDePago(){
     def institucion = springSecurityService.currentUser.instituciones.first()
-    def concepto = conceptoService.buscarOSalvarConceptoDePago(institucion, params.nombreConcepto)
-    GrupoPagoCommand gpc = new GrupoPagoCommand()
+    def concept = conceptService.savePaymentConcept(institucion, params.nombreConcepto)
+    PaymentGroupCommand pgc = new PaymentGroupCommand()
+
     if (params.recargoid)
-      gpc.recargoId = params.recargoid.toLong()
-    gpc.cantidadDePago = params.importeEsquemaDePago.toBigDecimal()
-    gpc.conceptoDePago = concepto.descripcion
-    gpc.organizacion = institucion
+      pgc.surchargeId = params.recargoid.toLong()
+    pgc.paymentAmount = params.importeEsquemaDePago.toBigDecimal()
+    pgc.paymentConcept = concept.description
+    pgc.organization = institucion
     if (params.descuentos)
-      gpc.descuentoIds = params.descuentos.replace('[','')?.replace(']','')?.split(',') as List
-    def esquema = esquemaDePagoService.buscarOSalvarEsquemaDePago(gpc)
+      pgc.discountIds = params.descuentos.replace('[','')?.replace(']','')?.split(',') as List
+    def scheme = paymentSchemeService.savePaymentScheme(pgc)
     redirect(action:'nuevo')
   }
  
@@ -58,18 +59,18 @@ class EsquemaDePagoController {
   }
 
   def obtenerEsquemaDePagoPorConcepto(){
-    def esquemasDePagos = []
-    def conceptos = []
-    def organizacion = springSecurityService.currentUser.instituciones.first()
+    def paymentSchemes = []
+    def concepts = []
+    def organization = springSecurityService.currentUser.instituciones.first()
 
-    conceptos = Concepto.withCriteria{
-      like("descripcion","${params.id}%")
-      eq("organizacion",organizacion)
+    concepts = Concept.withCriteria{
+      like("description","${params.id}%")
+      eq("organization",organization)
     }
 
-    esquemasDePagos = EsquemaDePago.findAllByConceptoInList(conceptos)
+    paymentSchemes = PaymentScheme.findAllByConceptInList(concepts)
 
-    JSON.use('stele') { render esquemasDePagos as JSON }
+    JSON.use('stele') { render paymentSchemes as JSON }
   }
 
   def generarPagoParaLaCamada(CamadaPagoCommand cpc) {
