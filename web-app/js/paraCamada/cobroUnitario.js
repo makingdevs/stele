@@ -22,7 +22,8 @@ window.CobroUnitario = (function() {
   CobroUnitario.prototype.renderDiscountsTable = function(item){
     var source   = $("#descuento-template").html();
     var template = Handlebars.compile(source);
-    var html = template(item.descuentos);
+    alert(item.discounts);
+    var html = template(item.discounts);
     $(".cobroUnitarioDescuentosTableBody").html(html);
     this.initDatePickerParaDescuento($('.expiracionDescuento'));
   }
@@ -90,30 +91,30 @@ window.CobroUnitario = (function() {
             that.paymentSchemas = data
             var concepts = [];
             $.each(data, function(index, item){
-              concepts.push(item.value.concepto);
+              concepts.push(item.value.description);
             });
-           
+            
             return process(concepts);
           }); 
       },
       items:10,
       updater: function (concept){
         $.each(that.paymentSchemas, function(i,item){
-          if(item.value.concepto == concept){
+          if(item.value.description == concept){
             that.fechaDeVencimiento.removeClass("vencimiento");
-            that.importe.val(item.cantidadDePago); 
-            if(item.recargo != null)
-              $("#idRecargo").val(item.recargo.id)
+            that.importe.val(item.paymentAmount); 
+            if(item.surcharge != null)
+              $("#idRecargo").val(item.surcharge.id)
           
-            if(item.recargo != null){
-              if(item.recargo.cantidad != null){
-                $("input.cantidadRecargo").val(item.recargo.cantidad);
+            if(item.surcharge != null){
+              if(item.surcharge.amount != null){
+                $("input.cantidadRecargo").val(item.surcharge.amount);
                 $(".cantidadRecargo").removeClass("hidden");
                 $("input.porcentajeRecargo").val();
                 $(".porcentajeRecargo").addClass("hidden");
               }
-              else if(item.recargo.porcentaje != null){
-                $("input.porcentajeRecargo").val(item.recargo.porcentaje);
+              else if(item.surcharge.percentage != null){
+                $("input.porcentajeRecargo").val(item.surcharge.percentage);
                 $(".porcentajeRecargo").removeClass("hidden");
                 $("input.cantidadRecargo").val();
                 $(".cantidadRecargo").addClass("hidden");
@@ -122,13 +123,14 @@ window.CobroUnitario = (function() {
             else
               $('.porcentajeRecargo,.cantidadRecargo').addClass("hidden");
 
-            $("#idsDescuentos").val(item.descuentosIds);
+            $("#idsDescuentos").val(item.discountIds);
             that.tabs.parent().hide();
             that.tablaDeDescuentos.removeClass("hidden"); 
             that.renderDiscountsTable(item);
             return;
           } 
-        }); 
+        });
+
         return concept.trim();
       }
     });
