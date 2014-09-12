@@ -22,7 +22,6 @@ window.CobroUnitario = (function() {
   CobroUnitario.prototype.renderDiscountsTable = function(item){
     var source   = $("#descuento-template").html();
     var template = Handlebars.compile(source);
-    alert(item.discounts);
     var html = template(item.discounts);
     $(".cobroUnitarioDescuentosTableBody").html(html);
     this.initDatePickerParaDescuento($('.expiracionDescuento'));
@@ -130,7 +129,6 @@ window.CobroUnitario = (function() {
             return;
           } 
         });
-
         return concept.trim();
       }
     });
