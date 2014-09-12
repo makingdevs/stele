@@ -505,6 +505,7 @@ databaseChangeLog = {
     sql("insert into payment select id,version,descuento_aplicable,recargos_acumulados,date_created,fecha_de_vencimiento,last_updated,cantidad_de_pago,concepto_de_pago,fecha_de_pago,estatus_de_pago,tipo_de_pago,comprobante_de_pago_id,referencia,recargo_id,transaction_id from pago")
     sql("insert into applicable_discount select id,version,descuento_aplicable_status,date_created,descuento_id,fecha_de_expiracion,last_updated,pago_id from descuento_aplicable")
     sql("insert into payment_scheme select id,version,concepto_id,cantidad_de_pago,recargo_id from esquema_de_pago")
+    sql("insert into payment_scheme_discount select * from esquema_de_pago_descuento")
     sql("insert into payment_link(version,payment_ref,type) select 0,id,\"${Dependiente.class.simpleName}\" from dependiente") 
     sql("insert into payment_link_payment select pl.id,pp.pago_id from payable_pago pp inner join payment_link pl on pp.payable_pagos_id=pl.payment_ref")
   }
