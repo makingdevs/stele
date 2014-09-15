@@ -1,5 +1,5 @@
 window.Descuento = (function(){
-  
+
   Descuento.prototype.nombreDescuento = '';
   Descuento.prototype.fechaExpiracion = '';
   Descuento.prototype.cantidad = '';
@@ -27,7 +27,7 @@ window.Descuento = (function(){
       source: function(id, process){
         var $direccion = $('#urlDescuento').val();
         var $url = $direccion+'/'+id;
-
+        
         return $.getJSON(
           $url,
           function(data){
