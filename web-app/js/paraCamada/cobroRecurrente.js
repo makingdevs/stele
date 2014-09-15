@@ -70,7 +70,7 @@ window.CobroRecurrente = (function(){
             that.paymentSchemas = data
             var concepts = [];
             $.each(data, function(index, item){
-              concepts.push(item.value.concepto);
+              concepts.push(item.value);
             });
            
             return process(concepts);
@@ -79,11 +79,11 @@ window.CobroRecurrente = (function(){
       items:10,
       updater: function(concept){
         $.each(that.paymentSchemas, function(i,paymentSchema){
-          if(paymentSchema.value.concepto == concept){
-            that.cantidadDePagoRecurrente.val(paymentSchema.cantidadDePago);             
-            that.showSurchargeFromPaymentSchema(paymentSchema);
+          if(paymentSchema.value == concept){
+            that.cantidadDePagoRecurrente.val(paymentSchema.paymentAmount);             
+            //that.showSurchargeFromPaymentSchema(paymentSchema);
             that.tabs.parent().hide();
-            that.renderDiscountsTable(paymentSchema);
+            //that.renderDiscountsTable(paymentSchema);
             return;
           }
 
