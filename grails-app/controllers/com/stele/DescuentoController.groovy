@@ -1,11 +1,11 @@
 package com.stele
 
-import com.payable.*
+import com.payable.Discount
 import grails.converters.JSON
 
 class DescuentoController {
 
-  def scaffold = Descuento
+  def scaffold = Discount
 
   def discountService
   def springSecurityService
@@ -19,10 +19,7 @@ class DescuentoController {
     if(params.list("descuento")) 
       descuentos = params.list("descuento")*.toLong() ?: []
     
-    if((descuento = Descuento.findByNombreDeDescuento(params.nombreDeDescuento)))
-      flash.message = "El descuento ya ha sido registrado"
-    else
-      descuento = saveDescuentoWithParams(params)
+    descuento = discountService.saveDiscountForOrganization(springSecurityService.currentUser.instituciones.first(),params)
 
     descuentos << descuento.id
 
@@ -36,6 +33,7 @@ class DescuentoController {
     }
   }
 
+  /*
   private Descuento findOrSaveDescuentoWithParams(params) {
     Descuento descuento = Descuento.findByNombreDeDescuento(params.nombreDeDescuento)
     if(!descuento) {
@@ -59,7 +57,7 @@ class DescuentoController {
     }
     descuento.save(flush:true)
     descuento
-  }
+  } 
 
   private Integer getLastDayOfMothByDate(Date fechaDeVencimiento){
     Calendar cala = Calendar.getInstance()
@@ -74,6 +72,6 @@ class DescuentoController {
     if(dias == 0)
       return 1
     return dias
-  }
+  }*/
 
 }
