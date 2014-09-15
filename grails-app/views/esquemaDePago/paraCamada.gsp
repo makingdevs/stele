@@ -429,7 +429,7 @@
                                           <div class="controls">
                                               <input type="hidden" id="urlDescuento" value="${g.createLink(action:'obtenerDescuentosInstitucion', controller:'descuento')}" />
                                             <div class="input-prepend">
-                                              <input type="text" id="nombreDeDescuento" name="nombreDeDescuento" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
+                                              <input type="text" id="nombreDeDescuento" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
                                               <span class="add-on">
                                                 <i class="icon-edit"></i>
                                               </span>
@@ -443,7 +443,7 @@
                                               <span class="add-on">
                                                 <i class="icon-usd"></i>
                                               </span>
-                                              <input class="input-medium" id="cantidad" name="cantidad" type="text" placeholder="0.0">
+                                              <input class="input-medium" id="cantidad" name="amount" type="text" placeholder="0.0">
                                             </div>
                                           </div>
                                         </div>
@@ -451,7 +451,7 @@
                                           <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                                           <div class="controls">
                                             <div class="input-append date">
-                                              <input id="fechaDeVencimientoDesc" name="fechaDeVencimiento" type="text" class="form-control"></input>
+                                              <input id="fechaDeVencimientoDesc" name="expirationDate" type="text" class="form-control"></input>
                                               <span class="add-on">
                                                 <i class="icon-calendar"></i>
                                               </span>
@@ -466,7 +466,7 @@
                                               <label class="control-label" for="txtConcepto"> Dias antes </label> 
                                               <div class="controls">
                                                 <div class="input-prepend">
-                                                  <g:select name="diasPreviosParaCancelarDescuento" id="diasPreviosParaCancelarDescuento" from="${1..30}" noSelection="['':'- Dia -']"/>
+                                                  <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..30}" noSelection="['':'- Dia -']"/>
                                                 </div>
                                               </div>
                                             </div>
@@ -475,7 +475,7 @@
                                             <div class="input-append">          
                                               <label class="control-label" for="txtConcepto"> Procentaje </label>
                                               <div class="controls">
-                                                <input class="input-mini" id="porcentaje" name="porcentaje" type="text" placeholder="0.0">
+                                                <input class="input-mini" id="porcentaje" name="percentage" type="text" placeholder="0.0">
                                                 <span class="add-on">%</span>
                                               </div>
                                             </div>
