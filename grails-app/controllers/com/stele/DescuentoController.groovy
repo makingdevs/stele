@@ -1,13 +1,13 @@
 package com.stele
 
-import com.payable.Descuento
+import com.payable.*
 import grails.converters.JSON
 
 class DescuentoController {
 
   def scaffold = Descuento
 
-  def descuentoService
+  def discountService
   def springSecurityService
 
   static allowedMethods = [obtenerDescuentosInstitucion : 'GET']
@@ -30,9 +30,9 @@ class DescuentoController {
   }
 
   def obtenerDescuentosInstitucion() {
-    def descuentosList = descuentoService.buscarDescuentosDeUnaOrganizacion(springSecurityService.currentUser.instituciones.first(),params.id)
+    def discountsList = discountService.searchDiscountsOfAnOrganization(springSecurityService.currentUser.instituciones.first(),params.id)
     JSON.use('stele') {
-      render descuentosList as JSON
+      render discountsList as JSON
     }
   }
 
