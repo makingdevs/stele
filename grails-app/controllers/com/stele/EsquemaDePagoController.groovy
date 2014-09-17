@@ -91,7 +91,7 @@ class EsquemaDePagoController {
   }
 
   def muestraPagosDeCamada(){
-    def listaPagos = Pago.findAllByIdInList(flash.pago.flatten()*.id)
+    def listaPagos = flash.pago 
     flash.success = "Los cobros han sido registrados"
     flash.message = params.message
     render(view: "generarPagosParaLaCamada", model: [pagos: listaPagos])

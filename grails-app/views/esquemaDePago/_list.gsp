@@ -1,4 +1,4 @@
-<%@ page import="com.payable.EstatusDePago" %>
+<%@ page import="com.payable.PaymentStatus" %>
 <table class="table">
   <thead style="background-color:whiteSmoke">
     <tr>
@@ -13,15 +13,15 @@
     </tr>
   </thead>
   <tbody>
-  <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.CREADO || it.estatusDePago == EstatusDePago.VENCIDO">
+  <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.CREATED || it.paymentStatus == PaymentStatus.EXPIRED">
       <tr>
-        <td> ${it.conceptoDePago} </td>
-        <td> $ ${it.cantidadDePago} </td>
-        <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDeVencimiento}"/> </td>
-        <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDePago}"/> </td>
-        <td> ${it.tipoDePago} </td>
+        <td> ${it.paymentConcept} </td>
+        <td> $ ${it.paymentAmount} </td>
+        <td> <g:formatDate format="yyyy-MM-dd" date="${it.dueDate}"/> </td>
+        <td> <g:formatDate format="yyyy-MM-dd" date="${it.paymentDate}"/> </td>
+        <td> ${it.paymentType} </td>
         <td>${(new Date() - it.lastUpdated)}</td>
-        <td> ${it.estatusDePago} </td>
+        <td> ${it.paymentStatus} </td>
       </tr>
   </g:findAll>
   </tbody>
