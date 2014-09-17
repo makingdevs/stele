@@ -62,7 +62,7 @@ window.Descuento = (function(){
       $.ajax({
         type: "POST",
         url:$(this).attr("action"),
-        data:$(this).serialize(),
+        data:$(this).serialize()+"&referenceDate="+$("#fechaDeVencimiento").val(),
         success: function(data){
           $(".descuentoCreado").html(data);
           that.form.each(function(){
