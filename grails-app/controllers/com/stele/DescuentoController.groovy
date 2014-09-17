@@ -1,29 +1,28 @@
 package com.stele
 
-import com.payable.Discount
+import com.payable.*
 import grails.converters.JSON
 
 class DescuentoController {
 
   def scaffold = Discount
-
+  
   def discountService
   def springSecurityService
 
   static allowedMethods = [obtenerDescuentosInstitucion : 'GET']
 
   def nuevo() {
-    def descuentos = []
-    def descuento
+    def discounts = []
+    def discount
 
-    if(params.list("descuento")) 
-      descuentos = params.list("descuento")*.toLong() ?: []
+    if(params.list("discount")) 
+      discounts = params.list("discount")*.toLong() ?: []
     
-    descuento = discountService.saveDiscountForOrganization(springSecurityService.currentUser.instituciones.first(),params)
+    discount = discountService.saveDiscountForPaymentSchemeOfOrganizationWithReferenceDate(springSecurityService.currentUser.instituciones.first(),params)
 
-    descuentos << descuento.id
-
-    render template:"/descuento/list", model:[descuentos:Descuento.findAllByIdInList(descuentos.unique())]
+    discounts << discount.id
+    render template:"/descuento/list", model:[discounts:Discount.findAllByIdInList(discounts.unique())]
   }
 
   def obtenerDescuentosInstitucion() {
