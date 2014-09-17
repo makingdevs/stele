@@ -7,10 +7,10 @@ import com.payable.*
 class EsquemaDePagoController {
 
   def springSecurityService
-  def generacionDePagoService
+  def generationOfPaymentService 
   def wrapperCommandService
   def paymentSchemeService 
-  def descuentoAplicableService
+  def applicableDiscountService
   def dependienteService
   def notificacionService
   def conceptService
@@ -81,8 +81,8 @@ class EsquemaDePagoController {
 
     def grupoPagoCommand = wrapperCommandService.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, springSecurityService.currentUser.instituciones?.first())
 
-    def pagos = generacionDePagoService.generaPagoParaGrupo(grupoPagoCommand)
-    def esquemaDePago = esquemaDePagoService.buscarOSalvarEsquemaDePago(grupoPagoCommand)
+    def pagos = generationOfPaymentService.generatePaymentsForGroup(grupoPagoCommand)
+    def esquemaDePago = paymentSchemeService.savePaymentScheme(grupoPagoCommand)
     pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos) ?: pagos
     if (pagos)
       notificarCreacionDePago(pagos)
@@ -103,25 +103,25 @@ class EsquemaDePagoController {
     redirect(action:'nuevo')
   }
 
-  private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(GrupoPagoCommand grupoPagoCommand,EsquemaDePago esquemaDePago, List pagos) {
+  private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(PaymentGroupCommand paymentGroupCommand,PaymentScheme paymentScheme, List pagos) {
     def listaDePagos = []
     pagos.each{ pago -> 
-      def descuentosAplicables = descuentoAplicableService.generarParaPagoConEsquemaDePagoConFechaReferencia(esquemaDePago.id, pago.fechaDeVencimiento, grupoPagoCommand.fechasDeExpiracionDescuento)
+      def descuentosAplicables = applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id, pago.dueDate, paymentGroupCommand.expirationDatesForDiscounts)
       listaDePagos +=  asignarDescuntosAplicablesAlosPagos(descuentosAplicables,pago)
     }
     listaDePagos
   }
 
-  private def asignarDescuntosAplicablesAlosPagos(def descuentoAplicable, Pago pago) {
-    def listadePagos = []
-    if (descuentoAplicable instanceof DescuentoAplicable)
-      listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoAplicable, pago.id)
-    else if (descuentoAplicable instanceof List<DescuentoAplicable>) {
-      descuentoAplicable.each { descuentoApl ->
-        listadePagos << descuentoAplicableService.agregarDescuentoAplicableAUnPago(descuentoApl, pago.id)
+  private def asignarDescuntosAplicablesAlosPagos(def applicableDiscount, Payment payment) {
+    def paymentsList = []
+    if (applicableDiscount instanceof ApplicableDiscount)
+      paymentsList << applicableDiscountService.addApplicableDiscountToAPayment(applicableDiscount, payment.id)
+    else if (applicableDiscount instanceof List<ApplicableDiscount>) {
+      applicableDiscount.each { aDiscount ->
+        paymentsList << applicableDiscountService.addApplicableDiscountToAPayment(aDiscount, payment.id)
       }
     }
-    listadePagos
+    paymentsList
   }
 
   private def notificarCreacionDePago(def listaDePagos) {
