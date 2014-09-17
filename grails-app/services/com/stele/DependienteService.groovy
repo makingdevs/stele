@@ -105,12 +105,13 @@ class DependienteService {
   }
 
   def obtenerDependientesPorPagos(def listaPagos) {
-    def ids = listaPagos.flatten()*.id*.toLong()
-    Dependiente.withCriteria{
-      pagos{
-        'in'('id', ids)
+    def dependienteIds = PaymentLink.withCriteria{
+      eq('type',Dependiente.class.simpleName)
+      payments{
+        'in'('id',listaPagos*.id)
       }
-    }
+    }*.paymentRef
+    Dependiente.findAllByIdInList(dependienteIds)
   }
 
 }
