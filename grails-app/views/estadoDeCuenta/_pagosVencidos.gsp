@@ -26,11 +26,11 @@
             <tbody>
               <g:each in="${pagosVencido}">
                 <tr>
-                  <td class="">${it.conceptoDePago}</td>
-                  <td class="">${it.fechaDeVencimiento.format('dd-MM-yyyy')}</td>
-                  <td class="">$ ${it.cantidadDePago }</td>
-                  <td class="">$ ${it.recargosAcumulados}</td>
-                  <td class="">$ ${it.cantidadDePago + it.recargosAcumulados}</td>
+                  <td class="">${it.paymentConcept}</td>
+                  <td class="">${it.dueDate.format('dd-MM-yyyy')}</td>
+                  <td class="">$ ${it.paymentAmount }</td>
+                  <td class="">$ ${it.accumulatedSurcharges}</td>
+                  <td class="">$ ${it.paymentAmount + it.accumulatedSurcharges}</td>
                   <td width="70"><span class="label label-important arrowed-in">Vencidos</span></td>
                   <td class="center" width="140"> 
                     <g:if test="${!flash.ventanilla}">
@@ -48,11 +48,11 @@
               </g:each>
               <g:each in="${pagosRechazados}">
                 <tr>
-                  <td class="">${it.conceptoDePago}</td>
-                  <td class="">${it.fechaDeVencimiento.format('dd-MM-yyyy')}</td>
-                  <td class="">$ ${it.cantidadDePago }</td>
-                  <td class="">$ ${it.recargosAcumulados}</td>
-                  <td class="">$ ${it.cantidadDePago + it.recargosAcumulados}</td>
+                  <td class="">${it.paymentConcept}</td>
+                  <td class="">${it.dueDate.format('dd-MM-yyyy')}</td>
+                  <td class="">$ ${it.paymentAmount }</td>
+                  <td class="">$ ${it.accumulatedSurcharges}</td>
+                  <td class="">$ ${it.paymentAmount + it.accumulatedSurcharges}</td>
                   <td width="70"><span class="label label-important arrowed-in">Rechazados</span></td>
                   <td class="center" width="140"> 
                     <g:if test="${!flash.ventanilla}">
