@@ -51,7 +51,7 @@
       </ul><!--.breadcrumb-->
     </div>
     <div class="page-content">
-      <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
+      <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: payment.id)}" id="url" />
       <div class="page-header position-relative  ">
          <font color="2E9AFE"><h1>Comprobante de pago</h1></font>
       </div><!--/.page-header-->
@@ -109,7 +109,7 @@
                   <div class="row">
                     <div class=" widget-container-span">
                       <div class="widget-box">
-                        <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">
+                        <input type="hidden" id="transactionId" name="transactionId" value="${payment.transactionId}">
                         <div class="widget-header widget-header-small header-color-green2">
                           <h5 class="bigger lighter">
                             Confirmar pago
