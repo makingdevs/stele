@@ -40,7 +40,7 @@ class PagoController {
     def report = new JasperReportDef(name:"reciboPago.jasper",fileFormat:JasperExportFormat.PDF_FORMAT,
                                      reportData:[informacionReciboPago],
                                      locale:Locale.getDefault(),
-                                     parameters:[nombreEscuela:springSecurityService.currentUser.instituciones?.first().nombre.toUpperCase()])
+                                     parameters:[nombreEscuela:springSecurityService.currentUser.instituciones?.first().name.toUpperCase()])
     response.setContentType("application/pdf")   
     response.setHeader "Content-disposition", "attachment; filename=reciboPago.pdf";
     response.outputStream << jasperService.generateReport(report).toByteArray()
