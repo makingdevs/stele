@@ -1,4 +1,4 @@
-<%@ page import="com.payable.TipoDePago" %>
+<%@ page import="com.payable.PaymentType" %>
 <html>
   <head>
     <meta name="layout" content="colegio"/>
@@ -144,7 +144,7 @@
                                 <tr>
                                   <td  class="">Tipo pago</td>
                                   <td class="">                                     
-                                     <g:select id="tipoDePago" name="tipoDePago" from="${TipoDePago.values()}" optionKey="key" />
+                                     <g:select id="tipoDePago" name="tipoDePago" from="${PaymentType.values()}" optionKey="key" />
                                   </td>
                                 </tr>
                                 <tr>

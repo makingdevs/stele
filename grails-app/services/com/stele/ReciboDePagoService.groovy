@@ -1,7 +1,7 @@
 package com.stele
 
 import grails.transaction.Transactional
-import com.payable.Pago
+import com.payable.Payment
 
 @Transactional
 class ReciboDePagoService {
@@ -11,7 +11,7 @@ class ReciboDePagoService {
 
   def obtenerDatosReciboDePago(paymentId){
     def payment = Payment.get(paymentId)
-    def dependiente = dependienteService.obtenerDependientesPorPagos([pago])[0];
+    def dependiente = dependienteService.obtenerDependientesPorPagos([payment])[0];
     def tutor = dependiente.usuario.perfil    
     def historialAcademico = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(dependiente.id)
 
@@ -23,7 +23,7 @@ class ReciboDePagoService {
                                conceptoPago:payment.paymentConcept,
                                cantidadPago:payment.paymentAmount,
                                recargosAcumulados:payment.accumulatedSurcharges,
-                               total:pago.cantidadDePago.subtract(payment.accumulatedSurcharges),
+                               total:payment.paymentAmount.subtract(payment.accumulatedSurcharges),
                                fechaPago:payment.paymentDate,
                                tipoPago:payment.paymentType,
                                referencia:payment.reference)
