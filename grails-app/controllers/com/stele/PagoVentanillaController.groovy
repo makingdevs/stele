@@ -1,10 +1,10 @@
 package com.stele
 
-import com.payable.*
+import com.payable.Payment
 
 class PagoVentanillaController {
 
-    def efectivo() {
-      [pago: Pago.get(params.id)]
-    }
+  def efectivo() {
+    [payment: Payment.get(params.id)]
+  }
 }
