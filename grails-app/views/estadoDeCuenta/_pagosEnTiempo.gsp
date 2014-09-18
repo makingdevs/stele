@@ -40,12 +40,12 @@
             <tbody>
               <g:each in="${pagosEnTiempo}">
                 <tr>
-                  <td>${it.conceptoDePago}</td>
+                  <td>${it.paymentConcept}</td>
                   <td>01-Nov-2013</td>
-                  <td>$ ${it.descuentoAplicable}</td>
-                  <td>$ ${it.cantidadDePago - it.descuentoAplicable}</td>
-                  <td>${it.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
-                  <td>$ ${it.cantidadDePago}</td>      
+                  <td>$ ${it.accumulatedDiscount}</td>
+                  <td>$ ${it.paymentAmount - it.accumulatedDiscount}</td>
+                  <td>${it.dueDate.format('dd-MMM-yyyy')}</td>
+                  <td>$ ${it.paymentAmount}</td>      
                   <td width="70"><span class="label label-info arrowed-in">Pendiente</span></td>
                   <td class="center" width="140">
                     <g:if test="${!flash.ventanilla}">
@@ -64,12 +64,12 @@
               </g:each>
               <g:each in="${pagosProcesados}">
                 <tr>
-                  <td>${it.conceptoDePago}</td>
+                  <td>${it.paymentConcept}</td>
                   <td>01-Nov-2013</td>
-                  <td>$ ${it.descuentoAplicable}</td>
-                  <td>$ ${it.cantidadDePago - it.descuentoAplicable}</td>
-                  <td>${it.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
-                  <td>$ ${it.cantidadDePago}</td>      
+                  <td>$ ${it.accumulatedDiscount}</td>
+                  <td>$ ${it.paymentAmount - it.accumulatedDiscount}</td>
+                  <td>${it.dueDate.format('dd-MMM-yyyy')}</td>
+                  <td>$ ${it.paymentAmount}</td>      
                   <td width="70"><span class="label label-warning arrowed-in">Revision</span></td>
                   <td class="center" width="140"></td>
                   <td></td>
@@ -77,15 +77,15 @@
               </g:each>
               <g:each in="${pagoCorrectos}">
                 <tr>
-                  <td>${it.conceptoDePago}</td>
+                  <td>${it.paymentConcept}</td>
                   <td>01-Nov-2013</td>
-                  <td>$ ${it.descuentoAplicable}</td>
-                  <td>$ ${it.cantidadDePago - it.descuentoAplicable}</td>
-                  <td>${it.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
-                  <td>$ ${it.cantidadDePago}</td>      
+                  <td>$ ${it.accumulatedDiscount}</td>
+                  <td>$ ${it.paymentAmount - it.accumulatedDiscount}</td>
+                  <td>${it.dueDate.format('dd-MMM-yyyy')}</td>
+                  <td>$ ${it.paymentAmount}</td>      
                   <td width="70"><span class="label label-success arrowed-in">Pagado</span></td>
                   <td class="center" width="140">
-                  <g:if test="${it.comprobanteDePago}">
+                  <g:if test="${it.proofOfPayment}">
                     <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:it.id]" class="btn btn-mini btn-info">
                       Descargar
                     </g:link>
