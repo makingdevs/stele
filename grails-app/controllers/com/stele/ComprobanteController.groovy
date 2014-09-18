@@ -7,7 +7,7 @@ import com.payable.*
 class ComprobanteController {
 
   def pagoService
-  def comprobanteService
+  def proofOfPaymentService 
   def perfilService
   def dependienteService
   def notificacionService
@@ -62,7 +62,7 @@ class ComprobanteController {
   def descargarComprobante(){
     response.setContentType("application/octet-stream");
     response.setHeader "Content-disposition", "attachment; filename=Comprobante";
-    response.outputStream <<  comprobanteService.obtenerBytesDeComprobante(params.pagoId)
+    response.outputStream <<  proofOfPaymentService.bytesOfProofOfPayment(params.pagoId)
   }
 
 }
