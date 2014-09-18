@@ -89,13 +89,13 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>${pago.conceptoDePago}</td>
-                          <td>$ ${pago.descuentoAplicable}</td>
-                          <td>$ ${pago.cantidadDePago - pago.descuentoAplicable}</td>
-                          <td>$ ${pago.recargosAcumulados}</td>
-                          <td>$ ${pago.cantidadDePago - pago.recargosAcumulados}</td>
-                          <td>${pago.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
-                          <td>$ ${pago.cantidadDePago}</td>     
+                          <td>${payment.paymentConcept}</td>
+                          <td>$ ${payment.accumulatedDiscount}</td>
+                          <td>$ ${payment.paymentAmount - payment.accumulatedDiscount}</td>
+                          <td>$ ${payment.accumulatedSurcharges}</td>
+                          <td>$ ${payment.paymentAmount - payment.accumulatedSurcharges}</td>
+                          <td>${payment.dueDate.format('dd-MMM-yyyy')}</td>
+                          <td>$ ${payment.paymentAmount}</td>     
                           </tr>
                       </tbody>  
                     </table>
