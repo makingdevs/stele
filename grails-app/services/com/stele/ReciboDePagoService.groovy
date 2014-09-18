@@ -9,8 +9,8 @@ class ReciboDePagoService {
   def dependienteService
   def historialAcademicoService
 
-  def obtenerDatosReciboDePago(pagoId){
-    def pago = Pago.get(pagoId)
+  def obtenerDatosReciboDePago(paymentId){
+    def payment = Payment.get(paymentId)
     def dependiente = dependienteService.obtenerDependientesPorPagos([pago])[0];
     def tutor = dependiente.usuario.perfil    
     def historialAcademico = historialAcademicoService.obtenerhistorialAcademicoPorDependiente(dependiente.id)
@@ -20,13 +20,13 @@ class ReciboDePagoService {
                                nivelEstudio:historialAcademico.distribucionInstitucional.nivelDeEstudio,
                                grado:historialAcademico.distribucionInstitucional.grado,
                                grupo:historialAcademico.distribucionInstitucional.grupo,
-                               conceptoPago:pago.conceptoDePago,
-                               cantidadPago:pago.cantidadDePago,
-                               recargosAcumulados:pago.recargosAcumulados,
-                               total:pago.cantidadDePago.subtract(pago.recargosAcumulados),
-                               fechaPago:pago.fechaDePago,
-                               tipoPago:pago.tipoDePago,
-                               referencia:pago.referencia)
+                               conceptoPago:payment.paymentConcept,
+                               cantidadPago:payment.paymentAmount,
+                               recargosAcumulados:payment.accumulatedSurcharges,
+                               total:pago.cantidadDePago.subtract(payment.accumulatedSurcharges),
+                               fechaPago:payment.paymentDate,
+                               tipoPago:payment.paymentType,
+                               referencia:payment.reference)
 
   }
 
