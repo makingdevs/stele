@@ -9,7 +9,7 @@ class PagoController {
   def springSecurityService
   def pagoService
   def historialAcademicoService
-  def comprobanteService
+  def proofOfPaymentService
   def reciboDePagoService
   def jasperService
 
@@ -30,9 +30,9 @@ class PagoController {
 
   def pagoInmediatoVentanilla() {
     def fecha = new Date().parse("dd/MM/yyyy", params.fechaDePago)
-    def pago = comprobanteService.aprobarPago(params.transactionId,fecha, params.tipoDePago,params.folioBanco)
-    flash.pagoCorrecto = pago.estatusDePago
-    render(template:"/pagoVentanilla/reporte",model:[pagoId:pago.id])
+    def payment = proofOfPaymentService.approvePayment(params.transactionId,fecha, params.tipoDePago,params.folioBanco)
+    flash.pagoCorrecto = payment.paymentStatus
+    render(template:"/pagoVentanilla/reporte",model:[pagoId:payment.id])
   }
 
   def generarComprobante(){
