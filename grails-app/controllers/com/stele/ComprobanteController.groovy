@@ -33,13 +33,13 @@ class ComprobanteController {
 
   def rechazarPago() {
     def pago = comprobanteService.rechazarPago(params.transactionId)
-    def dependiente = dependienteService.obtenerDependientesPorPagos([pago])
+    def dependiente = dependienteService.findDependienteFromPaymentId([pago])
     notificacionService.notificarPagoRechazado(dependiente)
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
 
   def detalle() {
-    def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
+    def Payment = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
     def dependiente = Payable.withCriteria {
       pagos {
         eq "id", pago.id
