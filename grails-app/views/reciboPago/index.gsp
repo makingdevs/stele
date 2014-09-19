@@ -62,12 +62,12 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>${pago.conceptoDePago}</td>
+                        <td>${payment.paymentConcept}</td>
                         <td>01-Nov-2013</td>
-                        <td>$ ${pago.descuentoAplicable}</td>
-                        <td>$ ${pago.cantidadDePago - pago.descuentoAplicable}</td>
-                        <td>${pago.fechaDeVencimiento.format('dd-MMM-yyyy')}</td>
-                        <td>$ ${pago.cantidadDePago}</td>      
+                        <td>$ ${payment.accumulatedDiscount}</td>
+                        <td>$ ${payment.paymentAmount - payment.accumulatedDiscount}</td>
+                        <td>${payment.dueDate.format('dd-MMM-yyyy')}</td>
+                        <td>$ ${payment.paymentAmount}</td>      
                       </tr>
                     </tbody>  
                   </table>
