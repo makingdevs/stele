@@ -6,21 +6,18 @@ import com.payable.*
 
 class ComprobanteController {
 
-  def pagoService
+  def paymentService
   def proofOfPaymentService 
   def perfilService
   def dependienteService
   def notificacionService
 
   def show() {
-    def pago = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
-    def dependiente = Payable.withCriteria {
-      pagos {
-        eq "id", pago.id
-      }
-    }
+    def payment = Payment.get(params.long('id'))
+    def dependiente = dependienteService.findDependienteFromPaymentId(params.long('id'))
+
     def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.usuario.perfil.first().id)
-    [pago: pago, perfil:perfil]
+    [payment:payment, perfil:perfil]
   }
 
   def validarComprobante() {
