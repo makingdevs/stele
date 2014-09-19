@@ -1,4 +1,4 @@
-<%@ page import="com.payable.EstatusDePago" %>
+<%@ page import="com.payable.PaymentStatus" %>
 <html>
   <head>
     <meta name="layout" content="colegio"/>
@@ -40,7 +40,7 @@
 
                       <li>
                         <a data-toggle="tab" href="#xconciliar">
-                          Por Conciliar  <span class="badge badge-warning">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.PROCESO}}</span>
+                          Por Conciliar  <span class="badge badge-warning">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.PROCESS}}</span>
                           <span class="badge badge-warning"></span>
                         </a>
                       </li>
@@ -53,13 +53,13 @@
                       <li>
                         <a data-toggle="tab" href="#rechazados">
                           Rechazados
-                          <span class="badge badge-important">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.RECHAZADO}}</span>
+                          <span class="badge badge-important">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.REJECTED}}</span>
                         </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#vencidos">
                           Vencidos
-                          <span class="badge badge-pink">${pagosInstitucion*.estatusDePago.count{it == EstatusDePago.VENCIDO}}</span>
+                          <span class="badge badge-pink">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.EXPIRED}}</span>
                         </a>
                       </li>
                     </ul>
