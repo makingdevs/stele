@@ -21,7 +21,6 @@
           <td> $ ${it.paymentAmount} </td>
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.paymentDate}"/> </td>
           <td> ${it.paymentStatus} </td>
-          <td>&nbsp;</td>
         </tr>
       </g:findAll>
     </tbody>

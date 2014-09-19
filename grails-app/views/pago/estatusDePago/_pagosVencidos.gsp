@@ -9,7 +9,6 @@
         <th class="text-info">Recargo</th>
         <th class="text-info">Total</th>
         <th>Días sin conciliar</th>
-        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
