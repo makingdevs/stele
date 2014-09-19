@@ -173,7 +173,7 @@
                                 <tr>
                                   <td  >Monto</td>
                                   <td >   
-                                    $<g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" />
+                                    <g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" />
                                   </td>
                                 </tr>
 
@@ -188,8 +188,8 @@
 
 
                                 <tr>
-                                  <td  >Referencia Banco</td>
-                                  <td >                                     
+                                  <td>Referencia Banco</td>
+                                  <td>
                                     <div class="input-prepend">
                                      <input type="text" id="folioBanco" name="folioBanco">
                                       <span class="add-on">
