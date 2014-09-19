@@ -514,6 +514,8 @@ databaseChangeLog = {
     sql("update payment set payment_type='CHECK' where payment_type='CHEQUE_FICHA'") 
     sql("update payment set payment_type='CASH' where payment_type='EFECTIVO'") 
     sql("insert into applicable_discount select id,version,descuento_aplicable_status,date_created,descuento_id,fecha_de_expiracion,last_updated,pago_id from descuento_aplicable")
+    sql("update applicable_discount set applicable_discount_status='VALID' where applicable_discount_status='VIGENTE'")
+    sql("update applicable_discount set applicable_discount_status='APPLIED' where applicable_discount_status='APLICADO'")
     sql("insert into payment_scheme select id,version,concepto_id,cantidad_de_pago,recargo_id from esquema_de_pago")
     sql("insert into payment_scheme_discount select * from esquema_de_pago_descuento")
     sql("insert into payment_link(version,payment_ref,type) select 0,id,\"${Dependiente.class.simpleName}\" from dependiente") 
