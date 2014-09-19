@@ -1,4 +1,4 @@
-<%@ page import="com.payable.EstatusDePago" %>
+<%@ page import="com.payable.PaymentStatus" %>
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
@@ -13,18 +13,18 @@
       </tr>
     </thead>
     <tbody>
-      <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.CREADO  ">
+      <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.CREATED  ">
         <tr>
           <td><g:nombreDependiente idPago="${it.id}"></g:nombreDependiente></td>
-          <td> ${it.conceptoDePago} </td>
-          <td> <g:formatDate format="dd/MM/yyyy" date="${it.fechaDeVencimiento}"/> </td>
-          <td> $ ${it.cantidadDePago} </td>
-          <td> $ ${it.descuentoAplicable ?: 0}</td>
-          <td> $ ${it.recargosAcumulados ?: 0} </td>
-          <td> $ ${it.cantidadDePago - it.descuentoAplicable}</td>
-          <td> ${it.estatusDePago} </td>
+          <td> ${it.paymentConcept} </td>
+          <td> <g:formatDate format="dd/MM/yyyy" date="${it.dueDate}"/> </td>
+          <td> $ ${it.paymentAmount} </td>
+          <td> $ ${it.accumulatedDiscount ?: 0}</td>
+          <td> $ ${it.accumulatedSurcharges ?: 0} </td>
+          <td> $ ${it.paymentAmount - it.accumulatedDiscount}</td>
+          <td> ${it.paymentStatus} </td>
             <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
-              <g:if test="${it.estatusDePago == EstatusDePago.CREADO }">
+              <g:if test="${it.paymentStatus == PaymentStatus.CREATED }">
                 <td> <g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>
               </g:if>
             </sec:ifAllGranted>
