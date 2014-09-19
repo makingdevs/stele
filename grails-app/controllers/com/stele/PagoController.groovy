@@ -8,6 +8,7 @@ class PagoController {
 
   def springSecurityService
   def pagoService
+  def paymentService
   def historialAcademicoService
   def proofOfPaymentService
   def reciboDePagoService
@@ -20,7 +21,7 @@ class PagoController {
 
   def mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos() {
    def historialesAcademicos = historialAcademicoService.obtenerHistorilesAcademicosDelaInstitucion(springSecurityService.currentUser)
-   def pagosAsociadosAInstitucion = historialesAcademicos*.dependiente*.pagos.flatten()
+   def pagosAsociadosAInstitucion = paymentService.findAllPaymentsForTheInstances(historialesAcademicos*.dependiente)
    render (view: "pagosAsociadosAUnaInstitucion", model:[pagosInstitucion:pagosAsociadosAInstitucion, usuario:springSecurityService.currentUser])
   }
 
