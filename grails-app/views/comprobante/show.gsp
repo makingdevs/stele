@@ -35,9 +35,6 @@
           </ul><!--.breadcrumb-->
         </div>
 
-
-
-
         <div class="page-content">
           <div class="page-header position-relative">
             <h1>
