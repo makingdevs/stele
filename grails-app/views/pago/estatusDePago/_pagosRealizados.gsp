@@ -1,4 +1,4 @@
-<%@ page import="com.payable.EstatusDePago" %>
+<%@ page import="com.payable.PaymentStatus" %>
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
@@ -12,15 +12,15 @@
       </tr>
     </thead>
     <tbody>
-       <g:findAll in="${pagos}" expr="it.estatusDePago == EstatusDePago.PAGADO  ">
+       <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.PAID">
         <tr class="success"> 
           <td align="justify"><g:link controller="comprobante" action="detalle" id="${it.id}" class="btn"> <i class="icon-zoom-in bigger-130"></i></g:link></td>
           <td><g:nombreDependiente idPago="${it.id}"></g:nombreDependiente></td>
-          <td> ${it.conceptoDePago} </td>
-          <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDeVencimiento}"/> </td>
-          <td> $ ${it.cantidadDePago} </td>
-          <td> <g:formatDate format="yyyy-MM-dd" date="${it.fechaDePago}"/> </td>
-          <td> ${it.estatusDePago} </td>
+          <td> ${it.paymentConcept} </td>
+          <td> <g:formatDate format="yyyy-MM-dd" date="${it.dueDate}"/> </td>
+          <td> $ ${it.paymentAmount} </td>
+          <td> <g:formatDate format="yyyy-MM-dd" date="${it.paymentDate}"/> </td>
+          <td> ${it.paymentStatus} </td>
           <td>&nbsp;</td>
         </tr>
       </g:findAll>
