@@ -14,7 +14,7 @@ class ComprobanteController {
 
   def show() {
     def payment = Payment.get(params.long('id'))
-    def dependiente = dependienteService.findDependienteFromPaymentId(params.long('id'))
+    def dependiente = dependienteService.findDependienteFromPaymentId(payment.id)
 
     def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.usuario.perfil.first().id)
     [payment:payment, perfil:perfil]
@@ -29,8 +29,8 @@ class ComprobanteController {
   }
 
   def rechazarPago() {
-    def pago = comprobanteService.rechazarPago(params.transactionId)
-    def dependiente = dependienteService.findDependienteFromPaymentId([pago])
+    def payment = proofOfPaymentService.rejectPayment(params.transactionId)
+    def dependiente = dependienteService.findDependienteFromPaymentId(payment.id)
     notificacionService.notificarPagoRechazado(dependiente)
     redirect (controller: "Pago", action: "mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos")
   }
