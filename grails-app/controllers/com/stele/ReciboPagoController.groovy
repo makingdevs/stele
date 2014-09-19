@@ -6,15 +6,15 @@ import com.payable.*
 
 class ReciboPagoController {
 
-  def comprobanteService
+  def proofOfPaymentService
 
   def index() { 
-    [pago: Pago.get(params.id)]
+    [payment: Payment.get(params.id)]
   }
 
   def subirArchivo() {
-    Pago pago = comprobanteService.agregarComprobanteAPago(params.long('id'), params.file) 
-    render pago as JSON
+    Payment payment = proofOfPaymentService.addProofOfPayment(params.long('id'), params.file) 
+    render payment as JSON
   }
 
   def muestra(){
