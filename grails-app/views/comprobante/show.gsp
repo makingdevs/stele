@@ -1,5 +1,4 @@
-<%@ page import="com.payable.EstatusDePago" %>
-<%@ page import="com.payable.TipoDePago" %>
+<%@ page import="com.payable.PaymentType" %>
 <html>
   <head>
     <meta name="layout" content="colegio"/>
@@ -56,7 +55,7 @@
                 
               <div class="span6">         
                 <g:form class="form-horizontal" id="conciliacion" name="conciliacion" controller="comprobante" action="validarComprobante">    
-                  <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">                      
+                  <input type="hidden" id="transactionId" name="transactionId" value="${payment.transactionId}">                      
                   <div class="span12 widget-container-span">
                     <div class="widget-box">
                       <div class="widget-header widget-header-small header-color-blue">
@@ -70,15 +69,15 @@
                             <tbody>
                               <tr>
                                 <td>Concepto</td>
-                                <td>${pago.conceptoDePago}</td>
+                                <td>${payment.paymentConcept}</td>
                               </tr>
                               <tr>
                                 <td>Vencimiento</td>
-                                <td>${pago.fechaDeVencimiento.format('dd/MM/yyyy')}</td>
+                                <td>${payment.dueDate.format('dd/MM/yyyy')}</td>
                               </tr>
                               <tr>
                                 <td>Importe</td>
-                                <td>$<g:formatNumber number="${pago.cantidadDePago}" type="currency" currencyCode="MXN" /></td>
+                                <td>$<g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" /></td>
                               </tr>   
                             </tbody>
                           </table>
@@ -86,8 +85,8 @@
                       </div>
                     </div>
                   </div><!--/span-->
-                  <g:if test="${pago.descuentoAplicable > 0}">
-                    <g:each var="descuentoAplicable" in="${pago.descuentosAplicables}">
+                  <g:if test="${payment.accumulatedDiscount > 0}">
+                    <g:each var="applicableDiscount" in="${payment.applicableDiscounts}">
                       <div class="row-fluid">
                         <div class="span12 widget-container-span">
                           <div class="widget-box">
@@ -102,16 +101,16 @@
                                   <tbody>
                                     <tr>
                                       <td >Concepto</td>
-                                      <td >${descuentoAplicable.descuento.first().nombreDeDescuento}</td>
+                                      <td >${applicableDiscount.discount.first().discountName}</td>
                                     </tr>
 
                                     <tr>
                                       <td >Vencimiento</td>
-                                      <td >${descuentoAplicable.fechaDeExpiracion.format('dd/MM/yyyy')}</td>
+                                      <td >${applicableDiscount.expirationDate.format('dd/MM/yyyy')}</td>
                                     </tr>
                                     <tr>
                                       <td >Importe</td>
-                                      <td >$ ${pago.descuentoAplicable}</td>
+                                      <td >$ ${payment.accumulatedDiscount}</td>
                                     </tr>   
                                   </tbody>
                                 </table>
@@ -135,11 +134,11 @@
                               <tbody>
                                 <tr>
                                   <td >Vencimiento</td>
-                                  <td >${pago.fechaDeVencimiento.format('dd/MM/yyyy')}</td>
+                                  <td >${payment.dueDate.format('dd/MM/yyyy')}</td>
                                 </tr>
                                 <tr>
                                   <td >Importe</td>
-                                  <td ><strong>$<g:formatNumber number="${pago.cantidadDePago - pago.descuentoAplicable}" type="currency" currencyCode="MXN" /></strong></td>
+                                  <td ><strong>$<g:formatNumber number="${payment.paymentAmount - payment.accumulatedDiscount}" type="currency" currencyCode="MXN" /></strong></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -177,7 +176,7 @@
                                 <tr>
                                   <td  >Monto</td>
                                   <td >   
-                                    $<g:formatNumber number="${pago.cantidadDePago}" type="currency" currencyCode="MXN" />
+                                    $<g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" />
                                   </td>
                                 </tr>
 
@@ -185,7 +184,7 @@
                                   <td  >Tipo pago</td>
                                   <td >                    
                                   <span class="form-field-select-1">
-                                    <g:select id="tipoDePago" name="tipoDePago" noSelection="['':'- Tipo de Pago-']" from="${TipoDePago.values()}" optionKey="key" />
+                                    <g:select id="tipoDePago" name="tipoDePago" noSelection="['':'- Tipo de Pago-']" from="${PaymentType.values()}" optionKey="key" />
                                   </span>
                                   </td>
                                 </tr>
@@ -212,7 +211,7 @@
                     <div class="form-actions ">
                       <button type="submit" class="btn btn-success"><i class="icon-thumbs-up-alt"></i> Aprobar</button>
                       &nbsp; &nbsp; &nbsp;
-                      <g:link controller="comprobante" action="rechazarPago" params="[transactionId: "${pago.transactionId}"]" ><button type="button" class="btn btn-danger"><i class="icon-reply bigger-150"></i></i> Rechazar</button></g:link>
+                      <g:link controller="comprobante" action="rechazarPago" params="[transactionId: "${payment.transactionId}"]" ><button type="button" class="btn btn-danger"><i class="icon-reply bigger-150"></i></i> Rechazar</button></g:link>
                     </div>  
                   </sec:ifAllGranted> 
                 </g:form>
@@ -228,14 +227,14 @@
                       <div class="center">
     
                         <span class="control-group warning">
-                          <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:pago.id]">
+                          <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:payment.id]">
                             <span class="btn btn-large btn-info  blue" href="#">
                               <i class="icon-file-text bigger-160"></i>
                               Comprobante Pago
                             </span>
                           </g:link>
                           <span class=" help-inline pink">
-                              Comprobante adjuntado <strong> ${pago.lastUpdated.format('dd/MM/yyyy')} </strong>
+                              Comprobante adjuntado <strong> ${payment.lastUpdated.format('dd/MM/yyyy')} </strong>
                           </span>
                         </span>
                       </div>
@@ -249,7 +248,7 @@
                   <div class="widget-body">
                     <div class="widget-main">
                       <div class="center">
-                        <iframe class="cboxPhoto" src="${pago.comprobanteDePago?.url()}"  width="100%" height="450px" ></iframe>  
+                        <iframe class="cboxPhoto" src="${payment.proofOfPayment?.url()}"  width="100%" height="450px" ></iframe>  
                       </div>
                     </div>
                   </div>
