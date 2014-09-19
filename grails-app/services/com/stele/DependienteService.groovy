@@ -114,4 +114,16 @@ class DependienteService {
     Dependiente.findAllByIdInList(dependienteIds)
   }
 
+  def findDependienteFromPaymentId(def idPayment){
+    def dependienteId = PaymentLink.withCriteria(uniqueResult:true){
+      eq('type',Dependiente.class.simpleName)
+      payments{
+        eq('id',idPayment)
+      }
+    }.paymentRef
+      
+    Dependiente.get(dependienteId)
+    
+  }
+
 }
