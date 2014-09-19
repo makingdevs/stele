@@ -1,18 +1,16 @@
 package stele
 
-import com.payable.Pago
+import com.payable.Payment
 import com.stele.Dependiente
 import com.stele.HistorialAcademico
 
 class DependienteTagLib {
 
+  def dependienteService
+
   def nombreDependiente = { attrs, body ->
-    def pago = Pago.findById(attrs.idPago)
-    def dependiente = Dependiente.withCriteria{
-      pagos{
-        eq('id', pago.id)
-      }
-    }
+
+    def dependiente = dependienteService.findDependienteFromPaymentId(attrs.idPago)
     out << dependiente.perfil.first().nombre
     out << ' ' 
     out <<  dependiente.perfil.first().apellidoPaterno 
