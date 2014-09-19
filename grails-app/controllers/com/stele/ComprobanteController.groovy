@@ -36,14 +36,10 @@ class ComprobanteController {
   }
 
   def detalle() {
-    def Payment = pagoService.obtenerPagoParaValidarComprobante(params.long('id'))
-    def dependiente = Payable.withCriteria {
-      pagos {
-        eq "id", pago.id
-      }
-    }
+    def payment = Payment.get(params.long('id'))
+    def dependiente = dependienteService.findDependienteFromPaymentId(payment.id) 
     def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.usuario.perfil.first().id)
-    [pago: pago, perfil:perfil] 
+    [payment: payment, perfil:perfil] 
   }
 
   def comprobantePagoMes(){
