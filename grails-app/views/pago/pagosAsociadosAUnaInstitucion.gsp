@@ -35,25 +35,26 @@
                       <li class="active">
                         <a data-toggle="tab" href="#pendientes">
                           Pendientes
+                          <span class="badge badge-primary">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.CREATED} }
                         </a>
                       </li>
 
                       <li>
                         <a data-toggle="tab" href="#xconciliar">
-                          Por Conciliar  <span class="badge badge-warning">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.PROCESS}}</span>
-                          <span class="badge badge-warning"></span>
+                          Por Conciliar  <span class="badge badge-info">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.PROCESS}}</span>
                         </a>
                       </li>
 
                       <li>
                         <a data-toggle="tab" href="#conciliados">
-                          Conciliados                         
+                          Conciliados
+                          <span class="badge badge-success">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.PAID}}</span>
                         </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#rechazados">
                           Rechazados
-                          <span class="badge badge-important">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.REJECTED}}</span>
+                          <span class="badge badge-warning">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.REJECTED}}</span>
                         </a>
                       </li>
                       <li>
