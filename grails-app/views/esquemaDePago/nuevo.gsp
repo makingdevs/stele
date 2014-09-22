@@ -213,7 +213,7 @@
                     </div>
                   </div>
                   <div class="span7 widget-container-span" id="listaEsquemas">
-                   <g:render template="lista", model="[esquemasDePagos: esquemasDePagos]"/>
+                   <g:render template="lista", model="[paymentSchemes: paymentSchemes]"/>
                   </div>
                 </div>    
   </body>
