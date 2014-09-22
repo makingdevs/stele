@@ -27,7 +27,7 @@ class InscripcionManualService {
   } 
 
   def generarNombreCamada(Institucion institucion) {
-      def nombreDeInstitucion = institucion.nombre.size() > 100 ? institucion.nombre.substring(0,80) : institucion.nombre
+      def nombreDeInstitucion = institucion.name.size() > 100 ? institucion.name.substring(0,80) : institucion.name
       def camadaGenerada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
       camadaGenerada
   }

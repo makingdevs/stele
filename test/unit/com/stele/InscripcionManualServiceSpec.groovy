@@ -13,7 +13,7 @@ class InscripcionManualServiceSpec extends Specification {
     def "Registrar un Alumno y un tutor nuevo"() {
       setup :
         Institucion institucion = new Institucion()
-        institucion.nombre = institucionNombre
+        institucion.name = institucionNombre
         institucion.save(validate:false)
       and : 
         InscripcionCommand command = new InscripcionCommand(
