@@ -19,7 +19,7 @@
 
   <body>
 
-  <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: pago.id)}" id="url" />
+  <input type="hidden" value="${createLink(controller:'reciboPago', action:'subirArchivo', id: payment.id)}" id="url" />
 
   <div class="page-content">
     <div class="page-header position-relative  ">
