@@ -49,15 +49,15 @@
                             <tbody>
                               <tr>
                                 <td>Concepto</td>
-                                <td>${pago.conceptoDePago}</td>
+                                <td>${payment.paymentConcept}</td>
                               </tr>
                               <tr>
                                 <td>Vencimiento</td>
-                                <td>${pago.fechaDeVencimiento.format('dd/MM/yyyy')}</td>
+                                <td>${payment.dueDate.format('dd/MM/yyyy')}</td>
                               </tr>
                               <tr>
                                 <td>Importe</td>
-                                <td>$<g:formatNumber number="${pago.cantidadDePago}" type="currency" currencyCode="MXN" /></td>
+                                <td><g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" /></td>
                               </tr>   
                             </tbody>
                           </table>
@@ -65,8 +65,8 @@
                       </div>
                     </div>
                 </div><!--/span-->
-                <g:if test="${pago.descuentoAplicable > 0}">
-                    <g:each var="descuentoAplicable" in="${pago.descuentosAplicables}">
+                <g:if test="${payment.accumulatedDiscount > 0}">
+                    <g:each var="applicableDiscount" in="${payment.applicableDiscounts}">
                       <div class="row-fluid">
                         <div class="span12 widget-container-span">
                           <div class="widget-box">
@@ -81,16 +81,16 @@
                                   <tbody>
                                     <tr>
                                       <td >Concepto</td>
-                                      <td >${descuentoAplicable.descuento.first().nombreDeDescuento}</td>
+                                      <td >${applicableDiscount.discount.first().discountName}</td>
                                     </tr>
 
                                     <tr>
                                       <td >Vencimiento</td>
-                                      <td >${descuentoAplicable.fechaDeExpiracion.format('dd/MM/yyyy')}</td>
+                                      <td >${applicableDiscount.expirationDate.format('dd/MM/yyyy')}</td>
                                     </tr>
                                     <tr>
                                       <td >Importe</td>
-                                      <td >$ ${pago.descuentoAplicable}</td>
+                                      <td >$ ${payment.accumulatedDiscount}</td>
                                     </tr>   
                                   </tbody>
                                 </table>
@@ -114,17 +114,17 @@
                               <tbody>
                                 <tr>
                                   <td >Vencimiento</td>
-                                  <td >${pago.fechaDeVencimiento.format('dd/MM/yyyy')}</td>
+                                  <td >${payment.dueDate.format('dd/MM/yyyy')}</td>
                                 </tr>
                                 <tr>
-                                  <td >Importe</td>
-                                  <td ><strong>$<g:formatNumber number="${pago.cantidadDePago - pago.descuentoAplicable}" type="currency" currencyCode="MXN" /></strong></td>
+                                  <td>Importe</td>
+                                  <td><strong><g:formatNumber number="${payment.paymentAmount - payment.accumulatedDiscount}" type="currency" currencyCode="MXN" /></strong></td>
                                 </tr>
                               </tbody>
                             </table>
                           </div>
                         </div>
-                        <input type="hidden" id="transactionId" name="transactionId" value="${pago.transactionId}">
+                        <input type="hidden" id="transactionId" name="transactionId" value="${payment.transactionId}">
                       </div>
                     </div><!--/span-->
                     </div>
@@ -145,15 +145,15 @@
                       <div class="center">
     
                         <span class="control-group warning">
-                          <g:if test="${pago.comprobanteDePago}">
-                            <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:pago.id]">
+                          <g:if test="${payment.proofOfPayment}">
+                            <g:link controller="comprobante" action="descargarComprobante" params="[pagoId:payment.id]">
                             <span class="btn btn-large btn-info  blue" href="#">
                               <i class="icon-file-text bigger-160"></i>
                               Comprobante Pago
                             </span>
                             </g:link>
                           <span class=" help-inline pink">
-                            Comprobante adjuntado <strong> ${pago.lastUpdated.format('dd/MM/yyyy')} </strong>
+                            Comprobante adjuntado <strong> ${payment.lastUpdated.format('dd/MM/yyyy')} </strong>
                           </span>
                           </g:if>
                           <g:else>
@@ -174,7 +174,7 @@
                     <div class="widget-main">
                       <div class="center">
                         <span class="control-group warning">
-                          <g:link class="btn btn-large btn-info  blue" controller="pago" action="generarComprobante" params="[pagoId:pago.id]">
+                          <g:link class="btn btn-large btn-info  blue" controller="pago" action="generarComprobante" params="[pagoId:payment.id]">
                             <i class="icon-file-text bigger-160"></i>
                               Recibo de pago
                           </g:link>
