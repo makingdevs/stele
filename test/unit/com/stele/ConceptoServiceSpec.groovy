@@ -6,14 +6,14 @@ import com.stele.seguridad.Usuario
 import com.makingdevs.*
 import com.payable.*
 
-@TestFor(ConceptoService)
-@Mock([Institucion,Usuario,DistribucionInstitucional,Concepto,Perfil])
+@TestFor(ConceptService)
+@Mock([Institucion,Usuario,DistribucionInstitucional,Concept,Perfil])
 class ConceptoServiceSpec extends Specification {
 
     def "Obtener un listado de los conceptos ligados a una Institucion"() {
       given: "Se crearan 2 conceptos asociados a una Institucion deacuerdo al Usuario"
       def institucion = new Institucion()
-      institucion.nombre = "Escuela primaria de Springfild"
+      institucion.name = "Escuela primaria de Springfild"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 4
       distribucionInstitucional.grupo = "B+"
@@ -25,8 +25,8 @@ class ConceptoServiceSpec extends Specification {
       Usuario.metaClass.encodePassword = {"password"}
       def usuario = new Usuario()
       def perfilUsuario = new Perfil()
-      def concepto1 = new Concepto()
-      def concepto2 = new Concepto()
+      def concepto1 = new Concept()
+      def concepto2 = new Concept()
       usuario.id = 1033
       usuario.username = "sergio@makingdevs.com"
       usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
@@ -38,17 +38,15 @@ class ConceptoServiceSpec extends Specification {
       usuario.perfil = perfilUsuario
       usuario.addToInstituciones(institucion)
       usuario.save(flush:true)
-      concepto1.id = 1
-      concepto1.descripcion = "Colegiatura"
-      concepto1.organizacion = institucion
+      concepto1.description = "olegiatura"
+      concepto1.organization = institucion
       concepto1.save(flush:true)
-      concepto2.id = 2
-      concepto2.descripcion = "Primera colegiatura"
-      concepto2.organizacion = institucion
+      concepto2.description = "Primera colegiatura"
+      concepto2.organization = institucion
       concepto2.save(flush:true)
       def query = "giat"
       when: "Se realiza la llamada al metodo buscarConceptosDeUnaInstitucion"
-      def conceptoInstitucion = service.buscarConceptosDeUnaInstitucion(usuario.instituciones.first(), query)
+      def conceptoInstitucion = service.searchConceptsOfInstitution(usuario.instituciones.first(), query)
       then: "la cantidad de conceptos debe de ser igual a 2"
       assert conceptoInstitucion.size() == 2
 
@@ -57,7 +55,7 @@ class ConceptoServiceSpec extends Specification {
   def "Al guardar un concepto de pago generado que no existe se debe de crear"(){
       given: "Se verificara que el concepto que se recibe no exista en la base de datos"
       def institucion = new Institucion()
-      institucion.nombre = "Escuela primaria de Springfild"
+      institucion.name = "Escuela primaria de Springfild"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 4
       distribucionInstitucional.grupo = "B+"
@@ -69,8 +67,6 @@ class ConceptoServiceSpec extends Specification {
       Usuario.metaClass.encodePassword = {"password"}
       def usuario = new Usuario()
       def perfilUsuario = new Perfil()
-      def concepto1 = new Concepto()
-      def concepto2 = new Concepto()
       usuario.id = 1033
       usuario.username = "sergio@makingdevs.com"
       usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
@@ -84,16 +80,16 @@ class ConceptoServiceSpec extends Specification {
       usuario.save(flush:true)
       String descripcionConcepto = "concepto no existente"
       when: "se Realiza la llamada al servicio que verifica la existencia del concepto"
-      def conceptoGuardado = service.buscarOSalvarConceptoDePago(usuario.instituciones.first(), descripcionConcepto)
+      def conceptoGuardado = service.savePaymentConcept(usuario.instituciones.first(), descripcionConcepto)
       then:
       assert conceptoGuardado.id == 1
-      assert conceptoGuardado.descripcion =="concepto no existente"
+      assert conceptoGuardado.description =="concepto no existente"
   }
 
   def "Al guardar un concepto de pago generado que ya existe no se debe de crear"(){
       given: "Se creara tanto el usuario como un concepto"
       def institucion = new Institucion()
-      institucion.nombre = "Escuela primaria de Springfild"
+      institucion.name = "Escuela primaria de Springfild"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 4
       distribucionInstitucional.grupo = "B+"
@@ -105,8 +101,8 @@ class ConceptoServiceSpec extends Specification {
       Usuario.metaClass.encodePassword = {"password"}
       def usuario = new Usuario()
       def perfilUsuario = new Perfil()
-      def concepto1 = new Concepto()
-      def concepto2 = new Concepto()
+      def concepto1 = new Concept()
+      def concepto2 = new Concept()
       usuario.id = 1033
       usuario.username = "sergio@makingdevs.com"
       usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
@@ -119,12 +115,12 @@ class ConceptoServiceSpec extends Specification {
       usuario.addToInstituciones(institucion)
       usuario.save(flush:true)
       concepto1.id = 1
-      concepto1.descripcion = "Colegiatura"
-      concepto1.organizacion = institucion
+      concepto1.description = "Colegiatura"
+      concepto1.organization = institucion
       concepto1.save(flush:true)    
       String descripcionConcepto = "Colegiatura"    
       when:
-      def resultadoBusquedaConcepto = service.buscarOSalvarConceptoDePago(usuario.instituciones.first(),descripcionConcepto)
+      def resultadoBusquedaConcepto = service.savePaymentConcept(usuario.instituciones.first(),descripcionConcepto)
       then:
       assert resultadoBusquedaConcepto.first().id == 1
   }
