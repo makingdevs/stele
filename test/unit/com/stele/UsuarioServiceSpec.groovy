@@ -158,7 +158,7 @@ class UsuarioServiceSpec  extends Specification{
         perfil.apellidoMaterno = "Juarez"
         telefono.numeroTelefonico = "123456789"
         perfil.addToTelefonos(telefono)
-        institucion.nombre = "Escuela patito"
+        institucion.name = "Escuela patito"
         institucion.save(validate:false)
         usuario.addToInstituciones(institucion)
         usuario.perfil = perfil
