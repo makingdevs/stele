@@ -21,14 +21,14 @@ class EsquemaDePagoController {
 
   def nuevo(){
     def organizacion = springSecurityService.currentUser.instituciones.first()
-     def esquemasDePagos = EsquemaDePago.withCriteria {
-      concepto {
-        eq ('organizacion', organizacion)
-        order("descripcion","asc")
-      }
-
+    def paymentSchemes = PaymentScheme.withCriteria{
+      concept{
+        eq('organization',organizacion)
+        order('description',"asc")
+      } 
     }
-    [esquemasDePagos:esquemasDePagos] 
+
+    [paymentSchemes:paymentSchemes] 
   }
 
   def crearEsquemaDePago(){
@@ -98,8 +98,8 @@ class EsquemaDePagoController {
   }
 
   def eliminarEsquemaDePago(){
-    def esquemaDePago = EsquemaDePago.get(params.id)
-    esquemaDePago.delete()
+    def paymentScheme = PaymentScheme.get(params.id)
+    paymentScheme.delete()
     redirect(action:'nuevo')
   }
 
