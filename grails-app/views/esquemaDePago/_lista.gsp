@@ -23,19 +23,19 @@
           </tr>
         </thead>
         <tbody>
-          <g:each in="${esquemasDePagos}">
+          <g:each in="${paymentSchemes}">
             <tr>
-              <td>${it.concepto.descripcion}</td>
-              <td>$ ${it.cantidadDePago}</td>
-              <td>${it.descuentos*.nombreDeDescuento}</td>
-              <td>$ <g:mostrarCantidadTotal idsDescuentos="${it.descuentos*.id}" cantidadDePago="${it.cantidadDePago}"></g:mostrarCantidadTotal> </td>
-              <g:if test="${it.recargo?.cantidad}">
-                <td>$ ${it.recargo.cantidad}</td>
+              <td>${it.concept.description}</td>
+              <td>$ ${it.paymentAmount}</td>
+              <td>${it.discounts*.discountName}</td>
+              <td>$ <g:mostrarCantidadTotal idsDescuentos="${it.discounts*.id}" cantidadDePago="${it.paymentAmount}"></g:mostrarCantidadTotal> </td>
+              <g:if test="${it.surcharge?.amount}">
+                <td>$ ${it?.surcharge?.amount}</td>
               </g:if>
-              <g:elseif test="${it.recargo?.porcentaje}">
-                <td>${it.recargo.porcentaje}%</td> 
+              <g:elseif test="${it.surcharge?.percentage}">
+                <td>${it?.surcharge?.percentage}%</td> 
               </g:elseif>
-              <g:elseif test="${!it.recargo}">
+              <g:elseif test="${!it.surcharge}">
                 <td>$ 0</td>
               </g:elseif>
               <td>
