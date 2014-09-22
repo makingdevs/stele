@@ -111,7 +111,7 @@ class DistribucionInstitucionalServiceSpec extends Specification{
     def "Crear una distribucion institucional en una institucion"(){
       given: "Una institucion y una distribucion institucional"
         def institucion = new Institucion()
-        institucion.nombre = "Kinder Peques"
+        institucion.name = "Kinder Peques"
         institucion = institucion.save()
 
         def distribucionInstitucional = new DistribucionInstitucional()
@@ -130,7 +130,7 @@ class DistribucionInstitucionalServiceSpec extends Specification{
     def "Crear una distribucion institucional en una institucion validando duplicados"(){
       given: "Una institucion y una distribucion institucional"
        def institucion = new Institucion()
-        institucion.nombre = "Kinder Peques"
+        institucion.name = "Kinder Peques"
         institucion = institucion.save()
 
         def distribucionInstitucional = new DistribucionInstitucional()
@@ -154,7 +154,7 @@ class DistribucionInstitucionalServiceSpec extends Specification{
     def "Crear distribucion institucional cuando no existe institucion y la prueba debe fallar"(){
       given: " Dada una institucion sin persistir"
         def institucion = new Institucion()
-        institucion.nombre = "Kinder Peques"
+        institucion.name = "Kinder Peques"
       when: "Y una distribución institucional a persistir"
         def distribucionInstitucional = new DistribucionInstitucional()
         distribucionInstitucional.grado = 2
