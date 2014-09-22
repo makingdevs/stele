@@ -16,7 +16,7 @@ class HistorialAcademicoServiceSpec extends Specification {
   def "Registro de un historial academico con un dependiente y una distribucion institucional previamente registrados"(){
     given:"Dado un dependiente y una distribucion institucional ya existentes"
       def institucion = new Institucion()
-      institucion.nombre = "Kinder Peques"
+      institucion.name = "Kinder Peques"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 2
       distribucionInstitucional.grupo = "B+"
@@ -54,7 +54,7 @@ class HistorialAcademicoServiceSpec extends Specification {
   def "Registro de un historial academico con un dependiente no registrado y una distribucion institucional previamente registrada"(){
     given:"Dado un dependiente y una distribucion institucional ya existentes"
       def institucion = new Institucion()
-      institucion.nombre = "Kinder Peques"
+      institucion.name = "Kinder Peques"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 2
       distribucionInstitucional.grupo = "B+"
@@ -92,7 +92,7 @@ class HistorialAcademicoServiceSpec extends Specification {
   def "Registro de un historial academico con un dependiente registrado y una distribucion institucional sin registrar"(){
     given:"Dado un dependiente y una distribucion institucional ya existentes"
       def institucion = new Institucion()
-      institucion.nombre = "Kinder Peques"
+      institucion.name = "Kinder Peques"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 2
       distribucionInstitucional.grupo = "B+"
@@ -130,7 +130,7 @@ class HistorialAcademicoServiceSpec extends Specification {
   def "Validar historial academico duplicados, mismo dependiente y distribución institucional"(){
     setup:"Se hace el registro de un hostorial academico a un dependiente especifico con una distribución institucional especifica"
       def institucion = new Institucion()
-      institucion.nombre = "Kinder Peques"
+      institucion.name = "Kinder Peques"
       def distribucionInstitucional = new DistribucionInstitucional()
       distribucionInstitucional.grado = 2
       distribucionInstitucional.grupo = "B+"
