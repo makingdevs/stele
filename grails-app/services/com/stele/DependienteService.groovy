@@ -126,4 +126,24 @@ class DependienteService {
     
   }
 
+  def findDependienteFromNameAndOrganization(name, organization){
+    def distribucionInstitucionalIds = DistribucionInstitucional.findAllByInstitucion(organization)*.id 
+    def historialesAcademicos = HistorialAcademico.withCriteria{
+      distribucionInstitucional{
+        'in'('id',distribucionInstitucionalIds)
+      }       
+    }
+
+    /*def dependiente = Dependiente.withCriteria{
+      perfil{
+        like('nombre','%${name}%')
+        or{ like('apellidoPaterno','%${name}%') }
+        or{ like('apellidoMaterno','%${name}%')}
+      }  
+      and{
+         
+      }
+    }*/ 
+  }
+
 }
