@@ -38,7 +38,7 @@ databaseChangeLog = {
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-6") {
 		dropForeignKeyConstraint(baseTableName: "usuario_instituciones", baseTableSchemaName: "stele_dev", constraintName: "FKF5FF5E868C0A9FFC")
 	}
-*/
+
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-14") {
 		createIndex(indexName: "FK6F9EC3DA53AFD0FD", tableName: "institucion_direccion") {
 			column(name: "institucion_direcciones_id")
@@ -62,7 +62,7 @@ databaseChangeLog = {
 			column(name: "institucion_telefonos_id")
 		}
 	}
-
+*/
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-18") {
 		dropColumn(columnName: "class", tableName: "organizacion")
 	}
@@ -77,6 +77,7 @@ databaseChangeLog = {
 		addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "distribucion_institucional", constraintName: "FK4B3D26CA8C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
 	}
 
+/*
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-9") {
 		addForeignKeyConstraint(baseColumnNames: "direccion_id", baseTableName: "institucion_direccion", constraintName: "FK6F9EC3DAA649AEE2", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "direccion", referencesUniqueColumn: "false")
 	}
@@ -96,6 +97,7 @@ databaseChangeLog = {
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-13") {
 		addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "usuario_instituciones", constraintName: "FKF5FF5E868C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
 	}
+*/
 
   changeSet(author: "makingdevs (generated)", id: "1410446070554-1") {
     sql("update organization set class=\"${Institucion.class.name}\"") 
