@@ -26,6 +26,7 @@ databaseChangeLog = {
 		}
 	}
 
+  /*
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-4") {
 		dropForeignKeyConstraint(baseTableName: "cuentas_bancarias", baseTableSchemaName: "stele_dev", constraintName: "FKD9D2BCC2418DE2A1")
 	}
@@ -37,7 +38,7 @@ databaseChangeLog = {
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-6") {
 		dropForeignKeyConstraint(baseTableName: "usuario_instituciones", baseTableSchemaName: "stele_dev", constraintName: "FKF5FF5E868C0A9FFC")
 	}
-
+*/
 	changeSet(author: "makingdevs (generated)", id: "1410446070553-14") {
 		createIndex(indexName: "FK6F9EC3DA53AFD0FD", tableName: "institucion_direccion") {
 			column(name: "institucion_direcciones_id")
