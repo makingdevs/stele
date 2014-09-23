@@ -102,17 +102,17 @@ class DependienteController {
       def resultados = []
       if(params.nombreDependiente){
         def searchResult = searchableService.search(params.nombreDependiente)
-        resultados = searchResult.results.findAll{row -> row instanceof Dependiente}
-        if(resultados){
-          resultados = separarDependientesPorInstitucion(resultados)
-          resultados = resultados*.dependientes.flatten()
-          flash.dependiente = ""
+        if(searchResult){
+          resultados = searchResult.results.findAll{row -> row instanceof Dependiente}
+          if(resultados){
+            resultados = separarDependientesPorInstitucion(resultados)
+            resultados = resultados*.dependientes.flatten()
+          }
+          else
+            flash.dependiente = "No se encontraron dependientes con ese nombre"
         }
-        else{
-          flash.dependiente = "No se encontraron dependientes con ese nombre"
-        } 
-        
-        render template:'resultados', model:[dependientes: resultados ?: "", institucion: springSecurityService.currentUser.instituciones?.first()]
+         
+        render template:'resultados', model:[dependientes: resultados ?: [], institucion: springSecurityService.currentUser.instituciones?.first()]
       }
     }
 
