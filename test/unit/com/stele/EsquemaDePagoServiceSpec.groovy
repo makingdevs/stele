@@ -5,43 +5,43 @@ import grails.test.mixin.Mock
 import spock.lang.Specification
 import com.payable.*
 
-@TestFor(EsquemaDePagoService)
-@Mock([Concepto,Institucion,Recargo,Descuento,EsquemaDePago])
+@TestFor(PaymentSchemeService)
+@Mock([Concept,Institucion,Surcharge,Discount,PaymentScheme])
 class EsquemaDePagoServiceSpec extends Specification {
 
   def "Generar un objeto esquema de pago nuevo"() {
     setup:
       Institucion institucion = new Institucion()
-      institucion.nombre = "making_devs"
+      institucion.name = "making_devs"
       institucion.save(validate:false)
     and:
-      Concepto concepto = new Concepto()
-      concepto.descripcion = "concepto"
-      concepto.organizacion = institucion
-      concepto.save(validate:false)
+      Concept concept = new Concept()
+      concept.description = "concepto"
+      concept.organization = institucion
+      concept.save(validate:false)
     and:
-      Recargo recargo = new Recargo()
-      recargo.cantidad = 350
-      recargo.save(validate:false) 
+      Surcharge surcharge = new Surcharge()
+      surcharge.amount = 350
+      surcharge.save(validate:false) 
     and:
-      Descuento descuento = new Descuento()
-      descuento.nombreDeDescuento = "descuento"
-      descuento.cantidad = 5000
-      descuento.diasPreviosParaCancelarDescuento = 6
-      descuento.organizacion = institucion
-      descuento.save(validate:false)
+      Discount discount = new Discount()
+      discount.discountName = "descuento"
+      discount.amount = 5000
+      discount.previousDaysForCancelingDiscount = 6
+      discount.organization = institucion
+      discount.save(validate:false)
     and:
-      GrupoPagoCommand gpc = new GrupoPagoCommand()
-      gpc.cantidadDePago = 13000
-      gpc.conceptoDePago = "concepto"
-      gpc.recargoId = recargo.id
-      gpc.descuentoIds = [descuento.id]
+      PaymentGroupCommand pgc = new PaymentGroupCommand()
+      pgc.paymentAmount = 13000
+      pgc.paymentConcept = "concepto"
+      pgc.surchargeId = surcharge.id
+      pgc.discountIds = [discount.id]
     when:
-      def esquemaDePago = service.buscarOSalvarEsquemaDePago(gpc)
+      def paymentScheme = service.savePaymentScheme(pgc)
     then:
-      assert esquemaDePago.id > 0
-      assert esquemaDePago.recargo.id >0
-      assert esquemaDePago.cantidadDePago == 13000
+      assert paymentScheme.id > 0
+      assert paymentScheme.surcharge.id >0
+      assert paymentScheme.paymentAmount == 13000
   }
 
 
