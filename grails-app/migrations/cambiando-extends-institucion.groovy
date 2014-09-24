@@ -10,7 +10,6 @@ databaseChangeLog = {
 		}
 	}
 
-
   changeSet(author: "makingdevs (generated)", id: "1410446070553-4") {
     dropForeignKeyConstraint(baseTableName: "cuentas_bancarias", baseTableSchemaName: "qa_stele_db", constraintName: "FKD9D2BCC2418DE2A1")
   }
@@ -25,14 +24,6 @@ databaseChangeLog = {
 
   changeSet(author: "makingdevs (generated)", id: "1410446070553-18") {
     dropColumn(columnName: "class", tableName: "organizacion")
-	}
-
-  changeSet(author: "makingdevs (generated)", id: "1410446070554-1") {
-    sql("update organization set class=\"${Institucion.class.name}\"") 
-  }
-
-  changeSet(author: "makingdevs (generated)", id: "1410446070553-18") {
-    dropColumn(columnName: "class", tableName: "organizacion")
   }
 
   changeSet(author: "makingdevs (generated)", id: "1410446070553-7") {
@@ -43,8 +34,12 @@ databaseChangeLog = {
     addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "distribucion_institucional", constraintName: "FK4B3D26CA8C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
   }
 
-  changeSet(author: "makingdevs (generated)", id: "1410446070553-9") {
-    addForeignKeyConstraint(baseColumnNames: "direccion_id", baseTableName: "institucion_direccion", constraintName: "FK6F9EC3DAA649AEE2", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "direccion", referencesUniqueColumn: "false")
+  changeSet(author: "makingdevs (generated)", id: "1410446070553-13") {
+    addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "usuario_instituciones", constraintName: "FKF5FF5E868C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
+  }
+
+  changeSet(author: "makingdevs (generated)", id: "1410446070554-1") {
+    sql("update organization set class=\"${Institucion.class.name}\"") 
   }
 
 }
