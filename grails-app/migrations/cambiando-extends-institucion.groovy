@@ -22,18 +22,6 @@ databaseChangeLog = {
     dropForeignKeyConstraint(baseTableName: "usuario_instituciones", baseTableSchemaName: "qa_stele_db", constraintName: "FKF5FF5E868C0A9FFC")
   }
 
-  changeSet(author: "makingdevs (generated)", id: "1410446070553-7") {
-    addForeignKeyConstraint(baseColumnNames: "organizacion_id", baseTableName: "cuentas_bancarias", constraintName: "FKD9D2BCC2418DE2A1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
-  }
-
-  changeSet(author: "makingdevs (generated)", id: "1410446070553-8") {
-    addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "distribucion_institucional", constraintName: "FK4B3D26CA8C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
-  }
-
-  changeSet(author: "makingdevs (generated)", id: "1410446070553-13") {
-    addForeignKeyConstraint(baseColumnNames: "institucion_id", baseTableName: "usuario_instituciones", constraintName: "FKF5FF5E868C0A9FFC", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "organization", referencesUniqueColumn: "false")
-  }
-
   changeSet(author: "makingdevs (generated)", id: "1410446070553-18") {
     dropColumn(columnName: "class", tableName: "organizacion")
   }
