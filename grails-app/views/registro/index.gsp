@@ -75,7 +75,7 @@
               <div class="control-group">    
                 <label class="control-label" for="inputInstitucion"><i class="icon-book"></i> Nombre del colegio <span class="color-red">*</span></label>
                 <div class="controls">
-                  <input id="institucion.nombre" value="${params?.institucion?.nombre}" name="institucion.nombre"  type="text" class="form-control margin-bottom-20" />
+                  <input id="institucion.name" value="${params?.institucion?.name}" name="institucion.name"  type="text" class="form-control margin-bottom-20" />
                 </div>
               </div>
               <p>&nbsp;</p>
