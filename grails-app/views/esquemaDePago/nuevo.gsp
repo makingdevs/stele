@@ -182,7 +182,7 @@
                                         <span class="add-on">
                                           <i class="icon-usd"></i>
                                         </span>           
-                                        <input class="input-medium " id="cantidad" name="cantidad" type="text" placeholder="importe " >
+                                        <input class="input-medium " id="cantidad" name="amount" type="text" placeholder="importe " >
                                       </div>
                                     </div>
                                   </div>
@@ -191,7 +191,7 @@
                                     <div class="controls">
                                       <div class="input-append">
                                         <span class="add-on">%</span>
-                                        <input class="input-mini" id="porcentaje" name="porcentaje" type="text"  />
+                                        <input class="input-mini" id="porcentaje" name="percentage" type="text"  />
                                       </div>
                                     </div>
                                   </div>
@@ -200,12 +200,12 @@
                                       <input class="btn btn-mini btn-success pull-right" type="submit" id="recargoButton" value ="Crear Recargo">
                                     </div>
                                   </div>
-                              </g:form>
                               <div class="control-group">
                                 <div id="recargoCreado2" name="recargoCreado" class="controls">
                                   <g:render template="/recargo/list" />
                                 </div>
                               </div>
+                            </g:form>
                             </div>
                           </div>
                         </div>
