@@ -1,29 +1,28 @@
 package com.stele
 
-import com.payable.Recargo
+import com.payable.Surcharge
 
 class RecargoController {
 
-  def scaffold = Recargo
+  def scaffold = Surcharge
 
   def springSecurityService
 
   def nuevo(){
-    def recargo
     def message = ""
-
-    if((recargo = Recargo.get(params.recargoId ?: 0)))
-      message = "Sólo puede agregarse un recargo" 
+    def surcharge = Surcharge.get(params.recargoId ?: 0) ?: new Surcharge(amount:params.amount,
+                                                                          percentage:params.percentage,
+                                                                          organization:springSecurityService.currentUser.instituciones?.first())
+    if(surcharge.id)
+      message = "Sólo puede agregarse un recargo"
     else
-      recargo = new Recargo(cantidad:params.cantidad,
-                            porcentaje:params.porcentaje,
-                            organizacion:springSecurityService.currentUser.instituciones?.first()).save(flush:true)
+      surcharge.save() 
 
-    render template:"/recargo/list", model:[recargo:recargo,message:message]
+    render template:"/recargo/list", model:[recargo:surcharge,message:message]
   }
   
   def deleteRecargo(Long id){
-    Recargo recargo = Recargo.get(params.id)
+    Surcharge recargo = Surcharge.get(params.id)
     recargo.delete()
     render template:"/recargo/list"
   }
