@@ -10,9 +10,9 @@
     <tr>
       <td>
         <span>
-          ${recargo.porcentaje ? "%" : "\$"} 
+          ${recargo.percentage ? "%" : "\$"} 
         </span>
-          ${recargo.porcentaje ?: recargo.cantidad}
+          ${recargo.percentage ?: recargo.amount}
       </td>  
       <td style="width:10px;">
         <g:link class="deleteRecargo" controller="recargo" action="deleteRecargo" params="[id:recargo.id]">
