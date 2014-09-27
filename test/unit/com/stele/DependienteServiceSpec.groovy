@@ -208,11 +208,11 @@ class DependienteServiceSpec extends Specification{
       dependienteDuplicado.camada= "987654321"
       def dependienteResultado = service.registrar(dependienteDuplicado,usuarioExistente.id,organizacion)
     then:"Los dependientes deben ser iguales, es decir, no se persistio el dependiente con la matricula ya existente"
-      assert dependiente.matricula == dependienteResultado.matricula
-      assert dependienteResultado.id > 0
-      assert dependienteResultado.matricula == "M1234576"
-      assert dependienteResultado.camada == "1234567898"
-      assert dependienteResultado.usuario.id > 0
+      assert dependiente.matricula == dependienteResultado.dependienteExistente.matricula
+      assert dependienteResultado.dependienteExistente.id > 0
+      assert dependienteResultado.dependienteExistente.matricula == "M1234576"
+      assert dependienteResultado.dependienteExistente.camada == "1234567898"
+      assert dependienteResultado.dependienteExistente.usuario.id > 0
   }
 
 }
