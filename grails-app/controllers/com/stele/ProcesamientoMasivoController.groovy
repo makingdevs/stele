@@ -7,7 +7,7 @@ class ProcesamientoMasivoController {
   def index() {
     def listaDeMapaDeDominios = flash.listaDeMapaDeDominios
     def institucion = Institucion.get(params?.long("institucionId"))
-    def nombreDeInstitucion = institucion.nombre.size() > 100 ? institucion.nombre.substring(0,80) : institucion.nombre
+    def nombreDeInstitucion = institucion.name.size() > 100 ? institucion.name.substring(0,80) : institucion.name
     def usuariosPersistidos = [] as Set
     def dependientesPersistidos = [] as Set
     def ciclosEscolaresPersistidos = [] as Set
@@ -19,7 +19,7 @@ class ProcesamientoMasivoController {
     listaDeMapaDeDominios*.dependiente*.camada = camadaGenerada
     listaDeMapaDeDominios.each { l ->
       def mapaDeDominiosPersistidos = procesamientoMasivoService.procesaMapaConDatosDeFilaDeExcelParaPersistir(l,params.long("institucionId") )
-      if (!mapaDeDominiosPersistidos.usuariosOtraInstitucion) {  
+      if (!mapaDeDominiosPersistidos.dependienteExistente) {  
         usuariosPersistidos.add(mapaDeDominiosPersistidos.usuario)
         dependientesPersistidos.add(mapaDeDominiosPersistidos.dependiente)
         dependientesExistentes.add( mapaDeDominiosPersistidos.dependiente.id)
@@ -27,7 +27,7 @@ class ProcesamientoMasivoController {
         historialesAcademicos.add(mapaDeDominiosPersistidos.historialAcademico)
         flash.dependientes = dependientesExistentes
       } else{
-        usuariosErroneos.add(mapaDeDominiosPersistidos.usuariosOtraInstitucion)
+        usuariosErroneos.add(mapaDeDominiosPersistidos.dependienteExistente)
       }
 
     }
