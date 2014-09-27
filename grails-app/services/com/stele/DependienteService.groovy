@@ -33,36 +33,24 @@ class DependienteService {
     dependiente
   }
 
-  Dependiente registrar(Dependiente dependiente, Long usuarioId, def institucion){
-    dependiente.save()
-    def user = Usuario.withCriteria{
-      eq('id', usuarioId)
-      instituciones {
-        eq('id', institucion.id)
-      }
-    }
-    def usuarios = user.first()
-    if(usuarios){
-      def dependienteExistente = Dependiente.withCriteria{
-        eq('matricula', dependiente.matricula)
-        usuario {
-          instituciones {
-            eq('id', institucion.id)
-          }
+  def registrar(Dependiente dependiente, Long usuarioId, def institucion){
+    def user = Usuario.get(usuarioId)
+    def dependienteExistente = Dependiente.withCriteria(uniqueResult:true){
+      eq('matricula', dependiente.matricula)
+      usuario {
+        instituciones {
+          'in'('id', [institucion.id])
         }
       }
-      if(dependienteExistente){
-        return dependienteExistente.first()
-      }else{
-        dependiente.perfil = perfilService.registrar(dependiente.perfil)
-        usuarios.addToDependientes(dependiente)
-        usuarios.save()
-        notificacionService.notificarRegistroUsuarioTutor(usuarios.username)
-        return dependiente
-      }
-    }else{
-      throw RuntimeException("Se intentó persistir un dependiente con un usuario inválido...")
     }
+    else{
+      dependiente.perfil = perfilService.registrar(dependiente.perfil)
+      dependiente.save()
+      user.addToDependientes(dependiente)
+      notificacionService.notificarRegistroUsuarioTutor(user.username)
+      return user 
+    }
+    return user
   }
 
   def agruparDependientesPorTurno(def historialesAcademiscos) {
