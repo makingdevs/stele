@@ -95,47 +95,33 @@ class UsuarioServiceSpec  extends Specification{
       given:
         Institucion institucion = new Institucion()
         institucion.save(validate:false)
-      and: "Un usuario ya existente y "
+      and: "un usuario ya existente y "
         def perfilServiceMock = mockFor(PerfilService)
-        perfilServiceMock.demand.registrar(1..1) { Perfil perfil -> new Perfil(id:1) }
+        perfilServiceMock.demand.registrar(1..1){ Perfil perfil -> new Perfil(id:1) }
         service.perfilService = perfilServiceMock.createMock()
         Usuario.metaClass.isDirty = { true } 
         Usuario.metaClass.encodePassword = { "password" } 
-        def usuarioExistente = new Usuario()
-        def perfilExistente = new Perfil()
+        def usuarioExistente = new Usuario(username:"pepito@gmail.com",
+                                           password:"pepe6789",
+                                           enabled:true)
+        def perfilExistente = new Perfil(nombre:"Pepito",
+                                         apellidoPaterno:"Juarez",
+                                         apellidoMaterno:"Juarez").save(validate:false)
         def telefono = new Telefono()
-        def inst = new Institucion()
-        usuarioExistente.username = "pepito@gmail.com"
-        usuarioExistente.password = "pepe6789"
-        usuarioExistente.enabled = true
-        perfilExistente.nombre = "Pepito"
-        perfilExistente.apellidoPaterno = "Juarez"
-        perfilExistente.apellidoMaterno = "Juarez"
         telefono.numeroTelefonico = "123456789"
         perfilExistente.addToTelefonos(telefono)
         usuarioExistente.addToInstituciones(institucion)
         usuarioExistente.perfil = perfilExistente
-        service.registrar(usuarioExistente, inst.save(validate:false))
-        def contador = Usuario.count()
-      and: "Un usuario con datos"
+        usuarioExistente.save(validate:false)
+      and: "un usuario con datos"
         def usuario = new Usuario()
-        def perfil = new Perfil()
         usuario.username = "pepito@gmail.com"
-        usuario.password = UUID.randomUUID().toString().replaceAll('-', '').substring(0,10)
         usuario.enabled = true
         usuario.password = "pepe6789"
-        perfil.nombre = "Pepito"
-        perfil.apellidoPaterno = "Juarez"
-        perfil.apellidoMaterno = "Juarez"
-        telefono.numeroTelefonico = "123456789"
-        perfil.addToTelefonos(telefono)
-        usuario.perfil = perfil        
-      when: "Se intenta guardar el usuario"
-        usuario = service.registrar(usuario, institucion)
-        println usuario
-      then: "El id debe ser igual a 1001"
-        assert usuario.id > 0
-        assert contador == Usuario.count()
+      when: "se intenta guardar el usuario"
+        usuario = service.registrar(usuario,institucion)
+      then: "el id debe ser igual a 1"
+        assert usuario.id == 1
     }
 
     def "Registrar un usuario verificando que no exista y agregando una institucion"(){
