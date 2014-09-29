@@ -43,14 +43,16 @@ class DependienteService {
         }
       }
     }
+    if(dependienteExistente){
+      return dependienteExistente 
+    }
     else{
       dependiente.perfil = perfilService.registrar(dependiente.perfil)
-      dependiente.save()
       user.addToDependientes(dependiente)
+      user.save()
       notificacionService.notificarRegistroUsuarioTutor(user.username)
-      return user 
+      return dependiente 
     }
-    return user
   }
 
   def agruparDependientesPorTurno(def historialesAcademiscos) {
