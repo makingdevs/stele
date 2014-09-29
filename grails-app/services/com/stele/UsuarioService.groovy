@@ -44,25 +44,22 @@ class UsuarioService {
   }
 
   def registrar(Usuario usuario, def institucion){
-    def user = Usuario.withCriteria(uniqueResult:true){
-      eq('username',usuario.username)    
-      
-      instituciones{
-        'in'('id',[institucion.id]) 
-      } 
-     
+    def user = Usuario.findByUsername(usuario.username) 
+    if(user){
+      if(!user.instituciones.find{ it.id == institucion.id }){
+        user.addToInstituciones(institucion)
+        user.save()
+      }
+      return user
     }
-
-    if(!user) {
-      usuario.perfil = perfilService.registrar(usuario.perfil)
-      usuario.addToInstituciones(institucion)
-      usuario.save()
-      def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR")
-      UsuarioRol.create(usuario, rol, true)
-      return  usuario
-    }
-    else
-      user
+    
+    usuario.addToInstituciones(institucion)
+    usuario.perfil = perfilService.registrar(usuario.perfil)
+    usuario.save()
+    def rol = Rol.findByAuthority("ROLE_PADRE_TUTOR") ?: new Rol(authority:"ROLE_PADRE_TUTOR")
+    UsuarioRol.create(usuario, rol, true)
+    usuario
+    
   }
 
   private String armaPasswordTemporal(String nombre, String correo, String telefono) throws Exception{
