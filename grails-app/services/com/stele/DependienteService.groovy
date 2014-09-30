@@ -36,15 +36,18 @@ class DependienteService {
   }
 
   def registrar(Dependiente dependiente, Long usuarioId, def institucion){
+    def dependienteExistente
 
-    def dependienteExistente =  Dependiente.withCriteria{
-      eq('matricula',dependiente.matricula)
-      usuario{
-        instituciones{
-          'in'('id',[institucion.id])
+    Dependiente.withNewSession { session ->
+      dependienteExistente =  Dependiente.withCriteria{
+        eq('matricula',dependiente.matricula)
+        usuario{
+          instituciones{
+            'in'('id',[institucion.id])
+          }
         }
-      }
-    }   
+      }   
+    }
     
     if(dependienteExistente)
       return [dependienteExistente:dependienteExistente]
