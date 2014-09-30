@@ -1119,4 +1119,5 @@ databaseChangeLog = {
   include file: 'agregando-payable-con-implements.groovy'
   include file: 'cambiando-extends-institucion.groovy'
   include file: 'agregando-foreign-keys.groovy'
+  include file: 'agregando-autoincrement.groovy' 
 }
