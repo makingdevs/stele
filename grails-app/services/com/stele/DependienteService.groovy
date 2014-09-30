@@ -5,7 +5,9 @@ import com.stele.NivelDeEstudio
 import com.stele.seguridad.Usuario
 import com.makingdevs.*
 import com.payable.*
+import grails.transaction.Transactional
 
+@Transactional
 class DependienteService {
 
   def perfilService
@@ -35,19 +37,12 @@ class DependienteService {
 
   def registrar(Dependiente dependiente, Long usuarioId, def institucion){
     def user = Usuario.get(usuarioId)
-    def dependienteExistente = Dependiente.withCriteria(uniqueResult:true){
-      eq('matricula', dependiente.matricula)
-      usuario {
-        instituciones {
-          'in'('id', [institucion.id])
-        }
-      }
-    }
-    if(dependienteExistente){
-      return dependienteExistente 
-    }
+    def dependienteExistente = Dependiente.findByMatricula(dependiente.matricula) 
+
+    if(dependienteExistente)
+      return [dependienteExistente:dependienteExistente]
     else{
-      dependiente.perfil = perfilService.registrar(dependiente.perfil)
+      dependiente.perfil= perfilService.registrar(dependiente.perfil)
       user.addToDependientes(dependiente)
       user.save()
       notificacionService.notificarRegistroUsuarioTutor(user.username)
