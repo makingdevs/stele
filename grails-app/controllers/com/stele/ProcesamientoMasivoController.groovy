@@ -26,14 +26,12 @@ class ProcesamientoMasivoController {
         ciclosEscolaresPersistidos.add(mapaDeDominiosPersistidos.cicloEscolar)
         historialesAcademicos.add(mapaDeDominiosPersistidos.historialAcademico)
         flash.dependientes = dependientesExistentes
-      } else{
+      } else
         usuariosErroneos.add(mapaDeDominiosPersistidos.dependienteExistente)
-      }
-
     }
     [
       camadaGenerada: camadaGenerada,
-      usariosProcesados: usuariosPersistidos?.size(),
+      totalRegistros: dependientesPersistidos?.size()+usuariosErroneos.size(),
       dependientesProcesados: dependientesPersistidos?.size(),
       ciclosEcolaresProcesados: ciclosEscolaresPersistidos?.size(),
       listaUsuariosProcesados: dependientesExistentes,
