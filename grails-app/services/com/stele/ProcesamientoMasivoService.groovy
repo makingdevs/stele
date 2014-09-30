@@ -14,7 +14,7 @@ class ProcesamientoMasivoService {
     def usuario = usuarioService.registrar(filaDeExcelParaPersistir.usuario, institucion)
     def dependiente = dependienteService.registrar(filaDeExcelParaPersistir.dependiente, usuario.id, institucion)
     if(!(dependiente instanceof Dependiente))
-      return [dependienteExistente:dependiente.dependienteExistente] 
+      return [dependienteExistente:filaDeExcelParaPersistir.dependiente] 
     def cicloEscolar = cicloEscolarService.registrar(filaDeExcelParaPersistir.cicloEscolar)
     def distribucionInstitucional = distribucionInstitucionalService.registrar(filaDeExcelParaPersistir.distribucionInstitucional, institucionId)
     def historialAcademico = historialAcademicoService.registrar(historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependiente,distribucionInstitucional))
