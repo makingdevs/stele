@@ -1,7 +1,7 @@
 databaseChangeLog = {
 
   changeSet(author: "makingdevs (generated)", id:"1411577238852-2"){
-    sql("ALTER TABLE qa_stele_db.organization ENGINE=InnoDB")
+    sql("ALTER TABLE organization ENGINE=InnoDB")
   }
 	
   changeSet(author: "makingdevs (generated)", id: "1411577238852-3") {
