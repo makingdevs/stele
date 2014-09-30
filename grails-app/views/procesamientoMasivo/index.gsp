@@ -53,7 +53,7 @@
                                     <i class="icon-file-text blue icon-2x"></i>
                                   </div>
                                   <div class="infobox-data">
-                                    <span class="infobox-data-number">${usariosProcesados ?: 0}</span>
+                                    <span class="infobox-data-number">${totalRegistros ?: 0}</span>
                                     <div class="infobox-content">Total Registros Archivo</div>
                                   </div>
                                 </div>
