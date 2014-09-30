@@ -37,7 +37,7 @@ class DependienteService {
 
   def registrar(Dependiente dependiente, Long usuarioId, def institucion){
     def dependienteExistente
-
+    
     Dependiente.withNewSession { session ->
       dependienteExistente =  Dependiente.withCriteria{
         eq('matricula',dependiente.matricula)
@@ -48,9 +48,9 @@ class DependienteService {
         }
       }   
     }
-    
+
     if(dependienteExistente)
-      return [dependienteExistente:dependienteExistente]
+      return dependienteExistente
     else{
       def user = Usuario.get(usuarioId)
       dependiente.perfil= perfilService.registrar(dependiente.perfil)
