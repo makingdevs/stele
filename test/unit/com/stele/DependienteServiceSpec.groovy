@@ -11,7 +11,7 @@ import com.stele.seguridad.Usuario
 import com.makingdevs.*
 
 @TestFor(DependienteService)
-@Mock([Usuario,Dependiente, Institucion])
+@Mock([Usuario,Dependiente, Institucion,Perfil])
 class DependienteServiceSpec extends Specification{
 
   @Unroll("#datosBasicos")
@@ -180,14 +180,13 @@ class DependienteServiceSpec extends Specification{
 
   def "Valida registro de dependientes, no se persisten duplicados, criterio: Matricula"(){
     given:"crear una institucion"
-      def organizacion = new Institucion(nombre:"sisisi")
-      organizacion.save(validate:false)
+      def organizacion = new Institucion(nombre:"Escuela Superior de Computo").save(validate:false)
     and:
       def dependiente = new Dependiente()
-      def perfilExistente = new Perfil()
+      def perfilExistente = new Perfil().save(validate:false)
+      dependiente.perfil = perfilExistente
       dependiente.matricula = "M1234576"
       dependiente.camada= "1234567898"
-      dependiente.save(validate:false)
     and:"Tengo un usuario registrado"
       Usuario.metaClass.isDirty = { true } 
       Usuario.metaClass.encodePassword = { "password" } 
@@ -198,21 +197,18 @@ class DependienteServiceSpec extends Specification{
       usuarioExistente.addToDependientes(dependiente)
       usuarioExistente.addToInstituciones(organizacion)
       usuarioExistente.save(validate:false)
-    /*and: "Anticipo que no se llame la llamada a registrar"
-      def perfilServiceMock = mockFor(PerfilService)
-      perfilServiceMock.demand.registrar(0..0) { p ->  }
-      service.perfilService = perfilServiceMock.createMock()*/
+    and:
+      Dependiente.metaClass.static.withNewSession = {Closure c -> c.call() }  
     when:"Se intenta registrar un dependiente con la misma matricula del dependiente ya existente"
-      def dependienteDuplicado = new Dependiente()
-      dependienteDuplicado.matricula = "M1234576"
-      dependienteDuplicado.camada= "987654321"
+      def dependienteDuplicado = new Dependiente(matricula:"M1234576",camada:"987654321")
       def dependienteResultado = service.registrar(dependienteDuplicado,usuarioExistente.id,organizacion)
+
     then:"Los dependientes deben ser iguales, es decir, no se persistio el dependiente con la matricula ya existente"
-      assert dependiente.matricula == dependienteResultado.dependienteExistente.matricula
-      assert dependienteResultado.dependienteExistente.id > 0
-      assert dependienteResultado.dependienteExistente.matricula == "M1234576"
-      assert dependienteResultado.dependienteExistente.camada == "1234567898"
-      assert dependienteResultado.dependienteExistente.usuario.id > 0
+      assert dependiente.matricula == dependienteResultado[0].matricula
+      assert dependienteResultado[0].id > 0
+      assert dependienteResultado[0].matricula == "M1234576"
+      assert dependienteResultado[0].camada == "1234567898"
+      assert dependienteResultado[0].usuario.id > 0
   }
 
 }
