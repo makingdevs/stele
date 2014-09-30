@@ -36,12 +36,20 @@ class DependienteService {
   }
 
   def registrar(Dependiente dependiente, Long usuarioId, def institucion){
-    def user = Usuario.get(usuarioId)
-    def dependienteExistente = Dependiente.findByMatricula(dependiente.matricula) 
 
+    def dependienteExistente =  Dependiente.withCriteria{
+      eq('matricula',dependiente.matricula)
+      usuario{
+        instituciones{
+          'in'('id',[institucion.id])
+        }
+      }
+    }   
+    
     if(dependienteExistente)
       return [dependienteExistente:dependienteExistente]
     else{
+      def user = Usuario.get(usuarioId)
       dependiente.perfil= perfilService.registrar(dependiente.perfil)
       user.addToDependientes(dependiente)
       user.save()
