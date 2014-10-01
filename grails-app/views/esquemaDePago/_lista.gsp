@@ -27,7 +27,7 @@
             <tr>
               <td>${it.concept.description}</td>
               <td>$ ${it.paymentAmount}</td>
-              <td>${it.discounts*.discountName}</td>
+              <td>${it.discounts*.discountName.join(',')}</td>
               <td>$ <g:mostrarCantidadTotal idsDescuentos="${it.discounts*.id}" cantidadDePago="${it.paymentAmount}"></g:mostrarCantidadTotal> </td>
               <g:if test="${it.surcharge?.amount}">
                 <td>$ ${it?.surcharge?.amount}</td>
