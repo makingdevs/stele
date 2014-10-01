@@ -36,8 +36,9 @@ class EsquemaDePagoController {
     def concept = conceptService.savePaymentConcept(institucion, params.nombreConcepto)
     PaymentGroupCommand pgc = new PaymentGroupCommand()
 
-    if (params.recargoid)
-      pgc.surchargeId = params.recargoid.toLong()
+    if (params.recargoId)
+      pgc.surchargeId = params.long("recargoId")
+
     pgc.paymentAmount = params.importeEsquemaDePago.toBigDecimal()
     pgc.paymentConcept = concept.description
     pgc.organization = institucion
