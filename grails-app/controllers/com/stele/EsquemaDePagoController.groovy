@@ -41,8 +41,9 @@ class EsquemaDePagoController {
     pgc.paymentAmount = params.importeEsquemaDePago.toBigDecimal()
     pgc.paymentConcept = concept.description
     pgc.organization = institucion
-    if (params.descuentos)
-      pgc.discountIds = params.descuentos.replace('[','')?.replace(']','')?.split(',') as List
+    if (params.list("discount"))
+      pgc.discountIds = params.list("discount")*.toLong()
+
     def scheme = paymentSchemeService.savePaymentScheme(pgc)
     redirect(action:'nuevo')
   }
