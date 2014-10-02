@@ -1,4 +1,5 @@
 <%@ page import="com.payable.PaymentStatus" %>
+<g:if test="${pagosConciliados}">
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-       <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.PAID">
+       <g:each in="${pagosConciliados}"> 
         <tr class="success"> 
           <td align="justify"><g:link controller="comprobante" action="detalle" id="${it.id}" class="btn"> <i class="icon-zoom-in bigger-130"></i></g:link></td>
           <td><g:nombreDependiente idPago="${it.id}"></g:nombreDependiente></td>
@@ -22,6 +23,7 @@
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.paymentDate}"/> </td>
           <td> ${it.paymentStatus} </td>
         </tr>
-      </g:findAll>
+      </g:each>
     </tbody>
-  </table>
+  </table> 
+</g:if>
