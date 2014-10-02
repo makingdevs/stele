@@ -1,4 +1,5 @@
 <%@ page import="com.payable.PaymentStatus" %>
+<g:if test="pagosEnProceso">
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-   <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.PROCESS">
+   <g:each in="${pagosEnProceso}" > 
         <tr class="info">
           <g:if test="${it.paymentStatus == PaymentStatus.PROCESS}">
             <td align="justify"><g:link class="btn" controller="comprobante" action="show" id="${it.id}"><i class="icon-file-text-alt bigger-130"></i></g:link>
@@ -24,6 +25,7 @@
           <td>${(new Date() - it.lastUpdated)}</td>
           <td> ${it.paymentStatus} </td>          
         </tr>
-    </g:findAll>
+    </g:each>
     </tbody>
   </table>
+</g:if>
