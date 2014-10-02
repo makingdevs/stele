@@ -7,7 +7,7 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 // Module plugins
 //grails.plugin.location.profile='../profile'
-grails.plugin.location.payable='../payable'
+//grails.plugin.location.payable='../payable'
 grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.fork = [
