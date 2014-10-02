@@ -35,54 +35,54 @@
                       <li class="active">
                         <a data-toggle="tab" href="#pendientes">
                           Pendientes
-                          <span class="badge badge-primary">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.CREATED} }
+                          <span class="badge badge-primary">${pagosCreados?.size()}
                         </a>
                       </li>
 
                       <li>
                         <a data-toggle="tab" href="#xconciliar">
-                          Por Conciliar  <span class="badge badge-info">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.PROCESS}}</span>
+                          Por Conciliar  <span class="badge badge-info">${pagosEnProceso?.size()}</span>
                         </a>
                       </li>
 
                       <li>
                         <a data-toggle="tab" href="#conciliados">
                           Conciliados
-                          <span class="badge badge-success">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.PAID}}</span>
+                          <span class="badge badge-success">${pagosConciliados?.size()}</span>
                         </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#rechazados">
                           Rechazados
-                          <span class="badge badge-warning">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.REJECTED}}</span>
+                          <span class="badge badge-warning">${pagosRechazados?.size()}</span>
                         </a>
                       </li>
                       <li>
                         <a data-toggle="tab" href="#vencidos">
                           Vencidos
-                          <span class="badge badge-pink">${pagosInstitucion*.paymentStatus.count{it == PaymentStatus.EXPIRED}}</span>
+                          <span class="badge badge-pink">${pagosVencidos?.size()}</span>
                         </a>
                       </li>
                     </ul>
                     <div class="tab-content">
                       <div id="pendientes" class="tab-pane in active">
-                        <g:render template="estatusDePago/pagosCreados" model="[pagos:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosCreados" model="[pagosCreados:pagosCreados]"/>
                       </div>
 
                       <div id="xconciliar" class="tab-pane">
-                        <g:render template="estatusDePago/pagosProcesados" model="[pagos:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosProcesados" model="[pagosEnProceso:pagosEnProceso]"/>
                       </div>
 
                       <div id="conciliados" class="tab-pane ">
-                        <g:render template="estatusDePago/pagosRealizados" model="[pagos:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosRealizados" model="[pagosConciliados:pagosConciliados]"/>
                       </div>
 
                       <div id="rechazados" class="tab-pane ">
-                        <g:render template="estatusDePago/pagosRechazados" model="[pagos:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosRechazados" model="[pagosRechazados:pagosRechazados]"/>
                       </div>
 
                       <div id="vencidos" class="tab-pane">
-                        <g:render template="estatusDePago/pagosVencidos" model="[pagos:pagosInstitucion]"/>
+                        <g:render template="estatusDePago/pagosVencidos" model="[pagosVencidos:pagosVencidos]"/>
                       </div>
                     </div>
                   </div>
