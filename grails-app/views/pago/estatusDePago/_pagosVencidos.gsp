@@ -1,4 +1,5 @@
 <%@ page import="com.payable.PaymentStatus" %>
+<g:if test="${pagosVencidos}">
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-       <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.EXPIRED">
+      <g:each in="${pagosVencidos}"> 
         <tr>
           <td><g:nombreDependiente idPago="${it.id}"></g:nombreDependiente></td>
           <td> ${it.paymentConcept} </td>
@@ -22,6 +23,7 @@
           <td> ${it.paymentAmount + it.accumulatedSurcharges} </td>
           <td>${(new Date() - it.lastUpdated)}</td>
         </tr>
-    </g:findAll>
+      </g:each>
     </tbody>
   </table>
+</g:if>
