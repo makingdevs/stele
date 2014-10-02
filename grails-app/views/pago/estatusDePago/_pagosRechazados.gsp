@@ -1,4 +1,5 @@
 <%@ page import="com.payable.PaymentStatus" %>
+<g:if test="${pagosRechazados}">
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-       <g:findAll in="${pagos}" expr="it.paymentStatus == PaymentStatus.REJECTED  ">
+      <g:each in="${pagosRechazados}"> 
         <tr>
           <sec:ifAllGranted roles="ROLE_DIRECTOR">
             <td align="justify"><g:link controller="comprobante" action="detalle" id="${it.id}" class="btn"> <i class="icon-zoom-in bigger-130"></i></g:link></td>
@@ -27,6 +28,7 @@
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.lastUpdated}"/> </td>
           <td> ${it.paymentStatus} </td>
         </tr>
-    </g:findAll>
+      </g:each>
     </tbody>
   </table>
+</g:if>
