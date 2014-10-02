@@ -7,7 +7,7 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 // Module plugins
 //grails.plugin.location.profile='../profile'
-//grails.plugin.location.payable='../payable'
+grails.plugin.location.payable='../payable'
 grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.fork = [
@@ -87,7 +87,7 @@ grails.project.dependency.resolution = {
     runtime ":resources:1.2.7"
 
     compile 'com.makingdevs:profile:0.1.7'
-    compile('com.payable:payable:0.2.35'){
+    compile('com.payable:payable:0.2.36'){
       exclude "profile"
     }
   }
