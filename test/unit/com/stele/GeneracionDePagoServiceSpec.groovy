@@ -199,7 +199,7 @@ class GeneracionDePagoServiceSpec extends Specification {
       assert pagos.first().id == 1
       assert pagos.first().paymentConcept == concepto
       pagos.each { pago ->
-        if( pagoDoble.contains( pago.dueDate.getMonth().toString() ) )
+        if( pagoDoble.contains( pago.dueDate.getMonth() ) )
           assert pago.paymentAmount == 2.00
         else
           assert pago.paymentAmount == 1.00
