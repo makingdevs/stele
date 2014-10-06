@@ -97,7 +97,7 @@
                               </g:if>
                               
                               <input type="hidden" name="camada" value="${camada}" >
-                              <input type="hidden" name="listaDependientes" value="${flash.dependientes}">
+                              <input type="hidden" name="listaDependientes" value="${listaDependientes}">
                               <div class="alert alert-info">
                                 <button class="close" data-dismiss="alert" type="button">
                                   <i class="icon-remove"></i>
