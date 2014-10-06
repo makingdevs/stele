@@ -34,7 +34,7 @@ class WrapperCommandServiceSpec extends Specification {
       cpc.diasPreviosParaCancelarDescuento = diasPrevios
       cpc.meses = meses
       cpc.pagoDoble = pagoDoble
-      cpc.listaDependientes = "[${dependiente1.id}, ${dependiente2.id}]"
+      cpc.listaDependientes = "${dependiente1.id}, ${dependiente2.id}"
     when: "verificar que el parseo de los command es satisfactorio"
       def grupoCommand = service.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, institucion)
     then:
