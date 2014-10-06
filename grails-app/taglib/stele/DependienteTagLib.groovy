@@ -9,13 +9,8 @@ class DependienteTagLib {
   def dependienteService
 
   def nombreDependiente = { attrs, body ->
-
     def dependiente = dependienteService.findDependienteFromPaymentId(attrs.idPago)
-    out << dependiente.perfil.first().nombre
-    out << ' ' 
-    out <<  dependiente.perfil.first().apellidoPaterno 
-    out << ' ' 
-    out <<  dependiente.perfil.first().apellidoMaterno
+    out << "${dependiente.perfil.nombre ?: ""} ${dependiente.perfil.apellidoPaterno ?: ""} ${dependiente.perfil.apellidoMaterno ?: ""}".trim()
   }
 
   def ubicacionDependiente = { attrs, body ->
