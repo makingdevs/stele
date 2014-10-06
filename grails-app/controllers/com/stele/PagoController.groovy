@@ -20,14 +20,14 @@ class PagoController {
   }
 
   def mostrarPagosAsociadosALaInstitucionEnBaseAHistorialesAcademicos() {
-   def historialesAcademicos = historialAcademicoService.obtenerHistorilesAcademicosDelaInstitucion(springSecurityService.currentUser)
-   def pagos = paymentService.findAllPaymentsGroupedByStatus(historialesAcademicos*.dependiente)
-   render (view: "pagosAsociadosAUnaInstitucion", model:[usuario:springSecurityService.currentUser,
-                                                         pagosCreados:pagos.createdPayments,
-                                                         pagosEnProceso:pagos.paymentsInProcess,
-                                                         pagosConciliados:pagos.reconciledPayments,
-                                                         pagosRechazados:pagos.rejectedPayments,
-                                                         pagosVencidos:pagos.expiredPayments])
+    def historialesAcademicos = historialAcademicoService.obtenerHistorilesAcademicosDelaInstitucion(springSecurityService.currentUser)
+    def pagos = paymentService.findAllPaymentsGroupedByStatus(historialesAcademicos*.dependiente)
+    render (view: "pagosAsociadosAUnaInstitucion", model:[usuario:springSecurityService.currentUser,
+                                                          pagosCreados:pagos.createdPayments,
+                                                          pagosEnProceso:pagos.paymentsInProcess,
+                                                          pagosConciliados:pagos.reconciledPayments,
+                                                          pagosRechazados:pagos.rejectedPayments,
+                                                          pagosVencidos:pagos.expiredPayments])
   }
 
   def generarPagoEnVentanilla() {

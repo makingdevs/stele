@@ -1,5 +1,5 @@
 <%@ page import="com.payable.PaymentStatus" %>
-<g:if test="pagosEnProceso">
+<g:if test="${pagosEnProceso}">
   <table class="table table-striped table-bordered table-hover">
     <thead style="background-color:whiteSmoke">
       <tr>

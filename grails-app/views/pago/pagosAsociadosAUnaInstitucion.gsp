@@ -35,7 +35,7 @@
                       <li class="active">
                         <a data-toggle="tab" href="#pendientes">
                           Pendientes
-                          <span class="badge badge-primary">${pagosCreados?.size()}
+                          <span class="badge badge-primary">${pagosCreados?.size()}</span>
                         </a>
                       </li>
 
