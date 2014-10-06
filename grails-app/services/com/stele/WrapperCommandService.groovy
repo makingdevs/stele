@@ -40,16 +40,24 @@ class WrapperCommandService {
       pgc.discountIds= camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
     pgc.organization = institucion
     pgc.daysPaymentDue = camadaPagoCommand.diasVencimientoPago
-    pgc.instances = obtenerListaDeDependientes(camadaPagoCommand)
+    pgc.instances = findDependientesByListOfIds(camadaPagoCommand?.listaDependientes)
     pgc.months = camadaPagoCommand.meses ?: []
     pgc.doublePayment = camadaPagoCommand?.pagoDoble ?:[]
     pgc
+  }
+
+  def findDependientesByListOfIds(def listaDeDependientes){
+    def listaDependientes = listaDeDependientes?.split(',')*.toLong()
+    Dependiente.withCriteria{
+      'in'('id',listaDependientes) 
+    } 
   }
 
   private def obtenerListaDeDependientes(CamadaPagoCommand camadaPagoCommand) {
     def listaDependientesExistentes = []
     def dependientes = Dependiente.findAllByCamada(camadaPagoCommand.camada)
     listaDependientesExistentes << camadaPagoCommand?.listaDependientes?.replace('[','')?.replace(']','')?.split(',')
+    
     listaDependientesExistentes?.removeAll(dependientes*.id)
 
     if (listaDependientesExistentes){
