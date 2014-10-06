@@ -1,3 +1,4 @@
+
 package com.stele
 
 import grails.converters.JSON
@@ -50,9 +51,8 @@ class EsquemaDePagoController {
   }
  
   def paraCamada() {
-    def listaDependientes = params.list("dependientes").flatten()
-    flash.dependientes = listaDependientes
-    [camada:params?.camada]
+    def listaDependientes = params.list("dependientes")
+    [camada:params?.camada,listaDependientes:listaDependientes.join(',')]
   }
 
   def obtenerEsquemaDePagoPorConcepto(){
