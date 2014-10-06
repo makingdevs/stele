@@ -50,13 +50,8 @@ class EsquemaDePagoController {
   }
  
   def paraCamada() {
-    if(params.listaDependientes) {
-      if (params.listaDependientes instanceof String)
-        flash.dependientes = params.listaDependientes
-      else
-        flash.dependientes = params.listaDependientes.flatten()
-      flash.message = params.message
-    }
+    def listaDependientes = params.list("dependientes").flatten()
+    flash.dependientes = listaDependientes
     [camada:params?.camada]
   }
 
@@ -80,7 +75,7 @@ class EsquemaDePagoController {
       render cpc.errors
       return
     } 
-
+    
     def grupoPagoCommand = wrapperCommandService.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, springSecurityService.currentUser.instituciones?.first())
 
     def pagos = generationOfPaymentService.generatePaymentsForGroup(grupoPagoCommand)
