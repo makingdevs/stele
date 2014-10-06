@@ -17,7 +17,7 @@ class DependienteController {
       def distribucionesInstitucionales = distribucionInstitucionalService.obtenerDistribucionInstitucionalEnBaseAParametros(params,springSecurityService.currentUser.instituciones?.first())
       def historialesAcademicos = historialAcademicoService.obtenerHistorialesAcademicosEnBaseADistribucionInstitucional(distribucionesInstitucionales)
       def listaDependientesPorEstructura = generarEstructuraDependientes(historialesAcademicos)
-      render template:'dependienteCar', model:[dependiente:listaDependientesPorEstructura, institucion:springSecurityService.currentUser.instituciones?.first()]
+      render template:'dependienteCar', model:[dependientesPorEstructura:listaDependientesPorEstructura, institucion:springSecurityService.currentUser.instituciones?.first()]
     }
 
 
