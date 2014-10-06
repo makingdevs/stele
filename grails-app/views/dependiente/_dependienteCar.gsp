@@ -1,5 +1,5 @@
 <%@ page import="com.stele.Turno" %>
-<g:if test="${dependiente}" >
+<g:if test="${dependientesPorEstructura}" >
 <div class="span8 widget-container-span">
   <div class="widget-box">
     <div class="widget-header">
@@ -38,20 +38,20 @@
           <tbody>            
               <input type="hidden" name="message" value="Generar Cobros"/>
               <input type="hidden" id="camada" name="camada", value="dependientesSearch_${new Date().format('dd-MM-yyyy')}">
-              <g:each in="${dependiente}">
+              <g:each in="${dependientesPorEstructura}" var="dependiente" status="i">
               <tr>
                 <td class="center">
                   <label>                    
-                    <g:checkBox name="listaDependientes" value="${it.dependiente.id}" checked="false" />
+                    <g:checkBox name="dependientes" value="${dependiente.dependiente.id[0]}" checked="false" />
                     <span class="lbl"></span>
                   </label>
                 </td>
-                <td>${it.distribucionInstitucional.turno.first()}</td>
-                <td>${it.distribucionInstitucional.nivelDeEstudio.first()}</td>
-                <td>${it.distribucionInstitucional.grado.first()}</td>
-                <td>${it.distribucionInstitucional.grupo.first()}</td>
+                <td>${dependiente.distribucionInstitucional.turno.first()}</td>
+                <td>${dependiente.distribucionInstitucional.nivelDeEstudio.first()}</td>
+                <td>${dependiente.distribucionInstitucional.grado.first()}</td>
+                <td>${dependiente.distribucionInstitucional.grupo.first()}</td>
                 <td >
-                  ${it.size()}
+                  ${dependiente.size()}
                 </td>
               </tr>
               </g:each>            
