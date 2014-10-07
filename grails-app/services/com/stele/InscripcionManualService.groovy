@@ -12,24 +12,36 @@ class InscripcionManualService {
   def historialAcademicoService
 
   def generarRegistroDeAlumnoYTutor(InscripcionCommand insc, Institucion institucion) {
-     def mapaDomains = [ usuario: usuarioService.obtenerUsuarioDesdeCommand(insc),
-                        dependiente:dependienteService.obtenerDependienteDesdeCommand(insc),
-                        cicloEscolar:cicloEscolarService.obtenerCicloEscolarDesdeCommand(insc),
-                        distribucionInstitucional:distribucionInstitucionalService.obtenerDistribucionInstitucionalDesdeCommand(insc)
-                        ]
-      mapaDomains.dependiente.camada = generarNombreCamada(institucion)
-      def usuarioCargado = usuarioService.registrar(mapaDomains.usuario, institucion)
-      def dependienteCargado = dependienteService.registrar(mapaDomains.dependiente, usuarioCargado.id,institucion)
-      def cicloEscolarCargado = cicloEscolarService.registrar(mapaDomains.cicloEscolar)
-      def distribucionInstitucionalCargado = distribucionInstitucionalService.registrar(mapaDomains.distribucionInstitucional, institucion.id)
-      def historialAcademicoCargado = historialAcademicoService.registrar(historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependienteCargado,distribucionInstitucionalCargado))
-      [success:"Se he inscrito correctamente el padre y su dependiente"]
+    def mapaDomains = [usuario: usuarioService.obtenerUsuarioDesdeCommand(insc),
+                       dependiente:dependienteService.obtenerDependienteDesdeCommand(insc)]
+
+    def usuarioCargado = usuarioService.registrar(mapaDomains.usuario, institucion)
+    def dependienteCargado = dependienteService.registrar(mapaDomains.dependiente, usuarioCargado.id,institucion)
+
+    if(!(dependienteCargado instanceof Dependiente))
+      return [message:"Ya existe un dependiente con la misma matrícula"]             
+
+    mapaDomains.cicloEscolar = cicloEscolarService.obtenerCicloEscolarDesdeCommand(insc)
+    mapaDomains.distribucionInstitucional = distribucionInstitucionalService.obtenerDistribucionInstitucionalDesdeCommand(insc)
+    mapaDomains.dependiente.camada = generarNombreCamada(institucion)
+
+    def cicloEscolarCargado = cicloEscolarService.registrar(mapaDomains.cicloEscolar)
+    def distribucionInstitucionalCargado = distribucionInstitucionalService.registrar(mapaDomains.distribucionInstitucional, institucion.id)
+    def historialAcademicoCargado = historialAcademicoService.registrar(historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependienteCargado,distribucionInstitucionalCargado))
+    [success:"Se he inscrito correctamente el padre y su dependiente"]
   } 
 
   def generarNombreCamada(Institucion institucion) {
       def nombreDeInstitucion = institucion.name.size() > 100 ? institucion.name.substring(0,80) : institucion.name
       def camadaGenerada = nombreDeInstitucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")
       camadaGenerada
+  }
+
+  def obtenerCicloEscolarActual(){
+    def calendar = Calendar.instance
+    def year = calendar[Calendar.YEAR] 
+    def month = calendar[Calendar.MONTH] 
+    def cicloEscolar = month <= 5 ? "${year-1}/${year}" : "${year}/${year+1}"
   }
 }
 
