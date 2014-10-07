@@ -25,13 +25,11 @@ class DependienteService {
   }
 
   def obtenerDependienteDesdeCommand(InscripcionCommand incs) {
-    def perfil = new Perfil()
-    def dependiente = new Dependiente()
-    perfil.nombre = incs.nombreAlumno
-    perfil.apellidoPaterno = incs.apellidoPaternoAlumno
-    perfil.apellidoMaterno = incs.apellidoMaternoAlumno
-    dependiente.matricula = incs.matricula
-    dependiente.perfil = perfil
+    def perfil = new Perfil(nombre:incs.nombreAlumno,
+                            apellidoPaterno:incs.apellidoPaternoAlumno,
+                            apellidoMaterno:incs.apellidoMaternoAlumno)
+    def dependiente = new Dependiente(matricula:incs.matricula,
+                                      perfil:perfil)
     dependiente
   }
 
@@ -124,7 +122,6 @@ class DependienteService {
 
   def findDependientesByNameAndOrganization(name, organization){
     def dependientes = []
-    log.error("----")
     def distribucionInstitucionalIds = DistribucionInstitucional.findAllByInstitucion(organization)*.id 
     def historialesAcademicos = HistorialAcademico.withCriteria{
       distribucionInstitucional{
