@@ -22,10 +22,7 @@
 <div class="control-group">
   <label class="control-label" for="selectCiclo">Ciclo escolar</label>
   <div class="controls">
-  <select>
-    <option value="2013/2014">2013/2014</option>
-    <option value="2014/2015">2014/2015</option>
-  </select>
+    <input type="text" value="${cicloEscolar}" readonly />
   </div>
 </div>
     <table class="table table-condensed" border="0"  cellpadding="0" cellspacing="0">
