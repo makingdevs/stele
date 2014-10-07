@@ -7,20 +7,21 @@ import com.stele.Dependiente
 
 class InscripcionManualController {
 
-	  def springSecurityService
-    def inscripcionManualService
-    def historialAcademicoService
-
-		def inscripcion() {
-    	def user = springSecurityService.currentUser
-    	[usuario:user]
-		}
+  def springSecurityService
+  def inscripcionManualService
+  def historialAcademicoService
+  
+  def inscripcion() {
+    def user = springSecurityService.currentUser
+    def cicloEscolar = inscripcionManualService.obtenerCicloEscolarActual()   
+    [usuario:user,cicloEscolar:cicloEscolar]
+  }
 
 		def crearUsuarioCondependiente(InscripcionCommand insc ) {
       def institucion = springSecurityService.currentUser.instituciones?.first()
       def registroAlumnoTutor = inscripcionManualService.generarRegistroDeAlumnoYTutor(insc, institucion)
       flash.success = registroAlumnoTutor.values()
-      render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser])
+      render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser,cicloEscolar:inscripcionManualService.obtenerCicloEscolarActual()])
     }
       
     def validarUsuarioExistente() {
