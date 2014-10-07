@@ -28,18 +28,16 @@ class UsuarioService {
   }
 
   def obtenerUsuarioDesdeCommand(InscripcionCommand inscripcionCommand){
-    def usuario = new Usuario()
-    def perfil = new Perfil()
+    def perfil = new Perfil(nombre:inscripcionCommand.nombrePadre,
+                            apellidoPaterno:inscripcionCommand.apellidoPaternoPadre,
+                            apellidoMaterno:inscripcionCommand.apellidoMaternoPadre)
     def telefono = new Telefono()
-    perfil.nombre = inscripcionCommand.nombrePadre
-    perfil.apellidoPaterno = inscripcionCommand.apellidoPaternoPadre
-    perfil.apellidoMaterno = inscripcionCommand.apellidoMaternoPadre
     telefono.numeroTelefonico = inscripcionCommand.telefono.replaceAll( "[^\\d.]", "" )
     perfil.addToTelefonos(telefono)
-    usuario.perfil = perfil
-    usuario.username = inscripcionCommand.email
-    usuario.password = armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico)
-    usuario.enabled = true
+    def usuario = new Usuario(perfil:perfil,
+                              username:inscripcionCommand.email,
+                              password:armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico),
+                              enabled:true)
     usuario
   }
 
