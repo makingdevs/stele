@@ -19,7 +19,7 @@ class InscripcionManualService {
     def dependienteCargado = dependienteService.registrar(mapaDomains.dependiente, usuarioCargado.id,institucion)
       
     if(!(dependienteCargado instanceof Dependiente))
-      return [message:"Ya existe un dependiente con la misma matrícula"]             
+      return [message:"Ya existe un dependiente con la misma matricula"] 
 
     mapaDomains.cicloEscolar = cicloEscolarService.obtenerCicloEscolarDesdeCommand(insc)
     mapaDomains.distribucionInstitucional = distribucionInstitucionalService.obtenerDistribucionInstitucionalDesdeCommand(insc)

@@ -9,8 +9,8 @@ import com.stele.seguridad.Usuario
 @Mock([Institucion,Usuario,Dependiente,CicloEscolar,DistribucionInstitucional,HistorialAcademico])
 class InscripcionManualServiceSpec extends Specification {
 
-  def "Registrar un Alumno y un tutor nuevo"() {
-    setup :
+  def "registrar un Alumno y un tutor nuevo"() {
+    given :
       Institucion institucion = new Institucion(name:"Springfield Elementary school").save(validate:false)
     and : 
       InscripcionCommand command = new InscripcionCommand(cicloEscolar : "2012/2013",
@@ -59,45 +59,56 @@ class InscripcionManualServiceSpec extends Specification {
     when :
       def registro = service.generarRegistroDeAlumnoYTutor(command, institucion)
       usuarioServiceMock.verify()
+      dependienteServiceMock.verify()
+      cicloEscolarServiceMock.verify()
+      distribucionInstitucionalServiceMock.verify()
+      historialAcademicoServiceMock.verify()
     then : 
       assert registro.message == "Se ha inscrito correctamente al dependiente" 
   }
- 
-  @Ignore
-  def "Registrar un alumno con una matrícula repetida en la misma institución"() {
-    given : "Un dependiente inscrito en la institución"
-      Institucion institucion = new Institucion()
-      institucion.name = institucionNombre
-      institucion.save(validate:false)
+
+
+  def "no registrar un alumno con una matrícula que ya ha sido registrada en la misma institucion"() {
+    given :
+      Institucion institucion = new Institucion(name:"Springfield Elementary school").save(validate:false)
+      Dependiente dependienteExistente = new Dependiente(matricula:"M999999").save(validate:false)
     and : 
-      InscripcionCommand command = new InscripcionCommand(cicloEscolar : cicloEscolar,
-                                                          nombreAlumno : nombreAlumno,
-                                                          apellidoPaternoAlumno : apellidoPaternoAlumno,
-                                                          apellidoMaternoAlumno : apellidoMaternoAlumno,
-                                                          nivelDeEstudio : nivelDeEstudio,
-                                                          grado : grado,
-                                                          grupo : grupo,
-                                                          turno : turno,
-                                                          matricula : matricula,
-                                                          nombrePadre : nombrePadre,
-                                                          apellidoPaternoPadre : apellidoPaternoPadre,
-                                                          apellidoMaternoPadre : apellidoMaternoPadre,
-                                                          telefono : telefono,
-                                                          email : email)
+      InscripcionCommand command = new InscripcionCommand(cicloEscolar : "2014/2015",
+                                                          nombreAlumno : "Gamaliel",
+                                                          apellidoPaternoAlumno : "Jimenez",
+                                                          apellidoMaternoAlumno : "Garcia",
+                                                          nivelDeEstudio : "SECUNDARIA",
+                                                          grado : 3,
+                                                          grupo : "C",
+                                                          turno : "VESPERTINO",
+                                                          matricula : "M999999",
+                                                          nombrePadre : "Salvador",
+                                                          apellidoPaternoPadre : "Jiménez",
+                                                          apellidoMaternoPadre : "Domínguez",
+                                                          telefono : "5548109233",
+                                                          email : "gamaliel@makingdevs.com")
     and :
-      Usuario user = new Usuario()
-      createMockForUserService()
-      
+      Dependiente nuevoDependiente = new Dependiente(matricula:command.matricula)
+      Usuario usuario = new Usuario(username:"egjimenezg@gmail.com",
+                                    instituciones:[institucion])
+
+      def usuarioServiceMock = mockFor(UsuarioService)
+      def dependienteServiceMock = mockFor(DependienteService) 
+
+      usuarioServiceMock.demand.obtenerUsuarioDesdeCommand{InscripcionCommand cmd -> usuario} 
+      usuarioServiceMock.demand.registrar{ Usuario u, Institucion i -> usuario.save(validate:false)}
+      dependienteServiceMock.demand.obtenerDependienteDesdeCommand{InscripcionCommand cmd -> nuevoDependiente}
+      dependienteServiceMock.demand.registrar{ Dependiente d, Long userId, Institucion i -> return [dependienteExistente] }
+
+      service.usuarioService = usuarioServiceMock.createMock()
+      service.dependienteService = dependienteServiceMock.createMock()
+
     when :
       def registro = service.generarRegistroDeAlumnoYTutor(command, institucion)
-      mocks*.verify()
+      usuarioServiceMock.verify()
+      dependienteServiceMock.verify()
     then : 
-      assert registro instanceof LinkedHashMap
-
-    where :
-      cicloEscolar | nombreAlumno | apellidoPaternoAlumno | apellidoMaternoAlumno | nivelDeEstudio | grado | grupo | turno      | matricula | nombrePadre | apellidoPaternoPadre | apellidoMaternoPadre | telefono    | email           | institucionNombre
-      "2014/2015"  | "Gamaliel"   | "Jiménez"             | "García"              | "SECUNDARIA"   | 3     | "C"   | "MATUTINO" | "M656565" | "Anegeles"  | "duran"              | "romero"             | "56565672"  | "angeles@m.com" | "Springfield Elementary school"
+      assert registro.message == "Ya existe un dependiente con la misma matricula"
   }
-
-  
+ 
 }
