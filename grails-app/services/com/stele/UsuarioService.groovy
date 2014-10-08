@@ -36,8 +36,10 @@ class UsuarioService {
     perfil.addToTelefonos(telefono)
     def usuario = new Usuario(perfil:perfil,
                               username:inscripcionCommand.email,
-                              password:armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico),
                               enabled:true)
+
+    usuario.password = armaPasswordTemporal(perfil.nombre,usuario.username,telefono.numeroTelefonico)
+
     usuario
   }
 
