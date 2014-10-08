@@ -19,9 +19,10 @@ class InscripcionManualController {
 
 		def crearUsuarioCondependiente(InscripcionCommand insc ) {
       def institucion = springSecurityService.currentUser.instituciones?.first()
-      def registroAlumnoTutor = inscripcionManualService.generarRegistroDeAlumnoYTutor(insc, institucion)
-      flash.success = registroAlumnoTutor.values()
-      render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser,cicloEscolar:inscripcionManualService.obtenerCicloEscolarActual()])
+      def message = inscripcionManualService.generarRegistroDeAlumnoYTutor(insc, institucion)
+      render(view : "inscripcion" , model:[usuario: springSecurityService.currentUser,cicloEscolar:
+                                           inscripcionManualService.obtenerCicloEscolarActual(),
+                                           messages:message])
     }
       
     def validarUsuarioExistente() {
