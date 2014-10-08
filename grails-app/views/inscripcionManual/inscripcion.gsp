@@ -47,16 +47,16 @@
             </h1>
           </div>
 
-            <g:if test="${flash.success}">  
-              <div id="message"class="alert alert-success">
-                ${flash.success}
+            <g:if test="${messages?.error}">  
+              <div id="message" class="alert alert-error">
+                ${messages.error}
               </div>
             </g:if>
-            <g:if test="${flash.error}">  
-              <div id="message"class="alert alert-error">
-                ${flash.error}
+            <g:elseif test="${messages}">
+              <div id="message" class="alert alert-success">
+                ${messages?.message}
               </div>
-            </g:if>
+            </g:elseif>
           <div class="row-fluid">
             <div class="span12">
               <g:form id="registroAlumno" name="registroAlumno" url="[controller: 'inscripcionManual', action: 'crearUsuarioCondependiente']" class="form-horizontal">
