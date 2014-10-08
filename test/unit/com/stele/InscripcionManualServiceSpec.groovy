@@ -108,7 +108,7 @@ class InscripcionManualServiceSpec extends Specification {
       usuarioServiceMock.verify()
       dependienteServiceMock.verify()
     then : 
-      assert registro.message == "Ya existe un dependiente con la misma matricula"
+      assert registro.error == "Ya existe un dependiente con la misma matricula"
   }
  
 }
