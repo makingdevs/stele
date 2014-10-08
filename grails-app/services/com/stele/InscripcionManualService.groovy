@@ -17,7 +17,7 @@ class InscripcionManualService {
 
     def usuarioCargado = usuarioService.registrar(mapaDomains.usuario, institucion)
     def dependienteCargado = dependienteService.registrar(mapaDomains.dependiente, usuarioCargado.id,institucion)
-
+      
     if(!(dependienteCargado instanceof Dependiente))
       return [message:"Ya existe un dependiente con la misma matrícula"]             
 
@@ -28,7 +28,7 @@ class InscripcionManualService {
     def cicloEscolarCargado = cicloEscolarService.registrar(mapaDomains.cicloEscolar)
     def distribucionInstitucionalCargado = distribucionInstitucionalService.registrar(mapaDomains.distribucionInstitucional, institucion.id)
     def historialAcademicoCargado = historialAcademicoService.registrar(historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependienteCargado,distribucionInstitucionalCargado))
-    [success:"Se he inscrito correctamente el padre y su dependiente"]
+    [message:"Se ha inscrito correctamente al dependiente"]
   } 
 
   def generarNombreCamada(Institucion institucion) {
