@@ -20,7 +20,7 @@ class HistorialAcademicoService {
         }
        return historialAcademicoExistente ?: historialAcademico.save()
       }else{
-        throw RuntimeException("Se intentó persistir un historila academico con dependiente o distribucionInstitucional inválida...")
+        throw new RuntimeException("Se intentó persistir un historila academico con dependiente o distribucionInstitucional inválida...")
       }
   }
 
