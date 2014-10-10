@@ -79,7 +79,7 @@
 
                                   <p>
                                     <g:if test="${flash.inscripcionCobro == 'true'}">
-                                      <g:link  name="procesarCobro" controller="procesamientoMasivo" params="[institucionId:institucionId, cobro:true]">
+                                      <g:link  name="procesarCobro" controller="procesamientoMasivo" action="inicio" params="[institucionId:institucionId, cobro:true]">
                                       <span class="btn btn-app btn-success" id="procesarCobro">
                                         <i class="icon-cogs bigger-230 "></i>
                                         <strong>  Procesar  </strong>
@@ -88,7 +88,7 @@
                                       </g:link>
                                     </g:if>
                                     <g:else>
-                                      <g:link name="procesar" controller="procesamientoMasivo" params="[institucionId:institucionId, cobro:false]">
+                                      <g:link name="procesar" controller="procesamientoMasivo" action="inicio" params="[institucionId:institucionId, cobro:false]">
                                       <span class="btn btn-app btn-success" id="procesar" >
                                         <i class="icon-cogs bigger-230 "></i>
                                         <strong>  Procesar  </strong>
