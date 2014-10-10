@@ -36,9 +36,9 @@ class InicioController {
     try {      
       def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(flash.excelParaProcesar)      
       def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)      
+      session['listaDeMapaDeDominios'] = listaDeMapaDeDominios
       flash.inscripcionCobro = params.cobro
-      flash.listaDeMapaDeDominios = listaDeMapaDeDominios
-      session.removeAttribute('excelParaProcesar')
+
       def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
       [
         alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),
@@ -60,8 +60,6 @@ class InicioController {
 
   def procesar(){
     flash.inscripcionCobro = params.cobro
-    def lista = flash.listaDeMapaDeDominios
-    flash.listaDeMapaDeDominios = lista
     [institucionId: params.long("institucionId")]
   }
 }
