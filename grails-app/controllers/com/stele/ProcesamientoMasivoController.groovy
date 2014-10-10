@@ -5,7 +5,8 @@ class ProcesamientoMasivoController {
   def procesamientoMasivoService
 
   def index() {
-    def listaDeMapaDeDominios = flash.listaDeMapaDeDominios
+    def listaDeMapaDeDominios = session['listaDeMapaDeDominios']
+    session.removeAttribute('listaDeMapaDeDominios')
     def institucion = Institucion.get(params?.long("institucionId"))
     def nombreDeInstitucion = institucion.name.size() > 100 ? institucion.name.substring(0,80) : institucion.name
     def usuariosPersistidos = [] as Set
