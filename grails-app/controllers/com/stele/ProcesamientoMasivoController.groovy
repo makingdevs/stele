@@ -4,7 +4,7 @@ class ProcesamientoMasivoController {
 
   def procesamientoMasivoService
 
-  def index() {
+  def inicio() {
     def listaDeMapaDeDominios = session['listaDeMapaDeDominios']
     session.removeAttribute('listaDeMapaDeDominios')
     def institucion = Institucion.get(params?.long("institucionId"))
@@ -30,16 +30,15 @@ class ProcesamientoMasivoController {
       } else
         usuariosErroneos.add(mapaDeDominiosPersistidos.dependienteExistente)
     }
-    [
-      camadaGenerada: camadaGenerada,
-      totalRegistros: dependientesPersistidos?.size()+usuariosErroneos.size(),
-      dependientesProcesados: dependientesPersistidos?.size(),
-      ciclosEcolaresProcesados: ciclosEscolaresPersistidos?.size(),
-      listaUsuariosProcesados: dependientesExistentes,
-      dependientes: dependientesPersistidos,
-      erroneos: usuariosErroneos?.size(),
-      historiales: historialesAcademicos
-    ]
+    
+    render(view:"index",model:[camadaGenerada: camadaGenerada,
+                               totalRegistros: dependientesPersistidos?.size()+usuariosErroneos.size(),
+                               dependientesProcesados: dependientesPersistidos?.size(),
+                               ciclosEcolaresProcesados: ciclosEscolaresPersistidos?.size(),
+                               listaUsuariosProcesados: dependientesExistentes,
+                               dependientes: dependientesPersistidos,
+                               erroneos: usuariosErroneos?.size(),
+                               historiales: historialesAcademicos])
   }
 
 }
