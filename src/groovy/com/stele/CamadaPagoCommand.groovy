@@ -19,10 +19,10 @@ class CamadaPagoCommand {
   String[] pagoDoble
   List<String> fechasDeExpiracionDescuento 
   List<Integer> idDescuento
+  List<Integer> discount
   String listaDependientes
   String descuentoConFecha
   String idRecargo
-  String idsDescuentos
 
   static constraints = {
     camada size:1..100, blank:false, nullable:false
@@ -36,7 +36,7 @@ class CamadaPagoCommand {
     listaDependientes nullable:true
     descuentoConFecha nullable:true
     idRecargo nullable:true
-    idsDescuentos nullable:true
+    discount nullable:true
   }
 
 }
