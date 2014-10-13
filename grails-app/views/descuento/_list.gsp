@@ -10,7 +10,7 @@
     <g:each in="${discounts?.sort({ it.id })}" var="discount" status="i">
       <tr>
         <td>
-          <input type="hidden" name="descuentos" value="${discount?.id}" />
+          <input type="hidden" name="discount" value="${discount?.id}" />
           ${discount?.discountName}</td>
         <td><g:if test="${discount?.amount}">
               <g:formatNumber number="${discount?.amount}" type="currency" />
