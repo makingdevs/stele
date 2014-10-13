@@ -7,11 +7,15 @@
         $("#descuentosForm").submit(function(event){
           event.stopPropagation();
           var url = $(this).attr('action');
-          var data = $(this).serialize()
-          var descuentosIds = $("input#descuentos").val();
+          var data = $(this).serialize();
+          var descuentos = $("#descuentoCreado input[type=hidden][name=discount]");
+          descuentos.each(function(index){
+            data+="&discount="+$(this).val();
+          });
+
           $.ajax({
             type: "POST",
-            url: url + "?descuentosIds=" + descuentosIds,
+            url: url,
             data: data,
             success: function(data) {
               $("#descuentoCreado").html(data)
