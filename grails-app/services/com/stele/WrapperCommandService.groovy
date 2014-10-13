@@ -36,8 +36,10 @@ class WrapperCommandService {
       if (camadaPagoCommand.descuentos.first() != "") 
         pgc.discountIds = camadaPagoCommand?.descuentos.collect{it.replace('[','').replace(']','')}
     }
+
     if (!pgc.discountIds)
-      pgc.discountIds= camadaPagoCommand.idsDescuentos?.replace('[','')?.replace(']','')?.split(',')
+      pgc.discountIds= camadaPagoCommand.discount
+
     pgc.organization = institucion
     pgc.daysPaymentDue = camadaPagoCommand.diasVencimientoPago
     pgc.instances = findDependientesByListOfIds(camadaPagoCommand?.listaDependientes)
