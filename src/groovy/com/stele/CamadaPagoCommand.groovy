@@ -15,8 +15,8 @@ class CamadaPagoCommand {
   Integer diasVencimientoPago
   String[] descuentos
   String[] recargoid
-  String[] meses
-  String[] pagoDoble
+  List<Integer> meses
+  List<Integer> pagoDoble
   List<String> fechasDeExpiracionDescuento 
   List<Integer> discount
   String listaDependientes
