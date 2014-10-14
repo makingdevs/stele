@@ -109,7 +109,7 @@
                               
                               <div class="row-fluid">
                                 
-                                <div class="span5">
+                                <div class="span3">
                                   <div class="control-group">
                                     <label class="control-label" for="txtConcepto">Concepto</label>
                                     <div class="controls">
@@ -146,10 +146,107 @@
                                       </div>
                                     </div>
                                   </div>  
-                                </div><!--/ span5 -->
+                                </div><!--/ span3 -->
                                 
-                                <div class="span4">
-                                  
+                                <div class="span6">
+                                  <ul class="nav nav-tabs padding-10">
+                                    <li class="active">
+                                      <a data-toggle="tab" href="#faq-tab-666">
+                                        <i class="green icon-tag bigger-120"></i>
+                                        Descuento
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a data-toggle="tab" href="#faq-tab-666">
+                                        <i class="red icon-sort-by-attributes icon-flip-vertical   bigger-120"></i>
+                                        Recargo
+                                      </a>
+                                    </li>
+                                  </ul>
+                                  <div class="tab-content">                          
+                                    <div id="faq-tab-666" class="tab-pane active">
+                                      <div class="alert alert-info">
+                                        <button class="close" data-dismiss="alert" type="button">
+                                          <i class="icon-remove"></i>
+                                        </button>
+                                        <strong>Nota! </strong>
+                                          Sólo puede seleccionar importe o porcentaje de descuento <br>
+                                        <strong>Nota! </strong>
+                                          Seleccionar fecha de vencimiento o dias antes de vencer el pago
+                                        <br>
+                                      </div>
+                                      <div class="row-fluid">                                      
+                                        <div class="span6">                                          
+                                          <div class="control-group">
+                                            <label class="control-label" for="txtConcepto"> Descuento </label>
+                                            <div class="controls">
+                                              <input type="hidden" id="urlDescuento" value="${g.createLink(action:'obtenerDescuentosInstitucion', controller:'descuento')}" />
+                                              <div class="input-prepend">
+                                                <input type="text" id="nombreDeDescuento" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
+                                                <span class="add-on">
+                                                  <i class="icon-edit"></i>
+                                                </span>
+                                              </div>  
+                                            </div>
+                                          </div>
+
+                                          <div class="control-group">
+                                            <label class="control-label" for="txtConcepto"> Importe </label>
+                                            <div class="controls">
+                                              <div class="input-prepend"> 
+                                                <span class="add-on">
+                                                  <i class="icon-usd"></i>
+                                                </span>
+                                                <input class="input-medium" id="cantidad" name="amount" type="text" placeholder="0.0">
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="control-group">
+                                            <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
+                                            <div class="controls">
+                                              <div class="input-append date">
+                                                <input id="fechaDeVencimientoDesc" name="expirationDate" type="text" class="form-control"></input>
+                                                <span class="add-on">
+                                                  <i class="icon-calendar"></i>
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="span6">
+                                          <div class="control-group">
+                                            <div class="input-prepend">
+                                              <label class="control-label" for="txtConcepto"> Dias antes </label> 
+                                              <div class="controls">
+                                                <div class="input-prepend">
+                                                  <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..30}" noSelection="['':'- Dia -']"/>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="control-group">
+                                            <div class="input-append">
+                                              <label class="control-label" for="txtConcepto"> Procentaje </label>
+                                              <div class="controls">
+                                                <input class="input-mini" id="porcentaje" name="percentage" type="text" placeholder="0.0">
+                                                <span class="add-on">%</span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="contro-group">
+                                            <div class="controls">
+                                              <input class="btn btn-primary" type="submit" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div id="faq-tab-777" class="tab-pane">
+                                       
+                                    </div>
+                                  </div>
+
                                   <input type="hidden" id="idRecargo" name="idRecargo">
                                   
                                   <input type="hidden" id="idsDescuentos" name="idsDescuentos">                                  
