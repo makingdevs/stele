@@ -1,4 +1,3 @@
-<g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
   <g:if test="${flash.message}">
     <input type="hidden" name="message" value="${flash.message}"/>
   </g:if>
@@ -16,6 +15,7 @@
   </div>
   
   <div class="row-fluid">
+    <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
     <div class="span3">
       <div class="control-group">
         <label class="control-label" for="txtConcepto">Concepto</label>
@@ -53,6 +53,7 @@
           </div>
         </div>
       </div>
+      </g:form>
     </div><!--/ span3 -->
                                 
     <div class="span6">
@@ -83,43 +84,44 @@
             <br/>
           </div>
           <div class="row-fluid">
-            <div class="span6">                                          
-              <div class="control-group">
-                <label class="control-label" for="txtConcepto"> Descuento </label>
-                <div class="controls">
-                  <input type="hidden" id="urlDes action:'obtenerDescuentosInstitucion', controller:'descuento')}" />
-                  <div class="input-prepend">
-                    <input type="text" id="nombreDeDescuento" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
-                    <span class="add-on">
-                      <i class="icon-edit"></i>
-                    </span>
-                  </div>  
-                </div>
-              </div>
-
-              <div class="control-group">
-                <label class="control-label" for="txtConcepto"> Importe </label>
-                <div class="controls">
-                  <div class="input-prepend"> 
-                    <span class="add-on">
-                      <i class="icon-usd"></i>
-                    </span>
-                    <input class="input-medium" id="cantidad" name="amount" type="text" placeholder="0.0">
+            <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoUnitarioForm" id="descuentoUnitarioForm">
+            <div class="span6">
+                <div class="control-group">
+                  <label class="control-label" for="txtConcepto"> Descuento </label>
+                  <div class="controls">
+                    <input type="hidden" id="urlDes action:'obtenerDescuentosInstitucion', controller:'descuento')}" />
+                    <div class="input-prepend">
+                      <input type="text" id="nombreDeDescuento" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
+                      <span class="add-on">
+                        <i class="icon-edit"></i>
+                      </span>
+                    </div>  
                   </div>
                 </div>
-              </div>
 
-              <div class="control-group">
-                <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
-                <div class="controls">                  
-                  <div class="input-append date">
-                    <input type="text" id="fechaDeVencimientoDesc" name="expirationDacontrol" />
-                    <span class="add-on">
-                      <i class="icon-calendar"></i>
-                    </span>
+                <div class="control-group">
+                  <label class="control-label" for="txtConcepto"> Importe </label>
+                  <div class="controls">
+                    <div class="input-prepend"> 
+                      <span class="add-on">
+                        <i class="icon-usd"></i>
+                      </span>
+                      <input class="input-medium" id="cantidad" name="amount" type="text" placeholder="0.0">
+                    </div>
                   </div>
                 </div>
-              </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
+                  <div class="controls">                  
+                    <div class="input-append date">
+                      <input type="text" id="fechaDeVencimientoDesc" name="expirationDacontrol" />
+                      <span class="add-on">
+                        <i class="icon-calendar"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>              
             </div>
             
             <div class="span6">
@@ -151,6 +153,7 @@
                 </div>
               </div>
             </div>
+            </g:form>
           </div>
         </div>
         <div id="faq-tab-777" class="tab-pane">
@@ -215,18 +218,13 @@
           </tbody>
         </table>
       </div>                            
-    </div>
-                                
-    <div class="span2">
+    </div>                                
+    
+    <div class="span3">      
       <div class="descuentoCreado">
         <g:render template="/descuento/list", model="[:]" />
-      </div>
-                                  
-      <div class="recargoCreado" name="recargoCreado">
-        <g:render template="/recargo/list" />
       </div>
     </div>
 
   </div>
 
-</g:form>
