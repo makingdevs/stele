@@ -38,7 +38,7 @@ jQuery(function ($) {
         porcentajeDescuento: $("#porcentaje"),
         diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento"),
         fechaExpiracion: $("#fechaDeVencimientoDesc"),
-        form: $("#descuentoForm")
+        form: $("#descuentoUnitarioForm")
       };
       this.descuento = new Descuento(selectors);
     },
