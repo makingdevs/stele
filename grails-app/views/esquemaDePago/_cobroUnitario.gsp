@@ -158,6 +158,7 @@
         </div>
         <div id="faq-tab-777" class="tab-pane">
           <div class="row-fluid">
+            <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
             <div class="span6">
               <div class="control-group">
                 <label class="control-label" for="txtConcepto">Importe</label>
@@ -185,6 +186,7 @@
                 </div>
               </div>
             </div>
+            </g:form> 
             <div class="span2">
               <div class="recargoCreado" name="recargoCreado2">
                 <g:render template="/recargo/list" />
