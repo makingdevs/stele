@@ -52,8 +52,13 @@ class EsquemaDePagoController {
  
   def paraCamada() {
     def listaDependientes = params.list("dependientes")
-    def months = (0..11).collect{new DateFormatSymbols().months[ (it+7) % 12 ].capitalize()}
-    [camada:params?.camada,listaDependientes:listaDependientes.join(','),months:months]
+    def c = Calendar.instance
+    c.setTime(new Date())
+    
+    def months = (0..11).collect{new DateFormatSymbols().months[ (it+7) % 12 ].capitalize()}    
+    [camada:params?.camada,listaDependientes:listaDependientes.join(','),
+                           months:months,
+                           lastDayOfTheMonth:c.getActualMaximum(Calendar.DAY_OF_MONTH)]
   }
 
   def obtenerEsquemaDePagoPorConcepto(){
@@ -110,22 +115,21 @@ class EsquemaDePagoController {
     listaDePagos
   }
 
-  private def asignarDescuntosAplicablesAlosPagos(def applicableDiscount, Payment payment) {
+  private def asignarDescuntosAplicablesAlosPagos(def applicableDiscount, Payment payment){
     def paymentsList = []
-    if (applicableDiscount instanceof ApplicableDiscount)
+    if(applicableDiscount instanceof ApplicableDiscount)
       paymentsList << applicableDiscountService.addApplicableDiscountToAPayment(applicableDiscount, payment.id)
-    else if (applicableDiscount instanceof List<ApplicableDiscount>) {
-      applicableDiscount.each { aDiscount ->
+    else if (applicableDiscount instanceof List<ApplicableDiscount>){
+      applicableDiscount.each{ aDiscount ->
         paymentsList << applicableDiscountService.addApplicableDiscountToAPayment(aDiscount, payment.id)
       }
     }
     paymentsList
   }
 
-  private def notificarCreacionDePago(def listaDePagos) {
+  private def notificarCreacionDePago(def listaDePagos){
     def dependientes = dependienteService.obtenerDependientesPorPagos(listaDePagos)
     notificacionService.notificarPagosCreados(dependientes)
-
   }
 
 }
