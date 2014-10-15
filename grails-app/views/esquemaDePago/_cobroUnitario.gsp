@@ -14,20 +14,20 @@
     <br/>
   </div>
   
-  <div class="row-fluid">
-    <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+  <div class="row-fluid">    
     <div class="span3">
+      <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
       <div class="control-group">
         <label class="control-label" for="txtConcepto">Concepto</label>
-          <div class="controls">
-            <input type="hidden" id="urlConcepto" value="${g.createLink(action:'obtenerEsquemaDePagoPorConcepto', controller:'esquemaDePago')}" />
-            <div class="input-prepend">
-              <input type="text" id="conceptoDePago" class="typeahead2" data-provide="typeahead" name="conceptoDePago" placeholder="Concepto" autocomplete="off" >
-                <span class="add-on">
-                  <i class="icon-edit"></i>
-                </span>
-            </div>
+        <div class="controls">
+          <input type="hidden" id="urlConcepto" value="${g.createLink(action:'obtenerEsquemaDePagoPorConcepto', controller:'esquemaDePago')}" />
+          <div class="input-prepend">
+            <input type="text" id="conceptoDePago" class="typeahead2" data-provide="typeahead" name="conceptoDePago" placeholder="Concepto" autocomplete="off" >
+              <span class="add-on">
+                <i class="icon-edit"></i>
+              </span>
           </div>
+        </div>
       </div>
                                         
       <div class="control-group">
