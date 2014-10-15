@@ -1,11 +1,3 @@
-<div class="alert alert-info">
-  <button class="close" data-dismiss="alert" type="button">
-    <i class="icon-remove"></i>
-  </button>
-  <strong>Nota! </strong>
-    Sólo puede seleccionar un concepto: cobro unitario o recurrente<br>
-</div>
-
 <div class="row-fluid">    
   <div class="span3">
     <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
@@ -25,7 +17,7 @@
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="txtConcepto"> Dias Vencimiento  </label>
+          <label class="control-label" for="txtConcepto"> Dias Vencimiento</label>
         <div class="controls">
           <div class="input-prepend">
             <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
@@ -48,23 +40,23 @@
   </div>
 
 
-  <div class="span6">
+  <div class="span6">    
     <ul class="nav nav-tabs padding-10">
       <li class="active">
-        <a data-toggle="tab" href="#faq-tab-666">
+        <a data-toggle="tab" href="#faq-tab-555">
         <i class="green icon-tag bigger-120"></i>
           Descuento
         </a>
       </li>
       <li>
-        <a data-toggle="tab" href="#faq-tab-777">
+        <a data-toggle="tab" href="#faq-tab-666">
           <i class="red icon-sort-by-attributes icon-flip-vertical bigger-120"></i>
           Recargo
         </a>
       </li>
     </ul>
     <div class="tab-content">
-      <div id="faq-tab-666" class="tab-pane active">
+      <div id="faq-tab-555" class="tab-pane active">
         <div class="alert alert-info">
           <button class="close" data-dismiss="alert" type="button">
             <i class="icon-remove"></i>
@@ -120,7 +112,7 @@
                   <div class="controls">
 
                     <div class="input-prepend">
-                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..30}" noSelection="['':'- Dia -']"/>
+                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
                     </div>
                   </div>
                 </div>
@@ -146,8 +138,38 @@
           </g:form>
         </div>
       </div>
-      <div id="faq-tab-777" class="tab-pane">
-
+      <div id="faq-tab-666" class="tab-pane">
+        <div class="row-fluid">
+          <div class="span6">
+            <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">            
+              <div class="control-group">
+                <label class="control-label" for="txtConcepto">Importe</label>
+                <div class="controls">
+                  <div class="input-prepend">
+                    <span class="add-on">
+                      <i class="icon-usd"></i>
+                    </span>
+                    <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
+                  </div>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="txtConcepto">Porcentaje</label>
+                <div class="controls">
+                  <div class="input-append">
+                    <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
+                    <span class="add-on">%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="contro-group">
+                <div class="controls">
+                  <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
+                </div>
+              </div>              
+            </g:form>
+          </div>          
+        </div>
       </div>
     </div>
 
