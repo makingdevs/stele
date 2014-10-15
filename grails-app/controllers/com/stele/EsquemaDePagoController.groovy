@@ -3,7 +3,7 @@ package com.stele
 
 import grails.converters.JSON
 import com.payable.*
-
+import java.text.DateFormatSymbols
 
 class EsquemaDePagoController {
 
@@ -52,7 +52,8 @@ class EsquemaDePagoController {
  
   def paraCamada() {
     def listaDependientes = params.list("dependientes")
-    [camada:params?.camada,listaDependientes:listaDependientes.join(',')]
+    def months = (0..11).collect{new DateFormatSymbols().months[ (it+7) % 12 ].capitalize()}
+    [camada:params?.camada,listaDependientes:listaDependientes.join(','),months:months]
   }
 
   def obtenerEsquemaDePagoPorConcepto(){
