@@ -89,7 +89,7 @@
                 <div class="control-group">
                   <label class="control-label" for="txtConcepto"> Descuento </label>
                   <div class="controls">
-                    <input type="hidden" id="urlDes action:'obtenerDescuentosInstitucion', controller:'descuento')}" />
+                    <input type="hidden" id="urlDescuento" value="${g.createLink(action:'obtenerDescuentosInstitucion',controller:'descuento')}" />
                     <div class="input-prepend">
                       <input type="text" id="nombreDeDescuento" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
                       <span class="add-on">
