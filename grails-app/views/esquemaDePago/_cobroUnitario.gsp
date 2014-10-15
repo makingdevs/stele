@@ -1,22 +1,13 @@
-  <g:if test="${flash.message}">
-    <input type="hidden" name="message" value="${flash.message}"/>
-  </g:if>
+<g:if test="${flash.message}">
+  <input type="hidden" name="message" value="${flash.message}"/>
+</g:if>
   
-  <input type="hidden" name="camada" value="${camada}" >
-  <input type="hidden" name="listaDependientes" value="${listaDependientes}">
-
-  <div class="alert alert-info">
-    <button class="close" data-dismiss="alert" type="button">
-      <i class="icon-remove"></i>
-    </button>
-    <strong>Nota! </strong>
-      Sólo puede seleccionar un concepto: cobro unitario o recurrente
-    <br/>
-  </div>
+<input type="hidden" name="camada" value="${camada}" >
+<input type="hidden" name="listaDependientes" value="${listaDependientes}">
   
-  <div class="row-fluid">    
-    <div class="span3">
-      <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+<div class="row-fluid">    
+  <div class="span3">
+    <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
       <div class="control-group">
         <label class="control-label" for="txtConcepto">Concepto</label>
         <div class="controls">
@@ -59,20 +50,20 @@
     <div class="span6">
       <ul class="nav nav-tabs padding-10">
         <li class="active">
-          <a data-toggle="tab" href="#faq-tab-666">
+          <a data-toggle="tab" href="#faq-tab-333">
             <i class="green icon-tag bigger-120"></i>
             Descuento
           </a>
         </li>
         <li>
-          <a data-toggle="tab" href="#faq-tab-777">
+          <a data-toggle="tab" href="#faq-tab-444">
             <i class="red icon-sort-by-attributes icon-flip-vertical bigger-120"></i>
             Recargo
           </a>
         </li>
       </ul>
       <div class="tab-content">
-        <div id="faq-tab-666" class="tab-pane active">
+        <div id="faq-tab-333" class="tab-pane active">
           <div class="alert alert-info">
             <button class="close" data-dismiss="alert" type="button">
               <i class="icon-remove"></i>
@@ -131,7 +122,7 @@
                   <div class="controls">
 
                     <div class="input-prepend">
-                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..30}" noSelection="['':'- Dia -']"/>
+                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
                     </div>
                   </div>
                 </div>
@@ -156,10 +147,10 @@
             </g:form>
           </div>
         </div>
-        <div id="faq-tab-777" class="tab-pane">
-          <div class="row-fluid">
-            <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
+        <div id="faq-tab-444" class="tab-pane">
+          <div class="row-fluid">            
             <div class="span6">
+              <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
               <div class="control-group">
                 <label class="control-label" for="txtConcepto">Importe</label>
                 <div class="controls">
@@ -185,15 +176,15 @@
                   <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
                 </div>
               </div>
+              </g:form> 
             </div>
-            </g:form> 
+            
             <div class="span2">
               <div class="recargoCreado" name="recargoCreado2">
                 <g:render template="/recargo/list" />
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
