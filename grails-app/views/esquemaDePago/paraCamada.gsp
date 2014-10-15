@@ -83,12 +83,6 @@
                             <div id="faq-tab-222" class="tab-pane">
                               <g:render template="/esquemaDePago/cobroRecurrente" />
                             </div>
-                                  
-                            <div id="faq-tab-333" class="tab-pane">
-                            </div>
-                                  
-                            <div id="faq-tab-444" class="tab-pane">
-                            </div>
                           </div>
                           
                         </div>
