@@ -211,10 +211,10 @@
       
         <div class="recargosDiv span3">
           <!-- TODO Poner estilo en un archivo .css -->
-          <table class="table hidden" style="margin-top:10px;">
+          <table class="table hidden rTable" style="margin-top:10px;">
             <thead>
               <tr>
-                <th>Recargo</th>                
+                <th>Recargo</th>
               </tr>
             </thead>
             <tbody>
