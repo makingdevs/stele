@@ -68,14 +68,14 @@
           <br/>
         </div>
         <div class="row-fluid">
-          <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoUnitarioForm" id="descuentoUnitarioForm">
+          <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoRecurrenteForm" id="descuentoRecurrenteForm">
             <div class="span6">
               <div class="control-group">
                 <label class="control-label" for="txtConcepto"> Descuento </label>
                 <div class="controls">
                   <input type="hidden" id="urlDescuento" value="${g.createLink(action:'obtenerDescuentosInstitucion',controller:'descuento')}" />
                   <div class="input-prepend">
-                    <input type="text" id="nombreDeDescuento" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
+                    <input type="text" id="nombreDeDescuentoRecurrente" name="discountName" class="typeahead2" data-provide="typeahead" placeholder="Nombre" autocomplete="off">
                     <span class="add-on">
                       <i class="icon-edit"></i>
                     </span>
@@ -90,7 +90,7 @@
                     <span class="add-on">
                       <i class="icon-usd"></i>
                     </span>
-                    <input class="input-medium" id="cantidad" name="amount" type="text" placeholder="0.0">
+                    <input class="input-medium" id="cantidadRecurrente" name="amount" type="text" placeholder="0.0">
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@
                 <label class="control-label" for="txtConcepto">Día de Vencimiento</label>                
                 <div class="controls">
                   <div class="input-prepend">                    
-                    <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
+                    <g:select  id="diaVencimientoDescuento" name="diaVencimientoDescuento" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
                   </div>
                 </div>                
               </div>
@@ -112,7 +112,7 @@
                   <div class="controls">
 
                     <div class="input-prepend">
-                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
+                      <g:select id="diasPreviosParaCancelarDescuentoRecurrente" name="previousDaysForCancelingDiscount" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
                     </div>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
                 <div class="input-append">
                   <label class="control-label" for="txtConcepto"> Procentaje </label>
                   <div class="controls">
-                    <input type="text" class="input-mini" id="porcentaje" n  placeholder="0.0">
+                    <input type="text" class="input-mini" id="porcentajeRecurrente" name="percentage" placeholder="0.0">
                     <span class="add-on">%</span>
                   </div>
                 </div>
@@ -130,7 +130,7 @@
               
               <div class="contro-group">
                 <div class="controls">
-                  <input class="btn btn-primary" type="submit" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
+                  <input class="btn btn-primary" type="submit" id="descuentoRecurrenteButton" name="descuentoButton" value ="Crear Descuento">
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@
       <div id="faq-tab-666" class="tab-pane">
         <div class="row-fluid">
           <div class="span6">
-            <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">            
+            <g:form name="recargoRecurrenteForm" id="recargoRecurrenteForm" url="[controller:'recargo',action:'nuevo']" >            
               <div class="control-group">
                 <label class="control-label" for="txtConcepto">Importe</label>
                 <div class="controls">
@@ -194,7 +194,7 @@
   </div>
 
   <div class="span2">
-    <div class="descuentoCreado">
+    <div class="descuentoRecurrenteCreado">
       <g:render template="/descuento/list", model="[:]" />
     </div>
     <div class="recargoCreado" name="recargoCreado">
