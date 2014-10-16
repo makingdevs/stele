@@ -170,6 +170,22 @@
               <span class="menu-text">Conciliación</span>
             </g:link>
           </li>
+          <li class="active open">
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-file"></i>
+              <span class="menu-text"> Reportes  </span>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+              <li>
+                <g:link controller="reporteAlumnosInscritos" action="index">
+                  <i class="icon-double-angle-right"></i>
+                  Alumnos Inscritos
+                </g:link>
+              </li>
+            </ul>
+          </li>
          </ul><!--/.nav-list-->
         
 <!--#Menu stele-->
