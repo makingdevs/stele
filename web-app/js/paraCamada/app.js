@@ -13,7 +13,7 @@ jQuery(function ($) {
     initCobroUnitario : function(){
       var selectors = {
         conceptoDePagoSelector: $('#conceptoDePago'),
-        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
+        tabsDivSelector: $('#tabsUnitario'),
         fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
         cantidadDePagoSelector: $('#cantidadDePago'),
         tablaDeDescuentosSelector: $('.cuTable')
