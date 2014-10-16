@@ -6,3 +6,7 @@ s3-plugin-temp/
 stele-*-config.groovy
 .DS_Store
 cobertura.ser
+*.classpath*
+*.project*
+*.settings/*
+*target-eclipse/*
