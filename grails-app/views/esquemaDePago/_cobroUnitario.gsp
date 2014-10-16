@@ -2,12 +2,14 @@
   <input type="hidden" name="message" value="${flash.message}"/>
 </g:if>
   
-<input type="hidden" name="camada" value="${camada}" >
 <input type="hidden" name="listaDependientes" value="${listaDependientes}">
   
 <div class="row-fluid">    
   <div class="span3">
     <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+      <input type="hidden" name="camada" value="${camada}" />
+      <input type="hidden" id="idRecargo" name="idRecargo" />
+
       <div class="control-group">
         <label class="control-label" for="txtConcepto">Concepto</label>
         <div class="controls">
@@ -44,24 +46,25 @@
           </div>
         </div>
       </div>
-      </g:form>
-    </div><!--/ span3 -->
+    </g:form>
+  </div><!--/ span3 -->
                                 
     <div class="span6">
-      <ul class="nav nav-tabs padding-10">
-        <li class="active">
-          <a data-toggle="tab" href="#faq-tab-333">
-            <i class="green icon-tag bigger-120"></i>
-            Descuento
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#faq-tab-444">
-            <i class="red icon-sort-by-attributes icon-flip-vertical bigger-120"></i>
-            Recargo
-          </a>
-        </li>
-      </ul>
+      <div id="tabsUnitario">
+        <ul class="nav nav-tabs padding-10">
+          <li class="active">
+            <a data-toggle="tab" href="#faq-tab-333">
+              <i class="green icon-tag bigger-120"></i>
+              Descuento
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#faq-tab-444">
+              <i class="red icon-sort-by-attributes icon-flip-vertical bigger-120"></i>
+              Recargo
+            </a>
+          </li>
+        </ul>
       <div class="tab-content">
         <div id="faq-tab-333" class="tab-pane active">
           <div class="alert alert-info">
@@ -188,30 +191,44 @@
         </div>
       </div>
 
-      <input type="hidden" id="idRecargo" name="idRecargo">                                  
       <input type="hidden" id="idsDescuentos" name="idsDescuentos">
-                                  
-      <label class="hidden cantidadRecargo" >Recargo Cantidad</label>
-      <input class="hidden cantidadRecargo" id="cantidadRecargo" name="cantidadRecargo" readonly>
-                                  
-      <label class="hidden porcentajeRecargo">Recargo Porcentaje</label>
-      <input class="hidden porcentajeRecargo" id="porcentajeRecargo" name="recargoPorcentaje" readonly>
-                                  
-      <div class="descuentosDiv">
-        <!-- TODO Poner estilo en un archivo .css -->
-        <table class="table hidden cuTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
-          <thead>
-            <tr>
-              <th>Descuento</th>
-              <th>Importe</th>
-              <th>Fecha de Vencimiento</th>
-            </tr>
-          </thead>
-          <tbody class="cobroUnitarioDescuentosTableBody">
-          </tbody>
-        </table>
-      </div>                            
-    </div>                                
+      </div>
+      <div class="row-fluid">
+        <div class="descuentosDiv span8">
+          <!-- TODO Poner estilo en un archivo .css -->
+          <table class="table hidden cuTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
+            <thead>
+              <tr>
+                <th>Descuento</th>
+                <th>Importe</th>
+                <th>Fecha de Vencimiento</th>
+              </tr>
+            </thead>
+            <tbody class="cobroUnitarioDescuentosTableBody">
+            </tbody>
+          </table>
+        </div>
+      
+        <div class="recargosDiv span3">
+          <!-- TODO Poner estilo en un archivo .css -->
+          <table class="table hidden" style="margin-top:10px;">
+            <thead>
+              <tr>
+                <th>Recargo</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>                                                    
+                  <p class="hidden cantidadRecargo" id="cantidadRecargo"><span class="hidden cantidadRecargo" >$</span></p>
+                  <p class="hidden porcentajeRecargo" id="porcentajeRecargo" name="recargoPorcentaje"><span class="hidden porcentajeRecargo">%</span></p>
+                </td>
+              </tr>
+            </tbody>          
+          </table>
+        </div>
+      </div>
+    </div>
     
     <div class="span3">      
       <div class="descuentoCreado">
