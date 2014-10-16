@@ -172,6 +172,7 @@ modules = {
     resource url:'assets/js/ace-extra.min.js'
     resource url:'assets/js/bootstrap.min.js'
     resource url:'assets/js/ace-elements.min.js'
+	resource url:'assets/js/ace.min.js'
     resource url:'assets/js/uncompressed/ace.js'
     
     resource url:'assets/js/bootbox.min.js'
@@ -195,4 +196,9 @@ modules = {
   busquedaDependientes{ 
     resource url: 'js/dependiente/busqueda.js'
   }
+  
+  reporteAlumnosInscritos {
+	  resource url: 'js/reporteAlumnosInscritos/index.js'
+  }
+  
 }
