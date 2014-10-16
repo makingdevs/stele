@@ -18,7 +18,31 @@ class ReporteAlumnosInscritosService {
 		lista.unique()
 	}
 	
-	def obtenerAlumnosInscritosPorNivelGradoGrupoYTurno(def niveles, def grados, def grupos, def turnos, Usuario usuario) {
-		usuario.dependientes.findAll()
+	def obtenerNivelesDeEstudioPorInstitrucion(Institucion institucion) {
+		def lista = []
+		def filtro = institucion.distribucionesInstitucionales.findAll {lista += it.nivelDeEstudio}
+		lista.unique()
+	}
+	
+	def obtenerTurnosPorInstitrucion(Institucion institucion) {
+		def lista = []
+		def filtro = institucion.distribucionesInstitucionales.findAll {lista += it.turno}
+		lista.unique()
+	}
+	
+	def obtenerAlumnosInscritosPorNivelGradoGrupoYTurno(def niveles, def grados, def grupos, def turnos, Institucion institucion) {
+		def criteria = Dependiente.createCriteria()
+		criteria.list { 
+			historialAcademico {
+				distribucionInstitucional {
+					eq('institucion', institucion)
+					'in'('grado', grados)
+					'in'('nivelDeEstudio', niveles)
+					'in'('turno', turnos)
+					'in'('grupo', grupos)
+				}
+			}
+		}
 	}
 }
+
