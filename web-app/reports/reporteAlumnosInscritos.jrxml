@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteAlumnosInscritos" language="groovy" pageWidth="2000" pageHeight="595" orientation="Landscape" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2e17449-13d7-4cd7-b0b6-a5cde852e370">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="179"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nombrePadreOTutor" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="matricula" class="java.lang.String"/>
+	<field name="nombreAlumno" class="java.lang.String"/>
+	<field name="nivel" class="java.lang.String"/>
+	<field name="grado" class="java.lang.String"/>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="turno" class="java.lang.String"/>
+	<field name="cobros" class="java.lang.String"/>
+	<field name="pagos" class="java.lang.String"/>
+	<field name="saldo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="59" width="188" height="20" uuid="dcd70deb-c68f-488c-991d-0624b71da1f8"/>
+				<text><![CDATA[Nombre Padre o Tutor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="59" width="171" height="20" uuid="716e48c4-0e6c-434b-ae4f-0a7559dc8d0a"/>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="59" width="100" height="20" uuid="f089cfed-9ecd-40e6-9078-3bbe419489b5"/>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="59" width="100" height="20" uuid="1b2d00ee-bb5b-4fd4-a3ea-1b34ecbcd7a4"/>
+				<text><![CDATA[Matricula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="559" y="59" width="207" height="20" uuid="88102b1e-9d2d-4620-bc6b-e5cfe4cca69a"/>
+				<text><![CDATA[Nombre del Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="766" y="59" width="100" height="20" uuid="318228c3-3109-499a-b193-5cac5aea770c"/>
+				<text><![CDATA[Nivel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="866" y="59" width="100" height="20" uuid="89cae634-92c9-4a99-aed1-4fd5cd0075af"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="966" y="59" width="100" height="20" uuid="0928fee9-1a04-4b85-be72-1ea7ac801720"/>
+				<text><![CDATA[Grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1066" y="59" width="100" height="20" uuid="87ea4e33-a209-4d8c-ad61-6b223c2154bb"/>
+				<text><![CDATA[Turno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1166" y="59" width="100" height="20" uuid="6d829463-12a8-4cad-ac69-4d7da9bebcc8"/>
+				<text><![CDATA[Cobros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1266" y="59" width="100" height="20" uuid="ad11fc5c-e929-4b57-9ec4-f5a264fa8a23"/>
+				<text><![CDATA[Pagos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1366" y="59" width="100" height="20" uuid="8bd84258-809f-4d4e-8bc1-4d041d9ddd8e"/>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="188" height="20" uuid="e53be79b-84a3-43ab-aa25-594ff364ff03"/>
+				<textFieldExpression><![CDATA[$F{nombrePadreOTutor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="0" width="171" height="20" uuid="ac380890-f6d7-4f4b-a313-2fe4c6d5e7ba"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="0" width="100" height="20" uuid="8f2c91e0-3124-413c-b8bc-b25a383cea42"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="0" width="100" height="20" uuid="4d28b02c-17d5-44ad-bcc6-36a24312d973"/>
+				<textFieldExpression><![CDATA[$F{matricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="559" y="0" width="207" height="20" uuid="15ae6e2f-d3cd-4326-833f-a0d9a2f6cf6a"/>
+				<textFieldExpression><![CDATA[$F{nombreAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="766" y="0" width="100" height="20" uuid="757468cc-f074-40a4-9f5a-c4d0cf56078e"/>
+				<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="866" y="0" width="100" height="20" uuid="437f4e2f-672b-4c0c-a2b1-ac1b365e7ba4"/>
+				<textFieldExpression><![CDATA[$F{grado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="966" y="0" width="100" height="20" uuid="d8d3973e-d76c-4916-be45-88e0f2670c86"/>
+				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1066" y="0" width="100" height="20" uuid="858a42a0-df6e-40f8-9663-f414aab3405c"/>
+				<textFieldExpression><![CDATA[$F{turno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1166" y="0" width="100" height="20" uuid="378a0e70-31b8-47e8-b0ae-7157ae6e80db"/>
+				<textFieldExpression><![CDATA[$F{cobros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1266" y="0" width="100" height="20" uuid="3d95c6ac-8304-4bbe-b09c-47658a55be77"/>
+				<textFieldExpression><![CDATA[$F{pagos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1366" y="0" width="100" height="20" uuid="6c2375a7-6bca-41c0-abc9-835aa1ff5850"/>
+				<textFieldExpression><![CDATA[$F{saldo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
