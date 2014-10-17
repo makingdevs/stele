@@ -227,6 +227,11 @@
         <input type="hidden" id="idsDescuentos" name="idsDescuentos">
       </div>
     </div>
+    <div class="span3">      
+      <div class="descuentoCreado">
+        <g:render template="/descuento/list", model="[:]" />
+      </div>
+    </div>
 </div>
 
 
