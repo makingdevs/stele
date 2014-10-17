@@ -28,6 +28,8 @@ window.Recargo = (function(){
             this.reset();
           });
         }  
+      }).then(function(){
+        $("#recargoUnitario").val($("#recargoId").val());
       });
 
       return false;
