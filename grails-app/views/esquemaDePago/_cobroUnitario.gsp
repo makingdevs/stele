@@ -6,7 +6,7 @@
   <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
     <div class="span3">    
       <input type="hidden" name="camada" value="${camada}" />
-      <input type="hidden" id="idRecargo" name="idRecargo" />
+      <input type="hidden" id="recargoUnitario" name="idRecargo" />
       <input type="hidden" name="listaDependientes" value="${listaDependientes}">
 
       <div class="control-group">
@@ -23,7 +23,7 @@
       </div>
                                         
       <div class="control-group">
-        <label class="control-label" for="txtConcepto">Importe</label>
+        <label class="control-label" for="cantidadDePago">Importe</label>
           <div class="controls">
             <div class="input-prepend">
               <span class="add-on">
@@ -35,7 +35,7 @@
       </div>
                                         
       <div class="control-group">
-        <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
+        <label class="control-label" for="fechaDeVencimiento">Fecha Vencimiento</label>
         <div class="controls">
           <div  class="input-append date">
             <input id="fechaDeVencimiento" name="fechaDeVencimiento" type="text" class="form-control vencimiento"/>
