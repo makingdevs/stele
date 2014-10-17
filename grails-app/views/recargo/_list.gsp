@@ -1,6 +1,6 @@
-<input type="hidden" id="recargoId" name="recargoId" value="${recargo?.id}">
 <g:if test="${recargo}">
-<table class="table hidden">
+<input type="hidden" id="recargoId" name="recargoId" value="${recargo?.id}">
+<table class="table">
   <thead>
     <tr>
       <th>Recargo</th>
