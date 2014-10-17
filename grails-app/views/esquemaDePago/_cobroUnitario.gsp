@@ -2,13 +2,12 @@
   <input type="hidden" name="message" value="${flash.message}"/>
 </g:if>
   
-<input type="hidden" name="listaDependientes" value="${listaDependientes}">
-  
 <div class="row-fluid" style="position:relative;">    
   <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
     <div class="span3">    
       <input type="hidden" name="camada" value="${camada}" />
       <input type="hidden" id="idRecargo" name="idRecargo" />
+      <input type="hidden" name="listaDependientes" value="${listaDependientes}">
 
       <div class="control-group">
         <label class="control-label" for="txtConcepto">Concepto</label>
@@ -101,21 +100,21 @@
             </a>
           </li>
         </ul>
-      <div class="tab-content">
-        <div id="faq-tab-333" class="tab-pane active">
-          <div class="alert alert-info">
-            <button class="close" data-dismiss="alert" type="button">
-              <i class="icon-remove"></i>
-            </button>
-            <strong>Nota! </strong>
-              Sólo puede seleccionar importe o porcentaje de descuento <br>
-            <strong>Nota! </strong>
-              Seleccionar fecha de vencimiento o dias antes de vencer el pago
-            <br/>
-          </div>
-          <div class="row-fluid">
-            <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoUnitarioForm" id="descuentoUnitarioForm">
-            <div class="span6">
+        <div class="tab-content">
+          <div id="faq-tab-333" class="tab-pane active">
+            <div class="alert alert-info">
+              <button class="close" data-dismiss="alert" type="button">
+                <i class="icon-remove"></i>
+              </button>
+              <strong>Nota! </strong>
+                Sólo puede seleccionar importe o porcentaje de descuento <br>
+              <strong>Nota! </strong>
+                Seleccionar fecha de vencimiento o dias antes de vencer el pago
+              <br/>
+            </div>
+            <div class="row-fluid">
+              <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoUnitarioForm" id="descuentoUnitarioForm">
+              <div class="span6">
                 <div class="control-group">
                   <label class="control-label" for="txtConcepto"> Descuento </label>
                   <div class="controls">
@@ -152,90 +151,83 @@
                     </div>
                   </div>
                 </div>              
-            </div>
+              </div>
             
-            <div class="span6">
-              <div class="control-group">
-                <div class="input-prepend">
-                  <label class="control-label" for="txtConcepto"> Dias antes </label> 
-                  <div class="controls">
-
-                    <div class="input-prepend">
-                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
+              <div class="span6">
+                <div class="control-group">
+                  <div class="input-prepend">
+                    <label class="control-label" for="txtConcepto"> Dias antes </label> 
+                    <div class="controls">
+                      <div class="input-prepend">
+                        <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               
-              <div class="control-group">
-                <div class="input-append">
-                  <label class="control-label" for="txtConcepto"> Procentaje </label>
-                  <div class="controls">
-                    <input type="text" class="input-mini" id="porcentaje" n  placeholder="0.0">
-                    <span class="add-on">%</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="contro-group">
-                <div class="controls">
-                  <input class="btn btn-primary" type="submit" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
-                </div>
-              </div>
-            </div>
-            </g:form>
-          </div>
-        </div>
-        <div id="faq-tab-444" class="tab-pane">
-          <div class="row-fluid">            
-            <div class="span6">
-              <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
-              <div class="control-group">
-                <label class="control-label" for="txtConcepto">Importe</label>
-                <div class="controls">
-                  <div class="input-prepend">
-                    <span class="add-on">
-                      <i class="icon-usd"></i>
-                    </span>
-                    <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
-                  </div>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label" for="txtConcepto">Porcentaje</label>
-                <div class="controls">
+                <div class="control-group">
                   <div class="input-append">
-                    <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
-                    <span class="add-on">%</span>
+                    <label class="control-label" for="txtConcepto"> Procentaje </label>
+                    <div class="controls">
+                      <input type="text" class="input-mini" id="porcentaje" n  placeholder="0.0">
+                      <span class="add-on">%</span>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="contro-group">
+                  <div class="controls">
+                    <input class="btn btn-primary" type="submit" id="descuentoButton" name="descuentoButton" value ="Crear Descuento">
                   </div>
                 </div>
               </div>
-              <div class="contro-group">
-                <div class="controls">
-                  <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
-                </div>
-              </div>
-              </g:form> 
+              </g:form>
             </div>
+          </div>
+          <div id="faq-tab-444" class="tab-pane">
+            <div class="row-fluid">            
+              <div class="span6">
+                <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
+                  <div class="control-group">
+                    <label class="control-label" for="txtConcepto">Importe</label>
+                    <div class="controls">
+                      <div class="input-prepend">
+                        <span class="add-on">
+                          <i class="icon-usd"></i>
+                        </span>
+                        <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="txtConcepto">Porcentaje</label>
+                    <div class="controls">
+                      <div class="input-append">
+                        <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
+                        <span class="add-on">%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contro-group">
+                    <div class="controls">
+                      <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
+                    </div>
+                  </div>
+                </g:form> 
+              </div>
             
-            <div class="span2">
-              <div class="recargoCreado" name="recargoCreado2">
-                <g:render template="/recargo/list" />
+              <div class="span2">
+                <div class="recargoCreado" name="recargoCreado2">
+                  <g:render template="/recargo/list" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <input type="hidden" id="idsDescuentos" name="idsDescuentos">
-      </div>      
-    </div>
-    
-    <div class="span3">
-      <div class="descuentoCreado">
-        <g:render template="/descuento/list", model="[:]" />
+        <input type="hidden" id="idsDescuentos" name="idsDescuentos">
       </div>
     </div>
-
 </div>
+
+
 
