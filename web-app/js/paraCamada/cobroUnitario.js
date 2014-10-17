@@ -20,11 +20,13 @@ window.CobroUnitario = (function() {
   }
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
-    var source   = $("#descuento-template").html();
+    this.tabsDiv.hide();
+    $(".discountsFromPaymentSchema").removeClass("hidden");
+    var source = $("#descuento-template").html();
     var template = Handlebars.compile(source);
     var html = template(item.discounts);
     $(".cobroUnitarioDescuentosTableBody").html(html);
-    this.initDatePickerParaDescuento($('.expiracionDescuento'));
+    this.initDatePickerParaDescuento($('.expiracionDescuento'));    
   }
 
   CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
