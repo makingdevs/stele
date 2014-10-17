@@ -78,10 +78,10 @@ window.CobroUnitario = (function() {
         var $direccion = $('#urlConcepto').val();
         var $url = $direccion+'/'+ id;
         that.fechaDeVencimiento.addClass("vencimiento");        
-        that.tabsDiv.show();        
+        that.tabsDiv.show();
         that.importe.val("");
-        
-        $(".cuTable, .porcentajeRecargo, .cantidadRecargo").addClass("hidden");        
+
+        $(".cuTable,.porcentajeRecargo,.cantidadRecargo,.rTable").addClass("hidden");        
         that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
 
         return $.getJSON(
@@ -102,18 +102,18 @@ window.CobroUnitario = (function() {
           if(item.value.description == concept){
             that.fechaDeVencimiento.removeClass("vencimiento");
             that.importe.val(item.paymentAmount); 
-                                    
+            
             if(item.surcharge != null){
               $("#idRecargo").val(item.surcharge.id)
               $("div.recargosDiv table").removeClass("hidden");
               if(item.surcharge.amount != null){
-                $("p.cantidadRecargo").append(" " + item.surcharge.amount);
+                $("p.cantidadRecargo").text("\$"+item.surcharge.amount);
                 $(".cantidadRecargo").removeClass("hidden");
                 $("p.porcentajeRecargo").text();
                 $(".porcentajeRecargo").addClass("hidden");
               }
               else if(item.surcharge.percentage != null){
-                $("p.porcentajeRecargo").append(" " + item.surcharge.percentage);
+                $("p.porcentajeRecargo").text("%"+item.surcharge.percentage);
                 $(".porcentajeRecargo").removeClass("hidden");
                 $("p.cantidadRecargo").text();
                 $(".cantidadRecargo").addClass("hidden");
