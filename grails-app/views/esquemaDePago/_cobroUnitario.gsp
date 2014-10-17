@@ -186,41 +186,40 @@
           </div>
           <div id="faq-tab-444" class="tab-pane">
             <div class="row-fluid">            
-              <div class="span6">
-                <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
-                  <div class="control-group">
-                    <label class="control-label" for="txtConcepto">Importe</label>
-                    <div class="controls">
-                      <div class="input-prepend">
-                        <span class="add-on">
-                          <i class="icon-usd"></i>
-                        </span>
-                        <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
-                      </div>
+              <g:form name="recargoForm" url="[controller:'recargo',action:'nuevo']" id="recargoForm">
+              <div class="span6">                
+                <div class="control-group">
+                  <label class="control-label" for="txtConcepto">Importe</label>
+                  <div class="controls">
+                    <div class="input-prepend">
+                      <span class="add-on">
+                        <i class="icon-usd"></i>
+                      </span>
+                      <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
                     </div>
                   </div>
-                  <div class="control-group">
-                    <label class="control-label" for="txtConcepto">Porcentaje</label>
-                    <div class="controls">
-                      <div class="input-append">
-                        <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
-                        <span class="add-on">%</span>
-                      </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="txtConcepto">Porcentaje</label>
+                  <div class="controls">
+                    <div class="input-append">
+                      <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
+                      <span class="add-on">%</span>
                     </div>
                   </div>
-                  <div class="contro-group">
-                    <div class="controls">
-                      <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
-                    </div>
+                </div>
+                <div class="contro-group">
+                  <div class="controls">
+                    <input class="btn btn-primary" type="submit" id="recargoButton" value ="Crear Recargo">
                   </div>
-                </g:form> 
+                </div>                
               </div>
             
-              <div class="span2">
-                <div class="recargoCreado" name="recargoCreado2">
-                  <g:render template="/recargo/list" />
+              <div class="span4">
+                <div class="listaRecargos">                  
                 </div>
               </div>
+              </g:form> 
             </div>
           </div>
         </div>
