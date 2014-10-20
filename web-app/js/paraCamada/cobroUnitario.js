@@ -21,7 +21,7 @@ window.CobroUnitario = (function() {
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
     this.tabsDiv.hide();
-    $(".discountsFromPaymentSchema").removeClass("hidden");
+    $(".discountsFromPaymentSchema").show();
     var source = $("#descuento-template").html();
     var template = Handlebars.compile(source);
     var html = template(item.discounts);
@@ -82,10 +82,8 @@ window.CobroUnitario = (function() {
         that.fechaDeVencimiento.addClass("vencimiento");        
         that.tabsDiv.show();
         that.importe.val("");
-
-        $(".cuTable,.porcentajeRecargo,.cantidadRecargo,.rTable").addClass("hidden");
-        $(".listaRecargos,.descuentosIdDiv").html("");
-        $("#recargoId").val("");
+        $(".discountsFromPaymentSchema").hide();
+        $(".porcentajeRecargo,.cantidadRecargo,.rTable").addClass("hidden");        
         
         that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
 
@@ -103,6 +101,9 @@ window.CobroUnitario = (function() {
       },
       items:10,
       updater: function (concept){
+        $(".listaRecargos,.descuentosIdDiv").html("");
+        $("#recargoUnitario").val("");
+        
         $.each(that.paymentSchemas, function(i,item){
           if(item.value.description == concept){
             that.fechaDeVencimiento.removeClass("vencimiento");
