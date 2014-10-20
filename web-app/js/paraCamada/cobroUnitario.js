@@ -83,7 +83,10 @@ window.CobroUnitario = (function() {
         that.tabsDiv.show();
         that.importe.val("");
 
-        $(".cuTable,.porcentajeRecargo,.cantidadRecargo,.rTable").addClass("hidden");        
+        $(".cuTable,.porcentajeRecargo,.cantidadRecargo,.rTable").addClass("hidden");
+        $(".listaRecargos,.descuentosIdDiv").html("");
+        $("#recargoId").val("");
+        
         that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
 
         return $.getJSON(

@@ -65,7 +65,7 @@ jQuery(function ($) {
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){
         if($('a[href=#faq-tab-111]').parent().attr("class") == 'active')
-          $("#pagoGeneracion").submit();
+          $("#cobroUnitarioForm").submit();
         else if($('a[href=#faq-tab-222]').parent().attr("class") == 'active')
           $("#pagoGeneracionrecurrente").submit();
 
