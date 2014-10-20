@@ -1,6 +1,7 @@
 <div class="row-fluid">    
+<%-- TODO Externalizar estilo css a un archivo .css --%>
+<g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" style="margin-bottom:0px">
   <div class="span3">
-    <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" >
       <input type="hidden" name="camada" value="${camada}">
       <input type="hidden" name="listaDependientes" value="${listaDependientes}">
 
@@ -36,8 +37,9 @@
           </div>
         </div>
       </div>
-    </g:form>
   </div>
+  </g:form>
+
 
 
   <div class="span6">    

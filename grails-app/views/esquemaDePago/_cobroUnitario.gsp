@@ -3,8 +3,9 @@
 </g:if>
   
 <div class="row-fluid">    
-  <g:form id="cobroUnitarioForm" name="cobroUnitarioForm" controller="esquemaDePago" action="generarPagoParaLaCamada" >
-    <div class="span3">
+  <%-- TODO Agregar estilo a un archivo css --%>
+  <g:form id="cobroUnitarioForm" name="cobroUnitarioForm" controller="esquemaDePago" action="generarPagoParaLaCamada" style="margin-bottom:0px">
+    <div class="span3" style="">
       <input type="hidden" name="camada" value="${camada}" />
       <input type="hidden" id="recargoUnitario" name="idRecargo" />
       <input type="hidden" name="listaDependientes" value="${listaDependientes}">
