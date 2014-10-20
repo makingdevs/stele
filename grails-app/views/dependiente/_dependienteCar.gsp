@@ -11,7 +11,12 @@
         <table id="sample-table-1" class="table table-striped table-bordered table-hover">
           <thead >
             <tr>
-              <th></th>
+              <th class="center">
+                Todos
+                <label>
+                  <g:checkBox name="allDependientes" checked="false" />
+                </label>
+                </th>
               <th>
                 <i class="icon-compass blue"></i>
                 Turno
