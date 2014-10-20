@@ -3,8 +3,8 @@
 </g:if>
   
 <div class="row-fluid" style="position:relative;">    
-  <g:form id="pagoGeneracion" name="pagoGeneracion" controller="esquemaDePago" action="generarPagoParaLaCamada" >
-    <div class="span3">    
+  <g:form id="cobroUnitarioForm" name="cobroUnitarioForm" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+    <div class="span3">
       <input type="hidden" name="camada" value="${camada}" />
       <input type="hidden" id="recargoUnitario" name="idRecargo" />
       <input type="hidden" name="listaDependientes" value="${listaDependientes}">
@@ -45,6 +45,10 @@
           </div>
         </div>
       </div>
+
+      <div class="descuentosIdDiv">
+      </div>
+
     </div><!--/ span3 -->
     <div class="span6 hidden discountsFromPaymentSchema">
       <div class="row-fluid">
@@ -113,6 +117,7 @@
               <br/>
             </div>
             <div class="row-fluid">
+              
               <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoUnitarioForm" id="descuentoUnitarioForm">
               <div class="span6">
                 <div class="control-group">
@@ -181,7 +186,10 @@
                   </div>
                 </div>
               </div>
+              <div class="descuentosIdDiv">                
+              </div>
               </g:form>
+              
             </div>
           </div>
           <div id="faq-tab-444" class="tab-pane">
