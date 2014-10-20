@@ -67,7 +67,8 @@ window.OperacionDescuento = (function(){
           }); 
         }  
       }).then(function(){
-        $(".descuentosIdDiv").html($("input[name=discount]"));
+        var discounts = $(".descuentoCreado input[name=discount]");
+        $(".descuentosIdDiv").html(discounts);
       });
 
       return false
