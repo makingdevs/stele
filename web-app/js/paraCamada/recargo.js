@@ -17,17 +17,19 @@ window.Recargo = (function(){
 
     this.formulario.submit(function(event){
       event.stopPropagation();
-
+      
       $.ajax({
         type: "POST",
         url: $(this).attr('action'),
         data: $(this).serialize(),
         success: function(data){
-          $(".recargoCreado").html(data);
+          $(".listaRecargos").html(data);
           that.formulario.each(function(){
             this.reset();
           });
         }  
+      }).then(function(){
+        $("#recargoUnitario").val($("#recargoId").val());
       });
 
       return false;
@@ -36,14 +38,16 @@ window.Recargo = (function(){
 
   Recargo.prototype.initDeleteFunction = function(){
 
-    $(".recargoCreado").on("click","a.deleteRecargo",function(event){
+    $(".listaRecargos").on("click","a.deleteRecargo",function(event){
       event.stopPropagation(); 
       $.ajax({
         type: "POST",
         url:$(this).attr("href"),
         success: function(data){
-          $(".recargoCreado").html(data);
+          $(".listaRecargos").html(data);
         } 
+      }).then(function(){
+        $("#recargoId").val("");
       });
 
       return false;

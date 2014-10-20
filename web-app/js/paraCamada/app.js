@@ -4,15 +4,17 @@ jQuery(function ($) {
   window.App = {
     init : function(){
       this.initButtonActions();
-      this.initDescuento();
+      this.initDescuentoUnitario();
+      this.initDescuentoRecurrente();
       this.initCobroUnitario();
       this.initCobroRecurrente();
       this.initRecargo();
+      this.initDivs();
     },
     initCobroUnitario : function(){
       var selectors = {
         conceptoDePagoSelector: $('#conceptoDePago'),
-        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
+        tabsDivSelector: $('.tabs'),
         fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
         cantidadDePagoSelector: $('#cantidadDePago'),
         tablaDeDescuentosSelector: $('.cuTable')
@@ -31,16 +33,27 @@ jQuery(function ($) {
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },
-    initDescuento: function(){
-      var selectors = {
+    initDescuentoUnitario: function(){
+      var selectoresOperacion = {
         nombreDescuento: $("#nombreDeDescuento"),
         cantidadDescuento: $("#cantidad"),
         porcentajeDescuento: $("#porcentaje"),
         diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento"),
-        fechaExpiracion: $("#fechaDeVencimientoDesc"),
-        form: $("#descuentoForm")
+        form: $("#descuentoUnitarioForm")
       };
-      this.descuento = new Descuento(selectors);
+      var operacionDescuento = new OperacionDescuento(selectoresOperacion);
+
+      var selectoresDescuento = {
+        fechaExpiracion: $("#fechaDeVencimientoDesc")
+      };
+
+      this.descuentoRecurrente = new DescuentoUnitario(selectoresDescuento,operacionDescuento);
+    },
+    initDescuentoRecurrente: function(){
+      var selectoresOperacion = {
+        //diaVencimiento:  
+      };        
+
     },
     initRecargo: function(){
       var selectors = {
@@ -53,7 +66,7 @@ jQuery(function ($) {
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){
         if($('a[href=#faq-tab-111]').parent().attr("class") == 'active')
-          $("#pagoGeneracion").submit();
+          $("#cobroUnitarioForm").submit();
         else if($('a[href=#faq-tab-222]').parent().attr("class") == 'active')
           $("#pagoGeneracionrecurrente").submit();
 
@@ -63,7 +76,10 @@ jQuery(function ($) {
       $("#descuentosForm").submit(function(event){
         event.stopPropagation();
         return false;
-      });
+      });          
+    },
+    initDivs: function(){      
+      $(".discountsFromPaymentSchema").hide();
     }
   };
   App.init();

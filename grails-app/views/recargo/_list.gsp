@@ -1,12 +1,13 @@
-<input type="hidden" id="recargoId" name="recargoId" value="${recargo?.id}">
 <g:if test="${recargo}">
-<table class="table ">
+<input type="hidden" id="recargoId" name="recargoId" value="${recargo?.id}">
+<table class="table">
   <thead>
     <tr>
       <th>Recargo</th>
       <th></th>
     </tr>
   </thead>
+  <tbody>
     <tr>
       <td>
         <span>
@@ -19,8 +20,7 @@
           <i class="icon-trash bigger-130"></i>
         </g:link>
       </td>
-    </tr>
-  <tbody>
+    </tr>  
   </tbody>
 </table>
 </g:if>
