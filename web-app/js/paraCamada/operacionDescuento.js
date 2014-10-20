@@ -66,6 +66,8 @@ window.OperacionDescuento = (function(){
             this.reset();
           }); 
         }  
+      }).then(function(){
+        $(".descuentosIdDiv").html($("input[name=discount]"));
       });
 
       return false
