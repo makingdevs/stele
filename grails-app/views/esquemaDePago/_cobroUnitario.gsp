@@ -2,7 +2,7 @@
   <input type="hidden" name="message" value="${flash.message}"/>
 </g:if>
   
-<div class="row-fluid" style="position:relative;">    
+<div class="row-fluid">    
   <g:form id="cobroUnitarioForm" name="cobroUnitarioForm" controller="esquemaDePago" action="generarPagoParaLaCamada" >
     <div class="span3">
       <input type="hidden" name="camada" value="${camada}" />
@@ -50,7 +50,7 @@
       </div>
 
     </div><!--/ span3 -->
-    <div class="span6 hidden discountsFromPaymentSchema">
+    <div class="span6 discountsFromPaymentSchema">      
       <div class="row-fluid">
         <div class="descuentosDiv span8">
           <!-- TODO Poner estilo en un archivo .css -->
@@ -88,6 +88,7 @@
       </div>
     </div>
   </g:form>
+
     <div class="span6 tabs">
       <div id="tabsUnitario">
         <ul class="nav nav-tabs padding-10">
