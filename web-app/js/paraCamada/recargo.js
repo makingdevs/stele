@@ -46,6 +46,8 @@ window.Recargo = (function(){
         success: function(data){
           $(".listaRecargos").html(data);
         } 
+      }).then(function(){
+        $("#recargoId").val("");
       });
 
       return false;
