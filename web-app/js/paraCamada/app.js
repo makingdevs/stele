@@ -9,6 +9,7 @@ jQuery(function ($) {
       this.initCobroUnitario();
       this.initCobroRecurrente();
       this.initRecargo();
+      this.initDivs();
     },
     initCobroUnitario : function(){
       var selectors = {
@@ -75,7 +76,10 @@ jQuery(function ($) {
       $("#descuentosForm").submit(function(event){
         event.stopPropagation();
         return false;
-      });
+      });          
+    },
+    initDivs: function(){      
+      $(".discountsFromPaymentSchema").hide();
     }
   };
   App.init();
