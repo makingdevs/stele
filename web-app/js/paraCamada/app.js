@@ -8,15 +8,14 @@ jQuery(function ($) {
       this.initDescuentoRecurrente();
       this.initCobroUnitario();
       this.initCobroRecurrente();
-      this.initRecargo();
-      this.initDivs();
+      this.initRecargo();      
     },
     initCobroUnitario : function(){
       var selectors = {
         conceptoDePagoSelector: $('#conceptoDePago'),
-        tabsDivSelector: $('.tabs'),
-        fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
         cantidadDePagoSelector: $('#cantidadDePago'),
+        fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
+        tabsDivSelector: $('.tabsUnitario'),
         tablaDeDescuentosSelector: $('.cuTable')
       };
       this.cobroUnitario = new CobroUnitario(selectors);
@@ -24,10 +23,12 @@ jQuery(function ($) {
     initCobroRecurrente : function(){
       var selectors = {
         conceptoDePagoRecurrente: $('#conceptoDePagoRecurrente'),
+        diasVencimiento: $("#diasVencimientoPago"),
         cantidadDePagoRecurrente: $('#cantidadDePagoRecurrente'),
+        tabsDivSelector:$(""),
+        idRecargo: $("#idRecargo"),
         cantidadRecargoRecurrente: $('input.cantidadRecargoRecurrente'),
         porcentajeRecargoRecurrente: $('input.porcentajeRecargoRecurrente'),
-        idRecargo: $("#idRecargo"),
         tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
         tablaDeDescuentos: $('.crTable')
       };
@@ -77,9 +78,6 @@ jQuery(function ($) {
         event.stopPropagation();
         return false;
       });          
-    },
-    initDivs: function(){      
-      $(".discountsFromPaymentSchema").hide();
     }
   };
   App.init();
