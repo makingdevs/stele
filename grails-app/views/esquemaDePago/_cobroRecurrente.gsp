@@ -78,7 +78,7 @@
             </tbody>
           </table>
         </div>
-        <div class="recargosDiv span3">
+        <div class="recargosRecurrentesDiv  span3">
         <!-- TODO Poner estilo en un archivo .css -->
           <table class="table hidden rTable" style="margin-top:10px;">
             <thead>
@@ -89,8 +89,8 @@
             <tbody>
               <tr>
                 <td>
-                  <p class="hidden cantidadRecargo" id="cantidadRecargo"><span class="hidden cantidadRecargo" >$</span></p>
-                  <p class="hidden porcentajeRecargo" id="porcentajeRecargo" name="recargoPorcentaje"><span class="hidden porcentajeRecargo">%</span></p>
+                  <p class="hidden cantidadRecargoRecurrente" id="cantidadRecargoRecurrente"><span class="hidden cantidadRecargoRecurrente" >$</span></p>
+                  <p class="hidden porcentajeRecargoRecurrente" id="porcentajeRecargoRecurrente"><span class="hidden porcentajeRecargoRecurrente">%</span></p>
                 </td>
               </tr>
             </tbody>          
