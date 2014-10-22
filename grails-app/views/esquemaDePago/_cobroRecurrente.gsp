@@ -159,8 +159,11 @@
               <div class="control-group">
                 <label class="control-label" for="txtConcepto">Día de Vencimiento</label>
                 <div class="controls">
-                <div class="input-prepend">
-                  <g:select  id="diaVencimientoDescuento" name="diaVencimientoDescuento" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
+                <div class="input-prepend diaVencimientoDescuentoDiv">
+                  <select id="diaVencimientoDescuento" name="diaVencimientoDescuento" disabled>
+                    <option value="-1">- Día -</option>
+                  </select>
+                  <%-- <g:select id="diaVencimientoDescuento" name="diaVencimientoDescuento" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']" /> --%>
                 </div>
                 </div>                
               </div>              
