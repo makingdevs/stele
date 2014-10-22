@@ -49,12 +49,12 @@
 
       <div class="descuentosIdDiv">
       </div>
-    </div><!--/ span3 -->    
+    </div><!--/ span3 -->
     <div class="span6 discountsFromPaymentSchema" style="display:none;">
       <div class="row-fluid">
         <div class="descuentosDiv span8">
           <!-- TODO Poner estilo en un archivo .css -->
-          <table class="table hidden cuTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
+          <table class="table" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
             <thead>
               <tr>
                 <th>Descuento</th>

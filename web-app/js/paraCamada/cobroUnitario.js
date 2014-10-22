@@ -4,16 +4,14 @@ window.CobroUnitario = (function() {
   CobroUnitario.prototype.importe = '';
   CobroUnitario.prototype.fecheDeVencimiento = '';
   CobroUnitario.prototype.maxItems = 10;
-  CobroUnitario.prototype.paymentSchemas = [];
-  CobroUnitario.prototype.tablaDeDescuentos = '';
+  CobroUnitario.prototype.paymentSchemas = [];  
   CobroUnitario.prototype.tabsDiv = '';
   CobroUnitario.prototype.fechaDeVencimientoDescuento = ''; 
 
   function CobroUnitario(selectores){
     this.conceptoDePago = selectores.conceptoDePagoSelector;
     this.importe = selectores.cantidadDePagoSelector;
-    this.fechaDeVencimiento = selectores.fechaDeVencimientoSelector;
-    this.tablaDeDescuentos = selectores.tablaDeDescuentosSelector;
+    this.fechaDeVencimiento = selectores.fechaDeVencimientoSelector;    
     this.tabsDiv = selectores.tabsDivSelector;    
     this.initDatePickerParaFechaDeVencimiento();
     this.initTypeaheadParaConcepto();
@@ -110,7 +108,7 @@ window.CobroUnitario = (function() {
             that.importe.val(item.paymentAmount); 
             
             if(item.surcharge != null){
-              $("#idRecargo").val(item.surcharge.id)
+              $("#recargoUnitario").val(item.surcharge.id)
               $("div.recargosDiv table").removeClass("hidden");
               if(item.surcharge.amount != null){
                 $("p.cantidadRecargo").text("\$"+item.surcharge.amount);
@@ -129,8 +127,7 @@ window.CobroUnitario = (function() {
               $('.porcentajeRecargo,.cantidadRecargo,div.recargosDiv table').addClass("hidden");
 
             $("#idsDescuentos").val(item.discountIds);
-            that.tabsDiv.hide();        
-            that.tablaDeDescuentos.removeClass("hidden"); 
+            that.tabsDiv.hide();          
             that.renderDiscountsTable(item);
             return;
           } 
