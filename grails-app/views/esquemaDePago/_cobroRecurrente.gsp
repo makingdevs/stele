@@ -3,7 +3,7 @@
   <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" style="margin-bottom:0px">
     <div class="span3">
       <input type="hidden" name="camada" value="${camada}">
-      <input type="hidden" id="recargoUnitario" name="idRecargo" />
+      <input type="hidden" id="recargoRecurrente" name="idRecargo" />
       <input type="hidden" name="listaDependientes" value="${listaDependientes}">
 
       <div class="control-group">
