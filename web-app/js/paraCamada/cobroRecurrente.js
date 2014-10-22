@@ -17,7 +17,7 @@ window.CobroRecurrente = (function(){
   CobroRecurrente.prototype.renderDiscountsTable = function(paymentScheme){    
     this.tabsDiv.hide();
     $(".discountsFromPaymentSchemaRecurrente").show();
-    var source = $("#descuento-template").html();
+    var source = $("#descuentoRecurrente-template").html();
     var template = Handlebars.compile(source);
     var html = template(paymentScheme.discounts);    
     $(".cobroRecurrenteDescuentosTableBody").html(html);
@@ -28,17 +28,17 @@ window.CobroRecurrente = (function(){
     if(paymentSchema.surcharge != null){
 
       $("#recargoRecurrente").val(paymentSchema.surcharge.id);
-
+      $("div.recargosRecurrentesDiv table").removeClass("hidden");
       if(paymentSchema.surcharge.amount != null){
-        //this.cantidadRecargoRecurrente.val(paymentSchema.surcharge.amount);
+        $("p.cantidadRecargoRecurrente").text("\$"+paymentSchema.surcharge.amount);
         $(".cantidadRecargoRecurrente").removeClass("hidden");
-        //this.porcentajeRecargoRecurrente.val();
+        $("p.porcentajeRecargoRecurrente").text();
         $(".porcentajeRecargoRecurrente").addClass("hidden");
       }
       else if(paymentSchema.surcharge.percentage != null){ 
-        this.porcentajeRecargoRecurrente.val(paymentSchema.surcharge.percentage);
+        $("p.porcentajeRecargoRecurrente").text("%"+paymentSchema.surcharge.percentage);
         $(".porcentajeRecargoRecurrente").removeClass("hidden");
-        this.cantidadRecargoRecurrente.val();
+        $("p.cantidadRecargoRecurrente").text();
         $(".cantidadRecargoRecurrente").addClass("hidden");
       }
       else
