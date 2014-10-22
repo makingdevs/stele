@@ -43,19 +43,38 @@
       </div>
     </div>
     
-    <div class="span6 discountsFromPaymentSchemaRecurrente" style="display:none">
+    <div class="span6 discountsFromPaymentSchemaRecurrente" style="display:none">      
       <div class="row-fluid">
         <div class="descuentosDiv span8">
           <!-- TODO Poner estilo en un archivo .css -->
-          <table class="table hidden cuTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
+          <table class="table" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
             <thead>
               <tr>
                 <th>Descuento</th>
                 <th>Importe</th>
-                <th>Fecha de Vencimiento</th>
+                <th>Día de Vencimiento</th>
               </tr>
             </thead>
-            <tbody class="cobroUnitarioDescuentosTableBody">
+            <tbody class="cobroRecurrenteDescuentosTableBody">
+              <script id="descuentoRecurrente-template" type="text/x-handlebars-template">
+              {{#if this}}
+                {{#each this}}
+                <tr>
+                  <td>{{descuento}}</td>
+                  <td>{{cantidad}}</td>
+                  <td style="padding-left:0px;">
+                    <input type="text" class="diaVencimientoDescuento" style="width:100%;" name="diaVencimientoDescuento[{{@index}}]" />
+                  </td>
+                </tr>    
+                {{/each}}
+              {{else}}
+              <tr>
+                <td colspan="3">
+                  El concepto no tiene descuentos.
+                </td>
+              </tr> 
+              {{/if}}
+              </script>
             </tbody>
           </table>
         </div>
@@ -142,7 +161,7 @@
                 <div class="controls">
                 <div class="input-prepend">
                   <g:select  id="diaVencimientoDescuento" name="diaVencimientoDescuento" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
-                    </div>
+                </div>
                 </div>                
               </div>              
             </div>
