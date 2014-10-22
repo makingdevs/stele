@@ -15,22 +15,16 @@ jQuery(function ($) {
         conceptoDePagoSelector: $('#conceptoDePago'),
         cantidadDePagoSelector: $('#cantidadDePago'),
         fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
-        tabsDivSelector: $('.tabsUnitario'),
-        tablaDeDescuentosSelector: $('.cuTable')
+        tabsDivSelector: $('.tabsUnitario')
       };
       this.cobroUnitario = new CobroUnitario(selectors);
     },
     initCobroRecurrente : function(){
       var selectors = {
-        conceptoDePagoRecurrente: $('#conceptoDePagoRecurrente'),
-        diasVencimiento: $("#diasVencimientoPago"),
-        cantidadDePagoRecurrente: $('#cantidadDePagoRecurrente'),
-        tabsDivSelector:$(""),
-        idRecargo: $("#idRecargo"),
-        cantidadRecargoRecurrente: $('input.cantidadRecargoRecurrente'),
-        porcentajeRecargoRecurrente: $('input.porcentajeRecargoRecurrente'),
-        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
-        tablaDeDescuentos: $('.crTable')
+        conceptoDePagoRecurrenteSelector: $('#conceptoDePagoRecurrente'),
+        diasVencimientoSelector: $('#diasVencimientoPago'),
+        cantidadDePagoRecurrenteSelector: $('#cantidadDePagoRecurrente'),
+        tabsDivSelector:$('.tabsRecurrente')
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },
