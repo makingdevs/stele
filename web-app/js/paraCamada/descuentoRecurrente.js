@@ -22,7 +22,7 @@ window.DescuentoRecurrente = (function(){
         url:$(this).attr("action"),
         data:$(this).serialize()+"&referenceDay="+$("#diasVencimientoPago").val(),
         success: function(data){
-          $(".descuentoCreado").html(data);
+          $(".descuentoRecurrenteCreado").html(data);
           that.formulario.each(function(){
             this.reset();
           }); 
