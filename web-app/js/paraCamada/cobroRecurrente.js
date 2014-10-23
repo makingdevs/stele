@@ -11,7 +11,7 @@ window.CobroRecurrente = (function(){
     this.cantidadDePagoRecurrente = selectores.cantidadDePagoRecurrenteSelector;
     this.tabsDiv = selectores.tabsDivSelector;
     this.initTypeaheadParaCobroRecurrente();    
-    this.setExpiationDayForDiscount($("#diaVencimientoDescuento"));
+    this.initExpirationDay();
   }
 
   CobroRecurrente.prototype.renderDiscountsTable = function(paymentScheme){    
@@ -23,18 +23,32 @@ window.CobroRecurrente = (function(){
     $(".cobroRecurrenteDescuentosTableBody").html(html);
   }
 
-  CobroRecurrente.prototype.setExpiationDayForDiscount = function(discount){
+  CobroRecurrente.prototype.setExpirationDayForDiscount = function(discount,expirationDay){    
+    discount.each(function(){
+      var firstItem = discount.find("option:eq(0)");
+      $(this).html("");
+      $(this).append(firstItem);
+    });
+
+    if(!isNaN(expirationDay)){      
+      discount.each(function(){
+        for(var i=1;i<=expirationDay;i++)
+          $(this).append("<option value='"+i+"'>"+i+"</option>");
+
+        $(this).prop("disabled",false);
+      });      
+    }
+    else{
+      discount.each(function(){        
+        $(this).prop("disabled",true);
+      });
+    }
+  }
+
+  CobroRecurrente.prototype.initExpirationDay = function(){
+    var that = this;
     this.diasVencimiento.change(function(){
-      var diaVencimiento = parseInt($(this).val());
-      var firstItem = discount.find("option:eq(0)").text();
-
-      discount.html("");
-      discount.append(firstItem);
-
-      for(var i=1;i<=diaVencimiento;i++)
-        discount.append("<option value='"+i+"'>"+i+"</option>");
-      
-      discount.prop("disabled",false);
+      that.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt($(this).val()));
     });
   }
 
