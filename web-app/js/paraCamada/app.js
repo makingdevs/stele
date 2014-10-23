@@ -33,21 +33,33 @@ jQuery(function ($) {
         nombreDescuento: $("#nombreDeDescuento"),
         cantidadDescuento: $("#cantidad"),
         porcentajeDescuento: $("#porcentaje"),
-        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento"),
-        form: $("#descuentoUnitarioForm")
+        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento")
       };
       var operacionDescuento = new OperacionDescuento(selectoresOperacion);
 
       var selectoresDescuento = {
-        fechaExpiracion: $("#fechaDeVencimientoDesc")
+        fechaExpiracion: $("#fechaDeVencimientoDesc"),
+        formulario:$("#descuentoUnitarioForm")
       };
 
-      this.descuentoRecurrente = new DescuentoUnitario(selectoresDescuento,operacionDescuento);
+      this.descuentoUnitario = new DescuentoUnitario(selectoresDescuento,operacionDescuento);
     },
     initDescuentoRecurrente: function(){
       var selectoresOperacion = {
-        //diaVencimiento:  
+        nombreDescuento: $("#nombreDeDescuentoRecurrente"),
+        cantidadDescuento: $("#cantidadRecurrente"),
+        porcentajeDescuento: $("#porcentajeRecurrente"),
+        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuentoRecurrente")
       };        
+      
+      var operacionDescuento = new OperacionDescuento(selectoresOperacion);
+
+      var selectoresDescuento = {
+        diaVencimiento:$("#diaVencimientoDescuento"),
+        formulario:$("#descuentoRecurrenteForm")   
+      }
+
+      this.descuentoRecurrente = new DescuentoRecurrente(selectoresDescuento,operacionDescuento);
 
     },
     initRecargo: function(){
