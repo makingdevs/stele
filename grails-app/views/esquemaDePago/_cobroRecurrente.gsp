@@ -2,9 +2,9 @@
   <%-- TODO Externalizar estilo css a un archivo .css --%>
   <g:form id="pagoGeneracionrecurrente" name="pagoGeneracionrecurrente" controller="esquemaDePago" action="generarPagoParaLaCamada" style="margin-bottom:0px">
     <div class="span3">
-      <input type="hidden" name="camada" value="${camada}">
+      <input type="hidden" name="camada" value="${camada}" />
       <input type="hidden" id="recargoRecurrente" name="idRecargo" />
-      <input type="hidden" name="listaDependientes" value="${listaDependientes}">
+      <input type="hidden" name="listaDependientes" value="${listaDependientes}" />
 
       <div class="control-group">
         <label class="control-label" for="txtConcepto">Concepto</label>
@@ -63,7 +63,7 @@
                   <td>{{descuento}}</td>
                   <td>{{cantidad}}</td>
                   <td style="padding-left:0px;">
-                    <input type="text" class="diaVencimientoDescuento" style="width:100%;" name="diaVencimientoDescuento[{{@index}}]" />
+                    <g:select disabled="${true}" class="diaVencimientoDescuento" name="diaVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>                    
                   </td>
                 </tr>    
                 {{/each}}
@@ -159,11 +159,8 @@
               <div class="control-group">
                 <label class="control-label" for="txtConcepto">Día de Vencimiento</label>
                 <div class="controls">
-                <div class="input-prepend diaVencimientoDescuentoDiv">
-                  <select id="diaVencimientoDescuento" name="diaVencimientoDescuento" disabled>
-                    <option value="-1">- Día -</option>
-                  </select>
-                  <%-- <g:select id="diaVencimientoDescuento" name="diaVencimientoDescuento" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']" /> --%>
+                <div class="input-prepend diaVencimientoDescuentoDiv">                  
+                  <g:select disabled="${true}" id="diaVencimientoDescuento" class="diaVencimientoDescuento" name="diaVencimientoDescuento" from="[]" noSelection="['':'- Dia -']" /> 
                 </div>
                 </div>                
               </div>              
@@ -331,4 +328,3 @@
     </div>
   </div>
 </div>
-                            
