@@ -13,15 +13,17 @@ window.DescuentoRecurrente = (function(){
 
   DescuentoRecurrente.prototype.initFormAction = function(){
     var that = this;
+    
     this.formulario.submit(function(event){
       event.stopPropagation();
+     
       $.ajax({
         type: "POST",
         url:$(this).attr("action"),
-        data:$(this).serialize()+"&referenceDate="+$("#fechaDeVencimiento").val(),
+        data:$(this).serialize()+"&referenceDay="+$("#diasVencimientoPago").val(),
         success: function(data){
           $(".descuentoCreado").html(data);
-          that.form.each(function(){
+          that.formulario.each(function(){
             this.reset();
           }); 
         }  
