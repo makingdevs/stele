@@ -11,7 +11,7 @@ window.CobroRecurrente = (function(){
     this.cantidadDePagoRecurrente = selectores.cantidadDePagoRecurrenteSelector;
     this.tabsDiv = selectores.tabsDivSelector;
     this.initTypeaheadParaCobroRecurrente();    
-    this.initExpirationDay();
+    this.setExpiationDayForDiscount($("#diaVencimientoDescuento"));
   }
 
   CobroRecurrente.prototype.renderDiscountsTable = function(paymentScheme){    
@@ -23,16 +23,18 @@ window.CobroRecurrente = (function(){
     $(".cobroRecurrenteDescuentosTableBody").html(html);
   }
 
-  CobroRecurrente.prototype.initExpirationDay = function(){
+  CobroRecurrente.prototype.setExpiationDayForDiscount = function(discount){
     this.diasVencimiento.change(function(){
-      var diaVencimiento = parseInt($(this).val()); 
-      
-      $("#diaVencimientoDescuento").html("");
+      var diaVencimiento = parseInt($(this).val());
+      var firstItem = discount.find("option:eq(0)").text();
 
-      for(var i=1;i<=diaVencimiento;i++) 
-        $("#diaVencimientoDescuento").append("<option value='"+i+"'>"+i+"</option>");
+      discount.html("");
+      discount.append(firstItem);
+
+      for(var i=1;i<=diaVencimiento;i++)
+        discount.append("<option value='"+i+"'>"+i+"</option>");
       
-      $("#diaVencimientoDescuento").html("");
+      discount.prop("disabled",false);
     });
   }
 
