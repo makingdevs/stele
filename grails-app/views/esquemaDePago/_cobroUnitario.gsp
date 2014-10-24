@@ -202,7 +202,7 @@
                       <span class="add-on">
                         <i class="icon-usd"></i>
                       </span>
-                      <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
+                      <input class="input-mini" id="recargoUnitarioCantidad" name="amount" type="text" placeholder="0.0">
                     </div>
                   </div>
                 </div>
@@ -210,7 +210,7 @@
                   <label class="control-label" for="txtConcepto">Porcentaje</label>
                   <div class="controls">
                     <div class="input-append">
-                      <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
+                      <input class="input-mini" id="recargoUnitarioPorcentaje" name="percentage" type="text" placeholder="0.0">
                       <span class="add-on">%</span>
                     </div>
                   </div>
