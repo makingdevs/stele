@@ -8,7 +8,8 @@ jQuery(function ($) {
       this.initDescuentoRecurrente();
       this.initCobroUnitario();
       this.initCobroRecurrente();
-      this.initRecargo();      
+      this.initRecargoUnitario();      
+      this.initRecargoRecurrente();
     },
     initCobroUnitario : function(){
       var selectors = {
@@ -62,13 +63,21 @@ jQuery(function ($) {
       this.descuentoRecurrente = new DescuentoRecurrente(selectoresDescuento,operacionDescuento);
 
     },
-    initRecargo: function(){
+    initRecargoUnitario: function(){
       var selectors = {
-        cantidadRecargo: $("#cantidadRecargo"),
-        porcentajeRecargo: $("#porcentajeRecargo"),
+        cantidadRecargo: $("#recargoUnitarioCantidad"),
+        porcentajeRecargo: $("#recargoUnitarioPorcentaje"),
         formulario: $("#recargoForm")  
       };
-      this.recargo = new Recargo(selectors);
+      this.recargoUnitario = new Recargo(selectors);
+    },
+    initRecargoRecurrente: function(){
+      var selectors = {
+        cantidadRecargoRecurrente: $("#recargoRecurrenteCantidad"),
+        porcentajeRecargo: $("#recargoRecurrentePorcentaje"),
+        formulario:$("#recargoRecurrenteForm") 
+      }                    
+      this.recargoRecurrente = new Recargo(selectors);
     },
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){
