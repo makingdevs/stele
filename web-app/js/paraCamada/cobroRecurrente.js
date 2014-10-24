@@ -31,10 +31,13 @@ window.CobroRecurrente = (function(){
     });
 
     if(!isNaN(expirationDay)){      
+      var source = $("#diaVencimiento-template").html();
+      var template = Handlebars.compile(source);
+       
       discount.each(function(){
         for(var i=1;i<=expirationDay;i++)
-          $(this).append("<option value='"+i+"'>"+i+"</option>");
-
+          $(this).append(template({number:i}));
+       
         $(this).prop("disabled",false);
       });      
     }
