@@ -75,11 +75,11 @@
               </tr> 
               {{/if}}
               </script>
-              <script id="diaVencimiento-template" type="text/x-handlebars-template">
-                <option value="{{number}}">{{number}}</option>  
-              </script>
             </tbody>
           </table>
+          <script id="diaVencimiento-template" type="text/x-handlebars-template">
+            <option value="{{number}}">{{number}}</option>  
+          </script>
         </div>
         <div class="recargosRecurrentesDiv  span3">
         <!-- TODO Poner estilo en un archivo .css -->
