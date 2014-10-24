@@ -21,6 +21,7 @@ window.CobroRecurrente = (function(){
     var template = Handlebars.compile(source);
     var html = template(paymentScheme.discounts);    
     $(".cobroRecurrenteDescuentosTableBody").html(html);
+    this.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt(this.diasVencimiento.val()));
   }
 
   CobroRecurrente.prototype.setExpirationDayForDiscount = function(discount,expirationDay){    
@@ -86,10 +87,12 @@ window.CobroRecurrente = (function(){
       source: function( id, process ){
         var $direccion = $('#urlConcepto').val();
         var $url = $direccion+'/'+ id;        
+        that.tabsDiv.show();     
         that.cantidadDePagoRecurrente.val("");
-
-        $(".crTable, .porcentajeRecargoRecurrente, .cantidadRecargoRecurrente").addClass("hidden");
-        //that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
+        $(".discountsFromPaymentSchemaRecurrente").hide();
+        $(".porcentajeRecargoRecurrente, .cantidadRecargoRecurrente").addClass("hidden");
+      
+        that.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt(that.diasVencimiento.val()));
       
         return $.getJSON(
           $url,
