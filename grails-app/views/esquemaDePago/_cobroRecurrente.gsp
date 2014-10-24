@@ -56,27 +56,27 @@
               </tr>
             </thead>
             <tbody class="cobroRecurrenteDescuentosTableBody">
-              <script id="descuentoRecurrente-template" type="text/x-handlebars-template">
-              {{#if this}}
-                {{#each this}}
-                <tr>
-                  <td>{{descuento}}</td>
-                  <td>{{cantidad}}</td>
-                  <td style="padding-left:0px;">
-                    <g:select disabled="${true}" class="diaVencimientoDescuento" name="diaVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>                    
-                  </td>
-                </tr>    
-                {{/each}}
-              {{else}}
-              <tr>
-                <td colspan="3">
-                  El concepto no tiene descuentos.
-                </td>
-              </tr> 
-              {{/if}}
-              </script>
             </tbody>
           </table>
+          <script id="descuentoRecurrente-template" type="text/x-handlebars-template">
+            {{#if this}}
+            {{#each this}}
+            <tr>
+              <td>{{descuento}}</td>
+              <td>{{cantidad}}</td>
+              <td style="padding-left:0px;">
+                <g:select disabled="${true}" class="diaVencimientoDescuento" name="diaVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>                    
+              </td>
+            </tr>    
+            {{/each}}
+            {{else}}
+            <tr>
+              <td colspan="3">
+                El concepto no tiene descuentos.
+              </td>
+            </tr> 
+            {{/if}}
+          </script>
           <script id="diaVencimiento-template" type="text/x-handlebars-template">
             <option value="{{number}}">{{number}}</option>  
           </script>
@@ -331,3 +331,4 @@
     </div>
   </div>
 </div>
+
