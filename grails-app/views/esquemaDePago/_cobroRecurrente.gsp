@@ -19,10 +19,10 @@
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="txtConcepto"> Dias Vencimiento</label>
+        <label class="control-label" for="txtConcepto"> Día del mes de vencimiento</label>
         <div class="controls">
           <div class="input-prepend">
-            <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
+            <g:select  id="diasVencimientoPago" name="diasVencimientoPago" from="${1..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/> 
           </div>
         </div>
       </div>
@@ -74,6 +74,9 @@
                 </td>
               </tr> 
               {{/if}}
+              </script>
+              <script id="diaVencimiento-template" type="text/x-handlebars-template">
+                <option value="{{number}}">{{number}}</option>  
               </script>
             </tbody>
           </table>
