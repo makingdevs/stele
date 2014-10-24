@@ -223,7 +223,7 @@
               </div>
             
               <div class="span4">
-                <div class="listaRecargos">                  
+                <div class="listaRecargosUnitarios">                  
                 </div>
               </div>
               </g:form> 
