@@ -67,7 +67,9 @@ jQuery(function ($) {
       var selectors = {
         cantidadRecargo: $("#recargoUnitarioCantidad"),
         porcentajeRecargo: $("#recargoUnitarioPorcentaje"),
-        formulario: $("#recargoForm")  
+        formulario: $("#recargoForm"),
+        divResultados: $(".listaRecargosUnitarios"),
+        idRecargo:$("#recargoUnitario") 
       };
       this.recargoUnitario = new Recargo(selectors);
     },
@@ -75,7 +77,9 @@ jQuery(function ($) {
       var selectors = {
         cantidadRecargoRecurrente: $("#recargoRecurrenteCantidad"),
         porcentajeRecargo: $("#recargoRecurrentePorcentaje"),
-        formulario:$("#recargoRecurrenteForm") 
+        formulario:$("#recargoRecurrenteForm"),
+        divResultados: $(".listaRecargosRecurrentes"),
+        idRecargo:$("#recargoRecurrente") 
       }                    
       this.recargoRecurrente = new Recargo(selectors);
     },
