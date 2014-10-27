@@ -41,6 +41,13 @@
 
       <div class="descuentosIdsRecurrente">
       </div>
+      
+      <div class="meses">
+      </div>
+
+      <div class="cobroDoble">      
+      </div>
+
     </div>
     
     <div class="span6 discountsFromPaymentSchemaRecurrente" style="display:none">      
@@ -100,7 +107,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div>   
   </g:form>
 
   <div class="span6 tabsRecurrente">
@@ -331,4 +338,17 @@
     </div>
   </div>
 </div>
+
+<script id="meses-template" type="text/x-handlebars-template">
+  {{#each this}}
+    <input type="hidden" value="{{mes}}" name="meses"/>
+  {{/each}}
+</script>
+<script id="cobroDoble-template" type="text/x-handlebars-template">
+  {{#each this}}
+    <input type="hidden" value="{{mes}}" name="pagoDoble"/>
+  {{/each}}
+</script>
+
+
 
