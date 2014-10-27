@@ -5,15 +5,12 @@ window.OperacionDescuento = (function(){
   OperacionDescuento.prototype.porcentaje = '';
   OperacionDescuento.prototype.diasPreviosParaCancelarDescuento = '';
   OperacionDescuento.prototype.descuentos = [];  
-  OperacionDescuento.prototype.form = ' ';
 
   function OperacionDescuento(selectores){
     this.nombreDescuento = selectores.nombreDescuento;
     this.cantidad = selectores.cantidadDescuento;
     this.porcentaje = selectores.porcentajeDescuento;
     this.diasPreviosParaCancelarDescuento = selectores.diasPreviosParaCancelarDescuento;
-    this.form = selectores.form;
-    this.initFormAction();
     this.initTypeaheadParaDescuento();
   }
 
@@ -49,30 +46,6 @@ window.OperacionDescuento = (function(){
         return descuento;
       } 
     });
-  }
-
-  OperacionDescuento.prototype.initFormAction = function(){
-    var that = this;
-    this.form.submit(function(event){
-      event.stopPropagation();
-
-      $.ajax({
-        type: "POST",
-        url:$(this).attr("action"),
-        data:$(this).serialize()+"&referenceDate="+$("#fechaDeVencimiento").val(),
-        success: function(data){
-          $(".descuentoCreado").html(data);
-          that.form.each(function(){
-            this.reset();
-          }); 
-        }  
-      }).then(function(){
-        var discounts = $(".descuentoCreado input[name=discount]");
-        $(".descuentosIdDiv").html(discounts);
-      });
-
-      return false
-    });  
   }
 
   return OperacionDescuento;

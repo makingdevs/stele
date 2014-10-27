@@ -3,7 +3,8 @@
 </g:if>
   
 <div class="row-fluid">    
-  <g:form id="cobroUnitarioForm" name="cobroUnitarioForm" controller="esquemaDePago" action="generarPagoParaLaCamada" >
+  <%-- TODO Agregar estilo a un archivo css --%>
+  <g:form id="cobroUnitarioForm" name="cobroUnitarioForm" controller="esquemaDePago" action="generarPagoParaLaCamada" style="margin-bottom:0px">
     <div class="span3">
       <input type="hidden" name="camada" value="${camada}" />
       <input type="hidden" id="recargoUnitario" name="idRecargo" />
@@ -24,14 +25,14 @@
                                         
       <div class="control-group">
         <label class="control-label" for="cantidadDePago">Importe</label>
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">
-                <i class="icon-usd"></i>
-              </span>
-              <input type="text" class="cantidadDePago" id="cantidadDePago" name="cantidadDePago" placeholder="0.0">
-            </div>  
-          </div>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">
+              <i class="icon-usd"></i>
+            </span>
+            <input type="text" class="cantidadDePago" id="cantidadDePago" name="cantidadDePago" placeholder="0.0">
+          </div>  
+        </div>
       </div>
                                         
       <div class="control-group">
@@ -48,13 +49,12 @@
 
       <div class="descuentosIdDiv">
       </div>
-
     </div><!--/ span3 -->
-    <div class="span6 discountsFromPaymentSchema">      
+    <div class="span6 discountsFromPaymentSchema" style="display:none;">
       <div class="row-fluid">
         <div class="descuentosDiv span8">
           <!-- TODO Poner estilo en un archivo .css -->
-          <table class="table hidden cuTable" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
+          <table class="table" style="table-layout:fixed;width:100%;word-wrap:break-word;margin-top:10px;">
             <thead>
               <tr>
                 <th>Descuento</th>
@@ -89,7 +89,7 @@
     </div>
   </g:form>
 
-    <div class="span6 tabs">
+    <div class="span6 tabsUnitario">
       <div id="tabsUnitario">
         <ul class="nav nav-tabs padding-10">
           <li class="active">
@@ -117,8 +117,7 @@
                 Seleccionar fecha de vencimiento o dias antes de vencer el pago
               <br/>
             </div>
-            <div class="row-fluid">
-              
+            <div class="row-fluid">              
               <g:form url="[controller:'descuento', action:'nuevo']" name="descuentoUnitarioForm" id="descuentoUnitarioForm">
               <div class="span6">
                 <div class="control-group">
@@ -189,8 +188,7 @@
               </div>
               <div class="descuentosIdDiv">                
               </div>
-              </g:form>
-              
+              </g:form>              
             </div>
           </div>
           <div id="faq-tab-444" class="tab-pane">
@@ -204,7 +202,7 @@
                       <span class="add-on">
                         <i class="icon-usd"></i>
                       </span>
-                      <input class="input-mini" id="recCantidad" name="amount" type="text" placeholder="0.0">
+                      <input class="input-mini" id="recargoUnitarioCantidad" name="amount" type="text" placeholder="0.0">
                     </div>
                   </div>
                 </div>
@@ -212,7 +210,7 @@
                   <label class="control-label" for="txtConcepto">Porcentaje</label>
                   <div class="controls">
                     <div class="input-append">
-                      <input class="input-mini" id="recPorcentaje" name="percentage" type="text" placeholder="0.0">
+                      <input class="input-mini" id="recargoUnitarioPorcentaje" name="percentage" type="text" placeholder="0.0">
                       <span class="add-on">%</span>
                     </div>
                   </div>
@@ -225,7 +223,7 @@
               </div>
             
               <div class="span4">
-                <div class="listaRecargos">                  
+                <div class="listaRecargosUnitarios">                  
                 </div>
               </div>
               </g:form> 

@@ -8,28 +8,24 @@ jQuery(function ($) {
       this.initDescuentoRecurrente();
       this.initCobroUnitario();
       this.initCobroRecurrente();
-      this.initRecargo();
-      this.initDivs();
+      this.initRecargoUnitario();      
+      this.initRecargoRecurrente();
     },
     initCobroUnitario : function(){
       var selectors = {
         conceptoDePagoSelector: $('#conceptoDePago'),
-        tabsDivSelector: $('.tabs'),
-        fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
         cantidadDePagoSelector: $('#cantidadDePago'),
-        tablaDeDescuentosSelector: $('.cuTable')
+        fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
+        tabsDivSelector: $('.tabsUnitario')
       };
       this.cobroUnitario = new CobroUnitario(selectors);
     },
     initCobroRecurrente : function(){
       var selectors = {
-        conceptoDePagoRecurrente: $('#conceptoDePagoRecurrente'),
-        cantidadDePagoRecurrente: $('#cantidadDePagoRecurrente'),
-        cantidadRecargoRecurrente: $('input.cantidadRecargoRecurrente'),
-        porcentajeRecargoRecurrente: $('input.porcentajeRecargoRecurrente'),
-        idRecargo: $("#idRecargo"),
-        tabsSelector: $('a[href=#faq-tab-333],a[href=#faq-tab-444]'),
-        tablaDeDescuentos: $('.crTable')
+        conceptoDePagoRecurrenteSelector: $('#conceptoDePagoRecurrente'),
+        diasVencimientoSelector: $('#diasVencimientoPago'),
+        cantidadDePagoRecurrenteSelector: $('#cantidadDePagoRecurrente'),
+        tabsDivSelector:$('.tabsRecurrente')
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },
@@ -38,30 +34,54 @@ jQuery(function ($) {
         nombreDescuento: $("#nombreDeDescuento"),
         cantidadDescuento: $("#cantidad"),
         porcentajeDescuento: $("#porcentaje"),
-        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento"),
-        form: $("#descuentoUnitarioForm")
+        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuento")
       };
       var operacionDescuento = new OperacionDescuento(selectoresOperacion);
 
       var selectoresDescuento = {
-        fechaExpiracion: $("#fechaDeVencimientoDesc")
+        fechaExpiracion: $("#fechaDeVencimientoDesc"),
+        formulario:$("#descuentoUnitarioForm")
       };
 
-      this.descuentoRecurrente = new DescuentoUnitario(selectoresDescuento,operacionDescuento);
+      this.descuentoUnitario = new DescuentoUnitario(selectoresDescuento,operacionDescuento);
     },
     initDescuentoRecurrente: function(){
       var selectoresOperacion = {
-        //diaVencimiento:  
+        nombreDescuento: $("#nombreDeDescuentoRecurrente"),
+        cantidadDescuento: $("#cantidadRecurrente"),
+        porcentajeDescuento: $("#porcentajeRecurrente"),
+        diasPreviosParaCancelarDescuento: $("#diasPreviosParaCancelarDescuentoRecurrente")
       };        
+      
+      var operacionDescuento = new OperacionDescuento(selectoresOperacion);
+
+      var selectoresDescuento = {
+        diaVencimiento:$("#diaVencimientoDescuento"),
+        formulario:$("#descuentoRecurrenteForm")   
+      }
+
+      this.descuentoRecurrente = new DescuentoRecurrente(selectoresDescuento,operacionDescuento);
 
     },
-    initRecargo: function(){
+    initRecargoUnitario: function(){
       var selectors = {
-        cantidadRecargo: $("#cantidadRecargo"),
-        porcentajeRecargo: $("#porcentajeRecargo"),
-        formulario: $("#recargoForm")  
+        cantidadRecargo: $("#recargoUnitarioCantidad"),
+        porcentajeRecargo: $("#recargoUnitarioPorcentaje"),
+        formulario: $("#recargoForm"),
+        divResultados: $(".listaRecargosUnitarios"),
+        idRecargo:$("#recargoUnitario") 
       };
-      this.recargo = new Recargo(selectors);
+      this.recargoUnitario = new Recargo(selectors);
+    },
+    initRecargoRecurrente: function(){
+      var selectors = {
+        cantidadRecargoRecurrente: $("#recargoRecurrenteCantidad"),
+        porcentajeRecargo: $("#recargoRecurrentePorcentaje"),
+        formulario:$("#recargoRecurrenteForm"),
+        divResultados: $(".listaRecargosRecurrentes"),
+        idRecargo:$("#recargoRecurrente") 
+      }                    
+      this.recargoRecurrente = new Recargo(selectors);
     },
     initButtonActions: function(){
       $("#submitFormPayout").click(function(){
@@ -77,9 +97,6 @@ jQuery(function ($) {
         event.stopPropagation();
         return false;
       });          
-    },
-    initDivs: function(){      
-      $(".discountsFromPaymentSchema").hide();
     }
   };
   App.init();
