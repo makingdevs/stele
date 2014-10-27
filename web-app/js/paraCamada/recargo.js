@@ -34,7 +34,7 @@ window.Recargo = (function(){
         }  
       }).then(function(){
         var recargoId = that.divResultados.find("#recargoId"); 
-        that.idRecargo.val(recargoId);
+        that.idRecargo.val(recargoId.val());
       });
 
       return false;
