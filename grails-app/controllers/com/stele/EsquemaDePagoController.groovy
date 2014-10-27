@@ -15,6 +15,7 @@ class EsquemaDePagoController {
   def dependienteService
   def notificacionService
   def conceptService
+  def cobroParaCamadaService
 
   def scaffold = EsquemaDePago
 

@@ -11,7 +11,7 @@ class CobroParaCamadaService {
   def obtenerPagosConDescuentosAplicablesSiTienenFechaDeVencimiento(PaymentGroupCommand pgc,PaymentScheme paymentScheme, def pagos){
     def listaDePagos = []
     pagos.each{ pago -> 
-    
+      def descuentosAplicables = applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id, pago.dueDate, pgc.expirationDatesForDiscounts)
     } 
     listaDePagos << pagos[0] 
   }
