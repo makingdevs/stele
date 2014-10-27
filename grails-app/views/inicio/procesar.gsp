@@ -18,7 +18,7 @@
    <div class="main-content">
 
         <div class="page-content">
-          <g:if test="${flash.inscripcionCobro == 'true'}">
+          <g:if test="${inscripcionCobro == 'true'}">
             <div class="page-header position-relative">
               <h1>
                 Inscripción Archivo + Cobro
@@ -52,7 +52,7 @@
                 <div class="widget-body">
                   <div class="widget-main">
                     <div class="row-fluid">
-                      <g:if test="${flash.inscripcionCobro == 'true'}">
+                      <g:if test="${inscripcionCobro == 'true'}">
                         <g:render template="procesar/menuArchivoCobroProceso" />
                       </g:if>
                       <g:else>
@@ -78,7 +78,7 @@
                                   </p>
 
                                   <p>
-                                    <g:if test="${flash.inscripcionCobro == 'true'}">
+                                    <g:if test="${inscripcionCobro == 'true'}">
                                       <g:link  name="procesarCobro" controller="procesamientoMasivo" action="inicio" params="[institucionId:institucionId, cobro:true]">
                                       <span class="btn btn-app btn-success" id="procesarCobro">
                                         <i class="icon-cogs bigger-230 "></i>

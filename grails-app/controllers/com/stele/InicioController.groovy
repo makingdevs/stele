@@ -15,10 +15,9 @@ class InicioController {
       redirect controller:'login'
       return
     }
-    flash.inscripcionCobro = params.cobro
     def user = springSecurityService.currentUser
     def principal = springSecurityService.principal
-    [instituciones:user.instituciones, usuario:user]
+    [instituciones:user.instituciones, usuario:user,inscripcionCobro:params.cobro]
   }
   
   def deleteFile(){    
@@ -37,8 +36,7 @@ class InicioController {
       def listaDeCommands = datosEscolaresWrapperService.obtenerFilasExcelCommandsDesdeArchivo(flash.excelParaProcesar)      
       def listaDeMapaDeDominios = datosEscolaresDomainWrapperService.obtenerListaDeMapasDesdeListaDeCommands(listaDeCommands)      
       session['listaDeMapaDeDominios'] = listaDeMapaDeDominios
-      flash.inscripcionCobro = params.cobro
-
+      
       def estructuraInstitucional = estructuraInstitucionalService.obtenerEstructuraDesdeListaDeMapaDeDominios(listaDeMapaDeDominios)
       [
         alumnosPorNivel:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.NIVEL),
@@ -46,7 +44,8 @@ class InicioController {
         alumnosPorTurno:reporteMigracionService.conteoDeDependientesParaElNivel(estructuraInstitucional,NivelInstitucional.TURNO),
         estructuraInstitucional:estructuraInstitucional,
         listaDeMapaDeDominios:listaDeMapaDeDominios,
-        institucionId: params.long("institucionId")
+        institucionId: params.long("institucionId"),
+        inscripcionCobro:params.cobro
       ]      
     } catch(Exception ex){
       if(!flash.excelParaProcesar)
@@ -59,7 +58,7 @@ class InicioController {
   }
 
   def procesar(){
-    flash.inscripcionCobro = params.cobro
-    [institucionId: params.long("institucionId")]
+    [institucionId: params.long("institucionId"),
+     inscripcionCobro:params.cobro]
   }
 }

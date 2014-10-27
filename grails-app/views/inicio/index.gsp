@@ -41,7 +41,7 @@
         </div>
 
         <div class="page-content">
-          <g:if test="${flash.inscripcionCobro == 'true'}">
+          <g:if test="${inscripcionCobro == 'true'}">
             <div class="page-header position-relative">
               <h1>
                 Inscripción Archivo + Cobro
@@ -76,7 +76,7 @@
                 <div class="widget-body">
                   <div class="widget-main">
                     <div class="row-fluid">
-                      <g:if test="${flash.inscripcionCobro == 'true'}">
+                      <g:if test="${inscripcionCobro == 'true'}">
                         <g:render template="menuArchivoCobro" />
                       </g:if>
                       <g:else>
@@ -113,8 +113,8 @@
                                     <div class="widget-main">
                                       <div class="center">
                                         <span class="control-group warning">
-                                          <g:if  test="${flash.inscripcionCobro == 'true'}">
-                                            <input type="hidden" value="${flash.inscripcionCobro}" name="cobro"/>
+                                          <g:if  test="${inscripcionCobro == 'true'}">
+                                            <input type="hidden" value="${inscripcionCobro}" name="cobro"/>
                                             <div class="alert alert-warning">
                                             <strong>NOTA!</strong>
                                             El sistema genera un cobro genérico para todos los alumnos en el archivo,<br> por lo que si los cobros no son iguales <strong> genere un archivo de alumnos por tipo de cobro</strong>
