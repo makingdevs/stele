@@ -42,4 +42,18 @@ class CobroParaCamadaServiceSpec extends Specification {
       assert pagos.first().dueDate.clearTime() == (new Date()+10).clearTime()
       assert pagos.first().applicableDiscounts.first().expirationDate.clearTime() == (new Date()+5).clearTime()  
   }
+
+  def "Obtener fechas de vencimiento para los descuentos aplicables a partir de los días de vencimiento"(){
+    given: "una lista de dias de vencimento de los descuentos y los meses para los pagos recurrentes"
+      def diasVencimientoDescuentosAplicables = [11,22] 
+      def months = [8,9,10]
+    when: 
+      def fechasDeVencimiento = service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimientoDescuentosAplicables,months) 
+    then:
+      assert fechasDeVencimiento.size() == 6
+      assert fechasDeVencimiento*.toCalendar()*.get(Calendar.MONTH) == [8,9,10,8,9,10]
+      assert fechasDeVencimiento*.toCalendar()*.get(Calendar.DAY_OF_MONTH) == [11,11,11,22,22,22]
+      assert fechasDeVencimiento.first().toCalendar()[Calendar.YEAR] == (new Date()).toCalendar()[Calendar.YEAR]+1
+  }
+
 }
