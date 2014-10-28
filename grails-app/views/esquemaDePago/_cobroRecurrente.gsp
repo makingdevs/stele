@@ -72,7 +72,7 @@
               <td>{{descuento}}</td>
               <td>{{cantidad}}</td>
               <td style="padding-left:0px;">
-                <g:select disabled="${true}" class="diaVencimientoDescuento" name="diaVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>                    
+                <g:select disabled="${true}" class="diaVencimientoDescuento" name="diasVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>                    
               </td>
             </tr>    
             {{/each}}
