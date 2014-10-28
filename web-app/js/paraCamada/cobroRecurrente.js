@@ -12,6 +12,7 @@ window.CobroRecurrente = (function(){
     this.tabsDiv = selectores.tabsDivSelector;
     this.initTypeaheadParaCobroRecurrente();    
     this.initExpirationDay();
+    this.initActionFormMonths();
   }
 
   CobroRecurrente.prototype.renderDiscountsTable = function(paymentScheme){    
@@ -19,7 +20,7 @@ window.CobroRecurrente = (function(){
     $(".discountsFromPaymentSchemaRecurrente").show();
     var source = $("#descuentoRecurrente-template").html();
     var template = Handlebars.compile(source);
-    var html = template(paymentScheme.discounts);    
+    var html = template(paymentScheme.discounts);
     $(".cobroRecurrenteDescuentosTableBody").html(html);
     this.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt(this.diasVencimiento.val()));
   }
@@ -118,6 +119,34 @@ window.CobroRecurrente = (function(){
         });
         return concept.trim();
       }
+    });
+  }
+
+  CobroRecurrente.prototype.initActionFormMonths = function(){
+    var that = this;
+    $("input[type=checkbox]").click(function(){      
+      var months = [];
+      var doublePayment = [];
+      var sourceForMonths = $("#meses-template").html();
+      var sourceForDoublePayment = $("#cobroDoble-template").html()
+      
+
+      var templateForMonths = Handlebars.compile(sourceForMonths);
+      var templateForDoublePayment = Handlebars.compile(sourceForDoublePayment);
+
+      $.each($("input[name=meses]:checked"),function(){
+        months.push({mes:$(this).val()});
+      });
+
+      $.each($("input[name=pagoDoble]:checked"),function(){
+        doublePayment.push({mes:$(this).val()});
+      });
+
+      var htmlForMonths = templateForMonths(months);
+      var htmlForDoublePayment = templateForDoublePayment(doublePayment);
+
+      $("div.meses").html(htmlForMonths);
+      $("div.cobroDoble").html(htmlForDoublePayment);
     });
   }
 
