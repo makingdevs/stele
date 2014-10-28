@@ -19,7 +19,10 @@ class CobroParaCamadaServiceSpec extends Specification {
 
     and:
       def applicableDiscountServiceMock = mockFor(ApplicableDiscountService) 
-      applicableDiscountServiceMock.demand.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(1..1){ -> new ApplicableDiscount()  }
+      applicableDiscountServiceMock.demand.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(1..1){ Integer id, Date dueDate, def expirationDatesForDiscounts -> new ApplicableDiscount()  }
+      applicableDiscountServiceMock.demand.addApplicableDiscountToAPayment(1..1){ ApplicableDiscount ad, Payment payment ->
+        paymentList[0]
+      }
       service.applicableDiscountService = applicableDiscountServiceMock.createMock()
     when:
       def pagos = service.obtenerPagosConDescuentosAplicablesSiTienenFechaDeVencimiento(paymentGroupCommand, paymentScheme, paymentsList) 
