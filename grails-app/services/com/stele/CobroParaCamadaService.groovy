@@ -14,13 +14,16 @@ class CobroParaCamadaService {
       def descuentosAplicables = applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id, pago.dueDate, pgc.expirationDatesForDiscounts)
       listaDePagos += asignarDescuentosAplicablesALosPagos(descuentosAplicables,pago) 
     } 
+
     listaDePagos 
   }
   
   def asignarDescuentosAplicablesALosPagos(def applicableDiscounts,Payment payment){
-    def payemntList = []
+    def paymentList = []
     applicableDiscounts.each{ applicableDiscount ->
-      applicableDiscountService.addApplicableDiscountToAPayment(applicableDiscount, payment.id) 
+      paymentList << applicableDiscountService.addApplicableDiscountToAPayment(applicableDiscount, payment.id) 
     }
+    
+    paymentList
   }
 }
