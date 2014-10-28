@@ -12,7 +12,7 @@ class CobroParaCamadaService {
     def listaDePagos = []
     pagos.each{ pago -> 
       def descuentosAplicables = applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id, pago.dueDate, pgc.expirationDatesForDiscounts)
-      listaDePagos += asignarDescuentosAplicablesALosPagos(descuentosAplicables,pago) 
+      listaDePagos += asignarDescuentosAplicablesALosPagos(descuentosAplicables,pago)
     } 
 
     listaDePagos 
@@ -45,6 +45,10 @@ class CobroParaCamadaService {
       }
     }
     fechasDeVencimiento
+  }
+  
+  def obtenerPagosRecurrentesConDescuentosAplicables(PaymentScheme paymentScheme, def expirationDatesForDiscounts, def pagos){
+        
   }
 
 }
