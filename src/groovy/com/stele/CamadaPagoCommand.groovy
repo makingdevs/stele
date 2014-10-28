@@ -18,7 +18,7 @@ class CamadaPagoCommand {
   List<Integer> meses
   List<Integer> pagoDoble
   List<String> fechasDeExpiracionDescuento 
-  List<Integer> diaVencimientoDescuento
+  List<Integer> diasVencimientoDescuento
   List<Integer> discount
   String listaDependientes
   String descuentoConFecha
