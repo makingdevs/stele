@@ -1,7 +1,7 @@
 package com.stele
 
 import grails.test.mixin.TestFor
-import spock.lang.Specification
+import spock.lang.*
 import com.payable.*
 
 @TestFor(CobroParaCamadaService)
@@ -54,6 +54,17 @@ class CobroParaCamadaServiceSpec extends Specification {
       assert fechasDeVencimiento*.toCalendar()*.get(Calendar.MONTH) == [8,9,10,8,9,10]
       assert fechasDeVencimiento*.toCalendar()*.get(Calendar.DAY_OF_MONTH) == [11,11,11,22,22,22]
       assert fechasDeVencimiento.first().toCalendar()[Calendar.YEAR] == (new Date()).toCalendar()[Calendar.YEAR]+1
+  }
+      
+  @Ignore
+  def "Obtener los descuentos aplicables para los cobros recurrentes"(){
+    given:"un conjunto de fechas de vencimiento para los descuentos aplicables y un esquema de pago"
+      def fechasDeVencimiento = service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento([11],[8,9,10]) 
+      def paymentSchema = new PaymentScheme() 
+    when:
+         
+    then:  
+      
   }
 
 }
