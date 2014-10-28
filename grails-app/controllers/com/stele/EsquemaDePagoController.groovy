@@ -85,9 +85,11 @@ class EsquemaDePagoController {
     
     def grupoPagoCommand = wrapperCommandService.generarParseoDeCamadaPagoCommandAGrupoPagoCommand(cpc, springSecurityService.currentUser.instituciones?.first())
 
-    def pagos = generationOfPaymentService.generatePaymentsForGroup(grupoPagoCommand)
+    def pagos = generationOfPaymentService.generatePaymentsForGroup(grupoPagoCommand) ?: []
     def esquemaDePago = paymentSchemeService.savePaymentScheme(grupoPagoCommand)
-    pagos = verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(grupoPagoCommand, esquemaDePago, pagos) ?: pagos
+
+    pagos += cobroParaCamadaService.obtenerPagosConDescuentosAplicablesSiTienenFechaDeVencimiento(grupoPagoCommand,esquemaDePago,pagos) 
+
     if (pagos)
       notificarCreacionDePago(pagos)
     flash.pago = pagos
@@ -106,28 +108,7 @@ class EsquemaDePagoController {
     paymentScheme.delete()
     redirect(action:'nuevo')
   }
-
-  private def verificarExistenciaDeFechaDeVencimientoEnDescuentoParaObtenerPagosConDescuentosAplicables(PaymentGroupCommand paymentGroupCommand,PaymentScheme paymentScheme, List pagos) {
-    def listaDePagos = []
-    pagos.each{ pago -> 
-      def descuentosAplicables = applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id, pago.dueDate, paymentGroupCommand.expirationDatesForDiscounts)
-      listaDePagos +=  asignarDescuntosAplicablesAlosPagos(descuentosAplicables,pago)
-    }
-    listaDePagos
-  }
-
-  private def asignarDescuntosAplicablesAlosPagos(def applicableDiscount, Payment payment){
-    def paymentsList = []
-    if(applicableDiscount instanceof ApplicableDiscount)
-      paymentsList << applicableDiscountService.addApplicableDiscountToAPayment(applicableDiscount, payment.id)
-    else if (applicableDiscount instanceof List<ApplicableDiscount>){
-      applicableDiscount.each{ aDiscount ->
-        paymentsList << applicableDiscountService.addApplicableDiscountToAPayment(aDiscount, payment.id)
-      }
-    }
-    paymentsList
-  }
-
+  
   private def notificarCreacionDePago(def listaDePagos){
     def dependientes = dependienteService.obtenerDependientesPorPagos(listaDePagos)
     notificacionService.notificarPagosCreados(dependientes)
