@@ -20,10 +20,31 @@ class CobroParaCamadaService {
   
   def asignarDescuentosAplicablesALosPagos(def applicableDiscounts,Payment payment){
     def paymentList = []
+
     applicableDiscounts.each{ applicableDiscount ->
       paymentList << applicableDiscountService.addApplicableDiscountToAPayment(applicableDiscount, payment.id) 
     }
-    
+
     paymentList
   }
+
+  def generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimiento,months){
+    def fechasDeVencimiento = []
+    def now = (new Date()).toCalendar()
+    diasVencimiento.each{ diaVencimiento ->
+      months?.sort().each{ month ->
+        def fecha = Calendar.instance 
+        fecha[Calendar.MONTH] = month   
+        if(fecha[Calendar.MONTH] < now[Calendar.MONTH]){
+          fecha[Calendar.YEAR]+=1 
+        }
+
+        fecha[Calendar.DAY_OF_MONTH] = diaVencimiento   
+
+        fechasDeVencimiento << fecha.time
+      }
+    }
+    fechasDeVencimiento
+  }
+
 }
