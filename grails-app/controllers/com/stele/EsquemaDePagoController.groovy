@@ -87,7 +87,11 @@ class EsquemaDePagoController {
 
     def pagos = generationOfPaymentService.generatePaymentsForGroup(grupoPagoCommand) ?: []
     def esquemaDePago = paymentSchemeService.savePaymentScheme(grupoPagoCommand)
-    def paymentsWithOrWithoutApplicableDiscounts = cobroParaCamadaService.obtenerPagosConDescuentosAplicablesSiTienenFechaDeVencimiento(grupoPagoCommand,esquemaDePago,pagos) ?: pagos 
+    def paymentsWithOrWithoutApplicableDiscounts = []
+    if(cpc.diasVencimientoDescuento){
+      paymentsWithOrWithoutApplicableDiscounts = cobroParaCamadaService.obtenerPagosRecurrentesConDescuentosAplicables(esquemaDePago,cpc,pagos,grupoPagoCommand.instances.size()) 
+    }else
+      paymentsWithOrWithoutApplicableDiscounts = cobroParaCamadaService.obtenerPagosConDescuentosAplicablesSiTienenFechaDeVencimiento(grupoPagoCommand,esquemaDePago,pagos) ?: pagos 
 
     if (paymentsWithOrWithoutApplicableDiscounts)
       notificarCreacionDePago(paymentsWithOrWithoutApplicableDiscounts)
