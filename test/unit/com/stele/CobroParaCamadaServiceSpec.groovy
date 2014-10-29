@@ -43,22 +43,28 @@ class CobroParaCamadaServiceSpec extends Specification {
       assert pagos.first().applicableDiscounts.first().expirationDate.clearTime() == (new Date()+5).clearTime()  
   }
 
-  def "Obtener fechas de vencimiento para los descuentos aplicables a partir de los días de vencimiento"(){
-    given: "una lista de dias de vencimento de los descuentos y los meses para los pagos recurrentes"
+  def "obtener fechas de vencimiento para los descuentos aplicables a partir de los dias de vencimiento"(){
+    given: "una lista de dias de vencimento de los descuentos y el mes del pago"
       def diasVencimientoDescuentosAplicables = [11,22] 
-      def months = [8,9,10]
     when: 
-      def fechasDeVencimiento = service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimientoDescuentosAplicables,months) 
+      def fechasDeVencimiento = service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimientoDescuentosAplicables,month) 
     then:
-      assert fechasDeVencimiento.size() == 6
-      assert fechasDeVencimiento*.toCalendar()*.get(Calendar.MONTH) == [9,9,10,10,8,8]
-      assert fechasDeVencimiento*.toCalendar()*.get(Calendar.DAY_OF_MONTH) == [11,22,11,22,11,22]
-      assert fechasDeVencimiento.last().toCalendar()[Calendar.YEAR] == (new Date()).toCalendar()[Calendar.YEAR]+1
+      fechasDeVencimiento.size() == 2
+      fechasDeVencimiento*.toCalendar()*.get(Calendar.MONTH) == _months 
+      fechasDeVencimiento*.toCalendar()*.get(Calendar.DAY_OF_MONTH) == _days 
+      fechasDeVencimiento*.toCalendar()*.get(Calendar.YEAR) == _year
+    where:
+      month | _months   || _days    || _year
+      8     |  [8,8]    || [11,22]  ||  [2015,2015]
+      9     |  [9,9]    || [11,22]  ||  [2014,2014]
+      10    |  [10,10]  || [11,22]  ||  [2014,2014]
   }
 
+ 
+  @Ignore
   def "Obtener los descuentos aplicables para los cobros recurrentes"(){
-    given:"un conjunto de fechas de vencimiento para los descuentos aplicables, un esquema de pago y los pagos"
-      def fechasDeVencimiento = service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento([11],[8,9,10]) 
+    given:"un esquema de pago y los pagos"
+      def camadaPagoCommand = new CamadaPagoCommand(meses:[8,9,10],diasVencimientoDescuento:[11])
       def discount = new Discount(discountName:"Descuento_Prueba").save(validate:false)
       def paymentScheme = new PaymentScheme() 
       paymentScheme.addToDiscounts(discount).save(validate:false) 
@@ -69,7 +75,7 @@ class CobroParaCamadaServiceSpec extends Specification {
         pagos << new Payment(dueDate:it.time).save(validate:false) 
       }
     when:
-      def pagosConDescuentos = service.obtenerPagosRecurrentesConDescuentosAplicables(paymentScheme,fechasDeVencimiento,pagos)  
+      def pagosConDescuentos = service.obtenerPagosRecurrentesConDescuentosAplicables(paymentScheme,camadaPagoCommand,pagos,1)  
     then: 
      assert pagosConDescuentos.size() == 2 
   }
