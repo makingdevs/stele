@@ -28,27 +28,39 @@ class CobroParaCamadaService {
     paymentList
   }
 
-  def generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimiento,months){
+  def generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimiento,month){
     def fechasDeVencimiento = []
     def now = (new Date()).toCalendar()
-    diasVencimiento.each{ diaVencimiento ->
-      months?.sort().each{ month ->
-        def fecha = Calendar.instance 
-        fecha[Calendar.MONTH] = month   
-        if(fecha[Calendar.MONTH] < now[Calendar.MONTH]){
-          fecha[Calendar.YEAR]+=1 
-        }
+    
+    diasVencimiento?.each{ diaVencimiento ->
+      def fecha = Calendar.instance 
+      fecha[Calendar.MONTH] = month   
+      if(fecha[Calendar.MONTH] < now[Calendar.MONTH])
+        fecha[Calendar.YEAR]+=1 
+      
+      fecha[Calendar.DAY_OF_MONTH] = diaVencimiento   
 
-        fecha[Calendar.DAY_OF_MONTH] = diaVencimiento   
-
-        fechasDeVencimiento << fecha.time
-      }
+      fechasDeVencimiento << fecha.time
     }
-    fechasDeVencimiento
+    
+    fechasDeVencimiento.sort()
   }
   
-  def obtenerPagosRecurrentesConDescuentosAplicables(PaymentScheme paymentScheme, def expirationDatesForDiscounts, def pagos){
-        
+  def obtenerPagosRecurrentesConDescuentosAplicables(PaymentScheme paymentScheme, CamadaPagoCommand camadaPagoCommand, def pagos, Long numeroInstancias){
+    def pagosConDescuentos = []          
+    def descuentosAplicables = []
+    def index = 0
+    
+    numeroInstancias.times{ i ->
+      camadaPagoCommand.meses.each{ mes -> 
+        def fechasDeVencimiento = generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(camadaPagoCommand.diasVencimientoDescuento,pagos[index]?.dueDate.toCalendar()[Calendar.MONTH])
+        descuentosAplicables =  applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id,pagos[index]?.dueDate,fechasDeVencimiento)
+           
+        index++;
+      }  
+    }    
+
+    pagosConDescuentos 
   }
 
 }
