@@ -4,6 +4,16 @@ jQuery(function ($) {
   window.App = {
     init : function(){
       this.initListDependiente(); 
+      this.initBusqueda();
+    },
+    initBusqueda : function(){
+      var selectores = {
+        turnoSelector: $("#turno"),
+        nivelSelector:$("#nivel"),
+        gradoSelector:$("#grado"),
+        grupoSelector:$("#grupo")
+      };
+      this.busqueda = new Busqueda(selectores);
     },
     initListDependiente : function(){
       $("body").on("click","input[name=allDependientes]",function(){
