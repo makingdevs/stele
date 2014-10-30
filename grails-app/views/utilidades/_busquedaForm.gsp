@@ -9,7 +9,9 @@
         <div class="control-group">
           <label class="control-label" for="selectGrupo">Turno</label>
           <div class="controls">
-            <g:select name="turno" from="${turnos}" noSelection="['':'- Selecciona el turno-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxTurnoANivel', params:'\'turno=\' + escape(this.value)',update:'busquedaForm')}" value="${turno}"/>
+            <%-- <g:select name="turno" from="${turnos}" noSelection="['':'- Selecciona el turno-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxTurnoANivel', params:'\'turno=\' + escape(this.value)',update:'busquedaForm')}" value="${turno}"/> --%>
+            <input type="hidden" name="getNivelUrl" value="${g.createLink(action:'obtenerEsquemaDePagoPorConcepto', controller:'esquemaDePago')}" /> 
+            <g:select name="turno" id="turno" from="${turnos}" noSelection="['':'-Selecciona el Turno-']"/>
           </div>
         </div>
         <div class="control-group">
@@ -35,6 +37,9 @@
       <button type="submit" class="btn  btn-info" >
         Agregar
         <i class="icon-arrow-right icon-on-right"></i>
+      </button>
+      <button type="reset" class="btn btn-info">
+        Limpiar
       </button>
     </div>
   </div>
