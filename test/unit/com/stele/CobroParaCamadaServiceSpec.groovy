@@ -60,24 +60,41 @@ class CobroParaCamadaServiceSpec extends Specification {
       10    |  [10,10]  || [11,22]  ||  [2014,2014]
   }
 
- 
-  @Ignore
   def "Obtener los descuentos aplicables para los cobros recurrentes"(){
     given:"un esquema de pago y los pagos"
-      def camadaPagoCommand = new CamadaPagoCommand(meses:[8,9,10],diasVencimientoDescuento:[11])
+      def camadaPagoCommand = new CamadaPagoCommand(meses:[10,11],diasVencimientoDescuento:[11])
       def discount = new Discount(discountName:"Descuento_Prueba").save(validate:false)
       def paymentScheme = new PaymentScheme() 
       paymentScheme.addToDiscounts(discount).save(validate:false) 
+      def fechasDeVencimiento = []
+      camadaPagoCommand.meses.each{
+        fechasDeVencimiento += service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(camadaPagoCommand.diasVencimientoDescuento,camadaPagoCommand.meses.first())
+      }
       def calendars = fechasDeVencimiento*.toCalendar()
       calendars.collect{ it[Calendar.DAY_OF_MONTH] = 25 }  
       def pagos = []
       calendars.each{
         pagos << new Payment(dueDate:it.time).save(validate:false) 
       }
+       
+      def applicableDiscountServiceMock = mockFor(ApplicableDiscountService) 
+
+      camadaPagoCommand.meses.each{
+        applicableDiscountServiceMock.demand.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(){ Long id, Date dueDate, def expirationDatesForDiscounts -> 
+          new ApplicableDiscount()
+        }
+        applicableDiscountServiceMock.demand.addApplicableDiscountToAPayment(){ ApplicableDiscount applicableDiscount, Long paymentId ->
+          new Payment(applicableDiscount:applicableDiscount) 
+        }
+      }
+     
+      service.applicableDiscountService = applicableDiscountServiceMock.createMock()
     when:
       def pagosConDescuentos = service.obtenerPagosRecurrentesConDescuentosAplicables(paymentScheme,camadaPagoCommand,pagos,1)  
+      applicableDiscountServiceMock.verify()
     then: 
      assert pagosConDescuentos.size() == 2 
+     assert pagosConDescuentos*.applicableDiscounts.size() == 2
   }
 
 }
