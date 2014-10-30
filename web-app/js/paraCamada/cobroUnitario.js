@@ -18,7 +18,6 @@ window.CobroUnitario = (function() {
     this.initDatePickerParaFechaDeVencimiento();
     this.initTypeaheadParaConcepto();
     this.initValidationsForTheForm();
-    this.prepareInputsToValidate();
   }
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
@@ -152,7 +151,6 @@ window.CobroUnitario = (function() {
         }        
       });
     });
-    
   }
 
   CobroUnitario.prototype.initValidationsForTheForm = function(){

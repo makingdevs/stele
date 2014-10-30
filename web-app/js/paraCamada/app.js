@@ -16,7 +16,8 @@ jQuery(function ($) {
         conceptoDePagoSelector: $('#conceptoDePago'),
         cantidadDePagoSelector: $('#cantidadDePago'),
         fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
-        tabsDivSelector: $('.tabsUnitario')
+        tabsDivSelector: $('.tabsUnitario'),
+        formSelector: $("#cobroUnitarioForm")
       };
       this.cobroUnitario = new CobroUnitario(selectors);
     },
