@@ -1,3 +1,32 @@
+window.Busqueda = (function(){
+
+  Busqueda.prototype.turno = '';
+  Busqueda.prototype.nivel = '';  
+  Busqueda.prototype.grado = '';
+  Busqueda.prototype.grupo = ''; 
+
+  function Busqueda(selectores){
+    this.turno = selectores.turnoSelector;
+    this.nivel = selectores.nivelSelector;
+    this.grado = selectores.gradoSelector;
+    this.grupo = selectores.grupoSelector;
+    this.initFunctionForTurno();
+  }
+  
+  Busqueda.prototype.initFunctionForTurno = function(){
+    var that = this;
+    this.turno.change(function(){
+      that.getNivel($(this).val(),$("input[name=getNivelUrl]").val());
+    });  
+  } 
+
+  Busqueda.prototype.getNivel = function(turno,url){
+
+  }
+  return Busqueda;
+})();
+
+
 $(document).ready(function(){
   
   $("#listaResultados").on("click","input[name=idDependiente],input[name=listaDependientes]",function(){
@@ -20,3 +49,5 @@ $(document).ready(function(){
   });
 
 });
+
+
