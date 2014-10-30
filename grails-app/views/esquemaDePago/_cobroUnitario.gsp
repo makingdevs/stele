@@ -149,7 +149,7 @@
                   <label class="control-label" for="txtConcepto">Fecha Vencimiento</label>
                   <div class="controls">                  
                     <div class="input-append date">
-                      <input type="text" id="fechaDeVencimientoDesc" name="expirationDacontrol" />
+                      <input type="text" id="fechaDeVencimientoDesc" name="expirationDate" />
                       <span class="add-on">
                         <i class="icon-calendar"></i>
                       </span>

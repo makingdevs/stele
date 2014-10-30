@@ -2,19 +2,23 @@ window.CobroUnitario = (function() {
 
   CobroUnitario.prototype.conceptoDePago = '';
   CobroUnitario.prototype.importe = '';
-  CobroUnitario.prototype.fecheDeVencimiento = '';
+  CobroUnitario.prototype.fechaDeVencimiento = '';
   CobroUnitario.prototype.maxItems = 10;
   CobroUnitario.prototype.paymentSchemas = [];  
   CobroUnitario.prototype.tabsDiv = '';
   CobroUnitario.prototype.fechaDeVencimientoDescuento = ''; 
+  CobroUnitario.prototype.form = '';
 
   function CobroUnitario(selectores){
     this.conceptoDePago = selectores.conceptoDePagoSelector;
     this.importe = selectores.cantidadDePagoSelector;
     this.fechaDeVencimiento = selectores.fechaDeVencimientoSelector;    
-    this.tabsDiv = selectores.tabsDivSelector;    
+    this.tabsDiv = selectores.tabsDivSelector;
+    this.form = selectores.formSelector;
     this.initDatePickerParaFechaDeVencimiento();
     this.initTypeaheadParaConcepto();
+    this.initValidationsForTheForm();
+    this.prepareInputsToValidate();
   }
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
@@ -24,7 +28,8 @@ window.CobroUnitario = (function() {
     var template = Handlebars.compile(source);
     var html = template(item.discounts);
     $(".cobroUnitarioDescuentosTableBody").html(html);
-    this.initDatePickerParaDescuento($('.expiracionDescuento'));    
+    this.initDatePickerParaDescuento($('.expiracionDescuento'));  
+    this.prepareInputsToValidate();  
   }
 
   CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
@@ -137,6 +142,71 @@ window.CobroUnitario = (function() {
     });
 
   }
+  
+  CobroUnitario.prototype.prepareInputsToValidate = function(){    
+    $("input.expiracionDescuento").each(function(){
+      $(this).rules("add",{
+        required:true,
+        messages:{
+          required:"Seleccione una fecha de vencimiento"
+        }        
+      });
+    });
+    
+  }
+
+  CobroUnitario.prototype.initValidationsForTheForm = function(){
+    var that = this;
+
+    this.form.validate({
+      errorPlacement: function(error, element) {
+        $(element).parents(".control-group").first().addClass("error");
+        error.addClass("help-inline");
+        if($(element).parents(".input-prepend,.input-append").size() > 0){
+          error.insertAfter(element.parent());
+        }else{
+          error.insertAfter(element);
+        }
+      },
+      success: function(element) {
+        $(element).parents(".control-group").first().addClass("success");
+      },
+      highlight: function(element, errorClass, validClass){
+        $(element).parents(".control-group").first().addClass(errorClass).removeClass(validClass);
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).parents(".control-group").first().removeClass(errorClass).addClass(validClass);
+      },
+      rules:{
+        'conceptoDePago':{
+          required: true
+        },
+        'cantidadDePago':{
+          required:true,
+          number:true
+        },
+        'fechaDeVencimiento':{
+          required:true
+        }        
+      },
+      messages:{
+        'conceptoDePago':{
+          required: "Escribe un concepto"
+        },
+        'cantidadDePago':{
+          required: "Ingresa un monto",
+          number: "Escribe una cantidad valida"
+        },
+        'fechaDeVencimiento':{
+          required:"Selecciona una fecha de vencimiento" 
+        },        
+        validClass: "success",
+        errorClass: "error", 
+        errorElement: "span"
+      }
+    });    
+    
+  }  
   
   return CobroUnitario;
 
