@@ -43,7 +43,7 @@ class CobroParaCamadaService {
       fechasDeVencimiento << fecha.time
     }
     
-    fechasDeVencimiento.sort()
+    fechasDeVencimiento
   }
   
   def obtenerPagosRecurrentesConDescuentosAplicables(PaymentScheme paymentScheme, CamadaPagoCommand camadaPagoCommand, def pagos, Long numeroInstancias){

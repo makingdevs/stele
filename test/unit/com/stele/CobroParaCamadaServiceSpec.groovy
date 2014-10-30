@@ -45,7 +45,7 @@ class CobroParaCamadaServiceSpec extends Specification {
 
   def "obtener fechas de vencimiento para los descuentos aplicables a partir de los dias de vencimiento"(){
     given: "una lista de dias de vencimento de los descuentos y el mes del pago"
-      def diasVencimientoDescuentosAplicables = [11,22] 
+      def diasVencimientoDescuentosAplicables = days 
     when: 
       def fechasDeVencimiento = service.generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(diasVencimientoDescuentosAplicables,month) 
     then:
@@ -54,10 +54,10 @@ class CobroParaCamadaServiceSpec extends Specification {
       fechasDeVencimiento*.toCalendar()*.get(Calendar.DAY_OF_MONTH) == _days 
       fechasDeVencimiento*.toCalendar()*.get(Calendar.YEAR) == _year
     where:
-      month | _months   || _days    || _year
-      8     |  [8,8]    || [11,22]  ||  [2015,2015]
-      9     |  [9,9]    || [11,22]  ||  [2014,2014]
-      10    |  [10,10]  || [11,22]  ||  [2014,2014]
+      month | _months   ||  days    ||  _days   ||  _year
+      8     |  [8,8]    ||  [22,11] ||  [22,11] ||  [2015,2015]
+      9     |  [9,9]    ||  [10,9]  ||  [10,9]  ||  [2014,2014]
+      10    |  [10,10]  ||  [14,21] ||  [14,21] ||  [2014,2014]
   }
 
   def "Obtener los descuentos aplicables para los cobros recurrentes"(){
