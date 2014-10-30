@@ -50,15 +50,17 @@ class CobroParaCamadaService {
     def pagosConDescuentos = []          
     def descuentosAplicables = []
     def index = 0
-    
+
     numeroInstancias.times{ i ->
       camadaPagoCommand.meses.each{ mes -> 
         def monthOfThePayment =  pagos[index]?.dueDate.toCalendar()[Calendar.MONTH]
         def fechasDeVencimiento = generarFechasDeVencimientoParaDescuentosAplicablesAPartirDeLosDiasDeVencimiento(camadaPagoCommand.diasVencimientoDescuento,monthOfThePayment)
         descuentosAplicables =  applicableDiscountService.generateApplicableDiscountsForPaymentWithPaymentSchemeAndReferenceDate(paymentScheme.id,pagos[index]?.dueDate,fechasDeVencimiento)
         descuentosAplicables.each{ descuentoAplicable ->
-          pagosConDescuentos << applicableDiscountService.addApplicableDiscountToAPayment(descuentoAplicable) ?: pagos[index] 
+          pagos[index] = applicableDiscountService.addApplicableDiscountToAPayment(descuentoAplicable,pagos[index].id) 
         } 
+        
+        pagosConDescuentos << pagos[index]
         index++;
       }  
     }    
