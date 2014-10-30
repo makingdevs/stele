@@ -159,6 +159,7 @@ window.CobroUnitario = (function() {
     this.form.validate({
       errorPlacement: function(error, element) {
         $(element).parents(".control-group").first().addClass("error");
+        $(element).parents(".control-group").first().removeClass("success");
         error.addClass("help-inline");
         if($(element).parents(".input-prepend,.input-append").size() > 0){
           error.insertAfter(element.parent());
@@ -170,7 +171,7 @@ window.CobroUnitario = (function() {
         $(element).parents(".control-group").first().addClass("success");
       },
       highlight: function(element, errorClass, validClass){
-        $(element).parents(".control-group").first().addClass(errorClass).removeClass(validClass);
+        $(element).parents(".control-group").first().addClass(errorClass).removeClass("success");
       },
       unhighlight: function(element, errorClass, validClass) {
         $(element).parents(".control-group").first().removeClass(errorClass).addClass(validClass);
