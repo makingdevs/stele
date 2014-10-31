@@ -9,21 +9,21 @@
         <div class="control-group">
           <label class="control-label" for="selectGrupo">Turno</label>
           <div class="controls">
-            <%-- <g:select name="turno" from="${turnos}" noSelection="['':'- Selecciona el turno-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxTurnoANivel', params:'\'turno=\' + escape(this.value)',update:'busquedaForm')}" value="${turno}"/> --%>
-            <input type="hidden" name="getNivelUrl" value="${g.createLink(action:'obtenerEsquemaDePagoPorConcepto', controller:'esquemaDePago')}" /> 
-            <g:select name="turno" id="turno" from="${turnos}" noSelection="['':'-Selecciona el Turno-']"/>
+            <input type="hidden" name="getNivelUrl" value="${g.createLink(action:'ajaxTurnoANivel', controller:'utilidades')}" /> 
+            <g:select name="turno" id="turno" from="${turnos}" noSelection="['':'-Selecciona el Turno-']" />
           </div>
         </div>
         <div class="control-group">
           <label class="control-label" for="selectNivel">Nivel</label>
           <div class="controls">
-           <g:select name="nivel" from="${niveles}" noSelection="['':'- Selecciona el Nivel-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxNivelAGrado', params:'\'nivel=\' + escape(this.value)',update:'busquedaForm')}" value="${nivel}"/>
+            <input type="hidden" name="getGrupoUrl" value="${g.createLink(action:'ajaxNivelAGrado', controller:'utilidades')}" />
+            <g:select name="nivel" from="${niveles}" noSelection="['':'-Selecciona el Nivel-']" />
          </div>
        </div>  
        <div class="control-group">
         <label class="control-label" for="selectNivel">Grado</label>
         <div class="controls">
-          <g:select name="grado" from="${grados}" noSelection="['':'- Selecciona el Grado-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxGradoAGrupo', params:'\'grado=\' + escape(this.value)',update:'busquedaForm')}" value="${grado}"/>
+          <g:select name="grado" from="${grados}" noSelection="['':'-Selecciona el Grado-']" />
         </div>
       </div>
       <div class="control-group">
@@ -46,3 +46,17 @@
 </div>
 </div>
 </g:formRemote>
+
+<script id="nivel-template" type="text/x-handlebars-template">
+    <option value="">-Selecciona el Nivel-</option>
+    {{#each this}}
+      <option value="{{this}}">{{this}}</option> 
+    {{/each}}
+</script>
+
+<script id="grado-template" type="text/x-handlebars-template">
+  <option value="">-Selecciona el Grado-</option>
+  {{#each this}}
+    <option value="{{this}}">{{this}}</option> 
+  {{/each}}
+</script>
