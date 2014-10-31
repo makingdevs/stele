@@ -11,16 +11,22 @@ window.Busqueda = (function(){
     this.grado = selectores.gradoSelector;
     this.grupo = selectores.grupoSelector;
     this.initFunctionForTurno();
+    this.initFunctionForNivel();
   }
   
   Busqueda.prototype.initFunctionForTurno = function(){
     var that = this;
-    var niveles = []
     this.turno.change(function(){
-      that.getNiveles($(this).val(),$("input[name=getNivelUrl]").val(),that.renderNiveles);
+      that.getNiveles($(this).val(),$("input[name=getNivelUrl]").val(),that.renderData);
     });  
-
   } 
+
+  Busqueda.prototype.initFunctionForNivel = function(){
+    var that = this;
+    this.nivel.change(function(){
+      that.getGrados(that.turno.val(),$(this).val(),$("input[name=getGrupoUrl]").val(),that.renderData)
+    });
+  }
 
   Busqueda.prototype.getNiveles = function(turno,url,callbackFunction){
     $.ajax({
@@ -28,19 +34,31 @@ window.Busqueda = (function(){
       url:url,
       data:{turno:turno},
       success:function(data){
-        callbackFunction(data); 
+        callbackFunction(data,$("#nivel-template"),$("select[name=nivel]")); 
       }
     });
   }
+
+  Busqueda.prototype.getGrados = function(turno,nivel,url,callbackFunction){
+    $.ajax({
+      dataType:"json",
+      url:url,
+      data:{turno:turno,nivel:nivel},
+      success:function(data){
+        callbackFunction(data,$("#grado-template"),$("select[name=grado]"));   
+      }
+    }); 
+  }
   
-  Busqueda.prototype.renderNiveles = function(data){
-    var source = $("#nivel-template").html()
+  Busqueda.prototype.renderData = function(data,template,selector){
+    var source = template.html()
     var template = Handlebars.compile(source)
     var html = template(data);
-    $("select[name=nivel]").html(html);
+    selector.html(html);
   }
 
   return Busqueda;
+
 })();
 
 
