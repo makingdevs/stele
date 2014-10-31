@@ -12,6 +12,7 @@ window.Busqueda = (function(){
     this.grupo = selectores.grupoSelector;
     this.initFunctionForTurno();
     this.initFunctionForNivel();
+    this.initFunctionForGrado();
   }
   
   Busqueda.prototype.initFunctionForTurno = function(){
@@ -26,6 +27,13 @@ window.Busqueda = (function(){
     this.nivel.change(function(){
       that.getGrados(that.turno.val(),$(this).val(),$("input[name=getGrupoUrl]").val(),that.renderData)
     });
+  }
+
+  Busqueda.prototype.initFunctionForGrado = function(){
+    var that = this;
+    this.grado.change(function(){
+      that.getGrupos(that.turno.val(),that.nivel.val(),$(this).val(),$("input[name=getGradoUrl]").val(),that.renderData) 
+    }); 
   }
 
   Busqueda.prototype.getNiveles = function(turno,url,callbackFunction){
@@ -47,6 +55,17 @@ window.Busqueda = (function(){
       success:function(data){
         callbackFunction(data,$("#grado-template"),$("select[name=grado]"));   
       }
+    }); 
+  }
+
+  Busqueda.prototype.getGrupos = function(turno,nivel,grado,url,callbackFunction){
+    $.ajax({
+      dataType:"json",
+      url:url,
+      data:{turno:turno,nivel:nivel,grado:grado},
+      success:function(data){
+        callbackFunction(data,$("#grupo-template"),$("select[name=grupo]"));
+      } 
     }); 
   }
   
