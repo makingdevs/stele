@@ -23,13 +23,14 @@
        <div class="control-group">
         <label class="control-label" for="selectNivel">Grado</label>
         <div class="controls">
+          <input type="hidden" name="getGradoUrl" value="${g.createLink(action:'ajaxGradoAGrupo', controller:'utilidades')}" />
           <g:select name="grado" from="${grados}" noSelection="['':'-Selecciona el Grado-']" />
         </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="selectNivel">Grupo</label>
         <div class="controls">
-          <g:select name="grupo" from="${grupos}" noSelection="['':'- Selecciona el Grupo-']" onchange="${remoteFunction(controller:'Utilidades', action:'ajaxGrupo', params:'\'grupo=\' + escape(this.value)',update:'busquedaForm')}" value="${grupo}"/>
+          <g:select name="grupo" from="${grupos}" noSelection="['':'- Selecciona el Grupo-']" />
         </div>
       </div>  
     </div>
@@ -58,5 +59,11 @@
   <option value="">-Selecciona el Grado-</option>
   {{#each this}}
     <option value="{{this}}">{{this}}</option> 
+  {{/each}}
+</script>
+<script id="grupo-template" type="text/x-handlebars-template">
+  <option value="">-Selecciona el Grupo-</option>
+  {{#each this}}
+    <option value="{{this}}">{{this}}</option>
   {{/each}}
 </script>

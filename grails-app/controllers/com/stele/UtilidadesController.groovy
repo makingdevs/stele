@@ -19,8 +19,8 @@ class UtilidadesController {
   }
 
   def ajaxNivelAGrado() {
-    def nivel = NivelDeEstudio.find{it.value == params.nivel}
     def turno = Turno.find{it.value == params.turno}
+    def nivel = NivelDeEstudio.find{it.value == params.nivel}
     def grados = DistribucionInstitucional.withCriteria {
       eq('turno',turno)
       eq('nivelDeEstudio', nivel)
@@ -28,32 +28,24 @@ class UtilidadesController {
           groupProperty('grado')
          }
     }
-    
+
     render (grados as JSON)
   }
 
   def ajaxGradoAGrupo() {
+    def turno = Turno.find{it.value == params.turno}
+    def nivel = NivelDeEstudio.find{it.value == params.nivel}
     def grado = params.grado
     def grupos = DistribucionInstitucional.withCriteria {
-      eq('turno', flash.turno)
-      eq('nivelDeEstudio', flash.nivel)
+      eq('turno',turno)
+      eq('nivelDeEstudio',nivel)
       eq('grado', grado.toInteger())
          projections {
           groupProperty('grupo')
          }
     }
-    def turnos = flash.turnos
-    def turno = flash.turno
-    def niveles = flash.niveles
-    def nivel = flash.nivel
-    def grados = flash.grados
-    flash.turnos = turnos
-    flash.turno = turno
-    flash.niveles = niveles
-    flash.nivel = nivel
-    flash.grados = grados
-    flash.grado = grado
-    render template:'busquedaForm', model:[turnos:turnos,turno:turno,niveles:niveles,nivel:nivel, grados:grados, grado:grado, grupos:grupos, grupo:null]
+
+    render (grupos as JSON)
   }
 
   def ajaxGrupo() { }
