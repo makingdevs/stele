@@ -1,5 +1,6 @@
 package com.stele 
 
+import grails.converters.JSON
 import com.stele.Turno
 import com.stele.NivelDeEstudio
 
@@ -7,38 +8,28 @@ class UtilidadesController {
 	
 	def ajaxTurnoANivel() {
     def turno = Turno.find{it.value == params.turno}
-    def niveles = DistribucionInstitucional.withCriteria {
+    def niveles  = DistribucionInstitucional.withCriteria {
       eq('turno', turno)
         projections {
           groupProperty('nivelDeEstudio')
         }
     }
-    def turnos = Turno.findAll{it.value != 'Nocturno'}    
-    def nivel=null
-    flash.turnos = turnos
-    flash.turno = turno
-    flash.niveles = niveles
-    render template:'busquedaForm', model:[turnos:turnos,turno:turno,niveles:niveles,nivel:nivel]
+  
+    render (niveles*.value as JSON)
   }
 
   def ajaxNivelAGrado() {
     def nivel = NivelDeEstudio.find{it.value == params.nivel}
+    def turno = Turno.find{it.value == params.turno}
     def grados = DistribucionInstitucional.withCriteria {
-      eq('turno', flash.turno)
+      eq('turno',turno)
       eq('nivelDeEstudio', nivel)
          projections {
           groupProperty('grado')
          }
     }
-    def turnos = flash.turnos
-    def turno = flash.turno
-    def niveles = flash.niveles
-    flash.turnos = turnos
-    flash.turno = turno
-    flash.niveles = niveles
-    flash.grados = grados
-    flash.nivel = nivel
-    render template:'busquedaForm', model:[turnos:turnos,turno:turno,niveles:niveles,nivel:nivel, grados:grados, grado:null]
+    
+    render (grados as JSON)
   }
 
   def ajaxGradoAGrupo() {
