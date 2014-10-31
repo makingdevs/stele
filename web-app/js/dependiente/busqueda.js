@@ -37,6 +37,7 @@ window.Busqueda = (function(){
   }
 
   Busqueda.prototype.getNiveles = function(turno,url,callbackFunction){
+    var that = this;
     $.ajax({
       dataType:"json",
       url:url,
@@ -44,10 +45,14 @@ window.Busqueda = (function(){
       success:function(data){
         callbackFunction(data,$("#nivel-template"),$("select[name=nivel]")); 
       }
+    }).then(function(){
+      that.nivel.trigger("change"); 
+      that.grado.trigger("change");
     });
   }
 
   Busqueda.prototype.getGrados = function(turno,nivel,url,callbackFunction){
+    var that = this;
     $.ajax({
       dataType:"json",
       url:url,
@@ -55,6 +60,8 @@ window.Busqueda = (function(){
       success:function(data){
         callbackFunction(data,$("#grado-template"),$("select[name=grado]"));   
       }
+    }).then(function(){
+      that.grado.trigger("change");
     }); 
   }
 
