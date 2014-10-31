@@ -15,14 +15,31 @@ window.Busqueda = (function(){
   
   Busqueda.prototype.initFunctionForTurno = function(){
     var that = this;
+    var niveles = []
     this.turno.change(function(){
-      that.getNivel($(this).val(),$("input[name=getNivelUrl]").val());
+      that.getNiveles($(this).val(),$("input[name=getNivelUrl]").val(),that.renderNiveles);
     });  
+
   } 
 
-  Busqueda.prototype.getNivel = function(turno,url){
-
+  Busqueda.prototype.getNiveles = function(turno,url,callbackFunction){
+    $.ajax({
+      dataType:"json",
+      url:url,
+      data:{turno:turno},
+      success:function(data){
+        callbackFunction(data); 
+      }
+    });
   }
+  
+  Busqueda.prototype.renderNiveles = function(data){
+    var source = $("#nivel-template").html()
+    var template = Handlebars.compile(source)
+    var html = template(data);
+    $("select[name=nivel]").html(html);
+  }
+
   return Busqueda;
 })();
 
