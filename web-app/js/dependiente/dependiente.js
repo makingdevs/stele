@@ -1,7 +1,8 @@
 window.Dependiente = (function(){
   
-  Dependiente.prototype.allCheckBox = ''
-  Dependiente.prototype.dependientes = ''
+  Dependiente.prototype.allCheckBox = '';
+  Dependiente.prototype.dependientes = '';
+  Dependiente.prototype.form = '';
   
   function Dependiente(){    
   }
@@ -9,7 +10,9 @@ window.Dependiente = (function(){
   Dependiente.prototype.setSelectores = function(selectores){
     this.allCheckBox = selectores.allCheckBox; 
     this.dependientes = selectores.dependientes; 
+    this.form = selectores.formSelector;
     this.initCheckAllInput();
+    this.initValidation();
   }
 
   Dependiente.prototype.initCheckAllInput = function(){
@@ -21,6 +24,16 @@ window.Dependiente = (function(){
         that.dependientes.prop("checked",false);
     }); 
   } 
+
+  Dependiente.prototype.initValidation = function(){
+    var that = this;
+    this.form.submit(function(){
+      if(that.dependientes.is(':checked'))
+        return true;
+      else
+        return false;
+    }); 
+  }
 
   return Dependiente;
 

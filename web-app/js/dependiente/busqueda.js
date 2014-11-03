@@ -113,7 +113,8 @@ window.Busqueda = (function(){
     }).then(function(){
       var selectores = {
         allCheckBox:$("input[name=allDependientes]"),
-        dependientes:$('input[name="dependientes"]') 
+        dependientes:$('input[name="dependientes"]'),
+        formSelector:$('#searchDependientes') 
       }
       that.dependiente.setSelectores(selectores);
     });  
