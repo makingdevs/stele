@@ -8,7 +8,7 @@ class UtilidadesController {
 	
 	def ajaxTurnoANivel() {
     def turno = Turno.find{it.value == params.turno}
-    def niveles  = DistribucionInstitucional.withCriteria {
+    def niveles = DistribucionInstitucional.withCriteria {
       eq('turno', turno)
         projections {
           groupProperty('nivelDeEstudio')
@@ -24,9 +24,9 @@ class UtilidadesController {
     def grados = DistribucionInstitucional.withCriteria {
       eq('turno',turno)
       eq('nivelDeEstudio', nivel)
-         projections {
-          groupProperty('grado')
-         }
+      projections {
+        groupProperty('grado')
+      }
     }
 
     render (grados as JSON)
@@ -39,10 +39,10 @@ class UtilidadesController {
     def grupos = DistribucionInstitucional.withCriteria {
       eq('turno',turno)
       eq('nivelDeEstudio',nivel)
-      eq('grado', grado.toInteger())
-         projections {
-          groupProperty('grupo')
-         }
+      eq('grado', Integer.parseInt(grado ?: "0"))
+       projections {
+        groupProperty('grupo')
+       }
     }
 
     render (grupos as JSON)
