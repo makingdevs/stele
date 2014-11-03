@@ -4,17 +4,25 @@ window.Busqueda = (function(){
   Busqueda.prototype.nivel = '';  
   Busqueda.prototype.grado = '';
   Busqueda.prototype.grupo = ''; 
+  Busqueda.prototype.form = '';
+  Busqueda.prototype.dependiente = '';
 
   function Busqueda(selectores){
     this.turno = selectores.turnoSelector;
     this.nivel = selectores.nivelSelector;
     this.grado = selectores.gradoSelector;
     this.grupo = selectores.grupoSelector;
+    this.form = selectores.formularioSelector;
     this.initFunctionForTurno();
     this.initFunctionForNivel();
     this.initFunctionForGrado();
+    this.initFormAction();
   }
-  
+
+  Busqueda.prototype.setDependiente = function(dependiente){
+    this.dependiente = dependiente; 
+  }
+
   Busqueda.prototype.initFunctionForTurno = function(){
     var that = this;
     this.turno.change(function(){
@@ -81,6 +89,34 @@ window.Busqueda = (function(){
     var template = Handlebars.compile(source)
     var html = template(data);
     selector.html(html);
+  }
+
+  Busqueda.prototype.initFormAction = function(){
+    var that = this;
+    this.form.submit(function(event){
+      event.stopPropagation(); 
+      that.getAllDependientes($(this).attr("action"),$(this).serialize());
+      return false;
+    });
+  }
+
+  Busqueda.prototype.getAllDependientes = function(url,data){
+    var that = this;
+
+    $.ajax({
+      type:"GET",
+      url:url,
+      data:data,
+      success:function(data){
+        $("#dependientes").html(data);
+      } 
+    }).then(function(){
+      var selectores = {
+        allCheckBox:$("input[name=allDependientes]"),
+        dependientes:$('input[name="dependientes"]') 
+      }
+      that.dependiente.setSelectores(selectores);
+    });  
   }
 
   return Busqueda;
