@@ -26,7 +26,8 @@ jQuery(function ($) {
         conceptoDePagoRecurrenteSelector: $('#conceptoDePagoRecurrente'),
         diasVencimientoSelector: $('#diasVencimientoPago'),
         cantidadDePagoRecurrenteSelector: $('#cantidadDePagoRecurrente'),
-        tabsDivSelector:$('.tabsRecurrente')
+        tabsDivSelector:$('.tabsRecurrente'),
+        formSelector:$("#cobroRecurrenteForm")
       };
       this.cobroRecurrente = new CobroRecurrente(selectors);
     },
@@ -89,7 +90,7 @@ jQuery(function ($) {
         if($('a[href=#faq-tab-111]').parent().attr("class") == 'active')
           $("#cobroUnitarioForm").submit();
         else if($('a[href=#faq-tab-222]').parent().attr("class") == 'active')
-          $("#pagoGeneracionrecurrente").submit();
+          $("#cobroRecurrenteForm").submit();
 
         $('#imagenCarga').removeClass("hidden");
       });                       

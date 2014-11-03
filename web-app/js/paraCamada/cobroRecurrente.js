@@ -4,15 +4,18 @@ window.CobroRecurrente = (function(){
   CobroRecurrente.prototype.cantidadDePagoRecurrente = '';
   CobroRecurrente.prototype.diasVencimiento = '';
   CobroRecurrente.prototype.tabsDiv = '';
+  CobroRecurrente.prototype.form = '';
 
   function CobroRecurrente(selectores){    
     this.conceptoDePagoRecurrente = selectores.conceptoDePagoRecurrenteSelector;
     this.diasVencimiento = selectores.diasVencimientoSelector;
     this.cantidadDePagoRecurrente = selectores.cantidadDePagoRecurrenteSelector;
     this.tabsDiv = selectores.tabsDivSelector;
+    this.form = selectores.formSelector;
     this.initTypeaheadParaCobroRecurrente();    
     this.initExpirationDay();
     this.initActionFormMonths();
+    this.initValidationsForTheForm();
   }
 
   CobroRecurrente.prototype.renderDiscountsTable = function(paymentScheme){    
@@ -23,6 +26,7 @@ window.CobroRecurrente = (function(){
     var html = template(paymentScheme.discounts);
     $(".cobroRecurrenteDescuentosTableBody").html(html);
     this.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt(this.diasVencimiento.val()));
+
   }
 
   CobroRecurrente.prototype.setExpirationDayForDiscount = function(discount,expirationDay){    
@@ -124,7 +128,7 @@ window.CobroRecurrente = (function(){
 
   CobroRecurrente.prototype.initActionFormMonths = function(){
     var that = this;
-    $("input[type=checkbox]").click(function(){      
+    $("input[type=checkbox]").click(function(){
       var months = [];
       var doublePayment = [];
       var sourceForMonths = $("#meses-template").html();
@@ -148,6 +152,65 @@ window.CobroRecurrente = (function(){
       $("div.meses").html(htmlForMonths);
       $("div.cobroDoble").html(htmlForDoublePayment);
     });
+  }
+
+  CobroRecurrente.prototype.prepareInputsToValidate = function(){
+    /*$("").each(function(){
+        
+    });*/ 
+  }
+  
+  CobroRecurrente.prototype.initValidationsForTheForm = function(){
+    var that = this;
+     
+    this.form.validate({
+      errorPlacement: function(error, element) {
+        $(element).parents(".control-group").first().addClass("error");
+        $(element).parents(".control-group").first().removeClass("success");
+        error.addClass("help-inline");
+        if($(element).parents(".input-prepend,.input-append").size() > 0){
+          error.insertAfter(element.parent());
+        }else{
+          error.insertAfter(element);
+        }
+      },
+      success: function(element) {
+        $(element).parents(".control-group").first().addClass("success");
+      },
+      highlight: function(element, errorClass, validClass){
+        $(element).parents(".control-group").first().addClass(errorClass).removeClass("success");
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).parents(".control-group").first().removeClass(errorClass).addClass(validClass);
+      },
+      rules:{
+        'conceptoDePagoRecurrente':{
+          required: true
+        },
+        'diasVencimientoPago':{
+          required:true
+        },
+        'cantidadDePagoRecurrente':{
+          required:true,
+          number:true
+        }        
+      },
+      messages:{
+        'conceptoDePagoRecurrente':{
+          required: "Escribe un concepto"
+        },
+        'diasVencimientoPago':{
+          required: "Seleccione un día" 
+        },
+        'cantidadDePagoRecurrente':{
+          required: "Ingresa un monto",
+          number: "Escribe una cantidad valida"
+        },
+        validClass: "success",
+        errorClass: "error", 
+        errorElement: "span"
+      }
+    });     
   }
 
   return CobroRecurrente;
