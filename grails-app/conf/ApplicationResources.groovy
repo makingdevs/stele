@@ -198,8 +198,9 @@ modules = {
 
   busquedaDependientes{ 
     dependsOn 'handlebars'
-    resource url: 'js/dependiente/app.js'
     resource url: 'js/dependiente/busqueda.js'
+    resource url: 'js/dependiente/dependiente.js'
+    resource url: 'js/dependiente/app.js'
   }
   
   reporteAlumnosInscritos {
