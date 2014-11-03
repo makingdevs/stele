@@ -64,7 +64,6 @@
                       </div>
                       <div class="span1"></div>
                       <div id="dependientes" name="dependientes" >
-                        <g:render template="dependienteCar" modal="[organizacion:institucion]"/>
                       </div>
                     </div>
                   </div>            

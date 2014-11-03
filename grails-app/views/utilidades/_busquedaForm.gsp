@@ -1,4 +1,4 @@
-<g:formRemote name="busquedaDependientes" update="dependientes" url="[controller: 'dependiente', action:'search']">
+<g:form id="busquedaDependientes" name="busquedaDependientes" url="[controller: 'dependiente', action:'search']">
 <div class="span3 widget-container-span">
   <div class="widget-box">
     <div class="widget-header">
@@ -30,23 +30,23 @@
       <div class="control-group">
         <label class="control-label" for="selectNivel">Grupo</label>
         <div class="controls">
-          <g:select name="grupo" from="${grupos}" noSelection="['':'- Selecciona el Grupo-']" />
+          <g:select name="grupo" from="${grupos}" noSelection="['':'-Selecciona el Grupo-']" />
         </div>
       </div>  
     </div>
-    <div class="widget-toolbox padding-8 clearfix center">
-      <button type="submit" class="btn  btn-info" >
+    <div class="widget-toolbox padding-8 clearfix ">
+      <button type="submit" class="btn  btn-info">
         Agregar
         <i class="icon-arrow-right icon-on-right"></i>
       </button>
-      <button type="reset" class="btn btn-info">
+      <button type="reset" class="btn btn-info pull-right">
         Limpiar
       </button>
     </div>
   </div>
 </div>
 </div>
-</g:formRemote>
+</g:form>
 
 <script id="nivel-template" type="text/x-handlebars-template">
     <option value="">-Selecciona el Nivel-</option>
