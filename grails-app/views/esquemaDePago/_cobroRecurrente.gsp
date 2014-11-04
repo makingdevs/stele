@@ -72,7 +72,9 @@
               <td>{{descuento}}</td>
               <td>{{cantidad}}</td>
               <td style="padding-left:0px;">
-                <g:select disabled="${true}" class="diaVencimientoDescuento" name="diasVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>                    
+                <div class="control-group">
+                <g:select disabled="${true}" class="diaVencimientoDescuento" name="diasVencimientoDescuento[{{@index}}]" from="[]" noSelection="['':'- Dia -']" style="width:100%;"/>
+                </div> 
               </td>
             </tr>    
             {{/each}}
@@ -349,6 +351,3 @@
     <input type="hidden" value="{{mes}}" name="pagoDoble"/>
   {{/each}}
 </script>
-
-
-
