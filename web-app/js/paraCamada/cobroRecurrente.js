@@ -26,7 +26,7 @@ window.CobroRecurrente = (function(){
     var html = template(paymentScheme.discounts);
     $(".cobroRecurrenteDescuentosTableBody").html(html);
     this.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt(this.diasVencimiento.val()));
-
+    this.prepareInputsToValidate();
   }
 
   CobroRecurrente.prototype.setExpirationDayForDiscount = function(discount,expirationDay){    
@@ -155,9 +155,12 @@ window.CobroRecurrente = (function(){
   }
 
   CobroRecurrente.prototype.prepareInputsToValidate = function(){
-    /*$("").each(function(){
-        
-    });*/ 
+    $("select.diaVencimientoDescuento").rules("add",{
+      required:true,
+      messages:{
+        required:"Seleccione el día de vencimiento"
+      }
+    }); 
   }
   
   CobroRecurrente.prototype.initValidationsForTheForm = function(){
