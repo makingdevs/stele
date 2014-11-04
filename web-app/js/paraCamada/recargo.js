@@ -8,12 +8,13 @@ window.Recargo = (function(){
 
   function Recargo(selectores){
     this.cantidad = selectores.cantidadRecargo;
-    this.porcentaje = selectores.porcentaRecargo;
+    this.porcentaje = selectores.porcentajeRecargo;
     this.formulario = selectores.formulario;
     this.divResultados = selectores.divResultados;
     this.idRecargo = selectores.idRecargo;
     this.initDeleteFunction();
     this.initFormAction();
+    this.initValidationForTheFields();
   }
 
   Recargo.prototype.initFormAction = function(){
@@ -57,8 +58,54 @@ window.Recargo = (function(){
 
       return false;
     });
-
   } 
+
+  Recargo.prototype.initValidationForTheFields = function(){
+    var that = this;
+
+    jQuery.validator.addMethod("amount", (function(value,element,params){
+      console.log(params[0]);
+      return true;
+    }), "Debe escribir solamente el importe o el porcentaje");
+
+
+    this.formulario.validate({    
+      errorPlacement: function(error, element) {
+        $(element).parent().parent().parent().addClass("error");
+        error.addClass("help-inline").appendTo(element.parent());
+        error.insertAfter(element);
+      },
+      success: function(element) {
+        $(element).parent().parent().parent().addClass("success");
+      },
+      highlight: function(element, errorClass, validClass){
+        $(element).parent().parent().parent().addClass(errorClass).removeClass(validClass);
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).parent().parent().parent().removeClass(errorClass).addClass(validClass);
+      },
+      rules: {
+        'amount': {
+          number: true,
+          amount: that.porcentaje.val()
+        },
+        'percentage': {
+          number: true
+        }
+      },
+      messages: {
+        'amount': {
+          number: "Sólo se aceptan números" 
+        },
+        'percentage':{
+          number: "No se aceptan letras en este campo"
+        }
+      },
+        validClass: "success",
+        errorClass: "error",
+        errorElement: "span"
+      }); 
+  }
 
   return Recargo;
 
