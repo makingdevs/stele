@@ -41,7 +41,7 @@
         </div>
 
         <div class="page-content">
-          <g:if test="${inscripcionCobro == 'true'}">
+          <g:if test="${inscripcionCobro}">
             <div class="page-header position-relative">
               <h1>
                 Inscripción Archivo + Cobro
@@ -76,7 +76,7 @@
                 <div class="widget-body">
                   <div class="widget-main">
                     <div class="row-fluid">
-                      <g:if test="${inscripcionCobro == 'true'}">
+                      <g:if test="${inscripcionCobro}">
                         <g:render template="menuArchivoCobro" />
                       </g:if>
                       <g:else>
@@ -113,7 +113,7 @@
                                     <div class="widget-main">
                                       <div class="center">
                                         <span class="control-group warning">
-                                          <g:if  test="${inscripcionCobro == 'true'}">
+                                          <g:if test="${inscripcionCobro}">
                                             <input type="hidden" value="${inscripcionCobro}" name="cobro"/>
                                             <div class="alert alert-warning">
                                             <strong>NOTA!</strong>

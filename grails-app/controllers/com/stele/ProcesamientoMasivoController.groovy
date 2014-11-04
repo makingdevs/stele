@@ -38,7 +38,8 @@ class ProcesamientoMasivoController {
                                listaUsuariosProcesados: dependientesExistentes,
                                dependientes: dependientesPersistidos,
                                erroneos: usuariosErroneos?.size(),
-                               historiales: historialesAcademicos])
+                               historiales: historialesAcademicos,
+                               inscripcionCobro:params.cobro])
   }
 
 }

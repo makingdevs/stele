@@ -36,7 +36,7 @@
                 <div class="widget-body">
                   <div class="widget-main">
                     <div class="row-fluid">
-                      <g:if test="${flash.proceso == 'true'}">
+                      <g:if test="${inscripcionCobro}">
                         <g:render template="menuArchivoCobroMasivo" />
                       </g:if>
                       <g:else>

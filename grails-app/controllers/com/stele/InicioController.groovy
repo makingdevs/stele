@@ -58,7 +58,6 @@ class InicioController {
   }
 
   def procesar(){
-    [institucionId: params.long("institucionId"),
-     inscripcionCobro:params.cobro]
+    [institucionId:params.long("institucionId"),inscripcionCobro:params.cobro]
   }
 }
