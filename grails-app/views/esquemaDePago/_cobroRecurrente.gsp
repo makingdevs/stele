@@ -231,8 +231,8 @@
                   <label class="control-label" for="txtConcepto">Porcentaje</label>
                   <div class="controls">
                     <div class="input-append">
-                      <input class="input-mini" id="recargoRecurrentePorcentaje" name="percentage" type="text" placeholder="0.0">
                       <span class="add-on">%</span>
+                      <input class="input-mini" id="recargoRecurrentePorcentaje" name="percentage" type="text" placeholder="0.0">
                     </div>
                   </div>
                 </div>

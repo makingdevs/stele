@@ -174,7 +174,7 @@
                   <div class="input-append">
                     <label class="control-label" for="txtConcepto"> Procentaje </label>
                     <div class="controls">
-                      <input type="text" class="input-mini" id="porcentaje" n  placeholder="0.0">
+                      <input type="text" class="input-mini" id="porcentaje" placeholder="0.0">
                       <span class="add-on">%</span>
                     </div>
                   </div>
@@ -210,8 +210,8 @@
                   <label class="control-label" for="txtConcepto">Porcentaje</label>
                   <div class="controls">
                     <div class="input-append">
-                      <input class="input-mini" id="recargoUnitarioPorcentaje" name="percentage" type="text" placeholder="0.0">
                       <span class="add-on">%</span>
+                      <input class="input-mini" id="recargoUnitarioPorcentaje" name="percentage" type="text" placeholder="0.0">
                     </div>
                   </div>
                 </div>

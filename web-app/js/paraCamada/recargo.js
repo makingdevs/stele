@@ -13,33 +13,7 @@ window.Recargo = (function(){
     this.divResultados = selectores.divResultados;
     this.idRecargo = selectores.idRecargo;
     this.initDeleteFunction();
-    this.initFormAction();
     this.initValidationForTheFields();
-  }
-
-  Recargo.prototype.initFormAction = function(){
-    var that = this;
-
-    this.formulario.submit(function(event){
-      event.stopPropagation();
-      
-      $.ajax({
-        type: "POST",
-        url: $(this).attr('action'),
-        data: $(this).serialize(),
-        success: function(data){
-          that.divResultados.html(data);
-          that.formulario.each(function(){
-            this.reset();
-          });
-        }  
-      }).then(function(){
-        var recargoId = that.divResultados.find("#recargoId"); 
-        that.idRecargo.val(recargoId.val());
-      });
-
-      return false;
-    });    
   }
 
   Recargo.prototype.initDeleteFunction = function(){
@@ -61,13 +35,11 @@ window.Recargo = (function(){
   } 
 
   Recargo.prototype.initValidationForTheFields = function(){
-    var that = this;
+    var that = this; 
 
-    jQuery.validator.addMethod("amount", (function(value,element,params){
-      console.log(params[0]);
-      return true;
-    }), "Debe escribir solamente el importe o el porcentaje");
-
+    jQuery.validator.addMethod("onlyOne",(function(value,element,params){
+      return (params[0].value != "" && element.value == "" || params[0].value == "" && element.value != "")
+    }), "Escribe un recargo o porcentaje");
 
     this.formulario.validate({    
       errorPlacement: function(error, element) {
@@ -87,10 +59,11 @@ window.Recargo = (function(){
       rules: {
         'amount': {
           number: true,
-          amount: that.porcentaje.val()
+          onlyOne: that.porcentaje
         },
         'percentage': {
-          number: true
+          number: true,
+          onlyOne: that.cantidad
         }
       },
       messages: {
@@ -100,6 +73,22 @@ window.Recargo = (function(){
         'percentage':{
           number: "No se aceptan letras en este campo"
         }
+      },
+      submitHandler:function(){
+        $.ajax({
+          type: "POST",
+          url: that.formulario.attr('action'),
+          data: that.formulario.serialize(),
+          success: function(data){
+            that.divResultados.html(data);
+            that.formulario.each(function(){
+              this.reset();
+            });
+          }  
+        }).then(function(){
+          var recargoId = that.divResultados.find("#recargoId"); 
+          that.idRecargo.val(recargoId.val());
+        });
       },
         validClass: "success",
         errorClass: "error",
