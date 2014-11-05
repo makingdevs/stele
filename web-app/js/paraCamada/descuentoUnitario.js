@@ -44,14 +44,29 @@ window.DescuentoUnitario = (function(){
   DescuentoUnitario.prototype.initValidationsForFields = function(){
     var that = this;
 
+    jQuery.validator.addMethod("expirationDateOrDay",(function(value,element,params){
+      return (params[0].value != "" && element.value == "" || params[0].value == "" && element.value != "")
+    }),"Seleccionar fecha o día de vencimiento");
+   
     this.formulario.validate({
       errorPlacement: function(error, element) {
-        $(element).parent().parent().parent().addClass("error");
-        error.addClass("help-inline").appendTo(element.parent());
-        error.insertAfter(element.parent());
+        $(element).parents(".control-group").first().addClass("error");
+        $(element).parents(".control-group").first().removeClass("success");
+        error.addClass("help-inline");
+        if($(element).parents(".input-prepend,.input-append").size() > 0){
+          if($(element).parents(".days").size() > 0){
+            $(".errorPlace").html(error);         
+          }
+          else
+            error.insertAfter(element.parent());
+        }
+        else{
+          error.insertAfter(element);
+        }
+       
       },
       success: function(element) {
-        $(element).parent().parent().parent().addClass("success");
+        $(element).parents(".control-group").first().removeClass("error").addClass("success");
       },
       highlight: function(element, errorClass, validClass){
         $(element).parent().parent().parent().addClass(errorClass).removeClass(validClass);
@@ -68,7 +83,9 @@ window.DescuentoUnitario = (function(){
           number: true
         },
         'expirationDate':{
-          required: true
+        },
+        'previousDaysForCancelingDiscount':{
+          expirationDateOrDay:that.fechaExpiracion 
         }
       },
       messages: {
@@ -78,9 +95,6 @@ window.DescuentoUnitario = (function(){
         'amount':{
           required: "Escribe una cantidad",
           number: "Escribe una cantidad valida"
-        },
-        'expirationDate':{
-          required: "Escribe una fecha de expiración"
         }
       },
       submitHandler:function(){
