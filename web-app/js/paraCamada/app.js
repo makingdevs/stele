@@ -4,12 +4,12 @@ jQuery(function ($) {
   window.App = {
     init : function(){
       this.initButtonActions();
+      this.initRecargoUnitario();      
+      this.initRecargoRecurrente();
       this.initDescuentoUnitario();
       this.initDescuentoRecurrente();
       this.initCobroUnitario();
-      this.initCobroRecurrente();
-      this.initRecargoUnitario();      
-      this.initRecargoRecurrente();
+      this.initCobroRecurrente();      
     },
     initCobroUnitario : function(){
       var selectors = {

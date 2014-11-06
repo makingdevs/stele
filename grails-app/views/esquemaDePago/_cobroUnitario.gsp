@@ -160,14 +160,10 @@
             
               <div class="span6">
                 <div class="control-group">
-                  <div class="input-prepend">
-                    <label class="control-label" for="txtConcepto"> Dias antes </label> 
-                    <div class="controls">
-                      <div class="input-prepend days">
-                        <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
-                      </div>
-                      <div class="errorPlace">
-                      </div>
+                  <label class="control-label" for="txtConcepto"> Dias antes </label> 
+                  <div class="controls">
+                    <div class="input-prepend">
+                      <g:select name="previousDaysForCancelingDiscount" id="diasPreviosParaCancelarDescuento" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
                     </div>
                   </div>
                 </div>
@@ -176,7 +172,7 @@
                   <div class="input-append">
                     <label class="control-label" for="txtConcepto"> Procentaje </label>
                     <div class="controls">
-                      <input type="text" class="input-mini" id="porcentaje" placeholder="0.0">
+                      <input type="text" class="input-mini" id="porcentaje" name="percentage" placeholder="0.0">
                       <span class="add-on">%</span>
                     </div>
                   </div>

@@ -54,16 +54,11 @@ window.DescuentoUnitario = (function(){
         $(element).parents(".control-group").first().removeClass("success");
         error.addClass("help-inline");
         if($(element).parents(".input-prepend,.input-append").size() > 0){
-          if($(element).parents(".days").size() > 0){
-            $(".errorPlace").html(error);         
-          }
-          else
-            error.insertAfter(element.parent());
+          error.insertAfter(element.parent());
         }
         else{
           error.insertAfter(element);
         }
-       
       },
       success: function(element) {
         $(element).parents(".control-group").first().removeClass("error").addClass("success");
@@ -78,14 +73,19 @@ window.DescuentoUnitario = (function(){
         'discountName': {
           required: true
         },
-        'amount': {
-          required: true,
-          number: true
+        'amount': {        
+          number: true,
+          onlyOne: this.operacionDescuento.porcentaje
         },
-        'expirationDate':{
+        'percentage':{
+          number: true,
+          onlyOne: this.operacionDescuento.cantidad
         },
         'previousDaysForCancelingDiscount':{
-          expirationDateOrDay:that.fechaExpiracion 
+          expirationDateOrDay:that.fechaExpiracion          
+        },
+        'expirationDate':{          
+          expirationDateOrDay:that.operacionDescuento.diasPreviosParaCancelarDescuento 
         }
       },
       messages: {
