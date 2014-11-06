@@ -179,13 +179,11 @@
             </div>
 
             <div class="span6">
-              <div class="control-group">
-                <div class="input-prepend">
-                  <label class="control-label" for="txtConcepto"> Dias antes </label> 
-                  <div class="controls">
-                    <div class="input-prepend">
-                      <g:select id="diasPreviosParaCancelarDescuentoRecurrente" name="previousDaysForCancelingDiscount" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
-                    </div>
+              <div class="control-group">                
+                <label class="control-label" for="txtConcepto"> Dias antes </label> 
+                <div class="controls">
+                  <div class="input-prepend">
+                    <g:select id="diasPreviosParaCancelarDescuentoRecurrente" name="previousDaysForCancelingDiscount" from="${0..lastDayOfTheMonth}" noSelection="['':'- Dia -']"/>
                   </div>
                 </div>
               </div>
