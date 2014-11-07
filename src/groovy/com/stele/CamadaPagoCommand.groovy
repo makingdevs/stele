@@ -37,6 +37,7 @@ class CamadaPagoCommand {
     descuentoConFecha nullable:true
     idRecargo nullable:true
     discount nullable:true
+    diasVencimientoDescuento nullable:true,blank:true
   }
 
 }
