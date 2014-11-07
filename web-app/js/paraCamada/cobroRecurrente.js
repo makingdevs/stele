@@ -114,9 +114,12 @@ window.CobroRecurrente = (function(){
       },
       items:10,
       updater: function(concept){
+        $(".listaRecargosRecurrentes,.descuentosIdsRecurrente,.descuentoRecurrenteCreado").html("");
+        $("#recargoRecurrente").val("");
+
         $.each(that.paymentSchemas, function(i,paymentSchema){
           if(paymentSchema.value.description == concept){
-            that.cantidadDePagoRecurrente.val(paymentSchema.paymentAmount);             
+            that.cantidadDePagoRecurrente.val(paymentSchema.paymentAmount);
             that.showSurchargeFromPaymentSchema(paymentSchema);
             that.renderDiscountsTable(paymentSchema);
             return;
