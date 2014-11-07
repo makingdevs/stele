@@ -95,6 +95,7 @@ window.CobroRecurrente = (function(){
         that.tabsDiv.show();     
         that.cantidadDePagoRecurrente.val("");
         $(".discountsFromPaymentSchemaRecurrente").hide();
+        $(".discountsFromPaymentSchemaRecurrente .cobroRecurrenteDescuentosTableBody").html();
         $(".porcentajeRecargoRecurrente, .cantidadRecargoRecurrente").addClass("hidden");
       
         that.setExpirationDayForDiscount($(".diaVencimientoDescuento"),parseInt(that.diasVencimiento.val()));
@@ -155,12 +156,15 @@ window.CobroRecurrente = (function(){
   }
 
   CobroRecurrente.prototype.prepareInputsToValidate = function(){
-    $("select.diaVencimientoDescuento").rules("add",{
-      required:true,
-      messages:{
-        required:"Seleccione el día de vencimiento"
-      }
-    }); 
+    if($(".cobroRecurrenteDescuentosTableBody select.diaVencimientoDescuento").size() > 0){
+
+      $(".cobroRecurrenteDescuentosTableBody select.diaVencimientoDescuento").rules("add",{
+        required:true,
+        messages:{
+          required:"Seleccione el día de vencimiento"
+        }
+      });
+    }
   }
   
   CobroRecurrente.prototype.initValidationsForTheForm = function(){
