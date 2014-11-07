@@ -19,7 +19,7 @@ class DescuentoController {
     if(params.list("discount")) 
       discounts = params.list("discount")*.toLong() ?: []
     
-    if(params.referenceDay)
+    if(params.referenceDay && !params.previousDaysForCancelingDiscount)
       params.previousDaysForCancelingDiscount = (params.int("referenceDay")-params.int("diaVencimientoDescuento"))
     
     discount = discountService.saveDiscountForPaymentSchemeOfOrganizationWithReferenceDate(springSecurityService.currentUser.instituciones.first(),params)

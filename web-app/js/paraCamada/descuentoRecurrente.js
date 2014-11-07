@@ -33,7 +33,11 @@ window.DescuentoRecurrente = (function(){
   }
 
   DescuentoRecurrente.prototype.initValidationForFields = function(){
-    var that = this;  
+    var that = this;
+
+    jQuery.validator.addMethod("expirationDayOrPreviousDays",(function(value,element,params){
+      return (params[0].value != "" && element.value == "" || params[0].value == "" && element.value != "")
+    }),"Seleccionar día previo o día de vencimiento");
     
     this.formulario.validate({
       errorPlacement: function(error, element) {
@@ -69,10 +73,10 @@ window.DescuentoRecurrente = (function(){
           onlyOne: this.operacionDescuento.cantidad
         },
         'previousDaysForCancelingDiscount':{
-          expirationDateOrDay:that.diaVencimiento          
+          expirationDayOrPreviousDays:that.diaVencimiento          
         },
         'diaVencimientoDescuento':{          
-          expirationDateOrDay:that.operacionDescuento.diasPreviosParaCancelarDescuento 
+          expirationDayOrPreviousDays:that.operacionDescuento.diasPreviosParaCancelarDescuento 
         }
       },
       messages: {
@@ -98,7 +102,7 @@ window.DescuentoRecurrente = (function(){
           }
         }).then(function(){
           var discounts = $(".descuentoCreado input[name=discount]");
-          $(".descuentosIdDiv").html(discounts);
+          $(".descuentosIdsRecurrente").html(discounts);
         });
 
       },
