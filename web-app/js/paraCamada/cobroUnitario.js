@@ -103,7 +103,7 @@ window.CobroUnitario = (function() {
       },
       items:10,
       updater: function (concept){
-        $(".listaRecargos,.descuentosIdDiv").html("");
+        $(".listaRecargosUnitarios,.descuentosIdDiv,.descuentoCreado").html("");
         $("#recargoUnitario").val("");
         
         $.each(that.paymentSchemas, function(i,item){
