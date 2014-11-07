@@ -101,7 +101,7 @@ window.DescuentoRecurrente = (function(){
             });
           }
         }).then(function(){
-          var discounts = $(".descuentoCreado input[name=discount]");
+          var discounts = $(".descuentoRecurrenteCreado input[name=discount]");          
           $(".descuentosIdsRecurrente").html(discounts);
         });
 
