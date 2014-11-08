@@ -17,7 +17,7 @@ window.CobroUnitario = (function() {
     this.form = selectores.formSelector;
     this.initDatePickerParaFechaDeVencimiento();
     this.initTypeaheadParaConcepto();
-    this.initValidationsForTheForm();
+    this.initValidationsForTheForm();    
   }
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
@@ -34,7 +34,7 @@ window.CobroUnitario = (function() {
   CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
     if(this.fechaDeVencimiento.datepicker("getDate") != "Invalid Date"){  
       discount.prop("disabled",false) 
-      date = this.fechaDeVencimiento.datepicker("getDate");
+      date = this.fechaDeVencimiento.datepicker("getDate");      
       timeDiff = date.getTime() - new Date().getTime();
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       discount.datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
@@ -65,7 +65,7 @@ window.CobroUnitario = (function() {
       todayHighlight: true,
       autoclose: true
     }).on('changeDate',function(event){    
-      if($(this).attr("class").indexOf("vencimiento") != -1){
+      if($(this).children("#fechaDeVencimiento").attr("class").indexOf("vencimiento") != -1){
         that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));        
       }
       else{

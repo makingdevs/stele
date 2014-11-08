@@ -37,13 +37,13 @@
                                         
       <div class="control-group">
         <label class="control-label" for="fechaDeVencimiento">Fecha Vencimiento</label>
-        <div class="controls">
-          <div  class="input-append date">
+        <div class="controls">          
+          <div class="input-append date fechaDeVencimientoDatePicker">
             <input id="fechaDeVencimiento" name="fechaDeVencimiento" type="text" class="form-control vencimiento"/>
             <span class="add-on">
               <i class="icon-calendar"></i>
             </span>
-          </div>
+          </div>          
         </div>
       </div>
 
