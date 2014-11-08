@@ -3,39 +3,6 @@
   <head>
     <meta name="layout" content="colegio"/>
     <r:require modules="telefono,styledrop,uploadImg,upload,perfilValidate,pagoVentanilla"/>
-    <r:script>
-      $(document).ready(function() {
-        $('#fechaPago').datepicker({
-          format : "dd/mm/yyyy",
-          language : 'es',
-          autoclose : false
-        });
-        
-        $('#pagoInmediato').submit(function(e){
-          e.preventDefault();
-          $.ajax({
-            url:"../../pago/pagoInmediatoVentanilla",
-            data:$(this).serialize(),
-            success:function(data){
-              $("form").each(function(){ 
-                this.reset();
-              });
-              $("div.form-actions").html(data);
-            } 
-          });
-        });
-      });
-      $(function() {
-        var urlValue = $("input#url").val() 
-        $("#comprobante").dropzone({
-          url : urlValue,
-          maxFilesize : .5,
-          addRemoveLinks : false
-        });
-      });
-      
-      
-    </r:script>
   </head>
   <body>
   <div class="main-content">
