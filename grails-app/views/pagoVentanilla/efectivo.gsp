@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono,styledrop,uploadImg,bootstrapDatePicker,upload,perfilValidate"/>
+    <r:require modules="telefono,styledrop,uploadImg,upload,perfilValidate,pagoVentanilla"/>
     <r:script>
       $(document).ready(function() {
         $('#fechaPago').datepicker({
