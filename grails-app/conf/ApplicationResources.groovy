@@ -16,6 +16,12 @@ modules = {
     resource url:'js/paraCamada/app.js'
   }
 
+  pagoVentanilla{
+    dependsOn 'bootstrapDatePicker'
+    resource url:'js/pagoVentanilla/pagoInmediato.js'
+    resource url:'js/pagoVentanilla/app.js'
+  }
+
   handlebars{
     resource url:'js/handlebars/handlebars-v1.3.0.js'
   }
