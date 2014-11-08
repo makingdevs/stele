@@ -7,7 +7,7 @@ jQuery(function ($) {
     },
     initPagoInmediato : function(){
       var selectores = {
-        fechaComprobanteSelector:$("#fechaDePago"),
+        fechaComprobanteSelector:$(".input-append.date"),
         formularioSelector:$("#pagoInmediato"),
         comprobanteSelector:$("#comprobante")
       };      
