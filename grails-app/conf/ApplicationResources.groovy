@@ -22,6 +22,12 @@ modules = {
     resource url:'js/pagoVentanilla/app.js'
   }
 
+  conciliacion{
+    dependsOn 'bootstrapDatePicker'
+    resource url:'js/conciliacion/comprobante.js'
+    resource url:'js/conciliacion/app.js'
+  }
+
   handlebars{
     resource url:'js/handlebars/handlebars-v1.3.0.js'
   }
