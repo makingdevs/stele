@@ -49,12 +49,17 @@ window.CobroUnitario = (function() {
   }
   
   CobroUnitario.prototype.initDatePickerParaDescuento = function(descuentoField){
+    
     descuentoField.datepicker({
       format:"dd/mm/yyyy",
       language: "es",
       orientation: "top auto",
       autoclose:true
-    }); 
+    });
+    descuentoField.next().click(function(){
+      if(!descuentoField.prop("disabled"))
+        descuentoField.datepicker("show");
+    });
     this.setExpirationDateForDiscount(descuentoField);
   }
 
@@ -176,6 +181,7 @@ window.CobroUnitario = (function() {
       },
       success: function(element) {
         $(element).parents(".control-group").first().addClass("success");
+        $(element).remove();
       },
       highlight: function(element, errorClass, validClass){
         $(element).parents(".control-group").first().addClass(errorClass).removeClass("success");
