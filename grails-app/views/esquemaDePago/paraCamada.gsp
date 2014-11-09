@@ -111,7 +111,12 @@
         <td>{{cantidad}}</td>
         <td style="padding-left:0px;">
           <div class="control-group">
-          <input type="text" class="expiracionDescuento" style="width:100%;" name="fechasDeExpiracionDescuento[{{@index}}]" />
+          <div class="input-prepend">
+            <input type="text" class="expiracionDescuento" style="width:80%;" name="fechasDeExpiracionDescuento[{{@index}}]" />
+            <span class="add-on" style="width:20%;">
+              <i class="icon-calendar"></i>
+            </span>
+          </div>
           </div>
           <input type="hidden" value="{{id}}" name="idDescuento[{{@index}}]" />
         </td>
