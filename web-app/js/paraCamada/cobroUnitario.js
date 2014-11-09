@@ -35,8 +35,11 @@ window.CobroUnitario = (function() {
     if(this.fechaDeVencimiento.datepicker("getDate") != "Invalid Date"){  
       discount.prop("disabled",false) 
       date = this.fechaDeVencimiento.datepicker("getDate");      
-      timeDiff = date.getTime() - new Date().getTime();
+      now = new Date();
+      timeDiff = date.getTime() - now.getTime();
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if(now.getHours() >= 18)
+        diffDays -= 1;
       discount.datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
     }
     else
