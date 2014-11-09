@@ -27,7 +27,7 @@ window.DescuentoUnitario = (function(){
   DescuentoUnitario.prototype.initDatePicker = function(){
     var that = this; 
     this.fechaExpiracion.focus(function(){      
-      if($(".input-append.date.fechaDeVencimientoDatePicker").datepicker("getDate") == "Invalid Date")
+      if($(".fechaDeVencimiento").datepicker("getDate") == "Invalid Date")
         $(this).prop("disabled",true); 
     });
   }

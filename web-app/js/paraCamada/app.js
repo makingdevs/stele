@@ -15,7 +15,7 @@ jQuery(function ($) {
       var selectors = {
         conceptoDePagoSelector: $('#conceptoDePago'),
         cantidadDePagoSelector: $('#cantidadDePago'),
-        fechaDeVencimientoSelector: $(".input-append.date.fechaDeVencimientoDatePicker"), 
+        fechaDeVencimientoSelector: $("#fechaDeVencimiento"), 
         tabsDivSelector: $('.tabsUnitario'),
         formSelector: $("#cobroUnitarioForm")
       };

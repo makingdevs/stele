@@ -65,8 +65,8 @@ window.CobroUnitario = (function() {
       todayHighlight: true,
       autoclose: true
     }).on('changeDate',function(event){    
-      if($(this).children("#fechaDeVencimiento").attr("class").indexOf("vencimiento") != -1){
-        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));        
+      if($(this).attr("class").indexOf("vencimiento") != -1){
+        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
       }
       else{
         that.setExpirationDateForDiscount($('.expiracionDescuento'));
