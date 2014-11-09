@@ -39,10 +39,10 @@ window.CobroUnitario = (function() {
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       discount.datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
     }
-    else{
+    else
       discount.prop("disabled",true);
-      discount.val("");
-    } 
+      
+    discount.val("");
   }
   
   CobroUnitario.prototype.initDatePickerParaDescuento = function(descuentoField){
@@ -56,7 +56,7 @@ window.CobroUnitario = (function() {
   }
 
   CobroUnitario.prototype.initDatePickerParaFechaDeVencimiento = function(){
-    var that = this;
+    var that = this;    
 
     this.fechaDeVencimiento.datepicker({
       format:"dd/mm/yyyy",
@@ -71,6 +71,10 @@ window.CobroUnitario = (function() {
       else{
         that.setExpirationDateForDiscount($('.expiracionDescuento'));
       }
+    });
+
+    this.fechaDeVencimiento.next().click(function(){      
+      that.fechaDeVencimiento.datepicker("show");
     });
   }
   
