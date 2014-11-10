@@ -2,9 +2,7 @@
   <head>
     <meta name="layout" content="colegio"/>
   </head>
-
   <body>
-
   <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
           <script type="text/javascript">
@@ -52,7 +50,11 @@
                                 <td>${payment.paymentConcept}</td>
                               </tr>
                               <tr>
-                                <td>Vencimiento</td>
+                                <td>Fecha de Pago</td>
+                                <td>${payment.paymentDate.format('dd/MM/yyyy')}</td>
+                              </tr>
+                              <tr>
+                                <td>Fecha de Vencimiento</td>
                                 <td>${payment.dueDate.format('dd/MM/yyyy')}</td>
                               </tr>
                               <tr>
