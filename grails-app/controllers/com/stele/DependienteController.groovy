@@ -84,9 +84,8 @@ class DependienteController {
       if(params.nombreDependiente)
         dependientes = dependienteService.findDependientesByNameAndOrganization(params.nombreDependiente, springSecurityService.currentUser.instituciones?.first()
 )
-      if(!dependientes)
-        flash.dependiente = "No se encontraron dependientes con ese nombre"
-        
+      flash.dependiente = dependientes ? "" : "No se encontraron dependientes con ese nombre"
+
       render template:'busquedaDependiente', model:[dependientes:dependientes ?: [], institucion: springSecurityService.currentUser.instituciones?.first()]
     }
 
