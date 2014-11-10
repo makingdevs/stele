@@ -15,19 +15,25 @@ window.DescuentoUnitario = (function(){
   }
 
   DescuentoUnitario.prototype.initDatePickerForFechaExpiracion = function(){
-    this.fechaExpiracion.prop("disabled",true);
+    var that = this;
+    this.fechaExpiracion.prop("disabled",true);    
     this.fechaExpiracion.datepicker({
       format:"dd/mm/yyyy",
       language: "es",
       orientation: "top auto",
       autoclose:true
     });
+
+    this.fechaExpiracion.next().click(function(){          
+      if(!that.fechaExpiracion.prop("disabled"))
+        that.fechaExpiracion.datepicker("show");        
+    });
   }
 
   DescuentoUnitario.prototype.initDatePicker = function(){
     var that = this; 
-    this.fechaExpiracion.focus(function(){
-      if($("#fechaDeVencimiento").datepicker("getDate") == "Invalid Date")
+    this.fechaExpiracion.focus(function(){      
+      if($(".fechaDeVencimiento").datepicker("getDate") == "Invalid Date")
         $(this).prop("disabled",true); 
     });
   }

@@ -2,40 +2,7 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="telefono,styledrop,uploadImg,bootstrapDatePicker,upload,perfilValidate"/>
-    <r:script>
-      $(document).ready(function() {
-        $('#fechaPago').datepicker({
-          format : "dd/mm/yyyy",
-          language : 'es',
-          autoclose : false
-        });
-        
-        $('#pagoInmediato').submit(function(e){
-          e.preventDefault();
-          $.ajax({
-            url:"../../pago/pagoInmediatoVentanilla",
-            data:$(this).serialize(),
-            success:function(data){
-              $("form").each(function(){ 
-                this.reset();
-              });
-              $("div.form-actions").html(data);
-            } 
-          });
-        });
-      });
-      $(function() {
-        var urlValue = $("input#url").val() 
-        $("#comprobante").dropzone({
-          url : urlValue,
-          maxFilesize : .5,
-          addRemoveLinks : false
-        });
-      });
-      
-      
-    </r:script>
+    <r:require modules="telefono,styledrop,uploadImg,upload,perfilValidate,pagoVentanilla"/>
   </head>
   <body>
   <div class="main-content">
@@ -136,8 +103,8 @@
                           <tr>
                             <td class="">Fecha comprobante</td>
                             <td>
-                              <div id="fechaPago" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                <input id="fechaDePago" name="fechaDePago" data-format="yyyy-mm-dd" type="text"></input>
+                              <div class="input-append date">
+                                <input id="fechaDePago" name="fechaDePago" type="text" />
                                 <span class="add-on">
                                   <i class="icon-calendar"></i>
                                 </span>

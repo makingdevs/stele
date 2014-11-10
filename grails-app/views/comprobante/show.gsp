@@ -2,20 +2,10 @@
 <html>
   <head>
     <meta name="layout" content="colegio"/>
-    <r:require modules="bootstrapDatePicker,perfilValidate"/>
+    <r:require modules="bootstrapDatePicker,conciliacion,perfilValidate"/>
   </head>
-
   <body>
-    <r:script>
-      $(document).ready(function() {
-        $('#datetimepicker1').datepicker({
-          format : "dd/mm/yyyy",
-          language : 'es',
-          autoclose : true
-        });
-      });
-    </r:script>
-
+    
   <div class="main-content">
         <div class="breadcrumbs" id="breadcrumbs">
           <script type="text/javascript">
@@ -160,13 +150,13 @@
                               <tbody>
                                 <tr>
                                   <td >Fecha comprobante</td>
-                                  <td >
-                                    <div id="datetimepicker1" class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                      <input id="fechaDePago" name="fechaDePago" data-format="yyyy-mm-dd" type="text" />
+                                  <td >                                    
+                                    <div class="input-append date">
+                                      <input id="fechaDePago" name="fechaDePago" type="text" />
                                       <span class="add-on">
                                         <i class="icon-calendar"></i>
                                       </span>
-                                    </div>
+                                    </div>                                    
                                   </td>
                                 </tr>
 

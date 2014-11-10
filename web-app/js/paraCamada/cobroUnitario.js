@@ -17,7 +17,7 @@ window.CobroUnitario = (function() {
     this.form = selectores.formSelector;
     this.initDatePickerParaFechaDeVencimiento();
     this.initTypeaheadParaConcepto();
-    this.initValidationsForTheForm();
+    this.initValidationsForTheForm();    
   }
   
   CobroUnitario.prototype.renderDiscountsTable = function(item){
@@ -34,29 +34,37 @@ window.CobroUnitario = (function() {
   CobroUnitario.prototype.setExpirationDateForDiscount = function(discount){
     if(this.fechaDeVencimiento.datepicker("getDate") != "Invalid Date"){  
       discount.prop("disabled",false) 
-      date = this.fechaDeVencimiento.datepicker("getDate");
-      timeDiff = date.getTime() - new Date().getTime();
+      date = this.fechaDeVencimiento.datepicker("getDate");      
+      now = new Date();
+      timeDiff = date.getTime() - now.getTime();
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if(now.getHours() >= 18)
+        diffDays -= 1;
       discount.datepicker("setEndDate",(diffDays >= 0 ? "+"+diffDays : diffDays)+"d");
     }
-    else{
+    else
       discount.prop("disabled",true);
-      discount.val("");
-    } 
+      
+    discount.val("");
   }
   
   CobroUnitario.prototype.initDatePickerParaDescuento = function(descuentoField){
+    
     descuentoField.datepicker({
       format:"dd/mm/yyyy",
       language: "es",
       orientation: "top auto",
       autoclose:true
-    }); 
+    });
+    descuentoField.next().click(function(){
+      if(!descuentoField.prop("disabled"))
+        descuentoField.datepicker("show");
+    });
     this.setExpirationDateForDiscount(descuentoField);
   }
 
   CobroUnitario.prototype.initDatePickerParaFechaDeVencimiento = function(){
-    var that = this;
+    var that = this;    
 
     this.fechaDeVencimiento.datepicker({
       format:"dd/mm/yyyy",
@@ -66,11 +74,15 @@ window.CobroUnitario = (function() {
       autoclose: true
     }).on('changeDate',function(event){    
       if($(this).attr("class").indexOf("vencimiento") != -1){
-        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));        
+        that.setExpirationDateForDiscount($('#fechaDeVencimientoDesc'));
       }
       else{
         that.setExpirationDateForDiscount($('.expiracionDescuento'));
       }
+    });
+
+    this.fechaDeVencimiento.next().click(function(){      
+      that.fechaDeVencimiento.datepicker("show");
     });
   }
   
@@ -169,6 +181,7 @@ window.CobroUnitario = (function() {
       },
       success: function(element) {
         $(element).parents(".control-group").first().addClass("success");
+        $(element).remove();
       },
       highlight: function(element, errorClass, validClass){
         $(element).parents(".control-group").first().addClass(errorClass).removeClass("success");
