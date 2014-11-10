@@ -2,7 +2,7 @@
 <g:form id="pagosUnitarios" name="pagosUnitarios" controller="esquemaDePago" action="paraCamada" params="[camada:'${institucion.replaceAll(" ","_") + "_" + new Date().format("dd_MM_yy_HH_mm")}']">
   <div class="widget-body">
     <div class="widget-main no-padding">
-      <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+      <table id="sample-table-1" class="busqueda table table-striped table-bordered table-hover">
         <thead >
           <tr>
             <th class="center">
@@ -29,7 +29,7 @@
             <tr>
               <td class="center">
                 <label>
-                  <g:checkBox name="listaDependientes" value="${it.id}" checked="false" />
+                  <g:checkBox name="dependientes" value="${it.id}" checked="false" />
                   <span class="lbl"></span>
                 </label>
               </td>
@@ -54,3 +54,13 @@
     ${flash.dependiente}
   </div>
 </g:if> 
+
+<script id="buttonForSearch" type="text/x-handlebars-template">
+  {{#if checked}}
+  <button type="submit" id="listaDependientes" class="btn btn-success pull-right">
+    Generar cobro<i class="icon-arrow-right icon-on-right"></i>
+  </button>
+  {{else}}
+    <div class="alert alert-warning">Seleccione un alumno para generar un cobro</div> 
+  {{/if}}
+</script>
