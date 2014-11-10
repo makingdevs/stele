@@ -59,3 +59,13 @@
     ${flash.dependiente}
   </div> 
 </g:if>
+
+<script id="buttonForSearch" type="text/x-handlebars-template">
+  {{#if checked}}
+  <button id="iniciarBusqueda" class="btn-small  btn-info">Buscar cobros
+    <i class="icon-search icon-on-right bigger-110"></i>
+  </button>
+  {{else}}
+    <div class="alert alert-warning">Seleccione un alumno para buscar sus cobros pendientes</div> 
+  {{/if}}
+</script>
