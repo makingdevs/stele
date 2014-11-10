@@ -64,8 +64,16 @@
                               </tr>
                               <tr>
                                 <td>Importe</td>
-                                <td>$<g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" /></td>
+                                <td><g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" /></td>
                               </tr>   
+                              <tr>
+                                <td>Recargo Acumulado</td>
+                                <td><g:formatNumber number="${payment.accumulatedSurcharges}" type="currency" currencyCode="MXN" /></td>
+                              </tr> 
+                              <tr>
+                                <td>Importe total</td>
+                                <td><g:formatNumber number="${payment.paymentAmount + payment.accumulatedSurcharges}" type="currency" currencyCode="MXN" /></td>
+                              </tr> 
                             </tbody>
                           </table>
                         </div>
