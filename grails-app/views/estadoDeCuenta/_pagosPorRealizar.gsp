@@ -20,7 +20,7 @@
             <g:each in="${pagosPorRealizar}">
               <tr>
               <td class="">${it.key.capitalize()}</td>
-              <td class="">$ ${it.value*.cantidadDePago.sum()}</td>
+              <td class="">$ ${it.value*.paymentAmount.sum()}</td>
               <td>
                 <div class="action-buttons center">
                   <g:link controller="estadoDeCuenta" action="detalleEstadoDeCuentaMensual" params='[mes:"${it.key}", ids: "${it.value*.id}"]'>
