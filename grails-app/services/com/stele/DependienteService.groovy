@@ -52,6 +52,7 @@ class DependienteService {
     else{
       def user = Usuario.get(usuarioId)
       dependiente.perfil= perfilService.registrar(dependiente.perfil)
+      dependiente.save()
       user.addToDependientes(dependiente)
       user.save()
       notificacionService.notificarRegistroUsuarioTutor(user.username)
