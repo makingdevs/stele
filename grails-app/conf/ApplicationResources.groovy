@@ -24,6 +24,7 @@ modules = {
 
   conciliacion{
     dependsOn 'bootstrapDatePicker'
+    dependsOn 'validation'
     resource url:'js/conciliacion/comprobante.js'
     resource url:'js/conciliacion/app.js'
   }
