@@ -49,10 +49,12 @@
                                 <td>Concepto</td>
                                 <td>${payment.paymentConcept}</td>
                               </tr>
+                              <g:if test="${payment.paymentDate}"> 
                               <tr>
                                 <td>Fecha de Pago</td>
                                 <td>${payment.paymentDate.format('dd/MM/yyyy')}</td>
                               </tr>
+                              </g:if>
                               <tr>
                                 <td>Fecha de Vencimiento</td>
                                 <td>${payment.dueDate.format('dd/MM/yyyy')}</td>
