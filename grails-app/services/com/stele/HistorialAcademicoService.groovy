@@ -12,7 +12,7 @@ class HistorialAcademicoService {
   def registrar(HistorialAcademico historialAcademico) {
     Dependiente dependiente = historialAcademico.dependiente 
     DistribucionInstitucional distribucionInstitucional = DistribucionInstitucional.get(historialAcademico.distribucionInstitucional.id)
-    if(dependiente && distribucionInstitucional){
+    if(dependiente.id && distribucionInstitucional){
         def criteriaHistorialAcademico = HistorialAcademico.createCriteria()
         def historialAcademicoExistente = criteriaHistorialAcademico.get {
           eq("dependiente",dependiente)
