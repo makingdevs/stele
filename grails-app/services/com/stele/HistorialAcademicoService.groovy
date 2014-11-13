@@ -10,18 +10,18 @@ class HistorialAcademicoService {
   def springSecurityService
 
   def registrar(HistorialAcademico historialAcademico) {
-    Dependiente dependiente = Dependiente.get(historialAcademico.dependiente.id)
+    Dependiente dependiente = historialAcademico.dependiente 
     DistribucionInstitucional distribucionInstitucional = DistribucionInstitucional.get(historialAcademico.distribucionInstitucional.id)
-    if(dependiente && distribucionInstitucional){
+    if(dependiente.id && distribucionInstitucional){
         def criteriaHistorialAcademico = HistorialAcademico.createCriteria()
         def historialAcademicoExistente = criteriaHistorialAcademico.get {
           eq("dependiente",dependiente)
           eq("distribucionInstitucional",distribucionInstitucional)
         }
        return historialAcademicoExistente ?: historialAcademico.save()
-      }else{
-        throw new RuntimeException("Se intentó persistir un historila academico con dependiente o distribucionInstitucional inválida...")
-      }
+    }else{
+      throw new RuntimeException("Se intentó persistir un historila academico con dependiente o distribucionInstitucional inválida...")
+    }
   }
 
   HistorialAcademico preparaHistoricoAcademicoARegistrar(Dependiente dependiente, DistribucionInstitucional distribucionInstitucional){

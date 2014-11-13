@@ -27,7 +27,8 @@ class InscripcionManualService {
 
     def cicloEscolarCargado = cicloEscolarService.registrar(mapaDomains.cicloEscolar)
     def distribucionInstitucionalCargado = distribucionInstitucionalService.registrar(mapaDomains.distribucionInstitucional, institucion.id)
-    def historialAcademicoCargado = historialAcademicoService.registrar(historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependienteCargado,distribucionInstitucionalCargado))
+    def historialAcademico = historialAcademicoService.preparaHistoricoAcademicoARegistrar(dependienteCargado,distribucionInstitucionalCargado)
+    def historialAcademicoCargado = historialAcademicoService.registrar(historialAcademico)
     [message:"Se ha inscrito correctamente al dependiente"]
   } 
 

@@ -159,28 +159,32 @@
                                 <tr>
                                   <td >Fecha comprobante</td>
                                   <td >                                    
-                                    <div class="input-append date">
-                                      <input id="fechaDePago" name="fechaDePago" type="text" />
-                                      <span class="add-on">
-                                        <i class="icon-calendar"></i>
-                                      </span>
-                                    </div>                                    
+                                    <div class="control-group"> 
+                                      <div class="input-append date">
+                                        <input id="fechaDePago" name="fechaDePago" type="text" />
+                                          <span class="add-on">
+                                            <i class="icon-calendar"></i>
+                                          </span>
+                                      </div>
+                                    </div> 
                                   </td>
                                 </tr>
 
                                 <tr>
-                                  <td  >Monto</td>
-                                  <td >   
+                                  <td>Monto</td>
+                                  <td>   
                                     <g:formatNumber number="${payment.paymentAmount}" type="currency" currencyCode="MXN" />
                                   </td>
                                 </tr>
 
                                 <tr>
-                                  <td  >Tipo pago</td>
-                                  <td >                    
-                                  <span class="form-field-select-1">
-                                    <g:select id="tipoDePago" name="tipoDePago" noSelection="['':'- Tipo de Pago-']" from="${PaymentType.values()}" optionKey="key" />
-                                  </span>
+                                  <td>Tipo pago</td>
+                                  <td>                    
+                                  <div class="control-group"> 
+                                    <span class="form-field-select-1">
+                                      <g:select id="tipoDePago" name="tipoDePago" noSelection="['':'- Tipo de Pago-']" from="${PaymentType.values()}" optionKey="key" />
+                                    </span>
+                                  </div>
                                   </td>
                                 </tr>
 
@@ -188,12 +192,14 @@
                                 <tr>
                                   <td>Referencia Banco</td>
                                   <td>
+                                  <div class="control-group">
                                     <div class="input-prepend">
                                      <input type="text" id="folioBanco" name="folioBanco">
                                       <span class="add-on">
                                         <i class="icon-edit"></i>
                                       </span>
                                     </div>
+                                  </div>
                                   </td>
                                 </tr>
                               </tbody>

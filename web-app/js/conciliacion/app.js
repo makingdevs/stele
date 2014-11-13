@@ -7,7 +7,8 @@ jQuery(function ($){
     },
     initComprobante: function(){
       var selectores = {
-        fechaComprobanteSelector:$(".input-append.date")
+        fechaComprobanteSelector:$(".input-append.date"),
+        form:$("#conciliacion")
       };
       this.comprobante = new Comprobante(selectores);
     }
