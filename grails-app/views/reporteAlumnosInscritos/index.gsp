@@ -30,6 +30,12 @@
 				<h1>Alumnos Inscritos <small> <i class="icon-double-angle-right"></i> Reporte de Alumnos inscritos</small></h1>
 			</div>
 			<div class="page-content-area">
+			    <g:if test="${flash.error}">
+                  <div class="alert alert-error ">
+                    ${flash.error}
+                  </div> 
+                </g:if>
+                <g:if test="${!flash.error}">
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="row-fluid">
@@ -87,9 +93,15 @@
                                     </g:form>
 								</div>
 								<div class="span6">
-								    <button class="btn btn-small btn-warning">
-                                        <i class="ace-icon icon-download-alt "></i> Descargar PDF
-                                    </button>
+								    <g:form controller="reporteAlumnosInscritos" action="generaReportePdf">
+                                        <g:hiddenField id="nivel" name="nivel" value="${params?.nivel}" />
+                                        <g:hiddenField id="grado" name="grado" value="${params?.grado}" />
+                                        <g:hiddenField id="grupo" name="grupo" value="${params?.grupo}" />
+                                        <g:hiddenField id="turno" name="turno" value="${params?.turno}" />
+                                        <button class="btn btn-small btn-warning " type="submit">
+                                            <i class="ace-icon icon-download-alt "></i> Descargar PDF
+                                        </button>
+                                    </g:form>
 								</div>
 							</div>
 						</div>
@@ -99,41 +111,36 @@
 								<table id="tablaReporteAlumnos" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>Nombre Padre o Tutor</th>
+										    <th>Matricula</th>
+										    <th>Estudiante</th>
+											<th>Padre o Tutor</th>
+                                            <th>Teléfono</th>
 											<th>Correo</th>
-											<th>Teléfono</th>
-											<th>Matricula</th>
-											<th>Nombre del Alumno</th>
 											<th>Nivel</th>
 											<th>Grado</th>
 											<th>Grupo</th>
 											<th>Turno</th>
-											<th>Cobros</th>
-											<th>Pagos</th>
-											<th>Saldo</th>
 										</tr>
 									</thead>
 									<tbody>
 										<g:each in="${dependientes}">
 											<tr>
+											    <td>${it.matricula}</td>
+											    <td>${it.perfil.nombre} ${it.perfil.apellidoPaterno} ${it.perfil.apellidoMaterno}</td>
 												<td>${it.usuario.perfil.nombre} ${it.usuario.perfil.apellidoPaterno} ${it.usuario.perfil.apellidoMaterno}</td>
+                                                <td>${it.usuario.perfil.telefonos.lada[0]} ${it.usuario.perfil.telefonos.numeroTelefonico[0]}</td>
 												<td>${it.usuario.username}</td>
-												<td>${it.usuario.perfil.telefonos.lada[0]} ${it.usuario.perfil.telefonos.numeroTelefonico[0]}</td>
-												<td>${it.matricula}</td>
-												<td>${it.perfil.nombre} ${it.perfil.apellidoPaterno} ${it.perfil.apellidoMaterno}</td>
 												<td>${it.historialAcademico.distribucionInstitucional.nivelDeEstudio[0]}</td>
 												<td>${it.historialAcademico.distribucionInstitucional.grado[0]}</td>
 												<td>${it.historialAcademico.distribucionInstitucional.grupo[0]}</td>
 												<td>${it.historialAcademico.distribucionInstitucional.turno[0]}</td>
-												<td>$2,000.00</td>
-												<td>$2,000.00</td>
-												<td>$0.00</td>
 											</tr>
 										</g:each>
 									</tbody>
 								</table>
 							</div>
 						</div>
+						</g:if>
 					</div>
 				</div>
 			</div>

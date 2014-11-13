@@ -1,11 +1,6 @@
 jQuery(function($) {
 	var oTable1 = $('#tablaReporteAlumnos').dataTable( {
 		"bAutoWidth": false,
-		"aoColumns": [
-		  null,
-		  { "bSortable": false },{ "bSortable": false },
-		  null, null,null, null,null,null, null, null, null				
-		  ],
 		"aaSorting": [],
 		   "language": {
 			    "sProcessing":     "Procesando...",
