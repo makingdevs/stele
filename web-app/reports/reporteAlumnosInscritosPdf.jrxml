@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteAlumnosInscritosPdf" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c88271dc-1420-48c5-878d-e48c695d1b23">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="1153"/>
+	<property name="ireport.y" value="155"/>
+	<parameter name="nombreInstitucion" class="java.lang.String"/>
+	<parameter name="fechaEmision" class="java.lang.String"/>
+	<parameter name="totalAlumnos" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["../reportes/"]]></defaultValueExpression>
+	</parameter>
+	<field name="nivel" class="java.lang.String"/>
+	<field name="listaAlumnos" class="java.util.List"/>
+	<field name="totalNivel" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="2" width="465" height="16" uuid="3e3d4661-5d9e-4069-ad7a-4cbfc5f38c41"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreInstitucion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="138" y="17" width="206" height="13" forecolor="#347EB5" uuid="eebf218c-a998-44b2-8ac2-afc9d5439f26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Reporte de Alumnos Inscritos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="630" y="2" width="121" height="12" uuid="475d8a8a-08f2-43e8-a869-5ce3a91383fd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaEmision}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="48" width="752" height="16" forecolor="#FFFFFF" backcolor="#3080BB" uuid="1b0331c7-ad4f-4923-b837-c8d34004a52c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="566" y="48" width="100" height="16" forecolor="#FFFFFF" uuid="800010ef-4076-4ec2-89f6-30c71689cc71"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL ALUMNOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="676" y="48" width="76" height="16" forecolor="#FFFFFF" uuid="04ab7aa3-1191-4171-a2cb-4c7a48772bf5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{totalAlumnos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="528" y="2" width="100" height="12" uuid="c4676eeb-43a3-499f-91b6-f79f878cd208"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de emisión:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="72" splitType="Stretch">
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="752" height="69" uuid="bbfade34-8239-46c6-8bc5-ac8997ed3a0b"/>
+				<subreportParameter name="nivel">
+					<subreportParameterExpression><![CDATA[$F{nivel}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listaAlumnos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "reporteAlumnosInscritosPdf_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="36">
+			<rectangle>
+				<reportElement x="0" y="7" width="677" height="16" forecolor="#000000" backcolor="#CCCCCC" uuid="5944fc55-37ce-49e6-8dcf-c3d1e34c86df"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="511" y="7" width="94" height="16" uuid="7332091e-eb25-445a-a350-f94b8c0f4183"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Nivel ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="676" y="7" width="75" height="16" forecolor="#000000" backcolor="#CCCCCC" uuid="dd29202d-20e2-46ef-a561-b08a3538cd29"/>
+			</rectangle>
+			<textField>
+				<reportElement x="608" y="7" width="67" height="16" uuid="8b7e86eb-833a-4d99-8aef-e3b0095ca601"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="677" y="7" width="75" height="16" uuid="ed3a04d2-d8ee-4e31-a59a-c156967a88f9"/>
+				<box rightPadding="3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalNivel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
