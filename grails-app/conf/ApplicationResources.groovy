@@ -221,4 +221,11 @@ modules = {
 	  resource url: 'js/reporteAlumnosInscritos/index.js'
   }
   
+  graficacion {
+	  resource url:'Highcharts-4.0.4/js/highcharts.js'
+	  resource url:'Highcharts-4.0.4/js/highcharts-3d.js'
+	  resource url:'Highcharts-4.0.4/js/modules/exporting.js'
+	  resource url:'Highcharts-4.0.4/js/themes/stele.js'
+  }
+  
 }

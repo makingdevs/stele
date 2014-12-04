@@ -185,6 +185,14 @@
                 </g:link>
               </li>
             </ul>
+            <ul class="submenu">
+              <li>
+                <g:link controller="reporteEstadisticasAlumnos" action="index">
+                  <i class="icon-double-angle-right"></i>
+                  Alumnos Estadisticas
+                </g:link>
+              </li>
+            </ul>
           </li>
          </ul><!--/.nav-list-->
         
