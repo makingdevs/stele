@@ -34,15 +34,15 @@ class DependienteService {
   }
 
   def registrar(Dependiente dependiente, Long usuarioId, def institucion){
-    
-    def dependienteExistente =  Dependiente.withCriteria{
+
+    def dependienteExistente = Dependiente.withCriteria{
       eq('matricula',dependiente.matricula)
       historialAcademico{
         distribucionInstitucional{
-          eq('institucion',institucion)
-        } 
+          'in'('institucion',[institucion])    
+        }
       }
-    }   
+    }
     
     if(dependienteExistente)
       return dependienteExistente
