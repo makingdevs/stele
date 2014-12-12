@@ -1,6 +1,7 @@
 package com.stele;
 
 import java.text.SimpleDateFormat
+
 import org.codehaus.groovy.grails.plugins.jasper.JasperReportDef
 import org.codehaus.groovy.grails.plugins.jasper.JasperExportFormat
 
@@ -14,21 +15,25 @@ class ReporteAlumnosInscritosController {
 	def sdf = new SimpleDateFormat("dd MMMM yyyy", new Locale("es", "ES"))
 
 	def index() {
-		def user = springSecurityService.currentUser
-		def listaGrupos = reporteAlumnosInscritosService.obtenerGruposPorInstitrucion(user.instituciones[0])
-		def listaGrados = reporteAlumnosInscritosService.obtenerGradosPorInstitrucion(user.instituciones[0])
-		def listaNiveles = reporteAlumnosInscritosService.obtenerNivelesDeEstudioPorInstitrucion(user.instituciones[0])
-		def listaTurnos = reporteAlumnosInscritosService.obtenerTurnosPorInstitrucion(user.instituciones[0])
-		if(listaGrupos && listaGrados && listaNiveles && listaTurnos) {
-			def dependientes = reporteAlumnosInscritosService.obtenerAlumnosInscritosPorNivelGradoGrupoYTurno(
-				params.nivel != null && params.nivel.length() > 0 ? [(NivelDeEstudio)params.nivel] : listaNiveles, 
-				params.grado != null && params.grado.length() > 0 ? [params.grado.toInteger()] : listaGrados, 
-				params.grupo != null && params.grupo.length() > 0 ? [params.grupo] : listaGrupos,
-				params.turno != null && params.turno.length() > 0 ? [(Turno)params.turno] : listaTurnos,
-				user.instituciones[0])
-		
-			return [params:params, listaGrupos:listaGrupos, listaGrados:listaGrados, dependientes:dependientes, listaNiveles:listaNiveles, listaTurnos:listaTurnos]
-		} else flash.error = "No se encontraron registros de alumnos."
+		try {
+			def user = springSecurityService.currentUser
+			def listaGrupos = reporteAlumnosInscritosService.obtenerGruposPorInstitrucion(user.instituciones[0])
+			def listaGrados = reporteAlumnosInscritosService.obtenerGradosPorInstitrucion(user.instituciones[0])
+			def listaNiveles = reporteAlumnosInscritosService.obtenerNivelesDeEstudioPorInstitrucion(user.instituciones[0])
+			def listaTurnos = reporteAlumnosInscritosService.obtenerTurnosPorInstitrucion(user.instituciones[0])
+			if(listaGrupos && listaGrados && listaNiveles && listaTurnos) {
+				def dependientes = reporteAlumnosInscritosService.obtenerAlumnosInscritosPorNivelGradoGrupoYTurno(
+					params.nivel != null && params.nivel.length() > 0 ? [(NivelDeEstudio)params.nivel] : listaNiveles, 
+					params.grado != null && params.grado.length() > 0 ? [params.grado.toInteger()] : listaGrados, 
+					params.grupo != null && params.grupo.length() > 0 ? [params.grupo] : listaGrupos,
+					params.turno != null && params.turno.length() > 0 ? [(Turno)params.turno] : listaTurnos,
+					user.instituciones[0])
+			
+				return [params:params, listaGrupos:listaGrupos, listaGrados:listaGrados, dependientes:dependientes, listaNiveles:listaNiveles, listaTurnos:listaTurnos]
+			} else flash.error = "No se encontraron registros de alumnos."
+		} catch(Exception e) {
+			flash.error = "No se encontraron registros de alumnos."
+		}
 	}
 	
 	def generaReporte() {
