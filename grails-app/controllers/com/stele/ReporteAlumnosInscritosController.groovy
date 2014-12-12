@@ -1,5 +1,6 @@
 package com.stele;
 
+import java.text.SimpleDateFormat
 import org.codehaus.groovy.grails.plugins.jasper.JasperReportDef
 import org.codehaus.groovy.grails.plugins.jasper.JasperExportFormat
 
@@ -10,6 +11,7 @@ class ReporteAlumnosInscritosController {
 	def springSecurityService
 	def reporteAlumnosInscritosService
 	def jasperService
+	def sdf = new SimpleDateFormat("dd MMMM yyyy", new Locale("es", "ES"))
 
 	def index() {
 		def user = springSecurityService.currentUser
@@ -117,7 +119,7 @@ class ReporteAlumnosInscritosController {
 										 reportData:listaDependientes,
 										 locale:Locale.getDefault(), 
 										 parameters:[nombreInstitucion:user.instituciones[0].name, 
-											 		 fechaEmision:new Date(), 
+											 		 fechaEmision:sdf.format(new Date()), 
 													 totalAlumnos:dependientes.size(), 
 													 SUBREPORT_DIR:"${servletContext.getRealPath('/reports')}/"])
 		response.setContentType("application/pdf")
