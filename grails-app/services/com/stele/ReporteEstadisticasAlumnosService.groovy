@@ -6,7 +6,7 @@ class ReporteEstadisticasAlumnosService {
 	def sdf = new SimpleDateFormat("dd MMMM yyyy", new Locale("es", "ES"))
 	
 	def obtenerEstadisticasAlumnosPorNivel(def alumnos, def niveles) {
-		def estadisticas = [titulo:"Poblacion de Estudiantes Inscritos:", fecha:sdf.format(new Date()), totalAlumno:alumnos.size(), niveles:[]]
+		def estadisticas = [titulo:"Poblacion de Estudiantes Inscritos ", fecha:sdf.format(new Date()), totalAlumno:alumnos.size(), niveles:[]]
 		clasificarPorNivelDeAlumnos(alumnos, estadisticas, niveles, [])
 	}
 	
@@ -27,7 +27,7 @@ class ReporteEstadisticasAlumnosService {
 	}
 	
 	def obtenerEstadisticasAlumnosPorGradoYNivel(def alumnos, def grados, def niveles) {
-		def estadisticas = [titulo:"Poblacion Estudiantil Por Nivel", fecha:sdf.format(new Date()), totalAlumno:alumnos.size(), grados:[]]
+		def estadisticas = [titulo:"Estudiantes Inscritos por Nivel ", fecha:sdf.format(new Date()), totalAlumno:alumnos.size(), grados:[]]
 		clasificarPorNivelDeGradoDeAlumnos(alumnos, clasificarPorGradoDeAlumnos(alumnos, estadisticas, grados, niveles))
 	}
 	

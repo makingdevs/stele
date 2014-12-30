@@ -48,22 +48,23 @@
                                 }
                             },
                             title: {
-                                text: '${estadisticas.titulo} ${estadisticas.totalAlumno}'
+                                text: '${estadisticas.titulo}'
                             },
                             subtitle: {
-                                text: '${estadisticas.fecha}'
+                                text: '<span style="font-size: 13px; color: #007AFF; font-weight: bold">${estadisticas.totalAlumno} Estudiantes  -  </span> <span style="font-size: 12px; color: #F75353; font-weight: bold"> ${estadisticas.fecha}</span>'
                             },
                             plotOptions: {
                                 pie: {
+                                    allowPointSelect: true,
                                     innerSize: 75,
                                     depth: 35
                                 }
                             },
                             series: [{
-                                name: 'Porcentaje %',
+                                name: 'Porcentaje',
                                 data: [
                                     <g:each in="${estadisticas.niveles}">
-                                       ['${it.nivel}-${it.totalNivel}', ${it.porcentaje}],
+                                       ['${it.nivel} - ${it.totalNivel}', ${it.porcentaje}],
                                     </g:each>
                                 ]
                             }]
@@ -80,18 +81,26 @@
 				                type: 'bar'
 				            },
 				            title: {
-				                text: '${estadisticasPorGradoYNivel.titulo}'
+				                text: '${estadisticasPorGradoYNivel.titulo}',
+				                style: {
+				                    fontWeight: 'bold',
+				                    color: '#FF9500'
+				                    }
 				            },
-				            subtitle: {
-				                text: '${estadisticasPorGradoYNivel.fecha}'
-				            },
+                            subtitle: {
+                                text: '<span style="font-size: 13px; color: #007AFF; font-weight: bold">${estadisticas.totalAlumno} Estudiantes  -  </span> <span style="font-size: 12px; color: #F75353; font-weight: bold"> ${estadisticas.fecha}</span>'
+                            },
 				            xAxis: {
 				                categories: [<g:each in="${listaNiveles}">
 			                                    '${it}',
 			                                </g:each>'',],
-				                title: {
-				                    text: 'Niveles'
-				                },
+	                            title: {
+	                                text: 'NIVEL',
+	                                style: {
+	                                fontWeight: 'bold',
+	                                color: '#6600CC'
+	                                }
+	                            },
 				                stackLabels: {
 				                    enabled: true,
 				                    style: {
@@ -101,23 +110,34 @@
 				                }
 				            },
 				            yAxis: {
+				                tickInterval: 5,
 				                min: 0,
 				                title: {
-				                    text: 'Grados'
+				                    text: 'NUMERO DE ESTUDIANTES',
+				                    style: {
+				                    fontWeight: 'bold',
+				                    color: '#6600CC'
+				                    }
 				                },
 				                stackLabels: {
 				                    enabled: true,
 				                    style: {
 				                        fontWeight: 'bold',
-				                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+				                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'blue'                    
+				                    },
+				                    formatter: function () {
+				                        return this.total + " Estudiantes";
 				                    }
 				                }
 				            },
 				            legend: {
+						                title: {
+						                    text: 'GRADOS', 
+						                },
 				                        align: 'left',
 				                        x: 130,
 				                        verticalAlign: 'top',
-				                        y: 20,
+				                        y: 0,
 				                        floating: true,
 				                        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
 				                        borderColor: '#CCC',
@@ -163,29 +183,42 @@
                                     type: 'column'
                                 },
                                 title: {
-                                    text: '${estadisticasPorNivelGradoYGrupo.titulo}${nivel.nivel}'
+                                    text: '${estadisticasPorNivelGradoYGrupo.titulo}${nivel.nivel}',
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: '#CB79E6'
+                                        }
                                 },
                                 subtitle: {
-                                    text: '${estadisticasPorNivelGradoYGrupo.fecha}'
+                                    text: '<span style="font-size: 13px; color: #007AFF; font-weight: bold"> ${nivel.totalNivel} Estudiantes  -  </span>  <span style="font-size: 12px; color: #F75353; font-weight: bold"> ${estadisticasPorNivelGradoYGrupo.fecha} </span>  '
                                 },
                                 xAxis: {
+                                    title: {
+	                                    text: 'GRADOS',
+	                                    style: {
+	                                    fontWeight: 'bold',
+	                                    color: '#6600CC'
+	                                    }
+	                                },
                                     categories: [<g:each var="grado" in="${nivel.listaGrados}">
                                     '${grado}º',
                                     </g:each>'',]
                                 },
                                 yAxis: {
-                                    min: 0,
+                                	min: 0,
+                                    tickInterval: 10,
                                     title: {
-                                        text: 'Num. Estudiantes)'
+                                        text: 'Num. Estudiantes',
+                                        style: {
+                                        fontWeight: 'bold',
+                                        color: '#6600CC'
+                                        }
                                     }
                                 },
                                 tooltip: {
-                                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                        '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
-                                    footerFormat:  '<tr><th>Total: </th>'
-                                +'<td style="text-align:right"><b><b>{point.total:,.0f}</b></b></td></tr>'
-                                +'</tbody></table>',
+                                    headerFormat: '<span style="font-size:12px;font-weight: bold">GRADO {point.key}</span><table>',
+                                    pointFormat: '<tr><td style="font-weight: bold; color:{series.color};padding:0">{series.name}: </td>' +
+                                        '<td style="padding:0"><b>{point.y} </b></td></tr></tbody></table>',
                                     shared: true,
                                     useHTML: true
                                 },
@@ -209,7 +242,7 @@
                                 series: [
                                     <g:each var="grupo" in="${nivel.grupos}">
 	                                    {
-		                                    name: '"${grupo.grupo}"',
+		                                    name: '"GRUPO ${grupo.grupo}"',
 		                                    data: [
                                                 <g:each var="grado" in="${grupo.grados}">
                                                     ${grado.total} > 0 ? ${grado.total} : null,
