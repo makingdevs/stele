@@ -176,7 +176,6 @@
               <span class="menu-text"> Reportes  </span>
               <b class="arrow icon-angle-down"></b>
             </a>
-
             <ul class="submenu">
               <li>
                 <g:link controller="reporteAlumnosInscritos" action="index">
@@ -190,6 +189,14 @@
                 <g:link controller="reporteEstadisticasAlumnos" action="index">
                   <i class="icon-double-angle-right"></i>
                   Alumnos Estadisticas
+                </g:link>
+              </li>
+            </ul>
+            <ul class="submenu">
+              <li>
+                <g:link controller="reporteAlumnosCobros" action="index">
+                  <i class="icon-double-angle-right"></i>
+                  Cobros Alumnos 
                 </g:link>
               </li>
             </ul>
