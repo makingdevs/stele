@@ -23,7 +23,12 @@
           <td> $ ${it.accumulatedDiscount ?: 0}</td>
           <td> $ ${it.accumulatedSurcharges ?: 0} </td>
           <td> $ ${it.paymentAmount - it.accumulatedDiscount}</td>
-          <td> ${it.paymentStatus} </td>
+          <td> ${it.paymentStatus == PaymentStatus.CREATED ? 'Creado' :
+                 it.paymentStatus == PaymentStatus.PROCESS ? 'Verificado' :
+                 it.paymentStatus == PaymentStatus.EXPIRED ? 'Vencido' :
+                 it.paymentStatus == PaymentStatus.PAID ? 'Pagado' :
+                 it.paymentStatus == PaymentStatus.REJECTED ? 'Rechazado' :
+                 it.paymentStatus == PaymentStatus.CANCELED ? 'Cancelado' : ''} </td>
             <sec:ifAllGranted roles="ROLE_PADRE_TUTOR">
               <g:if test="${it.paymentStatus == PaymentStatus.CREATED }">
                 <td> <g:link controller="reciboPago" id="${it.id}" class="btn"> <i class="icon-upload-alt"></i></g:link> </td>

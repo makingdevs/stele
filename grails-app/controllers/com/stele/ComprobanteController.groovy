@@ -15,9 +15,21 @@ class ComprobanteController {
   def show() {
     def payment = Payment.get(params.long('id'))
     def dependiente = dependienteService.findDependienteFromPaymentId(payment.id)
-
+	def listTipoPagos = []
+	PaymentType.values().each {
+		if(it == PaymentType.WIRE_TRANSFER)
+			listTipoPagos.add([key:it.key, pago:'Transferencia Bancaria'])
+		if(it == PaymentType.REFERENCED_DEPOSIT)
+			listTipoPagos.add([key:it.key, pago:'Pago Referenciado'])
+		if(it == PaymentType.CHECK)
+			listTipoPagos.add([key:it.key, pago:'Cheque'])
+		if(it == PaymentType.CASH)
+			listTipoPagos.add([key:it.key, pago:'Efectivo'])
+		if(it == PaymentType.TERMINAL)
+			listTipoPagos.add([key:it.key, pago:'Terminal'])
+	}
     def perfil = perfilService.obtenerPerfilDeUsuario(dependiente.usuario.perfil.first().id)
-    [payment:payment, perfil:perfil]
+    [payment:payment, perfil:perfil, listTipoPagos:listTipoPagos]
   }
 
   def validarComprobante() {

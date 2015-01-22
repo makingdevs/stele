@@ -23,7 +23,7 @@
               Conciliación 
               <small>
                 <i class="icon-double-angle-right"></i>
-                Pagos <i class="icon-double-angle-right"></i> Pendientes, Rechazados, Por Conciliar y Vencidos
+                Pagos <i class="icon-double-angle-right"></i> Creados, Rechazados, Verificando, Pagados y Vencidos
               </small>
             </h1>
           </div><!--/.page-header-->
@@ -34,20 +34,20 @@
                     <ul class="nav nav-tabs" id="myTab">
                       <li class="active">
                         <a data-toggle="tab" href="#pendientes">
-                          Pendientes
+                          Creados
                           <span class="badge badge-primary">${pagosCreados?.size()}</span>
                         </a>
                       </li>
 
                       <li>
                         <a data-toggle="tab" href="#xconciliar">
-                          Por Conciliar  <span class="badge badge-info">${pagosEnProceso?.size()}</span>
+                          Verificando  <span class="badge badge-info">${pagosEnProceso?.size()}</span>
                         </a>
                       </li>
 
                       <li>
                         <a data-toggle="tab" href="#conciliados">
-                          Conciliados
+                          Pagados
                           <span class="badge badge-success">${pagosConciliados?.size()}</span>
                         </a>
                       </li>

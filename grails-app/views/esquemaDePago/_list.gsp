@@ -1,4 +1,5 @@
 <%@ page import="com.payable.PaymentStatus" %>
+<%@ page import="com.payable.PaymentType" %>
 <table class="table">
   <thead style="background-color:whiteSmoke">
     <tr>
@@ -19,9 +20,13 @@
         <td> $ ${it.paymentAmount} </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${it.dueDate}"/> </td>
         <td> <g:formatDate format="yyyy-MM-dd" date="${it.paymentDate}"/> </td>
-        <td> ${it.paymentType} </td>
+        <td> ${it.paymentType == PaymentType.WIRE_TRANSFER ? 'Transferencia Bancaria' : 
+			it.paymentType == PaymentType.REFERENCED_DEPOSIT ? 'Pago Referenciado' : 
+            it.paymentType == PaymentType.CHECK ? 'Cheque' : 
+            it.paymentType == PaymentType.CASH ? 'Efectivo' : 
+            it.paymentType == PaymentType.TERMINAL ? 'Terminal' : ''} </td>
         <td>${(new Date() - it.lastUpdated)}</td>
-        <td> ${it.paymentStatus} </td>
+        <td> ${it.paymentStatus == PaymentStatus.CREATED ? 'Creado' : 'Vencido'} </td>
       </tr>
   </g:findAll>
   </tbody>

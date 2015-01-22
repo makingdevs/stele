@@ -182,7 +182,7 @@
                                   <td>                    
                                   <div class="control-group"> 
                                     <span class="form-field-select-1">
-                                      <g:select id="tipoDePago" name="tipoDePago" noSelection="['':'- Tipo de Pago-']" from="${PaymentType.values()}" optionKey="key" />
+                                      <g:select id="tipoDePago" name="tipoDePago" noSelection="['':'- Tipo de Pago-']" from="${listTipoPagos}" optionKey="key" optionValue="pago" />
                                     </span>
                                   </div>
                                   </td>

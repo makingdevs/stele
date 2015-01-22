@@ -26,7 +26,12 @@
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.dueDate}"/> </td>
           <td> $ ${it.paymentAmount} </td>
           <td> <g:formatDate format="yyyy-MM-dd" date="${it.lastUpdated}"/> </td>
-          <td> ${it.paymentStatus} </td>
+          <td> ${it.paymentStatus == PaymentStatus.CREATED ? 'Creado' :
+                 it.paymentStatus == PaymentStatus.PROCESS ? 'Verificado' :
+                 it.paymentStatus == PaymentStatus.EXPIRED ? 'Vencido' :
+                 it.paymentStatus == PaymentStatus.PAID ? 'Pagado' :
+                 it.paymentStatus == PaymentStatus.REJECTED ? 'Rechazado' :
+                 it.paymentStatus == PaymentStatus.CANCELED ? 'Cancelado' : ''} </td>
         </tr>
       </g:each>
     </tbody>

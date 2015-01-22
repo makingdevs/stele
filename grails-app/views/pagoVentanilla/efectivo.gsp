@@ -125,7 +125,7 @@
                           <tr>
                             <td  class="">Tipo pago</td>
                             <td class="">
-                              <g:select id="tipoDePago" name="tipoDePago" from="${PaymentType.values()}" optionKey="key" />
+                              <g:select id="tipoDePago" name="tipoDePago" from="${listTipoPagos}" optionKey="key" optionValue="pago"/>
                             </td>
                           </tr>
                           <tr>
